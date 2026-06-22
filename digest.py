@@ -665,6 +665,10 @@ def main():
     ap.add_argument("--format", choices=["md", "html", "both"], default="both",
                     help="формат вывода: md (только markdown), html, или both (по умолчанию)")
     ap.add_argument("--config", default="sources.yaml", help="путь к sources.yaml")
+    ap.add_argument("--selected-only", action="store_true",
+                    help="Stage 2: загрузить медиа только для постов из манифеста, пересобрать дайджест")
+    ap.add_argument("--manifest", default=None,
+                    help="путь к манифесту (для --selected-only). По умолчанию: output/digest_YYYY-MM-DD_manifest.json")
     args = ap.parse_args()
 
     base = Path(__file__).parent
@@ -758,13 +762,57 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+    # ── Манифест ВСЕГДА сохраняем (для Stage 2) ────────────────────────────
+    manifest = {
+        "date": today,
+        "draft_path": str(out_dir / f"digest_{today}{suffix}.md"),
+        "posts": [{"id": p["id"], "url": p["url"], "title": p["title"]} for p in posts]
+    }
+    manifest_path = out_dir / f"digest_{today}{suffix}_manifest.json"
+    with open(manifest_path, "w") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2)
+    print(f"📋 Манифест: {manifest_path} ({len(manifest['posts'])} постов)", file=sys.stderr)
+
+    # ── Stage 2: загрузка медиа только для выбранных постов ─────────────────
+    if args.selected_only:
+        manifest_file = args.manifest or str(manifest_path)
+        if not Path(manifest_file).exists():
+            print(f"❌ Манифест не найден: {manifest_file}", file=sys.stderr)
+            return 1
+        with open(manifest_file) as f:
+            m = json.load(f)
+        selected_ids = {p["id"] for p in m["posts"]}
+        print(f"🎯 Stage 2: выбрано {len(selected_ids)} постов из манифеста", file=sys.stderr)
+
+        # Фильтруем до выбранных
+        posts = [p for p in posts if p["id"] in selected_ids]
+        if not posts:
+            print("❌ Посты из манифеста не найдены в storage", file=sys.stderr)
+            return 1
+        # Догружаем медиа ТОЛЬКО для выбранных
+        print(f"🖼  Догружаю медиа для {len(posts)} постов...", file=sys.stderr)
+        enriched = enrich_posts_with_media(posts, timeout=args.media_timeout)
+        # Сохраняем обогащённые посты
+        enriched_path = out_dir / f"digest_{today}_enriched.json"
+        with open(enriched_path, "w") as f:
+            json.dump(enriched, f, ensure_ascii=False, indent=2)
+        print(f"💾 Обогащённые посты: {enriched_path}", file=sys.stderr)
+        posts = enriched
+        # Подменяем title/url из манифеста для согласованности
+        id_to_manifest = {p["id"]: p for p in m["posts"]}
+        for p in posts:
+            if p["id"] in id_to_manifest:
+                p["url"] = id_to_manifest[p["id"]]["url"]
+                p["title"] = id_to_manifest[p["id"]]["title"]
+
     # ── Медиа-обогащение (og:image / og:video) ──────────────────────────────
-    if args.fetch_media:
+    elif args.fetch_media:
+        # Не тратим время на медиа если это Stage 2
         print(f"🖼  Догружаю медиа для top-{top * top} постов... (может занять ~{top * 10} сек)", file=sys.stderr)
         posts = enrich_posts_with_media(
             posts,
             timeout=args.media_timeout,
-            max_posts=top * top,   # top_per_cat × categories ≈ top-N самых важных
+            max_posts=top * top,
         )
 
     # Telegram-версия (короткая, для отправки в мессенджер)
