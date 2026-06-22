@@ -1,0 +1,1317 @@
+
+========================================
+🤖 AI-Digest daily run: 2026-06-13 03:00:21 UTC
+   hours=48, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 101 источников (с 2026-06-11T03:00:22.423975+00:00)...
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ The Information                          → 20 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ ПостНаука (RU)                           → 16 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ arXiv cs.CL (NLP)                        → 30 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ arXiv stat.ML                            → 30 posts
+  ✓ Wired                                    → 30 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ arXiv cs.CV (Vision)                     → 30 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ Spark.ru                                 → 30 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ The Information                          → 20 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ The Decoder                              → 10 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ Becoming Human: AI Magazine              → 10 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ CNET                                     → 25 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ arXiv q-bio.NC                           → 11 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 17 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 14 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 9 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ arXiv eess.IV (Image Video)              → 10 posts
+  ✓ arXiv cs.RO (Robotics)                   → 30 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Safety News                           → fallback timeout: Missing dependencies for SOCKS support.
+
+✅ Готово за 60.3s
+   Источников OK: 98/101
+   Постов собрано (с дедупликацией): 1260
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-13.json
+
+📥 Архив: добавлено 496, обновлено 764, пропущено 0. Всего в архиве: 3948
+/home/apps_maker/ai-digest/storage/posts_2026-06-13.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-13.json
+
+🌐 Step 1.5: scrape.py --missing (только high-priority)
+📚 В архиве: 3948 постов
+🎯 К скрапингу: 2818
+  ✓ debd8a7ac5d0 |   4264 chars | https://techcrunch.com/2026/06/12/anthropics-safety-warnings-may-have-
+  ✓ e7f26c0044c3 |   3551 chars | https://www.wired.com/story/anthropic-says-us-government-ordered-it-to
+  ✓ 7f2824ffd7b0 |   1384 chars | https://opensourceaimustwin.com/?share=v2
+  ∅ b2918d7687a2 | extracted only 45 chars
+  ✓ 855342a46b7c |   1785 chars | https://www.cnet.com/tech/gaming/todays-nyt-mini-crossword-answers-for
+  ✓ d76e5a3c433b |    679 chars | https://habr.com/ru/news/1047000/?utm_source=habrahabr&utm_medium=rss&
+  ✓ a3803579bb4b |    790 chars | https://www.techmeme.com/260612/p34#a260612p34
+  ✓ 23daf0e94ad2 |  21288 chars | https://habr.com/ru/articles/1046998/?utm_source=habrahabr&utm_medium=
+  ✓ aa60ae65ab54 |    805 chars | https://www.techmeme.com/260612/p35#a260612p35
+  ✓ 4292de2e8e18 |    746 chars | https://www.techmeme.com/260612/p32#a260612p32
+  ∅ 5caf59a41944 | extracted only 97 chars
+  ✓ 805d6ac1625a |    818 chars | https://twitter.com/ClaudeDevs/status/2065597942602531163
+  ✓ 2df8804594fc |    785 chars | https://www.techmeme.com/260612/p33#a260612p33
+  ✓ bb3a1e6313d9 |   5070 chars | https://www.cnet.com/culture/entertainment/raising-kanan-interview/
+  ✓ 3413174ad102 |  10195 chars | https://habr.com/ru/articles/1046996/?utm_source=habrahabr&utm_medium=
+  ∅ df34e6426a59 | extracted only 45 chars
+  ✓ 3798f4e2f03c |  34815 chars | https://simonw.substack.com/p/claude-fable-is-relentlessly-proactive
+  ✓ 69c2cbd08939 |    897 chars | https://vercel.com/changelog/workflow-sdk-now-runs-natively-in-nitro-v
+  ✓ def551e509f9 |    749 chars | https://www.techmeme.com/260612/p31#a260612p31
+  ✓ ae5c88d9d200 |   3955 chars | https://www.wired.com/story/meta-employees-absolutely-hate-mark-zucker
+  ✓ a02b847236d4 |    749 chars | https://www.techmeme.com/260612/p30#a260612p30
+  ✓ f6bcab9c9e7e |   4202 chars | https://www.engadget.com/2193606/doj-approves-paramount-skydance-warne
+  ✓ e8bdc063325c |   5488 chars | https://www.anthropic.com/news/fable-mythos-access
+  ✓ 5f1b73397b24 |   6771 chars | https://habr.com/ru/articles/1046994/?utm_source=habrahabr&utm_medium=
+  ✓ ead81c101920 |   6943 chars | https://techcrunch.com/2026/06/12/spacex-ipo-live-updates-on-everythin
+  ✓ 56b7b98f42fb |   3424 chars | https://techcrunch.com/2026/06/12/metas-months-old-ai-unit-is-a-soul-c
+  ✓ 4ad38bde77eb |    367 chars | https://putt.day/
+  ✓ 4f4df4baeabd |   2895 chars | https://www.gadgetreview.com/amd-stiffs-researcher-10000-bug-bounty-af
+  ✓ 89994ef3d453 |  17474 chars | https://depthfirst.com/research/21-zero-days-in-ffmpeg
+  ✓ 81bd3e46a0f1 |   2323 chars | https://arstechnica.com/space/2026/06/spacex-is-now-a-public-company-v
+  ✓ cdf2be70c929 |    721 chars | https://www.techmeme.com/260612/p29#a260612p29
+  ✗ d9131872dea3 | HTTP 429
+  ✓ 6fa570b91085 |   4869 chars | https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-ab
+  ✗ 03b9d0436f50 | HTTP 429
+  ✓ 7bc08ce66f1f |   2586 chars | https://www.cnet.com/news/roborock-first-robot-lawn-mower/
+  ✓ fd75a3109df7 |  13843 chars | https://habr.com/ru/companies/studyai/articles/1046754/?utm_source=hab
+  ✓ 0521874f4937 |    741 chars | https://www.techmeme.com/260612/p27#a260612p27
+  ✓ eab0bce4d038 |  16820 chars | https://github.com/NVIDIA/SkillSpector
+  ✓ 009a50a283dd |   6922 chars | https://www.wired.com/story/mark-zuckerberg-meta-employee-meeting-inte
+  ✓ 4060f3ba08b3 |   2482 chars | https://habr.com/ru/news/1046984/?utm_source=habrahabr&utm_medium=rss&
+  ✓ af1e32d6a203 |   4973 chars | https://blogs.nvidia.com/blog/nvidia-blackwell-agentperf-artificial-an
+  ✗ ae938806e82e | HTTP 403
+  ✓ 4c80d9597e84 |  12003 chars | https://aws.amazon.com/blogs/machine-learning/building-supercharger-ho
+  ✓ 8e16264f67e5 |   5453 chars | https://techcrunch.com/2026/06/12/chinese-cybercrime-operation-that-us
+  ✓ 6a170e5e226d |   3093 chars | https://habr.com/ru/news/1046982/?utm_source=habrahabr&utm_medium=rss&
+  ✓ c380cc946bd4 |    746 chars | https://www.techmeme.com/260612/p25#a260612p25
+  ✓ fcd4334962a4 |   6028 chars | https://github.com/DanMcInerney/architect-loop
+  ✓ 91e5677b70da |   3233 chars | https://thenextweb.com/news/spacex-starbase-class-action-homes-damaged
+  ✓ 20e62c8ac675 |   8644 chars | https://habr.com/ru/articles/1046918/?utm_source=habrahabr&utm_medium=
+  ✓ 05fe3d528763 |    838 chars | https://www.techmeme.com/260612/p26#a260612p26
+  ✓ 215c6b751be4 |   1985 chars | https://techcrunch.com/2026/06/12/spacex-ipo-closes-up-19-and-delivers
+  ∅ 712562552311 | extracted only 45 chars
+  ✓ 65d1eb8144c2 |   3131 chars | https://thenextweb.com/news/avataar-ai-varya-video-model-india-cheap
+  ✓ 80e399a1cb81 |   7849 chars | https://www.microsoft.com/en-us/research/blog/ire-identifies-another-l
+  ✓ 6f41565a977c |   2003 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-sports-edition
+  ∅ 26ffe7764930 | extracted only 45 chars
+  ✓ 33ac4c73b01e |   1788 chars | https://www.cnet.com/tech/gaming/todays-nyt-strands-hints-answers-and-
+  ✓ 75997e6a685b |   2111 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-hints-answers-
+  ✓ 43ece05015c7 |   1305 chars | https://www.cnet.com/tech/gaming/todays-wordle-hints-answer-and-help-f
+  ✓ a05bd9a94872 |  13148 chars | https://www.swift.org/blog/migrating-truetype-hinting-to-swift/
+  ✓ 177ad6665ba6 |   1866 chars | https://www.engadget.com/2193459/the-spacex-ipo-broke-robinhood-for-so
+  ✓ 5f5621206055 |  20247 chars | https://habr.com/ru/articles/1046974/?utm_source=habrahabr&utm_medium=
+  ✓ 5084a06aec16 |  11407 chars | https://thenextweb.com/news/cloud-security-mistakes-architecture-level
+  ∅ e22307c01088 | extracted only 57 chars
+  ✓ b52a2e159bfc |   2746 chars | https://www.engadget.com/2193431/dji-and-insta360-are-in-a-patent-batt
+  ✓ c8a52239d2f4 |   3565 chars | https://thenextweb.com/news/china-photonics-lab-ai-chips-us-curbs
+  ✓ 5b6d7cc01c2d |   6931 chars | https://habr.com/ru/articles/1046972/?utm_source=habrahabr&utm_medium=
+  ✓ f7ff8ab27f2b |   1404 chars | https://techcrunch.com/2026/06/12/spacex-president-gwynne-shotwell-jus
+  ✓ 6e9cc34dd8c5 |   1834 chars | https://arstechnica.com/security/2026/06/peoplesoft-0-day-affecting-hu
+  ✓ e302e30a79e8 |   2233 chars | https://semiengineering.com/cross-validated-timing-analysis-for-automo
+  ✓ c35a7ccb6812 |   3160 chars | https://thenextweb.com/news/spacex-colossus-1-technical-problems-rente
+  ✓ 76b5fbf3126b |   7939 chars | https://thenextweb.com/news/london-tech-week-2026-roundup
+  ✓ 3a2293f60a12 |  10750 chars | https://habr.com/ru/articles/1046952/?utm_source=habrahabr&utm_medium=
+  ✓ b1630d957180 |    749 chars | https://www.techmeme.com/260612/p23#a260612p23
+  ✓ cd15680301cd |   2640 chars | https://arstechnica.com/tech-policy/2026/06/controversial-fisa-spying-
+  ✓ 87f42f8c4673 |    838 chars | https://www.techmeme.com/260612/p24#a260612p24
+  ∅ 752c5f4be8c4 | extracted only 83 chars
+  ✓ ec3829dc76ab |   4493 chars | https://news.crunchbase.com/venture/biggest-funding-rounds-ai-biotech-
+  ✓ 944b236b60bd |    729 chars | https://www.techmeme.com/260612/p22#a260612p22
+  ✓ 0ae2fb8f6083 |   1501 chars | https://arstechnica.com/ai/2026/06/heres-what-jeff-bezos-new-startup-p
+  ✓ a16e895b416b |   3175 chars | https://www.engadget.com/2193338/congress-lets-decades-old-spying-law-
+  ✓ ca32a274fa30 |    805 chars | https://www.techmeme.com/260612/p28#a260612p28
+  ✓ 2a0c46444290 |   4376 chars | https://the-decoder.com/over-half-of-americans-fear-losing-both-their-
+  ✓ 93a5997beb69 |   2873 chars | https://thenextweb.com/news/spotify-new-music-friday-editor-videos
+  ✓ a5d93e2851e9 |   2182 chars | https://semiengineering.com/optimizing-euv-source-efficiency-with-radi
+  ✓ 9f292c66304f |   1831 chars | https://arstechnica.com/science/2026/06/have-politics-finally-come-for
+  ✗ 523a34c56360 | TypeError: object of type 'NoneType' has no len()
+  ✓ ea752f534017 |   3293 chars | https://thenextweb.com/news/mozilla-firefox-ai-kill-switch-1-percent-s
+  ✓ b9497c050a4d |  13097 chars | https://habr.com/ru/articles/1046810/?utm_source=habrahabr&utm_medium=
+  ∅ 3ce03914ef43 | extracted only 80 chars
+  ✓ b910681663f2 |    800 chars | https://www.techmeme.com/260612/p21#a260612p21
+  ✓ 21435bdc6f12 |   6078 chars | https://www.wired.com/story/donald-trumps-white-house-ufc-event-would-
+  ✓ 74db19c301a8 |  18333 chars | https://towardsdatascience.com/when-pymupdf-cant-see-the-table-parse-p
+  ✓ e574585f7546 |   6479 chars | https://www.wired.com/story/chinese-drivers-are-using-tiny-plastic-hea
+  ✓ 6cbd86e9edee |   2224 chars | https://arstechnica.com/ai/2026/06/ukraines-one-time-test-used-fully-a
+  ✓ 51cea4b6efe3 |   3298 chars | https://thenextweb.com/news/google-sues-outsider-enterprise-ai-scam-te
+  ✓ 5f3c6784b74d |   1581 chars | https://semiengineering.com/boosting-euv-conversion-efficiency-with-du
+  ✓ a93123a38fa5 |   2421 chars | https://www.wired.com/story/elon-musk-is-the-worlds-first-trillionaire
+  ✓ 926a94a0e359 |   1411 chars | https://semiengineering.com/refining-vision-language-models-for-lithog
+  ✓ c121f8403c8a |   2718 chars | https://www.cnet.com/tech/services-and-software/grok-protest-giant-elo
+  ✓ ceed7e61347f |   3384 chars | https://thenextweb.com/news/imf-georgieva-mythos-destroy-financial-sys
+  ✓ ac49e7db99e3 |   1531 chars | https://techcrunch.com/2026/06/12/mistral-is-rumored-to-be-raising-e3b
+  ✓ 77eaaf6d90ae |   5645 chars | https://correresmidestino.com/dont-you-just-upload-it-to-chatgpt/
+  ✓ d673d1f5b18d |  36195 chars | https://habr.com/ru/articles/1046960/?utm_source=habrahabr&utm_medium=
+  ✓ 956bbc4f492e |  12343 chars | https://ikyle.me/blog/2026/how-to-setup-a-local-coding-agent-on-macos
+  ✓ 1398160e36cd |   1234 chars | https://the-decoder.com/openai-kicks-off-the-ai-price-wars-with-flexib
+  ✓ 863c9dec24c5 |   3874 chars | https://habr.com/ru/news/1046954/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 893d6100c63f |   5123 chars | https://www.cnet.com/tech/computing/apple-vision-pro-siri-visionos-27-
+  ✓ e6082f9b8e0c |   7052 chars | https://www.wired.com/story/china-us-data-center-opposition/
+  ✓ 54ee8e383b11 |   2108 chars | https://arstechnica.com/tech-policy/2026/06/130-billion-in-data-center
+  ✓ e6b759845198 |   1954 chars | https://www.theverge.com/podcast/949079/siri-ai-good-vergecast
+  ✗ 4fb17ef91977 | TypeError: object of type 'NoneType' has no len()
+  ✓ cf137a83dd68 |    863 chars | https://techcrunch.com/2026/06/12/robinhood-sees-record-breaking-traff
+  ✓ 30f1277e9214 |   7782 chars | https://habr.com/ru/articles/1046948/?utm_source=habrahabr&utm_medium=
+  ✓ e857530f4e0b |   4851 chars | https://the-decoder.com/anthropics-claude-fable-5-costs-twice-as-much-
+  ∅ 1928b7cd6895 | extracted only 63 chars
+  ✓ 86561e8fb3e1 |   6555 chars | https://www.cnet.com/tech/services-and-software/mozillas-ceo-knows-you
+  ✓ bcb396554cdb |   3129 chars | https://stratechery.com/2026/hey-siri-tell-me-a-fable/
+  ✓ b5a39bff6253 |    880 chars | https://bitboard.work/
+  ✓ 38dbd343ffe2 |   8585 chars | https://habr.com/ru/articles/1046946/?utm_source=habrahabr&utm_medium=
+  ✓ ac4eadc55655 |  14109 chars | https://www.cnet.com/news/i-rented-robot-lawn-mower-instead-buying-one
+  ✓ c116a9d44cbb |   1178 chars | https://www.cnet.com/tech/services-and-software/reddit-launches-a-new-
+  ✓ 396f710cf41c |   7486 chars | https://www.cnet.com/tech/gaming/xbox-game-pass-june-2026/
+  ✓ 89e7ee3b4837 |  24314 chars | https://habr.com/ru/companies/studyai/articles/1046864/?utm_source=hab
+  ✗ 22725d685a35 | HTTP 429
+  ✓ 144ecf5e7c96 |    693 chars | https://www.cnet.com/news-live/facebook-instagram-outage-june-12-2026/
+  ✓ 97725c0cd5d9 |  24503 chars | https://habr.com/ru/articles/1046944/?utm_source=habrahabr&utm_medium=
+  ✓ 75f5b737d0fc |   1924 chars | https://arstechnica.com/ai/2026/06/when-it-comes-to-total-water-use-ai
+  ✓ 728e2aab1d1c |  49711 chars | https://habr.com/ru/articles/1046942/?utm_source=habrahabr&utm_medium=
+  ✓ bf10c53a3dcd |  13793 chars | https://habr.com/ru/companies/lumanbox/articles/1046812/?utm_source=ha
+  ✓ 52d77c0b74e2 |   3887 chars | https://www.cnet.com/tech/computing/macos-27-golden-gate-touchscreen-m
+  ✓ 594186bd7c9d |   5966 chars | https://habr.com/ru/articles/1046938/?utm_source=habrahabr&utm_medium=
+  ✓ de5e5370f9f3 |   8964 chars | https://www.datarobot.com/blog/build-cursor/
+  ✓ 7b0cb13744c0 |   6059 chars | https://habr.com/ru/articles/1046934/?utm_source=habrahabr&utm_medium=
+  ✓ dab5f276112e |   5598 chars | https://sgaud.com/texts/pdf
+  ✓ e4a457050692 | 570383 chars | https://habr.com/ru/articles/1045901/?utm_source=habrahabr&utm_medium=
+  ✓ 01a2de5628f8 |  17700 chars | https://towardsdatascience.com/why-this-decade-old-idea-still-powers-a
+  ✓ 16270b9ae7cc |   2112 chars | https://arstechnica.com/google/2026/06/google-sues-chinese-cybercrime-
+  ✓ 392fd6229695 |  10492 chars | https://habr.com/ru/articles/1046908/?utm_source=habrahabr&utm_medium=
+  ✓ aff183af0f1e |    771 chars | https://techcrunch.com/video/spacex-anthropic-and-openais-hot-ipo-summ
+  ✓ ae65ff682b91 |   1451 chars | https://www.theverge.com/ai-artificial-intelligence/948409/elon-musk-t
+  ✓ 8e4df486aa41 |   2263 chars | https://www.engadget.com/2193154/sam-bankman-frieds-fraud-conviction-a
+  ✓ bb4a696d2bff |   6763 chars | https://habr.com/ru/articles/1046930/?utm_source=habrahabr&utm_medium=
+  ∅ f4d6fb20f321 | extracted only 45 chars
+  ✓ 11a42fcefd40 |  10467 chars | https://habr.com/ru/articles/1046928/?utm_source=habrahabr&utm_medium=
+  ✓ 005ca999f124 |   2818 chars | https://habr.com/ru/news/1046924/?utm_source=habrahabr&utm_medium=rss&
+  ✓ cd600d9855dd |  22378 chars | https://habr.com/ru/articles/1046926/?utm_source=habrahabr&utm_medium=
+  ✓ 47965b8f9e50 |   7049 chars | https://habr.com/ru/articles/1046922/?utm_source=habrahabr&utm_medium=
+  ✓ 8dbb5cd1aafe |   2135 chars | https://arstechnica.com/health/2026/06/rfk-jr-melts-down-over-nyt-repo
+  ∅ fc04f8df5cbd | extracted only 74 chars
+  ✓ 446830a5c044 |   9635 chars | https://huggingface.co/blog/allenai/olmo-eval
+  ✓ 9dabab647fd8 |   2179 chars | https://techcrunch.com/2026/06/12/elon-musk-becomes-the-worlds-first-t
+  ✓ a622986a9a75 |  17139 chars | https://habr.com/ru/articles/1046920/?utm_source=habrahabr&utm_medium=
+  ✓ 244c1c844ed0 |   1289 chars | https://techcrunch.com/podcast/its-hot-ipo-summer-and-the-mangos-are-r
+  ✗ 2580e38db21f | HTTP 429
+  ✓ 1c2049945c2c |   6174 chars | https://www.cnet.com/tech/gaming/ps-plus-june-2026-additions/
+  ✓ 76cb0354fbdd |   4050 chars | https://www.cnet.com/tech/services-and-software/visa-openai-credit-car
+  ✗ 20874038c8c2 | HTTP 403
+  ✓ 94eb0d9b26ec |  13846 chars | https://www.quantamagazine.org/where-did-earth-get-its-oceans-maybe-it
+  ✓ 22ae0292aed2 |  10605 chars | https://habr.com/ru/companies/otus/articles/1045000/?utm_source=habrah
+  ✓ d934657154e0 |   1734 chars | https://arstechnica.com/cars/2026/06/the-biggest-race-in-the-world-the
+  ✓ f075c3c80c52 |  12058 chars | https://habr.com/ru/articles/1046912/?utm_source=habrahabr&utm_medium=
+  ✓ a1164e792f42 |   1377 chars | https://arstechnica.com/tech-policy/2026/06/lawsuit-chatgpt-validated-
+  ✓ e349da0c710b |   7017 chars | https://rb.ru/news/cb-predlozhil-vtroe-uvelichit-trebovaniya-k-minimal
+  ✓ d8bda762d189 |  31300 chars | https://towardsdatascience.com/a-harness-for-every-task-putting-a-team
+  ✓ 50ab22dbe271 |   6194 chars | https://habr.com/ru/articles/1046916/?utm_source=habrahabr&utm_medium=
+  ✓ acc1b54ff592 |  24728 chars | https://blog.yadutaf.fr/2026/06/12/introduction-to-uefi-https-boot-qem
+  ✓ 83291886ca24 |  16105 chars | https://aws.amazon.com/blogs/machine-learning/build-a-meeting-prep-and
+  ✓ f2f767454640 |   2223 chars | https://habr.com/ru/news/1046910/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 7680576e9929 |   1686 chars | https://envs.net/~volpe/blog/posts/reduce-slop.html
+  ✓ 2814a9943b27 |   1710 chars | https://www.engadget.com/2193006/facebook-and-instagram-appear-to-down
+  ✓ 2dfe94918625 |   6423 chars | https://www.cnet.com/tech/mobile/samsung-galaxy-watch-9-ultra-2-rumors
+  ✓ 60d55ee8121f |  10946 chars | https://www.theverge.com/business/948996/spacex-ipo-elon-musk
+  ✓ 96eff746ed72 |  20185 chars | https://aws.amazon.com/blogs/machine-learning/from-pdfs-to-insights-ar
+  ∅ 555091f95a86 | extracted only 63 chars
+  ✓ e10bbfce5fa4 |  13036 chars | https://habr.com/ru/articles/1025354/?utm_source=habrahabr&utm_medium=
+  ✓ 3ec316fdf780 |    619 chars | https://www.pehub.com/kkr-to-invest-in-cpa-firm-crowes-advisory-busine
+  ✓ 2e1e6f85787c |   1364 chars | https://www.theverge.com/ai-artificial-intelligence/949005/jeff-bezos-
+  ✓ 89fe959076ec |  14756 chars | https://www.a16z.news/p/charts-of-the-week-making-the-stuff
+  ✓ 40f912dfe66d |  21652 chars | https://www.kdnuggets.com/pairing-claude-code-with-local-models
+  ✓ 9225ed72d0db |   3784 chars | https://www.cnet.com/culture/internet/world-cup-tourists-america-react
+  ✓ dcb1a4eea6c7 |   3950 chars | https://the-decoder.com/google-files-first-joint-lawsuit-with-fbi-over
+  ✓ 3eaacf20fb8d |   5784 chars | https://www.wired.com/story/crypto-guys-bought-the-answer-to-the-cias-
+  ✓ cbdc8eb0eab0 |   7671 chars | https://habr.com/ru/articles/1046902/?utm_source=habrahabr&utm_medium=
+  ✓ e53a39d82fc5 |   1249 chars | https://habr.com/ru/news/1046898/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 2438fe5758e5 |   2836 chars | https://habr.com/ru/news/1046894/?utm_source=habrahabr&utm_medium=rss&
+  ✓ b38932ecf9da |  11435 chars | https://towardsdatascience.com/i-thought-data-engineering-was-just-wri
+  ∅ ca53f907fa67 | extracted only 63 chars
+  ✓ 7d2541741db6 |   5206 chars | https://www.engadget.com/2190982/how-to-see-if-netflix-is-downgrading-
+  ✓ 8c96d8929032 |   1045 chars | https://www.engadget.com/2192937/engadget-podcast-making-sense-of-spac
+  ✓ b70fc5788ec8 |   1412 chars | https://the-decoder.com/mistral-ai-seeks-3-billion-euros-to-fund-its-e
+  ✓ 437754b53196 |   1994 chars | https://habr.com/ru/news/1046882/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 2fffd27dd6bc |   8011 chars | https://www.wired.com/story/a-white-supremacist-youth-group-helped-orc
+  ✓ 62db02cb45a6 |   2530 chars | https://news.crunchbase.com/public/spacex-record-breaking-ipo-spcx/
+  ✓ 1e4d58fe3fee |   6158 chars | https://www.ycombinator.com/companies/hazel-2/jobs/3epPWgu-full-stack-
+  ∅ daa47b4928cc | extracted only 74 chars
+  ✓ 605af205a761 |   2644 chars | https://www.engadget.com/2192907/gemini-can-now-adjust-your-picture-se
+  ✓ 803c3155fd5c |   9490 chars | https://aws.amazon.com/blogs/machine-learning/built-from-the-inside-ou
+  ✓ 6e36adf5c6d3 |   9922 chars | https://rb.ru/news/knopka-vojti-cherez-google-uzhe-narushenie-yuristy-
+  ✓ b120941dda09 |   5692 chars | https://about.fb.com/news/2026/06/free-ai-glasses-for-every-blind-vete
+  ✓ b8a2e3754c6d |  13060 chars | https://rb.ru/reviews/proshanie-s-epohoj-kuka-i-stavka-na-agentov-konf
+  ✓ 2ad84e39a253 |   6026 chars | https://www.technologyreview.com/2026/06/12/1138899/the-download-repro
+  ✓ 3a38311f8893 |  10869 chars | https://www.kdnuggets.com/3-numpy-tricks-for-numerical-performance
+  ✓ d0b55fc3b291 |   5293 chars | https://www.cnet.com/health/nutrition/move-over-purple-carrot-my-favor
+  ✓ 0ebb0151fff6 |  11263 chars | https://www.wired.com/gallery/best-smart-notebooks-and-smart-pens/
+  ✓ 5fb2949ce14a |   1598 chars | https://arxiv.org/abs/2606.13473
+  ✓ 48a2e0b60cdd |   5765 chars | https://towardsdatascience.com/is-language-visual-an-experiment-with-c
+  ✓ f5f84c873335 |  11577 chars | https://www.cnet.com/tech/home-entertainment/leica-cine-play-1-project
+  ✓ f6a4a3bf9d7b |   1203 chars | https://habr.com/ru/news/1046283/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 25fa8662e7ae |    229 chars | https://www.pehub.com/odyssey-backed-levata-snaps-up-tech-firm-posdata
+  ✓ 8078a60ce47d |   1021 chars | https://habr.com/ru/news/1046844/?utm_source=habrahabr&utm_medium=rss&
+  ✓ bce5c37cd9fb |   5305 chars | https://techcrunch.com/2026/06/12/us-spy-law-to-expire-for-first-time-
+  ✓ cd4c0020dc9f |   8696 chars | https://www.cnet.com/tech/home-entertainment/jmgo-n3-ultimate-projecto
+  ✓ 67363660c5ac |    284 chars | https://vc.ru/money/2976104-zakrytie-ofisa-yunikredit-banka-v-moskve?f
+  ✓ 272f47719b29 |   3952 chars | https://the-decoder.com/the-ai-industrys-platform-trap-is-starting-to-
+  ✓ 0202311c4d9a |   1913 chars | https://arstechnica.com/gadgets/2026/06/cameras-sensors-and-3d-body-sc
+  ✓ 19fc88334bca |   9061 chars | https://www.wired.com/gallery/best-floodlight-security-cameras/
+  ✓ d8c48a0c4925 |   1820 chars | https://arstechnica.com/health/2026/06/ebola-cases-in-drc-rise-to-676-
+  ✓ f1eed926bbab |   1965 chars | https://habr.com/ru/news/1046834/?utm_source=habrahabr&utm_medium=rss&
+  ✓ c3546af380b0 |   1540 chars | https://habr.com/ru/news/1046828/?utm_source=habrahabr&utm_medium=rss&
+  ✓ cb1f5d7700dd |   3533 chars | https://www.engadget.com/2192866/engadget-newsletter-apple-wwdc-2026/
+  ✓ c68d469e9f4d |   2173 chars | https://www.engadget.com/2192877/apple-says-siri-ai-will-not-flatter-o
+  ✓ 52c95894830b |   1176 chars | https://www.wired.com/review/pedal-electric-h-t/
+  ✓ 8417fa4ba033 |   2155 chars | https://arstechnica.com/ai/2026/06/pokemon-go-players-unwittingly-cont
+  ✓ a91cbe9c2b32 |   9319 chars | https://www.wired.com/story/real-life-disclosure-day-wont-look-like-st
+  ✓ 0c886b22d40c |   1923 chars | https://arstechnica.com/tech-policy/2026/06/verizon-sent-man-a-refurbi
+  ✓ 65fc1562f8b7 |   2337 chars | https://arstechnica.com/space/2026/06/rocket-report-nova-moving-throug
+  ∅ 4acb729ab617 | extracted only 63 chars
+  ∅ e29639034d58 | extracted only 106 chars
+  ✓ 8192e31d0c2a |   2025 chars | https://habr.com/ru/news/1046822/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 230615f0f0ba |    619 chars | https://www.pehub.com/pe-pursues-pediatric-speech-therapy-assets-5-dea
+  ✓ 0a39d72c2020 |   2299 chars | https://www.engadget.com/2192873/google-injunction-chinese-ai-scams/
+  ✓ 61e12d251dad |   2121 chars | https://www.wired.com/review/ed-sheeran-looper-x/
+  ✓ ddbafd12ab93 |   7417 chars | https://www.wired.com/story/matchmakers-are-being-paid-dollar25k-to-fi
+  ✗ 31e268b2c07a | HTTP 403
+  ✓ 64620bfbdc43 |  30006 chars | https://www.technologyreview.com/2026/06/12/1138518/you-do-your-own-ti
+  ✓ c25ee4e6b730 |   2595 chars | https://habr.com/ru/news/1046808/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 98f80acf002b |   1435 chars | https://the-decoder.com/openai-buys-ona-to-push-codex-toward-long-runn
+  ✓ 77218098ec17 |   3636 chars | https://www.wired.com/story/2026-world-cup-us-influencers-visa/
+  ✓ a1261cba42d3 |   4582 chars | https://rb.ru/news/rossijskie-muzykanty-rabotayut-na-zavodah-i-strojka
+  ✓ 1fbc521e5050 |   6002 chars | https://www.wired.com/story/you-probably-wont-get-rich-off-the-spacex-
+  ✓ 02e6e16ffa7b |   1882 chars | https://habr.com/ru/news/1046800/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 3553f6a4a210 |   6587 chars | https://www.technologyreview.com/2026/06/12/1138829/reprogramming-buzz
+  ✓ 46827c8a55f6 |   1336 chars | https://habr.com/ru/companies/haulmont/news/1046778/?utm_source=habrah
+  ✓ 1930a634f4d7 |  20014 chars | https://www.technologyreview.com/2026/06/12/1138833/inside-interocepti
+  ∅ 5545b24ba8b3 | extracted only 45 chars
+  ✓ 099aecf0f7df |   6333 chars | https://www.wired.com/story/spacex-is-now-a-public-company/
+  ✓ f36052c288f9 |   1503 chars | https://habr.com/ru/news/1046776/?utm_source=habrahabr&utm_medium=rss&
+  ∅ 5686d1e1acd6 | extracted only 134 chars
+  ✓ e36e1d60ae3b |    494 chars | https://habr.com/ru/companies/pvs-studio/news/1045776/?utm_source=habr
+  ✓ ea96e9336459 |  10368 chars | https://habr.com/ru/news/1046756/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 1184435682c5 |    267 chars | https://vercel.com/changelog/claude-fable-5-access-suspended-on-ai-gat
+  ✓ c15b60223ff3 |   6229 chars | https://www.analyticsvidhya.com/blog/2026/06/gemini-omni-ai-video-gene
+  ✓ 3e498ab82ba6 |   2413 chars | https://www.engadget.com/2192842/senator-cruz-wyden-jawbone-act/
+  ✓ f1c8e5bce4ab |   1307 chars | https://www.theverge.com/tech/948890/siri-wont-be-your-ai-girlfriend
+  ∅ 369980a34df2 | extracted only 63 chars
+  ✓ 0bfcd0309f16 |   5721 chars | https://habr.com/ru/companies/selectel/news/1046660/?utm_source=habrah
+  ✓ 6fe6b9b664ae |   8270 chars | https://rb.ru/news/19-iyunya-cb-provedyot-zasedanie-po-klyuchevoj-stav
+  ∅ 124cfd150b7f | extracted only 45 chars
+  ✓ e454f3fa2cc1 |   1582 chars | https://habr.com/ru/news/1046385/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 7c61f6116f66 |   1435 chars | https://spark.ru/post/333566
+  ✓ fb2278146303 |    804 chars | https://habr.com/ru/news/1046732/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 2fe8276ae251 |   6601 chars | https://www.wired.com/story/paramount-plus-coupon-code/
+  ✓ 9d3aa6c77eb8 |   4157 chars | https://www.wired.com/story/bh-photo-coupon/
+  ✓ 2debe551ba08 |   4971 chars | https://www.wired.com/story/hoka-coupon-code/
+  ✓ f8c9c30a14b1 |   4379 chars | https://www.wired.com/story/sephora-promo-code/
+  ✓ 1543f8005f0a |   4493 chars | https://www.wired.com/story/lg-promo-code/
+  ✓ e005aeac6f1a |   3270 chars | https://www.wired.com/story/columbia-promo-code/
+  ✓ 508c9c5da1ee |   5713 chars | https://www.wired.com/story/canon-promo-code/
+  ✓ 574146663a13 |   6449 chars | https://www.wired.com/story/brooks-promo-code/
+  ✓ 422c531f3934 |   4631 chars | https://www.wired.com/story/t-mobile-business-promo-code/
+  ✓ 4f642d660028 |   3190 chars | https://www.wired.com/story/herman-miller-promo-code/
+  ✓ 24912ae2e513 |   4389 chars | https://www.wired.com/story/altra-promo-code/
+  ✓ 302fed5dd219 |   3626 chars | https://techcrunch.com/2026/06/11/cheaper-faster-and-culturally-aware-
+  ✓ a5f4f723d7d4 |   2557 chars | https://habr.com/ru/news/1046509/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 712f58199740 |   4734 chars | https://techcrunch.com/2026/06/11/equal-ai-raises-30m-to-screen-calls-
+  ✓ 22b8df326133 |   2410 chars | https://arxiv.org/abs/2606.12451
+  ✓ 22af57169e15 |   2210 chars | https://habr.com/ru/news/1046219/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 3832d2831a50 |   2532 chars | https://arxiv.org/abs/2606.12563
+  ✓ 5ff81ed3eafb |   7035 chars | https://semiengineering.com/chip-industry-week-in-review-142/
+  ✓ b3b416a3e895 |   2514 chars | https://arxiv.org/abs/2606.12587
+  ✓ e132e47a1ffa |   2650 chars | https://arxiv.org/abs/2606.12594
+  ✓ 818d8ff5aa1e |   2699 chars | https://arxiv.org/abs/2606.12616
+  ✓ 1ad05163a6ae |   2344 chars | https://arxiv.org/abs/2606.12618
+  ✓ e060bbbc06a1 |   2384 chars | https://arxiv.org/abs/2606.12657
+  ✓ 58b8d8244bfb |   2220 chars | https://arxiv.org/abs/2606.12674
+  ✓ 581373264dd8 |   2596 chars | https://arxiv.org/abs/2606.12683
+  ✓ 8a382d15c2b6 |   2340 chars | https://arxiv.org/abs/2606.12702
+  ✓ cea69840a3d0 |   2567 chars | https://arxiv.org/abs/2606.12713
+  ✓ b34e82062f89 |   2463 chars | https://arxiv.org/abs/2606.12730
+  ✓ bbdc87041ffa |   2299 chars | https://arxiv.org/abs/2606.12721
+  ✓ 09bfef0be990 |   2420 chars | https://arxiv.org/abs/2606.12736
+  ✓ 1da13e3964f0 |   2180 chars | https://arxiv.org/abs/2606.12742
+  ✓ 991aa023837b |   2439 chars | https://arxiv.org/abs/2606.12747
+  ✓ 46e955b6f0a5 |   2301 chars | https://arxiv.org/abs/2606.12767
+  ✓ 8c3d9b872def |   1870 chars | https://arxiv.org/abs/2606.12783
+  ✓ 6b6bf2dad0f1 |   2494 chars | https://arxiv.org/abs/2606.12797
+  ✓ 4e01b0db38f4 |   2047 chars | https://arxiv.org/abs/2606.12809
+  ✓ e792a9fb3d14 |   2461 chars | https://arxiv.org/abs/2606.12817
+  ✓ d28d7ea591e7 |   2670 chars | https://arxiv.org/abs/2606.12821
+  ✓ bec4ef438142 |   2245 chars | https://arxiv.org/abs/2606.12828
+  ✓ f6868c615fd3 |   2079 chars | https://arxiv.org/abs/2606.12834
+  ✓ 1bf91061f23d |   2544 chars | https://arxiv.org/abs/2606.12848
+  ✓ 68bd5861f2b3 |   2203 chars | https://arxiv.org/abs/2606.12852
+  ✓ 12ebe1682672 |   1977 chars | https://arxiv.org/abs/2606.12871
+  ✓ e0e10f8975c1 |   2041 chars | https://arxiv.org/abs/2606.12882
+  ✓ 30c390817ce6 |   2292 chars | https://arxiv.org/abs/2606.12883
+  ✓ 13e4e5bf0b05 |   2153 chars | https://arxiv.org/abs/2606.12900
+  ✓ 35508ff0aa92 |   2356 chars | https://arxiv.org/abs/2606.12569
+  ✓ 53d72f986174 |   1712 chars | https://arxiv.org/abs/2606.12576
+  ✓ 8c72663df614 |   2274 chars | https://arxiv.org/abs/2606.12578
+  ✓ 56cb0bff9cd7 |   2040 chars | https://arxiv.org/abs/2606.12599
+  ✓ a61d96b256f3 |   2330 chars | https://arxiv.org/abs/2606.12608
+  ✓ 9594b14ea8e6 |   2568 chars | https://arxiv.org/abs/2606.12649
+  ✓ 289b9e1971bf |   1823 chars | https://arxiv.org/abs/2606.12689
+  ✓ f400440bc9eb |   1794 chars | https://arxiv.org/abs/2606.12708
+  ✓ 00194b8b28d4 |   2429 chars | https://arxiv.org/abs/2606.12716
+  ✓ 191877e02716 |   1902 chars | https://arxiv.org/abs/2606.12754
+  ✓ f1aeb61f2666 |   2662 chars | https://arxiv.org/abs/2606.12748
+  ✓ 9ced535b395b |   2393 chars | https://arxiv.org/abs/2606.12765
+  ✓ 656240ce82ee |   2265 chars | https://arxiv.org/abs/2606.12789
+  ✓ 80802c6524cb |   1968 chars | https://arxiv.org/abs/2606.12807
+  ✓ a269be316df5 |   1569 chars | https://arxiv.org/abs/2606.12790
+  ✓ 2e5a8bfb6828 |   1816 chars | https://arxiv.org/abs/2606.12818
+  ✓ 1ebb618c42e8 |   1943 chars | https://arxiv.org/abs/2606.12837
+  ✓ 8541b884c735 |   1851 chars | https://arxiv.org/abs/2606.12854
+  ✓ 980b4f02a363 |   2625 chars | https://arxiv.org/abs/2606.12897
+  ✓ b00c17ec86d9 |   1282 chars | https://arxiv.org/abs/2606.12881
+  ✓ a9579b153b81 |   1780 chars | https://arxiv.org/abs/2606.12902
+  ✓ 6180e1e997ae |   2604 chars | https://arxiv.org/abs/2606.12903
+  ✓ eec0a324013b |   2116 chars | https://arxiv.org/abs/2606.12908
+  ✓ 49e4f87883c6 |   1785 chars | https://arxiv.org/abs/2606.12911
+  ✓ c3079eb68ec2 |   1741 chars | https://arxiv.org/abs/2606.12922
+  ✓ 1f7a303d3d81 |   1766 chars | https://arxiv.org/abs/2606.12941
+  ✓ b3104c6dbc40 |   2049 chars | https://arxiv.org/abs/2606.12984
+  ✓ e83967d24592 |   2009 chars | https://arxiv.org/abs/2606.13082
+  ✓ 65348a771a58 |   2723 chars | https://arxiv.org/abs/2606.13044
+  ✓ d09b489da3cc |   2169 chars | https://arxiv.org/abs/2606.13100
+  ✓ 355ce7ab15c8 |   2718 chars | https://arxiv.org/abs/2606.12473
+  ✓ 2aff9ed0a1c1 |   2372 chars | https://arxiv.org/abs/2606.12562
+  ✓ 56620c5dec48 |   2281 chars | https://arxiv.org/abs/2606.12590
+  ✓ c114d38b79b4 |   2208 chars | https://arxiv.org/abs/2606.12575
+  ✓ 6858f1867a1b |   2647 chars | https://arxiv.org/abs/2606.12601
+  ✓ a7794010820f |   2411 chars | https://arxiv.org/abs/2606.12628
+  ✓ d001729a3ee1 |   2494 chars | https://arxiv.org/abs/2606.12635
+  ✓ 7248187517dc |   2341 chars | https://arxiv.org/abs/2606.12633
+  ✓ 62c14af2195b |   2538 chars | https://arxiv.org/abs/2606.12671
+  ✓ e5c6ac9b39c6 |   1638 chars | https://arxiv.org/abs/2606.12706
+  ✓ 94fb7c2bf090 |   2446 chars | https://arxiv.org/abs/2606.12744
+  ✓ b20008b1f064 |   2222 chars | https://arxiv.org/abs/2606.12826
+  ✓ 17f5ce129923 |   2300 chars | https://arxiv.org/abs/2606.12830
+  ✓ 03a65126f6b0 |   2375 chars | https://arxiv.org/abs/2606.12847
+  ✓ bc0ee9da1563 |   2716 chars | https://arxiv.org/abs/2606.12869
+  ✓ 11069beaa600 |   2289 chars | https://arxiv.org/abs/2606.12886
+  ✓ e609e62f940c |   2279 chars | https://arxiv.org/abs/2606.12898
+  ✓ 10046990ef19 |   2163 chars | https://arxiv.org/abs/2606.12925
+  ✓ be16fe62684c |   2345 chars | https://arxiv.org/abs/2606.12939
+  ✓ 4e9762fd33cc |   2707 chars | https://arxiv.org/abs/2606.12977
+  ✓ da57a06876af |   2412 chars | https://arxiv.org/abs/2606.12958
+  ✓ 116b1adec22f |   1963 chars | https://arxiv.org/abs/2606.12981
+  ✓ 326320a71be5 |   2029 chars | https://arxiv.org/abs/2606.12985
+  ✓ aa479972538a |   2741 chars | https://arxiv.org/abs/2606.12987
+  ✓ f81554d6bc88 |   2326 chars | https://arxiv.org/abs/2606.12988
+  ✓ 1e015e91321b |   2151 chars | https://arxiv.org/abs/2606.13022
+  ✓ f412f1d09aab |   2150 chars | https://arxiv.org/abs/2606.13030
+  ✓ 94d522f0db68 |   2357 chars | https://arxiv.org/abs/2606.13032
+  ✓ 495bc6ccb347 |   1969 chars | https://arxiv.org/abs/2606.13033
+  ✓ 3c482f3a9e21 |   2487 chars | https://arxiv.org/abs/2606.12555
+  ✓ 506f7e2b24f7 |   2491 chars | https://arxiv.org/abs/2606.13035
+  ✓ 910a0da011d2 |   2314 chars | https://arxiv.org/abs/2606.13001
+  ✓ 151ae541fec3 |   1814 chars | https://arxiv.org/abs/2606.13041
+  ✓ 84b904caf6e3 |   2668 chars | https://arxiv.org/abs/2606.13366
+  ✓ 2d0c13714dfb |   2697 chars | https://arxiv.org/abs/2606.13385
+  ✓ d2136581065d |   2579 chars | https://arxiv.org/abs/2602.00122
+  ✓ 9e828db36ae8 |   2453 chars | https://arxiv.org/abs/2606.13578
+  ✓ 0841d5fbdded |   2272 chars | https://arxiv.org/abs/2603.00610
+  ✓ ad438817ce3c |   1905 chars | https://arxiv.org/abs/2606.12646
+  ✓ 0a28d39a3773 |   2436 chars | https://arxiv.org/abs/2606.12471
+  ✓ 6306522d1fb8 |   1627 chars | https://arxiv.org/abs/2606.13146
+  ✓ 13c8c3519148 |   2377 chars | https://arxiv.org/abs/2606.12892
+  ✓ b3bc61142696 |   2121 chars | https://arxiv.org/abs/2606.13277
+  ✓ 5a89c54c5dde |   2308 chars | https://arxiv.org/abs/2606.13295
+  ✓ 310b0b56c95b |   1154 chars | https://arxiv.org/abs/2606.13614
+  ✓ 2b2dcfa0e53e |   2625 chars | https://arxiv.org/abs/2605.18898
+  ✓ d57efc7ede9d |   1587 chars | https://arxiv.org/abs/2606.12654
+  ✓ 88ff87b27a40 |   2776 chars | https://arxiv.org/abs/2606.12658
+  ✓ 529833b44d21 |   2479 chars | https://arxiv.org/abs/2606.12680
+  ✓ 91fd41a3cd41 |   2104 chars | https://arxiv.org/abs/2606.12691
+  ✓ d3f750027a0f |   1315 chars | https://arxiv.org/abs/2606.12694
+  ✓ 4b373a623c55 |   2243 chars | https://arxiv.org/abs/2606.12720
+  ✓ 7544ed25b68a |   1867 chars | https://arxiv.org/abs/2606.12879
+  ✓ 77c0c9cc3ed4 |   2619 chars | https://arxiv.org/abs/2606.12997
+  ✓ 8679e0a164e2 |   2448 chars | https://arxiv.org/abs/2606.13063
+  ✓ cbd7bdce0077 |   2352 chars | https://arxiv.org/abs/2606.13213
+  ✓ 2cb568c3d641 |   1825 chars | https://arxiv.org/abs/2606.13240
+  ✓ 2f38aaf22ad7 |   2435 chars | https://arxiv.org/abs/2606.13245
+  ✓ 4abe2e17530c |   2012 chars | https://arxiv.org/abs/2606.13426
+  ✓ 8464314d2877 |   1416 chars | https://arxiv.org/abs/2606.13453
+  ✓ 7edffb76e3b8 |   2428 chars | https://arxiv.org/abs/2606.13548
+  ✓ 621070d14a4e |   2028 chars | https://arxiv.org/abs/2606.13576
+  ✓ 2ddb3fdccb3f |   2114 chars | https://arxiv.org/abs/2606.13629
+  ✓ a1e48ffe3802 |   2298 chars | https://arxiv.org/abs/2503.02178
+  ✓ 34081a15bf5e |   2147 chars | https://arxiv.org/abs/2508.21531
+  ✓ 58944fb4fd1b |   2255 chars | https://arxiv.org/abs/2601.21324
+  ✓ 058317832825 |   2453 chars | https://arxiv.org/abs/2603.11242
+  ✓ a9cdd2ccb9ae |   1708 chars | https://arxiv.org/abs/2601.22003
+  ✓ 9b663b811a2d |   2659 chars | https://arxiv.org/abs/2606.12449
+  ✓ 716dc13c39a0 |   2372 chars | https://arxiv.org/abs/2606.12600
+  ✓ f03a684d8d13 |   2282 chars | https://arxiv.org/abs/2606.12684
+  ✓ 374172824d4e |   2092 chars | https://arxiv.org/abs/2606.13017
+  ✓ adde61559a10 |   2155 chars | https://arxiv.org/abs/2606.13132
+  ✓ d52da48edf2b |   1941 chars | https://arxiv.org/abs/2606.13260
+  ✓ d5729ff4407e |   1872 chars | https://arxiv.org/abs/2510.00011
+  ✓ 430d8f5d80c1 |   2491 chars | https://arxiv.org/abs/2601.10221
+  ✓ 70c58ebd64bc |   2105 chars | https://arxiv.org/abs/2603.24603
+  ✓ b2febf1520db |   2309 chars | https://arxiv.org/abs/2605.23111
+  ✓ 6d40c62e1278 |   2672 chars | https://arxiv.org/abs/2508.14143
+  ✓ 25c0057d5912 |   2261 chars | https://arxiv.org/abs/2606.12885
+  ✓ 70bc754b3a24 |   1632 chars | https://arxiv.org/abs/2606.13089
+  ✓ e5350e467be1 |   2283 chars | https://arxiv.org/abs/2606.13323
+  ✓ 6c471b5d2065 |   1309 chars | https://arxiv.org/abs/2606.13344
+  ✓ 0f011f353a9f |   1864 chars | https://arxiv.org/abs/2606.13360
+  ✓ 871fd823b24b |   2232 chars | https://arxiv.org/abs/2606.13516
+  ✓ 4a28b5608b1d |   2148 chars | https://arxiv.org/abs/2606.11000
+  ✓ edc9c376ec73 |   2235 chars | https://arxiv.org/abs/2606.12966
+  ✓ 57a6b0a4051f |   2506 chars | https://arxiv.org/abs/2606.13119
+  ✓ cb96aec99638 |   2310 chars | https://arxiv.org/abs/2606.13179
+  ✓ ebf4747a1fc3 |   2339 chars | https://arxiv.org/abs/2606.13560
+  ✓ 80733439b19b |   2732 chars | https://arxiv.org/abs/2606.13354
+  ✓ ead698c8c7c8 |   2730 chars | https://arxiv.org/abs/2601.18446
+  ✓ 055087167aa6 |   2145 chars | https://arxiv.org/abs/2405.08871
+  ✓ 91ef984d8b96 |   2568 chars | https://arxiv.org/abs/2605.29151
+  ✓ 3b91accc0a68 |   1328 chars | https://arxiv.org/abs/2606.07361
+  ✓ a315a37a055b |   1960 chars | https://arxiv.org/abs/2606.13095
+  ✓ 6143f74d0b18 |   1990 chars | https://arxiv.org/abs/2606.13109
+  ✓ c57db2514862 |   1868 chars | https://arxiv.org/abs/2606.13193
+  ✓ 8f0529e10c2d |   1741 chars | https://arxiv.org/abs/2606.13450
+  ✓ 605fcfc8a8e0 |   1762 chars | https://arxiv.org/abs/2606.13544
+  ✓ d3c470d7ca0c |   2423 chars | https://arxiv.org/abs/2606.13480
+  ✓ c38c6947ad46 |   2516 chars | https://arxiv.org/abs/2605.20755
+  ✓ 0886612a03ed |   2156 chars | https://arxiv.org/abs/2504.12423
+  ✓ d6be100ec715 |   2699 chars | https://arxiv.org/abs/2509.04682
+  ✓ 54d69115bac5 |   2696 chars | https://arxiv.org/abs/2507.07879
+  ✓ 9fb9719e632c |   1840 chars | https://arxiv.org/abs/2606.04474
+  ✓ e08eb0c94d1f |   2775 chars | https://arxiv.org/abs/2606.12824
+  ✓ 8974ae04eda6 |   2779 chars | https://arxiv.org/abs/2606.13110
+  ✓ d2165dda8ef2 |   1596 chars | https://arxiv.org/abs/2606.12953
+  ✓ 69b1e90e8a13 |   2376 chars | https://arxiv.org/abs/2606.12679
+  ✓ 0ed47d0cf1c2 |   1650 chars | https://arxiv.org/abs/2606.13136
+  ✓ 3c0ccd7585dc |   2742 chars | https://arxiv.org/abs/2606.13315
+  ✓ f272885053ff |   2124 chars | https://arxiv.org/abs/2402.01779
+  ✓ 6ad494ce624d |   2287 chars | https://arxiv.org/abs/2508.19478
+  ✓ b888a1dfdaa8 |   2493 chars | https://arxiv.org/abs/2509.21398
+  ✓ 5c8c045474b3 |   2125 chars | https://arxiv.org/abs/2606.12475
+  ✓ 82c05dcf3af3 |   2371 chars | https://arxiv.org/abs/2512.14648
+  ✓ ed32b2861eea |   2090 chars | https://arxiv.org/abs/2606.12499
+  ✓ da5b9037f162 |   2434 chars | https://arxiv.org/abs/2606.12550
+  ✓ 14075c432009 |   2208 chars | https://arxiv.org/abs/2606.12579
+  ✓ 1df9a49cbf4c |   2483 chars | https://arxiv.org/abs/2606.12603
+  ✓ 34adffff81e4 |   1856 chars | https://arxiv.org/abs/2606.12604
+  ✓ d51d8cc3bbad |   1956 chars | https://arxiv.org/abs/2606.12614
+  ✓ f2cb6ebd2c2e |   2210 chars | https://arxiv.org/abs/2606.12690
+  ✓ a8ad89a64312 |   2286 chars | https://arxiv.org/abs/2606.12728
+  ✓ 22d784deabd5 |   2588 chars | https://arxiv.org/abs/2606.12814
+  ✓ 35cb1d491a57 |   2389 chars | https://arxiv.org/abs/2606.12759
+  ✓ 3e0d574a2008 |   2693 chars | https://arxiv.org/abs/2606.12859
+  ✓ 60ff07addb7c |   1626 chars | https://arxiv.org/abs/2606.12890
+  ✓ 0ad006d90616 |   1869 chars | https://arxiv.org/abs/2606.12910
+  ✓ 4db9bef49f6d |   2282 chars | https://arxiv.org/abs/2606.12936
+  ✓ bd678dab8fd5 |   2350 chars | https://arxiv.org/abs/2606.12954
+  ✓ 20268d634a8c |   2049 chars | https://arxiv.org/abs/2606.12956
+  ✓ f6cb80921f40 |   2132 chars | https://arxiv.org/abs/2606.12965
+  ✓ b462686aea61 |   2431 chars | https://arxiv.org/abs/2606.12978
+  ✓ 9121ccbbe450 |   2530 chars | https://arxiv.org/abs/2606.12995
+  ✓ 04c70b5302c3 |   1566 chars | https://arxiv.org/abs/2606.13028
+  ✓ 7b3f344af94c |   2595 chars | https://arxiv.org/abs/2606.13040
+  ✓ c69fd7cdd945 |   2135 chars | https://arxiv.org/abs/2606.13049
+  ✓ 4d8d9d10a603 |   2087 chars | https://arxiv.org/abs/2606.13053
+  ✓ 456e400d1c33 |   2240 chars | https://arxiv.org/abs/2606.13102
+  ✓ f6f6bd89e0b1 |   1892 chars | https://arxiv.org/abs/2606.13169
+  ✓ 2adcd9a39227 |   2442 chars | https://arxiv.org/abs/2606.13190
+  ✓ 5beb3f05e339 |   1767 chars | https://arxiv.org/abs/2606.13222
+  ✓ 4f850310e593 |   2221 chars | https://arxiv.org/abs/2606.13203
+  ✓ 13a7d608ae71 |   2265 chars | https://arxiv.org/abs/2606.13232
+  ✗ e5e9bd931104 | HTTP 403
+  ✓ 5726312ea604 |   5704 chars | http://augmentedcoding.dev/issue-48/
+  ✗ 26162e6eb29d | TypeError: object of type 'NoneType' has no len()
+  ✗ eb6c51388309 | HTTP 429
+  ✓ fcc4b75ca77b |   2014 chars | https://vercel.com/changelog/program-agent-harnesses-with-ai-sdk
+  ✓ cbbab678eed8 |    874 chars | https://vercel.com/changelog/vercel-drop
+  ✗ e9d97d1dbf62 | HTTP 429
+  ✓ b8003d3a2b8a |   1453 chars | https://vercel.com/changelog/kimi-k2-7-code-now-available-on-ai-gatewa
+  ∅ 1c1d3c4d0b02 | extracted only 28 chars
+  ∅ 96d13a8536b6 | extracted only 55 chars
+  ∅ 0d16b78293a3 | extracted only 159 chars
+  ∅ 2f31e7c2d2cb | extracted only 49 chars
+  ∅ b55db24f8bc4 | extracted only 74 chars
+  ✓ c2c313cbbd70 |    861 chars | https://twitter.com/jsrailton/status/2064661778978533571
+  ✗ 668cabe7e63a | HTTP 429
+  ∅ 2690b8a748c9 | extracted only 45 chars
+  ✗ 8c2ae86ddddb | HTTP 403
+  ∅ 0b4bc654a1ee | extracted only 45 chars
+  ∅ d3d15fdbd3ec | extracted only 45 chars
+  ∅ 74eb9777868d | extracted only 62 chars
+  ✗ 9f5f1f2c5ad7 | HTTP 403
+  ✗ dec76480b787 | HTTP 429
+  ✗ 52bcb696380e | HTTP 429
+  ∅ 7fe58de4b60a | extracted only 66 chars
+  ∅ 07fc09adb4be | extracted only 82 chars
+  ✗ 254518332313 | HTTP 403
+  ∅ 81a30507eba6 | extracted only 45 chars
+  ✓ 1260b954f111 |   2878 chars | https://habr.com/ru/news/1046674/?utm_source=habrahabr&utm_medium=rss&
+  ✗ 50220b7f864d | HTTP 403
+  ✗ b798dc6802e0 | HTTP 403
+  ✗ 98f62c93b442 | TypeError: object of type 'NoneType' has no len()
+  ∅ 579e41d9846a | extracted only 81 chars
+  ∅ 327605752df4 | extracted only 43 chars
+  ∅ f18a92aafd8d | extracted only 45 chars
+  ∅ 77522466b298 | extracted only 63 chars
+  ∅ dfda7c2e713c | extracted only 63 chars
+  ∅ 4098db80be4f | extracted only 87 chars
+  ∅ e85cee36591c | extracted only 66 chars
+  ✓ 46754eba882a |   4727 chars | https://spark.ru/post/333423
+  ∅ efd37e95e9af | extracted only 63 chars
+  ∅ c3eea14342bb | extracted only 154 chars
+  ∅ d1be6c45f39e | extracted only 187 chars
+  ∅ 15b98d3bf229 | extracted only 63 chars
+  ✗ be86c9d09a56 | HTTP 403
+  ✗ 1dcfcce12691 | HTTP 403
+  ∅ 7e72301cc14f | extracted only 113 chars
+  ✗ 772a4899481f | HTTP 403
+  ∅ a6656ddbe585 | extracted only 63 chars
+  ∅ 90ff33a85065 | extracted only 29 chars
+  ✗ 626890cbe540 | HTTP 429
+  ✗ 21c10abe484e | HTTP 403
+  ✗ dddca4da835f | HTTP 403
+  ✗ 1eb04e1b753d | HTTP 403
+  ✗ 9b8ca91ae050 | HTTP 403
+  ✗ 88ea5d74b3ce | HTTP 403
+  ∅ b8e445ee70c6 | extracted only 63 chars
+  ✓ bd9dc7907087 |   5056 chars | https://www.eff.org/deeplinks/2026/06/congress-just-rushed-through-dis
+  ✗ f5fdb80fa91a | HTTP 403
+  ✗ 8448c9fea336 | HTTP 404
+  ✗ bfbf641beda5 | HTTP 403
+  ✗ 8926e37d73b8 | HTTP 403
+  ✗ 9b77dce7b354 | HTTP 403
+  ✗ ed424537b7c4 | HTTP 403
+  ✗ 94f5302d08b7 | HTTP 429
+  ∅ dc509934b4dd | extracted only 63 chars
+  ✗ b4837f5c5415 | HTTP 429
+  ∅ ebd8c99b3573 | extracted only 70 chars
+  ✗ 6cb09c1a7d3b | HTTP 403
+  ∅ c41a1120a0bf | extracted only 45 chars
+  ∅ 828be2b1e9ca | extracted only 45 chars
+  ✗ c6fecd915567 | HTTP 403
+  ✗ fb4992f6b9a8 | HTTP 429
+  ∅ b5dbfc5b53a2 | extracted only 45 chars
+  ∅ a889548638f1 | extracted only 93 chars
+  ✗ 86b97dc0f300 | HTTP 403
+  ∅ 73c80418f56e | extracted only 45 chars
+  ✗ 4f5ef584ded3 | HTTP 429
+  ✓ 6cab043b63cb |   8261 chars | https://github.com/rvaiya/keyd
+  ∅ 76303ce3234b | extracted only 41 chars
+  ✗ 76201c4160f3 | TypeError: object of type 'NoneType' has no len()
+  ∅ e63a22222453 | extracted only 63 chars
+  ∅ 080d9ca25141 | extracted only 45 chars
+  ✗ 4a54946aed78 | HTTP 403
+  ∅ 7432e94a82e4 | extracted only 111 chars
+  ∅ 17ed0b9464ba | extracted only 63 chars
+  ∅ 3f4e8d7a4d52 | extracted only 45 chars
+  ∅ 563dd4bbd0d3 | extracted only 67 chars
+  ∅ 2fbdf1eb1f69 | extracted only 63 chars
+  ∅ db2c55ed4177 | extracted only 63 chars
+  ∅ 9446da5d7094 | extracted only 53 chars
+  ∅ 2697e516e3c7 | extracted only 50 chars
+  ∅ cda1b1e53c7c | extracted only 63 chars
+  ∅ ede444ffab7f | extracted only 63 chars
+  ∅ 5d05a3eb8588 | extracted only 63 chars
+  ✗ 2c872de7fac2 | HTTP 403
+  ✗ 5a40aea23372 | HTTP 403
+  ✗ 7983f228c6db | HTTP 403
+  ∅ 402379514b0b | extracted only 65 chars
+  ✗ d2a39068329c | HTTP 403
+  ∅ be737879ec62 | extracted only 148 chars
+  ✗ c1645031ca22 | HTTP 403
+  ∅ e77de0c1cf95 | extracted only 30 chars
+  ∅ 62a23b28bcbe | extracted only 63 chars
+  ✗ f27d43c57275 | HTTP 403
+  ∅ bbb706beb4d7 | extracted only 43 chars
+  ✗ 24f89a27304b | HTTP 403
+  ✓ f204053f8ff2 |   2227 chars | https://spark.ru/post/333106
+  ✗ 8df875b39bd5 | HTTP 403
+  ∅ e82be2d9d9e1 | extracted only 158 chars
+  ✗ 21498142103f | HTTP 403
+  ∅ f830fa14ea9a | extracted only 34 chars
+  ∅ 7e69da22bbca | extracted only 59 chars
+  ✗ 669c28a42d49 | HTTP 403
+  ✗ e527af61aff2 | HTTP 403
+  ∅ 689a8834433b | extracted only 41 chars
+  ∅ c735772b20a7 | extracted only 81 chars
+  ✗ 241e2cda759e | HTTP 403
+  ∅ 016bc729fe32 | extracted only 40 chars
+  ∅ eaf499b9a946 | extracted only 54 chars
+  ∅ 77bb088c8b8c | extracted only 45 chars
+  ✗ 87abe9ee367a | HTTP 403
+  ✓ c92d0298a270 |   3131 chars | https://blog.oscars.dev/posts/rip-software-hackathons-long-live-the-ha
+  ✓ d9c792696944 |   2433 chars | https://blogs.nvidia.com/blog/nvidia-confidential-computing-apple-priv
+  ✓ c7959ca38522 |   3835 chars | https://thenextweb.com/news/supermicro-7-billion-equity-offering-ai-se
+  ✓ 4ca4bce99e67 |   2188 chars | https://www.cnet.com/tech/gaming/todays-nyt-strands-hints-answers-and-
+  ✓ 3fc50e06f452 |   5093 chars | https://thenextweb.com/news/gm-energy-storage-sodium-ion-batteries-pea
+  ✓ d3c3015b2b9d |   1111 chars | https://www.cnet.com/tech/services-and-software/project-hail-mary-stre
+  ✓ bc13cef20328 |   3490 chars | https://www.wired.com/story/great-white-shark-mediterranean-sea-sighti
+  ✓ 8bf35ea35709 |  30193 chars | https://habr.com/ru/articles/1045696/?utm_source=habrahabr&utm_medium=
+  ✗ 1a9cfcfcf3bb | HTTP 429
+  ✗ 3a4dd3f53ba9 | HTTP 429
+  ✓ a082c1b30949 |   1038 chars | https://www.techmeme.com/260609/p42#a260609p42
+  ✓ 8b4d97f6c32d |   4878 chars | https://thenextweb.com/news/valve-steam-machine-fcc-filing-june-29-lau
+  ✓ 1f566422b1b0 |  12104 chars | https://habr.com/ru/articles/1045690/?utm_source=habrahabr&utm_medium=
+  ✓ 7addb5e4ba94 |   3109 chars | https://jonready.com/blog/posts/claude-fable5-is-allowed-to-sabotage-y
+  ✓ f053226d3aa5 |   3970 chars | https://www.cnet.com/roadshow/news/donut-lab-solid-state-battery-claim
+  ✓ 04e4931c4aee |  24472 chars | https://habr.com/ru/articles/1045692/?utm_source=habrahabr&utm_medium=
+  ✓ f2553c73d898 |   1771 chars | https://www.engadget.com/2190989/kalshi-will-require-employment-info-f
+  ✓ 95e24dd4fb8f |   4006 chars | https://thenextweb.com/news/sony-crystal-led-unify-135-inch-dvled-disp
+  ✓ ed50d5d64a96 |   2369 chars | https://github.blog/changelog/2026-06-09-upcoming-breaking-changes-for
+  ✓ 2e5ed6874478 |   1977 chars | https://tectonic-typesetting.github.io/en-US/
+  ✓ f336fdcbf854 |    964 chars | https://www.techmeme.com/260609/p41#a260609p41
+  ✓ fe37e0d103e2 |   1642 chars | https://arstechnica.com/tech-policy/2026/06/starlink-takes-page-from-c
+  ✓ 43fbe7e74cad |    723 chars | https://github.com/signalblur/exifsmugglingpoc
+  ✓ 319ac296b989 |   5420 chars | https://www.wired.com/story/gm-vehicle-to-grid-charging-your-electric-
+  ✓ 4fb5b3484d33 |   4474 chars | https://techcrunch.com/2026/06/09/gm-bets-big-on-energy-storage-for-da
+  ✓ 3788f08a3d51 |   1096 chars | https://www.engadget.com/2190840/gms-evs-will-soon-support-more-kinds-
+  ✓ 421eda7b681b |   6660 chars | https://www.theverge.com/transportation/946820/gm-energy-ev-v2g-storag
+  ✓ ea8b31e4271e |   3395 chars | https://habr.com/ru/news/1045688/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 41d61a583cc5 |   5723 chars | https://techcrunch.com/2026/06/09/hey-siri-heres-what-i-actually-want-
+  ✓ 7d1f3e342dc6 |   1654 chars | https://arstechnica.com/security/2026/06/locked-in-heated-rivalry-with
+  ✓ 02e4942654c8 |   2569 chars | https://habr.com/ru/companies/kodik/news/1045686/?utm_source=habrahabr
+  ✓ 344b80419ef8 |   2481 chars | https://techcrunch.com/2026/06/09/anthropics-fable-5-can-make-weirdly-
+  ✓ e8424f346a66 |   3835 chars | https://www.cnet.com/science/space/nasa-artemis-iii-astronaut-crew-ann
+  ✓ de7b9a69f372 |    945 chars | https://www.techmeme.com/260609/p39#a260609p39
+  ✓ fa26a4f65a36 |   2612 chars | https://arstechnica.com/science/2026/06/study-how-to-take-the-urban-pu
+  ✓ 3693b8da0de8 |    966 chars | https://www.techmeme.com/260609/p40#a260609p40
+  ✓ 08f2214ad6cd |   6854 chars | https://www.analyticsvidhya.com/blog/2026/06/testing-claude-fable-5-hy
+  ✓ 2aeb07a56951 |   7967 chars | https://habr.com/ru/articles/1045684/?utm_source=habrahabr&utm_medium=
+  ✓ 9d470ad4aae2 |   3785 chars | https://www.engadget.com/2190934/anthropic-fable-ai-brings-the-capabil
+  ✓ bd60fc31e96b |   1812 chars | https://arstechnica.com/science/2026/06/__trashed-19/
+  ✓ 8a5852c59879 |   2018 chars | https://www.theverge.com/tech/947197/microsoft-ai-mustafa-suleyman-ant
+  ✓ b1b79ac4237e |   1071 chars | https://www.techmeme.com/260609/p38#a260609p38
+  ✓ 7005eff67572 |   4070 chars | https://www.cnet.com/tech/services-and-software/claude-fable-5-first-m
+  ✓ 65838ec84499 |   4017 chars | https://habr.com/ru/articles/1045678/?utm_source=habrahabr&utm_medium=
+  ✓ f12106413e0e |   7104 chars | https://spark.ru/post/333027
+  ✓ 51ea01d873f5 |   2092 chars | https://arstechnica.com/tech-policy/2026/06/netflix-trying-to-poison-r
+  ✓ ed730fc5c31c |  16102 chars | https://habr.com/ru/articles/1045676/?utm_source=habrahabr&utm_medium=
+  ✓ ec0d8cd0bacb |  28841 chars | https://aws.amazon.com/blogs/machine-learning/scale-robot-reinforcemen
+  ✓ 99bcaeb243e9 |   2003 chars | https://www.cnet.com/tech/gaming/all-the-trailers-from-nintendo-direct
+  ✓ d3abf2bfe115 |   3579 chars | https://www.cnet.com/culture/summer-solstice-everything-to-know-about-
+  ✓ e901173aaccd |  19842 chars | https://blog.gitbutler.com/true-grit
+  ✗ bc64d813bea6 | HTTP 403
+  ✓ a5ebf1ea0366 |    942 chars | https://www.techmeme.com/260609/p37#a260609p37
+  ✓ 5e099069f067 |   1575 chars | https://www.cnet.com/tech/gaming/todays-wordle-hints-answer-and-help-f
+  ✗ c7e9ec2f9cfc | HTTP 403
+  ✓ 9f34b59d5ba2 |    952 chars | https://www.techmeme.com/260609/p36#a260609p36
+  ✓ 1a0eb9056b35 |   2397 chars | https://www.cnet.com/tech/services-and-software/gemini-3-5-live-transl
+  ✓ 92ac31968c0b |  16287 chars | https://huggingface.co/blog/ServiceNow-AI/code-switching
+  ✗ ffa842dcf3bd | HTTP 403
+  ✓ 69baae010251 |   3684 chars | https://habr.com/ru/articles/1045670/?utm_source=habrahabr&utm_medium=
+  ✓ 4277fae8c656 |   5192 chars | https://thenextweb.com/news/vinted-9-billion-us-expansion-ipo-adam-jay
+  ✓ 171dd24dbf88 |    995 chars | https://www.techmeme.com/260609/p35#a260609p35
+  ✓ ac703f23e008 |   4619 chars | https://www.cnet.com/tech/services-and-software/apple-intelligence-mod
+  ✓ 265c6cbadff6 |   5372 chars | https://habr.com/ru/articles/1045664/?utm_source=habrahabr&utm_medium=
+  ✓ f77ef93ea638 |  17838 chars | https://aarushgupta.io/posts/kan-fpga/
+  ✓ b80603a54ccb |   5167 chars | https://thenextweb.com/news/mit-ultrasound-wristband-hand-tracking-rob
+  ✓ 5ae2489521b0 |   2245 chars | https://arstechnica.com/ai/2026/06/anthropic-says-these-topics-are-too
+  ✓ 18bf20018f9a |   3830 chars | https://thenextweb.com/news/rem3dy-health-nourished-14m-personalised-n
+  ✓ c47fbc8c5e7f |   3950 chars | https://techcrunch.com/2026/06/09/can-tech-companies-learn-to-love-che
+  ✗ 9ae1f34dd05b | HTTP 403
+  ✓ 09f82e85d8e6 |   6483 chars | https://www.techdirt.com/2026/06/09/ceos-who-think-ai-replaces-their-e
+  ✓ a7b4fb9fdb83 |   1115 chars | https://habr.com/ru/news/1045658/?utm_source=habrahabr&utm_medium=rss&
+  ✓ b555cceabdd0 |   1667 chars | https://arstechnica.com/ai/2026/06/google-announces-gemini-3-5-live-tr
+  ✓ 191f7629b0ed |  13670 chars | https://habr.com/ru/articles/1045652/?utm_source=habrahabr&utm_medium=
+  ✓ a8659cc982fc |   1992 chars | https://arstechnica.com/space/2026/06/nasa-assigns-crew-for-artemis-ii
+  ✓ 98b77e20a217 |   7942 chars | https://the-decoder.com/anthropic-releases-claude-fable-5-and-mythos-5
+  ✓ 21623df89e13 |   5949 chars | https://rb.ru/news/v-rossii-vvedut-dopolnitelnye-pravila-torgovli-krip
+  ✓ 95da3221ba93 |   1658 chars | https://habr.com/ru/news/1045648/?utm_source=habrahabr&utm_medium=rss&
+  ✓ b841cb395af6 |   9868 chars | https://techcrunch.com/2026/06/09/wwdc-2026-everything-announced-on-si
+  ✓ 5925edee1b8b |   1556 chars | https://habr.com/ru/news/1045646/?utm_source=habrahabr&utm_medium=rss&
+  ✓ e9c206eef0d7 |   2924 chars | https://www.cnet.com/tech/services-and-software/apple-intelligence-wor
+  ✓ 196cf730005e |    989 chars | https://www.techmeme.com/260609/p34#a260609p34
+  ✓ 76be942b583a |   1666 chars | https://habr.com/ru/companies/selectel/news/1045564/?utm_source=habrah
+  ✓ 2e1b2a3a1597 |   4104 chars | https://habr.com/ru/news/1045644/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 40dcc3f219b8 |  12144 chars | https://habr.com/ru/companies/otus/articles/1044824/?utm_source=habrah
+  ✗ dab7a18c14a0 | HTTP 429
+  ✓ 1457b5e9d3b8 |   1376 chars | https://www.engadget.com/2190728/operas-latest-android-update-includes
+  ✓ 9c1dfe962f3f |    984 chars | https://www.techmeme.com/260609/p33#a260609p33
+  ✓ 9daeb374b718 |   5848 chars | https://www.cnet.com/roadshow/news/apple-carplay-and-automotive-update
+  ∅ 71358576e302 | extracted only 63 chars
+  ✓ c963d3f09fc8 |   1227 chars | https://techcrunch.com/2026/06/09/cisa-gives-us-federal-agencies-three
+  ✓ d129095aa8de |   3525 chars | https://rb.ru/news/ozon-bank-zapustil-perevody-cherez-sbp-bez-internet
+  ✓ 0ad2be85ad8a |   1400 chars | https://www.engadget.com/2190716/marshalls-stockwell-iii-portable-spea
+  ✓ e59ab87489da |   7102 chars | https://thetyee.ca/Culture/2026/06/05/Whos-the-Smartest-Corvid/
+  ✓ b9d332d9ce56 |  21088 chars | https://habr.com/ru/companies/netologyru/articles/1042346/?utm_source=
+  ✓ 61764b2f8f59 |  31882 chars | https://bnikolic.co.uk/blog/linux-ld-debug.html
+  ✓ fca9edef436b |   6357 chars | https://www.wired.com/story/macos-27-golden-gate-top-features/
+  ✗ 9633954f61a5 | HTTP 429
+  ∅ df4515d5ec7d | extracted only 54 chars
+  ✓ 064693b3745f |   1134 chars | https://habr.com/ru/news/1045642/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 557731bf9ad2 |  10408 chars | https://www.oneusefulthing.org/p/what-it-feels-like-to-work-with-mytho
+  ✓ fcdffa34fa7c |  13599 chars | https://habr.com/ru/articles/1045636/?utm_source=habrahabr&utm_medium=
+  ✓ 4f1bcef8ef09 |   6265 chars | https://support.claude.com/en/articles/15425996-data-retention-practic
+  ✓ 709f0aaf0fa1 |   1113 chars | https://the-decoder.com/googles-gemini-3-5-live-translate-delivers-rea
+  ✓ 32a2e9b211fb |  12386 chars | https://www.wired.com/story/top-new-features-in-apples-ios-27-and-ipad
+  ✓ fcd0e573f76e |   5313 chars | https://www.wired.com/story/anthropic-releases-claude-fable-5-mythos-5
+  ✓ 7e250b54c859 |   6424 chars | https://rb.ru/news/ozon-mozhet-otkryt-sobstvennye-aptechnye-sklady-kom
+  ✓ 407d457f16b2 |   4461 chars | https://techcrunch.com/2026/06/09/anthropics-claude-fable-5-is-a-versi
+  ✓ 15d174aef8c2 |   2308 chars | https://arstechnica.com/health/2026/06/screwworms-in-us-human-risk-is-
+  ✓ 4dcd25b9bff3 |   2451 chars | https://www.theverge.com/news/946725/anthropic-releases-claude-fable-5
+  ✓ e44dcea48b10 |   5568 chars | https://rb.ru/news/gosduma-utverdila-shtrafy-za-avtorizaciyu-na-rossij
+  ✓ 11c4ac33ca74 |  22798 chars | https://www.anthropic.com/news/claude-fable-5-mythos-5
+  ✓ 0d2bad7dabd1 |   1254 chars | https://www.engadget.com/2190645/kingdom-hearts-iv-gets-a-surprise-nin
+  ✓ 678e9a603149 |   4933 chars | https://www.cnet.com/tech/mobile/apples-ai-overhaul-signals-defining-s
+  ✓ 8e22e13a3064 |   8643 chars | https://www.engadget.com/2190638/siri-ai-first-look-how-apples-rebuilt
+  ✓ 240f533ec79b |   1810 chars | https://devblogs.microsoft.com/agent-framework/icymi-inside-the-micros
+  ✓ e9b5720da18e |   2830 chars | https://techcrunch.com/2026/06/09/rivian-starts-deliveries-of-its-all-
+  ✓ b2958886dc84 |   2301 chars | https://www.cnet.com/tech/services-and-software/macos-golden-gate-fixe
+  ✓ 3b20950b36a6 |    619 chars | https://www.pehub.com/ridgepost-appoints-brian-mckenna-as-vp-of-invest
+  ✓ 56eaa8947c91 |  31206 chars | https://aws.amazon.com/blogs/machine-learning/hands-free-first-notice-
+  ✓ 034c1b638b49 |   1273 chars | https://www.engadget.com/2190598/the-next-nintendo-sports-game-for-swi
+  ✓ 6df7aa23c89e |   4254 chars | https://rb.ru/news/stali-izvestny-ceny-na-novye-avtomobili-volga-proda
+  ✓ 14119d13d55c |   2537 chars | https://www.cnet.com/tech/gaming/kingdom-hearts-4-makes-surprise-appea
+  ✓ d94a2a31cd6e |  30249 chars | https://towardsdatascience.com/10-common-rag-mistakes-we-keep-seeing-i
+  ✓ db44956c9053 |   2420 chars | https://www.engadget.com/2190596/big-walk-is-an-oddball-blend-of-peak-
+  ✓ 33b9886e37e8 |  26397 chars | https://habr.com/ru/companies/pt/articles/1040996/?utm_source=habrahab
+  ✓ 896ac5271b7f |   2491 chars | https://arstechnica.com/tech-policy/2026/06/one-day-after-discovery-me
+  ✓ 13f5001827d5 |   1590 chars | https://techcrunch.com/2026/06/09/apples-foldable-iphone-could-be-just
+  ✓ 173f18e298b4 |   3827 chars | https://www.engadget.com/2190589/nasa-announces-the-crew-of-its-critic
+  ✓ df4ca1f3cae6 |   4437 chars | https://habr.com/ru/articles/1045630/?utm_source=habrahabr&utm_medium=
+  ✓ 6e44ab610e15 |   4236 chars | https://news.ycombinator.com/item?id=48463273
+  ✗ db217a525e31 | HTTP 401
+  ✓ 73706b3df115 |   6209 chars | https://www.theverge.com/tech/946850/apple-ai-photo-editing-tools-ios2
+  ✓ 502b6bd83529 |   6514 chars | https://habr.com/ru/articles/1045624/?utm_source=habrahabr&utm_medium=
+  ✓ 135ef5e254bb |   3637 chars | https://biffweb.com/p/core/
+  ✓ 7bcf38f442ec |  41156 chars | https://habr.com/ru/articles/1045620/?utm_source=habrahabr&utm_medium=
+  ✓ 1148fe2f1c4c |  24731 chars | https://rb.ru/reviews/vozvrat-ndfl-inostrancam/
+  ✓ 865f7352329b |  10894 chars | https://aws.amazon.com/blogs/machine-learning/build-an-agentic-inciden
+  ✓ da7fe1785fe9 |   1343 chars | https://techcrunch.com/2026/06/09/its-not-faang-anymore-its-mangos/
+  ✓ 52ee2176dd8a |   3125 chars | https://thenextweb.com/news/netherlands-investment-screening-ai-biotec
+  ✗ 52f9dee7d65f | HTTP 403
+  ✓ 19ab97fc7e47 |   1740 chars | https://www.engadget.com/2190537/xenoblade-genesis-the-next-mainline-e
+  ✓ 5bedce653a57 |   2050 chars | https://habr.com/ru/news/1045618/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 866063b741b3 |   3577 chars | https://the-decoder.com/spacex-wants-to-put-data-centers-in-orbit-and-
+  ✓ 72ed5aa6fe7a |    418 chars | https://www.404media.co/sloppenheimer-amazon-employees-mock-the-compan
+  ∅ 2452465d7eb7 | extracted only 45 chars
+  ✓ 8a6fe67badde |   1493 chars | https://habr.com/ru/news/1045616/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 21c507e0c4bc |   7121 chars | https://habr.com/ru/articles/1045614/?utm_source=habrahabr&utm_medium=
+  ✓ 2428838e44d4 |  17751 chars | https://huggingface.co/blog/CohereLabs/introducing-north-mini-code
+  ✓ 96bb52b99cc9 |   1378 chars | https://www.engadget.com/2190521/new-hd-2d-final-fantasy-announced-for
+  ✓ 21c671d1b32c |   8879 chars | https://habr.com/ru/articles/1045612/?utm_source=habrahabr&utm_medium=
+  ✓ 780aac7adea3 |   9362 chars | https://the-decoder.com/landmark-german-ruling-declares-googles-ai-ove
+  ✓ 240b4bb7d5cc |  39472 chars | https://habr.com/ru/articles/1045608/?utm_source=habrahabr&utm_medium=
+  ✓ 278a07ec1e6c |   2067 chars | https://habr.com/ru/news/1045606/?utm_source=habrahabr&utm_medium=rss&
+  ✓ ef0259b21214 |   3541 chars | https://thenextweb.com/news/japan-ai-bubble-softbank-toyota-dotcom-par
+  ✓ 5473e80a4239 |    619 chars | https://www.pehub.com/zombie-funds-surpass-1-trn-five-years-ahead-of-s
+  ✓ ee39b473bc86 |   1728 chars | https://arstechnica.com/gadgets/2026/06/us-military-claims-first-drone
+  ✗ ed0715ff067e | HTTP 403
+  ✓ 8d5c64075990 |   1786 chars | https://habr.com/ru/news/1045604/?utm_source=habrahabr&utm_medium=rss&
+  ✓ afe70a1f0bd8 |    942 chars | https://www.techmeme.com/260609/p25#a260609p25
+  ✓ ceb647221632 |  40776 chars | https://habr.com/ru/articles/1045602/?utm_source=habrahabr&utm_medium=
+  ✓ 9137c7f501ba |    970 chars | https://www.techmeme.com/260609/p23#a260609p23
+  ✓ ce34f28de3d9 |   2583 chars | https://techcrunch.com/2026/06/09/apple-says-it-may-remove-apps-from-t
+  ✓ 001674566647 |    942 chars | https://www.techmeme.com/260609/p22#a260609p22
+  ✓ bfe10d46bcee |   1077 chars | https://www.engadget.com/2190497/fromsoftwares-switch-2-exclusive-the-
+  ✓ 4969b49cebc7 |   2413 chars | https://d-russia.ru/gosduma-ustanovila-shtrafy-za-narushenie-pravil-pr
+  ✓ 97b7d43a8d7c |   1945 chars | https://www.404media.co/fcc-wants-to-kill-burner-phones-by-forcing-tel
+  ✓ cff67efc9abe |    964 chars | https://www.techmeme.com/260609/p24#a260609p24
+  ✓ 521b1f8e898c |   1830 chars | https://www.cnews.ru/news/line/2026-06-09_mintsifry_poluchilo_ot_roblo
+  ✓ 9f0dedfd5458 |   2023 chars | https://www.engadget.com/2190489/the-french-governments-internal-messa
+  ✓ 090d59debca5 |   1049 chars | https://habr.com/ru/news/1045594/?utm_source=habrahabr&utm_medium=rss&
+  ✓ af63639168e5 |  19103 chars | https://habr.com/ru/articles/1045592/?utm_source=habrahabr&utm_medium=
+  ✓ 9e2b59b245ee |   4594 chars | https://deepmind.google/blog/fluid-natural-voice-translation-with-gemi
+  ✓ 5d10288a25c3 |   1578 chars | https://arxiv.org/abs/2606.08319
+  ✓ 66f5163e049a |   3981 chars | https://www.cnews.ru/news/line/2026-06-09_targetai_vypustila_lxp_c_ii-
+  ✓ 2e07c22bc74d |   1184 chars | https://arstechnica.com/security/2026/06/a-single-errant-character-in-
+  ✓ 164113923d01 |   6473 chars | https://cleantechnica.com/2026/06/08/solar-energy-saves-europeans-135-
+  ✓ e3a11f65a3a4 |  16188 chars | https://habr.com/ru/articles/1045588/?utm_source=habrahabr&utm_medium=
+  ✓ 9a4e474cab39 |   3127 chars | https://www.cnews.ru/news/top/2026-06-02_minpromtorg_vnedryaet_ii
+  ✓ 16fd05797fe0 |   2587 chars | https://www.cnews.ru/news/line/2026-06-09_gosudarstvo_sovershenstvuet
+  ✓ b24e4f048d0e |   1975 chars | https://techcrunch.com/2026/06/09/ios-27-features-we-didnt-see-on-stag
+  ✓ 5d28b46a9039 |   2567 chars | https://thenextweb.com/news/klarna-launches-us-savings-accounts-at-3-2
+  ✓ 50fd17314a77 |   3229 chars | https://d-russia.ru/vtoroy-paket-mer-po-borbe-s-kibermoshennichestvom-
+  ✓ 3c4c40dedd40 |    983 chars | https://habr.com/ru/news/1045584/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 0131017bd772 |   1491 chars | https://www.engadget.com/2190465/the-legend-of-zelda-ocarina-of-time-r
+  ✓ 99dca431ef0a |   2713 chars | https://arxiv.org/abs/2603.24647
+  ✓ 5f8a079e0aab |    895 chars | https://www.phoronix.com/news/macOS-27-Beta-Breaks-Asahi
+  ✓ f5fb5020e5aa |   7591 chars | https://towardsdatascience.com/the-hardware-that-makes-ai-possible/
+  ✓ f756bbd4af41 |  18836 chars | https://performance.dev/the-conductor-rewrite
+  ✓ d6c5ae3f8ab9 |   2761 chars | https://www.engadget.com/2190170/razer-announces-the-seiren-v3-pro-its
+  ✓ 9b4b7974f685 |   5777 chars | https://rb.ru/news/polovina-rabotodatelej-pytalis-vernut-uvolivshihsya
+  ✓ f2ed2e7841b0 |   1606 chars | https://techcrunch.com/2026/06/09/apple-brings-streaming-style-subscri
+  ✓ d37a64d6c8ac |   2657 chars | https://about.fb.com/news/2026/06/better-personalization-and-changes-t
+  ✓ 7f64ac28510f |   1759 chars | https://www.theverge.com/tech/946879/microsoft-mustafa-suleyman-ai-whi
+  ✓ 2cd31911b35d |   1828 chars | https://www.cnews.ru/news/line/2026-06-09_it-rezident_oez_dubna_voshel
+  ✓ 2b89e3384574 |   2088 chars | https://www.cnet.com/deals/cnet-top-deals-of-the-week/
+  ✓ c70af21be9ec |   5150 chars | https://thenextweb.com/news/anthropic-says-mythos-is-too-dangerous-for
+  ✓ efd79923a154 |   1657 chars | https://d-russia.ru/v-rossii-gotovy-razblokirovat-roblox-mintsifry.htm
+  ✓ fe94c3e2c90f |  10512 chars | https://habr.com/ru/articles/1045580/?utm_source=habrahabr&utm_medium=
+  ✓ fbf026be872c |   1787 chars | https://www.engadget.com/2190443/pokemon-pokopia-is-getting-underwater
+  ✓ 764f5c24e202 |   1018 chars | https://www.techmeme.com/260609/p21#a260609p21
+  ✓ b8d070beac18 |   1243 chars | https://www.cnews.ru/news/line/2026-06-09_v_poiske_yandeksa_poyavilas
+  ✓ 6797caef8630 |   2212 chars | https://www.cnews.ru/news/line/2026-06-09_tgu_testiruet_ngfw_infowatch
+  ✓ 3117d1dcdfcd |  11228 chars | https://habr.com/ru/articles/1045574/?utm_source=habrahabr&utm_medium=
+  ✓ 3f8168cb1bfc |   1113 chars | https://www.engadget.com/2190434/switch-2-exclusive-orbitals-arrives-s
+  ✓ fbf97ca22fc6 |  21246 chars | https://habr.com/ru/articles/1045572/?utm_source=habrahabr&utm_medium=
+  ✓ c145612443d5 |    856 chars | https://www.engadget.com/2190429/fire-emblem-fortunes-weave-hits-switc
+  ✓ df25e386f0b6 |   5461 chars | https://www.cnews.ru/news/line/2026-06-09_1stoir_korp_30236_razdelnyj
+  ✓ 8064cf281e4c |   1839 chars | https://www.cnews.ru/news/line/2026-06-09_itfb_group_poluchila_pravo_p
+  ✓ 8872d001a394 |    565 chars | https://www.engadget.com/2190426/engadget-podcast-recapping-apples-sir
+  ✓ d624592da407 |  10060 chars | https://habr.com/ru/articles/1045568/?utm_source=habrahabr&utm_medium=
+  ✓ 7550667529da |   2505 chars | https://techcrunch.com/2026/06/09/apples-app-store-rolls-out-personali
+  ✓ 95998abcab58 |   1102 chars | https://d-russia.ru/duma-prinyala-zakon-ob-uskorennoy-blokirovke-nezak
+  ✓ 6bde6853eb7a |   8604 chars | https://habr.com/ru/articles/1045566/?utm_source=habrahabr&utm_medium=
+  ∅ d575c29211b0 | extracted only 45 chars
+  ✓ c2e2dc97e0ee |   2022 chars | https://arstechnica.com/science/2026/06/gold-isnt-inert-it-just-has-bo
+  ✓ f7b43f507bf3 |   7734 chars | https://www.theverge.com/ai-artificial-intelligence/946780/apples-ai-p
+  ✓ b3304eb2aecf |   3498 chars | https://www.cnews.ru/news/line/2026-06-09_tcl_predstavlyaet_sqd-mini_l
+  ∅ d70ab91669c5 | extracted only 63 chars
+  ✓ b7c340a0f6c6 |   9333 chars | https://habr.com/ru/companies/timeweb/articles/1045560/?utm_source=hab
+  ✓ 449a8038931b |   2811 chars | https://www.cnews.ru/news/line/2026-06-09_spikatel_predstavlyaet
+  ✓ 5071c4550990 |   3833 chars | https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder
+  ∅ 88b053027acf | extracted only 86 chars
+  ✓ dc3c11a9e265 |   3798 chars | https://www.cnews.ru/news/line/2026-06-09_udv_group_kiberprestupnost
+  ✓ b1fe6eed68a7 |    968 chars | https://www.techmeme.com/260609/p20#a260609p20
+  ✓ baf401f0df9a |  10990 chars | https://habr.com/ru/companies/otus/articles/1043824/?utm_source=habrah
+  ✓ 972e68557977 |   5578 chars | https://rb.ru/news/mincifry-i-rkn-prizvali-razblokirovat-roblox-platfo
+  ✓ 72eaa6d19c5f |   2309 chars | https://arxiv.org/abs/2604.19773
+  ✓ f63dedcc9e8b |   1087 chars | https://www.engadget.com/2190394/the-uk-is-investigating-paramounts-ta
+  ✓ 44be36e84323 |   8302 chars | https://www.a16z.news/p/month-end-is-now-just-another-day
+  ✓ 4eca20f9abf2 |   4609 chars | https://deepmind.google/blog/powering-the-future-of-robotics-in-europe
+  ✗ e188441c2a1b | HTTP 429
+  ✓ 77f379ed5735 |  14735 chars | https://www.kdnuggets.com/best-free-image-generators-on-hugging-face-r
+  ✓ 129e325c3291 |   4688 chars | https://www.engadget.com/2190148/silent-hill-townfall-brings-atmospher
+  ∅ 6f086e68082e | extracted only 70 chars
+  ✓ 4541e8e2af15 |   2951 chars | https://thenextweb.com/news/zaro-5-1m-pre-seed-agentforce-team-enterpr
+  ✓ eeb4f84e47d0 |   1834 chars | https://arstechnica.com/cars/2026/06/heres-audis-next-q7-suv-and-us-on
+  ∅ 98a08af5f927 | extracted only 63 chars
+  ✓ 092ad1d72672 |   3342 chars | https://cupertinolens.com/2026/06/09/wwdc-2026-apple-is-folding/
+  ✓ 2afec6d8848c |   6022 chars | https://habr.com/ru/articles/1045552/?utm_source=habrahabr&utm_medium=
+  ✓ 3187a19b2774 |  12953 chars | https://habr.com/ru/companies/icore/articles/1045554/?utm_source=habra
+  ✓ 57347c5d604e |   1254 chars | https://habr.com/ru/companies/mws/news/1045550/?utm_source=habrahabr&u
+  ✓ db98457f69f6 |   4146 chars | https://www.cnews.ru/news/top/2026-06-09_sozdan_karmannyj_ssd_dlya_par
+  ✓ cda289952ea4 |   3365 chars | https://the-decoder.com/beijings-295-billion-ai-buildout-would-require
+  ✗ 1e0ef6ffe88a | HTTP 403
+  ✓ 578ff1e2a5dd |   7840 chars | https://habr.com/ru/articles/1045548/?utm_source=habrahabr&utm_medium=
+  ✓ c6e34e67e7dc |  17099 chars | https://habr.com/ru/companies/vk/articles/1045484/?utm_source=habrahab
+  ✓ a773d4a13b58 |   1894 chars | https://habr.com/ru/news/1045546/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 95ec654a1252 |   2255 chars | https://techcrunch.com/2026/06/09/sandstone-raises-30m-to-bring-ai-to-
+  ✗ 1b040cfa3010 | HTTP 403
+  ✓ 0bad6a3916ff |   3853 chars | https://thenextweb.com/news/beacon-225m-series-c-ai-roll-up
+  ∅ c33f7ab21e4e | extracted only 32 chars
+  ✓ 82607ac7929f |   2093 chars | https://www.cnews.ru/news/line/2026-06-09_data-tsentr_dataspace_podtve
+  ∅ 01bdde42cb8a | extracted only 118 chars
+  ✓ a83b88a243c3 |   2600 chars | https://www.cnews.ru/news/line/2026-06-09_v_sitilinke_startovali
+  ✓ 2b350dc6c047 |  14389 chars | https://habr.com/ru/articles/1045542/?utm_source=habrahabr&utm_medium=
+  ✓ df7b7f8bba92 |   6549 chars | https://www.theverge.com/tech/946733/apple-shortcuts-ai-safari-tabs-vi
+  ✓ 1450eec34fbf |   2181 chars | https://www.cnews.ru/news/line/2026-06-09_yumoney_vstroila_ii-rekruter
+  ✓ 096b027fbb2e |  36464 chars | https://towardsdatascience.com/kv-cache-reuse-for-multi-agent-llm-infe
+  ✓ cb7c504e7e2e |   9180 chars | https://habr.com/ru/articles/1045540/?utm_source=habrahabr&utm_medium=
+  ∅ f00cacf986d5 | extracted only 63 chars
+  ✓ 3b5c0f1995c5 |   5836 chars | https://www.engadget.com/2190122/ios-27-beta-has-arrived-here-s-how-to
+  ✓ 54ec5683a778 |   6023 chars | https://thenextweb.com/news/generative-ai-to-agentic-ai-enterprise-fin
+  ✓ eb91c97b23f8 |   3286 chars | https://thenextweb.com/news/uk-nhs-palantir-contract-review-break-clau
+  ✓ f84cbe7980a9 |   2347 chars | https://arxiv.org/abs/2605.15184
+  ✓ 9cff22143150 |   3842 chars | https://habr.com/ru/articles/1045536/?utm_source=habrahabr&utm_medium=
+  ✓ 2d8578cd1e0d |  11574 chars | https://habr.com/ru/companies/ascon/articles/1045030/?utm_source=habra
+  ✓ 1f58d5bef584 |   1754 chars | https://www.cnews.ru/news/line/2026-06-09_rosatom_infrastrukturnye
+  ✓ 4f90844bea42 |   1570 chars | https://www.wired.com/story/longevity-startup-doses-first-human-in-bid
+  ✓ 90f3f02ef18a |   1073 chars | https://www.techmeme.com/260609/p19#a260609p19
+  ✓ 1779a411b53b |   1280 chars | https://www.cnews.ru/news/line/2026-06-09_svoj_bank_zapustil_mobilnoe
+  ✓ 19215838f896 |   4362 chars | https://habr.com/ru/companies/selectel/news/1045530/?utm_source=habrah
+  ✓ d9a27b18646b |   1530 chars | https://habr.com/ru/news/1045130/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 6ef1130c76b3 |   3268 chars | https://www.cnews.ru/news/top/2026-06-09_v_rossii_sozdan_i_gotovitsya
+  ✓ c52881c68573 |   3714 chars | https://thenextweb.com/news/apple-third-generation-foundation-models-a
+  ✓ 71251352c29b |  18302 chars | https://habr.com/ru/companies/yadro/articles/1044836/?utm_source=habra
+  ✗ 3b94d27f3167 | HTTP 403
+  ✗ cdc77122c42d | TypeError: object of type 'NoneType' has no len()
+  ✓ 451b5bb004ee |    372 chars | https://www.pehub.com/caz-investments-recruits-greg-grissom-as-executi
+  ✓ 97fbd75943fa |   4784 chars | https://rb.ru/news/bilajn-pervym-iz-operatorov-zapustil-belyj-vpn-polz
+  ✓ 0b1b3ee9305c |  12438 chars | https://www.analyticsvidhya.com/blog/2026/06/time-series-forecasting-t
+  ✓ 63a38acfb162 |  28094 chars | https://habr.com/ru/companies/chestnyznak/articles/1045460/?utm_source
+  ✓ b13daac59d8a |   1964 chars | https://habr.com/ru/news/1045528/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 2cce2f5ecf69 |   7816 chars | https://habr.com/ru/articles/1045526/?utm_source=habrahabr&utm_medium=
+  ✓ 13aed51815e3 |   1201 chars | https://habr.com/ru/news/1045524/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 8f22324a567e |   1661 chars | https://arstechnica.com/apple/2026/06/apple-says-its-ai-is-still-priva
+  ✓ 9e2a0b283d0f |    682 chars | https://postnauka.org/tv/158066
+  ✓ 406aafee6d9f |    904 chars | https://www.techmeme.com/260609/p18#a260609p18
+  ✓ 65993faf9d47 |   3244 chars | https://www.cnews.ru/news/line/2026-06-09_ors_i_nexta_predostavyat_tmc
+  ✓ 3a6fd0b08241 |   3944 chars | https://habr.com/ru/articles/1045522/?utm_source=habrahabr&utm_medium=
+  ∅ 022a25e4c914 | extracted only 63 chars
+  ✓ 79f95feb4140 |  16518 chars | https://habr.com/ru/companies/ruvds/articles/1042562/?utm_source=habra
+  ✓ a7a6dc34963a |   2278 chars | https://techcrunch.com/2026/06/09/lovable-says-it-has-hit-500m-in-annu
+  ✓ 7b894fbf4484 |   8253 chars | https://habr.com/ru/companies/ru_mts/articles/1045406/?utm_source=habr
+  ✓ bacd816c2ace |  13740 chars | https://habr.com/ru/companies/ggsel/articles/1045468/?utm_source=habra
+  ∅ 44dabad91e90 | extracted only 55 chars
+  ✓ 5225d954908a |   3102 chars | https://www.cnews.ru/news/line/2026-06-09_it-holding_t1_vybral_platfor
+  ✓ b505869c0262 |   7739 chars | https://www.engadget.com/2188202/2027-rivian-r2-first-drive/
+  ✓ a946cf1c7b1d |   2085 chars | https://arstechnica.com/cars/2026/06/first-drive-the-2027-rivian-r2-en
+  ✓ a956833e717a |   5349 chars | https://rb.ru/news/minfin-ne-ozhidaet-ipo-ot-rossijskih-goskompanij-v-
+  ✓ 38267d92532d |  12184 chars | https://www.wired.com/story/rivian-r2-first-drive/
+  ✓ f2b19d39c4d3 |   2508 chars | https://www.engadget.com/2189037/grave-seasons-adds-murder-mystery-to-
+  ✓ 3af091aa6f39 |   3717 chars | https://thenextweb.com/news/saaspocalypse-over-thoma-bravo-ai-software
+  ✓ f7f5459fc084 |   6729 chars | https://habr.com/ru/articles/1045520/?utm_source=habrahabr&utm_medium=
+  ✓ 28598c8b1ad8 |   6433 chars | https://www.theverge.com/ai-artificial-intelligence/946705/apple-priva
+  ✓ 1496ac338f4c |   3489 chars | https://www.cnet.com/tech/services-and-software/meta-instagram-ai-chat
+  ✓ f10074c40c03 |   2075 chars | https://www.engadget.com/2190317/the-uk-will-review-its-nhs-contract-w
+  ✓ 026d61c71362 |   3840 chars | https://www.cnews.ru/news/line/2026-06-09_gruppa_astra_i_aladdin
+  ✓ 1efe3e611930 |    227 chars | https://www.pehub.com/abry-partners-backs-managed-it-firm-kaufmanit/
+  ✓ 21f100d2fcb0 |   1603 chars | https://www.cnews.ru/news/line/2026-06-09_ashan_perevel_98_sotrudnikov
+  ✓ b5f5158c8cea |    221 chars | https://www.pehub.com/archimed-acquires-pet-radiopharmaceuticals-compa
+  ∅ f052e69a2c85 | extracted only 63 chars
+  ✓ 5f01b415f4c0 |   2333 chars | https://habr.com/ru/news/1045508/?utm_source=habrahabr&utm_medium=rss&
+  ✓ e9bdfffe3926 |   2664 chars | https://www.cnews.ru/news/line/2026-06-09_vpg_laserone_rasshirit_tsent
+  ✓ 3de4af7ad7e1 |   2719 chars | https://www.cnews.ru/news/line/2026-06-09_podtverzhdena_sovmestimost
+  ✓ 29e81c7c4b05 |   4276 chars | https://www.cnews.ru/news/top/2026-06-09_razrabotchiki_linux_spasayut
+  ✓ 294e9c372745 |   2492 chars | https://d-russia.ru/duma-prinyala-zakon-o-litsenzirovanii-torgovli-tab
+  ✓ 65a221c35168 |   4499 chars | https://habr.com/ru/companies/ispsystem/news/1045500/?utm_source=habra
+  ✓ 0de5d0b61400 |    984 chars | https://www.techmeme.com/260609/p17#a260609p17
+  ✓ 8f7eba3d5831 |   2296 chars | https://www.cnews.ru/news/line/2026-06-09_itfb_group_i_red_soft_podtve
+  ✓ 07e37fbcd2f9 |   2556 chars | https://www.cnews.ru/news/line/2026-06-09_k_laboratorii_kiberbezopasno
+  ✓ 52b0b04605d7 |   5944 chars | https://www.technologyreview.com/2026/06/09/1138604/the-download-anti-
+  ✓ fbe854ff2409 |   2153 chars | https://www.cnews.ru/news/line/2026-06-09_mts_uskorila_mobilnyj_intern
+  ✓ 229ac7d3c924 |   1166 chars | https://nibblestew.blogspot.com/2026/06/faking-keyword-arguments-to-fu
+  ✓ f958c49d6f87 |   1667 chars | https://habr.com/ru/news/1045488/?utm_source=habrahabr&utm_medium=rss&
+  ∅ 01d1d5ad22fa | extracted only 175 chars
+  ✓ 8708700c8ba8 |   9267 chars | https://www.kdnuggets.com/10-github-repositories-for-web-development-i
+  ✓ adcc82140244 |   4301 chars | https://techcrunch.com/2026/06/09/how-an-e-scooter-founder-raised-5-mi
+  ✓ 09e4d92749e1 |   8423 chars | https://towardsdatascience.com/the-exact-ml-project-that-gets-you-hire
+  ✓ 8e41a9b2942f |   6367 chars | https://www.engadget.com/2189996/motorola-razr-ultra-review/
+  ✗ de0a2342d5aa | HTTP 403
+  ✓ 94ed0a44c9b1 |   7881 chars | https://rb.ru/news/v-mvd-predlagayut-sokratit-kolichestvo-arendnyh-sam
+  ✓ 23abff60a533 |  15447 chars | https://www.ycombinator.com/companies/emerge-career/jobs/v0S1AEG-found
+  ✓ bb9dfdcf11c2 |   2098 chars | https://www.engadget.com/2190294/pentagon-adds-alibaba-baidu-list-of-c
+  ✗ 164e6b41b04f | TypeError: object of type 'NoneType' has no len()
+  ✓ f670d1d23025 |    844 chars | https://habr.com/ru/news/1045478/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 12da33575daf |   5120 chars | https://www.cnews.ru/news/line/2026-06-09_informzashchita_vremya_poyav
+  ✓ 679b283c5dbc |   1912 chars | https://habr.com/ru/news/1045474/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 5381038aa290 |   1218 chars | https://d-russia.ru/mvd-predlozhilo-umenshit-chislo-moskovskih-elektro
+  ✓ 9e790d2526f9 |    619 chars | https://www.pehub.com/tpg-to-invest-in-accounting-firm-smith-howard/
+  ✗ 111249c4a0a1 | HTTP 403
+  ✓ 0dee3fb8c4fb |   2922 chars | https://habr.com/ru/news/1045470/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 5c0d281e0842 |   1836 chars | https://habr.com/ru/companies/yandex/news/1045426/?utm_source=habrahab
+  ✓ ff992d0e1b1b |  15264 chars | https://matklad.github.io/2026/06/04/css-unavoidable-bad-parts.html
+  ✓ 413825bb3609 |   3685 chars | https://habr.com/ru/news/1045464/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 198de47a093f |  26804 chars | https://www.wired.com/story/best-smart-bird-feeders/
+  ✗ 13c1b67fae58 | HTTP 403
+  ✓ 5acc8e741776 |   1030 chars | https://www.techmeme.com/260609/p16#a260609p16
+  ✓ b0d280435061 |  28004 chars | https://tratt.net/laurie/blog/2026/test_case_reducers_are_underappreci
+  ✓ a8e0680fe01e |   5144 chars | https://rb.ru/news/30-vseh-reklamnyh-zvonkov-v-rossii-sovershayut-bank
+  ✓ 58fc524ea598 |   1068 chars | https://www.techmeme.com/260609/p15#a260609p15
+  ✓ 4583661353a4 |   1694 chars | https://www.wired.com/review/amazon-ember-artline/
+  ✓ d3c56fd71cb6 |   5507 chars | https://habr.com/ru/news/1045450/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 3f53363a0225 |    928 chars | https://www.techmeme.com/260609/p14#a260609p14
+  ✓ 6f648042dfa5 |   6753 chars | https://the-decoder.com/apple-intelligence-gets-a-second-go-with-the-h
+  ✓ 41c13b22e10f |  13779 chars | https://www.wired.com/story/book-excerpt-city-on-the-edge-google-buses
+  ✓ c35624de227c |  13975 chars | https://news.crunchbase.com/venture/new-unicorn-startups-may-2026-open
+  ✓ d01f37bef74f |  20639 chars | https://staniks.github.io/articles/catlantean-3d-blog-1/
+  ✓ ffc5537f923d |   6489 chars | https://spark.ru/post/332874
+  ✓ 8a981e9f30b3 |   1513 chars | https://www.cnet.com/home/security/popular-wildfire-app-watch-duty-exp
+  ✓ 0fd6cce7c33b |   1578 chars | https://habr.com/ru/news/1045432/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 6d8d3867b1f2 |  10087 chars | https://huggingface.co/blog/mishig/spaces-agents-md
+  ✓ 5429bb016e21 |   3396 chars | https://spark.ru/post/332873
+  ∅ d391b77fd50a | extracted only 189 chars
+  ✓ d15415056399 |    772 chars | https://habr.com/ru/companies/selectel/news/1045042/?utm_source=habrah
+  ✓ ee9d93f004ad |   2158 chars | https://habr.com/ru/news/1045246/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 00e5365b02b8 |   3401 chars | https://the-decoder.com/openai-says-entirely-automating-everything-is-
+  ✓ 492f645763be |   5048 chars | https://habr.com/ru/news/1045430/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 04be7e7e28d7 |  35368 chars | https://www.wired.com/story/the-big-interview-podcast-alex-vindman/
+  ✓ ec006114ce40 |   8367 chars | https://habr.com/ru/companies/haulmont/articles/1041314/?utm_source=ha
+  ✓ ef98ab9f54e7 |   8457 chars | https://habr.com/ru/articles/1039990/?utm_source=habrahabr&utm_medium=
+  ✓ d2f46281ef75 |   4946 chars | https://tproger.ru/news/nvidia-i-sk-hynix-zaklyuchili-mnogoletnee-sogl
+  ✓ f1fde13abe2e |   9236 chars | https://tproger.ru/articles/protokoly-svyazi-mikrokontrollerov-proekti
+  ✓ 5d1af48fd876 |    988 chars | https://www.techmeme.com/260609/p13#a260609p13
+  ✓ 160e184a591b |   1002 chars | https://www.techmeme.com/260609/p12#a260609p12
+  ✓ 25761d5880ff |   9280 chars | https://www.technologyreview.com/2026/06/09/1137830/learning-to-lead-i
+  ✓ 15be024966b9 |  13200 chars | https://habr.com/ru/articles/1045422/?utm_source=habrahabr&utm_medium=
+  ✓ c4ef8c52757b |  10524 chars | https://tproger.ru/articles/istoriya-centos-kak-hobbi-biohimika-stalo-
+  ✓ aced856f0bf1 |  11682 chars | https://habr.com/ru/companies/usetech/articles/1045228/?utm_source=hab
+  ✓ ff2ca201ba04 |   5234 chars | https://rb.ru/news/openai-podala-konfidencialnuyu-zayavku-na-ipo-kompa
+  ✓ 4fafad7d2ef9 |   1238 chars | https://d-russia.ru/rasshiryaetsya-primenenie-tsifrovogo-rublya-v-byud
+  ✓ 04d8b2684c82 |   5062 chars | https://habr.com/ru/news/1045420/?utm_source=habrahabr&utm_medium=rss&
+  ✓ a1bdbdf91718 |   7758 chars | https://habr.com/ru/articles/1044856/?utm_source=habrahabr&utm_medium=
+  ✓ c53f525dffe5 |   2820 chars | https://spark.ru/post/332859
+  ✓ 481df08b9524 |   3050 chars | https://thenextweb.com/news/china-295-billion-ai-data-centre-plan
+  ✓ 3e30191540ef |  12965 chars | https://habr.com/ru/articles/1045416/?utm_source=habrahabr&utm_medium=
+  ✓ 5512aec47a15 |    941 chars | https://www.techmeme.com/260609/p10#a260609p10
+  ✓ 5fc9f9cafd62 |  10490 chars | https://habr.com/ru/companies/smartengines/articles/1045414/?utm_sourc
+  ✓ b6d43e93bfb2 |    964 chars | https://www.techmeme.com/260609/p11#a260609p11
+  ✓ 4241b00c1d41 |  24820 chars | https://tproger.ru/articles/top-8-servisov-dlya-email-rassylki-rejting
+  ✓ 6f6bb7447475 |   5285 chars | https://habr.com/ru/articles/1045412/?utm_source=habrahabr&utm_medium=
+  ✓ 419bd255a1bc |   4725 chars | https://habr.com/ru/articles/1045266/?utm_source=habrahabr&utm_medium=
+  ✓ 33c0beb3f3f4 |   9070 chars | https://www.cnet.com/tech/services-and-software/best-apple-tv-plus-sci
+  ✓ 422dc33a1712 |   1110 chars | https://www.techmeme.com/260609/p9#a260609p9
+  ✓ 135288a63d8a |   8561 chars | https://www.technologyreview.com/2026/06/09/1138545/david-sinclair-pla
+  ✓ 3a625c663c98 |  10760 chars | https://stratechery.com/2026/the-iphones-last-stand/
+  ✓ 23e9e5667f9c |   1073 chars | https://www.techmeme.com/260609/p8#a260609p8
+  ✗ fbb449340331 | HTTP 403
+  ✓ 0d3a665964a6 |   7504 chars | https://www.theverge.com/ai-artificial-intelligence/945809/amazon-empl
+  ✓ 80daf56fcf1d |  23851 chars | https://www.wired.com/story/anguished-parents-crying-doctors-life-amid
+  ✓ bb65d6908331 |   5379 chars | https://www.wired.com/story/threats-against-politicians-skyrocketed-af
+  ✓ b82b7afe9a70 |  17662 chars | https://habr.com/ru/articles/1045408/?utm_source=habrahabr&utm_medium=
+  ✓ 27e65925e3e2 |   3083 chars | https://thenextweb.com/news/iceye-450m-series-f-10bn-valuation
+  ✓ cbda1d242252 |   6041 chars | https://habr.com/ru/articles/1045402/?utm_source=habrahabr&utm_medium=
+  ✓ 247cfa9cb4fc |   1847 chars | https://www.engadget.com/2190263/apple-making-genmoji-creation-easier-
+  ✓ b408372cfa37 |   5940 chars | https://habr.com/ru/articles/1045400/?utm_source=habrahabr&utm_medium=
+  ✓ 0b3f8fff3520 |  23071 chars | https://farnoy.dev/posts/linux-latency
+  ∅ 07d5368371b5 | extracted only 159 chars
+  ✓ fe247db77905 |   1026 chars | https://github.com/luke8086/gentleos32
+  ✓ 3d619a6a3c64 |   1703 chars | https://habr.com/ru/news/1045398/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 5a7213836456 |  20932 chars | https://habr.com/ru/companies/bastion/articles/1038710/?utm_source=hab
+  ✓ 8e14afd91b31 |   3207 chars | https://thenextweb.com/news/isar-aerospace-270m-series-d-spectrum-laun
+  ✓ d7d6ca16e074 |  19495 chars | https://habr.com/ru/companies/ggsel/articles/1045396/?utm_source=habra
+  ✓ b0cf66f7bd0d |   2726 chars | https://d-russia.ru/vtb-soobschil-o-novom-sposobe-perevodov-mezhdu-fiz
+  ✓ d1de171c9c06 |   4402 chars | https://habr.com/ru/companies/miip/articles/1045392/?utm_source=habrah
+  ✓ 5aa87b50569d |  22425 chars | https://habr.com/ru/articles/1045390/?utm_source=habrahabr&utm_medium=
+  ✓ 0aad2542dade |   1098 chars | https://www.techmeme.com/260609/p7#a260609p7
+  ✓ 05bf4a57a900 |   5027 chars | https://habr.com/ru/articles/1045382/?utm_source=habrahabr&utm_medium=
+  ✓ 018bfd304702 |   1745 chars | https://spark.ru/post/332845
+  ✓ aed827e1639d |   5162 chars | https://habr.com/ru/articles/1045386/?utm_source=habrahabr&utm_medium=
+  ✓ c2fb2fe9dd71 |    672 chars | https://d-russia.ru/pentagon-prichislil-alibaba-i-baidu-k-kitayskim-vo
+  ✓ 27e59e9db3ba |    998 chars | https://www.techmeme.com/260609/p6#a260609p6
+  ✓ ff6c20b56cf3 |   2947 chars | https://www.wired.com/story/bruvi-bv-01-deal-june-2026/
+  ✓ 3bf8a844d701 |   6140 chars | https://thenextweb.com/news/deliverance-ai-stealth-sovereign-enterpris
+  ✓ 81de5539ae77 |   1030 chars | https://www.techmeme.com/260609/p5#a260609p5
+  ✓ 5cba9eba4947 |   1305 chars | https://the-decoder.com/openai-says-going-public-is-a-complicated-set-
+  ✓ ae71f613627e |   2648 chars | https://www.engadget.com/2190255/fcc-relaxes-amazon-leo-satellite-laun
+  ✓ 4948d872f35d |   6796 chars | https://tproger.ru/articles/kak-sdelat-prezentaciyu-onlajn-besplatno-5
+  ✓ b1a8cf030240 |   3977 chars | https://thenextweb.com/news/prince-william-london-tech-week-homewards-
+  ✓ cd32bfa0542a |   3395 chars | https://habr.com/ru/companies/usergate/news/1045378/?utm_source=habrah
+  ✓ 13e004af36d6 |   6664 chars | https://habr.com/ru/companies/skbkontur/articles/1044876/?utm_source=h
+  ✓ 9b066beed6f2 |   1014 chars | https://www.techmeme.com/260609/p4#a260609p4
+  ✓ ab703aa5f328 |  13627 chars | https://habr.com/ru/articles/1045376/?utm_source=habrahabr&utm_medium=
+  ✓ e269c4cebd04 |  25811 chars | https://habr.com/ru/articles/1045372/?utm_source=habrahabr&utm_medium=
+  ✓ 5a0f8f20efd8 |   7687 chars | https://www.technologyreview.com/2026/06/09/1138582/five-things-you-ne
+  ✓ 647c7725dfea |   6277 chars | https://habr.com/ru/news/1045370/?utm_source=habrahabr&utm_medium=rss&
+  ✓ def71ef79796 |   8013 chars | https://habr.com/ru/articles/1045374/?utm_source=habrahabr&utm_medium=
+  ✓ b87d8e8df52b |   5437 chars | https://rb.ru/news/pravitelstvo-predstavilo-proekt-modernizacii-pochty
+  ✓ d9f051d705aa |  16307 chars | https://dfarq.homeip.net/eagle-computer-the-rise-and-fall-of-an-early-
+  ✓ 482c0907ea53 |  23060 chars | https://habr.com/ru/companies/sberbank/articles/1043708/?utm_source=ha
+  ✓ 058e20ef387a |   7026 chars | https://habr.com/ru/articles/1045342/?utm_source=habrahabr&utm_medium=
+  ✓ 8c03ad5814ec |  10122 chars | https://rb.ru/reviews/chto-sderzhivaet-modernizaciyu-zhkh-itogi-otrasl
+  ✓ a04fe6f0e1d8 |   9849 chars | https://habr.com/ru/articles/1045368/?utm_source=habrahabr&utm_medium=
+  ✓ d5296e317d71 |   1608 chars | https://d-russia.ru/aeroflot-zapustil-posadku-po-biometrii-na-vseh-vnu
+  ✓ b8ffcbc1ce8b |   3862 chars | https://thenextweb.com/news/apple-siri-google-gemini-nvidia-privacy-ww
+  ✓ 0e7118046cfd |   1502 chars | https://habr.com/ru/news/1045364/?utm_source=habrahabr&utm_medium=rss&
+  ✓ afe07767f885 |  13833 chars | https://habr.com/ru/articles/1045366/?utm_source=habrahabr&utm_medium=
+  ✓ 004840563326 |   5343 chars | https://thenextweb.com/news/byd-80-percent-ev-penetration-china-pentag
+  ✓ 4d4cf1531f3c |   2979 chars | https://thenextweb.com/news/perplexity-ipo-2028-openai-anthropic-listi
+  ✓ fcabcc311dce |   3575 chars | https://huggingface.co/blog/build-small-hackathon/neurobait-adhd
+  ✓ 0d77696b90d4 |   9886 chars | https://habr.com/ru/companies/banki/articles/1045336/?utm_source=habra
+  ✓ 35a8f863e5ec |   8667 chars | https://habr.com/ru/companies/riscvalliance/articles/1045192/?utm_sour
+  ✓ 810148bbfaee |   2692 chars | https://thenextweb.com/news/databricks-165-billion-valuation-fundraise
+  ✓ 14b5298966eb |    363 chars | https://vc.ru/tech/2968348-naushniki-yandeks-drops-s-alisoi-ai-test-i-
+  ✓ 27ece35a61c9 |  10074 chars | https://habr.com/ru/companies/ruvds/articles/1040320/?utm_source=habra
+  ✓ 1047df018d7b |   2308 chars | https://www.cnet.com/tech/gaming/todays-nyt-strands-hints-answers-and-
+  ✓ 63354e43dcd5 |   2712 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-hints-answers-
+  ✓ 67798372049e |   3136 chars | https://thenextweb.com/news/fujikura-fibre-optic-cable-price-hike-data
+  ✓ 4dc79fbeefad |   3710 chars | https://techcrunch.com/2026/06/09/anker-backed-evotrex-raises-30m-to-b
+  ✓ 125ee57aaf84 |   5397 chars | https://www.cnet.com/tech/services-and-software/apple-ai-strategy-wwdc
+  ✓ 9eb44739b4e9 |   3013 chars | https://habr.com/ru/news/1045322/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 6109a7223c96 |  10238 chars | https://habr.com/ru/articles/1045358/?utm_source=habrahabr&utm_medium=
+  ✓ 922a91161729 |   1443 chars | https://d-russia.ru/pravitelstvo-poruchilo-sokratit-kolichestvo-dokume
+  ✓ f969705e9b3f |   1204 chars | https://habr.com/ru/news/1045346/?utm_source=habrahabr&utm_medium=rss&
+  ✗ 10facf05fa4a | HTTP 403
+  ✓ 3522eab9214e |   3940 chars | https://habr.com/ru/news/1045310/?utm_source=habrahabr&utm_medium=rss&
+  ∅ e3d6eea6b1f6 | extracted only 45 chars
+  ✓ af66e09c143d |   5977 chars | https://omnia.sas.upenn.edu/story/biologist-scott-poethig-plants-never
+  ✓ 38c33fc91803 |   1427 chars | https://habr.com/ru/companies/luxms_bi/news/1045330/?utm_source=habrah
+  ✓ 8a27da9259f0 |    273 chars | https://www.pehub.com/permiras-silvia-oteri-integration-scale-clinical
+  ✗ fa9af36cb131 | HTTP 403
+  ∅ b26ab52ac66a | extracted only 81 chars
+  ✓ c2908eb2771f |   1602 chars | https://habr.com/ru/news/1045304/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 586976b7384e |   1617 chars | https://spark.ru/post/332798
+  ✓ 0e5a76d17893 |    926 chars | https://d-russia.ru/apple-predstavila-ne-podderzhivaemuyu-v-rossii-nov
+  ✗ 504e31b94d5d | TypeError: object of type 'NoneType' has no len()
+  ∅ 67f63f0cf248 | extracted only 63 chars
+  ✓ d5b7ba95c181 |   5012 chars | https://rb.ru/news/yandeks-predstavil-pervye-naushniki-drops-s-ii-assi
+  ✓ db73f23f9d5e |   1130 chars | https://www.techmeme.com/260609/p3#a260609p3
+  ✓ e8064ce08d96 |   1820 chars | https://habr.com/ru/news/1045296/?utm_source=habrahabr&utm_medium=rss&
+  ✓ ff8926df48e1 |  12168 chars | https://rb.ru/reviews/kak-podklyuchit-yandeks-drops-i-ispolzovat-vse-f
+  ∅ 1611a86de2bd | extracted only 63 chars
+  ∅ 754ab53253ac | extracted only 63 chars
+  ∅ 980d5243bfa6 | extracted only 43 chars
+  ✗ 1506aff82566 | HTTP 403
+  ✓ 82b8f7a2c5bc |   1323 chars | https://d-russia.ru/pochemu-ne-vostrebovany-nalogovye-lgoty-na-niokr-m
+  ✓ 7a9f91bd7663 |   1815 chars | https://habr.com/ru/news/1045284/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 78585c39cd6e |   2422 chars | https://habr.com/ru/news/1045280/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 141834e8d2be |   6925 chars | https://tproger.ru/articles/kak-obyasnit-slozhnuyu-temu-s-ii-tehniki-i
+  ✓ 24cdf6aeac47 |   1354 chars | https://habr.com/ru/news/1045278/?utm_source=habrahabr&utm_medium=rss&
+  ✓ be916012bc66 |  14328 chars | https://semiengineering.com/ai-models-transform-defect-inspection-and-
+  ✓ 19de59e52b10 |  10687 chars | https://semiengineering.com/what-i-learned-at-the-2026-gsa-tech-summit
+  ✓ bcc2a5b65bf3 |   4723 chars | https://semiengineering.com/high-speed-manufacturing-and-in-field-scan
+  ✓ 4be61ee03f85 |   8792 chars | https://semiengineering.com/effective-ux-ui-is-a-critical-link-between
+  ✓ 80e32f3158a8 |  16705 chars | https://semiengineering.com/co-packaged-optics-testing-faces-steep-dat
+  ✓ 3c85813c8448 |   1242 chars | https://semiengineering.com/recent-technological-advancements-in-coron
+  ✓ 9ac10ca57365 |  21941 chars | https://semiengineering.com/why-analog-and-mixed-signal-chips-resist-a
+  ✓ bb7f5b7b3e76 |   2622 chars | https://semiengineering.com/enhancing-high-bandwidth-memory-hbm-reliab
+  ✓ cb96139d190a |   6130 chars | https://semiengineering.com/test-anything-anywhere-anytime/
+  ✓ 00f3fb0e83ae |   1909 chars | https://vercel.com/changelog/claude-fable-5-now-available-on-ai-gatewa
+  ∅ f4557f0e4129 | extracted only 135 chars
+  ✓ 80bd235c6888 |   4237 chars | https://habr.com/ru/news/1045264/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 8211c6fe6754 |   4973 chars | https://habr.com/ru/news/1045258/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 01e7088f038b |   1514 chars | https://semiengineering.com/2026-asmc-building-the-core-pillars-for-ai
+  ∅ 00f3495eb305 | extracted only 40 chars
+  ✓ 58582650bfb6 |   1940 chars | https://spark.ru/post/332771
+  ✓ 9eb0789a3b1d |   1983 chars | https://habr.com/ru/news/1045252/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 0933701b9078 |   8729 chars | https://spark.ru/post/332770
+  ✓ aeec6aaae1eb |   8832 chars | https://spark.ru/post/332768
+  ✓ c975aacfd24b |   1930 chars | https://www.engadget.com/2190214/ninja-theory-cancels-project-mara/
+  ✗ 72523832df94 | HTTP 522
+  ✓ 0c35128d4c52 |   3700 chars | https://spark.ru/post/332767
+  ✓ 45bb93cbadc2 |  20710 chars | https://towardsdatascience.com/can-machine-learning-predict-the-world-
+  ✓ 1088e8f41f09 |    911 chars | https://habr.com/ru/news/1045032/?utm_source=habrahabr&utm_medium=rss&
+  ∅ 9de1acc7f074 | extracted only 163 chars
+  ✓ c68396f47951 |    584 chars | https://vc.ru/money/2970199-set-sportivnykh-magazinov-desport-risk-ban
+  ✓ d498476bbd4a |   4389 chars | https://techcrunch.com/2026/06/08/zeptos-ipo-filing-reveals-fast-growt
+  ✓ 28efce335848 |   4032 chars | https://www.wired.com/story/1password-coupon/
+  ✓ 923f035e09b2 |  19687 chars | https://mceglowski.substack.com/p/laffaire-siloxane
+  ✓ c31f88c8bb53 |    921 chars | https://www.techmeme.com/260609/p2#a260609p2
+  ✓ 63c7da3f8b3e |   2932 chars | https://www.wired.com/story/oneplus-promo-code/
+  ✓ 08a7bc6a6b2f |   7357 chars | https://www.wired.com/story/hellofresh-coupon/
+  ✓ 124628cd2586 |   4042 chars | https://www.wired.com/story/noom-promo-code/
+  ✓ 37e298ea212d |   3517 chars | https://www.wired.com/story/tuft-and-needle-promo-code/
+  ✓ 9622b726c584 |   3944 chars | https://www.wired.com/story/western-digital-promo-code/
+  ✓ 38ecedec8deb |   4960 chars | https://www.wired.com/story/shark-promo-code/
+  ✓ a4d65650272e |   4668 chars | https://www.wired.com/story/logitech-promo-code/
+  ✓ bc6a593668dd |   5663 chars | https://www.wired.com/story/womanizer-coupon/
+  ✓ 6d025d8823a8 |   3597 chars | https://www.wired.com/story/sony-promo-code/
+  ✓ 53d04c214507 |   5175 chars | https://www.wired.com/story/ebay-coupon-code/
+  ✓ 81bd0bdd0177 |   3953 chars | https://www.wired.com/story/blue-apron-coupon/
+  ✓ c337225bb38f |   4181 chars | https://www.wired.com/story/whoop-promo-code/
+  ✓ d55913fdabdc |   3826 chars | https://www.wired.com/story/we-vibe-discount-code/
+  ✗ 5438335ffb3f | HTTP 403
+  ✓ bb92b55870d9 |   2974 chars | https://habr.com/ru/news/1045232/?utm_source=habrahabr&utm_medium=rss&
+  ✓ ddaf0d98d823 |   1821 chars | https://habr.com/ru/news/1045230/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 2737d0f66e51 |  12941 chars | https://blog.aheymans.xyz/post/thinkpad_x61/
+  ✓ a05726cc31e9 |   7720 chars | https://habr.com/ru/news/1045226/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 998ad36781d7 |   2137 chars | https://arxiv.org/abs/2606.07550
+  ✓ f932b2987035 |   2319 chars | https://habr.com/ru/news/1045206/?utm_source=habrahabr&utm_medium=rss&
+  ✓ a958000d89f0 |   2536 chars | https://arxiv.org/abs/2606.07557
+  ✓ 06857954852b |   2560 chars | https://arxiv.org/abs/2606.07553
+  ✓ 3a6c3dcd3eae |   1949 chars | https://arxiv.org/abs/2606.07561
+  ✓ 566554431f72 |   2618 chars | https://arxiv.org/abs/2606.07563
+  ✓ b8232e681924 |   2281 chars | https://arxiv.org/abs/2606.07565
+  ✓ e25d653d4c8e |   2041 chars | https://arxiv.org/abs/2606.07571
+  ✓ 698ee0adc946 |   2105 chars | https://arxiv.org/abs/2606.07576
+  ✓ b6edf3a5be89 |   2585 chars | https://arxiv.org/abs/2606.07569
+  ✓ b4049ce9a0a4 |   2378 chars | https://arxiv.org/abs/2606.07578
+  ✓ bc206472279d |    928 chars | https://www.techmeme.com/260609/p1#a260609p1
+  ✓ ee867d607ca6 |   2733 chars | https://arxiv.org/abs/2606.07582
+  ✓ 8eeb03b41ba5 |   2254 chars | https://arxiv.org/abs/2606.07583
+  ✓ b4f9c856235a |   2028 chars | https://arxiv.org/abs/2606.07581
+  ✓ ec879c31459c |   2691 chars | https://arxiv.org/abs/2606.07586
+  ✓ de2861eba49e |   2091 chars | https://arxiv.org/abs/2606.07587
+  ✓ b665baa2c35c |   1562 chars | https://arxiv.org/abs/2606.07589
+  ✓ aea66a0cc653 |   2052 chars | https://arxiv.org/abs/2606.07591
+  ✓ e103dcee137d |   2007 chars | https://arxiv.org/abs/2606.07592
+  ✓ c20165bff9a8 |   2448 chars | https://arxiv.org/abs/2606.07597
+  ✓ 2ad3ad57e161 |   2128 chars | https://arxiv.org/abs/2606.07596
+  ✓ 7a6a8df8c648 |   2619 chars | https://arxiv.org/abs/2606.07598
+  ✓ 335ab5fc04f8 |   2446 chars | https://arxiv.org/abs/2606.07599
+  ✓ a16c150826da |   2315 chars | https://arxiv.org/abs/2606.07600
+  ✓ ba5cad60d54b |   1813 chars | https://arxiv.org/abs/2606.07601
+  ✓ af93358279e3 |   2078 chars | https://arxiv.org/abs/2606.07602
+  ✓ 71a8502bf297 |   1929 chars | https://arxiv.org/abs/2606.07603
+  ✓ 80a54be3da13 |   1921 chars | https://arxiv.org/abs/2606.07604
+  ✓ ad76b4c6dd95 |   2135 chars | https://arxiv.org/abs/2606.07605
+  ✓ 195a9405ddd6 |   2081 chars | https://arxiv.org/abs/2606.07607
+  ✓ cf3151bd5c12 |   2587 chars | https://arxiv.org/abs/2606.07606
+  ✓ c56e32becc42 |   2176 chars | https://arxiv.org/abs/2606.07549
+  ✓ 4f4f19bb98b7 |   2055 chars | https://arxiv.org/abs/2606.07577
+  ✓ 46c0e23a5d1d |   2217 chars | https://arxiv.org/abs/2606.07594
+  ✓ 2a7d6a08b8ca |   2349 chars | https://arxiv.org/abs/2606.07718
+  ✓ 0bee50dcae5e |   2350 chars | https://arxiv.org/abs/2606.07720
+  ✓ a1dc7e924b1b |   2666 chars | https://arxiv.org/abs/2606.07721
+  ✓ 28c38dfceb62 |   2769 chars | https://arxiv.org/abs/2606.07722
+  ✓ b6b3269a88cf |   2104 chars | https://arxiv.org/abs/2606.07780
+  ✓ bb355a7713e0 |   2778 chars | https://arxiv.org/abs/2606.07798
+  ✓ fae02bb5e77b |   1205 chars | https://arxiv.org/abs/2606.07801
+  ✓ a9cbec47f1a0 |   2019 chars | https://arxiv.org/abs/2606.07805
+  ✓ 0fc530558efd |   2416 chars | https://arxiv.org/abs/2606.07808
+  ✓ 068045e42e92 |   2008 chars | https://arxiv.org/abs/2606.07812
+  ✓ 3c09ee2041c6 |   2346 chars | https://arxiv.org/abs/2606.07819
+  ✓ 012bfac1650c |   1629 chars | https://arxiv.org/abs/2606.07874
+  ✓ fa981f0e271a |   2296 chars | https://arxiv.org/abs/2606.07866
+  ✓ d81de52fa73c |   2258 chars | https://arxiv.org/abs/2606.07904
+  ✓ b6850b32bdf8 |   2182 chars | https://arxiv.org/abs/2606.07897
+  ✓ 3c72fee05487 |   2580 chars | https://arxiv.org/abs/2606.07915
+  ✓ 24a84a18b538 |   2313 chars | https://arxiv.org/abs/2606.07909

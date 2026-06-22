@@ -1,0 +1,1698 @@
+
+========================================
+🤖 AI-Digest daily run: 2026-06-21 03:00:11 UTC
+   hours=24, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 24 --archive
+📡 Скачиваю 102 источников (с 2026-06-20T03:00:12.363006+00:00)...
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ arXiv cs.LG                              → 0 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ The Information                          → 20 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ ПостНаука (RU)                           → 14 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ Ведомости (technology)                   → 30 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ arXiv cs.LG                              → 0 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ arXiv cs.CV (Vision)                     → 0 posts
+  ✓ arXiv stat.ML                            → 0 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ Wired                                    → 30 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ arXiv cs.CL (NLP)                        → 30 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✗ Spark.ru                                 → parse error: <unknown>:2:0: syntax error
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ The Information                          → 20 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ The Decoder                              → 10 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ arXiv q-bio.NC                           → 0 posts
+  ✓ CNET                                     → 25 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ arXiv cs.RO (Robotics)                   → 0 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 0 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 0 posts
+  ✓ arXiv eess.IV (Image Video)              → 0 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 0 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ Becoming Human: AI Magazine              → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Safety News                           → fallback timeout: Missing dependencies for SOCKS support.
+
+✅ Готово за 57.6s
+   Источников OK: 97/102
+   Постов собрано (с дедупликацией): 1063
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-21.json
+
+📥 Архив: добавлено 179, обновлено 884, пропущено 0. Всего в архиве: 7328
+/home/apps_maker/ai-digest/storage/posts_2026-06-21.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-21.json
+
+🌐 Step 1.5: scrape.py --missing (только high-priority)
+📚 В архиве: 7328 постов
+🎯 К скрапингу: 770
+  ✓ 052a30c7a5b3 |   2273 chars | https://vinibrasil.com/when-i-reject-ai-code-even-if-it-works/
+  ✓ dab11b5beb8c |   5374 chars | https://fosterelli.co/developers-dont-understand-cors
+  ✗ 80867fb7f266 | HTTP 401
+  ✓ 8ce1dd544264 |   2440 chars | https://habr.com/ru/articles/1050030/?utm_source=habrahabr&utm_medium=
+  ✓ 071db837ef27 |   5489 chars | https://www.bbc.com/news/articles/c0rygp005wjo
+  ✓ 6e70f48cceac |   6316 chars | https://sibexi.co/posts/epoll-vs-io_uring/
+  ✓ dc20851c2b48 |   9928 chars | https://www.bbc.com/future/article/20260618-the-weird-and-wonderful-li
+  ✓ 6e158858c8db |  31238 chars | https://habr.com/ru/companies/studyai/articles/1048500/?utm_source=hab
+  ✓ e04ea6b4dd4e |    716 chars | https://www.techmeme.com/260620/p13#a260620p13
+  ✓ e300d359df6e |  29387 chars | https://habr.com/ru/articles/1050024/?utm_source=habrahabr&utm_medium=
+  ✓ 73cfd651d2bd |   7995 chars | https://habr.com/ru/articles/1050022/?utm_source=habrahabr&utm_medium=
+  ✓ 9d74b62197e4 |    667 chars | https://www.techmeme.com/260620/p12#a260620p12
+  ✓ bc3b68110a39 |   2736 chars | https://www.theregister.com/software/2025/09/03/supermarket-giant-tesc
+  ✓ 11c732ad164d |   7670 chars | https://habr.com/ru/articles/1050020/?utm_source=habrahabr&utm_medium=
+  ✗ cccc46bd6d98 | HTTP 403
+  ✓ 73e1db94de8c |  11526 chars | https://habr.com/ru/articles/1050014/?utm_source=habrahabr&utm_medium=
+  ✓ c722b3ccf652 |    913 chars | https://www.phoronix.com/news/Linux-7.2-Drops-strncpy
+  ✓ 31c5ca121636 |   8464 chars | https://www.anthropic.com/research/project-fetch-phase-two
+  ✓ 9a00524d119b |  30684 chars | https://habr.com/ru/articles/1050008/?utm_source=habrahabr&utm_medium=
+  ✓ 6fd8fbd485e8 |   1739 chars | https://habr.com/ru/news/1050010/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 7ddc78b7ede2 |   1260 chars | https://techcrunch.com/2026/06/20/signals-meredith-whittaker-wants-you
+  ✓ 40067811565f |   3650 chars | https://habr.com/ru/articles/1049998/?utm_source=habrahabr&utm_medium=
+  ✓ 0d2d5d3a959b |   1861 chars | https://habr.com/ru/news/1050004/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 80941dbae2cf |   3393 chars | https://brooker.co.za/blog/2026/06/19/waiting.html
+  ✓ 04de25e7d6e8 |   1401 chars | https://www.cnet.com/tech/gaming/todays-wordle-hints-answer-and-help-f
+  ✓ ccb50c76f4f8 |   2002 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-hints-answers-
+  ✓ 8331b567ff2e |   3247 chars | https://www.cnn.com/2026/06/20/americas/brazil-hackers-unauthorized-al
+  ✓ eb605fda48c6 |    633 chars | https://www.techmeme.com/260620/p11#a260620p11
+  ✓ 3b4cfd9f1275 |   1857 chars | https://www.cnet.com/tech/gaming/todays-nyt-strands-hints-answers-and-
+  ✓ 5cab6cb8b0ba |   3418 chars | https://techcrunch.com/2026/06/20/in-the-weights-is-your-new-ai-centri
+  ✓ 341cbb190b8c |   1316 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207520-tesla-nasmer
+  ✓ db77e6975108 |   2030 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-sports-edition
+  ✓ 7476760b2ee8 |   1028 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207518-britaniya-ra
+  ✓ 1932f54f5143 |    980 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207519-tramp-platu-
+  ✓ 915e945947e8 |    851 chars | https://www.vedomosti.ru/society/news/2026/06/20/1207513-kartinu-pikas
+  ✓ 285773f4818b |   8598 chars | https://clickhouse.com/blog/postgresbench
+  ✓ 5f4f9e707423 |   2630 chars | https://www.engadget.com/2198367/nasa-is-testing-ernest-rover-that-can
+  ✓ 6f11bef5d400 |   5691 chars | https://www.cnet.com/health/nutrition/wrong-about-meal-kits-service-ch
+  ✓ b0d34db6179b |   1844 chars | https://habr.com/ru/news/1049968/?utm_source=habrahabr&utm_medium=rss&
+  ✓ e4500944fe85 |   1835 chars | https://www.theverge.com/ai-artificial-intelligence/953183/the-atlanti
+  ✓ 4e065a493b5d |    989 chars | https://www.vedomosti.ru/investments/news/2026/06/20/1207516-mosbirzha
+  ✓ e4eb1d06a421 |   8713 chars | https://techcrunch.com/2026/06/20/founders-funds-outlier-bet-on-humane
+  ✓ d98e64452764 |   1375 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207517-hashig-perez
+  ✓ 6fab299f69b8 |   6447 chars | https://habr.com/ru/articles/1049960/?utm_source=habrahabr&utm_medium=
+  ✓ e3b2908be661 |   3132 chars | https://github.com/overflowy/make-look-scanned
+  ✓ 25b89066d46c |    626 chars | https://www.vedomosti.ru/society/news/2026/06/20/1207515-operatsiyu-le
+  ✓ 1492a9b71b79 |  10585 chars | https://waxy.org/2026/06/the-wholesale-plagiarism-of-obscure-sorrows/
+  ✓ 7aff8846d391 |   6233 chars | https://habr.com/ru/articles/1049832/?utm_source=habrahabr&utm_medium=
+  ✓ 79a20c66ff78 |   4303 chars | https://habr.com/ru/articles/1049944/?utm_source=habrahabr&utm_medium=
+  ✓ 5ecb38586e75 |   2615 chars | https://habr.com/ru/articles/1049942/?utm_source=habrahabr&utm_medium=
+  ✓ 7bc3448f3b9a |    679 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207514-24-bespilotn
+  ✓ d57e8eb9565c |   2340 chars | https://habr.com/ru/articles/1049940/?utm_source=habrahabr&utm_medium=
+  ✓ b9815dd22821 |    468 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207512-zaporozhskoi
+  ✓ 4fdc87487de3 |   1582 chars | https://www.engadget.com/2198357/epic-is-working-on-a-ground-up-rebuil
+  ✓ b9e6ecdf5517 |    636 chars | https://www.techmeme.com/260620/p10#a260620p10
+  ✓ b6d4af6804ee |    909 chars | https://www.vedomosti.ru/society/news/2026/06/20/1207511-rossiyanam-el
+  ✓ bffeb9e21d0d |   4207 chars | https://thenextweb.com/news/claude-guillemot-ubisoft-co-founder-dies-p
+  ✓ 6c43dd68be1a |   2436 chars | https://www.engadget.com/2198352/nasa-swift-boost-mission-will-launch-
+  ✓ 00c21b6992b0 |    520 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207509-meloni-druzh
+  ✓ 031d6f045040 |    882 chars | https://github.com/oven-sh/WebKit/pull/249
+  ✓ c75edcbe8313 |   1177 chars | https://www.lispm.net/apps/uhf-x11/
+  ✓ b12a0de7e7af |   2899 chars | https://the-decoder.com/the-eu-doesnt-really-know-what-a-deepfake-is-a
+  ✓ db83b9dcf135 |   8731 chars | https://habr.com/ru/articles/1049936/?utm_source=habrahabr&utm_medium=
+  ✓ 2be0d47333dc |  12350 chars | https://towardsdatascience.com/7-crucial-barriers-between-data-teams-a
+  ✓ 7e9f9b04ac10 |   1394 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207510-zyuganov-vnu
+  ✓ fdd430cc7e4d |  10984 chars | https://habr.com/ru/articles/1049852/?utm_source=habrahabr&utm_medium=
+  ✓ 5a60fcd9ee73 |   1692 chars | https://www.smpte.org/blog/smpte-makes-its-standards-freely-accessible
+  ✓ fee70e509b08 |   6956 chars | https://thenextweb.com/news/gravity-smtp-wordpress-plugin-vulnerabilit
+  ✓ 232b0ce5ea49 |    997 chars | https://techcrunch.com/2026/06/20/nobel-laureate-john-jumper-is-leavin
+  ✓ a4f70418ec93 |    500 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207508-strelbu-po-t
+  ✓ e73d37043500 |  12581 chars | https://habr.com/ru/articles/1049932/?utm_source=habrahabr&utm_medium=
+  ✓ ac5064701bac |   9112 chars | https://habr.com/ru/articles/1049930/?utm_source=habrahabr&utm_medium=
+  ✓ ea2849cca450 |   1400 chars | https://habr.com/ru/news/1049928/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 2ffcc32b9b91 |   6568 chars | https://thenextweb.com/news/ai-workslop-knowledge-decay-harvard-busine
+  ✓ 4ccbd681c231 |    702 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207507-iranskaya-de
+  ✓ c61011232786 |   6157 chars | https://thenextweb.com/news/microsoft-crypto-clipper-usb-malware-tor-c
+  ✓ 8d5d0a82f14d |   5517 chars | https://thenextweb.com/news/airpods-pro-3-heart-rate-accuracy-apple-wa
+  ✗ c6a62c4c6040 | TypeError: object of type 'NoneType' has no len()
+  ✓ e5bc28e76086 |   1889 chars | https://www.cnet.com/deals/nothing-earbuds-deal-2026-06-20/
+  ✓ 9be5067a377c |    634 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207506-netanyahu-os
+  ✓ af148e347988 |   1425 chars | https://www.engadget.com/2198346/claude-guillemot-one-of-ubisoft-co-fo
+  ✓ 9775674d7c79 |   5409 chars | https://www.engadget.com/2198274/how-to-customize-kindle-screensaver-g
+  ✓ a615fcc84ad5 |    727 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207505-zaes-radiats
+  ✓ 18af52ad9fea |   3188 chars | https://neuviemeporte.github.io/f15-se2/2026/06/20/needyou.html
+  ✓ 55a2fa0f2438 |   1315 chars | https://www.vedomosti.ru/society/news/2026/06/20/1207501-normativah-ch
+  ✓ 1918fd73c73d |    633 chars | https://www.techmeme.com/260620/p9#a260620p9
+  ✓ 3fa426f4e9d5 |  17522 chars | https://towardsdatascience.com/making-a-pdfs-images-searchable-for-rag
+  ✓ b3c99415eb5d |   4753 chars | https://techcrunch.com/2026/06/20/every-new-ios-27-feature-thats-worth
+  ✓ 2e42f42a5382 |   1026 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207502-ssha-iran-te
+  ✓ a54c094f0cf0 |  10091 chars | https://www.cnet.com/tech/mobile/airpods-vs-apple-watch-heart-rate-acc
+  ∅ 636e7a80b36b | extracted only 55 chars
+  ✓ afdf08b5140d |    990 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207498-uitkoffa-kus
+  ✓ 718ae87b7bc4 |    406 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207500-kprf-kandida
+  ∅ b6bd4605bb3f | extracted only 66 chars
+  ✓ 8931e8c1cd0f |    646 chars | https://www.techmeme.com/260620/p8#a260620p8
+  ✓ e5adffa67ac8 |  11152 chars | https://habr.com/ru/articles/1049920/?utm_source=habrahabr&utm_medium=
+  ✓ a3c593282789 |    474 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207503-prohode-sudo
+  ✓ 122f3fc379ec |   3079 chars | https://habr.com/ru/articles/1049918/?utm_source=habrahabr&utm_medium=
+  ✓ 0c1198982674 |  22368 chars | https://habr.com/ru/articles/1049912/?utm_source=habrahabr&utm_medium=
+  ✓ 0792937a44c0 |  13696 chars | https://habr.com/ru/articles/1049844/?utm_source=habrahabr&utm_medium=
+  ✓ 335cd24537a5 |   9996 chars | https://habr.com/ru/articles/1049910/?utm_source=habrahabr&utm_medium=
+  ✓ c84dee37153d |   7170 chars | https://www.cnet.com/culture/disclosure-day-how-will-we-trust-evidence
+  ✓ 4900f336b9ed |    910 chars | https://www.vedomosti.ru/society/news/2026/06/20/1207494-hlora-otele-t
+  ✓ d73705257417 |   6530 chars | https://www.engadget.com/2197854/why-car-manufacturers-ditching-androi
+  ✓ 38fc78d20d85 |   1229 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207492-tramp-meloni
+  ✓ ffa25ccadb10 |   1306 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207495-iran-ormuzsk
+  ✓ a13f76ecf176 |    484 chars | https://www.vedomosti.ru/society/news/2026/06/20/1207493-posetitelei-t
+  ✓ aef6909dccd2 |   1131 chars | https://the-decoder.com/openais-codex-can-now-watch-you-work-once-and-
+  ✓ 3a672a224f1d |  20347 chars | https://habr.com/ru/companies/ruvds/articles/1049182/?utm_source=habra
+  ✓ c92db6c14307 |    672 chars | https://www.vedomosti.ru/investments/news/2026/06/20/1207491-mosbirzha
+  ✓ f326bc6f87ac |    646 chars | https://www.techmeme.com/260620/p7#a260620p7
+  ✓ 787553994c1f |   8910 chars | https://habr.com/ru/companies/ru_mts/articles/1049730/?utm_source=habr
+  ✓ f88dc83f28d3 |   6667 chars | https://www.cnet.com/tech/computing/i-nailed-these-tricky-macro-shots-
+  ✓ 574ffdc96ee9 |  18603 chars | https://towardsdatascience.com/materialized-lake-views-in-microsoft-fa
+  ✓ 880aff593da5 |   1612 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207489-izrailskih-u
+  ✓ 809b7e86d5f9 |   2157 chars | https://habr.com/ru/news/1049800/?utm_source=habrahabr&utm_medium=rss&
+  ✓ a65fd61ca011 |    566 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207490-57-dronov
+  ✓ b4e6ed2e6472 |    863 chars | https://roem.ru/21-06-2026/307969/vladislav-bakalchuk-predrekaet/?from
+  ✓ 320a25d0eb07 |   1615 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207487-ugroza-zelen
+  ✓ aa2b9244d317 |  20074 chars | https://habr.com/ru/articles/1049898/?utm_source=habrahabr&utm_medium=
+  ✓ 85a07497876c |   2311 chars | https://github.com/mysk-research/loupe
+  ✓ 90abcb638a59 |    593 chars | https://www.vedomosti.ru/politics/news/2026/06/20/1207488-zaporozhskay
+  ✓ 43a6d0afc41f |   3070 chars | https://the-decoder.com/nyu-finance-professor-damodaran-warns-an-ai-cr
+  ✓ 3df253ed51a0 |   9442 chars | https://habr.com/ru/articles/1049840/?utm_source=habrahabr&utm_medium=
+  ✓ ca4348dd926d |    769 chars | https://townsquare.cauenapier.com/
+  ✓ b76c65a61557 |   1644 chars | https://www.engadget.com/2198323/nothing-budget-brand-cmf-new-new-phon
+  ✓ c2722b5d3aea |   7572 chars | https://www.cnet.com/tech/services-and-software/ai-scams-have-red-flag
+  ✗ 06098adea975 | HTTP 403
+  ✓ 2c98cc76c948 |   3790 chars | https://habr.com/ru/articles/1049896/?utm_source=habrahabr&utm_medium=
+  ✓ b5e815af7fdb |   4023 chars | https://habr.com/ru/companies/onlinepatent/articles/1049894/?utm_sourc
+  ✓ 5ea667d57cab |   5452 chars | https://thenextweb.com/news/jio-platforms-ipo-3-8-billion-india-larges
+  ✓ 528d0e934f25 |   5724 chars | https://blog.cloudflare.com/temporary-accounts/
+  ✓ 021abad2fd50 |   8601 chars | https://habr.com/ru/articles/1049324/?utm_source=habrahabr&utm_medium=
+  ✓ 463e2034fc79 |  17844 chars | https://habr.com/ru/articles/1049890/?utm_source=habrahabr&utm_medium=
+  ✓ 11e30a0e1db1 |  10192 chars | https://www.engadget.com/2198112/steam-next-fest-demos-a-virtual-boy-i
+  ✓ 32141d2e2fd8 |   8366 chars | https://www.wired.com/story/how-to-buy-a-home-battery/
+  ∅ 87a4d4edd147 | extracted only 40 chars
+  ✗ 5e79296be9c3 | TypeError: object of type 'NoneType' has no len()
+  ✓ face486aefc1 |   1974 chars | https://habr.com/ru/news/1049884/?utm_source=habrahabr&utm_medium=rss&
+  ✓ a6f6ad4a9838 |   2673 chars | https://arstechnica.com/tech-policy/2026/06/the-uk-will-scan-asylum-se
+  ✓ 9fe16955ccde |  12611 chars | https://www.wired.com/story/early-prime-day-deals-june-2026-2/
+  ✓ 0a3c116fa927 |  16096 chars | https://www.wired.com/gallery/best-greens-powders/
+  ✓ aab7627359d3 |  10765 chars | https://tproger.ru/articles/kak-zvonok-ceo-amazon-v-belyj-dom-otklyuch
+  ✓ 275b16ea1dc1 |   2981 chars | https://habr.com/ru/news/1049758/?utm_source=habrahabr&utm_medium=rss&
+  ∅ 247485129039 | extracted only 189 chars
+  ✓ ca1231be5448 |   5005 chars | https://thenextweb.com/news/shinyhunters-madison-square-garden-45gb-da
+  ✓ 977190f7106d |   9199 chars | https://www.wired.com/story/siri-ai-hands-on-iphone/
+  ✓ 1985a640680a |    676 chars | https://www.techmeme.com/260620/p6#a260620p6
+  ✓ 66c87c7ac2b9 |   8897 chars | https://www.cnet.com/tech/home-entertainment/hisense-m2-pro-projector-
+  ✓ 820c0b412f6d |   5486 chars | https://thenextweb.com/news/wharton-cognitive-surrender-ai-chatbots-de
+  ✓ 538ed8b32c4d |   6681 chars | https://the-decoder.com/data2story-turns-a-csv-file-into-a-verified-in
+  ✓ 1183498db3a9 |   5371 chars | https://www.wired.com/story/security-news-this-week-hackers-claim-to-l
+  ✓ e48ab8c786f9 |   3103 chars | https://tproger.ru/news/operaciya-endgame-otklyuchila-106-serverov-soc
+  ✓ 3bf500d7c4fa |   2291 chars | https://habr.com/ru/companies/selectel/news/1049744/?utm_source=habrah
+  ✓ 821287bafc24 |   4460 chars | https://www.wired.com/story/scientists-brew-espresso-with-ultrasonic-w
+  ✓ fd2ebd33ae99 |   1829 chars | https://habr.com/ru/news/1049864/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 73180ae801ea |  15032 chars | https://www.cnet.com/home/smart-home/best-apple-homekit-siri-devices/
+  ✓ f478abb14063 |   4449 chars | https://thenextweb.com/news/byd-rejects-hungary-environmental-violatio
+  ✓ 2e15a7921114 |   5674 chars | https://tproger.ru/news/vremennye-akkaunty-cloudflare-dlya-ii-agentov
+  ✓ 6df05f2d0592 |   1067 chars | https://the-decoder.com/chatgpt-keeps-creeping-toward-becoming-your-ai
+  ✓ 7ab45149ed93 |   3826 chars | https://thenextweb.com/news/vlc-developer-kyber-5-million-lightspeed-r
+  ✓ a5342b63c779 |   2121 chars | https://habr.com/ru/news/1049854/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 338125da767d |   1251 chars | https://habr.com/ru/news/1049860/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 9563a50012c1 |    928 chars | https://habr.com/ru/news/1049752/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 574b2a7ba60a |   3062 chars | https://habr.com/ru/news/1049318/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 42489ef89b2c |   1361 chars | https://the-decoder.com/openai-tripled-revenue-to-5-7-billion-in-q1-bu
+  ✓ 27973f800dd8 |   5824 chars | https://www.cnet.com/home/kitchen-and-household/a-coffee-expert-explai
+  ✓ 3a62e4cab426 |    623 chars | https://www.techmeme.com/260620/p4#a260620p4
+  ✓ 87530f6ca2e9 |    646 chars | https://www.techmeme.com/260620/p5#a260620p5
+  ✓ 75b6d3b9db88 |    654 chars | https://www.techmeme.com/260620/p2#a260620p2
+  ✗ 61b55efa648c | HTTP 429
+  ✓ 61aea3659d33 |    621 chars | https://www.techmeme.com/260620/p3#a260620p3
+  ✗ be9ecced1e30 | HTTP 403
+  ✓ 30eaf41e2c7e |    650 chars | https://www.techmeme.com/260620/p1#a260620p1
+  ✓ 84719e831028 |   2015 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-sports-edition
+  ✓ d094ab662378 |   1643 chars | https://www.cnet.com/tech/gaming/todays-nyt-mini-crossword-answers-for
+  ✗ c2286de70c4d | HTTP 429
+  ✗ deade1e4e10e | HTTP 401
+  ∅ d53d79e2d13d | extracted only 50 chars
+  ∅ 584c863f9e55 | extracted only 65 chars
+  ✗ 9a8e41e9458f | HTTP 403
+  ✗ d588eee658e6 | HTTP 403
+  ∅ d4a740fb70de | extracted only 83 chars
+  ∅ 99db5c19c95e | extracted only 90 chars
+  ✗ 7a508986bc65 | TypeError: object of type 'NoneType' has no len()
+  ✗ 91d44dd78c3d | HTTP 403
+  ∅ 035dcbf6db13 | extracted only 45 chars
+  ∅ 2a56d48c5954 | extracted only 153 chars
+  ✗ bf09db454528 | HTTP 403
+  ∅ 73c89ce1434c | extracted only 86 chars
+  ∅ be07d056b835 | extracted only 148 chars
+  ✗ cf11c2945adf | HTTP 403
+  ✗ 2c006589894d | HTTP 403
+  ∅ d4ed03f759eb | extracted only 28 chars
+  ∅ eae9fcbae39a | extracted only 63 chars
+  ✗ 712ef0763f06 | HTTP 403
+  ∅ 4f1c312f5113 | extracted only 32 chars
+  ∅ d356f3643f96 | extracted only 45 chars
+  ✓ aa7fe5b3ca23 |   6351 chars | https://lwn.net/Articles/1076018/
+  ∅ 6c15cd212624 | extracted only 43 chars
+  ✗ f364d16f86f5 | HTTP 429
+  ∅ 2a07c87adeef | extracted only 33 chars
+  ∅ 2c6ae5983bd9 | extracted only 45 chars
+  ✗ 40acf758f913 | TypeError: object of type 'NoneType' has no len()
+  ✗ ebfbba907c0d | HTTP 403
+  ✗ d8b5ec691b2b | HTTP 403
+  ∅ 7c4ea23a1f6b | extracted only 45 chars
+  ✗ 5bf6e09b1743 | HTTP 429
+  ∅ 8906b08daffa | extracted only 75 chars
+  ✗ dd0246422f1b | HTTP 429
+  ∅ 1ef76e9127ce | extracted only 63 chars
+  ∅ b2268f551939 | extracted only 35 chars
+  ✗ a55ebd412e31 | HTTP 403
+  ✗ d7b32e5481b3 | HTTP 403
+  ✗ 114117897cb3 | HTTP 403
+  ∅ ff26cfa6ece2 | extracted only 71 chars
+  ✗ 9e3184570780 | HTTP 403
+  ✗ bea2ce6dd3a3 | TypeError: object of type 'NoneType' has no len()
+  ∅ af858ffcfaed | extracted only 45 chars
+  ∅ b395ffc10e0d | extracted only 80 chars
+  ✗ f4d0d38f53d0 | HTTP 403
+  ✗ 271e5212fb09 | HTTP 429
+  ∅ b03d95e904dc | extracted only 63 chars
+  ∅ e65428c6a65a | extracted only 61 chars
+  ∅ e9202e8aed05 | extracted only 42 chars
+  ∅ c54807119c13 | extracted only 35 chars
+  ∅ d2dad66b99ed | extracted only 153 chars
+  ∅ 197c0b5c2098 | extracted only 77 chars
+  ∅ e84b788f079d | extracted only 93 chars
+  ✓ 160911aa213f |   6734 chars | https://www.bostonglobe.com/2026/06/17/business/lyme-disease-tick-test
+  ∅ 619c833afed4 | extracted only 63 chars
+  ✗ ad2ec02b5ba7 | HTTP 403
+  ∅ 7ffdc4f508a4 | extracted only 32 chars
+  ∅ 766ccf37972e | extracted only 82 chars
+  ∅ 9c37a5224327 | extracted only 42 chars
+  ∅ b68e1d02bb06 | extracted only 169 chars
+  ∅ 3b50cf5a10de | extracted only 63 chars
+  ∅ 1f366b2599c6 | extracted only 63 chars
+  ∅ 10fa5f658219 | extracted only 94 chars
+  ✗ 796b3536965e | HTTP 403
+  ✓ c18f7c6d7ddb |  13085 chars | https://www.nature.com/articles/s41551-026-01660-4
+  ∅ f594698d4cc8 | extracted only 48 chars
+  ∅ 9e270040d178 | extracted only 141 chars
+  ✗ c514755e7e8f | HTTP 202
+  ✗ 082f2fab7187 | HTTP 403
+  ✗ d1e237ccf888 | HTTP 403
+  ✗ 9efce20aa445 | HTTP 403
+  ∅ 5a406a24796c | extracted only 63 chars
+  ∅ e9fe06c21199 | extracted only 45 chars
+  ✗ 2d3705b270ca | HTTP 429
+  ∅ 1d59634ef569 | extracted only 53 chars
+  ∅ 7b4645f2d446 | extracted only 43 chars
+  ∅ bf815cb48274 | extracted only 45 chars
+  ∅ 1bfc971c3f29 | extracted only 45 chars
+  ∅ 3da405017771 | extracted only 77 chars
+  ∅ 59e372b12677 | extracted only 45 chars
+  ✗ 12aca1231575 | HTTP 429
+  ∅ 1310cde3e58f | extracted only 73 chars
+  ∅ 3861838eddd8 | extracted only 63 chars
+  ∅ f54bef20b82d | extracted only 63 chars
+  ✗ e7dccfe6e561 | HTTP 403
+  ∅ 045bb34d71e0 | extracted only 45 chars
+  ✗ c108ed4ce7df | TypeError: object of type 'NoneType' has no len()
+  ✗ 815b7c6b23ff | TypeError: object of type 'NoneType' has no len()
+  ∅ 6b9ae37091b0 | extracted only 90 chars
+  ✗ 5126ee0d1124 | HTTP 403
+  ∅ 92e6774def6a | extracted only 63 chars
+  ∅ 4392f3194935 | extracted only 66 chars
+  ∅ 57648f3ec245 | extracted only 63 chars
+  ∅ ba46891e67e6 | extracted only 31 chars
+  ∅ b2dc00b42e0f | extracted only 50 chars
+  ✗ 7ce076bc1edc | HTTP 403
+  ✗ 88ab90c2bc2b | HTTP 403
+  ✗ 02a744438919 | HTTP 403
+  ∅ e7c029ff054f | extracted only 40 chars
+  ∅ 9b733156119c | extracted only 67 chars
+  ∅ 4f9cc1f6f68e | extracted only 64 chars
+  ✗ 80c1a32658b0 | HTTP 403
+  ∅ a0869c472441 | extracted only 63 chars
+  ✗ 76af600c6d35 | HTTP 403
+  ∅ f314c0187142 | extracted only 49 chars
+  ∅ 5b3f01b6ee84 | extracted only 87 chars
+  ✗ cad33913c5c9 | HTTP 403
+  ∅ ce709938e81e | extracted only 134 chars
+  ∅ 822f7a3acfdd | extracted only 45 chars
+  ✗ eda960c8bcbc | HTTP 403
+  ∅ c6b9e481f869 | extracted only 48 chars
+  ✗ 2b2b66bd1499 | HTTP 401
+  ✗ 65532c445781 | HTTP 429
+  ∅ d72cd31558ce | extracted only 64 chars
+  ✗ 916e534ab8d5 | HTTP 403
+  ✗ ad8828785b99 | HTTP 429
+  ∅ 4f029a64dda4 | extracted only 59 chars
+  ∅ 216cdf44f4bb | extracted only 51 chars
+  ∅ c525450dac37 | extracted only 92 chars
+  ✗ 8c5bbbf4b3e3 | HTTP 429
+  ∅ 82e848f1faa9 | extracted only 63 chars
+  ✓ 4428f3605161 |  13488 chars | https://injuly.in/blog/napkin-inference-cost/index.html
+  ∅ 5b0fb295dca1 | extracted only 48 chars
+  ∅ afd0d5f77b77 | extracted only 33 chars
+  ✗ 5684f01f709d | HTTP 429
+  ∅ dd9e76a976eb | extracted only 75 chars
+  ✗ 6101a70f6e74 | TypeError: object of type 'NoneType' has no len()
+  ∅ 4d2d34acaf4a | extracted only 45 chars
+  ∅ 850f0c6ac20e | extracted only 102 chars
+  ∅ 3819cac544ad | extracted only 45 chars
+  ∅ 48941515de2f | extracted only 46 chars
+  ✗ aabe3d2ff6e8 | HTTP 403
+  ∅ cef29d08e769 | extracted only 63 chars
+  ∅ c2e2e674baad | extracted only 14 chars
+  ∅ 34c4c41e5d47 | extracted only 63 chars
+  ∅ 402a1765ac8f | extracted only 63 chars
+  ✗ 21c41b71714e | HTTP 403
+  ∅ afb204d2633f | extracted only 45 chars
+  ∅ 81ddfdce023c | extracted only 94 chars
+  ∅ 920e8e0161e5 | extracted only 66 chars
+  ∅ b53a7ddd9906 | extracted only 100 chars
+  ✗ a142be45241f | HTTP 429
+  ✗ 6dbf0d757456 | HTTP 403
+  ✗ 48710fe95660 | HTTP 429
+  ✗ 047ea2d613ca | TypeError: object of type 'NoneType' has no len()
+  ∅ fea96deb444b | extracted only 73 chars
+  ✗ c8187894b237 | TypeError: object of type 'NoneType' has no len()
+  ✗ 8b7f5a93fc3c | HTTP 403
+  ✗ 63c49bc52b39 | HTTP 429
+  ∅ a13b1af7aced | extracted only 63 chars
+  ✗ c9b65226d2de | HTTP 401
+  ✗ de95044dd5eb | HTTP 403
+  ✗ d9c28bc25588 | HTTP 429
+  ∅ a2dfcddf9904 | extracted only 95 chars
+  ∅ dba125a330d5 | extracted only 151 chars
+  ✗ 19e62ca74edb | HTTP 429
+  ✓ 69677a1ebc2e |   5572 chars | https://spectrum.ieee.org/phoenix-semiconductors-legacychips-oems
+  ✗ 418801759a4d | HTTP 403
+  ✗ 031fe56c38cf | HTTP 403
+  ✗ d380a573f1bf | HTTP 429
+  ✗ 78370ad0c08f | HTTP 429
+  ✗ 46cd69ea52ea | HTTP 403
+  ✗ d00f7c22cf61 | HTTP 429
+  ✗ 73c7610a671d | HTTP 429
+  ✗ 3569af6bdf5e | HTTP 429
+  ✗ 9292161d5e0a | HTTP 429
+  ✗ b8e6d540df59 | HTTP 403
+  ✗ d184ec3625e9 | HTTP 429
+  ∅ 459cca9c85d2 | extracted only 63 chars
+  ✗ 13323bc5bb20 | TypeError: object of type 'NoneType' has no len()
+  ✗ 8de637d413f8 | TypeError: object of type 'NoneType' has no len()
+  ✗ 3c11b17a6c51 | TypeError: object of type 'NoneType' has no len()
+  ✗ a0b3831c43de | HTTP 403
+  ✗ 6f86984f50ae | HTTP 429
+  ✗ 3286aefa0b66 | HTTP 429
+  ✗ ee44a154ef14 | HTTP 429
+  ✗ 2481244b5d3d | HTTP 403
+  ⏱ 0dcc36e1e938 | timeout
+  ✗ c11a5fc85a57 | HTTP 429
+  ✗ 9b0fc7edb18c | HTTP 429
+  ✗ 47edae7dd060 | HTTP 403
+  ∅ d68073a4b6d9 | extracted only 63 chars
+  ✗ 7a659f2494f7 | HTTP 429
+  ✗ fa1f369e4df4 | HTTP 403
+  ✗ 29f4ca0533ca | HTTP 401
+  ✗ 0bd7a91a7870 | HTTP 403
+  ✗ c87655b88045 | HTTP 429
+  ✗ 8c1d6793dd8b | HTTP 429
+  ∅ dadfd91d3d78 | extracted only 55 chars
+  ✗ 85d1075eac72 | HTTP 403
+  ✗ 65bbab2c6c8b | HTTP 429
+  ∅ a360dcef4934 | extracted only 63 chars
+  ∅ 13022b10455f | extracted only 176 chars
+  ✗ ccf198ec3516 | HTTP 403
+  ∅ 19e946b6dd82 | extracted only 63 chars
+  ∅ 3ab23ab623e2 | extracted only 33 chars
+  ✗ ff33807860b3 | HTTP 429
+  ✗ eac1a24984f4 | HTTP 403
+  ∅ 75f2bbb3f80b | extracted only 85 chars
+  ✗ 85b327d62a62 | HTTP 429
+  ∅ 73b493ff8768 | extracted only 179 chars
+  ✗ d632652cb1a9 | HTTP 429
+  ∅ 33bbac5ce021 | extracted only 63 chars
+  ✗ 9b41ef631f1c | HTTP 403
+  ✗ 36a708f6ef97 | TypeError: object of type 'NoneType' has no len()
+  ∅ 61adedf87d8d | extracted only 63 chars
+  ✗ 9a319d2ec34e | HTTP 429
+  ∅ cc779a956073 | extracted only 153 chars
+  ✗ ede3c3382a26 | HTTP 429
+  ∅ 9e1da6246e50 | extracted only 141 chars
+  ✗ e86403a8ba8f | HTTP 429
+  ✗ a1a9919ade2b | HTTP 403
+  ✗ 94ad53243a1b | HTTP 429
+  ✗ 12eae63a62c9 | HTTP 403
+  ✗ 894c51df33f4 | HTTP 403
+  ✗ f582d40c501d | HTTP 401
+  ✗ 8b36ee9d5815 | HTTP 429
+  ✗ f13b51934424 | HTTP 429
+  ✗ 6a1ae3f6558f | HTTP 429
+  ∅ 786f72f8607c | extracted only 15 chars
+  ✗ 4329a5d6d8fc | HTTP 429
+  ✗ c5ff2a049b40 | HTTP 429
+  ✗ 49d8ffca9954 | HTTP 401
+  ✗ 9cc7608624a9 | HTTP 403
+  ✗ d9131872dea3 | HTTP 429
+  ✗ b2918d7687a2 | HTTP 429
+  ✗ 03b9d0436f50 | HTTP 429
+  ✗ ae938806e82e | HTTP 403
+  ∅ 5caf59a41944 | extracted only 97 chars
+  ✗ e22307c01088 | HTTP 429
+  ✗ 26ffe7764930 | HTTP 429
+  ✗ 712562552311 | HTTP 429
+  ✗ df34e6426a59 | HTTP 429
+  ✗ 752c5f4be8c4 | HTTP 429
+  ✗ 3ce03914ef43 | HTTP 429
+  ✗ 4fb17ef91977 | TypeError: object of type 'NoneType' has no len()
+  ✗ 22725d685a35 | HTTP 429
+  ✗ c53775f381f8 | TypeError: object of type 'NoneType' has no len()
+  ✗ 2580e38db21f | HTTP 429
+  ✗ f4d6fb20f321 | HTTP 429
+  ✗ fc04f8df5cbd | HTTP 429
+  ✗ daa47b4928cc | HTTP 429
+  ∅ 4acb729ab617 | extracted only 63 chars
+  ∅ 1928b7cd6895 | extracted only 63 chars
+  ∅ ca53f907fa67 | extracted only 63 chars
+  ✗ 31e268b2c07a | HTTP 403
+  ∅ 135f2c51e013 | extracted only 106 chars
+  ✗ 5545b24ba8b3 | HTTP 429
+  ∅ e29639034d58 | extracted only 106 chars
+  ∅ 5686d1e1acd6 | extracted only 134 chars
+  ✗ 124cfd150b7f | HTTP 429
+  ✗ 1c1d3c4d0b02 | HTTP 429
+  ✗ e5e9bd931104 | HTTP 403
+  ∅ 555091f95a86 | extracted only 63 chars
+  ✗ eb6c51388309 | HTTP 429
+  ✗ e9d97d1dbf62 | HTTP 429
+  ✗ 96d13a8536b6 | HTTP 429
+  ✗ 26162e6eb29d | TypeError: object of type 'NoneType' has no len()
+  ✗ 478835b2440e | HTTP 403
+  ✗ 2f31e7c2d2cb | HTTP 429
+  ✗ 2690b8a748c9 | HTTP 429
+  ✗ 0b4bc654a1ee | HTTP 429
+  ✗ 74eb9777868d | HTTP 429
+  ✗ 668cabe7e63a | HTTP 429
+  ✗ d3d15fdbd3ec | HTTP 429
+  ✗ 8c2ae86ddddb | HTTP 403
+  ✗ 07fc09adb4be | HTTP 429
+  ∅ b55db24f8bc4 | extracted only 74 chars
+  ∅ 0d16b78293a3 | extracted only 159 chars
+  ✗ 9f5f1f2c5ad7 | HTTP 403
+  ✗ dec76480b787 | HTTP 429
+  ✗ 52bcb696380e | HTTP 429
+  ∅ 369980a34df2 | extracted only 63 chars
+  ∅ 7fe58de4b60a | extracted only 66 chars
+  ✗ 254518332313 | HTTP 403
+  ✗ 81a30507eba6 | HTTP 429
+  ✗ 579e41d9846a | HTTP 429
+  ✗ e0acdb0472e8 | HTTP 403
+  ✗ f18a92aafd8d | HTTP 429
+  ✗ 50220b7f864d | HTTP 403
+  ✗ 98f62c93b442 | TypeError: object of type 'NoneType' has no len()
+  ✗ b798dc6802e0 | HTTP 403
+  ∅ 327605752df4 | extracted only 43 chars
+  ✗ e85cee36591c | HTTP 429
+  ∅ 77522466b298 | extracted only 63 chars
+  ✗ 8451d6b1bc06 | TypeError: object of type 'NoneType' has no len()
+  ∅ 4098db80be4f | extracted only 87 chars
+  ∅ a6656ddbe585 | extracted only 63 chars
+  ∅ dfda7c2e713c | extracted only 63 chars
+  ✗ 523a34c56360 | TypeError: object of type 'NoneType' has no len()
+  ∅ d1be6c45f39e | extracted only 187 chars
+  ∅ 7e72301cc14f | extracted only 113 chars
+  ✗ be86c9d09a56 | HTTP 403
+  ✗ 1dcfcce12691 | HTTP 403
+  ∅ 15b98d3bf229 | extracted only 63 chars
+  ∅ c3eea14342bb | extracted only 154 chars
+  ✗ 772a4899481f | HTTP 403
+  ∅ b8e445ee70c6 | extracted only 63 chars
+  ∅ 90ff33a85065 | extracted only 29 chars
+  ✗ 626890cbe540 | HTTP 429
+  ✗ 21c10abe484e | HTTP 403
+  ✗ dddca4da835f | HTTP 403
+  ✗ 1eb04e1b753d | HTTP 403
+  ✗ 9b8ca91ae050 | HTTP 403
+  ∅ dc509934b4dd | extracted only 63 chars
+  ✗ f5fdb80fa91a | HTTP 403
+  ✗ ebd8c99b3573 | HTTP 429
+  ✗ bfbf641beda5 | HTTP 403
+  ∅ efd37e95e9af | extracted only 63 chars
+  ✗ 8926e37d73b8 | HTTP 403
+  ✗ 88ea5d74b3ce | HTTP 403
+  ✗ 9b77dce7b354 | HTTP 403
+  ✗ ed424537b7c4 | HTTP 403
+  ✗ 94f5302d08b7 | HTTP 429
+  ✗ b4837f5c5415 | HTTP 429
+  ✗ 73c80418f56e | HTTP 429
+  ✗ c41a1120a0bf | HTTP 429
+  ✗ 828be2b1e9ca | HTTP 429
+  ✗ 6cb09c1a7d3b | HTTP 403
+  ✗ c6fecd915567 | HTTP 403
+  ✗ b5dbfc5b53a2 | HTTP 429
+  ✗ fb4992f6b9a8 | HTTP 429
+  ✗ 86b97dc0f300 | HTTP 403
+  ∅ a889548638f1 | extracted only 93 chars
+  ✗ 4f5ef584ded3 | HTTP 429
+  ✗ 76303ce3234b | HTTP 429
+  ✗ 76201c4160f3 | TypeError: object of type 'NoneType' has no len()
+  ✗ 8448c9fea336 | HTTP 404
+  ∅ e63a22222453 | extracted only 63 chars
+  ✗ 080d9ca25141 | HTTP 429
+  ∅ 62a23b28bcbe | extracted only 63 chars
+  ✗ 4a54946aed78 | HTTP 403
+  ✗ 3f4e8d7a4d52 | HTTP 429
+  ∅ 7432e94a82e4 | extracted only 111 chars
+  ✗ 563dd4bbd0d3 | HTTP 429
+  ∅ db2c55ed4177 | extracted only 63 chars
+  ∅ 17ed0b9464ba | extracted only 63 chars
+  ✗ 9446da5d7094 | HTTP 429
+  ∅ 2fbdf1eb1f69 | extracted only 63 chars
+  ∅ 2697e516e3c7 | extracted only 50 chars
+  ∅ 402379514b0b | extracted only 65 chars
+  ∅ 5d05a3eb8588 | extracted only 63 chars
+  ✗ 2c872de7fac2 | HTTP 403
+  ∅ ede444ffab7f | extracted only 63 chars
+  ∅ be737879ec62 | extracted only 148 chars
+  ✗ 5a40aea23372 | HTTP 403
+  ✗ 7983f228c6db | HTTP 403
+  ✗ d2a39068329c | HTTP 403
+  ✗ c1645031ca22 | HTTP 403
+  ✗ f27d43c57275 | HTTP 403
+  ∅ e77de0c1cf95 | extracted only 30 chars
+  ✗ 24f89a27304b | HTTP 403
+  ∅ bbb706beb4d7 | extracted only 43 chars
+  ✗ 8df875b39bd5 | HTTP 403
+  ∅ e82be2d9d9e1 | extracted only 158 chars
+  ✗ 21498142103f | HTTP 403
+  ∅ 7e69da22bbca | extracted only 59 chars
+  ∅ f830fa14ea9a | extracted only 34 chars
+  ∅ 689a8834433b | extracted only 41 chars
+  ✗ c735772b20a7 | HTTP 429
+  ✗ ef3f18f446fc | TypeError: object of type 'NoneType' has no len()
+  ✗ e527af61aff2 | HTTP 403
+  ✗ 016bc729fe32 | HTTP 429
+  ✗ 669c28a42d49 | HTTP 403
+  ✗ 77bb088c8b8c | HTTP 429
+  ✗ 241e2cda759e | HTTP 403
+  ✗ eaf499b9a946 | HTTP 429
+  ∅ cda1b1e53c7c | extracted only 63 chars
+  ✗ 1a9cfcfcf3bb | HTTP 429
+  ✗ 3a4dd3f53ba9 | HTTP 429
+  ✗ bc64d813bea6 | HTTP 403
+  ✗ 87abe9ee367a | HTTP 403
+  ✗ dab7a18c14a0 | HTTP 429
+  ✗ c7e9ec2f9cfc | HTTP 403
+  ✗ ffa842dcf3bd | HTTP 403
+  ✗ df4515d5ec7d | HTTP 429
+  ✗ 9ae1f34dd05b | HTTP 403
+  ✗ 9633954f61a5 | HTTP 429
+  ✗ 52f9dee7d65f | HTTP 403
+  ✗ db217a525e31 | HTTP 401
+  ✗ ed0715ff067e | HTTP 403
+  ✗ 2452465d7eb7 | HTTP 429
+  ✗ 88b053027acf | HTTP 429
+  ✗ d575c29211b0 | HTTP 429
+  ✗ e188441c2a1b | HTTP 429
+  ∅ 6f086e68082e | extracted only 70 chars
+  ✗ 1e0ef6ffe88a | HTTP 403
+  ∅ 71358576e302 | extracted only 63 chars
+  ∅ c33f7ab21e4e | extracted only 32 chars
+  ✗ 1b040cfa3010 | HTTP 403
+  ✗ cdc77122c42d | TypeError: object of type 'NoneType' has no len()
+  ✗ 3b94d27f3167 | HTTP 403
+  ∅ f00cacf986d5 | extracted only 63 chars
+  ∅ d70ab91669c5 | extracted only 63 chars
+  ✗ 44dabad91e90 | HTTP 429
+  ∅ 01bdde42cb8a | extracted only 118 chars
+  ✗ de0a2342d5aa | HTTP 403
+  ∅ 01d1d5ad22fa | extracted only 175 chars
+  ✗ 111249c4a0a1 | HTTP 403
+  ✗ 164e6b41b04f | TypeError: object of type 'NoneType' has no len()
+  ✗ 13c1b67fae58 | HTTP 403
+  ✗ fbb449340331 | HTTP 403
+  ∅ d391b77fd50a | extracted only 189 chars
+  ∅ 022a25e4c914 | extracted only 63 chars
+  ∅ 98a08af5f927 | extracted only 63 chars
+  ✗ 10facf05fa4a | HTTP 403
+  ✗ e3d6eea6b1f6 | HTTP 429
+  ∅ 07d5368371b5 | extracted only 159 chars
+  ∅ f052e69a2c85 | extracted only 63 chars
+  ✗ fa9af36cb131 | HTTP 403
+  ∅ b26ab52ac66a | extracted only 81 chars
+  ✗ 504e31b94d5d | TypeError: object of type 'NoneType' has no len()
+  ✗ 1506aff82566 | HTTP 403
+  ∅ 980d5243bfa6 | extracted only 43 chars
+  ∅ f4557f0e4129 | extracted only 135 chars
+  ∅ 00f3495eb305 | extracted only 40 chars
+  ∅ 67f63f0cf248 | extracted only 63 chars
+  ✗ 5438335ffb3f | HTTP 403
+  ∅ 9de1acc7f074 | extracted only 163 chars
+  ∅ 754ab53253ac | extracted only 63 chars
+  ✗ 65edefcb4544 | HTTP 403
+  ✗ 942c2dce9a4f | TypeError: object of type 'NoneType' has no len()
+  ✗ fb355d349393 | HTTP 429
+  ✗ 9d1e8253f802 | HTTP 429
+  ✗ 303c8a580452 | HTTP 429
+  ✗ 4c725aba5849 | HTTP 429
+  ✗ 45c904623418 | HTTP 429
+  ✗ 9358a6d9e28c | TypeError: object of type 'NoneType' has no len()
+  ∅ 1611a86de2bd | extracted only 63 chars
+  ∅ 698a4858aa05 | extracted only 37 chars
+  ✗ 1de78fdb5609 | HTTP 403
+  ∅ 2c68c8931f06 | extracted only 114 chars
+  ∅ 33d5b3df063c | extracted only 96 chars
+  ∅ 526308ee5eb8 | extracted only 63 chars
+  ✗ 60ee186ed27e | HTTP 403
+  ∅ 96bd04fb4168 | extracted only 64 chars
+  ✗ 5f27e3f6e381 | HTTP 403
+  ✗ e5f73b71d1d7 | HTTP 403
+  ∅ 5cdddecceb2d | extracted only 63 chars
+  ✗ fea054d073ef | HTTP 403
+  ∅ a63d47c3659a | extracted only 63 chars
+  ∅ 2a0772d26773 | extracted only 63 chars
+  ✗ 8c5165e41bff | HTTP 403
+  ✗ c39ad57d6bd7 | HTTP 403
+  ✗ d7fc1fd0b63a | TypeError: object of type 'NoneType' has no len()
+  ✗ 5d2b78cc5505 | HTTP 403
+  ∅ 50f1d6a03255 | extracted only 78 chars
+  ∅ fc29f46972f4 | extracted only 55 chars
+  ∅ 22640148bbb8 | extracted only 45 chars
+  ∅ 4a38fc96f335 | extracted only 45 chars
+  ∅ fd8a1011ce17 | extracted only 63 chars
+  ∅ 6af0cf9d459f | extracted only 43 chars
+  ✗ 536604e9e1ff | HTTP 403
+  ✗ b5b0b8f48092 | HTTP 403
+  ∅ 394013ae03e1 | extracted only 186 chars
+  ✗ ce11913b6867 | HTTP 429
+  ✗ f4ee2a7a3a8a | HTTP 403
+  ✗ b684b4162c5b | HTTP 403
+  ∅ d0b0632e41e6 | extracted only 63 chars
+  ∅ ff5a4a44cecd | extracted only 40 chars
+  ✗ fa8938d21530 | HTTP 429
+  ∅ 3c9d08d90b63 | extracted only 70 chars
+  ∅ 0901313655c3 | extracted only 45 chars
+  ∅ 127067f71f2f | extracted only 75 chars
+  ∅ 6cda6a773635 | extracted only 92 chars
+  ∅ 844cea98b634 | extracted only 45 chars
+  ✗ 1e588e61972d | HTTP 429
+  ∅ aec9ee43a4e0 | extracted only 66 chars
+  ✗ 459e411b31d6 | HTTP 429
+  ✗ a8c9be6b3557 | HTTP 404
+  ∅ 97a7da2be7ee | extracted only 71 chars
+  ✗ c2a5de2dea82 | HTTP 429
+  ✗ d2e2b63f84b9 | HTTP 403
+  ∅ 5e410d7d5998 | extracted only 45 chars
+  ✗ ae995b9c3e75 | HTTP 403
+  ∅ 5123a7ffc6d3 | extracted only 48 chars
+  ✗ 5be6c3392056 | HTTP 403
+  ✗ 785dbaa6ae56 | HTTP 403
+  ∅ 1c644c2822bd | extracted only 108 chars
+  ✗ 1a654943dc71 | HTTP 403
+  ✗ 0af0c5c72218 | HTTP 403
+  ∅ 969e8f000a09 | extracted only 108 chars
+  ✗ b918a5525a80 | HTTP 403
+  ✗ 985e9a4f3bc7 | HTTP 403
+  ∅ cda8325eed1e | extracted only 54 chars
+  ∅ 97b4f792a746 | extracted only 116 chars
+  ∅ 143db56507ef | extracted only 181 chars
+  ∅ 7a50c6644e2a | extracted only 131 chars
+  ∅ 77d7d49e6045 | extracted only 82 chars
+  ✗ 4740ac952fc0 | HTTP 403
+  ✗ eac79a5c60c8 | TypeError: object of type 'NoneType' has no len()
+  ∅ 74d8dba0d29b | extracted only 160 chars
+  ∅ b708414e5e0b | extracted only 63 chars
+  ∅ 7bdc5d9ebdb8 | extracted only 63 chars
+  ∅ 96478f6d7290 | extracted only 31 chars
+  ✗ 270397becd06 | HTTP 429
+  ∅ d6e1c1967533 | extracted only 59 chars
+  ∅ 0efb1d95f4e9 | extracted only 45 chars
+  ∅ 38273f0329c3 | extracted only 45 chars
+  ∅ 75a21cff80bc | extracted only 45 chars
+  ✗ 301a5c5b332a | HTTP 403
+  ∅ bd33c9586894 | extracted only 56 chars
+  ✗ f69a41d0dc92 | HTTP 429
+  ✗ 17c526822161 | HTTP 403
+  ✗ f74ade91ac54 | HTTP 429
+  ∅ 3ae259933be7 | extracted only 45 chars
+  ✗ dbbceee803d6 | TypeError: object of type 'NoneType' has no len()
+  ∅ 3e18cf905585 | extracted only 66 chars
+  ✗ 237ed067d5e3 | HTTP 429
+  ✗ 19fbdcc90cad | HTTP 429
+  ✗ 66a0a8d2765c | TypeError: object of type 'NoneType' has no len()
+  ✗ 85152a6df9c7 | HTTP 429
+  ∅ e836b40cf4fb | extracted only 45 chars
+  ✗ 07ea7bde8118 | HTTP 403
+  ✗ 402b4fbdd5e6 | HTTP 429
+  ✗ ebef91fec56b | HTTP 429
+  ✗ fd6598b3f132 | HTTP 429
+  ✗ 5eef0aa74879 | HTTP 429
+  ✗ f275023484a8 | HTTP 429
+  ✗ 1377694f18fe | HTTP 429
+  ∅ f311c75ca60b | extracted only 107 chars
+  ∅ 682693a20f63 | extracted only 28 chars
+  ✗ 8faac1f45750 | HTTP 429
+  ∅ e3757bb16d1f | extracted only 61 chars
+  ✗ 41e4dcda2336 | HTTP 429
+  ✗ cdf77ea8aff3 | HTTP 429
+  ∅ 010d8d81002d | extracted only 51 chars
+  ∅ bc5bbaafced6 | extracted only 43 chars
+  ✗ fa84d034356c | HTTP 403
+  ∅ 15f47e9b558b | extracted only 26 chars
+  ✗ cf4ec4222171 | HTTP 429
+  ✗ 9b923bad35af | HTTP 403
+  ✗ ffa5f8be5836 | HTTP 403
+  ✗ aaeba9d9642e | HTTP 403
+  ∅ 0c3e10fe64e4 | extracted only 43 chars
+  ✗ 7ac1244a9454 | HTTP 429
+  ∅ ce2c2e78a8f9 | extracted only 63 chars
+  ✗ 062afd5ad1f9 | HTTP 429
+  ✗ e4841d06b7f2 | HTTP 403
+  ✗ 907279281489 | TypeError: object of type 'NoneType' has no len()
+  ✗ 890b25eddf68 | HTTP 403
+  ✗ 0417997d923f | HTTP 403
+  ✗ be876b176720 | HTTP 403
+  ∅ c5bb26e67939 | extracted only 71 chars
+  ✗ ce0322c55738 | HTTP 403
+  ∅ 63e7b658aefc | extracted only 63 chars
+  ✗ 2f358dc4a504 | HTTP 403
+  ✗ fdf6c4e98bb2 | HTTP 403
+  ∅ 1124c6b8de11 | extracted only 63 chars
+  ✗ 78758b8ec5bc | HTTP 403
+  ✗ 6b1fa8ae684f | HTTP 403
+  ✗ 702fb607570e | HTTP 403
+  ✗ b5479ebcde18 | HTTP 403
+  ✗ efdf5cf9f641 | TypeError: object of type 'NoneType' has no len()
+  ✗ 5899b169bc6e | HTTP 403
+  ✗ 919d46e19bc3 | HTTP 403
+  ✗ 1c77cec1ddad | HTTP 403
+  ✗ ab13f533d5f5 | TypeError: object of type 'NoneType' has no len()
+  ✗ 0316568c46ec | TypeError: object of type 'NoneType' has no len()
+  ✗ 86df175a446d | HTTP 403
+  ✗ 74f5123204ea | TypeError: object of type 'NoneType' has no len()
+  ✗ f2261073b77c | HTTP 403
+  ✗ 740545d72e85 | HTTP 403
+  ✗ e7785d8c77e3 | HTTP 429
+  ✗ b454f8817363 | TypeError: object of type 'NoneType' has no len()
+  ∅ aa254796804e | extracted only 101 chars
+  ✗ e70e88d9a498 | TypeError: object of type 'NoneType' has no len()
+  ∅ e6e12a7181a1 | extracted only 83 chars
+  ✗ e670024b9a32 | HTTP 429
+  ✗ 1bd5d5f60cc3 | HTTP 429
+  ✗ ca731494b194 | HTTP 429
+  ✗ a102a18a5efc | HTTP 429
+  ✗ db7ff708ed2f | HTTP 429
+  ✗ b37d93646457 | HTTP 429
+  ⏱ 5eccb25dccad | timeout
+  ⏱ f57e9ba16963 | timeout
+  ⏱ bc98efbf84dc | timeout
+  ⏱ 0de0d21a0c17 | timeout
+  ⏱ 553aafc46748 | timeout
+  ⏱ 174735daf046 | timeout
+  ✗ 948a351ef591 | HTTP 503
+  ✗ 6d653b00387c | HTTP 503
+  ✗ 809a45a56fbf | HTTP 503
+  ✗ 920341bd8742 | HTTP 503
+  ✗ 4ea7906564a9 | HTTP 503
+  ✗ 834df0857ecb | HTTP 503
+  ✗ 382e39f87631 | HTTP 503
+  ✗ 7779c471760a | HTTP 503
+  ✗ e8a2c25d1618 | HTTP 503
+  ✗ 4157a20247b1 | HTTP 503
+  ⏱ 1ec2743fc422 | timeout
+  ⏱ b9bab7db64a4 | timeout
+  ⏱ 4119f570dce2 | timeout
+  ⏱ f66bbec18559 | timeout
+
+✅ Готово за 186.7s
+   ✓ OK: 170
+   ∅ too_short: 230
+   ⏱ timeout: 11
+   ✗ error: 359
+   📁 Файлы: /home/apps_maker/ai-digest/archive/full_text
+   📝 Пометка has_full_text проставлена в архиве
+
+========================================
+🤖 AI-Digest daily run: 2026-06-21 06:14:20 UTC
+   hours=24, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 24 --archive
+📡 Скачиваю 102 источников (с 2026-06-20T06:14:21.752857+00:00)...
+  ✓ arXiv cs.LG                              → 0 posts
+  ✓ arXiv cs.AI                              → 0 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ The Information                          → 20 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ ПостНаука (RU)                           → 14 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ Ведомости (technology)                   → 30 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ arXiv cs.AI                              → 0 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ arXiv cs.CV (Vision)                     → 0 posts
+  ✓ arXiv cs.CL (NLP)                        → 0 posts
+  ✓ arXiv cs.LG                              → 0 posts
+  ✓ arXiv stat.ML                            → 0 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ Wired                                    → 30 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✗ Spark.ru                                 → parse error: <unknown>:2:0: syntax error
+  ✓ KDNuggets                                → 10 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ The Information                          → 20 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ The Decoder                              → 10 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ CNET                                     → 25 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ arXiv cs.RO (Robotics)                   → 0 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 0 posts
+  ✓ arXiv q-bio.NC                           → 0 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 0 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 0 posts
+  ✓ arXiv eess.IV (Image Video)              → 0 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ Becoming Human: AI Magazine              → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Safety News                           → fallback timeout: Missing dependencies for SOCKS support.
+
+✅ Готово за 58.3s
+   Источников OK: 97/102
+   Постов собрано (с дедупликацией): 1003
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-21.json
+
+📥 Архив: добавлено 22, обновлено 981, пропущено 0. Всего в архиве: 7350
+/home/apps_maker/ai-digest/storage/posts_2026-06-21.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-21.json
+
+🌐 Step 1.5: scrape.py --missing (только high-priority)
+📚 В архиве: 7350 постов
+🎯 К скрапингу: 622
+  ✓ 08b6418582ce |   2470 chars | https://lcamtuf.substack.com/p/the-100000-whys-of-ai
+  ✓ ff75b2e5be1f |   4336 chars | https://habr.com/ru/news/1050012/?utm_source=habrahabr&utm_medium=rss&
+  ✓ b448d3275054 |   3310 chars | https://habr.com/ru/articles/1050038/?utm_source=habrahabr&utm_medium=
+  ✓ 4c5c3551a8cc |   1082 chars | https://www.vedomosti.ru/politics/news/2026/06/21/1207538-mask-predloz
+  ✓ e188c95dc3b0 |    992 chars | https://www.vedomosti.ru/politics/news/2026/06/21/1207537-eks-premer-p
+  ✓ a4ce8e0e3507 |   1179 chars | https://www.vedomosti.ru/politics/news/2026/06/21/1207539-kosachev-mol
+  ✓ 79c3cdc0654a |    432 chars | https://www.vedomosti.ru/society/news/2026/06/21/1207536-bespilotnik-v
+  ✓ ebfd44adcc05 |   1274 chars | https://www.cnet.com/tech/gaming/todays-nyt-mini-crossword-answers-for
+  ✓ d1ebe231828a |    743 chars | https://www.techmeme.com/260621/p3#a260621p3
+  ✓ 1816c01cce15 |    912 chars | https://www.vedomosti.ru/politics/news/2026/06/21/1207535-premer-bavar
+  ✓ d70d73a08b35 |    718 chars | https://www.techmeme.com/260621/p2#a260621p2
+  ✓ 791ff12cdfe1 |    732 chars | https://www.vedomosti.ru/politics/news/2026/06/21/1207534-za-noch-nad
+  ✓ 419b6c1c17ce |    718 chars | https://www.techmeme.com/260621/p1#a260621p1
+  ✓ a89ee1d410ff |    751 chars | https://www.vedomosti.ru/politics/news/2026/06/21/1207533-spiegel-razd
+  ✓ 65411946b238 |  49503 chars | https://martinfowler.com/articles/reliable-llm-bayer.html
+  ✓ 1ffc6a6f024b |   8040 chars | https://www.cnet.com/tech/services-and-software/from-eps-talk-season-4
+  ✗ 80867fb7f266 | HTTP 401
+  ✓ 6c88f1a4080f |   6149 chars | https://en.wikipedia.org/wiki/Armstrong_effect
+  ✓ f208560178c9 |   6202 chars | https://www.sciencedaily.com/releases/2026/06/260614012006.htm
+  ✓ 242c9b137df4 |  23677 chars | https://habr.com/ru/articles/1050032/?utm_source=habrahabr&utm_medium=
+  ✗ c6a62c4c6040 | TypeError: object of type 'NoneType' has no len()
+  ✗ 06098adea975 | HTTP 403
+  ∅ b6bd4605bb3f | extracted only 66 chars
+  ✗ 5e79296be9c3 | TypeError: object of type 'NoneType' has no len()
+  ∅ 87a4d4edd147 | extracted only 40 chars
+  ✗ 61b55efa648c | HTTP 429
+  ✗ be9ecced1e30 | HTTP 403
+  ∅ 636e7a80b36b | extracted only 55 chars
+  ∅ 247485129039 | extracted only 189 chars
+  ✗ c2286de70c4d | HTTP 429
+  ∅ 584c863f9e55 | extracted only 65 chars
+  ∅ d4a740fb70de | extracted only 83 chars
+  ✗ deade1e4e10e | HTTP 401
+  ✓ 6115619d3c39 |  65748 chars | https://en.wikipedia.org/wiki/PID_controller
+  ∅ d53d79e2d13d | extracted only 50 chars
+  ✗ 9a8e41e9458f | HTTP 403
+  ✗ d588eee658e6 | HTTP 403
+  ∅ 99db5c19c95e | extracted only 90 chars
+  ✗ 91d44dd78c3d | HTTP 403
+  ✗ 7a508986bc65 | TypeError: object of type 'NoneType' has no len()
+  ∅ 035dcbf6db13 | extracted only 45 chars
+  ∅ 2a56d48c5954 | extracted only 153 chars
+  ∅ 73c89ce1434c | extracted only 86 chars
+  ✗ bf09db454528 | HTTP 403
+  ∅ be07d056b835 | extracted only 148 chars
+  ✗ cccc46bd6d98 | HTTP 403
+  ✗ cf11c2945adf | HTTP 403
+  ✗ 2c006589894d | HTTP 403
+  ∅ d4ed03f759eb | extracted only 28 chars
+  ✗ 712ef0763f06 | HTTP 403
+  ∅ 4f1c312f5113 | extracted only 32 chars
+  ∅ d356f3643f96 | extracted only 45 chars
+  ∅ 6c15cd212624 | extracted only 43 chars
+  ✗ f364d16f86f5 | HTTP 429
+  ∅ 2a07c87adeef | extracted only 33 chars
+  ∅ 2c6ae5983bd9 | extracted only 45 chars
+  ✗ 40acf758f913 | TypeError: object of type 'NoneType' has no len()
+  ∅ 8906b08daffa | extracted only 75 chars
+  ∅ 7c4ea23a1f6b | extracted only 45 chars
+  ✗ ebfbba907c0d | HTTP 403
+  ✗ d8b5ec691b2b | HTTP 403
+  ✗ 5bf6e09b1743 | HTTP 429
+  ∅ b2268f551939 | extracted only 35 chars
+  ✓ 310d1387fab8 |  16696 chars | https://www.philipzucker.com/td4-4bit-cpu/
+  ✗ bea2ce6dd3a3 | TypeError: object of type 'NoneType' has no len()
+  ✗ dd0246422f1b | HTTP 429
+  ∅ eae9fcbae39a | extracted only 63 chars
+  ✗ a55ebd412e31 | HTTP 403
+  ✗ d7b32e5481b3 | HTTP 403
+  ✗ 114117897cb3 | HTTP 403
+  ✗ 9e3184570780 | HTTP 403
+  ∅ af858ffcfaed | extracted only 45 chars
+  ∅ ff26cfa6ece2 | extracted only 71 chars
+  ∅ b395ffc10e0d | extracted only 80 chars
+  ∅ 1ef76e9127ce | extracted only 63 chars
+  ✗ f4d0d38f53d0 | HTTP 403
+  ✗ 271e5212fb09 | HTTP 429
+  ∅ e65428c6a65a | extracted only 61 chars
+  ∅ e9202e8aed05 | extracted only 42 chars
+  ∅ c54807119c13 | extracted only 35 chars
+  ∅ b03d95e904dc | extracted only 63 chars
+  ∅ d2dad66b99ed | extracted only 153 chars
+  ∅ e84b788f079d | extracted only 93 chars
+  ∅ 619c833afed4 | extracted only 63 chars
+  ∅ 197c0b5c2098 | extracted only 77 chars
+  ✗ ad2ec02b5ba7 | HTTP 403
+  ∅ 7ffdc4f508a4 | extracted only 32 chars
+  ∅ 766ccf37972e | extracted only 82 chars
+  ∅ 9c37a5224327 | extracted only 42 chars
+  ∅ 5a406a24796c | extracted only 63 chars
+  ∅ b68e1d02bb06 | extracted only 169 chars
+  ✗ 796b3536965e | HTTP 403
+  ∅ 10fa5f658219 | extracted only 94 chars
+  ∅ f594698d4cc8 | extracted only 48 chars
+  ✗ c514755e7e8f | HTTP 202
+  ∅ 3b50cf5a10de | extracted only 63 chars
+  ✗ d1e237ccf888 | HTTP 403
+  ∅ 9e270040d178 | extracted only 141 chars
+  ∅ 1f366b2599c6 | extracted only 63 chars
+  ✗ 082f2fab7187 | HTTP 403
+  ✗ 9efce20aa445 | HTTP 403
+  ∅ e9fe06c21199 | extracted only 45 chars
+  ∅ 1bfc971c3f29 | extracted only 45 chars
+  ∅ 1d59634ef569 | extracted only 53 chars
+  ✗ 2d3705b270ca | HTTP 429
+  ∅ 7b4645f2d446 | extracted only 43 chars
+  ✗ bf815cb48274 | HTTP 429
+  ∅ 59e372b12677 | extracted only 45 chars
+  ✗ 045bb34d71e0 | HTTP 429
+  ∅ 1310cde3e58f | extracted only 73 chars
+  ✗ 12aca1231575 | HTTP 429
+  ∅ 3da405017771 | extracted only 77 chars
+  ✗ 815b7c6b23ff | TypeError: object of type 'NoneType' has no len()
+  ✗ e7dccfe6e561 | HTTP 403
+  ✓ 87a87691f012 |  24413 chars | https://zeux.io/2026/06/17/zigzag-decoding-avx512/
+  ∅ f54bef20b82d | extracted only 63 chars
+  ∅ 92e6774def6a | extracted only 63 chars
+  ✗ c108ed4ce7df | TypeError: object of type 'NoneType' has no len()
+  ∅ 3861838eddd8 | extracted only 63 chars
+  ✗ 6b9ae37091b0 | HTTP 429
+  ✗ 5126ee0d1124 | HTTP 403
+  ✗ ba46891e67e6 | HTTP 429
+  ✗ 9b733156119c | HTTP 429
+  ∅ 4392f3194935 | extracted only 66 chars
+  ∅ b2dc00b42e0f | extracted only 50 chars
+  ✗ 7ce076bc1edc | HTTP 403
+  ✗ 88ab90c2bc2b | HTTP 403
+  ✗ 02a744438919 | HTTP 403
+  ∅ 57648f3ec245 | extracted only 63 chars
+  ∅ a0869c472441 | extracted only 63 chars
+  ∅ e7c029ff054f | extracted only 40 chars
+  ✗ f314c0187142 | HTTP 429
+  ✗ 80c1a32658b0 | HTTP 403
+  ✗ 76af600c6d35 | HTTP 403
+  ∅ 4f9cc1f6f68e | extracted only 64 chars
+  ✗ 822f7a3acfdd | HTTP 429
+  ✗ cad33913c5c9 | HTTP 403
+  ∅ 5b3f01b6ee84 | extracted only 87 chars
+  ✗ eda960c8bcbc | HTTP 403
+  ∅ ce709938e81e | extracted only 134 chars
+  ∅ c6b9e481f869 | extracted only 48 chars
+  ∅ d72cd31558ce | extracted only 64 chars
+  ✗ 65532c445781 | HTTP 429
+  ✗ 2b2b66bd1499 | HTTP 401
+  ∅ 82e848f1faa9 | extracted only 63 chars
+  ✗ 916e534ab8d5 | HTTP 403
+  ✗ 216cdf44f4bb | HTTP 429
+  ✗ ad8828785b99 | HTTP 429
+  ✗ 4f029a64dda4 | HTTP 429
+  ✗ 8c5bbbf4b3e3 | HTTP 429
+  ✗ c525450dac37 | HTTP 429
+  ✗ 5b0fb295dca1 | HTTP 429
+  ✗ 5684f01f709d | HTTP 429
+  ✗ dd9e76a976eb | HTTP 429
+  ✗ 4d2d34acaf4a | HTTP 429
+  ∅ afd0d5f77b77 | extracted only 33 chars
+  ✗ 6101a70f6e74 | TypeError: object of type 'NoneType' has no len()
+  ∅ 850f0c6ac20e | extracted only 102 chars
+  ✗ 3819cac544ad | HTTP 429
+  ∅ 48941515de2f | extracted only 46 chars
+  ✗ aabe3d2ff6e8 | HTTP 403
+  ∅ c2e2e674baad | extracted only 14 chars
+  ✗ afb204d2633f | HTTP 429
+  ∅ cef29d08e769 | extracted only 63 chars
+  ✗ b53a7ddd9906 | HTTP 429
+  ∅ 81ddfdce023c | extracted only 94 chars
+  ∅ 34c4c41e5d47 | extracted only 63 chars
+  ✗ 21c41b71714e | HTTP 403
+  ∅ 920e8e0161e5 | extracted only 66 chars
+  ✗ a142be45241f | HTTP 429
+  ✗ 6dbf0d757456 | HTTP 403
+  ✗ 047ea2d613ca | TypeError: object of type 'NoneType' has no len()
+  ✗ 48710fe95660 | HTTP 429
+  ∅ fea96deb444b | extracted only 73 chars
+  ∅ 402a1765ac8f | extracted only 63 chars
+  ✗ c8187894b237 | TypeError: object of type 'NoneType' has no len()
+  ✗ 63c49bc52b39 | HTTP 429
+  ✗ 8b7f5a93fc3c | HTTP 403
+  ✗ de95044dd5eb | HTTP 403
+  ✗ c9b65226d2de | HTTP 401
+  ∅ a2dfcddf9904 | extracted only 95 chars
+  ∅ a13b1af7aced | extracted only 63 chars
+  ∅ dba125a330d5 | extracted only 151 chars
+  ✗ 418801759a4d | HTTP 403
+  ∅ d9c28bc25588 | extracted only 45 chars
+  ✗ 031fe56c38cf | HTTP 403
+  ∅ d380a573f1bf | extracted only 45 chars
+  ✗ 46cd69ea52ea | HTTP 403
+  ∅ 19e62ca74edb | extracted only 83 chars
+  ✗ 3569af6bdf5e | HTTP 429
+  ✗ 73c7610a671d | HTTP 429
+  ∅ 78370ad0c08f | extracted only 60 chars
+  ✗ 9292161d5e0a | HTTP 429
+  ✗ b8e6d540df59 | HTTP 403
+  ∅ d00f7c22cf61 | extracted only 74 chars
+  ⏱ 0dcc36e1e938 | timeout
+  ✗ 13323bc5bb20 | TypeError: object of type 'NoneType' has no len()
+  ✗ 8de637d413f8 | TypeError: object of type 'NoneType' has no len()
+  ∅ d184ec3625e9 | extracted only 45 chars
+  ✗ 3c11b17a6c51 | TypeError: object of type 'NoneType' has no len()
+  ✗ a0b3831c43de | HTTP 403
+  ∅ 6f86984f50ae | extracted only 45 chars
+  ∅ a360dcef4934 | extracted only 63 chars
+  ✗ 3286aefa0b66 | HTTP 429
+  ✗ 2481244b5d3d | HTTP 403
+  ∅ ee44a154ef14 | extracted only 66 chars
+  ∅ d68073a4b6d9 | extracted only 63 chars
+  ∅ 9b0fc7edb18c | extracted only 45 chars
+  ∅ 459cca9c85d2 | extracted only 63 chars
+  ✗ 47edae7dd060 | HTTP 403
+  ✗ fa1f369e4df4 | HTTP 403
+  ∅ c11a5fc85a57 | extracted only 63 chars
+  ✗ 29f4ca0533ca | HTTP 401
+  ✗ 0bd7a91a7870 | HTTP 403
+  ∅ c87655b88045 | extracted only 45 chars
+  ∅ dadfd91d3d78 | extracted only 55 chars
+  ∅ 7a659f2494f7 | extracted only 64 chars
+  ∅ 19e946b6dd82 | extracted only 63 chars
+  ∅ 8c1d6793dd8b | extracted only 45 chars
+  ✗ 85d1075eac72 | HTTP 403
+  ∅ 13022b10455f | extracted only 176 chars
+  ✗ ccf198ec3516 | HTTP 403
+  ∅ 65bbab2c6c8b | extracted only 45 chars
+  ∅ 3ab23ab623e2 | extracted only 33 chars
+  ∅ 33bbac5ce021 | extracted only 63 chars
+  ✗ ff33807860b3 | HTTP 429
+  ∅ 75f2bbb3f80b | extracted only 85 chars
+  ✗ eac1a24984f4 | HTTP 403
+  ∅ 73b493ff8768 | extracted only 179 chars
+  ∅ d632652cb1a9 | extracted only 45 chars
+  ✗ 36a708f6ef97 | TypeError: object of type 'NoneType' has no len()
+  ✗ 9b41ef631f1c | HTTP 403
+  ∅ cc779a956073 | extracted only 153 chars
+  ∅ 85b327d62a62 | extracted only 66 chars
+  ∅ 61adedf87d8d | extracted only 63 chars
+  ✗ ede3c3382a26 | HTTP 429
+  ∅ 9e1da6246e50 | extracted only 141 chars
+  ✗ e86403a8ba8f | HTTP 429
+  ✗ a1a9919ade2b | HTTP 403
+  ∅ 9a319d2ec34e | extracted only 72 chars
+  ✗ 894c51df33f4 | HTTP 403
+  ✗ 12eae63a62c9 | HTTP 403
+  ✗ f582d40c501d | HTTP 401
+  ∅ 94ad53243a1b | extracted only 45 chars
+  ∅ 786f72f8607c | extracted only 15 chars
+  ∅ f13b51934424 | extracted only 86 chars
+  ✗ 9cc7608624a9 | HTTP 403
+  ✗ 4329a5d6d8fc | HTTP 429
+  ∅ 6a1ae3f6558f | extracted only 70 chars
+  ∅ 8b36ee9d5815 | extracted only 50 chars
+  ✗ 49d8ffca9954 | HTTP 401
+
+========================================
+🤖 AI-Digest daily run: 2026-06-21 06:16:34 UTC
+   hours=12, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 12 --archive
+📡 Скачиваю 102 источников (с 2026-06-20T18:16:35.708058+00:00)...
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ arXiv cs.AI                              → 0 posts
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ arXiv cs.LG                              → 0 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ The Information                          → 20 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ ПостНаука (RU)                           → 14 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Ведомости (technology)                   → 30 posts
+  ✓ arXiv cs.AI                              → 0 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ arXiv cs.LG                              → 0 posts
+  ✓ arXiv cs.CL (NLP)                        → 0 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ arXiv cs.CV (Vision)                     → 0 posts
+  ✓ arXiv stat.ML                            → 0 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Wired                                    → 30 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ Stratechery                              → 10 posts
+  ✗ Spark.ru                                 → parse error: <unknown>:2:0: syntax error
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ The Information                          → 0 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ The Decoder                              → 10 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ CNET                                     → 25 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 0 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ arXiv cs.RO (Robotics)                   → 0 posts
+  ✓ arXiv q-bio.NC                           → 0 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 0 posts
+  ✓ arXiv eess.IV (Image Video)              → 0 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 0 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ Becoming Human: AI Magazine              → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Safety News                           → fallback timeout: Missing dependencies for SOCKS support.
+
+✅ Готово за 58.2s
+   Источников OK: 97/102
+   Постов собрано (с дедупликацией): 1003
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-21.json
+
+📥 Архив: добавлено 1, обновлено 1002, пропущено 0. Всего в архиве: 7351
+/home/apps_maker/ai-digest/storage/posts_2026-06-21.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-21.json
+
+🌐 Step 1.5: scrape.py --missing (только high-priority)
+📚 В архиве: 7351 постов
+🎯 К скрапингу: 601
+  ✗ cccc46bd6d98 | HTTP 403
+  ✗ 80867fb7f266 | HTTP 401
+  ✗ 06098adea975 | HTTP 403
+  ✗ c6a62c4c6040 | TypeError: object of type 'NoneType' has no len()
+  ✓ 6f5fc3705053 |    690 chars | https://www.vedomosti.ru/politics/news/2026/06/21/1207540-ukraina-do-k
+  ✗ 5e79296be9c3 | TypeError: object of type 'NoneType' has no len()
+  ∅ 87a4d4edd147 | extracted only 40 chars
+  ∅ b6bd4605bb3f | extracted only 66 chars
+  ✗ 61b55efa648c | HTTP 429
+  ∅ 636e7a80b36b | extracted only 55 chars
+  ✗ be9ecced1e30 | HTTP 403
+  ∅ 247485129039 | extracted only 189 chars
+  ✗ c2286de70c4d | HTTP 429
+  ✗ deade1e4e10e | HTTP 401
+  ∅ d4a740fb70de | extracted only 83 chars
+  ∅ d53d79e2d13d | extracted only 50 chars
+  ✗ 9a8e41e9458f | HTTP 403
+  ∅ 584c863f9e55 | extracted only 65 chars
+  ✗ d588eee658e6 | HTTP 403
+  ✗ 91d44dd78c3d | HTTP 403
+  ✗ 7a508986bc65 | TypeError: object of type 'NoneType' has no len()
+  ∅ 99db5c19c95e | extracted only 90 chars
+  ∅ 035dcbf6db13 | extracted only 45 chars
+  ∅ 2a56d48c5954 | extracted only 153 chars
+  ✗ bf09db454528 | HTTP 403
+  ∅ 73c89ce1434c | extracted only 86 chars
+  ✗ cf11c2945adf | HTTP 403
+  ∅ be07d056b835 | extracted only 148 chars
+  ∅ d4ed03f759eb | extracted only 28 chars
+  ✗ 2c006589894d | HTTP 403
+  ✗ 712ef0763f06 | HTTP 403
+  ∅ 4f1c312f5113 | extracted only 32 chars
+  ∅ d356f3643f96 | extracted only 45 chars
+  ∅ 6c15cd212624 | extracted only 43 chars
+  ✗ f364d16f86f5 | HTTP 429
+  ∅ 2a07c87adeef | extracted only 33 chars
+  ∅ 2c6ae5983bd9 | extracted only 45 chars
+  ∅ eae9fcbae39a | extracted only 63 chars
+  ∅ 7c4ea23a1f6b | extracted only 45 chars
+  ✗ ebfbba907c0d | HTTP 403
+  ✗ 40acf758f913 | TypeError: object of type 'NoneType' has no len()
+  ✗ d8b5ec691b2b | HTTP 403
+  ✗ 5bf6e09b1743 | HTTP 429
+  ∅ 8906b08daffa | extracted only 75 chars
+  ✗ dd0246422f1b | HTTP 429
+  ✗ bea2ce6dd3a3 | TypeError: object of type 'NoneType' has no len()
+  ∅ 1ef76e9127ce | extracted only 63 chars
+  ∅ b2268f551939 | extracted only 35 chars
+  ✗ a55ebd412e31 | HTTP 403
+  ✗ d7b32e5481b3 | HTTP 403
+  ✗ 114117897cb3 | HTTP 403
+  ✗ 9e3184570780 | HTTP 403
+  ∅ ff26cfa6ece2 | extracted only 71 chars
+  ∅ af858ffcfaed | extracted only 45 chars
+  ∅ b03d95e904dc | extracted only 63 chars
+  ✗ f4d0d38f53d0 | HTTP 403
+  ∅ b395ffc10e0d | extracted only 80 chars
+  ✗ 271e5212fb09 | HTTP 429
+  ∅ e65428c6a65a | extracted only 61 chars
+  ∅ 619c833afed4 | extracted only 63 chars
+  ∅ e9202e8aed05 | extracted only 42 chars
+  ∅ c54807119c13 | extracted only 35 chars
+  ∅ d2dad66b99ed | extracted only 153 chars
+  ∅ e84b788f079d | extracted only 93 chars
+  ∅ 197c0b5c2098 | extracted only 77 chars
+  ✗ ad2ec02b5ba7 | HTTP 403
+  ∅ 3b50cf5a10de | extracted only 63 chars
+  ∅ 7ffdc4f508a4 | extracted only 32 chars
+  ∅ 766ccf37972e | extracted only 82 chars
+  ∅ 9c37a5224327 | extracted only 42 chars
+  ∅ b68e1d02bb06 | extracted only 169 chars
+  ∅ 1f366b2599c6 | extracted only 63 chars
+  ∅ 5a406a24796c | extracted only 63 chars
+  ✗ 796b3536965e | HTTP 403
+  ✗ c514755e7e8f | HTTP 202
+  ∅ 10fa5f658219 | extracted only 94 chars
+  ✗ 082f2fab7187 | HTTP 403
+  ✗ d1e237ccf888 | HTTP 403
+  ∅ f594698d4cc8 | extracted only 48 chars
+  ✗ 9efce20aa445 | HTTP 403
+  ∅ 9e270040d178 | extracted only 141 chars
+  ∅ e9fe06c21199 | extracted only 45 chars
+  ✗ 2d3705b270ca | HTTP 429
+  ∅ 1d59634ef569 | extracted only 53 chars
+  ∅ 1bfc971c3f29 | extracted only 45 chars
+  ∅ 7b4645f2d446 | extracted only 43 chars
+  ∅ bf815cb48274 | extracted only 45 chars
+  ✗ 59e372b12677 | HTTP 429
+  ✗ 045bb34d71e0 | HTTP 429
+  ✗ 12aca1231575 | HTTP 429
+  ∅ 1310cde3e58f | extracted only 73 chars
+  ∅ 3da405017771 | extracted only 77 chars
+  ∅ f54bef20b82d | extracted only 63 chars
+  ∅ 92e6774def6a | extracted only 63 chars
+  ✗ e7dccfe6e561 | HTTP 403
+  ✗ 815b7c6b23ff | TypeError: object of type 'NoneType' has no len()
+  ✗ c108ed4ce7df | TypeError: object of type 'NoneType' has no len()
+  ✗ 6b9ae37091b0 | HTTP 429
+  ∅ 3861838eddd8 | extracted only 63 chars
+  ✗ ba46891e67e6 | HTTP 429
+  ✗ 5126ee0d1124 | HTTP 403
+  ✗ 9b733156119c | HTTP 429
+  ∅ 4392f3194935 | extracted only 66 chars
+  ∅ b2dc00b42e0f | extracted only 50 chars
+  ✗ 7ce076bc1edc | HTTP 403
+  ✗ 88ab90c2bc2b | HTTP 403
+  ✗ 02a744438919 | HTTP 403
+  ∅ a0869c472441 | extracted only 63 chars
+  ∅ e7c029ff054f | extracted only 40 chars
+  ✗ f314c0187142 | HTTP 429
+  ∅ 82e848f1faa9 | extracted only 63 chars
+  ✗ 80c1a32658b0 | HTTP 403
+  ✗ 76af600c6d35 | HTTP 403
+  ∅ 4f9cc1f6f68e | extracted only 64 chars
+  ✗ 822f7a3acfdd | HTTP 429
+  ∅ 5b3f01b6ee84 | extracted only 87 chars
+  ✗ cad33913c5c9 | HTTP 403
+  ∅ ce709938e81e | extracted only 134 chars
+  ✗ eda960c8bcbc | HTTP 403
+  ∅ c6b9e481f869 | extracted only 48 chars
+  ✗ 2b2b66bd1499 | HTTP 401
+  ✗ 65532c445781 | HTTP 429
+  ∅ d72cd31558ce | extracted only 64 chars
+  ✗ 216cdf44f4bb | HTTP 429
+  ✗ 916e534ab8d5 | HTTP 403
+  ✗ ad8828785b99 | HTTP 429
+  ✗ 4f029a64dda4 | HTTP 429
+  ✗ 8c5bbbf4b3e3 | HTTP 429
+  ✗ 5b0fb295dca1 | HTTP 429
+  ∅ 57648f3ec245 | extracted only 63 chars
+  ✗ c525450dac37 | HTTP 429
+  ✗ dd9e76a976eb | HTTP 429
+  ✗ 5684f01f709d | HTTP 429
+  ∅ afd0d5f77b77 | extracted only 33 chars
+  ✗ 6101a70f6e74 | TypeError: object of type 'NoneType' has no len()
+  ∅ 850f0c6ac20e | extracted only 102 chars
+  ✗ 4d2d34acaf4a | HTTP 429
+  ∅ 402a1765ac8f | extracted only 63 chars
+  ∅ 3819cac544ad | extracted only 45 chars
+  ∅ 48941515de2f | extracted only 46 chars
+  ✗ aabe3d2ff6e8 | HTTP 403
+  ∅ cef29d08e769 | extracted only 63 chars
+  ∅ c2e2e674baad | extracted only 14 chars
+  ∅ 81ddfdce023c | extracted only 94 chars
+  ∅ afb204d2633f | extracted only 45 chars
+  ✗ 21c41b71714e | HTTP 403
+  ∅ b53a7ddd9906 | extracted only 100 chars
+  ∅ 920e8e0161e5 | extracted only 66 chars
+  ∅ a13b1af7aced | extracted only 63 chars
+  ✗ 047ea2d613ca | TypeError: object of type 'NoneType' has no len()
+  ✗ 6dbf0d757456 | HTTP 403
+  ∅ a142be45241f | extracted only 53 chars
+  ∅ fea96deb444b | extracted only 73 chars
+  ✗ c8187894b237 | TypeError: object of type 'NoneType' has no len()
+  ✗ 8b7f5a93fc3c | HTTP 403
+  ∅ 48710fe95660 | extracted only 45 chars
+  ✗ c9b65226d2de | HTTP 401
+  ✗ de95044dd5eb | HTTP 403
+  ∅ 63c49bc52b39 | extracted only 45 chars
+  ∅ a2dfcddf9904 | extracted only 95 chars
+  ∅ dba125a330d5 | extracted only 151 chars
+  ✗ 418801759a4d | HTTP 403
+  ∅ d9c28bc25588 | extracted only 45 chars
+  ∅ 19e62ca74edb | extracted only 83 chars
+  ✗ 031fe56c38cf | HTTP 403
+  ∅ 34c4c41e5d47 | extracted only 63 chars
+  ∅ d380a573f1bf | extracted only 45 chars
+  ✗ 46cd69ea52ea | HTTP 403
+  ✗ 73c7610a671d | HTTP 429
+  ✗ 3569af6bdf5e | HTTP 429
+  ∅ 78370ad0c08f | extracted only 60 chars
+  ✗ b8e6d540df59 | HTTP 403
+  ✗ 9292161d5e0a | HTTP 429
+  ∅ d00f7c22cf61 | extracted only 74 chars
+  ✗ 13323bc5bb20 | TypeError: object of type 'NoneType' has no len()
+  ∅ 459cca9c85d2 | extracted only 63 chars
+  ✗ 8de637d413f8 | TypeError: object of type 'NoneType' has no len()
+  ∅ d184ec3625e9 | extracted only 45 chars
+  ✗ 3c11b17a6c51 | TypeError: object of type 'NoneType' has no len()
+  ✗ a0b3831c43de | HTTP 403
+  ∅ a360dcef4934 | extracted only 63 chars
+  ∅ 6f86984f50ae | extracted only 45 chars
+  ✗ 3286aefa0b66 | HTTP 429
+  ✗ 2481244b5d3d | HTTP 403
+  ✗ fa1f369e4df4 | HTTP 403
+  ∅ d68073a4b6d9 | extracted only 63 chars
+  ∅ ee44a154ef14 | extracted only 66 chars
+  ✗ 47edae7dd060 | HTTP 403
+  ∅ 9b0fc7edb18c | extracted only 45 chars
+  ∅ c11a5fc85a57 | extracted only 63 chars
+  ✗ 29f4ca0533ca | HTTP 401
+  ✗ 0bd7a91a7870 | HTTP 403
+  ∅ 7a659f2494f7 | extracted only 64 chars
+  ∅ dadfd91d3d78 | extracted only 55 chars
+  ∅ c87655b88045 | extracted only 45 chars
+  ∅ 13022b10455f | extracted only 176 chars
+  ✗ 85d1075eac72 | HTTP 403
+  ∅ 8c1d6793dd8b | extracted only 45 chars
+  ∅ 65bbab2c6c8b | extracted only 45 chars
+  ✗ ccf198ec3516 | HTTP 403
+  ∅ 3ab23ab623e2 | extracted only 33 chars
+  ⏱ 0dcc36e1e938 | timeout
+  ∅ 33bbac5ce021 | extracted only 63 chars
+  ∅ 61adedf87d8d | extracted only 63 chars
+  ✗ ff33807860b3 | HTTP 429
+  ✗ eac1a24984f4 | HTTP 403
+  ∅ 75f2bbb3f80b | extracted only 85 chars
+  ∅ 19e946b6dd82 | extracted only 63 chars
+  ∅ 73b493ff8768 | extracted only 179 chars
+  ✗ 9b41ef631f1c | HTTP 403
+  ✗ 36a708f6ef97 | TypeError: object of type 'NoneType' has no len()
+  ∅ d632652cb1a9 | extracted only 45 chars
+  ∅ cc779a956073 | extracted only 153 chars
+  ∅ 85b327d62a62 | extracted only 66 chars
+  ✗ ede3c3382a26 | HTTP 429
+  ✗ e86403a8ba8f | HTTP 429
+  ∅ 9e1da6246e50 | extracted only 141 chars
+  ✗ a1a9919ade2b | HTTP 403
+  ∅ 9a319d2ec34e | extracted only 72 chars
+  ✗ 12eae63a62c9 | HTTP 403
+  ✗ 894c51df33f4 | HTTP 403
+  ✗ f582d40c501d | HTTP 401
+  ∅ 94ad53243a1b | extracted only 45 chars
+  ∅ 786f72f8607c | extracted only 15 chars
+  ✗ 8b36ee9d5815 | HTTP 429
+  ✗ 6a1ae3f6558f | HTTP 429
+  ✗ 4329a5d6d8fc | HTTP 429
+  ✗ c5ff2a049b40 | HTTP 429
+  ✗ 9cc7608624a9 | HTTP 403
+  ✗ 49d8ffca9954 | HTTP 401
+  ✗ b2918d7687a2 | HTTP 429
+  ∅ f13b51934424 | extracted only 86 chars
+  ✗ d9131872dea3 | HTTP 429
+  ✗ df34e6426a59 | HTTP 429
+  ✗ 03b9d0436f50 | HTTP 429
+  ✗ ae938806e82e | HTTP 403
+  ∅ 5caf59a41944 | extracted only 97 chars
+  ✗ 712562552311 | HTTP 429
+  ✗ 26ffe7764930 | HTTP 429
+  ✗ e22307c01088 | HTTP 429
+  ✗ 752c5f4be8c4 | HTTP 429
+  ✗ 3ce03914ef43 | HTTP 429
+  ✗ c53775f381f8 | TypeError: object of type 'NoneType' has no len()
+  ✗ 22725d685a35 | HTTP 429
+  ✗ 4fb17ef91977 | TypeError: object of type 'NoneType' has no len()
+  ✗ f4d6fb20f321 | HTTP 429
+  ✗ 2580e38db21f | HTTP 429
+  ✗ fc04f8df5cbd | HTTP 429
+  ✗ 523a34c56360 | TypeError: object of type 'NoneType' has no len()
+  ✗ daa47b4928cc | HTTP 429
+  ∅ 1928b7cd6895 | extracted only 63 chars
+  ∅ e29639034d58 | extracted only 106 chars
+  ✗ 31e268b2c07a | HTTP 403
+  ∅ 555091f95a86 | extracted only 63 chars
+  ✗ 5545b24ba8b3 | HTTP 429
+  ∅ 135f2c51e013 | extracted only 106 chars
+  ∅ ca53f907fa67 | extracted only 63 chars
+  ∅ 5686d1e1acd6 | extracted only 134 chars
+  ✗ 124cfd150b7f | HTTP 429
+  ✗ 1c1d3c4d0b02 | HTTP 429
+  ✗ e5e9bd931104 | HTTP 403
+  ✗ eb6c51388309 | HTTP 429
+  ∅ 4acb729ab617 | extracted only 63 chars
+  ✗ e9d97d1dbf62 | HTTP 429
+  ✗ 96d13a8536b6 | HTTP 429
+  ✗ 26162e6eb29d | TypeError: object of type 'NoneType' has no len()
+  ✗ 478835b2440e | HTTP 403
+  ✗ 2690b8a748c9 | HTTP 429
+  ✗ 2f31e7c2d2cb | HTTP 429
+  ✗ 0b4bc654a1ee | HTTP 429
+  ✗ 74eb9777868d | HTTP 429
+  ∅ 0d16b78293a3 | extracted only 159 chars
+  ✗ 668cabe7e63a | HTTP 429
+  ✗ d3d15fdbd3ec | HTTP 429
+  ∅ b55db24f8bc4 | extracted only 74 chars
+  ✗ 8c2ae86ddddb | HTTP 403
+  ∅ 369980a34df2 | extracted only 63 chars
+  ✗ 07fc09adb4be | HTTP 429
+  ✗ 9f5f1f2c5ad7 | HTTP 403
+  ✗ dec76480b787 | HTTP 429
+  ✗ 52bcb696380e | HTTP 429
+  ✗ 254518332313 | HTTP 403
+  ✗ 81a30507eba6 | HTTP 429
+  ∅ 7fe58de4b60a | extracted only 66 chars
+  ✗ 579e41d9846a | HTTP 429
+  ✗ f18a92aafd8d | HTTP 429
+  ✗ 50220b7f864d | HTTP 403
+  ✗ b798dc6802e0 | HTTP 403
+  ✗ 98f62c93b442 | TypeError: object of type 'NoneType' has no len()
+  ∅ 77522466b298 | extracted only 63 chars
+  ✗ e0acdb0472e8 | HTTP 403
+  ∅ 327605752df4 | extracted only 43 chars
+  ✗ e85cee36591c | HTTP 429
+  ∅ 4098db80be4f | extracted only 87 chars
+  ✗ 8451d6b1bc06 | TypeError: object of type 'NoneType' has no len()
+  ∅ a6656ddbe585 | extracted only 63 chars
+  ∅ efd37e95e9af | extracted only 63 chars
+  ∅ d1be6c45f39e | extracted only 187 chars
+  ∅ c3eea14342bb | extracted only 154 chars
+  ∅ b8e445ee70c6 | extracted only 63 chars

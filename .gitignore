@@ -1,0 +1,28 @@
+# Environment & secrets
+.env
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# Data (daily — not committed)
+storage/
+clusters/
+output/
+.story_images/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,147 @@
+
+========================================
+🤖 AI-Digest daily run: 2026-06-10 03:00:10 UTC
+   hours=48, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 101 источников (с 2026-06-08T03:00:10.814098+00:00)...
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ The Information                          → 20 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ ПостНаука (RU)                           → 16 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Wired                                    → 30 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ arXiv stat.ML                            → 30 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ arXiv cs.CL (NLP)                        → 30 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ arXiv cs.CV (Vision)                     → 30 posts
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ Spark.ru                                 → 30 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ The Information                          → 20 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ Becoming Human: AI Magazine              → 10 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ CNET                                     → 25 posts
+  ✓ arXiv q-bio.NC                           → 15 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 18 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 15 posts
+  ✓ arXiv eess.IV (Image Video)              → 19 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 30 posts
+  ✓ arXiv cs.RO (Robotics)                   → 30 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✗ Hacker News (frontpage)                  → fallback timeout: Missing dependencies for SOCKS support.
+  ✓ Vercel AI Blog                           → 30 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ The Decoder                              → 10 posts
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Safety News                           → fallback timeout: Missing dependencies for SOCKS support.
+
+✅ Готово за 64.6s
+   Источников OK: 97/101
+   Постов собрано (с дедупликацией): 1283
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-10.json
+
+📥 Архив: добавлено 211, обновлено 1072, пропущено 0. Всего в архиве: 2226
+/home/apps_maker/ai-digest/storage/posts_2026-06-10.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-10.json
+
+🌐 Step 1.5: scrape.py --missing (только high-priority)
+📚 В архиве: 2226 постов
+🎯 К скрапингу: 411
+  ✓ 2986a028daf7 |   4357 chars | https://about.fb.com/news/2026/06/meta-partners-with-reliance-on-ai-en
+  ✓ 1633ff1a8fe4 |   4357 chars | https://about.fb.com/news/2026/06/meta-partners-with-reliance-on-ai-en
+  ✓ 8c7698766250 |  10287 chars | https://twitter.com/RichardSSutton/status/2061216087744946656
+  ∅ c735772b20a7 | extracted only 81 chars
+  ✓ 669c28a42d49 |  10531 chars | https://habr.com/ru/articles/1045494/?utm_source=habrahabr&utm_medium=
+  ✓ 590758d6d409 |   2321 chars | https://www.cnet.com/tech/computing/apple-visionos-wwdc-2026/
+  ✓ f4cda8f14ebe |   8298 chars | https://habr.com/ru/articles/1045714/?utm_source=habrahabr&utm_medium=
+  ✓ 340c7cc40f88 |    925 chars | https://www.techmeme.com/260609/p47#a260609p47
+  ✓ f5f16b778aa5 |   3861 chars | https://techcrunch.com/2026/06/09/google-just-fired-a-warning-shot-in-
+  ✓ f17912fbd94e |   4529 chars | https://github.com/apple/container/blob/main/docs/container-machine.md
+  ✓ 64a52781da10 |  13637 chars | https://www.cnet.com/health/personal-care/best-whitening-toothpaste/
+  ✓ 0d01ec646971 |    964 chars | https://www.techmeme.com/260609/p45#a260609p45
+  ✓ d17d64b0ba3b |   1819 chars | https://habr.com/ru/news/1045712/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 1c2e882ed9c8 |   4096 chars | https://jesseduffield.com/ITS-DEATH/
+  ∅ 016bc729fe32 | extracted only 40 chars
+  ✓ 494c375e4e3c |   1004 chars | https://www.techmeme.com/260609/p46#a260609p46
+  ✓ 241e2cda759e |  12673 chars | https://habr.com/ru/articles/1045710/?utm_source=habrahabr&utm_medium=
+  ✓ 981347ec6e74 |  28759 chars | https://www.cnet.com/tech/home-entertainment/best-bluetooth-speaker/
+  ✓ fdf9401b7508 |  14094 chars | https://habr.com/ru/articles/1045708/?utm_source=habrahabr&utm_medium=
+  ✓ 97e73bfc89ed |   4872 chars | https://www.theverge.com/tech/947432/siri-ai-apple-intelligence-ios-27
+  ✓ 52c91de3b64f |   6818 chars | https://habr.com/ru/articles/1045706/?utm_source=habrahabr&utm_medium=
+  ✓ d52d461250be |   4426 chars | https://thenextweb.com/news/salesforce-acquires-m3ter-consumption-bill
+  ✓ e6f44b6ef767 |   4725 chars | https://techcrunch.com/2026/06/09/how-justin-ernest-invested-nearly-50
+  ✓ 22888f9b0bfa |   4240 chars | https://thenextweb.com/news/erc-system-victor-evtol-cargo-drone-ila-be
+free(): invalid pointer

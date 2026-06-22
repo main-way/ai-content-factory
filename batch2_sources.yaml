@@ -1,0 +1,952 @@
+# Batch 2 sources - AI/ML blogs and tech news
+- name: AI Weekly
+  url: https://aiweekly.co/issues.rss
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: BDTechTalks
+  url: https://bdtechtalks.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Paperspace Blog
+  url: https://blog.paperspace.com/rss/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: DataRobot Blog
+  url: https://www.datarobot.com/blog/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: "Becoming Human: AI Magazine"
+  url: https://becominghuman.ai/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Finxter AI Blog
+  url: https://blog.finxter.com/ai/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Augmented Coding Weekly
+  url: https://augmentedcoding.dev/feed.xml
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Microsoft ML Blog (archive)
+  url: https://learn.microsoft.com/en-us/archive/blogs/machinelearning/feed.xml
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Intel AI Blog
+  url: https://www.intel.com/content/www/us/en/artificial-intelligence/overview.html
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: VentureBeat AI
+  url: https://venturebeat.com/category/ai/feed
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: TechCrunch AI
+  url: https://techcrunch.com/category/artificial-intelligence/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: TechCrunch Startups
+  url: https://techcrunch.com/category/startups/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: The Verge (AI)
+  url: https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: The Verge (Technology)
+  url: https://www.theverge.com/rss/technology/index.xml
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Wired
+  url: https://www.wired.com/feed/rss
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: Ars Technica
+  url: https://feeds.arstechnica.com/arstechnica/index
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: The Information
+  url: https://www.theinformation.com/feed
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: Stratechery
+  url: https://stratechery.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: MIT Tech Review
+  url: https://www.technologyreview.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: MIT Tech Review (AI topic)
+  url: https://www.technologyreview.com/topic/artificial-intelligence/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: KDNuggets
+  url: https://www.kdnuggets.com/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Towards Data Science
+  url: https://towardsdatascience.com/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Analytics Vidhya
+  url: https://www.analyticsvidhya.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: DeepMind Blog
+  url: https://deepmind.google/blog/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Google AI Blog
+  url: https://blog.google/technology/ai/rss/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: OpenAI Blog
+  url: https://openai.com/news/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Hugging Face Blog
+  url: https://huggingface.co/blog/feed.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Cohere Blog
+  url: https://cohere.com/blog/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: AI21 Labs Blog
+  url: https://www.ai21.com/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Anthropic News
+  url: https://www.anthropic.com/news/rss
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Meta AI Blog
+  url: https://ai.meta.com/blog/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Stability AI Blog
+  url: https://stability.ai/newsroom
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Inflection AI
+  url: https://inflection.ai/press
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Perplexity Blog
+  url: https://perplexity.ai/blog
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Mistral AI Blog
+  url: https://mistral.ai/news/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Grok (xAI)
+  url: https://x.ai/blog
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI News (Meta)
+  url: https://about.fb.com/news/tag/ai/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: TechCrunch
+  url: https://techcrunch.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: Engadget
+  url: https://www.engadget.com/rss.xml
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: CNET
+  url: https://www.cnet.com/rss/news/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: VentureBeat
+  url: https://venturebeat.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: Crunchbase News
+  url: https://news.crunchbase.com/feed/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: CB Insights Research
+  url: https://www.cbinsights.com/research/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: PE Hub
+  url: https://www.pehub.com/feed/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Hacker News
+  url: https://news.ycombinator.com/rss
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+
+- name: Product Hunt
+  url: https://feed.producthunt.com/posts.rss
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: BetaList
+  url: https://betalist.com/rss
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Indie Hackers
+  url: https://www.indiehackers.com/rss
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Business
+  url: https://aibusiness.com/rss
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Algorithmia Blog
+  url: https://algorithmia.com/blog/rss
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: GitHub AI Blog
+  url: https://github.blog/category/ai/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: GitHub Engineering
+  url: https://github.blog/category/engineering/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: DeepLearning.AI Blog
+  url: https://www.deeplearning.ai/blog/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: OpenCV AI Blog
+  url: https://opencv.org/blog/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: PyTorch Blog
+  url: https://pytorch.org/blog/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: TensorFlow Blog
+  url: https://blog.tensorflow.org/feeds/posts.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Lightning AI Blog
+  url: https://lightning.ai/blog
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Weights & Biases Blog
+  url: https://wandb.ai/blog
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Hugging Face Papers
+  url: https://huggingface.co/blog/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: arXiv q-bio.QG
+  url: https://rss.arxiv.org/rss/q-bio.QG
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: arXiv q-bio.NC
+  url: https://rss.arxiv.org/rss/q-bio.NC
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: arXiv cs.RO (Robotics)
+  url: https://rss.arxiv.org/rss/cs.RO
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: arXiv cs.NE (Neural Evo)
+  url: https://rss.arxiv.org/rss/cs.NE
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: arXiv cs.MM (Multimodal)
+  url: https://rss.arxiv.org/rss/cs.MM
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: arXiv eess.IV (Image Video)
+  url: https://rss.arxiv.org/rss/eess.IV
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: arXiv eess.AS (Audio Speech)
+  url: https://rss.arxiv.org/rss/eess.AS
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: VentureBeat Transformers
+  url: https://venturebeat.com/category/transform/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: VentureBeat Data Science
+  url: https://venturebeat.com/category/data-science/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: VentureBeat Machine Learning
+  url: https://venturebeat.com/category/machine-learning/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Techmeme
+  url: https://www.techmeme.com/feed.xml
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: The Next Web
+  url: https://thenextweb.com/feed/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: VentureBeat Startups
+  url: https://venturebeat.com/category/startups/feed/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Stanford AI Lab
+  url: https://ai.stanford.edu/news/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: CMU AI News
+  url: https://www.cs.cmu.edu/news/topic/artificial-intelligence/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: NVIDIA Research
+  url: https://research.nvidia.com/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Google Research Blog
+  url: https://blog.research.google/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Meta Research
+  url: https://ai.meta.com/research/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Apple ML Research
+  url: https://machinelearning.apple.com/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Amazon Science
+  url: https://www.amazon.science/feed.rss
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Microsoft Research
+  url: https://www.microsoft.com/en-us/research/blog/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: IBM Research
+  url: https://www.research.ibm.com/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Salesforce AI Research
+  url: https://blog.einstein.ai/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Adobe AI Blog
+  url: https://blog.adobe.com/topic/artificial-intelligence/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Spotify Engineering
+  url: https://engineering.atspotify.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Netflix Tech Blog
+  url: https://netflixtechblog.com/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: LinkedIn Engineering
+  url: https://engineering.linkedin.com/blog/rss
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Uber AI
+  url: https://www.uber.com/en-US/blog/category/artificial-intelligence/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Airbnb Engineering
+  url: https://airbnb.io/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: DoorDash Engineering
+  url: https://doordash.engineering/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Stripe Engineering
+  url: https://stripe.com/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Zoom AI Research
+  url: https://blog.zoom.us/category/ai-research/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Zoom Engineering
+  url: https://devblog.zoom.us/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Twilio AI Blog
+  url: https://www.twilio.com/blog/topics/artificial-intelligence/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Cloudflare Research
+  url: https://blog.cloudflare.com/tag/research/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Cloudflare AI
+  url: https://blog.cloudflare.com/tag/ai/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Hugging Face Newsletter
+  url: https://huggingface.co/newsletter/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: Cohere Newsletter
+  url: https://cohere.com/newsletter/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Optic
+  url: https://aioptic.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: The AI CEO
+  url: https://theaieceo.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI News Daily
+  url: https://www.ainews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Superhuman AI
+  url: https://superhuman.ai/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: The AI Content Coach
+  url: https://aicontentcoach.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Prompt Engineering Tips
+  url: https://promptengineer.xyz/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Product Hunt
+  url: https://www.producthunt.com/newsletter/ai/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: The AI Monitor
+  url: https://aimanual.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Tools Weekly
+  url: https://aitoolsweekly.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Future Tools
+  url: https://futuretools.io/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: There's an AI for That
+  url: https://theresanaiforthat.com/newsletter/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Finder
+  url: https://ai-finder.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Alternative AI
+  url: https://alternatives.ai/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: GPT News
+  url: https://gptnews.us/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: LLM Observer
+  url: https://llmobserver.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Money Box
+  url: https://aimoneybox.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Open AI Today
+  url: https://openaitoday.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Business Daily
+  url: https://aibusinessdaily.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: Generative AI News
+  url: https://generativeai.net/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Venture
+  url: https://aiventure.co/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Startup Tracker
+  url: https://aistartuptracker.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Funding News
+  url: https://aifundingnews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Ethics News
+  url: https://aiethicsnews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Safety News
+  url: https://aisafetynews.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: AI Policy News
+  url: https://aipolicynews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Regulation Update
+  url: https://airegulationupdate.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Governance
+  url: https://aigovernance.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Privacy News
+  url: https://aiprivacynews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Security Alert
+  url: https://aisecurityalert.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+
+- name: AI Defense News
+  url: https://aidefensenews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Military Tech
+  url: https://aimilitarytech.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Healthcare News
+  url: https://aihealthcarenews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Education News
+  url: https://aieducationnews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Finance News
+  url: https://aifinancenews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Retail News
+  url: https://airetailnews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Automotive News
+  url: https://aiautomotivenews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Manufacturing News
+  url: https://aimanufacturingnews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Agriculture News
+  url: https://aiagriculturenews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+
+- name: AI Energy News
+  url: https://aienergynews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true

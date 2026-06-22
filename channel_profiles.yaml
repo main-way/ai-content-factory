@@ -1,0 +1,522 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# Content Bank — Channel & Publication Profiles
+# ═══════════════════════════════════════════════════════════════════════════════
+# Формат: YAML
+# Каждый профиль = один канал / рассылка / аккаунт.
+#
+# platforms: telegram | listmonk | instagram | linkedin | facebook | twitter | web
+#
+# Структура профиля:
+#   channel_id    — уникальный ID (латиница, _ допустим)
+#   name          — человеческое название
+#   platform      — платформа
+#   enabled       — включён / выключен
+#
+#   kb_query      — запрос к Knowledge Base (какие посты брать)
+#   schedule      — расписание и периодичность
+#   moderation    — модерация / утверждение
+#
+#   compose       — КАК генерировать контент (СКИЛЫ + ПРОМПТ)
+#   post          — КАК публиковать (СКИЛЫ + ПАРАМЕТРЫ)
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ─────────────────────────────────────────────────────────────────────────────
+# БЛОК compose
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# compose:
+#   skill: str                  — Hermes skill для генерации
+#                                telegram-messaging | llm-scraper | generic-compose
+#                                Пусто = встроенный composer (format_* функции)
+#   model: str                  — модель (по умолчанию: текущая)
+#   temperature: 0.7           — креативность 0.0–1.0
+#   max_tokens: 2000           — макс. длина на выходе (0 = без лимита)
+#   system_prompt: ""           — доп. инструкции для-compose агента
+#   style: news|brief|thread|single — стиль (если skill=встроенный)
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# БЛОК post
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# post:
+#   skill: str                  — Hermes skill для постинга
+#                                telegram-messaging | listmonk-campaign-api |
+#                                xurl (Twitter) | native
+#                                Пусто = native (встроенная функция)
+#   params: {}                   — платформо-специфичные параметры
+#   use_draft: true             — брать контент из drafts/ (True)
+#                                или генерировать на лету (False)
+#   approval_required: true     — требовать ручного утверждения перед post
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# ПРИМЕРЫ post.params ПО ПЛАТФОРМАМ
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# telegram:
+#   parse_mode: HTML            — HTML | MarkdownV2 | null
+#   disable_web_preview: true
+#   disable_notification: false
+#
+# listmonk:
+#   content_type: markdown      — markdown | html | plain
+#   campaign_name: "{date}"     — шаблон с датой
+#   subject: "Тема за {date}"
+#   from_name: "AI Digest"
+#   reply_to: "info@example.com"
+#   template_id: 0
+#
+# instagram:
+#   image_required: true
+#   image_aspect: 1.0           — 1.0=квадрат, 0.56=портрет 9:16
+#   caption_max_length: 2200
+#   hashtags_auto: true
+#   hashtags: [AI, Tech, News]
+#
+# linkedin:
+#   content_type: article       — text | article | image
+#   visibility: PUBLIC          — PUBLIC | CONNECTIONS_ONLY
+#   image_required: false
+#
+# twitter:
+#   thread_mode: false
+#   image_required: false
+#
+# facebook:
+#   content_type: post          — post | link | article
+#   image_required: false
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ─────────────────────────────────────────────────────────────────────────────
+# L I S T M O N K   P R O F I L E S
+# ─────────────────────────────────────────────────────────────────────────────
+
+- channel_id: listmonk_production
+  name: "ИИ для производственных компаний"
+  platform: listmonk
+  enabled: true
+
+  kb_query:
+    categories: [ai_research, startups_vc, ru_corp_it]
+    languages: [ru, en]
+    priorities: [high, medium]
+    sources: []
+    days_back: 7
+    fts_query: "manufacturing OR industrial OR plant OR factory OR production AI implementation"
+    limit: 30
+
+  schedule:
+    posts_per_day: 1
+    times: ["10:00"]
+
+  moderation:
+    approval_required: true
+    draft_dir: listmonk_production/
+
+  # ── COMPOSE ────────────────────────────────────────────────────────────────
+  compose:
+    # skill: пусто = встроенный composer (format_brief)
+    # Для кастомного LLM-композита раскомментируй и настрой:
+    # skill: generic-compose
+    # model: ""
+    temperature: 0.7
+    max_tokens: 0
+    style: brief
+    # system_prompt_addon: |
+    #   Пиши как эксперт по промышленной автоматизации.
+    #   Фокус на практические кейсы внедрения.
+
+  # ── POST ──────────────────────────────────────────────────────────────────
+  post:
+    skill: listmonk-campaign-api
+    use_draft: true
+    approval_required: true
+    params:
+      list_id: 5
+      content_type: markdown
+      campaign_name: "ИИ для производства — {date}"
+      subject: "ИИ в производстве: дайджест за {date}"
+      from_name: "AI Digest"
+      reply_to: "info@main-way.com"
+
+
+- channel_id: listmonk_beauty
+  name: "Красота и здоровье"
+  platform: listmonk
+  enabled: true
+
+  kb_query:
+    categories: [ai_research, startups_vc, ru_startups]
+    languages: [ru, en]
+    priorities: [high, medium]
+    sources: []
+    days_back: 7
+    fts_query: "beauty health wellness skincare cosmetics AI"
+    limit: 30
+
+  schedule:
+    posts_per_day: 1
+    times: ["11:00"]
+
+  moderation:
+    approval_required: true
+    draft_dir: listmonk_beauty/
+
+  compose:
+    temperature: 0.7
+    max_tokens: 0
+    style: brief
+
+  post:
+    skill: listmonk-campaign-api
+    use_draft: true
+    approval_required: true
+    params:
+      list_id: 4
+      content_type: markdown
+      campaign_name: "ИИ в красоте — {date}"
+      subject: "AI в красоте и здоровье: дайджест за {date}"
+      from_name: "AI Digest"
+      reply_to: "info@main-way.com"
+
+
+- channel_id: listmonk_ai_news
+  name: "Новости нейросетей"
+  platform: listmonk
+  enabled: true
+
+  kb_query:
+    categories: [ai_research, ru_ai]
+    languages: [ru]
+    priorities: [high, medium]
+    sources: []
+    days_back: 7
+    fts_query: ""
+    limit: 30
+
+  schedule:
+    posts_per_day: 1
+    times: ["09:00"]
+
+  moderation:
+    approval_required: true
+    draft_dir: listmonk_ai_news/
+
+  compose:
+    temperature: 0.7
+    max_tokens: 0
+    style: brief
+
+  post:
+    skill: listmonk-campaign-api
+    use_draft: true
+    approval_required: true
+    params:
+      list_id: 2
+      content_type: markdown
+      campaign_name: "Новости нейросетей — {date}"
+      subject: "Новости нейросетей: {date}"
+      from_name: "AI Digest"
+      reply_to: "info@main-way.com"
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# T E L E G R A M   P R O F I L E S
+# ─────────────────────────────────────────────────────────────────────────────
+
+- channel_id: tg_personal_leader
+  name: "Telegram-истории — mAIn WAY"
+  platform: telegram
+  enabled: true
+
+  kb_query:
+    # Темы — описание аудитории и её интересов (для агента, не для поиска)
+    audience_description: |
+      Малый и средний бизнес, предприниматели, фрилансеры.
+      Хотят конкретную пользу: какой инструмент сэкономил время,
+      какой ИИ решил их проблему, как внедрить без инженера.
+      Интересует практика, а не теория.
+
+    topics:
+      - "Инструменты ИИ для решения реальных бизнес-задач: автоматизация, аналитика, чат-боты"
+      - "ИИ для маркетинга, продаж, клиентского сервиса"
+      - "ИИ для операционной работы: документы, процессы, планирование"
+      - "Обзоры и сравнения ИИ-инструментов для не-технарей"
+      - "Готовые решения для SMB: подписки, интеграции, pricing"
+
+    # Антитемы — темы, которые НЕ интересны этой аудитории
+    anti_topics:
+      - Политические и геополитические ИИ-новости (санкции, регулирование, войны)
+      - Академическая теория и исследования без практического применения
+      - Узкоспециализированные темы (медицинские ИИ-исследования, научные бенчмарки)
+      - Сделки и финансовые новости ИИ-компаний на бирже (IPO, фандрейзинг, оценки)
+      - Аэрокосмические и оборонные ИИ-проекты
+      - Hardware и GPU-бенчмарки без привязки к бизнесу
+
+    languages: [en, ru]
+    priorities: [high, medium]
+    sources: []
+    days_back: 30
+    fts_query: ""
+    limit: 2000
+
+  schedule:
+    posts_per_day: 3
+    times: ["09:00", "13:00", "18:00"]
+
+  moderation:
+    approval_required: true
+    draft_dir: tg_personal_leader/
+
+  compose:
+    temperature: 0.75
+    max_tokens: 0
+    style: story
+    system_prompt_addon: |
+      Контент для историй — ТОЛЬКО реальные картинки из статей (og:image → Vision AI → crop 9:16).
+      Генерация картинки по тексту НЕ используется.
+
+      ИНТЕРЕСНО этой аудитории:
+      - Инструменты ИИ для решения реальных бизнес-задач
+      - Практические кейсы внедрения с измеримым результатом
+      - ИИ для маркетинга, продаж, клиентского сервиса
+      - Готовые решения для SMB с понятным pricing
+      - Обзоры и сравнения ИИ-инструментов для не-технарей
+
+      НЕИНТЕРЕСНО (пропускай такие посты):
+      - Политические/геополитические ИИ-новости
+      - Академическая теория без практического применения
+      - Сделки ИИ-компаний на бирже (IPO, фандрейзинг)
+      - Аэрокосмос и оборона
+      - Узкоспециализированные медицинские/научные темы
+
+      Для каждой истории:
+      1) 📷 описание — что видно на фото из статьи
+      2) caption — короткая подпись (до 200 символов)
+      3) Источник и ссылка
+
+  post:
+    skill: telegram-messaging
+    use_draft: true
+    approval_required: true
+    params:
+      parse_mode: HTML
+      disable_web_preview: true
+      disable_notification: false
+      chat_id: "4267da2b4c67"
+
+#
+# - channel_id: tg_ai_news
+#   name: "AI News RU"
+#   platform: telegram
+#   enabled: false
+#
+#   kb_query:
+#     categories: [ai_research, ru_ai]
+#     languages: [ru]
+#     priorities: [high]
+#     sources: []
+#     days_back: 3
+#     fts_query: ""
+#     limit: 20
+#
+#   schedule:
+#     posts_per_day: 4
+#     times: ["08:00", "12:00", "16:00", "20:00"]
+#
+#   moderation:
+#     approval_required: true
+#     draft_dir: tg_ai_news/
+#
+#   compose:
+#     temperature: 0.7
+#     max_tokens: 1500
+#     style: news
+#     # system_prompt_addon: ""
+#
+#   post:
+#     skill: telegram-messaging
+#     use_draft: true
+#     approval_required: true
+#     params:
+#       parse_mode: HTML
+#       disable_web_preview: true
+#       disable_notification: false
+#       chat_id: ""  # заполни
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# I N S T A G R A M   P R O F I L E S
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# - channel_id: ig_main
+#   name: "AI Soft Instagram"
+#   platform: instagram
+#   enabled: false
+#
+#   kb_query:
+#     categories: [ai_research, startups_vc]
+#     languages: [en]
+#     priorities: [high]
+#     sources: []
+#     days_back: 14
+#     fts_query: ""
+#     limit: 10
+#
+#   schedule:
+#     posts_per_day: 1
+#     times: ["18:00"]
+#
+#   moderation:
+#     approval_required: true
+#     draft_dir: ig_main/
+#
+#   compose:
+#     temperature: 0.8
+#     max_tokens: 2200
+#     style: single  # один пост = одна тема
+#     # system_prompt_addon: |
+#     #   Пиши коротко, ярко, с эмоджи. Целевая аудитория — CTO и ML-инженеры.
+#
+#   post:
+#     skill: telegram-images  # временное решение; нужен instagram skill
+#     use_draft: true
+#     approval_required: true
+#     params:
+#       image_required: true
+#       image_aspect: 1.0
+#       caption_max_length: 2200
+#       hashtags_auto: true
+#       hashtags:
+#         - AI
+#         - MachineLearning
+#         - TechNews
+#         - ArtificialIntelligence
+#         - DeepLearning
+#         - Innovation
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# L I N K E D I N   P R O F I L E S
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# - channel_id: li_main
+#   name: "AI Soft Company Page"
+#   platform: linkedin
+#   enabled: false
+#
+#   kb_query:
+#     categories: [ai_research, startups_vc, ru_corp_it]
+#     languages: [en]
+#     priorities: [high, medium]
+#     sources: []
+#     days_back: 7
+#     fts_query: ""
+#     limit: 20
+#
+#   schedule:
+#     posts_per_day: 1
+#     times: ["09:00"]
+#
+#   moderation:
+#     approval_required: true
+#     draft_dir: li_main/
+#
+#   compose:
+#     temperature: 0.6
+#     max_tokens: 3000
+#     style: article  # развёрнутый формат для LinkedIn
+#     # system_prompt_addon: |
+#     #   Тон — профессиональный, экспертный. Для LinkedIn аудитории.
+#     #   Описывай практическую пользу, приводи примеры внедрений.
+#
+#   post:
+#     skill: xurl  # Twitter/X API (LinkedIn тоже через xurl или отдельный skill)
+#     use_draft: true
+#     approval_required: true
+#     params:
+#       content_type: article
+#       visibility: PUBLIC
+#       image_required: false
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# F A C E B O O K   P R O F I L E S
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# - channel_id: fb_main
+#   name: "AI Soft Facebook"
+#   platform: facebook
+#   enabled: false
+#
+#   kb_query:
+#     categories: [ai_research, startups_vc, ru_ai]
+#     languages: [ru, en]
+#     priorities: [high, medium]
+#     sources: []
+#     days_back: 7
+#     fts_query: ""
+#     limit: 15
+#
+#   schedule:
+#     posts_per_day: 2
+#     times: ["10:00", "16:00"]
+#
+#   moderation:
+#     approval_required: true
+#     draft_dir: fb_main/
+#
+#   compose:
+#     temperature: 0.7
+#     max_tokens: 2000
+#     style: news
+#
+#   post:
+#     skill: native  # пока нет FBS skill, используем встроенную заглушку
+#     use_draft: true
+#     approval_required: true
+#     params:
+#       content_type: post
+#       image_required: false
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# T W I T T E R / X   P R O F I L E S
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# - channel_id: tw_main
+#   name: "AI Soft Twitter/X"
+#   platform: twitter
+#   enabled: false
+#
+#   kb_query:
+#     categories: [ai_research, startups_vc]
+#     languages: [en]
+#     priorities: [high]
+#     sources: []
+#     days_back: 3
+#     fts_query: ""
+#     limit: 10
+#
+#   schedule:
+#     posts_per_day: 3
+#     times: ["09:00", "13:00", "17:00"]
+#
+#   moderation:
+#     approval_required: true
+#     draft_dir: tw_main/
+#
+#   compose:
+#     temperature: 0.8
+#     max_tokens: 280
+#     style: single  # один твит = один факт
+#     # system_prompt_addon: ""
+#
+#   post:
+#     skill: xurl
+#     use_draft: true
+#     approval_required: true
+#     params:
+#       thread_mode: false
+#       image_required: false

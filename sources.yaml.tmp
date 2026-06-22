@@ -1,0 +1,1917 @@
+meta:
+  total_sources: 271
+  enabled: 101
+  disabled: 170
+  last_check: '2026-06-09'
+  check_duration_sec: 56.4
+  zufar_original: 45
+  hermes_added: 226
+  note: Expanded from 76 to 271 sources, targeting 200+ working sources
+  url_replacements:
+  - old: https://openai.com/blog/rss
+    new: https://openai.com/news/rss.xml
+  - old: https://deepmind.google/blog/rss/
+    new: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/rss/
+  - old: https://techcrunch.com/category/artificial-intelligence/feed/
+    new: https://techcrunch.com/category/artificial-intelligence/?feed=rss2
+  - old: https://techcrunch.com/startups/feed/
+    new: https://techcrunch.com/category/startups/?feed=rss2
+  - old: https://venturebeat.com/ai/feed/
+    new: https://venturebeat.com/category/ai/feed/
+  - old: https://a16z.com/feed/
+    new: https://a16z.substack.com/feed
+  - old: https://simonwillison.net/atom.xml
+    new: https://simonw.substack.com/feed
+  blocked_by_cloudflare_ru:
+  - https://neurohive.io/feed/
+  - https://proglib.io/rss
+  - https://nplus1.ru/rss/news
+  - https://ain.ua/ru/rss/
+  - https://www.cossa.ru/rss/news/
+  - https://hi-tech.mail.ru/rss/
+  - https://spark.ru/rss
+  no_official_rss:
+  - Anthropic News → https://hnrss.org/newest?q=anthropic
+  - DeepLearning.AI The Batch → нет замены
+  - Both Sides of the Table (Mark Suster) → https://bothsidesofthetable.com (парсить
+    вручную)
+sources:
+- name: Google AI Blog
+  url: https://blog.google/technology/ai/rss/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: DeepMind Blog
+  url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/rss/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: PENDING
+  note: '[UPDATED 2026-06] переехал на Google Blog aggregator'
+- name: OpenAI Blog
+  url: https://openai.com/news/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: PENDING
+  note: '[UPDATED 2026-06] old /blog/rss → new /news/rss.xml'
+- name: Anthropic News
+  url: https://www.anthropic.com/news/rss
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] официальный RSS отключили. Альтернатива: HN-фильтр hnrss.org/newest?q=anthropic'
+- name: arXiv cs.AI
+  url: https://arxiv.org/rss/cs.AI
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: arXiv cs.LG
+  url: https://arxiv.org/rss/cs.LG
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: BAIR Blog (Berkeley)
+  url: https://bair.berkeley.edu/blog/feed.xml
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: ALIVE
+- name: Jupyter Blog
+  url: https://blog.jupyter.org/feed
+  category: ai_research
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] connection error, домен не резолвится'
+- name: Lasting Projects
+  url: https://www.lastingprojects.com/feed.xml
+  category: ai_research
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] подозрительный домен, не существует'
+- name: Association of Hackers
+  url: https://assocofhackers.com/feed
+  category: ai_research
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] подозрительный домен, не существует'
+- name: Artificial Intelligence Blog
+  url: https://www.artificial-intelligence.blog/feed/
+  category: ai_research
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, вероятно сео-блог'
+- name: VentureBeat AI
+  url: https://venturebeat.com/category/ai/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: PENDING
+  note: '[UPDATED 2026-06] /ai/ → /category/ai/'
+- name: NVIDIA Blog
+  url: https://blogs.nvidia.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: Google Research
+  url: https://ai.google/research/pubs/rss
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, раздел удалён с Google Research'
+- name: TechCrunch AI
+  url: https://techcrunch.com/category/artificial-intelligence/?feed=rss2
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: PENDING
+  note: '[UPDATED 2026-06] формат URL сменился, теперь ?feed=rss2'
+- name: MIT Technology Review
+  url: https://www.technologyreview.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+  note: '[FIXED] в источнике Зуфара было ''technologyreview/feed'' без домена'
+- name: MIT Technology Review (AI topic)
+  url: https://www.technologyreview.com/topic/artificial-intelligence/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: PENDING
+  note: '[ADDED 2026-06] специализированный AI-фид'
+- name: BDTechTalks
+  url: https://bdtechtalks.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: ALIVE
+- name: Last Week in AI
+  url: https://lastweekinai.com/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: TIMEOUT
+  note: '[TIMEOUT 2026-06] нужен retry, возможно медленный сервер'
+- name: DeepLearning.AI Blog
+  url: https://www.deeplearning.ai/blog/rss/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, фид отключили'
+- name: MosaicML Blog
+  url: https://www.mosaicml.com/blog/rss.xml
+  category: ai_research
+  language: en
+  priority: low
+  enabled: true
+  check_status: BROKEN
+  note: '[BROKEN 2026-06] XML невалидный; компания куплена Databricks'
+- name: Meta Newsroom
+  url: https://about.fb.com/feed/
+  category: ai_research
+  language: en
+  priority: low
+  enabled: true
+  check_status: ALIVE
+  note: общая лента Meta, много шума, но FAIR/AI-раздел иногда полезен
+- name: Google Research Blog
+  url: https://blog.research.google/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, дубль с Google AI Blog (https://blog.google/technology/ai/rss/)'
+- name: Semiconductor Engineering
+  url: https://semiengineering.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: ALIVE
+- name: Victor Park Newsletter
+  url: https://newsletter.victorpark.me/feed
+  category: ai_research
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] домен не резолвится'
+- name: Transformer News
+  url: https://transformernews.com/rss
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: EMPTY
+  note: '[EMPTY 2026-06] валидный фид, но 0 постов — платный?'
+- name: Hugging Face Blog
+  url: https://huggingface.co/blog/feed.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: Import AI (Jack Clark)
+  url: https://importai.substack.com/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: The Batch (Andrew Ng)
+  url: https://www.deeplearning.ai/the-batch/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 308→404, RSS отключили. Нужно парсить HTML или через
+    RSSHub'
+- name: LangChain Blog
+  url: https://blog.langchain.dev/rss/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+  note: '[BROKEN 2026-06] XML невалидный'
+- name: Lil'Log (Lilian Weng)
+  url: https://lilianweng.github.io/index.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: STALE
+  note: '[STALE 2026-06] последний пост 2025-05-01, автор ушла из OpenAI'
+- name: Simon Willison (via Substack)
+  url: https://simonw.substack.com/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: PENDING
+  note: '[UPDATED 2026-06] atom.xml/feed/ мертвы, переехал на Substack'
+- name: The Gradient
+  url: https://thegradient.pub/rss/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: STALE
+  note: '[STALE 2026-06] последний пост 2026-02-18, медленно обновляется'
+- name: Y Combinator News
+  url: https://www.ycombinator.com/news/rss
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, RSS отключили. YC новости → Hacker News через hnrss.org'
+- name: Techstars News
+  url: https://news.techstars.com/feed/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] домен не резолвится'
+- name: Fast Company
+  url: https://www.fastcompany.com/feed
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 403, Cloudflare-блок. Можно через SOCKS5'
+- name: For Entrepreneurs (David Skok)
+  url: https://www.forentrepreneurs.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: STALE
+  note: '[STALE 2026-06] последний пост 2023-09, автор забросил блог'
+- name: Both Sides of the Table (Mark Suster)
+  url: https://bothsidesofthetable.com/feed
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] домен не резолвится'
+- name: Chris Dixon
+  url: https://cdixon.org/rss
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: BROKEN
+  note: '[BROKEN 2026-06] XML невалидный'
+- name: Twitter Marketing Blog
+  url: https://marketing.twitter.com/en/rss.html
+  category: startups_vc
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, X/Twitter выпилил маркетинговый блог'
+- name: Sequoia Capital
+  url: https://www.sequoiacap.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: a16z (via Substack)
+  url: https://a16z.substack.com/feed
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: PENDING
+  note: '[UPDATED 2026-06] основной feed/ мёртв, заменил на Substack'
+- name: Proper.io
+  url: https://proper.io/feed/
+  category: startups_vc
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, сервис закрыт'
+- name: TechCrunch Startups
+  url: https://techcrunch.com/category/startups/?feed=rss2
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: PENDING
+  note: '[UPDATED 2026-06] формат URL сменился'
+- name: VentureBeat Startups
+  url: https://feeds.feedburner.com/venturebeat/SZYF
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+  note: '[UPDATED 2026-06] вернулся на FeedBurner (прямой feed даёт 404/429)'
+- name: Startup Rural
+  url: https://www.startuprural.com/feed
+  category: startups_vc
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] домен не резолвится'
+- name: Starteer
+  url: https://www.starteer.com/feed
+  category: startups_vc
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] домен не резолвится'
+- name: Red Rocket VC
+  url: https://redrocketvc.blogspot.com/feeds/posts/default?alt=rss
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Venture Founders
+  url: https://www.venturefounders.com/feed
+  category: startups_vc
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+- name: Playfair Capital (Medium)
+  url: https://medium.com/playfair-capital/feed
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+  note: '[BROKEN 2026-06] Medium закрыл RSS-фиды'
+- name: The Next Web
+  url: https://www.thenextweb.com/feed
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: ALIVE
+- name: StrictlyVC
+  url: https://strictlyvc.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: STALE
+  note: '[STALE 2026-06] последний пост 2020-04, фид забыт'
+- name: PE Hub
+  url: https://www.pehub.com/feed/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: ALIVE
+- name: The Information
+  url: https://www.theinformation.com/feed
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: PENDING
+- name: Crunchbase News
+  url: https://news.crunchbase.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: CB Insights Research
+  url: https://www.cbinsights.com/research/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: BROKEN
+- name: Hacker News (frontpage)
+  url: https://hnrss.org/frontpage
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: Indie Hackers
+  url: https://www.indiehackers.com/feed
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+  note: '[BROKEN 2026-06] XML невалидный'
+- name: TechMeme
+  url: https://www.techmeme.com/feed.xml
+  category: aggregators
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: Stratechery
+  url: https://stratechery.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: Neurohive (AI, RU)
+  url: https://neurohive.io/feed/
+  category: ru_ai
+  language: ru
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, нужен RSSHub+SOCKS5 для обхода Cloudflare'
+- name: Proglib (RU)
+  url: https://proglib.io/rss
+  category: ru_ai
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, нужен RSSHub+SOCKS5'
+- name: N+1 (RU)
+  url: https://nplus1.ru/rss/news
+  category: ru_ai
+  language: ru
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 403, Cloudflare-блок, нужен RSSHub+SOCKS5'
+- name: ПостНаука (RU)
+  url: https://postnauka.ru/feed
+  category: ru_ai
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: ALIVE
+- name: VC.ru
+  url: https://vc.ru/rss
+  category: ru_startups
+  language: ru
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: SecurityLab
+  url: https://www.securitylab.ru/rss/
+  category: ru_corp_it
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Rusbase (rb.ru)
+  url: https://rb.ru/feeds/all/
+  category: ru_startups
+  language: ru
+  priority: high
+  enabled: true
+  check_status: ALIVE
+- name: Roem.ru
+  url: https://roem.ru/feed/
+  category: ru_startups
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: ALIVE
+- name: Firrma
+  url: https://firrma.ru/feed/
+  category: ru_startups
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] домен не резолвится'
+- name: Spark.ru
+  url: https://spark.ru/rss
+  category: ru_startups
+  language: ru
+  priority: low
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 403, Cloudflare-блок'
+- name: AIN.UA (RU)
+  url: https://ain.ua/ru/rss/
+  category: ru_startups
+  language: ru
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, нужен RSSHub+SOCKS5'
+- name: Cossa (RU)
+  url: https://www.cossa.ru/rss/news/
+  category: ru_startups
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, нужен RSSHub+SOCKS5'
+- name: CNews
+  url: http://www.cnews.ru/inc/rss/news.xml
+  category: ru_corp_it
+  language: ru
+  priority: high
+  enabled: true
+  check_status: BROKEN
+- name: TAdviser
+  url: https://www.tadviser.ru/index.php/Служебная:RSS
+  category: ru_corp_it
+  language: ru
+  priority: high
+  enabled: true
+  check_status: DEAD
+  note: '[BROKEN 2026-06] XML пустой, нужна альтернатива'
+- name: D-Russia
+  url: https://d-russia.ru/feed
+  category: ru_corp_it
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: ALIVE
+- name: Hi-Tech Mail.ru
+  url: https://hi-tech.mail.ru/rss/
+  category: ru_corp_it
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: DEAD
+  note: '[DEAD 2026-06] HTTP 404, нужен RSSHub+SOCKS5'
+- name: Tproger
+  url: https://tproger.ru/feed/
+  category: ru_corp_it
+  language: ru
+  priority: low
+  enabled: true
+  check_status: ALIVE
+- name: Hugging Face Blog
+  url: https://huggingface.co/blog/feed.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: MarkTechPost
+  url: https://www.marktechpost.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+- name: NVIDIA AI Blog
+  url: https://blogs.nvidia.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: Microsoft Research Blog
+  url: https://www.microsoft.com/en-us/research/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: Google AI Blog
+  url: https://blog.google/innovation-and-ai/technology/ai/rss/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: DeepMind Blog
+  url: https://deepmind.google/blog/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: MIT Tech Review AI
+  url: https://www.technologyreview.com/topic/artificial-intelligence/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: BAIR Blog (Berkeley)
+  url: https://bair.berkeley.edu/blog/feed.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: The Gradient
+  url: https://thegradient.pub/rss/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: STALE
+- name: Last Week in AI
+  url: https://lastweekin.ai/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: Artificial Intelligence News
+  url: https://www.artificialintelligence-news.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Synced Review
+  url: https://syncedreview.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: STALE
+- name: Machine Learning Mastery
+  url: https://machinelearningmastery.com/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: AWS Machine Learning Blog
+  url: https://aws.amazon.com/blogs/machine-learning/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: Fast AI Blog
+  url: https://www.fast.ai/atom.xml
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: arXiv cs.AI
+  url: https://rss.arxiv.org/rss/cs.AI
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: arXiv cs.LG
+  url: https://rss.arxiv.org/rss/cs.LG
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: arXiv cs.CL (NLP)
+  url: https://rss.arxiv.org/rss/cs.CL
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: arXiv cs.CV (Vision)
+  url: https://rss.arxiv.org/rss/cs.CV
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: arXiv stat.ML
+  url: https://rss.arxiv.org/rss/stat.ML
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: TechCrunch
+  url: https://feeds.feedburner.com/TechCrunch/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: STALE
+- name: Wired
+  url: https://www.wired.com/feed/rss
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: The Verge (AI)
+  url: https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: Techmeme
+  url: https://www.techmeme.com/feed.xml
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+- name: The Next Web
+  url: https://thenextweb.com/feed/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+- name: VentureBeat AI
+  url: https://venturebeat.com/category/ai/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: Stratechery
+  url: https://stratechery.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: StrictlyVC
+  url: https://www.strictlyvc.com/feed/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: STALE
+- name: Y Combinator News
+  url: https://www.ycombinator.com/news/rss
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+- name: Sequoia Capital
+  url: https://www.sequoiacap.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: a16z News
+  url: https://a16z.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+- name: Techstars News
+  url: https://techstars.com/feed
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Venture Founders
+  url: https://venturefounders.co/feed/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Red Rocket VC
+  url: https://redrocketvc.substack.com/feed
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: VC.ru
+  url: https://vc.ru/rss
+  category: ru_startups
+  language: ru
+  priority: high
+  enabled: true
+- name: Habr (news)
+  url: https://habr.com/ru/rss/news/
+  category: ru_startups
+  language: ru
+  priority: high
+  enabled: true
+- name: N+1 (наука)
+  url: https://nplus1.ru/rss
+  category: ru_ai
+  language: ru
+  priority: high
+  enabled: true
+- name: Spark.ru
+  url: https://spark.ru/rss
+  category: ru_startups
+  language: ru
+  priority: medium
+  enabled: true
+- name: Roem.ru
+  url: https://roem.ru/rss/
+  category: ru_startups
+  language: ru
+  priority: medium
+  enabled: true
+- name: Rusbase
+  url: https://rb.ru/feed/
+  category: ru_startups
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: SecurityLab
+  url: https://securitylab.ru/rss/
+  category: ru_corp_it
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: TAdviser
+  url: https://tadviser.ru/rss
+  category: ru_corp_it
+  language: ru
+  priority: high
+  enabled: true
+  check_status: DEAD
+- name: ПостНаука
+  url: https://postnauka.ru/rss
+  category: ru_ai
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: AI Trends
+  url: https://www.aitrends.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: STALE
+- name: AI Weirdness
+  url: https://aiweirdness.com/rss
+  category: ai_research
+  language: en
+  priority: low
+  enabled: true
+- name: Towards Data Science
+  url: https://towardsdatascience.com/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: KDNuggets
+  url: https://www.kdnuggets.com/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: Analytics Vidhya
+  url: https://www.analyticsvidhya.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: Data Science Central
+  url: https://www.datasciencecentral.com/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+- name: Deep Learning Weekly
+  url: https://deeplearningweekly.com/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: The Batch (Andrew Ng)
+  url: https://www.deeplearning.ai/the-batch/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+- name: Import AI Newsletter
+  url: https://importai.substack.com/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: The Decoder
+  url: https://the-decoder.com/rss/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: VentureBeat Startups
+  url: https://venturebeat.com/category/startups/feed/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Starteer
+  url: https://starteer.com/feed/
+  category: startups_vc
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+- name: Startup Rural
+  url: https://startuprural.com/feed/
+  category: startups_vc
+  language: en
+  priority: low
+  enabled: true
+  check_status: DEAD
+- name: Simon Willison (Substack)
+  url: https://simonwillison.net/atom.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+- name: The Information
+  url: https://www.theinformation.com/feed
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: Semantic Kernel Blog
+  url: https://devblogs.microsoft.com/semantic-kernel/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: Hugging Face Papers
+  url: https://huggingface.co/papers/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+- name: AI21 Labs Blog
+  url: https://www.ai21.com/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+- name: Cohere Blog
+  url: https://cohere.com/blog/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: Anthropic News
+  url: https://www.anthropic.com/news/rss
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+- name: Semiconductor Engineering
+  url: https://semiengineering.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: The Chip Letter
+  url: https://chipletter.substack.com/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: O'Reilly AI
+  url: https://www.oreilly.com/rss/ai/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Inside AI
+  url: https://inside.com/ai/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+- name: Unfolded
+  url: https://unfolded.ai/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+- name: Prompt Engineering Guide
+  url: https://www.promptingguide.ai/rss
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Vercel AI Blog
+  url: https://vercel.com/blog/rss.xml
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: LangChain Blog
+  url: https://blog.langchain.dev/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+- name: Together AI Blog
+  url: https://together.ai/blog/rss
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Replicate Blog
+  url: https://replicate.com/blog/rss.xml
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Modal Blog
+  url: https://modal.com/blog/rss.xml
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: VCenter (RU)
+  url: https://vcenter.ru/feed/
+  category: ru_startups
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: CNews
+  url: https://www.cnews.ru/rss/
+  category: ru_corp_it
+  language: ru
+  priority: high
+  enabled: true
+  check_status: BROKEN
+- name: Computerworld Russia
+  url: https://www.computerworld.ru/feeds/news/
+  category: ru_corp_it
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: MForum
+  url: https://mforum.ru/rss/news.shtml
+  category: ru_corp_it
+  language: ru
+  priority: low
+  enabled: true
+  check_status: DEAD
+- name: Rozon.tech
+  url: https://rozon.tech/feed/
+  category: ru_ai
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+- name: Skillbox Media
+  url: https://skillbox.ru/stream/feed/
+  category: ru_corp_it
+  language: ru
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+- name: Хабр Статьи
+  url: https://habr.com/ru/rss/articles/
+  category: ru_corp_it
+  language: ru
+  priority: high
+  enabled: true
+- name: AI Weekly
+  url: https://aiweekly.co/issues.rss
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: Paperspace Blog
+  url: https://blog.paperspace.com/rss/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: STALE
+- name: DataRobot Blog
+  url: https://www.datarobot.com/blog/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: 'Becoming Human: AI Magazine'
+  url: https://becominghuman.ai/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: Finxter AI Blog
+  url: https://blog.finxter.com/ai/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: Augmented Coding Weekly
+  url: https://augmentedcoding.dev/feed.xml
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: Microsoft ML Blog (archive)
+  url: https://learn.microsoft.com/en-us/archive/blogs/machinelearning/feed.xml
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: STALE
+- name: Intel AI Blog
+  url: https://www.intel.com/content/www/us/en/artificial-intelligence/overview.html
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+- name: VentureBeat AI
+  url: https://venturebeat.com/category/ai/feed
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: TechCrunch AI
+  url: https://techcrunch.com/category/artificial-intelligence/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: TechCrunch Startups
+  url: https://techcrunch.com/category/startups/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: The Verge (Technology)
+  url: https://www.theverge.com/rss/technology/index.xml
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+- name: Ars Technica
+  url: https://feeds.arstechnica.com/arstechnica/index
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+- name: Meta AI Blog
+  url: https://ai.meta.com/blog/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: BROKEN
+- name: Stability AI Blog
+  url: https://stability.ai/newsroom
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: DEAD
+- name: Inflection AI
+  url: https://inflection.ai/press
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+- name: Perplexity Blog
+  url: https://perplexity.ai/blog
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: Mistral AI Blog
+  url: https://mistral.ai/news/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+  check_status: BROKEN
+- name: Grok (xAI)
+  url: https://x.ai/blog
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: AI News (Meta)
+  url: https://about.fb.com/news/tag/ai/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: BROKEN
+- name: TechCrunch
+  url: https://techcrunch.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: Engadget
+  url: https://www.engadget.com/rss.xml
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+- name: CNET
+  url: https://www.cnet.com/rss/news/
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+- name: VentureBeat
+  url: https://venturebeat.com/feed/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: CB Insights Research
+  url: https://www.cbinsights.com/research/
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+  check_status: BROKEN
+- name: Hacker News
+  url: https://news.ycombinator.com/rss
+  category: startups_vc
+  language: en
+  priority: high
+  enabled: true
+- name: Product Hunt
+  url: https://feed.producthunt.com/posts.rss
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: true
+  check_status: DEAD
+- name: BetaList
+  url: https://betalist.com/rss
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Indie Hackers
+  url: https://www.indiehackers.com/rss
+  category: startups_vc
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: AI Business
+  url: https://aibusiness.com/rss
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: Algorithmia Blog
+  url: https://algorithmia.com/blog/rss
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: GitHub AI Blog
+  url: https://github.blog/category/ai/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: DEAD
+- name: GitHub Engineering
+  url: https://github.blog/category/engineering/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: DeepLearning.AI Blog
+  url: https://www.deeplearning.ai/blog/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: DEAD
+- name: OpenCV AI Blog
+  url: https://opencv.org/blog/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: PyTorch Blog
+  url: https://pytorch.org/blog/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: BROKEN
+- name: TensorFlow Blog
+  url: https://blog.tensorflow.org/feeds/posts.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: DEAD
+- name: Lightning AI Blog
+  url: https://lightning.ai/blog
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: Weights & Biases Blog
+  url: https://wandb.ai/blog
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: Hugging Face Papers
+  url: https://huggingface.co/blog/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: DEAD
+- name: arXiv q-bio.QG
+  url: https://rss.arxiv.org/rss/q-bio.QG
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: arXiv q-bio.NC
+  url: https://rss.arxiv.org/rss/q-bio.NC
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: arXiv cs.RO (Robotics)
+  url: https://rss.arxiv.org/rss/cs.RO
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: arXiv cs.NE (Neural Evo)
+  url: https://rss.arxiv.org/rss/cs.NE
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: arXiv cs.MM (Multimodal)
+  url: https://rss.arxiv.org/rss/cs.MM
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: arXiv eess.IV (Image Video)
+  url: https://rss.arxiv.org/rss/eess.IV
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: arXiv eess.AS (Audio Speech)
+  url: https://rss.arxiv.org/rss/eess.AS
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: VentureBeat Transformers
+  url: https://venturebeat.com/category/transform/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: VentureBeat Data Science
+  url: https://venturebeat.com/category/data-science/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: VentureBeat Machine Learning
+  url: https://venturebeat.com/category/machine-learning/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Stanford AI Lab
+  url: https://ai.stanford.edu/news/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: DEAD
+- name: CMU AI News
+  url: https://www.cs.cmu.edu/news/topic/artificial-intelligence/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: DEAD
+- name: NVIDIA Research
+  url: https://research.nvidia.com/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: DEAD
+- name: Meta Research
+  url: https://ai.meta.com/research/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: BROKEN
+- name: Apple ML Research
+  url: https://machinelearning.apple.com/rss.xml
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: Amazon Science
+  url: https://www.amazon.science/feed.rss
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: DEAD
+- name: Microsoft Research
+  url: https://www.microsoft.com/en-us/research/blog/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: IBM Research
+  url: https://www.research.ibm.com/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Salesforce AI Research
+  url: https://blog.einstein.ai/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Adobe AI Blog
+  url: https://blog.adobe.com/topic/artificial-intelligence/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Spotify Engineering
+  url: https://engineering.atspotify.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: Netflix Tech Blog
+  url: https://netflixtechblog.com/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: LinkedIn Engineering
+  url: https://engineering.linkedin.com/blog/rss
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: Uber AI
+  url: https://www.uber.com/en-US/blog/category/artificial-intelligence/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Airbnb Engineering
+  url: https://airbnb.io/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: DoorDash Engineering
+  url: https://doordash.engineering/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Stripe Engineering
+  url: https://stripe.com/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Zoom AI Research
+  url: https://blog.zoom.us/category/ai-research/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Zoom Engineering
+  url: https://devblog.zoom.us/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Twilio AI Blog
+  url: https://www.twilio.com/blog/topics/artificial-intelligence/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Cloudflare Research
+  url: https://blog.cloudflare.com/tag/research/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Cloudflare AI
+  url: https://blog.cloudflare.com/tag/ai/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Hugging Face Newsletter
+  url: https://huggingface.co/newsletter/feed
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: DEAD
+- name: Cohere Newsletter
+  url: https://cohere.com/newsletter/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Optic
+  url: https://aioptic.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: The AI CEO
+  url: https://theaieceo.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI News Daily
+  url: https://www.ainews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Superhuman AI
+  url: https://superhuman.ai/blog/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: The AI Content Coach
+  url: https://aicontentcoach.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: Prompt Engineering Tips
+  url: https://promptengineer.xyz/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Product Hunt
+  url: https://www.producthunt.com/newsletter/ai/feed
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: The AI Monitor
+  url: https://aimanual.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Tools Weekly
+  url: https://aitoolsweekly.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Future Tools
+  url: https://futuretools.io/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: There's an AI for That
+  url: https://theresanaiforthat.com/newsletter/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Finder
+  url: https://ai-finder.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: Alternative AI
+  url: https://alternatives.ai/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: GPT News
+  url: https://gptnews.us/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: LLM Observer
+  url: https://llmobserver.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: AI Money Box
+  url: https://aimoneybox.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: Open AI Today
+  url: https://openaitoday.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: AI Business Daily
+  url: https://aibusinessdaily.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: Generative AI News
+  url: https://generativeai.net/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Venture
+  url: https://aiventure.co/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Startup Tracker
+  url: https://aistartuptracker.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Funding News
+  url: https://aifundingnews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Ethics News
+  url: https://aiethicsnews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: BROKEN
+- name: AI Safety News
+  url: https://aisafetynews.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: true
+- name: AI Policy News
+  url: https://aipolicynews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Regulation Update
+  url: https://airegulationupdate.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Governance
+  url: https://aigovernance.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Privacy News
+  url: https://aiprivacynews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Security Alert
+  url: https://aisecurityalert.com/feed/
+  category: ai_research
+  language: en
+  priority: high
+  enabled: false
+  check_status: BROKEN
+- name: AI Defense News
+  url: https://aidefensenews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: AI Military Tech
+  url: https://aimilitarytech.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Healthcare News
+  url: https://aihealthcarenews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: STALE
+- name: AI Education News
+  url: https://aieducationnews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Finance News
+  url: https://aifinancenews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: true
+- name: AI Retail News
+  url: https://airetailnews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Automotive News
+  url: https://aiautomotivenews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Manufacturing News
+  url: https://aimanufacturingnews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Agriculture News
+  url: https://aiagriculturenews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD
+- name: AI Energy News
+  url: https://aienergynews.com/feed/
+  category: ai_research
+  language: en
+  priority: medium
+  enabled: false
+  check_status: DEAD

@@ -1,0 +1,111 @@
+
+========================================
+🤖 AI-Digest daily run: 2026-06-03 10:05:16 UTC
+   hours=48, mode=trial
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 40 источников (с 2026-06-01T10:05:17.045503+00:00)...
+  ✓ MIT Technology Review                    → 4 posts
+  ✓ VentureBeat AI                           → 0 posts
+  ✓ DeepMind Blog                            → 0 posts
+  ✓ Google AI Blog                           → 1 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ MIT Technology Review (AI topic)         → 2 posts
+  ✓ Meta Newsroom                            → 1 posts
+  ✓ BDTechTalks                              → 1 posts
+  ✓ NVIDIA Blog                              → 4 posts
+  ✓ BAIR Blog (Berkeley)                     → 0 posts
+  ✓ Lil'Log (Lilian Weng)                    → 0 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ Hugging Face Blog                        → 3 posts
+  ✓ Import AI (Jack Clark)                   → 1 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Sequoia Capital                          → 1 posts
+  ✓ TechCrunch Startups                      → 12 posts
+  ✓ OpenAI Blog                              → 6 posts
+  ✓ The Information                          → 20 posts
+  ✓ VentureBeat Startups                     → 7 posts
+  ✓ Red Rocket VC                            → 0 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ The Gradient                             → 0 posts
+  ✓ Crunchbase News                          → 5 posts
+  ✓ CB Insights Research                     → 0 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ Venture Founders                         → 0 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ Stratechery                              → 2 posts
+  ✓ ПостНаука (RU)                           → 4 posts
+  ✓ a16z (via Substack)                      → 6 posts
+  ✓ CNews                                    → 30 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ Roem.ru                                  → 0 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ Tproger                                  → 3 posts
+  ✓ Simon Willison (via Substack)            → 0 posts
+
+✅ Готово за 11.0s
+   Источников OK: 40/40
+   Постов собрано (с дедупликацией): 295
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-03.json
+
+📥 Архив: добавлено 66, обновлено 229, пропущено 0. Всего в архиве: 348
+/home/apps_maker/ai-digest/storage/posts_2026-06-03.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-03.json
+
+📰 Step 2: digest.py --input /home/apps_maker/ai-digest/storage/posts_2026-06-03.json --trial
+📄 Прочитано 295 постов из /home/apps_maker/ai-digest/storage/posts_2026-06-03.json
+🧪 Пробный режим: top-4, priority≥medium
+💬 Telegram-версия: /home/apps_maker/ai-digest/output/digest_2026-06-03_trial_telegram.md (3479 chars)
+📡 *AI-Digest* — 03.06.2026
+📊 Постов: *295* | Источников: *30*
+🏆 Топ-источники: CNews(30), arXiv cs.LG(30), arXiv cs.AI(30), Rusbase (rb.ru)(20), Hacker News (frontpage)(20)
+
+*🤖 AI / ML Research* (108 постов)
+• [1 Megawatt Racks In Data Centers](https://semiengineering.com/1-megawatt-racks-in-data-centers/) — Semiconductor Engineering (2ч)
+• [From Circuits to Systems: Unlocking the Power of Periodic Steady-State Analysis (eBook)](https://semiengineering.com/from-circuits-to-systems-unlocking-the-power-of-periodic-steady-state-analysis-ebook/) — Semiconductor Engineering (3ч)
+• [Centralized Architecture for Automotive ADAS/AD Radar Based on Raw-ADC-Data](https://semiengineering.com/centralized-architecture-for-automotive-adas-ad-radar-based-on-raw-adc-data/) — Semiconductor Engineering (3ч)
+
+*💼 Стартапы и Венчур* (93 постов)
+🔥 [The Nvidia AI PC, Project Solara, Microsoft AI](https://stratechery.com/2026/the-nvidia-ai-pc-project-solara-microsoft-ai/) — Stratechery (0ч)
+🔥 [It is an amazing time for programmers](https://46elks.com/blog/2026/05/29/an-amazing-time-for-programmers) — Hacker News (frontpage) (2ч)
+• [Exclusive: Sheridan Capital Partners recaps majority stake in Tres Health](https://www.pehub.com/exclusive-sheridan-capital-partners-recaps-majority-stake-in-tres-health/) — PE Hub (0ч)
+
+*🇷🇺 AI / ML (рус)* (4 постов)
+• [Что делать, если не получается почувствовать эмоции?](https://postnauka.org/chapters/158056) — ПостНаука (RU) (14ч)
+• [Сознание как главная тайна науки](https://postnauka.org/longreads/158055) — ПостНаука (RU) (15ч)
+• [Зрелищные демонстрации: Всемирная выставка](https://postnauka.org/chapters/158054) — ПостНаука (RU) (39ч)
+
+*🇷🇺 Стартапы (рус)* (32 постов)
+🔥 [Wildberries может запустить собственный мессенджер — сейчас сервис тестируют сотрудники компании](https://rb.ru/news/wildberries-mozhet-zapustit-sobstvennyj-messendzher-sejchas-servis-testiruyut-sotrudniki-kompanii/) — Rusbase (rb.ru) (1ч)
+🔥 [В Санкт-Петербурге стартовал ПМЭФ–2026: форум посетят представители более 130 стран, в программе — б…](https://rb.ru/news/v-sankt-peterburge-startoval-pmef2026-forum-posetyat-predstaviteli-bolee-130-stran-v-programme-bolee-150-sessij/) — Rusbase (rb.ru) (1ч)
+🔥 [«Яндекс Маркет» добавил раздел «Обзоры» — персонализированную ленту с видео о товарах](https://vc.ru/marketplace/2961478-yandeks-market-obzory-video-o-tovarakh?from=rss) — VC.ru (1ч)
+
+*🇷🇺 Корпоративный IT* (43 постов)
+🔥 [«1С-Рарус» объединил мастер-данные 10 юрлиц Ижевского радиозавода в единый контур «1С»](https://www.cnews.ru/news/line/2026-06-03_1s-rarus_obedinil_master-dannye) — CNews (0ч)
+🔥 [Документальное наследие Горного Алтая оцифруют на российском оборудовании](https://www.cnews.ru/news/line/2026-06-03_dokumentalnoe_nasledie) — CNews (0ч)
+🔥 [Продавцы на «Яндекс Маркете» теперь могут продвигать товары через видеообзоры](https://www.cnews.ru/news/line/2026-06-03_prodavtsy_na_yandeks_markete) — CNews (0ч)
+
+*📊 Агрегаторы и обзоры* (15 постов)
+🔥 [Layup Parts, which aims to digitize the composite manufacturing supply chain for aerospace, defense,…](https://www.techmeme.com/260603/p15#a260603p15) — TechMeme (0ч)
+🔥 [Alibaba releases Qwen3.7-Plus, a multimodal proprietary model with a 1M-token context window, costin…](https://www.techmeme.com/260603/p14#a260603p14) — TechMeme (0ч)
+🔥 [GitLab is laying off 350 staff, or 14% of its workforce, as it pivots to become an AI-focused enterp…](https://www.techmeme.com/260603/p13#a260603p13) — TechMeme (0ч)
+
+   → Telegram-версия: output/daily_telegram_2026-06-03.txt (4321 bytes)
+
+📊 Step 3: archive.py --stats (кратко)
+📊 Всего постов: 348
+📡 Уникальных источников: 30
+📅 Период: 2026-06-01 → 2026-06-03
+🌐 Языки: {'en': 239, 'ru': 109}
+
+📂 По категориям:
+   ai_research         :  110
+   startups_vc         :  109
+   ru_corp_it          :   70
+   ru_startups         :   35
+
+✅ Готово. Время: 10:05:28 UTC

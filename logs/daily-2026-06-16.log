@@ -1,0 +1,1189 @@
+
+========================================
+🤖 AI-Digest daily run: 2026-06-16 03:00:01 UTC
+   hours=48, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 101 источников (с 2026-06-14T03:00:02.190870+00:00)...
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ The Information                          → 20 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ ПостНаука (RU)                           → 15 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ arXiv cs.CL (NLP)                        → 30 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Wired                                    → 30 posts
+  ✓ arXiv stat.ML                            → 30 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ arXiv cs.CV (Vision)                     → 30 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ Spark.ru                                 → 30 posts
+  ✓ The Information                          → 20 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ The Decoder                              → 10 posts
+  ✗ Becoming Human: AI Magazine              → parse error: <unknown>:139:4: mismatched tag
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ CNET                                     → 25 posts
+  ✓ arXiv q-bio.NC                           → 8 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 4 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ arXiv eess.IV (Image Video)              → 10 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 11 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 12 posts
+  ✓ arXiv cs.RO (Robotics)                   → 30 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Safety News                           → fallback timeout: Missing dependencies for SOCKS support.
+
+✅ Готово за 58.6s
+   Источников OK: 97/101
+   Постов собрано (с дедупликацией): 1221
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-16.json
+
+📥 Архив: добавлено 517, обновлено 704, пропущено 0. Всего в архиве: 4807
+/home/apps_maker/ai-digest/storage/posts_2026-06-16.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-16.json
+
+🌐 Step 1.5: scrape.py --missing (только high-priority)
+📚 В архиве: 4807 постов
+🎯 К скрапингу: 1059
+  ✗ 418801759a4d | HTTP 403
+  ✓ 1d7ab4db7ef5 |  11489 chars | https://www.theverge.com/ai-artificial-intelligence/950412/anthropic-t
+  ✗ 7c6e97636ed6 | TypeError: object of type 'NoneType' has no len()
+  ✓ 67ea4bd39d82 |  14266 chars | https://habr.com/ru/articles/1047524/?utm_source=habrahabr&utm_medium=
+  ✓ 0a8db0ed75a5 |   2976 chars | https://www.cnet.com/news/bluetti-fridge-power-keeps-fridge-running-po
+  ✓ fdcd63a8f281 |   6504 chars | https://www.wired.com/story/anthropic-is-still-at-odds-with-the-white-
+  ✓ 9430b7a27fe8 |   2068 chars | https://semiengineering.com/modeling-multi-gpu-traffic-for-distributed
+  ✓ fbfce93c8fac |   5379 chars | https://habr.com/ru/articles/1046317/?utm_source=habrahabr&utm_medium=
+  ✓ 83950fbef403 |   1961 chars | http://ishmeetbindra.com/posts/reviews-have-become-expensive-rewrites-
+  ∅ d380a573f1bf | extracted only 45 chars
+  ✓ 443af1350167 |    883 chars | https://www.techmeme.com/260615/p45#a260615p45
+  ✓ ae3727fdc990 |  27667 chars | https://habr.com/ru/companies/studyai/articles/1047772/?utm_source=hab
+  ∅ 78370ad0c08f | extracted only 60 chars
+  ✓ 11f0712317e4 |    883 chars | https://www.techmeme.com/260615/p44#a260615p44
+  ✓ ea8ad6c2bdaa |   3030 chars | https://techcrunch.com/2026/06/15/sundar-pichai-faces-boos-walkout-at-
+  ✓ c5d97b035f32 |  10116 chars | https://www.cnet.com/tech/mobile/best-apple-watch/
+  ✓ dfa16f89565d |   5402 chars | https://thenextweb.com/news/canada-surveillance-pricing-privacy-bill-c
+  ✓ c914f7878987 |   4607 chars | https://thenextweb.com/news/xiaomi-robotic-charging-arm-ev-home-garage
+  ✓ e1183089b0c2 |   5089 chars | https://thenextweb.com/news/rivian-point-to-point-self-driving-tesla-f
+  ✓ c5a996326a94 |   5157 chars | https://thenextweb.com/news/imec-6g-rf-silicon-interposer-chiplet-nvid
+  ✓ d38f4eb7784f |   2169 chars | https://arstechnica.com/space/2026/06/key-mission-for-europes-commerci
+  ✓ 64ed1121a248 |   3008 chars | https://www.engadget.com/2194941/xbox-closing-ninja-theory-double-fine
+  ✓ 9577ee6b78dc |   4494 chars | https://thenextweb.com/news/xbox-studio-closures-compulsion-double-fin
+  ✓ 0cf40e8886d8 |  31286 chars | https://habr.com/ru/articles/1047852/?utm_source=habrahabr&utm_medium=
+  ✓ 8dd71a7d0620 |   3970 chars | https://thenextweb.com/news/go-inc-japan-taxi-app-ipo-tokyo-stock-exch
+  ✓ 8505d331d8bd |   2761 chars | https://www.narracomm.com/amazon-announces-multibillion-dollar-data-ce
+  ✓ ea2d72ef7a1d |   2329 chars | https://semiengineering.com/physical-neural-networks-a-survey-u-of-lub
+  ✓ 4853669098a9 |   2097 chars | https://www.cnet.com/tech/gaming/google-earths-flight-simulator-is-now
+  ✓ e00b532564d6 |  38230 chars | https://www.richardosgood.com/posts/banned-book-library/
+  ✓ 5ef9177b2744 |   9154 chars | https://www.goodinternetmagazine.com/why-i-email-complete-strangers/
+  ✓ f667f0ff7003 |   5805 chars | https://thenextweb.com/news/chinese-hackers-unc6508-google-workspace-r
+  ✓ 71ed2eea4532 |   4619 chars | https://techcrunch.com/2026/06/15/the-us-governments-anthropic-models-
+  ✓ 00f3ba4c72a1 |    922 chars | https://www.techmeme.com/260615/p43#a260615p43
+  ✓ 809fe1f2b3f4 |   4096 chars | https://www.cnet.com/news-live/awe-2026-smart-glasses-augmented-realit
+  ✓ 5957c9dca969 |   1653 chars | https://www.engadget.com/2194884/google-earths-flight-simulator-mode-i
+  ✓ 919466e82333 |   4426 chars | https://habr.com/ru/news/1047896/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 65a964da1016 |   7335 chars | https://habr.com/ru/articles/1047904/?utm_source=habrahabr&utm_medium=
+  ✓ d4dfcce5b49a |   5261 chars | https://www.wired.com/story/andrew-bosworth-meta-employees-unrest/
+  ✓ 442fcb0718db |    924 chars | https://www.techmeme.com/260615/p42#a260615p42
+  ✓ 7014ea6b5bd2 |   4723 chars | https://thenextweb.com/news/asian-tech-stocks-surge-iran-us-peace-deal
+  ✓ 80380ee2e22d |   4097 chars | https://www.cnet.com/tech/services-and-software/anthropic-sued-alleged
+  ✓ 41ec3ab4a676 |   5124 chars | https://thenextweb.com/news/pentagon-genai-mil-1-5-million-users-googl
+  ✗ 46cd69ea52ea | HTTP 403
+  ✓ 9c7ede8cffd5 |   3209 chars | https://thenextweb.com/news/xai-openai-trade-secret-lawsuit-dismissed
+  ✓ 6e38437152ee |   1304 chars | https://www.theverge.com/tech/950264/meta-ai-mode-search-facebook
+  ✓ ee7d79832675 |  16585 chars | https://www.cnet.com/tech/computing/best-laptop-for-college/
+  ✓ edc8adeb354c |   2013 chars | https://arstechnica.com/health/2026/06/covid-vaccines-still-protect-ag
+  ✓ 6a10c7892e85 |  21140 chars | https://habr.com/ru/articles/1047868/?utm_source=habrahabr&utm_medium=
+  ✓ 6776a9549d29 |   1921 chars | https://www.engadget.com/2194830/samsung-expands-its-galaxy-book-6-lin
+  ✓ d645417810f3 |    883 chars | https://www.techmeme.com/260615/p41#a260615p41
+  ✓ 2383c800dfea |   2714 chars | https://habr.com/ru/news/1047892/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 376d8d0cb453 |   7797 chars | https://www.cnet.com/tech/services-and-software/anthropic-claude-fable
+  ✓ ce50abdb9adf |  48066 chars | https://www.wired.com/story/the-best-fans-2026/
+  ✓ 46eba187f71f |   2255 chars | https://habr.com/ru/news/1047882/?utm_source=habrahabr&utm_medium=rss&
+  ∅ d00f7c22cf61 | extracted only 74 chars
+  ✓ 0b8e1b1366a3 |    226 chars | https://fred.stlouisfed.org/series/IPG33591S
+  ✓ da64964f35f0 |   1709 chars | https://www.engadget.com/2194804/investigation-by-the-atlantic-reveals
+  ✓ 33d517bceb2e |   2454 chars | https://habr.com/ru/news/1047880/?utm_source=habrahabr&utm_medium=rss&
+  ✓ c0d1dc402103 |  24242 chars | https://aws.amazon.com/blogs/machine-learning/introducing-gemma-4-mode
+  ✓ 546b68d5d92f |   4618 chars | https://habr.com/ru/articles/1047878/?utm_source=habrahabr&utm_medium=
+  ✓ 8aa9d6b3a5cd |   4268 chars | https://www.cnet.com/tech/mobile/wheres-wear-os-7/
+  ✓ abfe7a685e87 |    883 chars | https://www.techmeme.com/260615/p40#a260615p40
+  ✓ b07f38fc030f |  11530 chars | https://michaelenger.com/blog/i-love-the-computer/
+  ✓ 105856821bef |   4875 chars | https://notnotp.com/notes/what-job-interviews-taught-me-about-kubernet
+  ✓ 49eb53742e45 |   1765 chars | https://arstechnica.com/tech-policy/2026/06/uk-to-ban-social-media-for
+  ✓ 21028b7b4e40 |    883 chars | https://www.techmeme.com/260615/p39#a260615p39
+  ✓ 39de89bede05 |   1365 chars | https://www.cnet.com/tech/gaming/todays-wordle-hints-answer-and-help-f
+  ✓ 1312f18b9c97 |   2090 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-hints-answers-
+  ✗ 73c7610a671d | HTTP 429
+  ✓ 8832875a0fb9 |   3661 chars | https://roman.pt/posts/linkedin-backdoor/
+  ✓ 7c2bc2684363 |   1846 chars | https://www.cnet.com/tech/gaming/todays-nyt-strands-hints-answers-and-
+  ✓ 4daadf899688 |   1494 chars | https://www.wired.com/review/tcl-a65k-soundbar/
+  ✗ 3569af6bdf5e | HTTP 429
+  ✓ 2661bfd319fd |   3696 chars | https://www.cnet.com/health/medical/fda-cleared-first-otc-continuous-g
+  ∅ b8e6d540df59 | extracted only 61 chars
+  ✓ 288e25894cd1 |   2216 chars | https://habr.com/ru/news/1047874/?utm_source=habrahabr&utm_medium=rss&
+  ✓ b33e6dcda130 |   1539 chars | https://habr.com/ru/articles/1047866/?utm_source=habrahabr&utm_medium=
+  ✓ 9b9348265e53 |   6124 chars | https://www.theverge.com/ai-artificial-intelligence/950026/anthropic-f
+  ✓ 6e2077bdbf6e |   1831 chars | https://arstechnica.com/ai/2026/06/chipmaker-nvidia-seeks-to-raise-ove
+  ✓ d1f4addb55f2 |   3903 chars | https://habr.com/ru/news/1047542/?utm_source=habrahabr&utm_medium=rss&
+  ✓ db1314ebdc0e |  15763 chars | https://habr.com/ru/companies/otus/articles/1044840/?utm_source=habrah
+  ✓ 0df8c7f80680 |  12564 chars | https://habr.com/ru/articles/1047856/?utm_source=habrahabr&utm_medium=
+  ✓ f5dc993893e0 |   1933 chars | https://arstechnica.com/space/2026/06/a-chinese-rocket-breaks-apart-da
+  ✓ 2e6677ef75d7 |   8073 chars | https://www.technologyreview.com/2026/06/15/1138983/why-do-south-korea
+  ✓ 70464ff0ad84 |   5454 chars | https://habr.com/ru/companies/kaspersky/articles/1047514/?utm_source=h
+  ✓ a87bfe04547c |   2971 chars | https://www.engadget.com/2194626/anthropic-hit-with-lawsuit-over-its-c
+  ✓ a3f67405a753 |   2801 chars | https://techcrunch.com/2026/06/15/metas-new-ai-mode-on-facebook-pulls-
+  ✓ d69d5c32ea58 |   7090 chars | https://techcrunch.com/2026/06/15/spacex-is-public-everything-you-need
+  ✓ 71574dfdf742 |    272 chars | https://vc.ru/marketing/2979898-reklamnaya-kampaniya-starbucks-korea-v
+  ✓ c0f16ccfab0c |   5701 chars | https://www.engadget.com/2193622/what-s-the-difference-between-dolby-c
+  ✓ 7116ba67ca79 |   1601 chars | https://www.engadget.com/2194592/xai-lawsuit-accusing-openai-of-steali
+  ✓ 211bff8af94b |  24273 chars | https://habr.com/ru/articles/1047850/?utm_source=habrahabr&utm_medium=
+  ✓ 2693016065ba |   2020 chars | https://spark.ru/post/334348
+  ✓ 38ba9e36dc46 |   1978 chars | https://arstechnica.com/gadgets/2026/06/foxs-22b-roku-acquisition-aims
+  ✓ 5137bc88d485 |   5537 chars | https://www.theverge.com/ai-artificial-intelligence/949986/anthropic-f
+  ✓ c012a3b421a3 |  12617 chars | https://aws.amazon.com/blogs/machine-learning/ai-agent-failure-detecti
+  ✓ 3d6709f35844 |    883 chars | https://www.techmeme.com/260615/p38#a260615p38
+  ✓ 6af16c9b82b3 |   1214 chars | https://forgottenbytes.net/commander_keen.html
+  ✓ f95e9ea6585a |   3516 chars | https://the-decoder.com/the-us-government-may-be-asking-anthropic-the-
+  ✓ 0e278cda9006 |   1893 chars | https://www.engadget.com/2194509/facebooks-new-ai-tools-offer-more-of-
+  ✓ 6fde64e0a7d6 |    990 chars | https://www.techmeme.com/260615/p37#a260615p37
+  ✓ 67377d6541c6 |   1876 chars | https://arstechnica.com/security/2026/06/users-cry-foul-after-amd-stri
+  ✓ 35ea195782a7 |   6747 chars | https://www.theverge.com/policy/949970/ai-regulation-child-safety-kosa
+  ✓ d37aed3c0e36 |   5923 chars | https://techcrunch.com/2026/06/15/social-media-ban-children-countries-
+  ✓ 0c24003e145a |  12041 chars | https://www.anthropic.com/news/claude-corps
+  ✗ 13323bc5bb20 | TypeError: object of type 'NoneType' has no len()
+  ✓ b7ff4f7f6773 |    883 chars | https://www.techmeme.com/260615/p36#a260615p36
+  ✓ 9c55366d584c |  16985 chars | https://roszigit.com/en/blog/timescaledb-compression-hypercore
+  ✓ 6ebe9a3465ce |   3490 chars | https://habr.com/ru/news/1047838/?utm_source=habrahabr&utm_medium=rss&
+  ✗ 9292161d5e0a | HTTP 429
+  ✓ c4b6a3d27867 |  14136 chars | https://rb.ru/reviews/5-pravil-peregovorov-o-zarplate/
+  ✓ 5d6f1426da96 |   2624 chars | https://www.cnet.com/tech/services-and-software/cnet-will-text-you-the
+  ✗ d184ec3625e9 | TypeError: object of type 'NoneType' has no len()
+  ✓ df114a328384 |    373 chars | https://habr.com/ru/articles/1047836/?utm_source=habrahabr&utm_medium=
+  ✓ a6a7bfed96a8 |    883 chars | https://www.techmeme.com/260615/p35#a260615p35
+  ✓ 71eaf49184bb |   5405 chars | https://rb.ru/news/93-rossiyan-ispolzuyut-ii-v-rabochej-perepiske-chas
+  ✓ a0eb6c6e4073 |    942 chars | https://www.techmeme.com/260615/p34#a260615p34
+  ∅ d68073a4b6d9 | extracted only 63 chars
+  ✓ 97f7ee01c967 |   6002 chars | https://habr.com/ru/articles/1047830/?utm_source=habrahabr&utm_medium=
+  ✓ 83c186ebc584 |  10754 chars | https://habr.com/ru/articles/1047828/?utm_source=habrahabr&utm_medium=
+  ✓ ab38f44330ee |  17352 chars | https://habr.com/ru/articles/1047832/?utm_source=habrahabr&utm_medium=
+  ✓ b5125818040c |   3952 chars | https://habr.com/ru/articles/1047824/?utm_source=habrahabr&utm_medium=
+  ✓ 3e83825b1f92 |   2358 chars | https://habr.com/ru/news/1047822/?utm_source=habrahabr&utm_medium=rss&
+  ✓ f8424164f3ec |   1599 chars | https://news.ycombinator.com/item?id=48543908
+  ✓ 8ba2a6bf5f5e |   9767 chars | https://towardsdatascience.com/how-to-effectively-align-with-claude-co
+  ✓ 572172e39a4c |   2064 chars | https://arstechnica.com/gadgets/2026/06/20-years-of-intel-macs-why-app
+  ✓ df77a707f95a |   1924 chars | https://arstechnica.com/science/2026/06/good-news-we-have-extra-time-b
+  ✗ 3c11b17a6c51 | TypeError: object of type 'NoneType' has no len()
+  ∅ 459cca9c85d2 | extracted only 63 chars
+  ✓ 57ed046cc48c |    890 chars | https://www.techmeme.com/260615/p33#a260615p33
+  ✗ 8de637d413f8 | TypeError: object of type 'NoneType' has no len()
+  ✓ 9d14851e3a32 |  16374 chars | https://habr.com/ru/articles/1047816/?utm_source=habrahabr&utm_medium=
+  ✓ 8165edae6703 |  10759 chars | https://kobzol.github.io/rust/2026/06/15/how-memory-safety-cves-differ
+  ✓ 9f8cc0c90c13 |   1009 chars | https://www.techmeme.com/260615/p32#a260615p32
+  ✓ de58f26a9a70 |    927 chars | https://www.techmeme.com/260615/p31#a260615p31
+  ∅ 6f86984f50ae | extracted only 45 chars
+  ✓ 0611ce0c6f30 |   4926 chars | https://rb.ru/news/rossiyane-nazvali-professii-s-neopravdanno-vysokimi
+  ✓ d5e827653491 |  16110 chars | https://nick.zoic.org/art/boot-naked-linux/
+  ✗ a0b3831c43de | HTTP 403
+  ✓ b4bbd4353abe |   5570 chars | https://habr.com/ru/articles/1047814/?utm_source=habrahabr&utm_medium=
+  ✓ 842c0aa79d9e |   4347 chars | https://rb.ru/news/zampred-vtb-vadim-kulik-pokinet-post-kadrovye-peres
+  ✓ fd57a001918c |   8355 chars | https://habr.com/ru/articles/1047804/?utm_source=habrahabr&utm_medium=
+  ✓ 82f5123dada6 |   2231 chars | https://about.fb.com/news/2026/06/new-ai-tools-to-help-you-make-things
+  ✓ e7f8879499de |   1089 chars | https://the-decoder.com/nvidia-joins-ai-debt-boom-with-20-billion-bond
+  ✓ 64dafdefe0b3 |  10587 chars | https://habr.com/ru/articles/1047806/?utm_source=habrahabr&utm_medium=
+  ✓ e7417c851c2a |   8252 chars | https://habr.com/ru/companies/kemp_ai/articles/1047808/?utm_source=hab
+  ✓ bef83801812b |   9109 chars | https://habr.com/ru/articles/1047802/?utm_source=habrahabr&utm_medium=
+  ✓ 9bb283f8b7b8 |  10325 chars | https://habr.com/ru/articles/1047796/?utm_source=habrahabr&utm_medium=
+  ✓ 969297b134e3 |   5987 chars | https://www.engadget.com/2193599/open-source-discord-alternatives-what
+  ✓ 14ed77bd1aa0 |   4502 chars | https://d-russia.ru/o-chyom-govorit-popytka-isklyucheniya-runeta-iz-si
+  ✓ 0a59211a2c97 |   4600 chars | https://techcrunch.com/2026/06/15/cybersecurity-vets-protest-dangerous
+  ✓ dcf68ebffae6 |   2149 chars | https://www.engadget.com/2194295/xbox-game-studios-chief-reportedly-st
+  ∅ ee44a154ef14 | extracted only 66 chars
+  ∅ a360dcef4934 | extracted only 63 chars
+  ✗ 3286aefa0b66 | HTTP 429
+  ✓ d776845b9897 |   1742 chars | https://www.engadget.com/2194287/ea-created-an-entire-division-to-push
+  ✓ a6d3c3b4b651 |  39078 chars | https://habr.com/ru/companies/studyai/articles/1047794/?utm_source=hab
+  ✓ cdfbc00c7fd8 |   5636 chars | https://www.iroh.computer/blog/v1
+  ✓ 447662048fcc |   2094 chars | https://arstechnica.com/cars/2026/06/f1-in-spain-an-old-fashioned-stra
+  ✓ 5e6df51377ac |   8033 chars | https://www.technologyreview.com/2026/06/15/1138953/man-als-first-powe
+  ✓ 02982031ef56 |   4441 chars | https://rsgm.dev/post/ai-dev-platform/
+  ✓ 53200d2eb919 |   7773 chars | https://habr.com/ru/articles/1047792/?utm_source=habrahabr&utm_medium=
+  ✓ 74d50321359f |   5935 chars | https://rb.ru/news/samozanyatye-poluchili-vozmozhnost-sozdavat-publich
+  ✗ 2481244b5d3d | HTTP 403
+  ✓ d4f0480a92b5 |   5382 chars | https://rb.ru/news/alfa-bank-podvyol-itogi-pervoj-programmy-dlya-impor
+  ✓ 72386a5f1b1c |    898 chars | https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-
+  ✓ 52fed3ef4664 |   3722 chars | https://www.cnet.com/tech/services-and-software/bots-now-outnumber-hum
+  ✓ ad2d305a9c5c |  12231 chars | https://towardsdatascience.com/the-protocol-that-cleaned-up-our-agent-
+  ✓ af6949bb10e0 |   1972 chars | https://habr.com/ru/news/1047782/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 4bb0306465ef |   1047 chars | https://techcrunch.com/2026/06/15/spacexs-biggest-ever-ipo-just-grew-t
+  ✓ a7fe3ff83b3e |   2131 chars | https://techcrunch.com/2026/06/15/uk-unveils-sweeping-social-media-ban
+  ✓ 5583344a8b98 |  21094 chars | https://habr.com/ru/articles/1047778/?utm_source=habrahabr&utm_medium=
+  ✓ f85f662961de |   1552 chars | https://techcrunch.com/2026/06/15/salesforce-acquires-ai-customer-serv
+  ✓ 8dd0bce04b30 |   5188 chars | https://rb.ru/news/oborot-mvideo-za-nachalo-2026-go-prevysil-rezultat-
+  ✗ fa1f369e4df4 | HTTP 403
+  ✓ 735e133fed82 |   6938 chars | https://tproger.ru/translations/predstavlyaem-mdn-mcp-server
+  ✓ e4aedea9e34c |   6241 chars | https://habr.com/ru/articles/1047774/?utm_source=habrahabr&utm_medium=
+  ✓ 1a6e3e6e2256 |   2585 chars | https://www.cnet.com/tech/services-and-software/fox-to-acquire-roku-22
+  ✓ ea2097624dce |   2912 chars | https://habr.com/ru/news/1047768/?utm_source=habrahabr&utm_medium=rss&
+  ✓ b48c3f1ada37 |  12541 chars | https://habr.com/ru/companies/studyai/articles/1047766/?utm_source=hab
+  ✓ 4ea16fe78c28 |   6345 chars | https://habr.com/ru/companies/jetinfosystems/news/1047770/?utm_source=
+  ✓ 5a9f24e20052 |    619 chars | https://www.pehub.com/littlejohn-backed-ardurra-scoops-up-kelly-engine
+  ✓ 5dbe51a05bd1 | 107632 chars | https://news.ycombinator.com/item?id=48542100
+  ✓ 05efdb5f6747 |  44222 chars | https://www.a16z.news/p/spacex-and-the-sentient-sun
+  ✓ e4ed268152c0 |    970 chars | https://habr.com/ru/companies/orion_soft/news/1047762/?utm_source=habr
+  ∅ c11a5fc85a57 | extracted only 63 chars
+  ✓ a5bd2219ed6f |  11764 chars | https://www.kdnuggets.com/building-time-series-machine-learning-models
+  ✓ 2135fd6b0645 |   1295 chars | https://vercel.com/changelog/vercel-functions-can-now-run-up-to-30-min
+  ✓ ec89fb226bd9 |   4519 chars | https://rb.ru/news/vse-rossijskie-banki-mogut-vklyuchit-v-belye-spiski
+  ✓ 37133faaa802 |  71073 chars | https://www.theverge.com/podcast/949195/skydio-ceo-adam-bry-autonmous-
+  ✓ c2c760c7e719 |   1792 chars | https://habr.com/ru/news/1047752/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 58a47f7a2f52 |  12149 chars | https://aws.amazon.com/blogs/machine-learning/build-context-rich-resea
+  ✓ bb582a9d175c |   8732 chars | https://bdtechtalks.com/2026/06/15/llm-chain-of-thought-limitations/?u
+  ✓ bfeca2ee1bfe |   4352 chars | https://techcrunch.com/2026/06/15/sarvam-becomes-indias-newest-ai-unic
+  ✓ 0496e0cc9211 |   2531 chars | https://techcrunch.com/2026/06/15/fox-to-acquire-roku-in-22-billion-de
+  ✓ a1050fddc059 |  13360 chars | https://towardsdatascience.com/i-built-11-models-to-predict-the-2026-w
+  ✓ 566aca262b12 |   1709 chars | https://arstechnica.com/space/2026/06/russia-appears-set-to-finally-ad
+  ✓ 436d7d74227a |   1150 chars | https://habr.com/ru/news/1047744/?utm_source=habrahabr&utm_medium=rss&
+  ∅ 9b0fc7edb18c | extracted only 45 chars
+  ∅ 19e946b6dd82 | extracted only 63 chars
+  ✗ 47edae7dd060 | HTTP 403
+  ✓ 096d62ea3ab2 |   7413 chars | https://www.engadget.com/2192543/if-you-re-already-watching-youtube-da
+  ✓ d322cd56b3ad |   7243 chars | https://docs.hetzner.com/general/infrastructure-and-availability/price
+  ✓ fd4ee2903b7a |   1444 chars | https://d-russia.ru/kazahstan-podpisal-s-firebird-i-nvidia-soglasheniy
+  ✓ cbf4721dca16 |   1297 chars | https://habr.com/ru/news/1047492/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 3c5584c22202 |   9025 chars | https://tproger.ru/translations/kakoj-gumanizator-ii-dayot-samyj-estes
+  ✓ 169871f0fda5 |   3781 chars | https://the-decoder.com/pokemon-go-data-helped-train-ai-now-linked-to-
+  ✓ 9d15a254f160 |   2545 chars | https://habr.com/ru/news/1047730/?utm_source=habrahabr&utm_medium=rss&
+  ✓ da4b5edf73d1 |   4663 chars | https://techcrunch.com/2026/06/15/ai-agents-are-becoming-employees-new
+  ✓ d441e6612b43 |   1566 chars | https://habr.com/ru/news/1047724/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 7b8845eb32df |   4460 chars | https://rb.ru/news/rossiyane-vsyo-chashe-remontiruyut-veshi-ne-pokupay
+  ✗ 29f4ca0533ca | HTTP 401
+  ✓ 8baac5d52bae |   9029 chars | https://www.datarobot.com/blog/datarobots-platform-as-skills-in-claude
+  ∅ 7a659f2494f7 | extracted only 64 chars
+  ✓ 945e43bc256d |   4092 chars | https://habr.com/ru/news/1047716/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 7f92a973b849 |   1732 chars | https://habr.com/ru/news/1047714/?utm_source=habrahabr&utm_medium=rss&
+  ✓ c432632d1b74 |   5406 chars | https://www.technologyreview.com/2026/06/15/1138948/the-download-solid
+  ✓ 86df2cb2a769 |    694 chars | https://habr.com/ru/companies/habr_rutube/news/1047698/?utm_source=hab
+  ✓ 73c9e32da4cd |   2038 chars | https://www.engadget.com/2194058/fox-is-buying-roku-for-22-billion/
+  ✓ 84784d6bdbc1 |   6009 chars | https://rb.ru/news/socfond-nachnyot-nachislyat-pensiyu-po-starosti-v-a
+  ✓ f9469c0193ff |   1304 chars | https://d-russia.ru/onlayn-servis-postuplenie-v-vuz-onlayn-dostupen-dl
+  ✓ 3b60ffc499d1 |   2088 chars | https://habr.com/ru/news/1047684/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 37d79bd89efd |   5261 chars | https://www.salesforce.com/news/press-releases/2026/06/15/salesforce-s
+  ✓ 4b07f4f58d54 |  13852 chars | https://www.kdnuggets.com/3-pandas-tricks-for-data-cleaning-preparatio
+  ✓ e3d090f143fc |   4384 chars | https://techcrunch.com/2026/06/15/a-satellite-just-learned-to-find-thi
+  ✓ 54e5c106fab1 |  16489 chars | https://towardsdatascience.com/the-system-always-knows/
+  ✓ 3f6671269dce |   7276 chars | https://www.cnet.com/health/4-kitchen-tools-that-may-be-adding-micropl
+  ✓ 16e6cbde34a2 |   4141 chars | https://habr.com/ru/companies/pvs-studio/news/1047678/?utm_source=habr
+  ✗ 0bd7a91a7870 | HTTP 403
+  ✓ 4d34061aea7d |   4116 chars | https://www.cnet.com/tech/mobile/ios-27-coming-to-older-iphones-may-ju
+  ✓ 8f6372514adf |   9489 chars | https://www.cnet.com/health/fitness/best-smart-ring/
+  ∅ c87655b88045 | extracted only 45 chars
+  ✓ 74f2eb54c1e9 |  12118 chars | https://tproger.ru/articles/chto-vazhnee-tehnologicheskogo-steka-pri-s
+  ✓ 64b5347fa3c0 |    785 chars | https://habr.com/ru/news/1047676/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 4330c0157efd |   2969 chars | https://spark.ru/post/334121
+  ✓ fdc94c146274 |  16958 chars | https://importai.substack.com/p/import-ai-461-alignment-is-not-on
+  ✓ 3f95c08de247 |   2586 chars | https://habr.com/ru/news/1047674/?utm_source=habrahabr&utm_medium=rss&
+  ∅ dadfd91d3d78 | extracted only 55 chars
+  ✓ 636ee4b46c9f |   1987 chars | https://spark.ru/post/334110
+  ✓ 62513a77f20e |   8998 chars | https://www.cnet.com/tech/computing/its-no-longer-cheaper-to-build-you
+  ✓ c412eeadff69 |   4139 chars | https://habr.com/ru/companies/selectel/news/1047650/?utm_source=habrah
+  ✓ 421d4960db52 |    795 chars | https://d-russia.ru/rostrud-budet-poluchat-ot-sfr-dannye-ob-oplate-tru
+  ✓ e798685dc9a5 |   6744 chars | https://www.cnet.com/tech/home-entertainment/smart-tv-vs-dumb-tv/
+  ✓ 43009dc4e167 |   4208 chars | https://habr.com/ru/companies/onlinepatent/news/1047654/?utm_source=ha
+  ✓ 2d049bdfa5b4 |   6625 chars | https://news.crunchbase.com/saas/rewriting-pitch-playbook-venture-ai-s
+  ✓ 44ddad5d051c |   3208 chars | https://news.crunchbase.com/venture/us-ai-startup-funding-boom-data/
+  ✓ def0035cd07c |    261 chars | https://www.pehub.com/sector-spotlight-healthcare-investors-seek-winne
+  ✓ 5aa877db3d41 |  10581 chars | https://www.wired.com/story/the-kratom-civil-war-is-heating-up-and-mah
+  ∅ 8c1d6793dd8b | extracted only 45 chars
+  ✓ 0739256227b6 |   2756 chars | https://habr.com/ru/news/1047646/?utm_source=habrahabr&utm_medium=rss&
+  ✓ eadaa86d8445 |   1187 chars | https://d-russia.ru/programma-povysheniya-kvalifikatsii-pedagogov-dlya
+  ✓ 30c2be611e02 |   2351 chars | https://www.engadget.com/2194031/trump-threatens-to-smash-french-wine-
+  ✓ 3bfee8844b9c |   3774 chars | https://www.wired.com/story/how-apple-is-making-your-older-iphone-run-
+  ∅ 13022b10455f | extracted only 176 chars
+  ✓ 50ca8f74fe1e |  20126 chars | https://habr.com/ru/companies/ussc/news/1047632/?utm_source=habrahabr&
+  ✓ 2eeda74439bf |   4076 chars | https://rb.ru/news/v-rabote-servisov-wildberries-proizoshyol-sboj-15-i
+  ✓ b0a9b9113ae5 |   4550 chars | https://the-decoder.com/anthropic-shutdown-sparks-sovereignty-debate-a
+  ✓ 4ab27674b393 |  18501 chars | https://stratechery.com/2026/anthropics-safety-superpower/
+  ✓ a751b76d695b |    584 chars | https://d-russia.ru/eis-elektronnaya-putyovka-dopolnyaetsya-funktsiey-
+  ✓ 075da9099f11 |   6607 chars | https://www.cnet.com/tech/services-and-software/uk-social-media-ban-un
+  ✓ 6664f5540c00 |   5508 chars | https://www.wired.com/story/2026-fifa-world-cup-dangerous-temperatures
+  ✓ a9a96410c7fe |   8188 chars | https://www.wired.com/story/a-gay-onlyfans-star-got-hacked-then-his-x-
+  ✓ bd450ed44123 |   3077 chars | https://habr.com/ru/news/1047602/?utm_source=habrahabr&utm_medium=rss&
+  ✓ a2a42a4e60a5 |   1762 chars | https://d-russia.ru/velikobritaniya-anonsirovala-vvedenie-v-2027-godu-
+  ✓ dbc12aeb2f30 |   6252 chars | https://habr.com/ru/news/1047592/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 574208ca9930 |   9643 chars | https://www.wired.com/story/the-us-government-is-letting-a-key-data-ce
+  ✓ f7b15a898c93 |   3101 chars | https://the-decoder.com/microsoft-ceo-satya-nadella-warns-of-a-small-n
+  ∅ 65bbab2c6c8b | extracted only 45 chars
+  ✗ 85d1075eac72 | HTTP 403
+  ✓ 2714ec1fc2b5 |   2162 chars | https://d-russia.ru/protiv-openai-podali-ocherednoy-isk-za-dovedenie-d
+  ∅ 3ab23ab623e2 | extracted only 33 chars
+  ✓ 1bdc7175cf67 |   7434 chars | https://www.wired.com/story/uk-social-media-under-16-ban/
+  ✓ 2860d43c2ff7 |   4669 chars | https://www.technologyreview.com/2026/06/15/1138552/solid-state-acs-pr
+  ✓ a7d6afb8f1da |   5632 chars | https://www.wired.com/story/meta-rank-one-computing-face-recognition-s
+  ✓ d5b1feb7a2ed |   3172 chars | https://www.engadget.com/2194005/uk-will-ban-social-media-for-children
+  ✓ 5b9fb0e6a00b |    789 chars | https://d-russia.ru/pravitelstvo-obyavilo-o-finansirovanii-dlya-obespe
+  ✗ ccf198ec3516 | HTTP 403
+  ✓ 5dbc77d8587c |    243 chars | https://www.pehub.com/aurelius-exits-protection-relay-biz-seg-electron
+  ∅ 61adedf87d8d | extracted only 63 chars
+  ✓ 87267927b415 |   4685 chars | https://rb.ru/news/wildberries-razreshila-prodavcam-sozdavat-brendirov
+  ✓ 3d7d732e9468 |   5723 chars | https://rb.ru/news/oborot-rynka-karsheringa-v-rossii-snizilsya-na-17-7
+  ✓ 0340f2ccb5a1 |   5628 chars | https://techcrunch.com/2026/06/15/the-ai-layoff-wave-is-becoming-a-pow
+  ∅ eac1a24984f4 | extracted only 111 chars
+  ∅ 75f2bbb3f80b | extracted only 85 chars
+  ✓ 15bfe52dbb64 |  12453 chars | https://semiengineering.com/wi-fi-flies-higher-as-edge-ai-build-out-ta
+  ✓ 2851cef0b7a1 |   4709 chars | https://semiengineering.com/research-bits-june-15/
+  ✓ 4f4a2cf211ed |   1467 chars | https://spark.ru/post/334021
+  ∅ 33bbac5ce021 | extracted only 63 chars
+  ✗ ff33807860b3 | HTTP 429
+  ✓ 9c6507af94b9 |   2167 chars | https://spark.ru/post/334016
+  ✓ 35bd681d3df6 |   1668 chars | https://d-russia.ru/anthropic-po-trebovaniyu-pravitelstva-ssha-zakryl-
+  ∅ 73b493ff8768 | extracted only 179 chars
+  ✓ 95e19e3336b0 |   2556 chars | https://techcrunch.com/2026/06/14/orbio-raises-21-million-to-automate-
+  ✓ 0bda5c28d0c1 |   4463 chars | https://spark.ru/post/333986
+  ✓ ef8ba0653d09 |   2684 chars | https://arxiv.org/abs/2606.13705
+  ✓ 5fb526b771d9 |    513 chars | https://vc.ru/money/2978932-oborot-rynka-karsheringa-v-rossii-sokratil
+  ✓ 7dba3f9c1742 |   2341 chars | https://arxiv.org/abs/2606.13740
+  ✓ e46f5d9b41d6 |   2111 chars | https://arxiv.org/abs/2606.13741
+  ✓ b2bd25d9c200 |   2399 chars | https://arxiv.org/abs/2606.13742
+  ✓ 856b263d5df7 |   1912 chars | https://arxiv.org/abs/2606.13748
+  ✓ 7f7d7226686b |   2034 chars | https://arxiv.org/abs/2606.13753
+  ✓ 39fb7cf02b8c |   2704 chars | https://arxiv.org/abs/2606.13754
+  ✓ f30eb0f6e3e6 |   3911 chars | https://rb.ru/news/vo-vkusno-i-tochka-s-15-iyunya-vernut-sous-karri-ta
+  ✓ d4dd9e75ae43 |   2657 chars | https://arxiv.org/abs/2606.13767
+  ✓ 65d04dc80e32 |   2089 chars | https://arxiv.org/abs/2606.13801
+  ✓ e9a3fa33a8df |   1735 chars | https://arxiv.org/abs/2606.13795
+  ✓ f65c28130284 |   1927 chars | https://arxiv.org/abs/2606.13803
+  ✓ dfd93f898038 |   2053 chars | https://arxiv.org/abs/2606.13818
+  ✓ 9b7e4e8cae28 |   2179 chars | https://arxiv.org/abs/2606.13821
+  ✓ 206e300cd33a |   2754 chars | https://arxiv.org/abs/2606.13823
+  ✓ 462d113aab97 |   1860 chars | https://arxiv.org/abs/2606.13862
+  ✓ 5fb21f3ca4a4 |   2052 chars | https://arxiv.org/abs/2606.13867
+  ✓ f818a6c021e4 |   2813 chars | https://arxiv.org/abs/2606.13880
+  ✓ bc2b60fcc60c |   2408 chars | https://arxiv.org/abs/2606.13873
+  ✓ 15cd4e6b8fdb |   2384 chars | https://arxiv.org/abs/2606.13894
+  ✓ 08f3f37ab396 |   2699 chars | https://arxiv.org/abs/2606.13901
+  ✓ 8d8945501ef5 |   1908 chars | https://arxiv.org/abs/2606.13955
+  ✓ b4fdd4f41f04 |   1896 chars | https://arxiv.org/abs/2606.14022
+  ✓ 0d4cb25536a6 |   2091 chars | https://arxiv.org/abs/2606.13959
+  ✓ 44e417b8dd0c |   2036 chars | https://arxiv.org/abs/2606.14029
+  ✓ d6707c34a891 |   2665 chars | https://arxiv.org/abs/2606.14040
+  ✓ 63c0d26551a3 |   2228 chars | https://arxiv.org/abs/2606.14060
+  ✓ f66108aab003 |   2359 chars | https://arxiv.org/abs/2606.14078
+  ✓ 41d804c2e3b2 |   2000 chars | https://arxiv.org/abs/2606.14079
+  ✓ c81c4d5ce40f |   2226 chars | https://arxiv.org/abs/2606.14095
+  ✓ ddcb5b1d4d43 |   1459 chars | https://arxiv.org/abs/2606.14108
+  ✓ e5bfd826a774 |   2198 chars | https://arxiv.org/abs/2606.13682
+  ✓ a4ce144e1e12 |   2005 chars | https://arxiv.org/abs/2606.13683
+  ✓ 04fc868be50f |   1227 chars | https://arxiv.org/abs/2606.13703
+  ✓ 15696521ad26 |   2239 chars | https://arxiv.org/abs/2606.13707
+  ✓ 4189ca72bf9c |   2102 chars | https://arxiv.org/abs/2606.13710
+  ✓ ed8e751ea740 |   1938 chars | https://arxiv.org/abs/2606.13715
+  ✓ a622fca748f8 |   2168 chars | https://arxiv.org/abs/2606.13720
+  ✓ 88fb8e2765c6 |   1856 chars | https://arxiv.org/abs/2606.13722
+  ✓ aa5e00fa5e00 |   2646 chars | https://arxiv.org/abs/2606.13782
+  ✓ db2209501963 |   2392 chars | https://arxiv.org/abs/2606.13731
+  ✓ 0ce2ce74c1cf |   2374 chars | https://arxiv.org/abs/2606.13734
+  ✓ 5868c8ec9b31 |   2210 chars | https://arxiv.org/abs/2606.13732
+  ✓ c5e84dfb00ba |   1944 chars | https://arxiv.org/abs/2606.13815
+  ✓ 8492cef57044 |   2684 chars | https://arxiv.org/abs/2606.13871
+  ✓ e0c4abdf3770 |   2298 chars | https://arxiv.org/abs/2606.13884
+  ✓ cc97360f7831 |   1709 chars | https://arxiv.org/abs/2606.13925
+  ✓ 159ed04cd036 |   1932 chars | https://arxiv.org/abs/2606.13934
+  ✓ 361d763e78e4 |   2372 chars | https://arxiv.org/abs/2606.13916
+  ✓ 36fe174b43ae |   2168 chars | https://arxiv.org/abs/2606.13949
+  ✓ fb28a8517239 |   2093 chars | https://arxiv.org/abs/2606.14000
+  ✓ 7fe8029383af |   2232 chars | https://arxiv.org/abs/2606.14119
+  ✓ 015ba69cdee2 |   1866 chars | https://arxiv.org/abs/2606.14031
+  ✓ bf7c4084dd4d |   2380 chars | https://arxiv.org/abs/2606.14176
+  ✓ 79bf71b64b0d |   2637 chars | https://arxiv.org/abs/2606.14200
+  ✓ 3342b89de08d |   2226 chars | https://arxiv.org/abs/2606.14211
+  ✓ c3eae504b886 |   2480 chars | https://arxiv.org/abs/2606.14239
+  ✓ 49a4f5cfceff |   2067 chars | https://arxiv.org/abs/2606.14249
+  ✓ 7a013513a01d |   2272 chars | https://arxiv.org/abs/2606.14240
+  ✓ b644c4c6f079 |   2051 chars | https://arxiv.org/abs/2606.14314
+  ✓ e76419d4b24c |   1917 chars | https://arxiv.org/abs/2606.14415
+  ✓ ca3fe042c73d |   2568 chars | https://arxiv.org/abs/2606.13685
+  ✓ b33e32e53602 |   1936 chars | https://arxiv.org/abs/2606.13686
+  ✓ 651c1c4ca5cc |   1748 chars | https://arxiv.org/abs/2606.13751
+  ✓ a7b413992b07 |   2226 chars | https://arxiv.org/abs/2606.13756
+  ✓ 71c149aecc49 |   1600 chars | https://arxiv.org/abs/2606.13808
+  ✓ 6967b0a305a7 |   2410 chars | https://arxiv.org/abs/2606.13835
+  ✓ c4c4c943ebb9 |   1964 chars | https://arxiv.org/abs/2606.13852
+  ✓ 6290b23bea63 |   2212 chars | https://arxiv.org/abs/2606.13904
+  ✓ 8c257b8bef04 |   2169 chars | https://arxiv.org/abs/2606.13931
+  ✓ 00649d7fe3c0 |   2186 chars | https://arxiv.org/abs/2606.13940
+  ✓ 88cb7ac687de |   2538 chars | https://arxiv.org/abs/2606.13944
+  ✓ 06b245280a96 |   2104 chars | https://arxiv.org/abs/2606.13945
+  ✓ c2c2c31a9548 |   2304 chars | https://arxiv.org/abs/2606.13991
+  ✓ deb1c037cfae |   2303 chars | https://arxiv.org/abs/2606.13977
+  ✓ aa3a979a79a8 |   1500 chars | https://arxiv.org/abs/2606.13993
+  ✓ 9a27be553317 |   2046 chars | https://arxiv.org/abs/2606.14037
+  ✓ f12b13ec3f67 |   1759 chars | https://arxiv.org/abs/2606.13995
+  ✓ 8a09c65bab40 |   2053 chars | https://arxiv.org/abs/2606.14068
+  ✓ 41c356eafedb |   1737 chars | https://arxiv.org/abs/2606.14122
+  ✓ 1a47186c4548 |   2315 chars | https://arxiv.org/abs/2606.14142
+  ✓ 7049905ca746 |   2655 chars | https://arxiv.org/abs/2606.14145
+  ✓ b5255bf69a7d |   2529 chars | https://arxiv.org/abs/2606.14179
+  ✓ bdbd3937964c |   2366 chars | https://arxiv.org/abs/2606.14199
+  ✓ e9306b8cf442 |   2025 chars | https://arxiv.org/abs/2606.14243
+  ✓ cc76306fe5ed |   1701 chars | https://arxiv.org/abs/2606.14209
+  ✓ 9c7af0e0ba18 |   1874 chars | https://arxiv.org/abs/2606.14302
+  ✓ e97ffbd35f45 |   2435 chars | https://arxiv.org/abs/2606.14257
+  ✓ 1db1c72faa5b |   2310 chars | https://arxiv.org/abs/2606.14278
+  ✓ b36492594622 |   1584 chars | https://arxiv.org/abs/2606.14325
+  ✓ b9d28ef69108 |   2740 chars | https://arxiv.org/abs/2606.13714
+  ✓ 6c5f19c7d74f |   1725 chars | https://arxiv.org/abs/2606.14391
+  ✓ f3032b0f38bb |   2344 chars | https://arxiv.org/abs/2606.13723
+  ✓ 6095aadaf27e |   1682 chars | https://arxiv.org/abs/2606.13736
+  ✓ 4f7ebaba3595 |   2110 chars | https://arxiv.org/abs/2606.13809
+  ✓ 8b0745def450 |   2373 chars | https://arxiv.org/abs/2606.13768
+  ✓ 4606d634ed43 |   2712 chars | https://arxiv.org/abs/2606.13839
+  ✓ 55c4219e3394 |   2292 chars | https://arxiv.org/abs/2606.13861
+  ✓ 12c472f0d657 |   2241 chars | https://arxiv.org/abs/2606.13870
+  ✓ 58c18ec4222c |   2168 chars | https://arxiv.org/abs/2606.13896
+  ✓ e67e09b05300 |   2706 chars | https://arxiv.org/abs/2606.13872
+  ✓ b7a536bf1c44 |   2517 chars | https://arxiv.org/abs/2606.13898
+  ✓ 246967c7eafd |   2345 chars | https://arxiv.org/abs/2606.13910
+  ✓ 6441a985a8dd |   2686 chars | https://arxiv.org/abs/2606.13911
+  ✓ 49432b0309ed |   2038 chars | https://arxiv.org/abs/2606.13929
+  ✓ b6ddabd8360f |   2534 chars | https://arxiv.org/abs/2606.13964
+  ✓ f0374db23242 |   2017 chars | https://arxiv.org/abs/2606.14005
+  ✓ 46523dd78d4a |   2290 chars | https://arxiv.org/abs/2606.13971
+  ✓ aeff9388784f |   2223 chars | https://arxiv.org/abs/2606.14006
+  ✓ aa25cfb0c9df |   1991 chars | https://arxiv.org/abs/2606.14010
+  ✓ 9e6f1eab135d |   2220 chars | https://arxiv.org/abs/2606.14024
+  ✓ 2534e73e3078 |   1952 chars | https://arxiv.org/abs/2606.14025
+  ✓ 5a17f5a922ad |   2394 chars | https://arxiv.org/abs/2606.14035
+  ✓ 9ef7bf1f315a |   1723 chars | https://arxiv.org/abs/2606.14042
+  ✓ e6606831a14b |   2089 chars | https://arxiv.org/abs/2606.14072
+  ✓ 5a2c4f4ade72 |   2111 chars | https://arxiv.org/abs/2606.14048
+  ✓ 511f0d7117dd |   2268 chars | https://arxiv.org/abs/2606.14094
+  ✓ 12c3192bf0db |   2075 chars | https://arxiv.org/abs/2606.14081
+  ✓ 8c4eb95d163b |   2505 chars | https://arxiv.org/abs/2606.14071
+  ✓ 3f5a52396db6 |   2601 chars | https://arxiv.org/abs/2606.14096
+  ✓ 45ce69031ac4 |   2254 chars | https://arxiv.org/abs/2606.14125
+  ✓ 2a0166dfa80b |   2504 chars | https://arxiv.org/abs/2606.13957
+  ✓ 0af6bbe66f04 |   2308 chars | https://arxiv.org/abs/2606.14321
+  ✓ 0373fbbbad0b |   1917 chars | https://arxiv.org/abs/2605.09420
+  ✓ 9ea19e7deaec |   2734 chars | https://arxiv.org/abs/2510.15347
+  ✓ c0778ca8bf8e |   2031 chars | https://arxiv.org/abs/2606.13709
+  ✓ 27a5b36287b8 |   2480 chars | https://arxiv.org/abs/2606.13796
+  ✓ 3cb5583d62ef |   2455 chars | https://arxiv.org/abs/2606.13982
+  ✓ 290307eac790 |   2697 chars | https://arxiv.org/abs/2606.13984
+  ✓ 30e1961f9b08 |   2098 chars | https://arxiv.org/abs/2606.14023
+  ✓ 0373fb62bcbc |   2004 chars | https://arxiv.org/abs/2606.14028
+  ✓ 0e75fc63c581 |   2575 chars | https://arxiv.org/abs/2606.14053
+  ✓ cb7d9d0bc391 |   2224 chars | https://arxiv.org/abs/2606.14268
+  ✓ 7b8d57fbe397 |   2320 chars | https://arxiv.org/abs/2606.14313
+  ✓ 2154cefeb01a |   1992 chars | https://arxiv.org/abs/2606.14506
+  ✓ c215aa4f851e |   2277 chars | https://arxiv.org/abs/2606.14592
+  ✓ 0f75ddde4db7 |   2649 chars | https://arxiv.org/abs/2606.13780
+  ✓ bda7197598e7 |   2300 chars | https://arxiv.org/abs/2606.13827
+  ✓ a59923363cc1 |   2695 chars | https://arxiv.org/abs/2606.13850
+  ✓ 1c0dfc43e3e8 |   2462 chars | https://arxiv.org/abs/2606.14111
+  ✓ 493cd1010a9b |   2172 chars | https://arxiv.org/abs/2606.14289
+  ✓ 85f56cd6a2b2 |   2162 chars | https://arxiv.org/abs/2606.14390
+  ✓ 64f04fc0f240 |   2338 chars | https://arxiv.org/abs/2606.14403
+  ✓ 76e595247674 |   1810 chars | https://arxiv.org/abs/2606.14416
+  ✓ a2e5ec61fffd |   1762 chars | https://arxiv.org/abs/2606.14436
+  ✓ 29b511613427 |   2092 chars | https://arxiv.org/abs/2606.14560
+  ✓ 599e22e11450 |   2376 chars | https://arxiv.org/abs/2606.14679
+  ✓ 61bf9fd96d7e |   2778 chars | https://arxiv.org/abs/2312.14889
+  ✓ 60c976f6bf2b |   1748 chars | https://arxiv.org/abs/2506.06542
+  ✓ a1ba87aa4d25 |   2201 chars | https://arxiv.org/abs/2402.16388
+  ✓ 6b162c4a6be7 |   1853 chars | https://arxiv.org/abs/2509.24710
+  ✓ 0fab1ed12b7c |   2188 chars | https://arxiv.org/abs/2602.09161
+  ✓ 633ce0448e3f |   1903 chars | https://arxiv.org/abs/2606.14692
+  ✓ e7fdaf82cb9a |   2359 chars | https://arxiv.org/abs/2606.14614
+  ✓ c5962391140c |   2417 chars | https://arxiv.org/abs/2606.14649
+  ✓ 6c4e0adfd794 |   2618 chars | https://arxiv.org/abs/2602.13421
+  ✓ ba66ae42453e |   1593 chars | https://arxiv.org/abs/2604.14193
+  ✓ abed350b8e1f |   2424 chars | https://arxiv.org/abs/2604.24942
+  ✓ 2669943498e8 |   2589 chars | https://arxiv.org/abs/2605.16739
+  ✓ 41ec2e53bc98 |   2163 chars | https://arxiv.org/abs/2606.13919
+  ✓ cb1b89b82069 |   2236 chars | https://arxiv.org/abs/2606.14248
+  ✓ 12fba9b4dd78 |   2113 chars | https://arxiv.org/abs/2606.14568
+  ✓ 34522f7ff149 |   1888 chars | https://arxiv.org/abs/2512.10966
+  ✓ fa613874ce92 |   2533 chars | https://arxiv.org/abs/2512.15947
+  ✓ a98b4a3c29e2 |   1684 chars | https://arxiv.org/abs/2606.14146
+  ✓ c3a3c7e80675 |   2254 chars | https://arxiv.org/abs/2606.14202
+  ✓ 7e126da99eff |   2054 chars | https://arxiv.org/abs/2606.13985
+  ✓ 28572da641e7 |   2220 chars | https://arxiv.org/abs/2605.04954
+  ✓ cdacd6e7a0c5 |   1936 chars | https://arxiv.org/abs/2601.12913
+  ✓ e1aa318c418d |   2196 chars | https://arxiv.org/abs/2601.18707
+  ✓ 2d7c4528063b |   2745 chars | https://arxiv.org/abs/2602.18140
+  ✓ cd9806c58d98 |   2248 chars | https://arxiv.org/abs/2604.17402
+  ✓ 8c9ba9a633f1 |   1817 chars | https://arxiv.org/abs/2606.14004
+  ✓ 762d25b4fec6 |   1822 chars | https://arxiv.org/abs/2606.14091
+  ✓ 587c54c388c9 |   2509 chars | https://arxiv.org/abs/2606.14175
+  ✓ 0d0a69b563c9 |   2212 chars | https://arxiv.org/abs/2606.14528
+  ✓ 9a9aa2d20b76 |   2750 chars | https://arxiv.org/abs/2606.14120
+  ✓ 02bc060ce637 |   2482 chars | https://arxiv.org/abs/2606.14612
+  ✓ 9b3f02e9c713 |   1831 chars | https://arxiv.org/abs/2603.05213
+  ✓ f5071426ecf0 |   2470 chars | https://arxiv.org/abs/2409.04843
+  ✓ 64e227591e0c |   1858 chars | https://arxiv.org/abs/2603.24596
+  ✓ a9b8b1530727 |   1828 chars | https://arxiv.org/abs/2602.05670
+  ✓ e5db570d199e |   2528 chars | https://arxiv.org/abs/2606.02185
+  ✓ 65f10033aec4 |   1877 chars | https://arxiv.org/abs/2606.13727
+  ✓ d356828cffd4 |   1962 chars | https://arxiv.org/abs/2606.13746
+  ✓ 90d5ec71e01d |   2313 chars | https://arxiv.org/abs/2606.13817
+  ✓ a62ffaa3720a |   2444 chars | https://arxiv.org/abs/2606.13769
+  ✓ 0c34450c5ccc |   2027 chars | https://arxiv.org/abs/2606.13840
+  ✓ 4164f2b84684 |   2350 chars | https://arxiv.org/abs/2606.13842
+  ✓ 125b240dc9c6 |   2079 chars | https://arxiv.org/abs/2606.13856
+  ✓ c8883f2123b2 |   2436 chars | https://arxiv.org/abs/2606.13877
+  ✓ 97185cb226eb |   2418 chars | https://arxiv.org/abs/2606.13878
+  ✓ d52122c0a49e |   2430 chars | https://arxiv.org/abs/2606.13883
+  ✓ dc21a2222ae4 |   2080 chars | https://arxiv.org/abs/2606.13970
+  ✓ 731356c2db17 |   2668 chars | https://arxiv.org/abs/2606.13886
+  ✓ ab369e3ee921 |   2104 chars | https://arxiv.org/abs/2606.13990
+  ✓ 234acf8b33bd |   2387 chars | https://arxiv.org/abs/2606.13915
+  ✓ 190368d4516f |   2693 chars | https://arxiv.org/abs/2606.14032
+  ✓ cc5f0b25986c |   2245 chars | https://arxiv.org/abs/2606.14058
+  ✓ 73c16e0a85c9 |   2397 chars | https://arxiv.org/abs/2606.14063
+  ✓ d8b24ce8d7a3 |   1687 chars | https://arxiv.org/abs/2606.14070
+  ✓ 89443edbb6ab |   2109 chars | https://arxiv.org/abs/2606.14083
+  ✓ ee1ae6b63deb |   2059 chars | https://arxiv.org/abs/2606.14084
+  ✓ 6ade070878ee |   2527 chars | https://arxiv.org/abs/2606.14089
+  ✓ f1ed892e2d82 |   1914 chars | https://arxiv.org/abs/2606.14188
+  ✓ 361eb598a526 |   2133 chars | https://arxiv.org/abs/2606.14160
+  ✓ 93a59d57cea7 |   1644 chars | https://arxiv.org/abs/2606.14216
+  ✓ 3eb8c867cbac |   2239 chars | https://arxiv.org/abs/2606.14218
+  ✓ 82e736783d28 |   2248 chars | https://arxiv.org/abs/2606.14219
+  ✓ 769946ed8841 |   2242 chars | https://arxiv.org/abs/2606.14237
+  ✓ cc7833299c40 |   2087 chars | https://arxiv.org/abs/2606.14238
+  ✓ 5ff1d201663a |   2256 chars | https://arxiv.org/abs/2606.14252
+  ✓ 1617445e5d2c |   2421 chars | https://arxiv.org/abs/2606.14250
+  ✓ aeac8cb8843b |    649 chars | https://vercel.com/changelog/auth0-joins-the-vercel-marketplace
+  ✓ e48c3e0c87a8 |   1623 chars | https://semiengineering.com/fault-injection-framework-targets-risc-v-s
+  ✓ eefa1a4a7600 |   6660 chars | https://aiweekly.co/issues/washington-just-repriced-frontier-ai
+  ✗ 9b41ef631f1c | HTTP 403
+  ∅ d632652cb1a9 | extracted only 45 chars
+  ✓ ae9f1419e814 |  11632 chars | https://maurycyz.com/projects/glass/1/
+  ∅ cc779a956073 | extracted only 71 chars
+  ✗ ede3c3382a26 | HTTP 429
+  ∅ 85b327d62a62 | extracted only 66 chars
+  ∅ 9a319d2ec34e | extracted only 72 chars
+  ∅ 9e1da6246e50 | extracted only 141 chars
+  ✗ a1a9919ade2b | HTTP 403
+  ✗ 3d865fb6cb13 | HTTP 403
+  ✓ bd096de6ec6e |  26732 chars | https://blog.johnnovak.net/2016/09/21/what-every-coder-should-know-abo
+  ✗ 12eae63a62c9 | HTTP 403
+  ✗ 894c51df33f4 | HTTP 403
+  ✗ f582d40c501d | HTTP 401
+  ∅ 786f72f8607c | extracted only 15 chars
+  ∅ 94ad53243a1b | extracted only 45 chars
+  ✗ 9cc7608624a9 | HTTP 403
+  ∅ f13b51934424 | extracted only 86 chars
+  ✗ 4329a5d6d8fc | HTTP 429
+  ∅ 6a1ae3f6558f | extracted only 70 chars
+  ✓ e6c9da9739b7 |  22227 chars | https://kcsrk.info/ocaml/oxcaml/teaching/nptel/llm/2026/06/13/an-oxcam
+  ∅ c5ff2a049b40 | extracted only 81 chars
+  ∅ 8b36ee9d5815 | extracted only 50 chars
+  ✗ 49d8ffca9954 | HTTP 401
+  ✗ d9131872dea3 | HTTP 429
+  ✗ 03b9d0436f50 | HTTP 429
+  ✗ ae938806e82e | HTTP 403
+  ✗ b2918d7687a2 | TypeError: object of type 'NoneType' has no len()
+  ∅ 5caf59a41944 | extracted only 97 chars
+  ∅ df34e6426a59 | extracted only 45 chars
+  ∅ 712562552311 | extracted only 45 chars
+  ∅ e22307c01088 | extracted only 57 chars
+  ∅ 26ffe7764930 | extracted only 45 chars
+  ∅ 752c5f4be8c4 | extracted only 83 chars
+  ✗ c53775f381f8 | TypeError: object of type 'NoneType' has no len()
+  ∅ 3ce03914ef43 | extracted only 80 chars
+  ✗ 4fb17ef91977 | TypeError: object of type 'NoneType' has no len()
+  ✗ 22725d685a35 | HTTP 429
+  ✗ 2580e38db21f | HTTP 429
+  ∅ f4d6fb20f321 | extracted only 45 chars
+  ∅ fc04f8df5cbd | extracted only 54 chars
+  ✗ 523a34c56360 | TypeError: object of type 'NoneType' has no len()
+  ∅ 1928b7cd6895 | extracted only 63 chars
+  ∅ 555091f95a86 | extracted only 63 chars
+  ∅ daa47b4928cc | extracted only 74 chars
+  ∅ 135f2c51e013 | extracted only 106 chars
+  ∅ e29639034d58 | extracted only 106 chars
+  ✗ 31e268b2c07a | HTTP 403
+  ∅ ca53f907fa67 | extracted only 63 chars
+  ∅ 5545b24ba8b3 | extracted only 45 chars
+  ∅ 5686d1e1acd6 | extracted only 134 chars
+  ✗ 26162e6eb29d | TypeError: object of type 'NoneType' has no len()
+  ∅ 4acb729ab617 | extracted only 63 chars
+  ✗ e5e9bd931104 | HTTP 403
+  ∅ 124cfd150b7f | extracted only 45 chars
+  ✗ eb6c51388309 | HTTP 429
+  ✗ e9d97d1dbf62 | HTTP 429
+  ✗ 478835b2440e | HTTP 403
+  ∅ 369980a34df2 | extracted only 63 chars
+  ∅ 1c1d3c4d0b02 | extracted only 28 chars
+  ∅ 96d13a8536b6 | extracted only 55 chars
+  ∅ 2f31e7c2d2cb | extracted only 49 chars
+  ∅ 0d16b78293a3 | extracted only 159 chars
+  ∅ b55db24f8bc4 | extracted only 74 chars
+  ∅ 2690b8a748c9 | extracted only 45 chars
+  ✗ 668cabe7e63a | HTTP 429
+  ✗ 74eb9777868d | HTTP 429
+  ✓ 20874038c8c2 |   6370 chars | https://innovativegenomics.org/news/crispr-technique-selectively-shred
+  ✗ d3d15fdbd3ec | HTTP 429
+  ✗ 8c2ae86ddddb | HTTP 403
+  ✗ 07fc09adb4be | HTTP 429
+  ∅ 0b4bc654a1ee | extracted only 45 chars
+  ✗ 9f5f1f2c5ad7 | HTTP 403
+  ✗ dec76480b787 | HTTP 429
+  ✗ 254518332313 | HTTP 403
+  ✗ 52bcb696380e | HTTP 429
+  ∅ 7fe58de4b60a | extracted only 66 chars
+  ✗ 81a30507eba6 | HTTP 429
+  ✗ 579e41d9846a | HTTP 429
+  ✗ f18a92aafd8d | HTTP 429
+  ✗ 50220b7f864d | HTTP 403
+  ✗ 98f62c93b442 | TypeError: object of type 'NoneType' has no len()
+  ✓ c59ed5097f62 |   5613 chars | https://shonczinner.github.io/posts/embedding-prediction/
+  ✗ e0acdb0472e8 | HTTP 403
+  ✗ b798dc6802e0 | HTTP 403
+  ∅ 77522466b298 | extracted only 63 chars
+  ∅ 327605752df4 | extracted only 43 chars
+  ✗ e85cee36591c | HTTP 429
+  ✓ 385fc388e42e |   4871 chars | https://cohere.com/blog/north-mini-code
+  ∅ 4098db80be4f | extracted only 87 chars
+  ✗ 8451d6b1bc06 | TypeError: object of type 'NoneType' has no len()
+  ✓ 1df6069257f5 |   2371 chars | https://fata.dev
+  ∅ a6656ddbe585 | extracted only 63 chars
+  ∅ dfda7c2e713c | extracted only 63 chars
+  ∅ d1be6c45f39e | extracted only 187 chars
+  ∅ efd37e95e9af | extracted only 63 chars
+  ∅ c3eea14342bb | extracted only 154 chars
+  ∅ b8e445ee70c6 | extracted only 63 chars
+  ✗ be86c9d09a56 | HTTP 403
+  ✗ 1dcfcce12691 | HTTP 403
+  ∅ 15b98d3bf229 | extracted only 63 chars
+  ∅ 7e72301cc14f | extracted only 113 chars
+  ✗ 772a4899481f | HTTP 403
+  ✗ 626890cbe540 | HTTP 429
+  ✗ 21c10abe484e | HTTP 403
+  ✗ dddca4da835f | HTTP 403
+  ✗ 1eb04e1b753d | HTTP 403
+  ∅ 90ff33a85065 | extracted only 29 chars
+  ✗ 9b8ca91ae050 | HTTP 403
+  ✗ f5fdb80fa91a | HTTP 403
+  ✗ 88ea5d74b3ce | HTTP 403
+  ✗ bfbf641beda5 | HTTP 403
+  ✗ 9b77dce7b354 | HTTP 403
+  ✗ ebd8c99b3573 | HTTP 429
+  ✗ 8926e37d73b8 | HTTP 403
+  ✗ ed424537b7c4 | HTTP 403
+  ✗ b4837f5c5415 | HTTP 429
+  ✗ 94f5302d08b7 | HTTP 429
+  ✗ 73c80418f56e | HTTP 429
+  ✗ 828be2b1e9ca | HTTP 429
+  ✗ c41a1120a0bf | HTTP 429
+  ✗ 8448c9fea336 | HTTP 404
+  ✗ b5dbfc5b53a2 | HTTP 429
+  ✗ 6cb09c1a7d3b | HTTP 403
+  ✗ c6fecd915567 | HTTP 403
+  ∅ dc509934b4dd | extracted only 63 chars
+  ✗ fb4992f6b9a8 | HTTP 429
+  ✗ 86b97dc0f300 | HTTP 403
+  ∅ a889548638f1 | extracted only 93 chars
+  ✗ 4f5ef584ded3 | HTTP 429
+  ✗ 76303ce3234b | HTTP 429
+  ✗ 080d9ca25141 | HTTP 429
+  ✗ 3f4e8d7a4d52 | HTTP 429
+  ✗ 4a54946aed78 | HTTP 403
+  ∅ 7432e94a82e4 | extracted only 111 chars
+  ✗ 76201c4160f3 | TypeError: object of type 'NoneType' has no len()
+  ∅ e63a22222453 | extracted only 63 chars
+  ✗ 563dd4bbd0d3 | HTTP 429
+  ∅ db2c55ed4177 | extracted only 63 chars
+  ∅ 62a23b28bcbe | extracted only 63 chars
+  ∅ 17ed0b9464ba | extracted only 63 chars
+  ∅ cda1b1e53c7c | extracted only 63 chars
+  ✗ 9446da5d7094 | HTTP 429
+  ∅ 2fbdf1eb1f69 | extracted only 63 chars
+  ∅ 2697e516e3c7 | extracted only 50 chars
+  ∅ 402379514b0b | extracted only 65 chars
+  ✗ 2c872de7fac2 | HTTP 403
+  ∅ be737879ec62 | extracted only 148 chars
+  ✗ 5a40aea23372 | HTTP 403
+  ✗ 7983f228c6db | HTTP 403
+  ✗ d2a39068329c | HTTP 403
+  ✗ c1645031ca22 | HTTP 403
+  ∅ e77de0c1cf95 | extracted only 30 chars
+  ✗ f27d43c57275 | HTTP 403
+  ∅ 5d05a3eb8588 | extracted only 63 chars
+  ∅ bbb706beb4d7 | extracted only 43 chars
+  ✗ 24f89a27304b | HTTP 403
+  ∅ ede444ffab7f | extracted only 63 chars
+  ✗ 8df875b39bd5 | HTTP 403
+  ✗ 21498142103f | HTTP 403
+  ∅ e82be2d9d9e1 | extracted only 158 chars
+  ∅ 7e69da22bbca | extracted only 59 chars
+  ∅ f830fa14ea9a | extracted only 34 chars
+  ∅ 689a8834433b | extracted only 41 chars
+  ✗ c735772b20a7 | HTTP 429
+  ✗ ef3f18f446fc | TypeError: object of type 'NoneType' has no len()
+  ✗ 016bc729fe32 | HTTP 429
+  ✗ e527af61aff2 | HTTP 403
+  ✗ 669c28a42d49 | HTTP 403
+  ✗ 1a9cfcfcf3bb | HTTP 429
+  ✗ 77bb088c8b8c | HTTP 429
+  ✗ eaf499b9a946 | HTTP 429
+  ✗ 241e2cda759e | HTTP 403
+  ✗ 3a4dd3f53ba9 | HTTP 429
+  ✗ 87abe9ee367a | HTTP 403
+  ✗ bc64d813bea6 | HTTP 403
+  ✗ c7e9ec2f9cfc | HTTP 403
+  ✗ dab7a18c14a0 | HTTP 429
+  ✗ 9ae1f34dd05b | HTTP 403
+  ✗ 9633954f61a5 | HTTP 429
+  ✗ ffa842dcf3bd | HTTP 403
+  ✗ df4515d5ec7d | HTTP 429
+  ✗ 52f9dee7d65f | HTTP 403
+  ✗ db217a525e31 | HTTP 401
+  ✗ ed0715ff067e | HTTP 403
+  ✗ 2452465d7eb7 | HTTP 429
+  ✗ 88b053027acf | HTTP 429
+  ✗ d575c29211b0 | HTTP 429
+  ✗ e188441c2a1b | HTTP 429
+  ∅ 6f086e68082e | extracted only 70 chars
+  ✗ 1e0ef6ffe88a | HTTP 403
+  ∅ 71358576e302 | extracted only 63 chars
+  ✗ 1b040cfa3010 | HTTP 403
+  ∅ c33f7ab21e4e | extracted only 32 chars
+  ∅ 98a08af5f927 | extracted only 63 chars
+  ✗ 3b94d27f3167 | HTTP 403
+  ∅ d70ab91669c5 | extracted only 63 chars
+  ∅ 01bdde42cb8a | extracted only 118 chars
+  ✗ cdc77122c42d | TypeError: object of type 'NoneType' has no len()
+  ✗ 44dabad91e90 | HTTP 429
+  ✗ de0a2342d5aa | HTTP 403
+  ∅ 01d1d5ad22fa | extracted only 175 chars
+  ✗ 164e6b41b04f | TypeError: object of type 'NoneType' has no len()
+  ✗ 111249c4a0a1 | HTTP 403
+  ∅ f00cacf986d5 | extracted only 63 chars
+  ✗ 13c1b67fae58 | HTTP 403
+  ✗ fbb449340331 | HTTP 403
+  ✗ e3d6eea6b1f6 | HTTP 429
+  ∅ 07d5368371b5 | extracted only 159 chars
+  ✗ 10facf05fa4a | HTTP 403
+  ∅ d391b77fd50a | extracted only 189 chars
+  ∅ 022a25e4c914 | extracted only 63 chars
+  ✗ fa9af36cb131 | HTTP 403
+  ∅ b26ab52ac66a | extracted only 81 chars
+  ✗ 504e31b94d5d | TypeError: object of type 'NoneType' has no len()
+  ∅ f052e69a2c85 | extracted only 63 chars
+  ✗ 1506aff82566 | HTTP 403
+  ∅ 980d5243bfa6 | extracted only 43 chars
+  ∅ f4557f0e4129 | extracted only 135 chars
+  ∅ 00f3495eb305 | extracted only 40 chars
+  ∅ 1611a86de2bd | extracted only 63 chars
+  ∅ 67f63f0cf248 | extracted only 63 chars
+  ✗ 5438335ffb3f | HTTP 403
+  ∅ 9de1acc7f074 | extracted only 163 chars
+  ✗ 65edefcb4544 | HTTP 403
+  ✗ 942c2dce9a4f | TypeError: object of type 'NoneType' has no len()
+  ∅ 9d1e8253f802 | extracted only 65 chars
+  ✗ fb355d349393 | HTTP 429
+  ∅ 4c725aba5849 | extracted only 52 chars
+  ∅ 754ab53253ac | extracted only 63 chars
+  ∅ 303c8a580452 | extracted only 45 chars
+  ✗ 9358a6d9e28c | TypeError: object of type 'NoneType' has no len()
+  ∅ 45c904623418 | extracted only 45 chars
+  ∅ 2c68c8931f06 | extracted only 114 chars
+  ∅ 698a4858aa05 | extracted only 37 chars
+  ✗ 1de78fdb5609 | HTTP 403
+  ∅ 33d5b3df063c | extracted only 96 chars
+  ∅ 5cdddecceb2d | extracted only 63 chars
+  ✗ 60ee186ed27e | HTTP 403
+  ∅ 526308ee5eb8 | extracted only 63 chars
+  ✗ 5f27e3f6e381 | HTTP 403
+  ∅ a63d47c3659a | extracted only 63 chars
+  ∅ 96bd04fb4168 | extracted only 64 chars
+  ✗ e5f73b71d1d7 | HTTP 403
+  ✗ fea054d073ef | HTTP 403
+  ✗ 8c5165e41bff | HTTP 403
+  ✗ d7fc1fd0b63a | TypeError: object of type 'NoneType' has no len()
+  ✗ c39ad57d6bd7 | HTTP 403
+  ∅ 50f1d6a03255 | extracted only 78 chars
+  ✗ 5d2b78cc5505 | HTTP 403
+  ∅ 2a0772d26773 | extracted only 63 chars
+  ∅ fc29f46972f4 | extracted only 55 chars
+  ✗ 22640148bbb8 | TypeError: object of type 'NoneType' has no len()
+  ∅ fd8a1011ce17 | extracted only 63 chars
+  ∅ 4a38fc96f335 | extracted only 45 chars
+  ∅ 6af0cf9d459f | extracted only 43 chars
+  ✗ 536604e9e1ff | HTTP 403
+  ∅ 394013ae03e1 | extracted only 186 chars
+  ✗ ce11913b6867 | HTTP 429
+  ✗ b5b0b8f48092 | TypeError: object of type 'NoneType' has no len()
+  ✗ f4ee2a7a3a8a | HTTP 403
+  ✗ b684b4162c5b | HTTP 403
+  ∅ ff5a4a44cecd | extracted only 40 chars
+  ∅ 3c9d08d90b63 | extracted only 70 chars
+  ✗ fa8938d21530 | HTTP 429
+  ∅ d0b0632e41e6 | extracted only 63 chars
+  ∅ 0901313655c3 | extracted only 45 chars
+  ∅ 127067f71f2f | extracted only 75 chars
+  ∅ aec9ee43a4e0 | extracted only 66 chars
+  ∅ 6cda6a773635 | extracted only 92 chars
+  ∅ 97a7da2be7ee | extracted only 71 chars
+  ✗ 1e588e61972d | HTTP 429
+  ✗ a8c9be6b3557 | HTTP 404
+  ∅ 844cea98b634 | extracted only 45 chars
+  ✗ 459e411b31d6 | HTTP 429
+  ✗ c2a5de2dea82 | HTTP 429
+  ∅ 5e410d7d5998 | extracted only 45 chars
+  ✗ d2e2b63f84b9 | TypeError: object of type 'NoneType' has no len()
+  ∅ 5123a7ffc6d3 | extracted only 48 chars
+  ✗ ae995b9c3e75 | HTTP 403
+  ✗ 785dbaa6ae56 | HTTP 403
+  ✗ 5be6c3392056 | HTTP 403
+  ∅ 969e8f000a09 | extracted only 108 chars
+  ✗ 1a654943dc71 | HTTP 403
+  ∅ 1c644c2822bd | extracted only 108 chars
+  ✗ 0af0c5c72218 | HTTP 403
+  ✗ b918a5525a80 | HTTP 403
+  ✗ 985e9a4f3bc7 | HTTP 403
+  ∅ 97b4f792a746 | extracted only 116 chars
+  ∅ 143db56507ef | extracted only 181 chars
+  ∅ cda8325eed1e | extracted only 54 chars
+  ∅ 7a50c6644e2a | extracted only 131 chars
+  ∅ 77d7d49e6045 | extracted only 82 chars
+  ✗ 4740ac952fc0 | HTTP 403
+  ∅ 7bdc5d9ebdb8 | extracted only 63 chars
+  ✗ eac79a5c60c8 | TypeError: object of type 'NoneType' has no len()
+  ∅ b708414e5e0b | extracted only 63 chars
+  ∅ d6e1c1967533 | extracted only 59 chars
+  ∅ 96478f6d7290 | extracted only 31 chars
+  ✗ 270397becd06 | HTTP 429
+  ∅ 74d8dba0d29b | extracted only 160 chars
+  ✗ 38273f0329c3 | HTTP 429
+  ∅ 0efb1d95f4e9 | extracted only 45 chars
+  ∅ 75a21cff80bc | extracted only 45 chars
+  ✗ bd33c9586894 | HTTP 429
+  ✗ 3ae259933be7 | HTTP 429
+  ✗ f69a41d0dc92 | HTTP 429
+  ✗ 301a5c5b332a | HTTP 403
+  ✗ 3e18cf905585 | HTTP 429
+  ✗ f74ade91ac54 | HTTP 429
+  ✗ dbbceee803d6 | TypeError: object of type 'NoneType' has no len()
+  ✗ 237ed067d5e3 | HTTP 429
+  ✗ e836b40cf4fb | HTTP 429
+  ✗ 17c526822161 | HTTP 403
+  ✗ fd6598b3f132 | HTTP 429
+  ✗ 19fbdcc90cad | HTTP 429
+  ✗ 66a0a8d2765c | TypeError: object of type 'NoneType' has no len()
+  ✗ 07ea7bde8118 | HTTP 403
+  ✗ ebef91fec56b | HTTP 429
+  ✗ 85152a6df9c7 | HTTP 429
+  ✗ 402b4fbdd5e6 | HTTP 429
+  ✗ 5eef0aa74879 | HTTP 429
+  ✗ f275023484a8 | HTTP 429
+  ✗ 1377694f18fe | HTTP 429
+  ∅ f311c75ca60b | extracted only 107 chars
+  ∅ e3757bb16d1f | extracted only 61 chars
+  ∅ 682693a20f63 | extracted only 28 chars
+  ✗ 8faac1f45750 | HTTP 429
+  ✗ 41e4dcda2336 | HTTP 429
+  ✗ cdf77ea8aff3 | HTTP 429
+  ∅ 010d8d81002d | extracted only 51 chars
+  ∅ bc5bbaafced6 | extracted only 43 chars
+  ✗ fa84d034356c | HTTP 403
+  ∅ 15f47e9b558b | extracted only 26 chars
+  ✗ 9b923bad35af | HTTP 403
+  ✗ cf4ec4222171 | HTTP 429
+  ✗ ffa5f8be5836 | HTTP 403
+  ∅ 0c3e10fe64e4 | extracted only 43 chars
+  ✗ aaeba9d9642e | HTTP 403
+  ∅ ce2c2e78a8f9 | extracted only 63 chars
+  ✗ 062afd5ad1f9 | HTTP 429
+  ✗ 7ac1244a9454 | HTTP 429
+  ✗ e4841d06b7f2 | HTTP 403
+  ∅ c5bb26e67939 | extracted only 71 chars
+  ✗ 890b25eddf68 | HTTP 403
+  ✗ 0417997d923f | HTTP 403
+  ∅ 63e7b658aefc | extracted only 63 chars
+  ✗ be876b176720 | HTTP 403
+  ✗ ce0322c55738 | HTTP 403
+  ✗ 2f358dc4a504 | HTTP 403
+  ✗ fdf6c4e98bb2 | HTTP 403
+  ✗ efdf5cf9f641 | TypeError: object of type 'NoneType' has no len()
+  ✗ ab13f533d5f5 | TypeError: object of type 'NoneType' has no len()
+  ✗ 6b1fa8ae684f | HTTP 403
+  ✗ 907279281489 | TypeError: object of type 'NoneType' has no len()
+  ✗ 78758b8ec5bc | HTTP 403
+  ✗ 702fb607570e | HTTP 403
+  ∅ 1124c6b8de11 | extracted only 63 chars
+  ✗ b5479ebcde18 | HTTP 403
+  ✗ 919d46e19bc3 | HTTP 403
+  ✗ 5899b169bc6e | HTTP 403
+  ✗ 1c77cec1ddad | HTTP 403
+  ✗ 86df175a446d | HTTP 403
+  ✗ f2261073b77c | HTTP 403
+  ✗ 740545d72e85 | HTTP 403
+  ✗ e70e88d9a498 | TypeError: object of type 'NoneType' has no len()
+  ✗ e7785d8c77e3 | HTTP 429
+  ✗ 74f5123204ea | TypeError: object of type 'NoneType' has no len()
+  ✗ b454f8817363 | TypeError: object of type 'NoneType' has no len()
+  ✗ 0316568c46ec | TypeError: object of type 'NoneType' has no len()
+  ✗ 1bd5d5f60cc3 | HTTP 429
+  ∅ aa254796804e | extracted only 101 chars
+  ✗ e670024b9a32 | HTTP 429
+  ∅ e6e12a7181a1 | extracted only 83 chars
+  ✗ ca731494b194 | HTTP 429
+  ✗ a102a18a5efc | HTTP 429
+  ✗ db7ff708ed2f | HTTP 429
+  ✗ b37d93646457 | HTTP 429
+  ✓ a0d36867bcc4 |   2159 chars | https://roem.ru/29-04-2025/305860/skonchalsya-vyacheslav-varvanin/?fro
+  ✓ eb8040157c80 |  11938 chars | http://bair.berkeley.edu/blog/2025/03/25/rl-av-smoothing/
+  ✓ a4ea27d9f48c |  12084 chars | https://venturefounders.com/startup-small-is-beautiful/
+  ⏱ 5eccb25dccad | timeout
+  ✓ 1a0b4412bc8a |   9701 chars | https://venturefounders.com/startup-citizenship/
+  ✓ 6656af8dc63f |   8172 chars | https://venturefounders.com/dei-in-startups/
+  ✗ f57e9ba16963 | HTTP 404
+  ✗ bc98efbf84dc | HTTP 404
+  ✓ 1ea1da96d9ca |   4038 chars | https://roem.ru/03-02-2025/305420/chto-oznachayut-sokrasheniya/?from=r
+  ✓ 33332ff98973 |   8492 chars | https://venturefounders.com/startup-ecosystem/
+  ✓ a03dfb901f9e |   8743 chars | https://www.aiweirdness.com/minecraft-with-object-impermanence/
+  ✓ fd0af644501f |    378 chars | https://www.aiweirdness.com/bonus-in-which-the-adventurer-attempts-to-
+  ✓ 2bfbe1e5eaf3 |   2794 chars | https://roem.ru/17-01-2025/305308/nenuzhnost-kontaktov-tretego/?from=r
+  ✓ b14b01aa0f35 |  13102 chars | https://venturefounders.com/outward-bound-to-startup/
+  ✓ 6aac02d1f4a7 |   9628 chars | https://techncruncher.blogspot.com/2025/01/top-10-ai-tools-that-will-t
+  ✓ d94a5432d96f |   1527 chars | https://roem.ru/25-04-2025/305792/nuzhna-li-knopka-pusk/?from=roem_rss
+  ✓ e6741da030d4 |   2588 chars | https://roem.ru/19-05-2025/305893/kak-ne-nado-zakryvat/?from=roem_rss
+  ✓ ca7daa1e189b |   2408 chars | https://roem.ru/14-04-2025/305746/pochemu-kommentarii-anonimov/?from=r
+  ✓ 16d6a928c10c |  19475 chars | https://venturefounders.com/inclusive-entrepreneurship/
+  ✓ 1b600ac6994b |  44164 chars | https://lilianweng.github.io/posts/2024-11-28-reward-hacking/
+  ✓ 966257450816 |   9924 chars | https://venturefounders.com/ethical-entrepreneurship/
+  ✓ 5fde441b8f88 |   2341 chars | https://roem.ru/06-12-2024/304640/it-profsoyuz-osobo-nastaivaet/?from=
+  ✓ 9aa8d21e4037 |   4076 chars | https://roem.ru/25-02-2025/305643/budet-li-reanimirovana-biznes-zhurna
+  ✓ 1a8edcbd5108 |  19484 chars | https://venturefounders.com/support-for-entrepreneurs-with-diasability
+  ✓ 23b7d3c194cc |  47121 chars | https://thegradient.pub/shape-symmetry-structure/
+  ✓ bf312396a73d |  19080 chars | https://venturefounders.com/startup-business-with-disability/
+  ✓ fcc902b50465 |   1068 chars | https://www.aiweirdness.com/botober-2024/
+  ✓ d8b74eca7a2f |   8441 chars | https://venturefounders.com/ableist-entrepreneurs/
+  ✗ 0de0d21a0c17 | HTTP 404
+  ✓ 8a4d92882df1 |   1392 chars | https://roem.ru/15-11-2024/304499/mozhno-uznat-diskriminiruet/?from=ro
+  ✗ 553aafc46748 | HTTP 404
+  ✗ 174735daf046 | HTTP 404
+  ✓ cae179043c8d |  18056 chars | https://thegradient.pub/dialog/
+  ✗ 1ec2743fc422 | HTTP 404
+  ✓ 78d2bfed8010 |  13662 chars | https://blog.paperspace.com/fine-tune-flux-schnell-dev/
+  ✓ 55a76bb59fe7 |   1312 chars | https://roem.ru/21-08-2024/302972/promo-predlozhenie-ot-nashih-partnyo
+  ✓ d2157ea54dff |  18978 chars | https://blog.paperspace.com/exploring-the-convergence-of-artificial-in
+  ✓ d343997262b7 |  10369 chars | https://blog.paperspace.com/optimizing-ai-models-with-quanto-on-h100-g
+  ✗ b9bab7db64a4 | HTTP 404
+  ✓ 16ceb9f146dd |   3698 chars | https://roem.ru/20-12-2024/305071/istoriya-odnogo-ne-profsoyuza/?from=
+  ✗ 4119f570dce2 | HTTP 404
+  ✗ f66bbec18559 | HTTP 404
+  ✓ 372328cd68fb |   6083 chars | https://blog.paperspace.com/divide-and-conquer-the-role-of-warps-in-pa
+  ✓ 72d01d883ffe |  18021 chars | https://blog.paperspace.com/enhancing-nlp-robustness-with-textattack-2
+  ✓ 4cd22a2d6d5d |  13796 chars | https://blog.paperspace.com/text-labeling-and-image-resolution-with-th
+  ✓ 596efbee00ee |  10905 chars | https://blog.paperspace.com/understanding-adversarial-attacks-using-fa
+  ✓ 9f7418bb800c |  11486 chars | https://blog.paperspace.com/codegen-a-transformative-open-source-langu
+  ✓ 8fca8741b07a |  13982 chars | https://blog.paperspace.com/flux/
+  ✓ a1ef202f723c |   3061 chars | https://roem.ru/17-12-2024/304953/sozdannyj-ukraincem-profsoyuz/?from=
+  ✓ d4c66e41d0e4 |  10545 chars | https://blog.paperspace.com/nvidias-h100-the-powerhouse-gpu-revolution
+  ✓ d7aa8377516c |  20266 chars | https://venturefounders.com/directory-of-funding-for-female-founders-u
+  ✓ ffaf0c1d1c11 |   1647 chars | https://roem.ru/06-08-2024/302389/sber-zapuskaet-v-skorom/?from=roem_r
+  ✓ 51a2d27e6a07 |   1534 chars | https://roem.ru/17-09-2024/303550/kuda-delis-novosti/?from=roem_rss
+  ✓ 622c963cab46 |   2249 chars | https://roem.ru/09-09-2024/303407/lyogkij-sposob-brosit-google/?from=r
+  ✓ 10b7bdd6e032 |  41899 chars | https://thegradient.pub/we-need-positive-visions-for-ai-grounded-in-we
+  ✓ 5fa5fb85c424 |   7643 chars | https://blog.paperspace.com/sam-2-metas-next-gen-model-for-video-and-i
+  ✓ 9aed0cdaa155 |   6744 chars | https://blog.paperspace.com/the-hidden-bottleneck-how-gpu-memory-hiera
+  ✓ 8f7c2e355808 |  18965 chars | https://blog.paperspace.com/enhancing-nlp-models-for-robustness-agains
+  ✓ aed600be9dcc |  11831 chars | https://blog.paperspace.com/h100-deep-learning-frameworks-compatibilit
+  ✓ 873cdfebf3bc |  17766 chars | https://blog.paperspace.com/the-mechanics-of-monocular-depth-estimatio
+  ✓ 0571b6d63dad |  37118 chars | https://lilianweng.github.io/posts/2024-07-07-hallucination/
+  ✓ c7a7c84965a8 |  11306 chars | https://thegradient.pub/financial-market-applications-of-llms/
+  ✓ 1b74213a210b |  23128 chars | https://lilianweng.github.io/posts/2024-04-12-diffusion-video/
+  ✓ 3dfea078bfb0 |  21022 chars | https://thegradient.pub/gender-bias-in-ai/
+  ✓ 9ca4175de27a |   1530 chars | https://roem.ru/10-08-2024/302612/vyruchka-vk-rastyot-zametno/?from=ro
+  ✓ b86db9e2233e |  29444 chars | https://thegradient.pub/mamba-explained/
+  ✓ 2bc0afa5449a |    965 chars | https://roem.ru/20-03-2024/301886/lamoda-vklyuchila-noski/?from=roem_r
+  ✓ 7c095f3c84eb |  15409 chars | https://thegradient.pub/car-gpt/
+  ✓ c33e660e7a97 |  12334 chars | https://thegradient.pub/text-embedding-inversion/
+  ✓ 4864d13604b8 |  22482 chars | https://thegradient.pub/why-doesnt-my-model-work/
+  ✓ 79c273e223be |  24977 chars | https://lilianweng.github.io/posts/2024-02-05-human-data-quality/
+  ✓ 1c11591dc824 |   3086 chars | https://roem.ru/07-08-2024/302455/pochemu-venchurnaya-rossiya/?from=ro
+  ✓ 7126662aba07 |  13869 chars | https://venturefounders.com/startups-need-data/
+  ✓ 52ec20070382 |  38833 chars | https://thegradient.pub/deep-learning-for-single-cell-sequencing-a-mic
+  ✓ 1c1854ce694b |   7778 chars | https://venturefounders.com/entrepreneurial-altruism/
+  ✓ 78cb7372fc32 |  23240 chars | https://thegradient.pub/salmon-in-the-loop/
+  ✓ d6588d418b59 |   9680 chars | https://techncruncher.blogspot.com/2023/12/limewire-ai-studio-review-2
+  ✓ 81866df80fec |  41637 chars | https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/
+  ✓ bd099ecea9e2 |  26029 chars | https://thegradient.pub/the-artificiality-of-alignment/
+  ✓ f4364e5c33b8 |  40546 chars | https://thegradient.pub/neural-algorithmic-reasoning/
+  ✓ ed4d161d8666 |   8865 chars | https://www.forentrepreneurs.com/permissionless-pilot/
+  ✓ 31d52fb4a4a1 |  38985 chars | https://lilianweng.github.io/posts/2023-06-23-agent/
+  ✓ c01a9c7700c5 |  28528 chars | https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/
+  ✓ fd029a1f6579 |  54325 chars | https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v
+  ✓ cf0d9481d640 |  39116 chars | https://lilianweng.github.io/posts/2023-01-10-inference-optimization/
+  ✓ 071402f71008 |  13351 chars | https://techncruncher.blogspot.com/2023/01/top-10-ai-tools-in-2023-tha
+  ✓ 59fde58c53dc |   9404 chars | https://techncruncher.blogspot.com/2022/09/cj-affiliate-ultimate-guide
+  ✓ bca77a2c26ab |    987 chars | https://roem.ru/06-08-2024/302375/bloomberg-uvolil-zhurnalistku/?from=
+  ✓ 08835a787364 |  17736 chars | https://techncruncher.blogspot.com/2022/11/top-10-ai-content-generator
+  ✓ 9f1dcdedfdea |  17155 chars | https://lilianweng.github.io/posts/2022-09-08-ntk/
+  ✓ 2cce1820a898 |  30532 chars | https://lilianweng.github.io/posts/2022-06-09-vlm/
+  ✓ c9a51bd59628 |  10107 chars | https://techncruncher.blogspot.com/2022/07/top-10-ai-marketing-tools-y
+  ✓ 05af36d15aeb |   7561 chars | https://techncruncher.blogspot.com/2022/06/most-frequently-asked-quest
+  ✓ 694b01ab27cb |  37864 chars | https://lilianweng.github.io/posts/2022-04-15-data-gen/
+  ✓ 8dde3734dc3a |   8803 chars | https://techncruncher.blogspot.com/2022/04/what-is-blockchain-everythi
+  ✓ eca4038b3dae |   2569 chars | https://roem.ru/02-08-2024/302220/dva-obmenyannyh-russkih-hackera/?fro
+  ✓ 890101af798e |   8339 chars | https://techncruncher.blogspot.com/2022/03/sellfy-review-2022-how-good
+  ✓ 9e9611266d4d |   8804 chars | https://techncruncher.blogspot.com/2022/03/prowritingaid-vs-grammarly-
+  ✓ 5839fc3246ea |  27037 chars | https://lilianweng.github.io/posts/2022-02-20-active-learning/
+  ✓ 56657d806a4b |  12671 chars | https://techncruncher.blogspot.com/2022/03/ahrefs-vs-semrush-which-seo
+  ✓ 6103a4d4d59b |  10133 chars | https://techncruncher.blogspot.com/2022/02/top-10-best-plrprivate-labe
+  ✓ ef00e3c661d8 |  10567 chars | https://techncruncher.blogspot.com/2022/02/canva-review-2022-details-p
+  ✓ e27b4e1bee10 |   9278 chars | https://techncruncher.blogspot.com/2022/02/top-7-best-wordpress-plugin
+  ✓ bfa303a43c2e |   6626 chars | https://techncruncher.blogspot.com/2022/02/most-frequently-asked-quest
+  ✓ 4844df456d3b |   6192 chars | https://techncruncher.blogspot.com/2022/02/ginger-vs-grammarly-which-g
+  ✓ fe2dcb1d14cc |   6889 chars | https://techncruncher.blogspot.com/2022/01/10-best-chrome-extensions-t
+  ✓ 1b66139e6153 |   5813 chars | https://techncruncher.blogspot.com/2022/01/most-frequently-asked-quest
+  ✓ f6c26bb1da7a |  31736 chars | https://lilianweng.github.io/posts/2021-12-05-semi-supervised/
+  ✓ 3613ba53c925 |   4395 chars | https://techncruncher.blogspot.com/2022/01/7-free-websites-every-conte
+  ✓ 6564e4217734 |   3952 chars | https://techncruncher.blogspot.com/2022/01/top-9-free-ai-tools-that-ma
+  ✗ 6d653b00387c | HTTP 503
+  ✗ 809a45a56fbf | HTTP 503
+  ✗ 920341bd8742 | HTTP 503
+  ✗ 948a351ef591 | HTTP 503
+  ✓ 7c46d994b85f |    501 chars | https://www.forentrepreneurs.com/2021-saas-survey-part-2/
+  ✓ 7ffbb452fd27 |   1206 chars | https://www.forentrepreneurs.com/saas-survey-2021-part-1/
+  ✗ 4ea7906564a9 | HTTP 503
+  ✗ 834df0857ecb | HTTP 503
+  ✗ 382e39f87631 | HTTP 503
+  ✗ 7779c471760a | HTTP 503
+  ✓ 1506f8332cd2 |  24905 chars | https://lilianweng.github.io/posts/2021-09-25-train-large/
+  ✗ e8a2c25d1618 | HTTP 503
+  ✓ da559aa94974 |  35344 chars | https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
+  ✓ 3e60cc8a4756 |  28993 chars | https://lilianweng.github.io/posts/2021-03-21-lm-toxicity/
+  ✗ 4157a20247b1 | HTTP 503
+  ✓ 914f4742a7ad |  48740 chars | https://lilianweng.github.io/posts/2021-05-31-contrastive/
+  ✓ 02453aa81958 |  51689 chars | https://lilianweng.github.io/posts/2021-01-02-controllable-text-genera
+  ✓ 9d9f78bf2fab |   1879 chars | https://www.forentrepreneurs.com/2020-saas-survey/
+  ✓ aa5fb176f34e |  39748 chars | https://lilianweng.github.io/posts/2020-10-29-odqa/
+  ✓ 42871cbd886d |  37921 chars | https://lilianweng.github.io/posts/2020-08-06-nas/
+  ✓ 24c374027f72 |   1658 chars | https://www.forentrepreneurs.com/covid-survive-thrive/
+  ✓ 46dc83afad09 |   1730 chars | https://roem.ru/20-03-2024/301856/mobilnyj-probiv-za-god/?from=roem_rs
+  ✓ a4b1e9ea704b |  43533 chars | https://lilianweng.github.io/posts/2020-06-07-exploration-drl/
+  ✓ b6155b8e897e |  17736 chars | https://strictlyvc.com/2020/04/26/october-29-2019/
+  ✓ ebfe91def71c |   9427 chars | https://strictlyvc.com/2020/04/26/october-31-2019/
+  ✓ 0d7bbcf76653 |  11865 chars | https://strictlyvc.com/2020/04/26/november-1-2019/
+  ✓ b597573d4504 |  10861 chars | https://strictlyvc.com/2020/04/26/october-28-2020/
+  ✓ af6f435218ce |  13279 chars | https://strictlyvc.com/2020/04/26/october-25-2020/
+  ✓ 7f9f80511859 |  11180 chars | https://strictlyvc.com/2020/04/26/october-24-2020/
+  ✓ dee47b3d907b |   9351 chars | https://strictlyvc.com/2020/04/25/october-21-2019/
+  ✓ 22be8e1fc108 |  28672 chars | https://lilianweng.github.io/posts/2020-04-07-the-transformer-family/
+  ✓ 464f30c314d2 |  11462 chars | https://strictlyvc.com/2020/04/26/october-23-2020/
+  ✓ 003fd505020b |  12673 chars | https://strictlyvc.com/2020/04/25/october-22-2020/
+  ✓ 1c270f873ce5 |   2107 chars | https://www.forentrepreneurs.com/9-steps-podcast/
+  ✓ 294fd31c2ac7 |  27870 chars | https://lilianweng.github.io/posts/2020-01-29-curriculum-rl/
+  ✓ a5423e1a9014 |   6838 chars | https://strictlyvc.com/2019/10/18/october-18-2019/
+  ✓ c3e1c24cf1ae |   7656 chars | https://www.forentrepreneurs.com/2019-saas-private-survey-results-part
+  ✓ f853688677f6 |  44707 chars | https://lilianweng.github.io/posts/2019-11-10-self-supervised/
+  ✓ 330f6e7a6231 |   8693 chars | https://lilianweng.github.io/posts/2019-09-05-evolution-strategies/
+  ✓ 70499f2cd197 |  25744 chars | https://lilianweng.github.io/posts/2019-06-23-meta-rl/
+  ✓ 9d821259649c |  18895 chars | https://lilianweng.github.io/posts/2019-05-05-domain-randomization/
+  ✓ e720b52acb53 |  10088 chars | https://lilianweng.github.io/posts/2019-03-14-overfit/
+  ✓ c8c0485364a2 |   4514 chars | https://www.forentrepreneurs.com/matrix-growth-academy-zero-to-100-vid
+  ✓ 9ea3e21618de |  11492 chars | https://www.forentrepreneurs.com/2018-private-saas-company-survey-part
+  ✓ 1d3cfa7fcc88 |   2311 chars | https://www.forentrepreneurs.com/websummit-2018/
+  ✓ bbcc526846a8 |   8491 chars | https://www.forentrepreneurs.com/2018-saas-private-survey-results-part
+  ✓ e51beac7b083 |    473 chars | https://www.forentrepreneurs.com/saastock-dublin-2018/
+  ✓ d412b7da6411 |   1119 chars | https://docs.microsoft.com/archive/blogs/machinelearning/how-ai-transf
+  ✓ d170c767310c |   8650 chars | https://docs.microsoft.com/archive/blogs/machinelearning/machine-readi
+  ✓ 37d6a7d5b9be |    567 chars | https://docs.microsoft.com/archive/blogs/machinelearning/power-bat-how
+  ✓ 9588e6b7478d |    567 chars | https://docs.microsoft.com/archive/blogs/machinelearning/how-can-auton
+  ✓ cf3d3e8d4405 |  23127 chars | https://docs.microsoft.com/archive/blogs/machinelearning/deep-learning
+  ✓ 493453b76af9 |   5995 chars | https://www.forentrepreneurs.com/were-overthinking-seed-round-signalin
+  ✓ b95df2a3e254 |   7237 chars | https://docs.microsoft.com/archive/blogs/machinelearning/snip-insights
+  ✓ 8aaf515ac8b5 |   2130 chars | https://docs.microsoft.com/archive/blogs/machinelearning/the-key-diffe
+  ✓ fc3a094c534c |   8507 chars | https://www.forentrepreneurs.com/first-sales-hire/
+  ✓ 3e0dd0631759 |  14535 chars | https://docs.microsoft.com/archive/blogs/machinelearning/can-ai-genera
+  ✓ 642ba34d6c41 |   1259 chars | https://docs.microsoft.com/archive/blogs/machinelearning/ai-adoption-i
+  ✓ 34cb9d953991 |  11660 chars | https://docs.microsoft.com/archive/blogs/machinelearning/ai-based-virt
+  ✓ 1a400075dfb6 |   6412 chars | https://www.forentrepreneurs.com/zero-to-100/
+
+✅ Готово за 225.3s
+   ✓ OK: 624
+   ∅ too_short: 171
+   ⏱ timeout: 1
+   ✗ error: 263
+   📁 Файлы: /home/apps_maker/ai-digest/archive/full_text
+   📝 Пометка has_full_text проставлена в архиве

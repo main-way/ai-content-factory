@@ -1,0 +1,2364 @@
+
+========================================
+🤖 AI-Digest daily run: 2026-06-11 03:00:59 UTC
+   hours=48, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 101 источников (с 2026-06-09T03:01:00.680695+00:00)...
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ The Information                          → 20 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ ПостНаука (RU)                           → 15 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ arXiv stat.ML                            → 30 posts
+  ✓ Wired                                    → 30 posts
+  ✓ arXiv cs.CV (Vision)                     → 30 posts
+  ✓ arXiv cs.CL (NLP)                        → 30 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Spark.ru                                 → 30 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ The Information                          → 20 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ The Decoder                              → 10 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ Becoming Human: AI Magazine              → 10 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ CNET                                     → 25 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ arXiv q-bio.NC                           → 7 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 10 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 9 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ arXiv eess.IV (Image Video)              → 14 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 28 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ arXiv cs.RO (Robotics)                   → 30 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Safety News                           → fallback timeout: Missing dependencies for SOCKS support.
+
+✅ Готово за 60.8s
+   Источников OK: 98/101
+   Постов собрано (с дедупликацией): 1257
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-11.json
+
+📥 Архив: добавлено 579, обновлено 678, пропущено 0. Всего в архиве: 2805
+/home/apps_maker/ai-digest/storage/posts_2026-06-11.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-11.json
+
+🌐 Step 1.5: scrape.py --missing (только high-priority)
+📚 В архиве: 2805 постов
+🎯 К скрапингу: 972
+  ✓ 593fe43dadcc |   1247 chars | https://www.cnet.com/tech/gaming/todays-nyt-mini-crossword-answers-for
+  ✓ b0f361911b8b |   4776 chars | https://habr.com/ru/articles/1046295/?utm_source=habrahabr&utm_medium=
+  ✓ 1aa702ddc84d |  11134 chars | https://aws.amazon.com/blogs/machine-learning/how-frontier-teams-are-r
+  ✓ 1d58ac803679 |   6389 chars | https://www.cnet.com/tech/services-and-software/best-horror-movies-on-
+  ✓ f9dbceafb8f3 |   1031 chars | https://www.techmeme.com/260610/p65#a260610p65
+  ✓ e77bdeb32ab9 |   1015 chars | https://www.techmeme.com/260610/p66#a260610p66
+  ✓ 340064af27b0 |    942 chars | https://www.techmeme.com/260610/p67#a260610p67
+  ✓ 27e628f2338e |   7844 chars | https://www.cnet.com/news-live/gemini-down-live-updates-google-workspa
+  ✓ 27a3a521eb6d |   2143 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-sports-edition
+  ✗ f5fdb80fa91a | HTTP 403
+  ✓ 09774442e89b |   5173 chars | https://www.cnet.com/tech/mobile/good-news-wired-earbuds-are-back-and-
+  ✓ 5afe49ea0888 |   7814 chars | https://lwn.net/SubscriberLink/1077035/c7e7c14fbd60fae9/
+  ✗ ebd8c99b3573 | TypeError: object of type 'NoneType' has no len()
+  ✓ 6699206ffcff |   4150 chars | https://www.engadget.com/2191909/windows-11-sucks-slightly-less-now-th
+  ✗ ed424537b7c4 | HTTP 403
+  ✓ 1e94592c0297 |    990 chars | https://www.techmeme.com/260610/p64#a260610p64
+  ✓ 7cebe1b02beb |   2463 chars | https://www.cnet.com/home/internet/starlinks-hardware-rentals-for-new-
+  ✗ 94f5302d08b7 | HTTP 429
+  ✓ b58cf623c8b9 |   2222 chars | https://www.cnet.com/tech/services-and-software/free-world-cup-tickets
+  ✓ 3912216c942f |   1018 chars | https://www.techmeme.com/260610/p63#a260610p63
+  ✓ 86c30cf5af13 |   3254 chars | https://thenextweb.com/news/palantir-karp-ai-nationalization-sanders-5
+  ✓ 8b598124fc00 |  30451 chars | https://habr.com/ru/companies/studyai/articles/1045842/?utm_source=hab
+  ✓ 8b797f2071e8 |   1191 chars | https://www.techmeme.com/260610/p62#a260610p62
+  ✓ e00d9d100c5b |   2364 chars | https://www.cnet.com/home/security/eufy-expands-face-reading-smart-loc
+  ✓ e621c19681d3 |   3087 chars | https://www.engadget.com/2191897/xbox-ceo-says-current-margins-cannot-
+  ✓ 7fec816aea61 |   2989 chars | https://thenextweb.com/news/chaotic-eclipse-rogueplanet-windows-defend
+  ✓ 4679eca85879 |  15255 chars | https://www.cnet.com/tech/computing/insta360s-luna-ultra-djis-osmo-poc
+  ✓ fee21d92b580 |  19241 chars | https://mohandacherir.github.io/Qdiv7/posts/unix_new_gc/
+  ✓ b5fd5b061de2 |   9178 chars | https://habr.com/ru/articles/1046277/?utm_source=habrahabr&utm_medium=
+  ✓ aac99e7ea33b |   2960 chars | https://thenextweb.com/news/paramount-streaming-tech-stack-pluto-tv-hb
+  ✓ 831a5e16470d |   1144 chars | https://www.techmeme.com/260610/p61#a260610p61
+  ✓ b9c2125b80ab |   1995 chars | https://www.engadget.com/2191879/canada-announces-bill-banning-social-
+  ✓ e2d4711a8f0d |    834 chars | https://techcrunch.com/video/why-andrew-yang-is-building-instead-of-wa
+  ✓ 6de145b73128 |   3569 chars | https://techcrunch.com/2026/06/10/xai-fired-an-engineer-who-raised-ala
+  ✓ 43c16736e296 |   1014 chars | https://www.techmeme.com/260610/p60#a260610p60
+  ✓ 7e5c982db797 |   2498 chars | https://arstechnica.com/health/2026/06/diabetes-org-apologizes-for-eje
+  ✓ 039e5003aaa3 |   4397 chars | https://www.smithsonianmag.com/innovation/man-created-written-language
+  ✓ d7491a7d10b0 |   3605 chars | https://thenextweb.com/news/anthropic-advanced-ai-framework-government
+  ✓ 3a113c80a5a9 |   3290 chars | https://thenextweb.com/news/stockton-flock-drones-first-responder-surv
+  ✗ b4837f5c5415 | HTTP 429
+  ✓ 96bf58d9391f |   3260 chars | https://habr.com/ru/news/1046271/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 06409cd5957a |  13442 chars | https://habr.com/ru/articles/1046269/?utm_source=habrahabr&utm_medium=
+  ✗ 73c80418f56e | TypeError: object of type 'NoneType' has no len()
+  ✓ 10ad2979fec5 |   3392 chars | https://thenextweb.com/news/brad-smith-microsoft-graduates-booing-ai-e
+  ✗ 828be2b1e9ca | TypeError: object of type 'NoneType' has no len()
+  ✓ c4ef9d3035ea |   1419 chars | https://techcrunch.com/2026/06/10/cybercriminals-claim-breach-of-oracl
+  ✓ 9b5a90b959ce |   1422 chars | https://www.cnet.com/culture/entertainment/love-island-usa-season-8-wh
+  ✓ 996a14ab87f2 |   2295 chars | https://arstechnica.com/tech-policy/2026/06/man-jailed-due-to-faulty-f
+  ✓ 781bcc5f81f9 |   1166 chars | https://www.techmeme.com/260610/p59#a260610p59
+  ✓ 1af835b7078c |   3431 chars | https://thenextweb.com/news/white-house-ai-preemption-kosa-no-fakes-de
+  ✓ f11962b0e561 |   1037 chars | https://www.techmeme.com/260610/p57#a260610p57
+  ✗ c41a1120a0bf | TypeError: object of type 'NoneType' has no len()
+  ✓ ed4406651f9e |  11364 chars | https://habr.com/ru/articles/1046259/?utm_source=habrahabr&utm_medium=
+  ✓ 2fa9d0b05db3 |   1138 chars | https://www.techmeme.com/260610/p58#a260610p58
+  ✓ e639fa992ca3 |   2883 chars | https://thenextweb.com/news/miir-sues-tesla-tumbler-design-patent
+  ✓ 5356cef657e0 |   6031 chars | https://habr.com/ru/news/1046253/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 6cb09c1a7d3b |  14239 chars | https://habr.com/ru/articles/1046257/?utm_source=habrahabr&utm_medium=
+  ✓ db35c9ddddd8 |  25563 chars | https://www.cnet.com/news/best-standing-desk/
+  ✓ 0321c6594563 |  12312 chars | https://www.cnet.com/news/best-desks/
+  ✓ 34a21788ebfb |   4157 chars | https://www.wired.com/story/cisa-ai-vulnerability-directive/
+  ✗ b5dbfc5b53a2 | TypeError: object of type 'NoneType' has no len()
+  ✓ b75e7b1473ac |   1149 chars | https://www.techmeme.com/260610/p56#a260610p56
+  ✓ c62fc1b0dd9f |  31723 chars | https://habr.com/ru/companies/postgrespro/articles/1027904/?utm_source
+  ✓ 5cf37da71d15 |   1504 chars | https://www.cnet.com/tech/services-and-software/nbcuniversal-channels-
+  ✓ 16ed9592607d |   3466 chars | https://thenextweb.com/news/openai-china-data-center-influence-campaig
+  ✓ bf9d5321fa2d |   1166 chars | https://www.techmeme.com/260610/p55#a260610p55
+  ✓ f31d3130dc88 |   2731 chars | https://thenextweb.com/news/amazon-17-5-billion-loan-citigroup-ai-spen
+  ✓ 94cff5977cc4 |  12464 chars | https://habr.com/ru/articles/1046251/?utm_source=habrahabr&utm_medium=
+  ✓ c7cb27202601 |   3500 chars | https://habr.com/ru/companies/click/articles/1046243/?utm_source=habra
+  ✓ 12394780179a |   5579 chars | https://techcrunch.com/2026/06/10/everyone-wants-a-piece-of-teslas-bat
+  ✓ 833a5ead2ff5 |   7150 chars | https://www.wired.com/story/trump-risks-key-surveillance-authority-ove
+  ✓ 91c8a2b0339d |   1694 chars | https://habr.com/ru/news/1046247/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 6bbed14085f2 |   1726 chars | https://techcrunch.com/2026/06/10/fresh-off-bond-sale-amazon-borrows-1
+  ✓ c781927bd197 |   1485 chars | https://www.engadget.com/2191795/valve-will-stop-producing-physical-st
+  ✓ 9ae21cb3cde5 |   1816 chars | https://www.engadget.com/2191776/a-fable-deep-dive-video-shows-off-the
+  ✓ 1f5e11ec7098 |  44358 chars | https://habr.com/ru/articles/1046237/?utm_source=habrahabr&utm_medium=
+  ✗ 76201c4160f3 | TypeError: object of type 'NoneType' has no len()
+  ✓ 17b7f9df6adf |   3418 chars | https://www.adafruit.com/product/6125?src=raspberrypi
+  ✗ c6fecd915567 | HTTP 403
+  ✓ d8bba396d93b |   2132 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-hints-answers-
+  ✓ 01cc3e929efc |   6709 chars | https://www.engadget.com/2191756/alien-isolation-2-keeps-the-classic-h
+  ✓ 0712b3ad53d6 |   1014 chars | https://www.techmeme.com/260610/p54#a260610p54
+  ✓ 390154217231 |   1843 chars | https://www.cnet.com/tech/gaming/todays-nyt-strands-hints-answers-and-
+  ✓ 635a8b0b3a88 |   2614 chars | https://techcrunch.com/2026/06/10/north-koreans-behind-nearly-half-of-
+  ✓ 15254b9e795f |   1321 chars | https://www.cnet.com/tech/gaming/todays-wordle-hints-answer-and-help-f
+  ✗ fb4992f6b9a8 | HTTP 429
+  ✓ 61c40da36735 |   2108 chars | https://arstechnica.com/gadgets/2026/06/logitechs-mobi-fold-folds-for-
+  ✓ 600fe5717d25 |   1535 chars | https://techcrunch.com/2026/06/10/wing-drone-delivery-might-not-be-a-n
+  ∅ a889548638f1 | extracted only 93 chars
+  ✓ 8ef726919b61 |   3646 chars | https://www.wired.com/story/meta-layoffs-immigration-customs-enforceme
+  ✓ 880deef425d8 |   9547 chars | https://habr.com/ru/articles/1046229/?utm_source=habrahabr&utm_medium=
+  ✓ 3387903acb41 |   3562 chars | https://www.cnet.com/tech/services-and-software/apple-wallet-new-featu
+  ✓ 5f2f5adf6d11 |   1015 chars | https://www.techmeme.com/260610/p53#a260610p53
+  ✓ 63c1e7aae927 |   3532 chars | https://habr.com/ru/news/1046233/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 4277ea29314f |   2059 chars | https://arstechnica.com/google/2026/06/googles-latest-diffusiongemma-o
+  ✓ ba4eebf3b3ed |    767 chars | https://habr.com/ru/news/1046227/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 58dccad69f44 |   3788 chars | https://www.cnet.com/tech/services-and-software/ios-27-feels-like-an-e
+  ✓ d53a0a901892 |   8044 chars | https://www.tomshardware.com/tech-industry/farmer-donates-land-for-a-p
+  ✓ 4a68c1f55009 |   2252 chars | https://www.engadget.com/2191716/amazon-story-so-far-feature-is-finall
+  ✓ 50cfde200893 |  17058 chars | https://habr.com/ru/companies/studyai/articles/1046019/?utm_source=hab
+  ✓ 7a2eb24f86ac |   1903 chars | https://www.cnet.com/tech/pinterest-users-purchase-directly-amazon/
+  ✓ 1c0be4eff4c0 |   1814 chars | https://www.engadget.com/2191709/take-a-deep-look-at-halo-campaign-evo
+  ✓ b6f03855bc8f |   5813 chars | https://blogs.nvidia.com/blog/halos-os-robotaxi-safety/
+  ✓ a7303d1624ae |   5591 chars | https://the-decoder.com/googles-new-open-model-diffusiongemma-generate
+  ✓ 21f03a9b2604 |   4642 chars | https://rb.ru/news/vladelcy-pvz-opisali-idealnogo-klienta-vezhlivyj-za
+  ✓ da87cafdd48d |   2576 chars | https://www.engadget.com/2191695/you-can-personalize-your-instagram-al
+  ✓ abe8d0503ec3 |   4382 chars | https://www.theverge.com/ai-artificial-intelligence/947973/fable-wont-
+  ✓ 1ef08ce69c39 |   3200 chars | https://github.com/philipl/pifs
+  ✓ 0b7681cee914 |   4557 chars | https://www.cnet.com/tech/computing/logitech-mobi-fold-mouse-review/
+  ✓ 61aeba35a83d |  13090 chars | https://habr.com/ru/companies/studyai/articles/1046105/?utm_source=hab
+  ✓ e2bc1e8e2d65 |   1898 chars | https://www.engadget.com/2191677/ubisoft-reportedly-shuts-down-more-st
+  ✓ 6000c7b98422 |  10919 chars | https://www.cnet.com/tech/gaming/chicago-pokemon-go-fest-2026-weekend-
+  ✓ 18a211b6270b |  11315 chars | https://habr.com/ru/articles/1046221/?utm_source=habrahabr&utm_medium=
+  ✓ 958884a78c9c |   4269 chars | https://rb.ru/news/yandeks-zapustil-puhososov-pravda-tolko-v-internete
+  ✓ 1ee1c517568a |  15410 chars | https://www.wired.com/gallery/best-usb-c-cables/
+  ✓ 80a8f2e2e255 |  10235 chars | https://habr.com/ru/articles/1046217/?utm_source=habrahabr&utm_medium=
+  ✓ 3169e5dbf96a |   8673 chars | https://habr.com/ru/articles/1046213/?utm_source=habrahabr&utm_medium=
+  ✗ 86b97dc0f300 | HTTP 403
+  ✓ 2fb01eff7746 |   8204 chars | https://towardsdatascience.com/how-to-refactor-code-with-claude-code/
+  ∅ 17ed0b9464ba | extracted only 63 chars
+  ✓ 9a54a29cb010 |   6380 chars | https://rb.ru/news/fas-proverit-reklamu-operatorov-svyazi-s-upominanie
+  ✓ bc5205889ea5 |   1410 chars | https://the-decoder.com/openais-ipo-slips-as-altman-tells-staff-to-exp
+  ✓ 8ab27e9e20be |    356 chars | https://news.crunchbase.com/startups/tech-layoffs/
+  ✓ 648b542afa79 |   3107 chars | https://www.theverge.com/news/947831/college-speakers-booed-ai-microso
+  ✓ f5d2716efa49 |   6312 chars | https://geolibre.app/
+  ✓ 4a554e6b3bf9 |   6511 chars | https://www.theverge.com/column/947838/washington-ai-network-honors-20
+  ✗ 4f5ef584ded3 | HTTP 429
+  ✓ c3128ad89d7b |   8253 chars | https://habr.com/ru/articles/1046207/?utm_source=habrahabr&utm_medium=
+  ✓ 529a63a471e8 |   6467 chars | https://the-decoder.com/anthropic-study-shows-ai-needs-hours-not-weeks
+  ✓ ca4e7d70d81c |   8713 chars | https://spectrum.ieee.org/curiosity-rover-jpl-mars-science
+  ✓ f2ebf3b82147 |   1445 chars | https://habr.com/ru/news/1046205/?utm_source=habrahabr&utm_medium=rss&
+  ✓ e47b0bcb7154 |   2385 chars | https://arstechnica.com/space/2026/06/we-managed-to-glean-some-interes
+  ✓ fe94a21c98c6 |   2351 chars | https://www.theverge.com/tech/947770/google-lyria-music-ai-lawsuit-you
+  ✓ 7b8aeb1dbdec |   5707 chars | https://www.cnet.com/tech/computing/hey-siri-youre-the-framework-for-a
+  ✓ 50812662f89d |   2407 chars | https://arstechnica.com/tech-policy/2026/06/nobody-needs-ai-to-search-
+  ✓ df6af943c05c |   3906 chars | https://rb.ru/news/v-rabote-messendzhera-max-proizoshyol-sboj-polzovat
+  ✓ 99622855c213 |   2260 chars | https://techcrunch.com/2026/06/10/netflix-expands-revamped-mobile-app-
+  ✓ 21eaf36183ad |   3530 chars | https://www.engadget.com/2191553/after-belfast-riots-uk-reminds-social
+  ✗ 76303ce3234b | TypeError: object of type 'NoneType' has no len()
+  ✓ 7282240d4a4e |   1275 chars | https://techcrunch.com/2026/06/10/ai-pilled-firms-spend-7500-per-emplo
+  ✓ 3983abe78665 |   2109 chars | https://www.engadget.com/2191550/final-fantasy-16-headlines-the-playst
+  ✓ cd2b32799bd2 |   5554 chars | https://www.wired.com/story/donald-trump-ufc-white-house-south-lawn/
+  ✓ 21f59613ecd4 |   1649 chars | https://arstechnica.com/gadgets/2026/06/cheap-iranian-drone-downed-25-
+  ✓ c0f2cfd7cbb6 |   5957 chars | https://github.com/anthropics/claude-code/issues/29045
+  ✓ 140d165f9030 |   6849 chars | https://www.cnet.com/tech/services-and-software/taylor-sheridan-11-tv-
+  ∅ e63a22222453 | extracted only 63 chars
+  ✓ 8b5706199cae |   2006 chars | https://www.theverge.com/report/947575/microsoft-claude-fable-5-restri
+  ✓ 7e39cea70d37 |   1756 chars | https://arstechnica.com/health/2026/06/bucking-rfk-jr-ob-gyns-release-
+  ✓ 84efdf4932c1 |   2147 chars | https://techcrunch.com/2026/06/10/the-indian-government-got-cold-feet-
+  ✓ c8391a196b8e |  17322 chars | https://habr.com/ru/companies/otus/articles/1044348/?utm_source=habrah
+  ✓ 2be3aff05549 |   4911 chars | https://rb.ru/news/selskoe-hozyajstvo-voshlo-v-chislo-liderov-po-tempa
+  ✓ 1d310030ac61 |  21757 chars | https://towardsdatascience.com/how-to-train-a-scoring-model-in-the-age
+  ✓ 4c10dbca6790 |  13103 chars | https://habr.com/ru/companies/cinimex/articles/1046197/?utm_source=hab
+  ✓ 133c822c2b36 |   1525 chars | https://arstechnica.com/gaming/2026/06/valve-kills-its-retail-gift-car
+  ∅ 62a23b28bcbe | extracted only 63 chars
+  ✓ 237147d6cc59 |   1563 chars | https://www.theverge.com/tech/947836/google-search-privacy-settings-im
+  ✓ 277040b31b6e |   6450 chars | https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/
+  ✓ 510ca48bfe1f |   5988 chars | https://blogs.nvidia.com/blog/rtx-ai-garage-local-gemma-diffusion/
+  ✓ 23aaff19fe9e |   5265 chars | https://habr.com/ru/companies/haulmont/articles/1046123/?utm_source=ha
+  ✓ a54c84b27443 |    570 chars | https://www.engadget.com/2191473/engadget-podcast-wwdc-2026-thoughts-f
+  ✓ 1a5584f840fe |   8791 chars | https://habr.com/ru/companies/tantor/articles/1046107/?utm_source=habr
+  ✓ 9562e83254d9 |   2825 chars | https://techcrunch.com/2026/06/10/how-memory-tools-can-make-ai-models-
+  ✓ e4d6142d7653 |   4131 chars | https://www.engadget.com/2191469/german-court-holds-google-liable-for-
+  ✓ 47e63962f020 |   5147 chars | https://habr.com/ru/articles/1046187/?utm_source=habrahabr&utm_medium=
+  ✓ c863b17db9cd |    393 chars | https://www.extend.ai/ui
+  ✓ 42f174746d4e |   2279 chars | https://arstechnica.com/cars/2026/06/2026-honda-prelude-review-we-need
+  ✓ c08a56e5f597 |   2726 chars | https://habr.com/ru/articles/1046185/?utm_source=habrahabr&utm_medium=
+  ✓ f134b49749ae |   1414 chars | https://techcrunch.com/podcast/andrew-yang-on-noble-mobile-ubi-and-why
+  ✓ 9843acbf0d1e |   4950 chars | https://techcrunch.com/2026/06/10/zest-launches-a-restaurant-discovery
+  ✓ 2bc8bd4d74ee |   1648 chars | https://habr.com/ru/news/1046177/?utm_source=habrahabr&utm_medium=rss&
+  ✓ f854b3bc91de |   7762 chars | https://habr.com/ru/articles/1046175/?utm_source=habrahabr&utm_medium=
+  ✓ 4732598360b5 |   1462 chars | https://habr.com/ru/news/1046181/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 23aeb493c01a |   5812 chars | https://habr.com/ru/articles/1046183/?utm_source=habrahabr&utm_medium=
+  ✓ 3bd39f92e14b |   3241 chars | https://habr.com/ru/news/1046173/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 778e7a00c542 |   3026 chars | https://techcrunch.com/2026/06/10/cybersecurity-researchers-arent-happ
+  ✓ c2ddaa471152 |   4572 chars | https://rb.ru/news/roblox-razblokirovali-v-rossii-igrovaya-platforma-b
+  ✓ e0b5dcc9024e |   4671 chars | https://habr.com/ru/articles/1046169/?utm_source=habrahabr&utm_medium=
+  ✓ 968a9ee6ed0d |   5496 chars | https://github.com/HelixDB/helix-db/tree/main
+  ✓ 53bb2587e28b |   7489 chars | https://habr.com/ru/articles/1046161/?utm_source=habrahabr&utm_medium=
+  ✓ 61ebd16202f6 |   3901 chars | https://habr.com/ru/articles/1046167/?utm_source=habrahabr&utm_medium=
+  ✗ 080d9ca25141 | TypeError: object of type 'NoneType' has no len()
+  ✓ bbed509c78db |   2526 chars | https://habr.com/ru/news/1046159/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 5cb6f652db40 |   1519 chars | https://www.githubstatus.com/incidents/fcj3088jg1wx
+  ✓ 7cf8a3f75439 |   9979 chars | https://habr.com/ru/companies/codescoring/articles/1045570/?utm_source
+  ✓ 1582258f053f |   7348 chars | https://habr.com/ru/companies/smartengines/articles/1046149/?utm_sourc
+  ✓ 28db21e38bbf |  14484 chars | https://aws.amazon.com/blogs/machine-learning/stop-hand-tuning-kernels
+  ✓ bf5ab745aed8 |   3357 chars | https://techcrunch.com/2026/06/10/why-enterprise-ai-will-be-a-major-fo
+  ✓ a0560bd7b2d4 |  19109 chars | https://aws.amazon.com/blogs/machine-learning/build-an-ai-powered-equi
+  ✓ fc5b30db22d5 |    210 chars | https://vc.ru/services/2973143-roblox-rabotayet-v-rossii-bez-ograniche
+  ✓ 6e49b17a6345 |    460 chars | https://d-russia.ru/virtualnyy-mobilnyy-operator-ot-pochty-rossii-zapu
+  ✓ 955384c24001 |   8431 chars | https://burr.apache.org/
+  ✓ 35563acc70fd |   3089 chars | https://habr.com/ru/companies/bothub/news/1046139/?utm_source=habrahab
+  ✗ 3f4e8d7a4d52 | TypeError: object of type 'NoneType' has no len()
+  ✗ 4a54946aed78 | HTTP 403
+  ✓ 464bb12da8db |   3888 chars | https://techcrunch.com/2026/06/10/datadog-veterans-launch-ai-coding-st
+  ✓ 5f0b32e0e924 |  28572 chars | https://towardsdatascience.com/beyond-extract_text-the-two-layers-of-a
+  ✓ ead82bf06041 |   4976 chars | https://rb.ru/news/v-gosdumu-vnesli-zakonoproekt-o-sohranenii-poroga-v
+  ✓ 45e289fd65b8 |  10441 chars | https://www.engadget.com/2190531/honor-magic-v6-review/
+  ✓ be2bc8cd5b93 |   1479 chars | https://www.engadget.com/2191174/gemini-in-chrome-expands-to-latin-ame
+  ✓ f1ace69631c3 |    619 chars | https://www.pehub.com/graham-kantor-joins-verix-as-a-principal/
+  ✓ 17445b6568fa |   3676 chars | https://www.engadget.com/2190010/saw-genesis-looks-the-most-fun-when-y
+  ✓ c77672dcdf6d |   1399 chars | https://d-russia.ru/sud-v-germanii-priznal-google-otvetstvennym-za-sod
+  ✓ 06540bab9f63 |   7550 chars | https://techcrunch.com/2026/06/10/the-three-hard-tech-moonshots-fuelin
+  ✓ 0d8e90df99ec |   2384 chars | https://habr.com/ru/news/1046131/?utm_source=habrahabr&utm_medium=rss&
+  ✓ dfbcedb6f3fd |   2198 chars | https://www.engadget.com/2191349/microsoft-office-2019-for-mac-will-be
+  ✓ 00a4dcd00717 |   2387 chars | https://techcrunch.com/2026/06/10/pinterest-bets-on-creators-with-amaz
+  ✓ f20e5bd3bd69 |   1791 chars | https://habr.com/ru/news/1046113/?utm_source=habrahabr&utm_medium=rss&
+  ✓ dd830105df2e |   2291 chars | https://techcrunch.com/2026/06/10/warner-music-acquires-ai-attribution
+  ✓ 7b4a5e1901ac |   2238 chars | https://www.engadget.com/2191331/the-social-reckoning-trailer-features
+  ✓ 6a7aa1ef74b3 |   2663 chars | https://techcrunch.com/2026/06/10/servicenow-tells-customers-a-bug-lef
+  ✓ 86f5632ad1a0 |    279 chars | https://vc.ru/media/2972945-the-social-reckoning-trailer?from=rss
+  ✓ 7502c8709bad |   1065 chars | https://habr.com/ru/news/1046099/?utm_source=habrahabr&utm_medium=rss&
+  ∅ db2c55ed4177 | extracted only 63 chars
+  ✓ cae7f454334d |   2400 chars | https://pgdog.dev/blog/our-funding-announcement
+  ✗ 563dd4bbd0d3 | TypeError: object of type 'NoneType' has no len()
+  ✓ 1575cf8e9d80 |   5526 chars | https://about.fb.com/news/2026/06/what-is-compute-power-meta-ai-infras
+  ✓ e314be8a8662 |   7476 chars | https://www.a16z.news/p/everything-is-recorded-now
+  ✓ f4d9d34d0de4 |  19573 chars | https://news.ycombinator.com/item?id=48476474
+  ✓ d5c2ed1f2339 |   1606 chars | https://news.ycombinator.com/item?id=48477135
+  ✓ d2094550f11e |   1868 chars | https://www.engadget.com/2191154/att-now-offers-3-day-passes-unlimited
+  ✓ 14f40950ca83 |  26015 chars | https://www.kdnuggets.com/local-agentic-programming-on-the-cheap-claud
+  ✓ e198284f5eb4 |   6488 chars | https://www.wired.com/story/wrongful-arrest-tests-one-of-the-oldest-po
+  ✓ 65e0437dd128 |   4603 chars | https://rb.ru/news/pochta-rossii-zapustila-sobstvennogo-mobilnogo-oper
+  ∅ 2fbdf1eb1f69 | extracted only 63 chars
+  ✓ 7d72ddb8d383 |   4606 chars | https://www.wired.com/story/china-opens-worlds-first-wind-powered-unde
+  ✓ 423ad4bdff39 |   2334 chars | https://habr.com/ru/news/1046091/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 761f89305599 |   5387 chars | https://techcrunch.com/2026/06/10/jedify-raises-24m-to-help-companies-
+  ✓ 418aad4aca8d |   1413 chars | https://the-decoder.com/openai-wants-its-biggest-data-center-yet-and-n
+  ✓ 020a92e9d707 |  46090 chars | https://towardsdatascience.com/bayesian-networks-and-markov-networks-a
+  ✓ fad6e1a787d8 |   1848 chars | https://arstechnica.com/tech-policy/2026/06/racist-comments-targeting-
+  ✓ d3048b9eb088 |   9492 chars | https://the-decoder.com/claude-fable-5-the-first-mythos-model-is-power
+  ✓ 3f8ed43cd441 |  10145 chars | https://tproger.ru/articles/ot-pervogo-iphone-do-ii-kak-evolyucionirov
+  ✓ 00062b7f999b |    813 chars | https://d-russia.ru/v-kitae-ofitsialno-zapustili-podvodnyy-tsod.html
+  ∅ cda1b1e53c7c | extracted only 63 chars
+  ✓ 751f0993c6aa |   1169 chars | https://spark.ru/post/333167
+  ✓ d1f0b3ef5691 |   6322 chars | https://techcrunch.com/2026/06/10/decarts-new-world-model-can-simulate
+  ✓ 9fb9e08c2c18 |   1693 chars | https://arstechnica.com/cars/2026/06/gm-energy-introduces-v2g-support-
+  ✓ d30fa4770116 |   4878 chars | https://habr.com/ru/companies/basis/news/1046051/?utm_source=habrahabr
+  ✗ 9446da5d7094 | TypeError: object of type 'NoneType' has no len()
+  ✓ de829d319ffa |   7984 chars | https://tproger.ru/articles/70-razrabotchikov-uvereny-ii-kod-dyryavyj-
+  ∅ ede444ffab7f | extracted only 63 chars
+  ∅ 5d05a3eb8588 | extracted only 63 chars
+  ✓ dc5f3f5a973f |  12510 chars | https://www.wired.com/story/affordable-digital-notebook-comparison-202
+  ✓ bf0d8949995a |   8056 chars | https://engineering.atspotify.com/2026/6/encoding-your-domain-expert-t
+  ✓ f3b04603b943 |  14732 chars | https://www.wired.com/gallery/best-kindle/
+  ✓ f860b33c8988 |   3178 chars | https://habr.com/ru/companies/k2tech/news/1046047/?utm_source=habrahab
+  ✓ ab3cdae09a84 |   7406 chars | https://mohkohn.co.uk/writing/html-first/
+  ✓ 043be5effbfe |   2119 chars | https://habr.com/ru/news/1046039/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 86c5a528aa36 |   4624 chars | https://tproger.ru/news/ios-27-nauchitsya-sama-menyat-skomprometirovan
+  ∅ 2697e516e3c7 | extracted only 50 chars
+  ✓ 5da35db42044 |   2223 chars | https://habr.com/ru/news/1046025/?utm_source=habrahabr&utm_medium=rss&
+  ∅ 402379514b0b | extracted only 65 chars
+  ∅ be737879ec62 | extracted only 148 chars
+  ✓ a21eb6186659 |   2016 chars | https://jivx.com/eki
+  ✓ 1076dadb61ed |   5918 chars | https://www.technologyreview.com/2026/06/10/1138739/the-download-stero
+  ✓ 247886316034 |    619 chars | https://www.pehub.com/bain-backed-partssource-snaps-up-health-tech-fir
+  ✓ 9b492cfb9fbd |   1369 chars | https://habr.com/ru/news/1046005/?utm_source=habrahabr&utm_medium=rss&
+  ✓ d107a99ad8eb |    819 chars | https://habr.com/ru/news/1046003/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 3f798080b4d4 |   7582 chars | https://www.kdnuggets.com/5-useful-python-scripts-to-automate-boring-p
+  ✗ 2c872de7fac2 | HTTP 403
+  ✓ c92b6058c34b |   9429 chars | https://towardsdatascience.com/physical-ai-what-it-is-and-what-it-is-n
+  ✓ 5f74f399b9a0 |   1101 chars | https://d-russia.ru/iz-za-kiberataki-microsoft-vremenno-udalila-nekoto
+  ✓ 8c293bca949f |   4282 chars | https://rb.ru/news/aeroflot-predlozhit-passazhiram-tradicionnye-blyuda
+  ✓ 4a12d010d41a |   2989 chars | https://spark.ru/post/333135
+  ✗ 5a40aea23372 | HTTP 403
+  ✓ 278e9e141014 |    428 chars | https://habr.com/ru/companies/ivi/news/1045989/?utm_source=habrahabr&u
+  ✓ 81939fbabde7 |   1743 chars | https://habr.com/ru/news/1045971/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 6c98a61b7a9a |   2362 chars | https://the-decoder.com/germanys-national-security-council-greenights-
+  ✓ 9c93ab89cf1c |   6194 chars | https://rb.ru/news/gosduma-prinyala-zakon-antifrod-20-banki-budut-komp
+  ✓ 35b2e72e5462 |   2403 chars | https://habr.com/ru/news/1045983/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 6261336d945c |   1560 chars | https://habr.com/ru/news/1045961/?utm_source=habrahabr&utm_medium=rss&
+  ✓ a3ab610019cd |   2821 chars | https://habr.com/ru/news/1045955/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 0b6b3916e829 |  11832 chars | https://www.wired.com/gallery/best-ipad-accessories/
+  ✓ d7c2afd35307 |   4794 chars | https://habr.com/ru/companies/pt/news/1045957/?utm_source=habrahabr&ut
+  ✓ 22bee7524152 |    941 chars | https://habr.com/ru/news/1045953/?utm_source=habrahabr&utm_medium=rss&
+  ✗ 7983f228c6db | HTTP 403
+  ✓ 3c3dafd23322 |  19777 chars | https://habr.com/ru/companies/otus/news/1045963/?utm_source=habrahabr&
+  ✓ c4b63d6cb0b9 |   1325 chars | https://habr.com/ru/companies/haulmont/news/1045951/?utm_source=habrah
+  ✓ 0c0649bda734 |   3138 chars | https://news.crunchbase.com/semiconductors-and-5g/chip-startup-funding
+  ✓ ada028b17712 |  14666 chars | https://www.wired.com/story/best-college-laptops/
+  ✓ 5ab048048ddd |   1045 chars | https://the-decoder.com/googles-notebooklm-now-runs-its-own-cloud-comp
+  ✓ 71e66bf83774 |   4820 chars | https://spark.ru/post/333118
+  ∅ e77de0c1cf95 | extracted only 30 chars
+  ✗ d2a39068329c | HTTP 403
+  ✗ c1645031ca22 | HTTP 403
+  ✓ dee7a2a3051b |   2556 chars | https://d-russia.ru/minfin-soobschil-dannye-o-kreditovanii-malyh-tehno
+  ∅ bbb706beb4d7 | extracted only 43 chars
+  ✓ f21c455b53e3 |   3595 chars | https://stratechery.com/2026/fable-5-anthropic-alignment-ai-tiers/
+  ✓ f204053f8ff2 |   2227 chars | https://spark.ru/post/333106
+  ✓ 5cbc8b9ed1ed |   4696 chars | https://rb.ru/news/22-rossiyan-ne-znayut-za-chto-mozhno-poluchit-nalog
+  ✓ 0ca85664043a |   8586 chars | https://www.wired.com/story/soccer-world-cup-biometric-surveillance/
+  ✓ c15acafd5237 |   6891 chars | https://www.wired.com/story/us-world-cup-2026-alpr-camera-stadiums/
+  ✓ 0007e7a32989 |   3266 chars | https://www.wired.com/story/artificial-intelligence-sneaks-into-the-wo
+  ✓ d76d03c81361 |   4983 chars | https://rb.ru/news/t-bank-budet-ispolzovat-bankovskie-dannye-klientov-
+  ✓ 0d0a0d25b5fb |   8470 chars | https://www.wired.com/story/world-cup-referee-body-cameras-live/
+  ✓ 68eb67f9e829 |   5054 chars | https://www.wired.com/story/the-world-cups-trionda-ball-challenges-tra
+  ✗ f27d43c57275 | HTTP 403
+  ✓ 37c23876e7d9 |   2908 chars | https://www.wired.com/story/amnesty-international-world-cup-human-righ
+  ✓ 8fe990cae2c4 |   4456 chars | https://www.wired.com/story/2026-world-cup-soccer-video-games/
+  ✗ 24f89a27304b | HTTP 403
+  ✓ 7f8485f00b3e |   9551 chars | https://www.wired.com/story/how-to-watch-the-2026-world-cup/
+  ✓ c8f55a2b5e4f |   1566 chars | https://d-russia.ru/sber-rasskazal-o-podpisannyh-na-pmef-ii-soglasheni
+  ∅ e82be2d9d9e1 | extracted only 158 chars
+  ✓ ea2ec57ecc63 |  30968 chars | https://www.technologyreview.com/2026/06/10/1138670/enhanced-games-dop
+  ∅ f830fa14ea9a | extracted only 34 chars
+  ✓ 5d92f9cb6d72 |   2270 chars | https://d-russia.ru/pravitelstvo-utverdilo-trebovaniya-k-aktam-na-sozd
+  ✓ 4281b1911835 |   1268 chars | https://d-russia.ru/rostelekom-zapustil-servis-sertifitsirovannogo-bez
+  ✓ 435b3e1c5fcf |   5224 chars | https://rb.ru/news/moskvich-planiruet-vypustit-gibridnyj-avtomobil-kom
+  ✓ d4f9405e1d8f |   1353 chars | https://d-russia.ru/es-predpisal-ekstremistskoy-meta-vosstanovit-svobo
+  ✗ 8df875b39bd5 | HTTP 403
+  ∅ 7e69da22bbca | extracted only 59 chars
+  ✓ 032587125e9c |   1837 chars | https://d-russia.ru/institut-razvitiya-interneta-vnov-naznachen-operat
+  ✓ db7dea1c0ca6 |   3716 chars | https://techcrunch.com/2026/06/10/meta-signs-first-ai-data-center-deal
+  ✓ b7f4103129c4 |   4955 chars | https://www.analyticsvidhya.com/blog/2026/06/ai-engineering-tools-ever
+  ✗ 21498142103f | HTTP 403
+  ∅ 689a8834433b | extracted only 41 chars
+  ✓ 8bbaa0556460 |   4937 chars | https://rb.ru/news/mts-nauchila-ii-sekretarya-obshatsya-s-kurerami-ser
+  ✓ 9e6b8b953f87 |   3416 chars | https://www.wired.com/story/naturepedic-promo-code/
+  ✓ 7e5160205971 |   4435 chars | https://www.wired.com/story/corsair-coupon/
+  ✓ 37fb645b1405 |  15513 chars | https://semiengineering.com/pcie-benefits-from-ai-despite-scaling-prot
+  ✓ 271cb0e845a8 |   4603 chars | https://www.wired.com/story/best-buy-discount-code/
+  ✓ 42270c7e6c82 |    574 chars | https://semiengineering.com/building-multi-agent-systems-for-asic-flow
+  ✓ 9732e4492087 |   4743 chars | https://www.wired.com/story/lenovo-coupon-code/
+  ✓ f7e164c871e2 |   5506 chars | https://www.wired.com/story/ulta-coupon/
+  ✓ 2f8b94167c61 |   5128 chars | https://www.wired.com/story/surfshark-coupon/
+  ✓ 1656a1b0f9a0 |   6565 chars | https://www.wired.com/story/lowes-promo-code/
+  ✓ 3a9d020b7815 |   7057 chars | https://www.wired.com/story/priceline-promo-code/
+  ✓ 1605aaf7bfe1 |   3386 chars | https://www.wired.com/story/exclusive-kitchenaid-promo-code/
+  ✓ e07bf2c11554 |   5892 chars | https://www.wired.com/story/adidas-promo-code/
+  ✓ 647aa725a075 |   6963 chars | https://www.wired.com/story/hostinger-coupon-code/
+  ✓ 7f2ed1cc3e6c |   2364 chars | https://arxiv.org/abs/2606.09853
+  ✓ 49dc39cbcd4a |   2103 chars | https://arxiv.org/abs/2606.09850
+  ✓ 437f8ffbf87d |   2439 chars | https://arxiv.org/abs/2606.09857
+  ✓ 1fffc2f59bc9 |  13033 chars | https://semiengineering.com/cpo-will-dominate-scale-up-link-budgets-fo
+  ✓ 2af9f9a6da73 |   2137 chars | https://arxiv.org/abs/2606.09859
+  ✓ 6c79482672af |   2392 chars | https://arxiv.org/abs/2606.09860
+  ✓ a05b17f075ab |   2152 chars | https://arxiv.org/abs/2606.09861
+  ✓ a3b51b9a058a |   2199 chars | https://arxiv.org/abs/2606.09862
+  ✓ 83a5c3215b4a |   2130 chars | https://arxiv.org/abs/2606.09863
+  ✓ 01793bec0866 |   2684 chars | https://arxiv.org/abs/2606.09864
+  ✓ 06f418721bdf |   2187 chars | https://arxiv.org/abs/2606.09865
+  ✓ b4773dfc966c |   1922 chars | https://arxiv.org/abs/2606.09866
+  ✓ 60d00712c3d2 |   2394 chars | https://arxiv.org/abs/2606.09869
+  ✓ 044a5b9fe6e2 |   2181 chars | https://arxiv.org/abs/2606.09868
+  ✓ 55a754849d5d |   2478 chars | https://arxiv.org/abs/2606.09872
+  ✓ 601cf4ca5c79 |   2386 chars | https://arxiv.org/abs/2606.09873
+  ✓ f610c38f97d4 |   2539 chars | https://arxiv.org/abs/2606.09874
+  ✓ 4064ba3f3016 |   1937 chars | https://arxiv.org/abs/2606.09875
+  ✓ ee394b0a8a23 |   2023 chars | https://arxiv.org/abs/2606.09876
+  ✓ ccd6862055f7 |   2762 chars | https://arxiv.org/abs/2606.09877
+  ✓ 52003a5a9db5 |   1965 chars | https://arxiv.org/abs/2606.09878
+  ✓ ba30d75859f4 |   1778 chars | https://arxiv.org/abs/2606.09879
+  ✓ 811777e07d09 |   1989 chars | https://arxiv.org/abs/2606.09880
+  ✓ 17e96a0b44b2 |   1739 chars | https://arxiv.org/abs/2606.09881
+  ✓ 53a16084af24 |   2162 chars | https://arxiv.org/abs/2606.09883
+  ✓ 6f29abfe1e65 |   2402 chars | https://arxiv.org/abs/2606.09886
+  ✓ 8a83e3c65395 |   2117 chars | https://arxiv.org/abs/2606.09885
+  ✓ b4234d8e7c0e |   2156 chars | https://arxiv.org/abs/2606.09888
+  ✓ 094eb6f2cbbc |   2364 chars | https://arxiv.org/abs/2606.09887
+  ✓ 8bb33bf9a2ef |   1480 chars | https://arxiv.org/abs/2606.09889
+  ✓ a1c7219ba256 |   1905 chars | https://arxiv.org/abs/2606.09890
+  ✓ 9e370b3c6ef5 |   2314 chars | https://arxiv.org/abs/2606.10044
+  ✓ 02cac35558e0 |   2441 chars | https://arxiv.org/abs/2606.10086
+  ✓ 7ebae7c0ed7b |   2365 chars | https://arxiv.org/abs/2606.10062
+  ✓ 55254476eef6 |   2528 chars | https://arxiv.org/abs/2606.10094
+  ✓ d1768d712790 |   2530 chars | https://arxiv.org/abs/2606.10147
+  ✓ 048ea3fdad19 |   2463 chars | https://arxiv.org/abs/2606.10209
+  ✓ 181da3bc91ff |   2737 chars | https://arxiv.org/abs/2606.10241
+  ✓ d65bf8755b6d |   2562 chars | https://arxiv.org/abs/2606.10237
+  ✓ a49cd700a9e1 |   2183 chars | https://arxiv.org/abs/2606.10279
+  ✓ f272609ad34e |   2380 chars | https://arxiv.org/abs/2606.10254
+  ✓ a1e36558158c |   2295 chars | https://arxiv.org/abs/2606.10286
+  ✓ 33ae3ef72bd1 |   2238 chars | https://arxiv.org/abs/2606.10298
+  ✓ ceba03d53371 |   2535 chars | https://arxiv.org/abs/2606.10314
+  ✓ fb535ca8f839 |   2714 chars | https://arxiv.org/abs/2606.10299
+  ✓ a859f7e78028 |   2528 chars | https://arxiv.org/abs/2606.10334
+  ✓ 84b563e795e1 |   2093 chars | https://arxiv.org/abs/2606.10346
+  ✓ d52cbbac5f86 |   1952 chars | https://arxiv.org/abs/2606.10359
+  ✓ e040997e3cb3 |   1709 chars | https://arxiv.org/abs/2606.10376
+  ✓ 46763645a84a |   2601 chars | https://arxiv.org/abs/2606.10389
+  ✓ 774855e9d08b |   1817 chars | https://arxiv.org/abs/2606.10392
+  ✓ e6318c8af232 |   1969 chars | https://arxiv.org/abs/2606.10394
+  ✓ 41b3597e09d4 |   2706 chars | https://arxiv.org/abs/2606.10412
+  ✓ d880e246054c |   2402 chars | https://arxiv.org/abs/2606.10413
+  ✓ 452a1140aaab |   2525 chars | https://arxiv.org/abs/2606.10457
+  ✓ 1f51e0210da0 |   2298 chars | https://arxiv.org/abs/2606.10479
+  ✓ e776e52c919d |   1965 chars | https://arxiv.org/abs/2606.10489
+  ✓ 16f274bb12fe |   1860 chars | https://arxiv.org/abs/2606.10500
+  ✓ c985aa406610 |   2051 chars | https://arxiv.org/abs/2606.10504
+  ✓ 2bb43f3ba033 |   2226 chars | https://arxiv.org/abs/2606.10507
+  ✓ 7496f8fb786c |   2126 chars | https://arxiv.org/abs/2606.10532
+  ✓ f4fc38ed7fbe |   2693 chars | https://arxiv.org/abs/2606.09871
+  ✓ 6adba05284fe |   2260 chars | https://arxiv.org/abs/2606.09882
+  ✓ 9d8eea744031 |   1989 chars | https://arxiv.org/abs/2606.09967
+  ✓ 0343b54836c7 |   2014 chars | https://arxiv.org/abs/2606.10019
+  ✓ 280c868a0f64 |   2686 chars | https://arxiv.org/abs/2606.10021
+  ✓ 493fd74b78ba |   2417 chars | https://arxiv.org/abs/2606.10066
+  ✓ 8eb8ed199d06 |   2188 chars | https://arxiv.org/abs/2606.10088
+  ✓ 1b80baea5313 |   2158 chars | https://arxiv.org/abs/2606.10107
+  ✓ 9ed446989776 |   2724 chars | https://arxiv.org/abs/2606.10115
+  ✓ 93e1a409980c |   2592 chars | https://arxiv.org/abs/2606.10135
+  ✓ d94436c99088 |   2046 chars | https://arxiv.org/abs/2606.10142
+  ✓ d3d31d3e505f |   2764 chars | https://arxiv.org/abs/2606.10136
+  ✓ ff68ec60e19b |   2153 chars | https://arxiv.org/abs/2606.10166
+  ✓ 7e008a44c652 |   2230 chars | https://arxiv.org/abs/2606.10167
+  ✓ e1658e24ee66 |   1995 chars | https://arxiv.org/abs/2606.10174
+  ✓ 00fb1c2e7f1e |   1328 chars | https://arxiv.org/abs/2606.10183
+  ✓ 59f3e0ecf092 |   2096 chars | https://arxiv.org/abs/2606.10196
+  ✓ f59707453562 |   2557 chars | https://arxiv.org/abs/2606.10200
+  ✓ fdf6aeb8b972 |   2570 chars | https://arxiv.org/abs/2606.10275
+  ✓ e7c40e447f63 |   1938 chars | https://arxiv.org/abs/2606.10309
+  ✓ 2ec65887a6bc |   2362 chars | https://arxiv.org/abs/2606.10328
+  ✓ 709a01ad1d74 |   2660 chars | https://arxiv.org/abs/2606.10329
+  ✓ ad161ad38f34 |   1900 chars | https://arxiv.org/abs/2606.10350
+  ✓ e931318eee6b |   2020 chars | https://arxiv.org/abs/2606.10364
+  ✓ 0d629c3052a8 |   2577 chars | https://arxiv.org/abs/2606.10372
+  ✓ 5670b4acc6fe |   1881 chars | https://arxiv.org/abs/2606.10373
+  ✓ e513a2548226 |   2224 chars | https://arxiv.org/abs/2606.10378
+  ✓ cb59ba155c0e |   2223 chars | https://arxiv.org/abs/2606.10395
+  ✓ e4bce3b6de1f |   2490 chars | https://arxiv.org/abs/2606.10431
+  ✓ 473ac5abb792 |   2117 chars | https://arxiv.org/abs/2606.10401
+  ✓ 306e754f80bf |   1878 chars | https://arxiv.org/abs/2606.09830
+  ✓ 3aa1556a691e |   2568 chars | https://arxiv.org/abs/2606.09854
+  ✓ 8ece0735a201 |   2414 chars | https://arxiv.org/abs/2606.09856
+  ✓ a3586b1f5216 |   2737 chars | https://arxiv.org/abs/2606.09900
+  ✓ ebf1057b1ef3 |   2344 chars | https://arxiv.org/abs/2606.10061
+  ✓ 720ec01383a9 |   2074 chars | https://arxiv.org/abs/2606.10087
+  ✓ b6d56b3928b5 |   2356 chars | https://arxiv.org/abs/2606.10126
+  ✓ f20c992b1d98 |   1494 chars | https://arxiv.org/abs/2606.10113
+  ✓ aaa36160eb0e |   2744 chars | https://arxiv.org/abs/2606.10159
+  ✓ 29789649f1d6 |   1860 chars | https://arxiv.org/abs/2606.10285
+  ✓ adb149dcf51e |   2213 chars | https://arxiv.org/abs/2606.10296
+  ✓ d79ee9fe46fc |   2381 chars | https://arxiv.org/abs/2606.10304
+  ✓ 40fedf1e2bd7 |   2026 chars | https://arxiv.org/abs/2606.10302
+  ✓ 31f11fad4d48 |   2686 chars | https://arxiv.org/abs/2606.10315
+  ✓ 421a7dd0ad43 |   1899 chars | https://arxiv.org/abs/2606.10307
+  ✓ a285c309d17f |   2347 chars | https://arxiv.org/abs/2606.10316
+  ✓ b003712cde8e |   2267 chars | https://arxiv.org/abs/2606.10327
+  ✓ da05230c4fa0 |   2059 chars | https://arxiv.org/abs/2606.10338
+  ✓ 1c5f1b572c09 |   1912 chars | https://arxiv.org/abs/2606.10369
+  ✓ 635902c086f3 |   2205 chars | https://arxiv.org/abs/2606.10380
+  ✓ e0095f1fab8e |   2318 chars | https://arxiv.org/abs/2606.10400
+  ✓ 5417e566123f |   2267 chars | https://arxiv.org/abs/2606.10402
+  ✓ 678a1a08f74a |   2167 chars | https://arxiv.org/abs/2606.10403
+  ✓ a4fd725240e5 |   2528 chars | https://arxiv.org/abs/2606.10423
+  ✓ aa9b19146c28 |   1507 chars | https://arxiv.org/abs/2606.10428
+  ✓ d88757267337 |   2192 chars | https://arxiv.org/abs/2606.10460
+  ✓ 7208d3c19229 |   1984 chars | https://arxiv.org/abs/2606.10471
+  ✓ 4b3e942d6a76 |   2137 chars | https://arxiv.org/abs/2606.10467
+  ✓ 7b2bbdb37f1e |   1891 chars | https://arxiv.org/abs/2606.10531
+  ✓ 35a76b22bf4c |   1794 chars | https://arxiv.org/abs/2606.10520
+  ✓ efdd72697119 |   2499 chars | https://arxiv.org/abs/2606.09855
+  ✓ d15d7bb33653 |   1746 chars | https://arxiv.org/abs/2606.09041
+  ✓ b144ebd5d90b |   1540 chars | https://arxiv.org/abs/2606.10325
+  ✓ 6c8d4a27788f |   2677 chars | https://arxiv.org/abs/2606.09870
+  ✓ 61aca6667292 |   2410 chars | https://arxiv.org/abs/2606.09901
+  ✓ 88bf3afe6d36 |   1874 chars | https://arxiv.org/abs/2606.10753
+  ✓ ca8fafc31309 |   2002 chars | https://arxiv.org/abs/2606.10010
+  ✓ 34306458452e |   1891 chars | https://arxiv.org/abs/2507.15294
+  ✓ 99876b5dbc8b |   1415 chars | https://arxiv.org/abs/2606.10119
+  ✓ 755ca195aa0f |   2281 chars | https://arxiv.org/abs/2606.10125
+  ✓ 406708a12eb0 |   2647 chars | https://arxiv.org/abs/2606.10187
+  ✓ a3eb0482d456 |   2275 chars | https://arxiv.org/abs/2606.10295
+  ✓ 81aaac64a86b |   1615 chars | https://arxiv.org/abs/2606.10361
+  ✓ 70e029a6e5e2 |   1789 chars | https://arxiv.org/abs/2606.10906
+  ✓ fc6df8a0d15f |   1725 chars | https://arxiv.org/abs/2606.10916
+  ✓ f440d560a40e |   1635 chars | https://arxiv.org/abs/2606.11156
+  ✓ ece2f0984ba1 |   1660 chars | https://arxiv.org/abs/2606.11044
+  ✓ 60688e8b6a1c |   2439 chars | https://arxiv.org/abs/2606.10111
+  ✓ 0b1620f9a333 |   2056 chars | https://arxiv.org/abs/2606.10212
+  ✓ 83265e517bb6 |   2534 chars | https://arxiv.org/abs/2606.10324
+  ✓ bf0068c04a6e |   2530 chars | https://arxiv.org/abs/2606.10469
+  ✓ 6aa9c5f153f5 |   2177 chars | https://arxiv.org/abs/2606.10481
+  ✓ b39c2c869f43 |   1827 chars | https://arxiv.org/abs/2606.10559
+  ✓ 97e1336a4858 |   1715 chars | https://arxiv.org/abs/2606.10734
+  ✓ 5ff8a5d68dd4 |   1556 chars | https://arxiv.org/abs/2606.10913
+  ✓ ddccbaa1b63c |   1548 chars | https://arxiv.org/abs/2606.10944
+  ✓ f747fe05a829 |   1689 chars | https://arxiv.org/abs/2606.11057
+  ✓ 0c16a65910f9 |   1637 chars | https://arxiv.org/abs/2606.11104
+  ✓ 548826141560 |   2078 chars | https://arxiv.org/abs/2606.11118
+  ✓ d186112f990f |   2089 chars | https://arxiv.org/abs/2606.11136
+  ✓ fbe5fe9465b0 |   2738 chars | https://arxiv.org/abs/2606.11140
+  ✓ bb24dafa6fc3 |   2256 chars | https://arxiv.org/abs/2501.04339
+  ✓ cf917e64c8f9 |   2085 chars | https://arxiv.org/abs/2503.20272
+  ✓ fbde568e3635 |   2724 chars | https://arxiv.org/abs/2606.10222
+  ✓ 51b913f6e027 |   1671 chars | https://arxiv.org/abs/2606.10238
+  ✓ 9f6d4b53e367 |   2251 chars | https://arxiv.org/abs/2606.10889
+  ✓ 34de63f819e4 |   2324 chars | https://arxiv.org/abs/2606.10891
+  ✓ 8ef657b1fdeb |   2171 chars | https://arxiv.org/abs/2606.11066
+  ✓ e05c2f56469b |   2476 chars | https://arxiv.org/abs/2606.11091
+  ✓ 345e113b9db9 |   2674 chars | https://arxiv.org/abs/2606.09902
+  ✓ 6d13c02de47f |   2111 chars | https://arxiv.org/abs/2605.26921
+  ✓ df2f250360cc |   1854 chars | https://arxiv.org/abs/2606.10008
+  ✓ da8a7d3e7427 |   2270 chars | https://arxiv.org/abs/2606.10129
+  ✓ a9196de45e7f |   2013 chars | https://arxiv.org/abs/2606.10294
+  ✓ 64e6d04b826b |   1923 chars | https://arxiv.org/abs/2606.11034
+  ✓ 0bdce6f79c41 |   2436 chars | https://arxiv.org/abs/2606.10493
+  ✓ a13eaa59b64c |   2645 chars | https://arxiv.org/abs/2605.09595
+  ✓ 49b5df35b452 |   1708 chars | https://arxiv.org/abs/2605.30370
+  ✓ bad79cdcc8e9 |   2490 chars | https://arxiv.org/abs/2604.15414
+  ✓ 86d4163416f6 |   2621 chars | https://arxiv.org/abs/2606.09893
+  ✓ da0d7357e661 |   2741 chars | https://arxiv.org/abs/2606.09953
+  ✓ d9ccd1fe3408 |   2460 chars | https://arxiv.org/abs/2606.10240
+  ✓ 990c0806e2d9 |   2398 chars | https://arxiv.org/abs/2606.10255
+  ✓ 692bcbce629a |   2264 chars | https://arxiv.org/abs/2606.10280
+  ✓ 504d0a3a174c |   2798 chars | https://arxiv.org/abs/2606.10547
+  ✓ cb68ba4f31fc |   2331 chars | https://arxiv.org/abs/2606.10713
+  ✓ 0d65be042a54 |   2758 chars | https://arxiv.org/abs/2606.10893
+  ✓ 8d362c21f538 |   1747 chars | https://arxiv.org/abs/2606.11107
+  ✓ 904c9b7fc779 |   2328 chars | https://arxiv.org/abs/2501.01481
+  ✓ cba1f2dc8765 |   2845 chars | https://arxiv.org/abs/2507.22017
+  ✓ ab01959fe68d |   2102 chars | https://arxiv.org/abs/2511.19706
+  ✓ 1463e2ff3cd6 |   2446 chars | https://arxiv.org/abs/2508.18540
+  ✓ d6287fcd8013 |   2192 chars | https://arxiv.org/abs/2606.10231
+  ✓ 34cd099c2ab4 |   1831 chars | https://arxiv.org/abs/2606.10233
+  ✓ 913514fbce1c |   1784 chars | https://arxiv.org/abs/2606.10317
+  ✓ a5e5e9939bf7 |   1944 chars | https://arxiv.org/abs/2606.10454
+  ✓ 7845c74fb6f1 |   1826 chars | https://arxiv.org/abs/2606.10464
+  ✓ cc07ad37db12 |   2138 chars | https://arxiv.org/abs/2606.10738
+  ✓ ef2bcad752f7 |   2247 chars | https://arxiv.org/abs/2606.10758
+  ✓ 137ca2d106a0 |   1948 chars | https://arxiv.org/abs/2606.10781
+  ✓ ae19e17717c3 |   1705 chars | https://arxiv.org/abs/2606.10853
+  ✓ 802c118ffc6b |   1859 chars | https://arxiv.org/abs/2606.10838
+  ✓ ff4efa73afd2 |   1780 chars | https://arxiv.org/abs/2606.10864
+  ✓ 98f314585681 |   2842 chars | https://arxiv.org/abs/2606.10972
+  ✓ 38c9a100204f |   1639 chars | https://arxiv.org/abs/2606.10439
+  ✓ eb2ea180faff |   1882 chars | https://arxiv.org/abs/2606.10565
+  ✓ f74e1ad677f1 |   2445 chars | https://arxiv.org/abs/2606.10581
+  ✓ da298bd70966 |   1855 chars | https://arxiv.org/abs/2606.10675
+  ✓ a7ee3b2751ae |   2512 chars | https://arxiv.org/abs/2606.11017
+  ✓ ce05f4271194 |   2080 chars | https://arxiv.org/abs/2507.19137
+  ✓ a236910ded45 |   2091 chars | https://arxiv.org/abs/2606.11167
+  ✓ 9124cd92b2ee |   1800 chars | https://arxiv.org/abs/2509.22153
+  ✓ 9856e228c901 |   2245 chars | https://arxiv.org/abs/2508.07048
+  ✓ d03bb79730fe |   1949 chars | https://arxiv.org/abs/2412.11449
+  ✓ 8af60c37ddb9 |   1905 chars | https://arxiv.org/abs/2603.07238
+  ✓ 665e0dcbdc16 |   1783 chars | https://arxiv.org/abs/2603.11482
+  ✓ c02c713287b3 |   1890 chars | https://arxiv.org/abs/2606.03803
+  ✓ 545d2b4cb12c |   2248 chars | https://arxiv.org/abs/2606.09958
+  ✓ 7f8b830a3721 |   2018 chars | https://arxiv.org/abs/2606.10025
+  ✓ 5627b8c00777 |   2047 chars | https://arxiv.org/abs/2606.10039
+  ✓ ad9a0605b2ee |   1938 chars | https://arxiv.org/abs/2606.10180
+  ✓ 1a6bd8d305c1 |   2120 chars | https://arxiv.org/abs/2606.10040
+  ✓ 40d899cc6c9b |   2207 chars | https://arxiv.org/abs/2606.10208
+  ✓ 70107fc62576 |   2119 chars | https://arxiv.org/abs/2606.10229
+  ✓ 8c6195449768 |   2268 chars | https://arxiv.org/abs/2606.10244
+  ✓ feaebff64ad7 |   2115 chars | https://arxiv.org/abs/2606.10267
+  ✓ 8aa12e92b5ce |   2007 chars | https://arxiv.org/abs/2606.10273
+  ✓ 9adcc838dbf9 |   2296 chars | https://arxiv.org/abs/2606.10276
+  ✓ cd2a54c3c03f |   1964 chars | https://arxiv.org/abs/2606.10288
+  ✓ 444171a4ebfa |   1575 chars | https://arxiv.org/abs/2606.10289
+  ✓ a2834b4d771a |   2243 chars | https://arxiv.org/abs/2606.10305
+  ✓ 2c23e98a5a01 |   2023 chars | https://arxiv.org/abs/2606.10340
+  ✓ 6861706a2f91 |   2136 chars | https://arxiv.org/abs/2606.10348
+  ✓ 9ca6482fc089 |   2212 chars | https://arxiv.org/abs/2606.10366
+  ✓ 782b57224c26 |   1885 chars | https://arxiv.org/abs/2606.10363
+  ✓ 9640d2587dde |   2318 chars | https://arxiv.org/abs/2606.10371
+  ✓ 1721e6fe4564 |   1896 chars | https://arxiv.org/abs/2606.10382
+  ✓ dac6e6f0a8fe |   2321 chars | https://arxiv.org/abs/2606.10442
+  ✓ 27e499639ee0 |   1917 chars | https://arxiv.org/abs/2606.10449
+  ✓ 47ab12a6e5bb |   2405 chars | https://arxiv.org/abs/2606.10501
+  ✓ 582ae7073911 |   2026 chars | https://arxiv.org/abs/2606.10495
+  ✓ 734fc4e94f04 |   2402 chars | https://arxiv.org/abs/2606.10568
+  ✓ d58139f600f3 |   2493 chars | https://arxiv.org/abs/2606.10577
+  ✓ 9af8cf84d5b6 |   2231 chars | https://arxiv.org/abs/2606.10614
+  ✓ 3b07f0b3d157 |   2053 chars | https://arxiv.org/abs/2606.10579
+  ✓ 9d471fb268a3 |   2680 chars | https://arxiv.org/abs/2606.10639
+  ✓ 86f31f59e36d |   2187 chars | https://arxiv.org/abs/2606.10683
+  ✓ cb0301460dfc |   2645 chars | https://www.inverse.com/input/gaming/the-dirty-secret-that-makes-speed
+  ✗ e527af61aff2 | HTTP 403
+  ✓ bd4e040f6b15 |   8349 chars | https://bethmathews.substack.com/p/the-history-behind-the-signs-lighti
+  ✓ 5c361fcbb75c |    336 chars | https://vercel.com/changelog/threshold-billing-is-now-enabled-for-pro-
+  ✗ c735772b20a7 | TypeError: object of type 'NoneType' has no len()
+  ✗ 016bc729fe32 | TypeError: object of type 'NoneType' has no len()
+  ✓ d52d461250be |   4426 chars | https://thenextweb.com/news/salesforce-acquires-m3ter-consumption-bill
+  ✓ 52c91de3b64f |   6818 chars | https://habr.com/ru/articles/1045706/?utm_source=habrahabr&utm_medium=
+  ✓ e6f44b6ef767 |   4931 chars | https://techcrunch.com/2026/06/09/how-justin-ernest-invested-nearly-50
+  ✓ 22888f9b0bfa |   4240 chars | https://thenextweb.com/news/erc-system-victor-evtol-cargo-drone-ila-be
+  ✗ eaf499b9a946 | TypeError: object of type 'NoneType' has no len()
+  ✓ 587ef50d761e |   1024 chars | https://www.techmeme.com/260609/p44#a260609p44
+  ✓ 034077ec71da |  42639 chars | https://github.com/sig-id/nucleus
+  ✓ cea33b2bf2a2 |   9650 chars | https://habr.com/ru/companies/studyai/articles/1045702/?utm_source=hab
+  ✗ 77bb088c8b8c | TypeError: object of type 'NoneType' has no len()
+  ✓ 7928ed2eacf6 |   1473 chars | https://www.engadget.com/2191051/conan-o-brien-is-hosting-educational-
+  ✓ 9ca5676c2dff |   2507 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-hints-answers-
+  ✓ a002bf11e123 |   1010 chars | https://www.techmeme.com/260609/p43#a260609p43
+  ✓ b4614c459f42 |   4432 chars | https://thenextweb.com/news/tsmc-price-rise-inflation-ai-chips-taiwan-
+  ✓ 4ca4bce99e67 |   2188 chars | https://www.cnet.com/tech/gaming/todays-nyt-strands-hints-answers-and-
+  ✓ c92d0298a270 |   3131 chars | https://blog.oscars.dev/posts/rip-software-hackathons-long-live-the-ha
+  ✓ a082c1b30949 |   1038 chars | https://www.techmeme.com/260609/p42#a260609p42
+  ✓ d3c3015b2b9d |   1111 chars | https://www.cnet.com/tech/services-and-software/project-hail-mary-stre
+  ✓ d9c792696944 |   2433 chars | https://blogs.nvidia.com/blog/nvidia-confidential-computing-apple-priv
+  ✓ c7959ca38522 |   3835 chars | https://thenextweb.com/news/supermicro-7-billion-equity-offering-ai-se
+  ✓ 3fc50e06f452 |   5093 chars | https://thenextweb.com/news/gm-energy-storage-sodium-ion-batteries-pea
+  ✓ bc13cef20328 |   3490 chars | https://www.wired.com/story/great-white-shark-mediterranean-sea-sighti
+  ✗ 1a9cfcfcf3bb | HTTP 429
+  ✓ 87abe9ee367a |  10755 chars | https://habr.com/ru/articles/1045700/?utm_source=habrahabr&utm_medium=
+  ✓ 8bf35ea35709 |  30193 chars | https://habr.com/ru/articles/1045696/?utm_source=habrahabr&utm_medium=
+  ✗ 3a4dd3f53ba9 | HTTP 429
+  ✓ 8b4d97f6c32d |   4878 chars | https://thenextweb.com/news/valve-steam-machine-fcc-filing-june-29-lau
+  ✓ 7addb5e4ba94 |   2895 chars | https://jonready.com/blog/posts/claude-fable5-is-allowed-to-sabotage-y
+  ✓ 1f566422b1b0 |  12104 chars | https://habr.com/ru/articles/1045690/?utm_source=habrahabr&utm_medium=
+  ✓ f053226d3aa5 |   3752 chars | https://www.cnet.com/roadshow/news/donut-lab-solid-state-battery-claim
+  ✓ f2553c73d898 |   1771 chars | https://www.engadget.com/2190989/kalshi-will-require-employment-info-f
+  ✓ 95e24dd4fb8f |   4006 chars | https://thenextweb.com/news/sony-crystal-led-unify-135-inch-dvled-disp
+  ✓ 43fbe7e74cad |    723 chars | https://github.com/signalblur/exifsmugglingpoc
+  ✓ ed50d5d64a96 |   2369 chars | https://github.blog/changelog/2026-06-09-upcoming-breaking-changes-for
+  ✓ fe37e0d103e2 |   1642 chars | https://arstechnica.com/tech-policy/2026/06/starlink-takes-page-from-c
+  ✓ 04e4931c4aee |  24472 chars | https://habr.com/ru/articles/1045692/?utm_source=habrahabr&utm_medium=
+  ✓ f336fdcbf854 |    964 chars | https://www.techmeme.com/260609/p41#a260609p41
+  ✓ 319ac296b989 |   5420 chars | https://www.wired.com/story/gm-vehicle-to-grid-charging-your-electric-
+  ✓ 421eda7b681b |   6660 chars | https://www.theverge.com/transportation/946820/gm-energy-ev-v2g-storag
+  ✓ 4fb5b3484d33 |   4474 chars | https://techcrunch.com/2026/06/09/gm-bets-big-on-energy-storage-for-da
+  ✓ 3788f08a3d51 |   1096 chars | https://www.engadget.com/2190840/gms-evs-will-soon-support-more-kinds-
+  ✓ 41d61a583cc5 |   5723 chars | https://techcrunch.com/2026/06/09/hey-siri-heres-what-i-actually-want-
+  ✓ 7d1f3e342dc6 |   1654 chars | https://arstechnica.com/security/2026/06/locked-in-heated-rivalry-with
+  ✓ ea8b31e4271e |   3395 chars | https://habr.com/ru/news/1045688/?utm_source=habrahabr&utm_medium=rss&
+  ✓ e8424f346a66 |   3835 chars | https://www.cnet.com/science/space/nasa-artemis-iii-astronaut-crew-ann
+  ✓ 344b80419ef8 |   2481 chars | https://techcrunch.com/2026/06/09/anthropics-fable-5-can-make-weirdly-
+  ✓ 02e4942654c8 |   2569 chars | https://habr.com/ru/companies/kodik/news/1045686/?utm_source=habrahabr
+  ✓ fa26a4f65a36 |   2612 chars | https://arstechnica.com/science/2026/06/study-how-to-take-the-urban-pu
+  ✓ de7b9a69f372 |    945 chars | https://www.techmeme.com/260609/p39#a260609p39
+  ✓ 3693b8da0de8 |    966 chars | https://www.techmeme.com/260609/p40#a260609p40
+  ✓ 08f2214ad6cd |   6854 chars | https://www.analyticsvidhya.com/blog/2026/06/testing-claude-fable-5-hy
+  ✓ b1b79ac4237e |   1071 chars | https://www.techmeme.com/260609/p38#a260609p38
+  ✓ bd60fc31e96b |   1812 chars | https://arstechnica.com/science/2026/06/__trashed-19/
+  ✓ 8a5852c59879 |   2018 chars | https://www.theverge.com/tech/947197/microsoft-ai-mustafa-suleyman-ant
+  ✓ 7005eff67572 |   4070 chars | https://www.cnet.com/tech/services-and-software/claude-fable-5-first-m
+  ✓ 9d470ad4aae2 |   3785 chars | https://www.engadget.com/2190934/anthropic-fable-ai-brings-the-capabil
+  ✓ 2aeb07a56951 |   6806 chars | https://habr.com/ru/articles/1045684/?utm_source=habrahabr&utm_medium=
+  ✓ f12106413e0e |   7104 chars | https://spark.ru/post/333027
+  ✓ 65838ec84499 |   4017 chars | https://habr.com/ru/articles/1045678/?utm_source=habrahabr&utm_medium=
+  ✓ 51ea01d873f5 |   2092 chars | https://arstechnica.com/tech-policy/2026/06/netflix-trying-to-poison-r
+  ✓ ec0d8cd0bacb |  28841 chars | https://aws.amazon.com/blogs/machine-learning/scale-robot-reinforcemen
+  ✓ ed730fc5c31c |  16102 chars | https://habr.com/ru/articles/1045676/?utm_source=habrahabr&utm_medium=
+  ✓ 99bcaeb243e9 |   2003 chars | https://www.cnet.com/tech/gaming/all-the-trailers-from-nintendo-direct
+  ✓ d3abf2bfe115 |   3579 chars | https://www.cnet.com/culture/summer-solstice-everything-to-know-about-
+  ✗ bc64d813bea6 | HTTP 403
+  ✓ 5e099069f067 |   1575 chars | https://www.cnet.com/tech/gaming/todays-wordle-hints-answer-and-help-f
+  ✓ e901173aaccd |  19842 chars | https://blog.gitbutler.com/true-grit
+  ✓ a5ebf1ea0366 |    942 chars | https://www.techmeme.com/260609/p37#a260609p37
+  ✓ 1a0eb9056b35 |   2397 chars | https://www.cnet.com/tech/services-and-software/gemini-3-5-live-transl
+  ✓ 9f34b59d5ba2 |    952 chars | https://www.techmeme.com/260609/p36#a260609p36
+  ✗ c7e9ec2f9cfc | HTTP 403
+  ✓ 92ac31968c0b |  16106 chars | https://huggingface.co/blog/ServiceNow-AI/code-switching
+  ✓ 4277fae8c656 |   5192 chars | https://thenextweb.com/news/vinted-9-billion-us-expansion-ipo-adam-jay
+  ✓ f77ef93ea638 |  17838 chars | https://aarushgupta.io/posts/kan-fpga/
+  ✓ 69baae010251 |   3684 chars | https://habr.com/ru/articles/1045670/?utm_source=habrahabr&utm_medium=
+  ✗ ffa842dcf3bd | HTTP 403
+  ✓ 171dd24dbf88 |    995 chars | https://www.techmeme.com/260609/p35#a260609p35
+  ✓ ac703f23e008 |   4619 chars | https://www.cnet.com/tech/services-and-software/apple-intelligence-mod
+  ✓ 265c6cbadff6 |   5372 chars | https://habr.com/ru/articles/1045664/?utm_source=habrahabr&utm_medium=
+  ✓ b80603a54ccb |   5167 chars | https://thenextweb.com/news/mit-ultrasound-wristband-hand-tracking-rob
+  ✗ 9ae1f34dd05b | HTTP 403
+  ✓ 5ae2489521b0 |   2245 chars | https://arstechnica.com/ai/2026/06/anthropic-says-these-topics-are-too
+  ✓ 18bf20018f9a |   3830 chars | https://thenextweb.com/news/rem3dy-health-nourished-14m-personalised-n
+  ✓ c47fbc8c5e7f |   3950 chars | https://techcrunch.com/2026/06/09/can-tech-companies-learn-to-love-che
+  ✓ 09f82e85d8e6 |   6483 chars | https://www.techdirt.com/2026/06/09/ceos-who-think-ai-replaces-their-e
+  ✓ b555cceabdd0 |   1667 chars | https://arstechnica.com/ai/2026/06/google-announces-gemini-3-5-live-tr
+  ✓ a8659cc982fc |   1992 chars | https://arstechnica.com/space/2026/06/nasa-assigns-crew-for-artemis-ii
+  ✓ 98b77e20a217 |   8630 chars | https://the-decoder.com/anthropic-releases-claude-fable-5-and-mythos-5
+  ✓ 191f7629b0ed |  13670 chars | https://habr.com/ru/articles/1045652/?utm_source=habrahabr&utm_medium=
+  ✓ a7b4fb9fdb83 |   1115 chars | https://habr.com/ru/news/1045658/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 21623df89e13 |   5907 chars | https://rb.ru/news/v-rossii-vvedut-dopolnitelnye-pravila-torgovli-krip
+  ✓ 196cf730005e |    989 chars | https://www.techmeme.com/260609/p34#a260609p34
+  ✓ b841cb395af6 |   9868 chars | https://techcrunch.com/2026/06/09/wwdc-2026-everything-announced-on-si
+  ∅ 71358576e302 | extracted only 63 chars
+  ✓ 5925edee1b8b |   1556 chars | https://habr.com/ru/news/1045646/?utm_source=habrahabr&utm_medium=rss&
+  ✓ e9c206eef0d7 |   2924 chars | https://www.cnet.com/tech/services-and-software/apple-intelligence-wor
+  ✓ 95da3221ba93 |   1658 chars | https://habr.com/ru/news/1045648/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 9daeb374b718 |   5848 chars | https://www.cnet.com/roadshow/news/apple-carplay-and-automotive-update
+  ✓ 76be942b583a |   1666 chars | https://habr.com/ru/companies/selectel/news/1045564/?utm_source=habrah
+  ✗ dab7a18c14a0 | HTTP 429
+  ✓ 40dcc3f219b8 |  12144 chars | https://habr.com/ru/companies/otus/articles/1044824/?utm_source=habrah
+  ✓ 1457b5e9d3b8 |   1376 chars | https://www.engadget.com/2190728/operas-latest-android-update-includes
+  ✓ c963d3f09fc8 |   1227 chars | https://techcrunch.com/2026/06/09/cisa-gives-us-federal-agencies-three
+  ✓ d129095aa8de |   3525 chars | https://rb.ru/news/ozon-bank-zapustil-perevody-cherez-sbp-bez-internet
+  ✓ 0ad2be85ad8a |   1400 chars | https://www.engadget.com/2190716/marshalls-stockwell-iii-portable-spea
+  ✓ 2e1b2a3a1597 |   4104 chars | https://habr.com/ru/news/1045644/?utm_source=habrahabr&utm_medium=rss&
+  ✓ b9d332d9ce56 |  21088 chars | https://habr.com/ru/companies/netologyru/articles/1042346/?utm_source=
+  ✓ e59ab87489da |   7102 chars | https://thetyee.ca/Culture/2026/06/05/Whos-the-Smartest-Corvid/
+  ✓ 61764b2f8f59 |  31882 chars | https://bnikolic.co.uk/blog/linux-ld-debug.html
+  ✓ fca9edef436b |   6357 chars | https://www.wired.com/story/macos-27-golden-gate-top-features/
+  ✗ df4515d5ec7d | TypeError: object of type 'NoneType' has no len()
+  ✗ 9633954f61a5 | HTTP 429
+  ✓ 064693b3745f |   1134 chars | https://habr.com/ru/news/1045642/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 557731bf9ad2 |  10408 chars | https://www.oneusefulthing.org/p/what-it-feels-like-to-work-with-mytho
+  ✓ 4f1bcef8ef09 |   6265 chars | https://support.claude.com/en/articles/15425996-data-retention-practic
+  ✓ 7e250b54c859 |   6464 chars | https://rb.ru/news/ozon-mozhet-otkryt-sobstvennye-aptechnye-sklady-kom
+  ✓ 709f0aaf0fa1 |   1113 chars | https://the-decoder.com/googles-gemini-3-5-live-translate-delivers-rea
+  ✓ 32a2e9b211fb |  12386 chars | https://www.wired.com/story/top-new-features-in-apples-ios-27-and-ipad
+  ✓ 15d174aef8c2 |   2308 chars | https://arstechnica.com/health/2026/06/screwworms-in-us-human-risk-is-
+  ✓ 407d457f16b2 |   4461 chars | https://techcrunch.com/2026/06/09/anthropics-claude-fable-5-is-a-versi
+  ✓ fcd0e573f76e |   5313 chars | https://www.wired.com/story/anthropic-releases-claude-fable-5-mythos-5
+  ✓ 4dcd25b9bff3 |   2451 chars | https://www.theverge.com/news/946725/anthropic-releases-claude-fable-5
+  ✓ e44dcea48b10 |   5563 chars | https://rb.ru/news/gosduma-utverdila-shtrafy-za-avtorizaciyu-na-rossij
+  ✓ fcdffa34fa7c |  13599 chars | https://habr.com/ru/articles/1045636/?utm_source=habrahabr&utm_medium=
+  ✓ 3b20950b36a6 |    619 chars | https://www.pehub.com/ridgepost-appoints-brian-mckenna-as-vp-of-invest
+  ✓ 0d2bad7dabd1 |   1254 chars | https://www.engadget.com/2190645/kingdom-hearts-iv-gets-a-surprise-nin
+  ✓ 8e22e13a3064 |   8643 chars | https://www.engadget.com/2190638/siri-ai-first-look-how-apples-rebuilt
+  ✓ b2958886dc84 |   2301 chars | https://www.cnet.com/tech/services-and-software/macos-golden-gate-fixe
+  ✓ 678e9a603149 |   4933 chars | https://www.cnet.com/tech/mobile/apples-ai-overhaul-signals-defining-s
+  ✓ 240f533ec79b |   1810 chars | https://devblogs.microsoft.com/agent-framework/icymi-inside-the-micros
+  ✓ e9b5720da18e |   2830 chars | https://techcrunch.com/2026/06/09/rivian-starts-deliveries-of-its-all-
+  ✓ 6df7aa23c89e |   4242 chars | https://rb.ru/news/stali-izvestny-ceny-na-novye-avtomobili-volga-proda
+  ✓ 14119d13d55c |   2537 chars | https://www.cnet.com/tech/gaming/kingdom-hearts-4-makes-surprise-appea
+  ✓ 56eaa8947c91 |  31206 chars | https://aws.amazon.com/blogs/machine-learning/hands-free-first-notice-
+  ✓ 034c1b638b49 |   1273 chars | https://www.engadget.com/2190598/the-next-nintendo-sports-game-for-swi
+  ✓ 1148fe2f1c4c |  24714 chars | https://rb.ru/reviews/vozvrat-ndfl-inostrancam/
+  ✓ 896ac5271b7f |   2491 chars | https://arstechnica.com/tech-policy/2026/06/one-day-after-discovery-me
+  ✓ db44956c9053 |   2420 chars | https://www.engadget.com/2190596/big-walk-is-an-oddball-blend-of-peak-
+  ✓ d94a2a31cd6e |  30249 chars | https://towardsdatascience.com/10-common-rag-mistakes-we-keep-seeing-i
+  ✓ 33b9886e37e8 |  26397 chars | https://habr.com/ru/companies/pt/articles/1040996/?utm_source=habrahab
+  ✓ 173f18e298b4 |   3827 chars | https://www.engadget.com/2190589/nasa-announces-the-crew-of-its-critic
+  ✓ df4ca1f3cae6 |   4437 chars | https://habr.com/ru/articles/1045630/?utm_source=habrahabr&utm_medium=
+  ✓ 13f5001827d5 |   1590 chars | https://techcrunch.com/2026/06/09/apples-foldable-iphone-could-be-just
+  ✗ db217a525e31 | HTTP 401
+  ✓ 6e44ab610e15 |   4236 chars | https://news.ycombinator.com/item?id=48463273
+  ✗ 52f9dee7d65f | HTTP 403
+  ✓ 502b6bd83529 |   6514 chars | https://habr.com/ru/articles/1045624/?utm_source=habrahabr&utm_medium=
+  ✗ 2452465d7eb7 | TypeError: object of type 'NoneType' has no len()
+  ✗ ed0715ff067e | HTTP 403
+  ✓ 2428838e44d4 |  17751 chars | https://huggingface.co/blog/CohereLabs/introducing-north-mini-code
+  ✗ d575c29211b0 | TypeError: object of type 'NoneType' has no len()
+  ✗ 88b053027acf | TypeError: object of type 'NoneType' has no len()
+  ∅ 6f086e68082e | extracted only 70 chars
+  ✗ e188441c2a1b | HTTP 429
+  ✓ 11c4ac33ca74 |  22245 chars | https://www.anthropic.com/news/claude-fable-5-mythos-5
+  ∅ d70ab91669c5 | extracted only 63 chars
+  ✗ 1e0ef6ffe88a | HTTP 403
+  ✗ 1b040cfa3010 | HTTP 403
+  ∅ c33f7ab21e4e | extracted only 32 chars
+  ∅ 01bdde42cb8a | extracted only 118 chars
+  ∅ 98a08af5f927 | extracted only 63 chars
+  ✗ 3b94d27f3167 | HTTP 403
+  ∅ f00cacf986d5 | extracted only 63 chars
+  ✗ cdc77122c42d | TypeError: object of type 'NoneType' has no len()
+  ✓ 9c1dfe962f3f |    984 chars | https://www.techmeme.com/260609/p33#a260609p33
+  ✗ de0a2342d5aa | HTTP 403
+  ✗ 44dabad91e90 | TypeError: object of type 'NoneType' has no len()
+  ✗ 111249c4a0a1 | HTTP 403
+  ✗ 164e6b41b04f | TypeError: object of type 'NoneType' has no len()
+  ∅ 01d1d5ad22fa | extracted only 175 chars
+  ✓ ff992d0e1b1b |  15264 chars | https://matklad.github.io/2026/06/04/css-unavoidable-bad-parts.html
+  ✗ 13c1b67fae58 | HTTP 403
+  ✓ b0d280435061 |  28004 chars | https://tratt.net/laurie/blog/2026/test_case_reducers_are_underappreci
+  ✓ ffc5537f923d |   6489 chars | https://spark.ru/post/332874
+  ✓ 5429bb016e21 |   3396 chars | https://spark.ru/post/332873
+  ✗ fbb449340331 | HTTP 403
+  ∅ d391b77fd50a | extracted only 189 chars
+  ✓ c53f525dffe5 |   2820 chars | https://spark.ru/post/332859
+  ∅ 07d5368371b5 | extracted only 159 chars
+  ✓ 018bfd304702 |   1745 chars | https://spark.ru/post/332845
+  ✗ 10facf05fa4a | HTTP 403
+  ✗ e3d6eea6b1f6 | TypeError: object of type 'NoneType' has no len()
+  ✗ af66e09c143d | HTTP 403
+  ✗ fa9af36cb131 | HTTP 403
+  ∅ b26ab52ac66a | extracted only 81 chars
+  ∅ f052e69a2c85 | extracted only 63 chars
+  ✓ 586976b7384e |   1617 chars | https://spark.ru/post/332798
+  ✗ 504e31b94d5d | TypeError: object of type 'NoneType' has no len()
+  ∅ 022a25e4c914 | extracted only 63 chars
+  ✗ 1506aff82566 | HTTP 403
+  ∅ 980d5243bfa6 | extracted only 43 chars
+  ∅ 67f63f0cf248 | extracted only 63 chars
+  ✓ 00f3fb0e83ae |   1909 chars | https://vercel.com/changelog/claude-fable-5-now-available-on-ai-gatewa
+  ∅ 00f3495eb305 | extracted only 40 chars
+  ∅ f4557f0e4129 | extracted only 135 chars
+  ∅ 1611a86de2bd | extracted only 63 chars
+  ✓ 58582650bfb6 |   1940 chars | https://spark.ru/post/332771
+  ✓ 0933701b9078 |   8729 chars | https://spark.ru/post/332770
+  ✓ aeec6aaae1eb |   8832 chars | https://spark.ru/post/332768
+  ✓ 0c35128d4c52 |   3700 chars | https://spark.ru/post/332767
+  ∅ 754ab53253ac | extracted only 63 chars
+  ✗ 5438335ffb3f | HTTP 403
+  ✓ 923f035e09b2 |  19687 chars | https://mceglowski.substack.com/p/laffaire-siloxane
+  ∅ 9de1acc7f074 | extracted only 163 chars
+  ✗ 65edefcb4544 | HTTP 403
+  ✗ 9d1e8253f802 | TypeError: object of type 'NoneType' has no len()
+  ✓ eb3e2d9f4685 |   9374 chars | https://huggingface.co/blog/github-ci-hf-jobs
+  ✗ 4c725aba5849 | TypeError: object of type 'NoneType' has no len()
+  ✓ 11dc712dcf87 |   1590 chars | https://vercel.com/changelog/budgets-for-api-keys-on-ai-gateway
+  ✗ 942c2dce9a4f | TypeError: object of type 'NoneType' has no len()
+  ✓ 29f27fcf95de |   9807 chars | https://aiweekly.co/issues/musks-175-trillion-bet-isnt-a-rocket-compan
+  ✗ fb355d349393 | HTTP 429
+  ✓ d64aff5ecb92 |    958 chars | https://vercel.com/changelog/domain-search-is-now-available-through-th
+  ✗ 303c8a580452 | TypeError: object of type 'NoneType' has no len()
+  ✓ f1c209c0d0dd |   5026 chars | https://phys.org/news/2026-05-giant-star-destroyed-universe-rarest.htm
+  ✗ 45c904623418 | TypeError: object of type 'NoneType' has no len()
+  ✗ 9358a6d9e28c | TypeError: object of type 'NoneType' has no len()
+  ✓ 250be2ab061c |   2656 chars | https://spark.ru/post/332731
+  ∅ 698a4858aa05 | extracted only 37 chars
+  ✓ a375c9aa3444 |  11689 chars | https://nanochess.org/klondike_in_c.html
+  ∅ 2c68c8931f06 | extracted only 114 chars
+  ✗ 1de78fdb5609 | HTTP 403
+  ∅ 526308ee5eb8 | extracted only 63 chars
+  ∅ 33d5b3df063c | extracted only 96 chars
+  ✓ 36bfe7832273 |  11659 chars | https://spark.ru/post/332702
+  ✓ 95083ac271ac |    262 chars | https://www.jasondavies.com/maps/voronoi/capitals/
+  ✗ 60ee186ed27e | HTTP 403
+  ∅ 5cdddecceb2d | extracted only 63 chars
+  ✓ bcb268b3d042 |   2001 chars | https://spark.ru/post/332694
+  ✗ 5f27e3f6e381 | HTTP 403
+  ✗ e5f73b71d1d7 | HTTP 403
+  ✗ fea054d073ef | HTTP 403
+  ∅ 2a0772d26773 | extracted only 63 chars
+  ∅ a63d47c3659a | extracted only 63 chars
+  ✗ 96bd04fb4168 | TypeError: object of type 'NoneType' has no len()
+  ✗ 8c5165e41bff | HTTP 403
+  ✗ 50f1d6a03255 | TypeError: object of type 'NoneType' has no len()
+  ✗ d7fc1fd0b63a | TypeError: object of type 'NoneType' has no len()
+  ✓ 096d92a8ef0a |  24815 chars | https://gitpush--force.com/commits/2026/06/lies-we-tell-ourselves-abou
+  ✗ c39ad57d6bd7 | HTTP 403
+  ✗ 5d2b78cc5505 | HTTP 403
+  ✓ f2cdd9d19137 |  11477 chars | https://spark.ru/post/332648
+  ✓ f45f7bb010cb |   1293 chars | https://spark.ru/post/332644
+  ✗ fc29f46972f4 | TypeError: object of type 'NoneType' has no len()
+  ✗ 22640148bbb8 | TypeError: object of type 'NoneType' has no len()
+  ✗ fd8a1011ce17 | TypeError: object of type 'NoneType' has no len()
+  ✓ 1e82c499d65c |  18235 chars | https://bernsteinbear.com/blog/value-numbering/
+  ∅ 6af0cf9d459f | extracted only 43 chars
+  ∅ 394013ae03e1 | extracted only 186 chars
+  ✗ 4a38fc96f335 | TypeError: object of type 'NoneType' has no len()
+  ∅ d0b0632e41e6 | extracted only 63 chars
+  ✗ 536604e9e1ff | HTTP 403
+  ✗ ce11913b6867 | HTTP 429
+  ✗ f4ee2a7a3a8a | HTTP 403
+  ✓ 5d305cb93f31 |   2618 chars | https://spark.ru/post/332472
+  ✗ b5b0b8f48092 | TypeError: object of type 'NoneType' has no len()
+  ✓ 6e117e091c7c |   7456 chars | https://spark.ru/post/332443
+  ✗ 3c9d08d90b63 | TypeError: object of type 'NoneType' has no len()
+  ✗ ff5a4a44cecd | TypeError: object of type 'NoneType' has no len()
+  ✗ b684b4162c5b | HTTP 403
+  ✗ 0901313655c3 | TypeError: object of type 'NoneType' has no len()
+  ✗ fa8938d21530 | HTTP 429
+  ✓ 7f033fc4b230 |   9616 chars | https://www.bbc.com/culture/article/20260603-how-a-26-year-old-german-
+  ✗ 127067f71f2f | TypeError: object of type 'NoneType' has no len()
+  ✓ e9d47d38ca49 |   2511 chars | https://unsung.aresluna.org/more-molly-guards/
+  ✓ 9e267da76d50 |  12358 chars | https://alexandrefrancois.org/Resonate/
+  ✓ 69ddc24726e1 |  32007 chars | https://technicshistory.com/2026/06/06/computer-lessons/
+  ✗ aec9ee43a4e0 | TypeError: object of type 'NoneType' has no len()
+  ✗ 97a7da2be7ee | HTTP 429
+  ✗ 1e588e61972d | HTTP 429
+  ✗ a8c9be6b3557 | HTTP 404
+  ✗ 5e410d7d5998 | HTTP 429
+  ✗ 844cea98b634 | TypeError: object of type 'NoneType' has no len()
+  ✗ 6cda6a773635 | TypeError: object of type 'NoneType' has no len()
+  ✗ 459e411b31d6 | HTTP 429
+  ✗ c2a5de2dea82 | HTTP 429
+  ∅ 5123a7ffc6d3 | extracted only 48 chars
+  ✓ 850dc900514d |   1317 chars | https://spark.ru/post/332136
+  ✓ e94bb5e1fa05 |    558 chars | https://spark.ru/post/332166
+  ✓ e18d71a63b91 |   3418 chars | https://spark.ru/post/332144
+  ✓ 15c885453834 |   3968 chars | https://spark.ru/post/332100
+  ✗ d2e2b63f84b9 | TypeError: object of type 'NoneType' has no len()
+  ✓ 03609251cedb |   4378 chars | https://spark.ru/post/332098
+  ✓ 516694531b6a |   4468 chars | https://spark.ru/post/332096
+  ✓ 797d79e9b826 |   1952 chars | https://spark.ru/post/332079
+  ✗ ae995b9c3e75 | HTTP 403
+  ∅ 969e8f000a09 | extracted only 108 chars
+  ✓ c04e82deaf59 |   2152 chars | https://spark.ru/post/332077
+  ✗ 785dbaa6ae56 | HTTP 403
+  ✓ e1639956b2d9 |   3087 chars | https://spark.ru/post/332075
+  ✗ 5be6c3392056 | HTTP 403
+  ✓ 1f5525ea5ff4 |   2749 chars | https://spark.ru/post/331980
+  ✗ 1a654943dc71 | HTTP 403
+  ✗ 0af0c5c72218 | HTTP 403
+  ✗ b918a5525a80 | HTTP 403
+  ✗ 985e9a4f3bc7 | HTTP 403
+  ∅ 97b4f792a746 | extracted only 116 chars
+  ∅ 143db56507ef | extracted only 181 chars
+  ∅ cda8325eed1e | extracted only 54 chars
+  ∅ 7a50c6644e2a | extracted only 131 chars
+  ∅ 77d7d49e6045 | extracted only 82 chars
+  ✗ 4740ac952fc0 | HTTP 403
+  ∅ 7bdc5d9ebdb8 | extracted only 63 chars
+  ∅ 74d8dba0d29b | extracted only 160 chars
+  ∅ b708414e5e0b | extracted only 63 chars
+  ✗ d6e1c1967533 | HTTP 429
+  ✗ 96478f6d7290 | HTTP 429
+  ✗ 270397becd06 | HTTP 429
+  ✗ 0efb1d95f4e9 | HTTP 429
+  ✗ eac79a5c60c8 | TypeError: object of type 'NoneType' has no len()
+  ✗ 75a21cff80bc | HTTP 429
+  ✗ 38273f0329c3 | HTTP 429
+  ✗ bd33c9586894 | HTTP 429
+  ✗ 3ae259933be7 | HTTP 429
+  ✗ 301a5c5b332a | HTTP 403
+  ✗ f69a41d0dc92 | HTTP 429
+  ✗ 3e18cf905585 | HTTP 429
+  ✗ 17c526822161 | HTTP 403
+  ✗ f74ade91ac54 | HTTP 429
+  ✗ e836b40cf4fb | HTTP 429
+  ✗ dbbceee803d6 | TypeError: object of type 'NoneType' has no len()
+  ✓ 9eeb366187d1 |   1268 chars | https://www.techmeme.com/260602/p66#a260602p66
+  ✗ 237ed067d5e3 | HTTP 429
+  ✗ fd6598b3f132 | HTTP 429
+  ✗ 66a0a8d2765c | TypeError: object of type 'NoneType' has no len()
+  ✗ 19fbdcc90cad | HTTP 429
+  ✓ e1c4bf175715 |    317 chars | https://spark.ru/post/331656
+  ✗ 85152a6df9c7 | HTTP 429
+  ✗ ebef91fec56b | HTTP 429
+  ✗ 07ea7bde8118 | HTTP 403
+  ✗ 402b4fbdd5e6 | HTTP 429
+  ✗ f275023484a8 | HTTP 429
+  ✗ 5eef0aa74879 | HTTP 429
+  ∅ f311c75ca60b | extracted only 107 chars
+  ∅ 682693a20f63 | extracted only 28 chars
+  ✗ 1377694f18fe | TypeError: object of type 'NoneType' has no len()
+  ∅ e3757bb16d1f | extracted only 61 chars
+  ∅ 010d8d81002d | extracted only 51 chars
+  ✗ 8faac1f45750 | TypeError: object of type 'NoneType' has no len()
+  ✗ 41e4dcda2336 | TypeError: object of type 'NoneType' has no len()
+  ∅ bc5bbaafced6 | extracted only 43 chars
+  ✗ fa84d034356c | HTTP 403
+  ✗ cdf77ea8aff3 | TypeError: object of type 'NoneType' has no len()
+  ∅ 15f47e9b558b | extracted only 26 chars
+  ✗ 9b923bad35af | HTTP 403
+  ✗ cf4ec4222171 | TypeError: object of type 'NoneType' has no len()
+  ✗ ffa5f8be5836 | HTTP 403
+  ∅ 0c3e10fe64e4 | extracted only 43 chars
+  ✗ aaeba9d9642e | HTTP 403
+  ✗ 062afd5ad1f9 | TypeError: object of type 'NoneType' has no len()
+  ∅ c5bb26e67939 | extracted only 71 chars
+  ∅ ce2c2e78a8f9 | extracted only 63 chars
+  ✗ 7ac1244a9454 | TypeError: object of type 'NoneType' has no len()
+  ✗ e4841d06b7f2 | HTTP 403
+  ∅ 63e7b658aefc | extracted only 63 chars
+  ✗ 890b25eddf68 | HTTP 403
+  ✗ 0417997d923f | HTTP 403
+  ✗ be876b176720 | HTTP 403
+  ✗ ce0322c55738 | HTTP 403
+  ✗ 2f358dc4a504 | HTTP 403
+  ✗ fdf6c4e98bb2 | HTTP 403
+  ✗ 907279281489 | TypeError: object of type 'NoneType' has no len()
+  ✗ 6b1fa8ae684f | HTTP 403
+  ✗ 78758b8ec5bc | HTTP 403
+  ✗ 702fb607570e | HTTP 403
+  ✗ efdf5cf9f641 | TypeError: object of type 'NoneType' has no len()
+  ✗ ab13f533d5f5 | TypeError: object of type 'NoneType' has no len()
+  ✗ b5479ebcde18 | HTTP 403
+  ✗ 5899b169bc6e | HTTP 403
+  ✗ 919d46e19bc3 | HTTP 403
+  ✗ 1c77cec1ddad | HTTP 403
+  ✗ 74f5123204ea | TypeError: object of type 'NoneType' has no len()
+  ✗ e70e88d9a498 | TypeError: object of type 'NoneType' has no len()
+  ✗ 86df175a446d | HTTP 403
+  ✗ f2261073b77c | HTTP 403
+  ✗ 740545d72e85 | HTTP 403
+  ✗ e7785d8c77e3 | HTTP 429
+  ∅ 1124c6b8de11 | extracted only 63 chars
+  ✗ 0316568c46ec | TypeError: object of type 'NoneType' has no len()
+  ⏱ 5eccb25dccad | timeout
+  ✗ e670024b9a32 | HTTP 429
+  ✗ b454f8817363 | TypeError: object of type 'NoneType' has no len()
+  ✗ 1bd5d5f60cc3 | HTTP 429
+  ∅ aa254796804e | extracted only 101 chars
+  ✗ ca731494b194 | HTTP 429
+  ∅ e6e12a7181a1 | extracted only 83 chars
+  ✗ db7ff708ed2f | HTTP 429
+  ✗ a102a18a5efc | HTTP 429
+  ✗ b37d93646457 | HTTP 429
+  ✗ 6d653b00387c | HTTP 503
+  ✗ 948a351ef591 | HTTP 503
+  ✗ 920341bd8742 | HTTP 503
+  ✗ 4ea7906564a9 | HTTP 503
+  ✗ 809a45a56fbf | HTTP 503
+  ✗ 834df0857ecb | HTTP 503
+  ✗ 382e39f87631 | HTTP 503
+  ✗ e8a2c25d1618 | HTTP 503
+  ✗ 7779c471760a | HTTP 503
+  ✗ 4157a20247b1 | HTTP 503
+
+✅ Готово за 188.0s
+   ✓ OK: 704
+   ∅ too_short: 71
+   ⏱ timeout: 1
+   ✗ error: 196
+   📁 Файлы: /home/apps_maker/ai-digest/archive/full_text
+   📝 Пометка has_full_text проставлена в архиве
+
+========================================
+🤖 AI-Digest daily run: 2026-06-11 07:56:32 UTC
+   hours=48, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 101 источников (с 2026-06-09T07:56:33.561753+00:00)...
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ The Information                          → 20 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ ПостНаука (RU)                           → 15 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ Google AI Blog                           → 20 posts
+
+========================================
+🤖 AI-Digest daily run: 2026-06-11 07:56:49 UTC
+   hours=48, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 101 источников (с 2026-06-09T07:56:50.170555+00:00)...
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ The Information                          → 20 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ ПостНаука (RU)                           → 15 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Wired                                    → 30 posts
+  ✓ arXiv stat.ML                            → 30 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ arXiv cs.CV (Vision)                     → 30 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ arXiv cs.CL (NLP)                        → 30 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ Spark.ru                                 → 30 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ The Information                          → 20 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ The Decoder                              → 10 posts
+  ✓ Becoming Human: AI Magazine              → 10 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ CNET                                     → 25 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ arXiv q-bio.NC                           → 8 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 4 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ arXiv cs.RO (Robotics)                   → 30 posts
+  ✓ arXiv eess.IV (Image Video)              → 10 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 12 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 22 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+
+========================================
+🤖 AI-Digest daily run: 2026-06-11 07:58:56 UTC
+   hours=48, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 101 источников (с 2026-06-09T07:58:57.521818+00:00)...
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ The Information                          → 20 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ ПостНаука (RU)                           → 15 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ arXiv stat.ML                            → 30 posts
+  ✓ Wired                                    → 30 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ arXiv cs.CV (Vision)                     → 30 posts
+  ✓ arXiv cs.CL (NLP)                        → 30 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ Spark.ru                                 → 30 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ The Information                          → 20 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ The Decoder                              → 10 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ Becoming Human: AI Magazine              → 10 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ CNET                                     → 25 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ arXiv q-bio.NC                           → 8 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 12 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 4 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ arXiv eess.IV (Image Video)              → 10 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 22 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ arXiv cs.RO (Robotics)                   → 30 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+
+========================================
+🤖 AI-Digest daily run: 2026-06-11 08:01:09 UTC
+   hours=48, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 101 источников (с 2026-06-09T08:01:10.330253+00:00)...
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ The Information                          → 20 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ ПостНаука (RU)                           → 15 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ arXiv stat.ML                            → 30 posts
+  ✓ Wired                                    → 30 posts
+  ✓ arXiv cs.CL (NLP)                        → 30 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ arXiv cs.CV (Vision)                     → 30 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ Spark.ru                                 → 30 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ The Information                          → 20 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ The Decoder                              → 10 posts
+  ✓ Becoming Human: AI Magazine              → 10 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ CNET                                     → 25 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ arXiv q-bio.NC                           → 8 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 12 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 4 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ arXiv eess.IV (Image Video)              → 10 posts
+  ✓ arXiv cs.RO (Robotics)                   → 30 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 22 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Safety News                           → fallback timeout: Missing dependencies for SOCKS support.
+
+✅ Готово за 60.8s
+   Источников OK: 98/101
+   Постов собрано (с дедупликацией): 1243
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-11.json
+
+📥 Архив: добавлено 327, обновлено 916, пропущено 0. Всего в архиве: 3132
+/home/apps_maker/ai-digest/storage/posts_2026-06-11.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-11.json
+
+🌐 Step 1.5: scrape.py --missing (только high-priority)
+📚 В архиве: 3132 постов
+🎯 К скрапингу: 595
+  ✓ b8acadde21ce |   1450 chars | https://www.theverge.com/ai-artificial-intelligence/948153/deezer-ai-m
+  ✓ 46ae83930da6 |   2247 chars | https://habr.com/ru/news/1046369/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 25e5674e44f1 |  10306 chars | https://habr.com/ru/articles/1046367/?utm_source=habrahabr&utm_medium=
+  ✓ f09d57626b97 |   1246 chars | https://habr.com/ru/news/1046371/?utm_source=habrahabr&utm_medium=rss&
+  ∅ dc509934b4dd | extracted only 63 chars
+  ✓ 000e9abc5f2a |   1925 chars | https://habr.com/ru/news/1046355/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 2c62edf30f13 |   4480 chars | https://habr.com/ru/companies/infostart/articles/1046363/?utm_source=h
+  ✓ e93dacfb2ba8 |    243 chars | https://www.pehub.com/mutares-agrees-to-sell-nem-energy-to-hyundai-hea
+  ✓ 28811b883d24 |   1732 chars | https://habr.com/ru/news/1046349/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 29644fc20e7a |   7889 chars | https://habr.com/ru/articles/1046231/?utm_source=habrahabr&utm_medium=
+  ✓ 653eb766cd3d |  23668 chars | https://habr.com/ru/companies/ru_mts/articles/1043156/?utm_source=habr
+  ✓ 2405faacfefc |   4736 chars | https://habr.com/ru/companies/selectel/news/1046339/?utm_source=habrah
+  ✓ 6b34333fd03c |  20918 chars | https://habr.com/ru/companies/yandex/articles/1045981/?utm_source=habr
+  ✓ 7b0ff6bb6932 |  23190 chars | https://habr.com/ru/articles/1036164/?utm_source=habrahabr&utm_medium=
+  ✓ 2afae1479764 |   8526 chars | https://habr.com/ru/articles/1046193/?utm_source=habrahabr&utm_medium=
+  ✓ ca67d0ec6844 |  13198 chars | https://habr.com/ru/companies/teamly/articles/1045556/?utm_source=habr
+  ✓ d0efaeda43f0 |   1491 chars | https://habr.com/ru/news/1046347/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 41ecba1f748c |   5106 chars | https://habr.com/ru/articles/1044342/?utm_source=habrahabr&utm_medium=
+  ∅ 90ff33a85065 | extracted only 29 chars
+  ✓ 3a265250c061 |  17186 chars | https://semiengineering.com/can-ai-create-missing-models/
+  ✓ 2080f84ac83d |   4023 chars | https://habr.com/ru/news/1046341/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 4da70a6c7372 |  13280 chars | https://habr.com/ru/companies/beget/articles/1044616/?utm_source=habra
+  ✓ 256e27cc8aa4 |  12312 chars | https://semiengineering.com/mastering-3d-ic-verification-complexity/
+  ✓ 1078b6db546f |  20092 chars | https://habr.com/ru/companies/rgs_it/articles/1046035/?utm_source=habr
+  ✓ bf7d55e0d171 |   7299 chars | https://semiengineering.com/clocked-ddr5-client-memory-modules-enable-
+  ✓ e0557e98aa12 |   5389 chars | https://habr.com/ru/companies/vktech/articles/1045975/?utm_source=habr
+  ✓ 42898272bc49 |  15575 chars | https://semiengineering.com/agentic-ai-is-changing-data-center-archite
+  ✓ e2e4bcafecaf |  11344 chars | https://semiengineering.com/building-a-production-ready-optically-conn
+  ✓ 32c1a0b19efd |   5819 chars | https://habr.com/ru/articles/1046343/?utm_source=habrahabr&utm_medium=
+  ✓ 8448c9fea336 |   5868 chars | https://semiengineering.com/cloud-hpc-for-ai-addressing-latency-cost-a
+  ✓ 67f080468b6c |   2963 chars | https://semiengineering.com/how-to-start-building-edge-native-ai/
+  ✓ 1df1299ac840 |   2110 chars | https://semiengineering.com/ddr5-mrdimm-a-transformational-evolution-f
+  ✓ 19ce7927f161 |  11609 chars | https://habr.com/ru/articles/1045834/?utm_source=habrahabr&utm_medium=
+  ✓ a84912af4bf5 |  23850 chars | https://habr.com/ru/articles/1045236/?utm_source=habrahabr&utm_medium=
+  ✓ 387bc02dafdf |   6938 chars | https://habr.com/ru/companies/wirenboard/articles/1046223/?utm_source=
+  ✓ 9e99275677e6 |   4667 chars | https://thenextweb.com/news/tesla-fsd-acid-test-sleep-car-musk-robotax
+  ✓ 3e0940e84528 |   9521 chars | https://habr.com/ru/articles/1046327/?utm_source=habrahabr&utm_medium=
+  ✓ 2d12ba158c9f |   3022 chars | https://habr.com/ru/news/1046337/?utm_source=habrahabr&utm_medium=rss&
+  ✗ 21c10abe484e | HTTP 403
+  ✓ 22188e441c32 |  25379 chars | https://habr.com/ru/companies/flant/articles/1043430/?utm_source=habra
+  ✓ cb7722207fc4 |   1109 chars | https://semiengineering.com/building-edge-ai-with-ip-solutions/
+  ✓ 632e70d6107f |   3380 chars | https://www.engadget.com/2191966/openai-china-influence-campaigns-agai
+  ✓ 836468f39146 |  12882 chars | https://semiengineering.com/beyond-the-demo-deploying-and-evaluating-o
+  ✓ b20427efba90 |   9283 chars | https://github.com/vanyapr/makaroshki
+  ✓ 772d5c327967 |  36859 chars | https://habr.com/ru/articles/1045698/?utm_source=habrahabr&utm_medium=
+  ✓ 9d7d823251a5 |  16101 chars | https://habr.com/ru/articles/1046335/?utm_source=habrahabr&utm_medium=
+  ✓ 5caf2f6066cf |  57536 chars | https://habr.com/ru/articles/1043044/?utm_source=habrahabr&utm_medium=
+  ✓ 9b8ca91ae050 |  15390 chars | https://habr.com/ru/articles/1046325/?utm_source=habrahabr&utm_medium=
+  ✓ 0960af584cb4 |   4478 chars | https://habr.com/ru/news/1046329/?utm_source=habrahabr&utm_medium=rss&
+  ✗ dddca4da835f | HTTP 403
+  ✗ 1eb04e1b753d | HTTP 403
+  ✓ af7c9248f630 |   1002 chars | https://www.techmeme.com/260611/p6#a260611p6
+  ✓ 76d5a4c45006 |   5159 chars | https://habr.com/ru/articles/1046083/?utm_source=habrahabr&utm_medium=
+  ✓ bafd406c2f1c |    996 chars | https://www.techmeme.com/260611/p5#a260611p5
+  ✓ 28be6a531065 |   7758 chars | https://habr.com/ru/companies/2gis/articles/1045896/?utm_source=habrah
+  ✓ 2aedbd39c05e |   9394 chars | https://habr.com/ru/articles/1045654/?utm_source=habrahabr&utm_medium=
+  ✓ 9d12bd023559 |  16921 chars | https://habr.com/ru/articles/1046275/?utm_source=habrahabr&utm_medium=
+  ✓ d970f79e1020 |  72947 chars | https://habr.com/ru/articles/1046239/?utm_source=habrahabr&utm_medium=
+  ✓ 88ea5d74b3ce |  11587 chars | https://habr.com/ru/articles/1046263/?utm_source=habrahabr&utm_medium=
+  ✓ 949131f9a350 |  20277 chars | https://habr.com/ru/articles/1046321/?utm_source=habrahabr&utm_medium=
+  ✓ a7fc8eaeec32 |   6149 chars | https://habr.com/ru/articles/1046203/?utm_source=habrahabr&utm_medium=
+  ✓ 967d42297aed |    710 chars | https://habr.com/ru/companies/2gis/news/1046285/?utm_source=habrahabr&
+  ✓ 1d385584b058 |   3628 chars | https://habr.com/ru/news/1046319/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 6d6ea63a8a73 |  10081 chars | https://github.com/justhamade/triadjs
+  ✓ fc2d1cc52eb2 |   3925 chars | https://habr.com/ru/news/1046249/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 2a84caca4721 |   1733 chars | https://www.cnet.com/tech/services-and-software/youtube-fifa-world-cup
+  ✓ 3837b43149ac |   4942 chars | https://www.cnet.com/tech/services-and-software/ozzie-osbourne-ai-holo
+  ✓ 6a0d05f18a0b |   9761 chars | https://www.wired.com/story/peacock-promo-code/
+  ✓ 58bf00bbacf8 |   6855 chars | https://www.wired.com/story/nike-promo-code/
+  ✓ 7f86a1389815 |    999 chars | https://www.techmeme.com/260611/p4#a260611p4
+  ✓ 25e5fde4fe76 |   1022 chars | https://www.techmeme.com/260611/p3#a260611p3
+  ✓ fe4e625528ab |   7777 chars | https://www.wired.com/story/dell-coupon-code/
+  ✓ 759e38e9768d |   7684 chars | https://www.wired.com/story/doordash-promo-code/
+  ✓ cd1a2f13f003 |   8184 chars | https://www.wired.com/story/home-depot-promo-code/
+  ✓ 615fcb9ad5d9 |   7450 chars | https://www.wired.com/story/chewy-promo-code/
+  ✓ e34ffdd69546 |   5394 chars | https://www.wired.com/story/vistaprint-coupon-code/
+  ✓ 8b25b95125be |   1002 chars | https://www.techmeme.com/260611/p2#a260611p2
+  ✓ 9e3fa95afff2 |   7977 chars | https://www.wired.com/story/newegg-promo-code/
+  ✓ 8a4b7aa5bc72 |   8093 chars | https://www.wired.com/story/att-promo-code/
+  ✓ b204494f3f71 |   7991 chars | https://www.wired.com/story/squarespace-promo-code/
+  ✓ 75f536a8f876 |   6430 chars | https://www.wired.com/story/dyson-cordless-vacuum-promo-code/
+  ✓ 497c39ce1df4 |   6762 chars | https://www.wired.com/story/samsung-promo-codes/
+  ✓ 5a56e7c6ecca |  16626 chars | https://habr.com/ru/news/1046303/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 9330d4e2a5e5 |   1574 chars | https://habr.com/ru/news/1045428/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 78dcd76161f5 |   2979 chars | https://habr.com/ru/news/1045514/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 4f46f6d5c2e1 |   4388 chars | https://techcrunch.com/2026/06/10/opendoors-india-exit-is-fueling-a-bi
+  ✓ 3c04f80125ed |   3136 chars | https://habr.com/ru/news/1046273/?utm_source=habrahabr&utm_medium=rss&
+  ✓ a30b8b9d9300 |   2337 chars | https://arxiv.org/abs/2606.11207
+  ✓ 1c4658197589 |   4807 chars | https://about.fb.com/news/2026/06/how-to-verify-age-online/
+  ✓ 61532f2d3b4c |   1677 chars | https://arxiv.org/abs/2606.11245
+  ✓ ecea026122d9 |   2327 chars | https://arxiv.org/abs/2606.11337
+  ✓ de0aacec3e35 |   2708 chars | https://arxiv.org/abs/2606.11379
+  ✓ c076c72ccdd5 |   2389 chars | https://arxiv.org/abs/2606.11349
+  ✓ 3c4f62553dc7 |   2572 chars | https://arxiv.org/abs/2606.11440
+  ✓ 12a61e1ff0b9 |    989 chars | https://www.techmeme.com/260611/p1#a260611p1
+  ✓ 2446fe599e44 |   2283 chars | https://arxiv.org/abs/2606.11445
+  ✓ cb38cc151b76 |   2243 chars | https://arxiv.org/abs/2606.11537
+  ✓ 1a91293b424d |   2393 chars | https://arxiv.org/abs/2606.11522
+  ✓ 8cfd12c2d1a6 |   2240 chars | https://arxiv.org/abs/2606.11543
+  ✓ 3aa89f300267 |   2198 chars | https://arxiv.org/abs/2606.11634
+  ✓ b95ec8d4def5 |   2159 chars | https://arxiv.org/abs/2606.11559
+  ✓ 78cbd771c6a4 |   2211 chars | https://arxiv.org/abs/2606.11662
+  ✓ 129203d57feb |   2442 chars | https://arxiv.org/abs/2606.11637
+  ✓ 722f42e2e48a |   2211 chars | https://arxiv.org/abs/2606.11675
+  ✓ ca7b1d5fd3c4 |   2529 chars | https://arxiv.org/abs/2606.11680
+  ✓ ceeb143bf9ed |   1968 chars | https://arxiv.org/abs/2606.11724
+  ✓ 8fc0198b7050 |   2276 chars | https://arxiv.org/abs/2606.11769
+  ✓ f85c147487a5 |   2356 chars | https://arxiv.org/abs/2606.11770
+  ✓ 243e03702a5b |   2491 chars | https://arxiv.org/abs/2606.11804
+  ✓ 815ec544c4ae |   2618 chars | https://arxiv.org/abs/2606.11830
+  ✓ ebf42affa936 |   1932 chars | https://arxiv.org/abs/2606.11851
+  ✓ baec4b0ad33e |   1512 chars | https://arxiv.org/abs/2606.11874
+  ✓ d3b3be243175 |   2208 chars | https://arxiv.org/abs/2606.11918
+  ✓ 19705fa8abf6 |   2407 chars | https://arxiv.org/abs/2606.11909
+  ✓ 10e5ba36b0cf |   2276 chars | https://arxiv.org/abs/2606.12018
+  ✓ 909a038b3954 |   2533 chars | https://arxiv.org/abs/2606.12032
+  ✓ 62b74eb0f651 |   2079 chars | https://arxiv.org/abs/2606.12025
+  ✓ ff00fb359a7b |   2355 chars | https://arxiv.org/abs/2606.12040
+  ✓ 824168ad199a |   1994 chars | https://arxiv.org/abs/2606.12065
+  ✓ aac4969dca5f |   2187 chars | https://arxiv.org/abs/2606.11192
+  ✓ f9c352ff7d7f |   2213 chars | https://arxiv.org/abs/2606.11201
+  ✓ 288d6319b5ad |   1868 chars | https://arxiv.org/abs/2606.11205
+  ✓ 37b26f74cf91 |   2493 chars | https://arxiv.org/abs/2606.11235
+  ✓ 28d805570d2f |   1828 chars | https://arxiv.org/abs/2606.11243
+  ✓ 43b394d9677f |   2497 chars | https://arxiv.org/abs/2606.11247
+  ✓ 0c3ff8508946 |   2558 chars | https://arxiv.org/abs/2606.11251
+  ✓ 32912b71ad43 |   2711 chars | https://arxiv.org/abs/2606.11255
+  ✓ b3bf350a10d7 |   2274 chars | https://arxiv.org/abs/2606.11258
+  ✓ b4d791e87e4a |   2100 chars | https://arxiv.org/abs/2606.11262
+  ✓ 5be101cccd49 |   2688 chars | https://arxiv.org/abs/2606.11266
+  ✓ 905c33b83700 |   2670 chars | https://arxiv.org/abs/2606.11267
+  ✓ f84862047803 |   1787 chars | https://arxiv.org/abs/2606.11268
+  ✓ f1b79c995278 |   1722 chars | https://arxiv.org/abs/2606.11270
+  ✓ 9f42d209dbe9 |   2676 chars | https://arxiv.org/abs/2606.11272
+  ✓ 82d35518157c |   1597 chars | https://arxiv.org/abs/2606.11275
+  ✓ a32669e8a9a8 |   2255 chars | https://arxiv.org/abs/2606.11277
+  ✓ 904e3dd700d5 |   2170 chars | https://arxiv.org/abs/2606.11286
+  ✓ 4561cc3ebbc7 |   2301 chars | https://arxiv.org/abs/2606.11319
+  ✓ e1425f169af0 |   2713 chars | https://arxiv.org/abs/2606.11290
+  ✓ 38e79c024aed |   2353 chars | https://arxiv.org/abs/2606.11341
+  ✓ 5378f9801a74 |   2454 chars | https://arxiv.org/abs/2606.11348
+  ✓ 9b73d50b6652 |   1949 chars | https://arxiv.org/abs/2606.11391
+  ✓ bf4278100bbe |   2250 chars | https://arxiv.org/abs/2606.11382
+  ✓ dae142306f03 |   2558 chars | https://arxiv.org/abs/2606.11409
+  ✓ e4a01fdbb210 |   2565 chars | https://arxiv.org/abs/2606.11417
+  ✓ cc2ccd4eac22 |   2419 chars | https://arxiv.org/abs/2606.11431
+  ✓ 9e938278dc50 |   2025 chars | https://arxiv.org/abs/2606.11463
+  ✓ c801ad430637 |   2019 chars | https://arxiv.org/abs/2606.11473
+  ✓ b57e150230d1 |   2058 chars | https://arxiv.org/abs/2606.11474
+  ✓ a3863bf14dee |   1949 chars | https://arxiv.org/abs/2606.11196
+  ✓ 20417054e486 |   2703 chars | https://arxiv.org/abs/2606.11198
+  ✓ e14563ac0827 |   1878 chars | https://arxiv.org/abs/2606.11199
+  ✓ c0f8be22c016 |   2403 chars | https://arxiv.org/abs/2606.11202
+  ✓ 3f23c86b9307 |   1837 chars | https://arxiv.org/abs/2606.11200
+  ✓ 78ebfaea2c1d |   2132 chars | https://arxiv.org/abs/2606.11203
+  ✓ 1656bb39ba9e |   2164 chars | https://arxiv.org/abs/2606.11204
+  ✓ a22fee19986b |   2190 chars | https://arxiv.org/abs/2606.11206
+  ✓ b38ca33d7b60 |   2403 chars | https://arxiv.org/abs/2606.11209
+  ✓ 85e1f6069329 |   2191 chars | https://arxiv.org/abs/2606.11208
+  ✓ d00c25b829ef |   2138 chars | https://arxiv.org/abs/2606.11210
+  ✓ 58e74c1357bb |   2423 chars | https://arxiv.org/abs/2606.11211
+  ✓ c00a3f55e3c7 |   2090 chars | https://arxiv.org/abs/2606.11212
+  ✓ 0d8c2d547b4a |   2315 chars | https://arxiv.org/abs/2606.11213
+  ✓ 1eb234c9935b |   2006 chars | https://arxiv.org/abs/2606.11219
+  ✓ c1dd175b3972 |   2576 chars | https://arxiv.org/abs/2606.11220
+  ✓ f89be9bc8352 |   2754 chars | https://arxiv.org/abs/2606.11222
+  ✓ 452b1f7c9122 |   1929 chars | https://arxiv.org/abs/2606.11232
+  ✓ ea3da1ffc8d5 |   2407 chars | https://arxiv.org/abs/2606.11257
+  ✓ bcffbf47934f |   1857 chars | https://arxiv.org/abs/2606.11316
+  ✓ afa43058ab09 |   2191 chars | https://arxiv.org/abs/2606.11350
+  ✓ 1fc1cc39a2e7 |   2392 chars | https://arxiv.org/abs/2606.11371
+  ✓ 35713ed857fb |   2305 chars | https://arxiv.org/abs/2606.11375
+  ✓ 4194d106fe93 |   2603 chars | https://arxiv.org/abs/2606.11386
+  ✓ 25dfc29f1a84 |   5867 chars | https://arxiv.org/abs/2606.11387
+  ✓ 0b8a703a71e7 |   1842 chars | https://arxiv.org/abs/2606.11420
+  ✓ 764d4e1f0484 |   1997 chars | https://arxiv.org/abs/2606.11399
+  ✓ 5936ce928b16 |   2140 chars | https://arxiv.org/abs/2606.11424
+  ✓ 483b476dea49 |   2562 chars | https://arxiv.org/abs/2606.11447
+  ✓ be255dfd7b19 |   2124 chars | https://arxiv.org/abs/2606.11221
+  ✓ 9341c5a51577 |   1873 chars | https://arxiv.org/abs/2606.11435
+  ✓ 288909bcb101 |   2686 chars | https://arxiv.org/abs/2606.11231
+  ✓ 4e7f58b288d9 |   2546 chars | https://arxiv.org/abs/2606.11233
+  ✓ e90b49a62f8a |   2675 chars | https://arxiv.org/abs/2606.11269
+  ✓ 01ad259f87e4 |   2373 chars | https://arxiv.org/abs/2606.11285
+  ✓ 6a2bf2808808 |   2402 chars | https://arxiv.org/abs/2606.11289
+  ✓ 4246858a81d6 |   1478 chars | https://arxiv.org/abs/2606.11320
+  ✓ 4c27c10a611e |   2729 chars | https://arxiv.org/abs/2606.11314
+  ✓ 718362c4ae3e |   2139 chars | https://arxiv.org/abs/2606.11326
+  ✓ 7c3e43195f77 |   1985 chars | https://arxiv.org/abs/2606.11363
+  ✓ e1fd847fe8c9 |   1885 chars | https://arxiv.org/abs/2606.11381
+  ✓ 9695118a1bc5 |   1802 chars | https://arxiv.org/abs/2606.11390
+  ✓ 25a9705811cb |   2420 chars | https://arxiv.org/abs/2606.11385
+  ✓ 588b9b828656 |   2260 chars | https://arxiv.org/abs/2606.11446
+  ✓ ddc799b983aa |   2237 chars | https://arxiv.org/abs/2606.11450
+  ✓ 725f0c5b6b89 |   2450 chars | https://arxiv.org/abs/2606.11466
+  ✓ 26cca97aa65f |   2364 chars | https://arxiv.org/abs/2606.11477
+  ✓ d5e30b743e6b |   1876 chars | https://arxiv.org/abs/2606.11505
+  ✓ a3bfe3efcd84 |   2219 chars | https://arxiv.org/abs/2606.11507
+  ✓ 24e9eb06206c |   2239 chars | https://arxiv.org/abs/2606.11546
+  ✓ a1f9ece8b0eb |   1737 chars | https://arxiv.org/abs/2606.11563
+  ✓ 5a6a87889efb |   1817 chars | https://arxiv.org/abs/2606.11568
+  ✓ 124daa7fdffa |   2312 chars | https://arxiv.org/abs/2606.11572
+  ✓ ca6a861e6a4b |   2058 chars | https://arxiv.org/abs/2606.11573
+  ✓ 4a95b1ebe208 |   2173 chars | https://arxiv.org/abs/2606.11576
+  ✓ 8c4de3df2022 |   2416 chars | https://arxiv.org/abs/2606.11578
+  ✓ 59e0eb424df0 |   2269 chars | https://arxiv.org/abs/2606.11601
+  ✓ bcbe0f82fcfa |   2283 chars | https://arxiv.org/abs/2606.11602
+  ✓ 7638383e5e35 |   2731 chars | https://arxiv.org/abs/2606.11606
+  ✓ 36c7ef101439 |   2704 chars | https://arxiv.org/abs/2606.11615
+  ✓ 1ad203979ff3 |   1907 chars | https://arxiv.org/abs/2606.11828
+  ✓ 5a203c07720b |   2689 chars | https://arxiv.org/abs/2405.06995
+  ✓ f5b69a2e3ffe |   1652 chars | https://arxiv.org/abs/2601.18934
+  ✓ 339d0bef16e8 |   1954 chars | https://arxiv.org/abs/2606.11347
+  ✓ a00a44b92cd0 |   2008 chars | https://arxiv.org/abs/2606.11570
+  ✓ 12944689b780 |   1944 chars | https://arxiv.org/abs/2606.11738
+  ✓ dca5992bdf5a |   2045 chars | https://arxiv.org/abs/2606.11865
+  ✓ cfcac7125c80 |   2135 chars | https://arxiv.org/abs/2606.11911
+  ✓ 832bfcf58ea8 |   1955 chars | https://arxiv.org/abs/2606.12058
+  ✓ 4fedc0cf0bda |   1470 chars | https://arxiv.org/abs/2606.11283
+  ✓ 6485973b8f4b |   1727 chars | https://arxiv.org/abs/2606.11339
+  ✓ 4a7897263d97 |   1800 chars | https://arxiv.org/abs/2606.11402
+  ✓ 3f21e5f7af4d |   2682 chars | https://arxiv.org/abs/2606.11437
+  ✓ 66aaf444ebba |   1493 chars | https://arxiv.org/abs/2606.11487
+  ✓ d58840ebb422 |   2228 chars | https://arxiv.org/abs/2606.11574
+  ✓ 19765daf6888 |   2393 chars | https://arxiv.org/abs/2606.11510
+  ✓ 8d5061f336e7 |   1846 chars | https://arxiv.org/abs/2606.11646
+  ✓ 8f766b2b3bd9 |   2520 chars | https://arxiv.org/abs/2606.11711
+  ✓ ed5bde54fcba |   1938 chars | https://arxiv.org/abs/2606.11746
+  ✓ 9d7ea1ccc187 |   2355 chars | https://arxiv.org/abs/2606.11775
+  ✓ 3907a9eee2d8 |   2271 chars | https://arxiv.org/abs/2606.11968
+  ✓ e36ba1cd3dd0 |   2287 chars | https://arxiv.org/abs/2606.11949
+  ✓ 5441d45d567e |   1425 chars | https://arxiv.org/abs/2606.11988
+  ✓ 9fb61736fae6 |   2062 chars | https://arxiv.org/abs/2606.12047
+  ✓ a57a871b7739 |   1929 chars | https://arxiv.org/abs/2606.12260
+  ✓ 081521306913 |   1764 chars | https://arxiv.org/abs/2410.24145
+  ✓ c9e2214c5d2e |   2575 chars | https://arxiv.org/abs/2505.03649
+  ✓ 8d3914a574fb |   2067 chars | https://arxiv.org/abs/2505.00571
+  ✓ a450bfa4f4af |   2500 chars | https://arxiv.org/abs/2505.08784
+  ✓ 3ea384773327 |   1694 chars | https://arxiv.org/abs/2508.17077
+  ✓ 9484baea2ddc |   2043 chars | https://arxiv.org/abs/2510.07750
+  ✓ 923c9c50fb32 |   2776 chars | https://arxiv.org/abs/2606.11415
+  ✓ c850d20e65ee |   1931 chars | https://arxiv.org/abs/2606.11555
+  ✓ c35af2a9eb63 |   2702 chars | https://arxiv.org/abs/2606.11598
+  ✓ 02fe8b487606 |   2289 chars | https://arxiv.org/abs/2606.11500
+  ✓ 5e0fb89e3de2 |   2243 chars | https://arxiv.org/abs/2606.11833
+  ✓ 7d4d383c0943 |   2471 chars | https://arxiv.org/abs/2605.29588
+  ✓ 2546bd564fb0 |   2297 chars | https://arxiv.org/abs/2606.11893
+  ✓ ca5fc867e39d |   2418 chars | https://arxiv.org/abs/2606.12287
+  ✓ 947a3c01b378 |   2010 chars | https://arxiv.org/abs/2606.12279
+  ✓ 46e024c47fd9 |   2156 chars | https://arxiv.org/abs/2606.11236
+  ✓ 8a526f50d72d |   2091 chars | https://arxiv.org/abs/2606.12382
+  ✓ 7fadd0ce93fd |   2213 chars | https://arxiv.org/abs/2606.11256
+  ✓ 2f1f93a75709 |   2677 chars | https://arxiv.org/abs/2606.12059
+  ✓ 1b16c5b03d58 |   2540 chars | https://arxiv.org/abs/2503.12743
+  ✓ 1ef52d120fe8 |   2400 chars | https://arxiv.org/abs/2606.12289
+  ✓ 6f29175c29a9 |   2063 chars | https://arxiv.org/abs/2604.10639
+  ✓ a2f718af581b |   2164 chars | https://arxiv.org/abs/2509.23982
+  ✓ 4737d044a312 |   2532 chars | https://arxiv.org/abs/2605.15435
+  ✓ 73c3bb516695 |   2253 chars | https://arxiv.org/abs/2606.11287
+  ✓ 8e6c3d3b367d |   1841 chars | https://arxiv.org/abs/2606.12123
+  ✓ 74d4827d903c |   1993 chars | https://arxiv.org/abs/2606.12074
+  ✓ 7446131d15a8 |   2376 chars | https://arxiv.org/abs/2606.12226
+  ✓ b9ee4ece48e8 |   2679 chars | https://arxiv.org/abs/2606.12294
+  ✓ c177f4ed1364 |   2071 chars | https://arxiv.org/abs/2512.13765
+  ✓ 244a4c83a081 |   2435 chars | https://arxiv.org/abs/2507.21164
+  ✓ 469c698b1d63 |   1903 chars | https://arxiv.org/abs/2602.14913
+  ✓ b6aaf3da1d0a |   2161 chars | https://arxiv.org/abs/2606.11249
+  ✓ 6ae798de8854 |   2109 chars | https://arxiv.org/abs/2606.11278
+  ✓ 4f0fd487522e |   2332 chars | https://arxiv.org/abs/2606.11324
+  ✓ 31e6dc06ac38 |   2393 chars | https://arxiv.org/abs/2606.11396
+  ✓ f51d468a62ac |   2336 chars | https://arxiv.org/abs/2606.11372
+  ✓ 5afd298437ad |   2260 chars | https://arxiv.org/abs/2606.11408
+  ✓ 932e41e0e6a0 |   2650 chars | https://arxiv.org/abs/2606.11419
+  ✓ d5be48854091 |   2323 chars | https://arxiv.org/abs/2606.11464
+  ✓ ada6f840eda1 |   2329 chars | https://arxiv.org/abs/2606.11525
+  ✓ 954af1bffc4e |   2282 chars | https://arxiv.org/abs/2606.11489
+  ✓ 861397df1832 |   2106 chars | https://arxiv.org/abs/2606.11535
+  ✓ 14ed74297c51 |   2209 chars | https://arxiv.org/abs/2606.11569
+  ✓ 9e518fcf8a73 |   2479 chars | https://arxiv.org/abs/2606.11577
+  ✓ 1e1f7264c841 |   2111 chars | https://arxiv.org/abs/2606.11628
+  ✓ 36b45ad76eb1 |   1826 chars | https://arxiv.org/abs/2606.11636
+  ✓ 15834f68da98 |   2691 chars | https://arxiv.org/abs/2606.11708
+  ✓ 3bf8516f3d01 |   2086 chars | https://arxiv.org/abs/2606.11704
+  ✓ e7186dc1ea6d |   2347 chars | https://arxiv.org/abs/2606.11743
+  ✓ eba65fb4295c |   2586 chars | https://arxiv.org/abs/2606.11767
+  ✓ 2604c34c6968 |   1744 chars | https://arxiv.org/abs/2606.11818
+  ✓ d8296a507cf2 |   2182 chars | https://arxiv.org/abs/2606.11826
+  ✓ 5443f7d6ebe4 |   2261 chars | https://arxiv.org/abs/2606.11891
+  ✓ df80c258297c |   2044 chars | https://arxiv.org/abs/2606.11901
+  ✓ 1bfdd28d88b2 |   1560 chars | https://arxiv.org/abs/2606.11952
+  ✓ 5269ece180fe |   2054 chars | https://arxiv.org/abs/2606.12019
+  ✓ 413bf0fe7964 |   2550 chars | https://arxiv.org/abs/2606.12042
+  ✓ f9c2a3767658 |   1923 chars | https://arxiv.org/abs/2606.12028
+  ✓ a394286f6709 |   2298 chars | https://arxiv.org/abs/2606.12027
+  ✓ 42650eb0660e |   2287 chars | https://arxiv.org/abs/2606.12048
+  ✓ f0a742036e16 |   2389 chars | https://arxiv.org/abs/2606.12070
+  ✓ 95d0c7b0c85e |   2345 chars | https://arxiv.org/abs/2606.11197
+  ✓ 700d6c0c2ed7 |   1876 chars | https://arxiv.org/abs/2606.11429
+  ✓ 98586696dbdf |   1578 chars | https://arxiv.org/abs/2606.11279
+  ✓ 96ca44de3dd4 |   2600 chars | https://arxiv.org/abs/2606.11631
+  ✓ aedfe288c75f |   1888 chars | https://arxiv.org/abs/2606.11581
+  ✓ 3ce363ccd04b |   1839 chars | https://arxiv.org/abs/2606.11766
+  ✓ b542d806d059 |   1851 chars | https://arxiv.org/abs/2606.11795
+  ✓ eeeadd8a5e93 |   1849 chars | https://arxiv.org/abs/2606.12199
+  ✓ a5d29821634e |   2000 chars | https://arxiv.org/abs/2606.11400
+  ✓ 9f780fc94b72 |   1848 chars | https://arxiv.org/abs/2606.12328
+  ✓ d64f928f041d |   1715 chars | https://arxiv.org/abs/2606.11836
+  ✓ 64017d7c5e2e |   2262 chars | https://arxiv.org/abs/2510.23320
+  ✓ febe9ac69df2 |   1843 chars | https://arxiv.org/abs/2603.11678
+  ✓ bafb563e5e1d |   1828 chars | https://arxiv.org/abs/2606.02220
+  ✓ 2173afb883fa |   1886 chars | https://arxiv.org/abs/2606.06940
+  ✓ 1abcf435bfbd |   1777 chars | https://arxiv.org/abs/2509.15680
+  ✓ f40117f514b1 |   1880 chars | https://arxiv.org/abs/2606.06065
+  ✓ 20ef544189ce |   1889 chars | https://arxiv.org/abs/2606.05394
+  ✓ 911a51fbafe6 |   1702 chars | https://arxiv.org/abs/2602.00560
+  ✓ d461f5dc0d2f |   1106 chars | https://techcrunch.com/2026/06/10/anthropics-dario-amodei-has-just-one
+  ✓ 92fa8ced5969 |   4974 chars | https://www.wired.com/story/anthropic-responds-to-backlash-on-claudes-
+  ✓ 9e164e9f451c |   3165 chars | https://sethmlarson.dev/are-insecure-code-completions-a-vulnerability
+  ✓ e85b4d7d94d6 |    986 chars | https://www.techmeme.com/260610/p71#a260610p71
+  ✗ ebd8c99b3573 | TypeError: object of type 'NoneType' has no len()
+  ✗ f5fdb80fa91a | HTTP 403
+  ✗ bfbf641beda5 | HTTP 403
+  ✗ ed424537b7c4 | HTTP 403
+  ✗ 94f5302d08b7 | HTTP 429
+  ✗ b4837f5c5415 | HTTP 429
+  ✓ 093a77bc6a4e |    974 chars | https://www.techmeme.com/260610/p70#a260610p70
+  ✓ 450ead07f2a7 |    974 chars | https://www.techmeme.com/260610/p68#a260610p68
+  ✗ 828be2b1e9ca | TypeError: object of type 'NoneType' has no len()
+  ✗ 73c80418f56e | TypeError: object of type 'NoneType' has no len()
+  ✓ 6ebc6b607a61 |    986 chars | https://www.techmeme.com/260610/p69#a260610p69
+  ✗ c6fecd915567 | HTTP 403
+  ✗ c41a1120a0bf | TypeError: object of type 'NoneType' has no len()
+  ✗ fb4992f6b9a8 | HTTP 429
+  ✗ 86b97dc0f300 | HTTP 403
+  ✗ b5dbfc5b53a2 | TypeError: object of type 'NoneType' has no len()
+  ∅ a889548638f1 | extracted only 93 chars
+  ∅ 17ed0b9464ba | extracted only 63 chars
+  ✗ 4f5ef584ded3 | HTTP 429
+  ✗ 76303ce3234b | TypeError: object of type 'NoneType' has no len()
+  ✗ 080d9ca25141 | TypeError: object of type 'NoneType' has no len()
+  ✗ 4a54946aed78 | HTTP 403
+  ✗ 76201c4160f3 | TypeError: object of type 'NoneType' has no len()
+  ✗ 3f4e8d7a4d52 | TypeError: object of type 'NoneType' has no len()
+  ∅ cda1b1e53c7c | extracted only 63 chars
+  ✗ 563dd4bbd0d3 | TypeError: object of type 'NoneType' has no len()
+  ∅ 5d05a3eb8588 | extracted only 63 chars
+  ∅ ede444ffab7f | extracted only 63 chars
+  ✗ 9446da5d7094 | TypeError: object of type 'NoneType' has no len()
+  ∅ 2697e516e3c7 | extracted only 50 chars
+  ∅ 62a23b28bcbe | extracted only 63 chars
+  ∅ 402379514b0b | extracted only 65 chars
+  ✗ 2c872de7fac2 | HTTP 403
+  ✗ 5a40aea23372 | HTTP 403
+  ∅ be737879ec62 | extracted only 148 chars
+  ✗ 7983f228c6db | HTTP 403
+  ✗ d2a39068329c | HTTP 403
+  ∅ e77de0c1cf95 | extracted only 30 chars
+  ✗ c1645031ca22 | HTTP 403
+  ∅ bbb706beb4d7 | extracted only 43 chars
+  ∅ e63a22222453 | extracted only 63 chars
+  ✗ f27d43c57275 | HTTP 403
+  ✗ 24f89a27304b | HTTP 403
+  ∅ e82be2d9d9e1 | extracted only 158 chars
+  ✗ 8df875b39bd5 | HTTP 403
+  ∅ 7e69da22bbca | extracted only 59 chars
+  ∅ f830fa14ea9a | extracted only 34 chars
+  ✗ 21498142103f | HTTP 403
+  ∅ 689a8834433b | extracted only 41 chars
+  ✗ c735772b20a7 | TypeError: object of type 'NoneType' has no len()
+  ✗ e527af61aff2 | HTTP 403
+  ✗ 016bc729fe32 | TypeError: object of type 'NoneType' has no len()
+  ✗ 1a9cfcfcf3bb | HTTP 429
+  ✗ 3a4dd3f53ba9 | HTTP 429
+  ✗ 77bb088c8b8c | TypeError: object of type 'NoneType' has no len()
+  ✗ bc64d813bea6 | HTTP 403
+  ✗ c7e9ec2f9cfc | HTTP 403
+  ✗ ffa842dcf3bd | HTTP 403
+  ✗ eaf499b9a946 | TypeError: object of type 'NoneType' has no len()
+  ✗ 9ae1f34dd05b | HTTP 403
+  ✗ dab7a18c14a0 | HTTP 429
+  ∅ 71358576e302 | extracted only 63 chars
+  ✗ 9633954f61a5 | HTTP 429
+  ✗ 52f9dee7d65f | HTTP 403
+  ✗ db217a525e31 | HTTP 401
+  ✗ ed0715ff067e | HTTP 403
+  ✗ df4515d5ec7d | TypeError: object of type 'NoneType' has no len()
+  ✗ 2452465d7eb7 | TypeError: object of type 'NoneType' has no len()
+  ✓ f756bbd4af41 |  18836 chars | https://performance.dev/the-conductor-rewrite
+  ∅ d70ab91669c5 | extracted only 63 chars
+  ✗ d575c29211b0 | TypeError: object of type 'NoneType' has no len()
+  ∅ 6f086e68082e | extracted only 70 chars
+  ✗ e188441c2a1b | HTTP 429
+  ✗ 88b053027acf | TypeError: object of type 'NoneType' has no len()
+  ✗ 1e0ef6ffe88a | HTTP 403
+  ∅ f00cacf986d5 | extracted only 63 chars
+  ✗ 1b040cfa3010 | HTTP 403
+  ∅ c33f7ab21e4e | extracted only 32 chars
+  ∅ 01bdde42cb8a | extracted only 118 chars
+  ✗ 3b94d27f3167 | HTTP 403
+  ✗ cdc77122c42d | TypeError: object of type 'NoneType' has no len()
+  ✗ 44dabad91e90 | TypeError: object of type 'NoneType' has no len()
+  ∅ db2c55ed4177 | extracted only 63 chars
+  ∅ 01d1d5ad22fa | extracted only 175 chars
+  ✗ de0a2342d5aa | HTTP 403
+  ✗ 164e6b41b04f | TypeError: object of type 'NoneType' has no len()
+  ✗ 111249c4a0a1 | HTTP 403
+  ✗ 13c1b67fae58 | HTTP 403
+  ∅ d391b77fd50a | extracted only 189 chars
+  ∅ 2fbdf1eb1f69 | extracted only 63 chars
+  ✗ fbb449340331 | HTTP 403
+  ∅ 07d5368371b5 | extracted only 159 chars
+  ✗ e3d6eea6b1f6 | TypeError: object of type 'NoneType' has no len()
+  ✗ 10facf05fa4a | HTTP 403
+  ✗ af66e09c143d | HTTP 403
+  ∅ b26ab52ac66a | extracted only 81 chars
+  ✗ fa9af36cb131 | HTTP 403
+  ∅ 98a08af5f927 | extracted only 63 chars
+  ✗ 504e31b94d5d | TypeError: object of type 'NoneType' has no len()
+  ∅ 022a25e4c914 | extracted only 63 chars
+  ∅ 980d5243bfa6 | extracted only 43 chars
+  ✗ 1506aff82566 | HTTP 403
+  ∅ f4557f0e4129 | extracted only 135 chars
+  ∅ 00f3495eb305 | extracted only 40 chars
+  ∅ 1611a86de2bd | extracted only 63 chars
+  ∅ 9de1acc7f074 | extracted only 163 chars
+  ✗ 5438335ffb3f | HTTP 403
+  ∅ 67f63f0cf248 | extracted only 63 chars
+  ∅ f052e69a2c85 | extracted only 63 chars
+  ✗ 9d1e8253f802 | TypeError: object of type 'NoneType' has no len()
+  ✗ 65edefcb4544 | HTTP 403
+  ✗ 942c2dce9a4f | TypeError: object of type 'NoneType' has no len()
+  ✗ fb355d349393 | HTTP 429
+  ✗ 303c8a580452 | HTTP 429
+  ✗ 45c904623418 | HTTP 429
+  ✗ 4c725aba5849 | TypeError: object of type 'NoneType' has no len()
+  ✗ 9358a6d9e28c | TypeError: object of type 'NoneType' has no len()
+  ∅ 698a4858aa05 | extracted only 37 chars
+  ∅ 526308ee5eb8 | extracted only 63 chars
+  ✓ 8f5f84cc795f | 580493 chars | https://www.rifters.com/real/STARFISH.htm#prelude
+  ∅ 2c68c8931f06 | extracted only 114 chars
+  ✗ 1de78fdb5609 | HTTP 403
+  ✓ 93dfae259213 |  16136 chars | https://bytecodealliance.org/articles/the-road-to-component-model-1-0
+  ∅ 33d5b3df063c | extracted only 96 chars
+  ∅ 754ab53253ac | extracted only 63 chars
+  ✗ 60ee186ed27e | HTTP 403
+  ✗ 96bd04fb4168 | HTTP 429
+  ✗ 5f27e3f6e381 | HTTP 403
+  ✗ e5f73b71d1d7 | HTTP 403
+  ✗ fea054d073ef | HTTP 403
+  ✗ 50f1d6a03255 | TypeError: object of type 'NoneType' has no len()
+  ✗ 8c5165e41bff | HTTP 403
+  ✗ d7fc1fd0b63a | TypeError: object of type 'NoneType' has no len()
+  ✗ fc29f46972f4 | TypeError: object of type 'NoneType' has no len()
+  ✗ c39ad57d6bd7 | HTTP 403
+
+========================================
+🤖 AI-Digest daily run: 2026-06-11 08:09:55 UTC
+   hours=48, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 101 источников (с 2026-06-09T08:09:55.882575+00:00)...
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ The Information                          → 20 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ ПостНаука (RU)                           → 15 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ arXiv stat.ML                            → 30 posts
+  ✓ Wired                                    → 30 posts
+  ✓ arXiv cs.CV (Vision)                     → 30 posts
+  ✓ arXiv cs.CL (NLP)                        → 30 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ arXiv cs.LG                              → 30 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ arXiv cs.AI                              → 30 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ Spark.ru                                 → 30 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ The Information                          → 20 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ Becoming Human: AI Magazine              → 10 posts
+  ✓ The Decoder                              → 10 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ TechCrunch Startups                      → 20 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ CNET                                     → 25 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ arXiv q-bio.NC                           → 8 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 12 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 4 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ arXiv eess.IV (Image Video)              → 10 posts
+  ✓ arXiv cs.RO (Robotics)                   → 30 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 22 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ VC.ru                                    → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ VC.ru                                    → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Safety News                           → fallback timeout: Missing dependencies for SOCKS support.
+
+✅ Готово за 61.6s
+   Источников OK: 96/101
+   Постов собрано (с дедупликацией): 1232
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-11.json
+
+📥 Архив: добавлено 3, обновлено 1229, пропущено 0. Всего в архиве: 3135
+/home/apps_maker/ai-digest/storage/posts_2026-06-11.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-11.json
+
+🌐 Step 1.5: scrape.py --missing (только high-priority)
+📚 В архиве: 3135 постов
+🎯 К скрапингу: 279
+  ✗ 21c10abe484e | HTTP 403
+  ✗ 772a4899481f | HTTP 403
+  ✗ dddca4da835f | HTTP 403
+  ✗ 1eb04e1b753d | HTTP 403
+  ✗ f5fdb80fa91a | HTTP 403
+  ✗ bfbf641beda5 | HTTP 403
+  ✓ e3e0f8734124 |  12524 chars | https://habr.com/ru/companies/selectel/articles/1044854/?utm_source=ha
+  ✗ ed424537b7c4 | HTTP 403
+  ✗ 94f5302d08b7 | HTTP 429
+  ∅ 90ff33a85065 | extracted only 29 chars
+  ∅ dc509934b4dd | extracted only 63 chars
+  ✗ b4837f5c5415 | HTTP 429
+  ✗ ebd8c99b3573 | TypeError: object of type 'NoneType' has no len()
+  ✗ 73c80418f56e | TypeError: object of type 'NoneType' has no len()
+  ✗ c6fecd915567 | HTTP 403
+  ✗ c41a1120a0bf | TypeError: object of type 'NoneType' has no len()
+  ✗ 828be2b1e9ca | TypeError: object of type 'NoneType' has no len()
+  ✗ fb4992f6b9a8 | HTTP 429
+  ✗ b5dbfc5b53a2 | TypeError: object of type 'NoneType' has no len()
+  ✗ 86b97dc0f300 | HTTP 403
+  ∅ a889548638f1 | extracted only 93 chars
+  ✗ 4f5ef584ded3 | HTTP 429
+  ∅ e63a22222453 | extracted only 63 chars
+  ✗ 76201c4160f3 | TypeError: object of type 'NoneType' has no len()
+  ✗ 76303ce3234b | TypeError: object of type 'NoneType' has no len()
+  ✗ 080d9ca25141 | TypeError: object of type 'NoneType' has no len()
+  ✗ 4a54946aed78 | HTTP 403
+  ∅ db2c55ed4177 | extracted only 63 chars
+  ✗ 3f4e8d7a4d52 | TypeError: object of type 'NoneType' has no len()
+  ✗ 563dd4bbd0d3 | TypeError: object of type 'NoneType' has no len()
+  ∅ 62a23b28bcbe | extracted only 63 chars
+  ∅ 2fbdf1eb1f69 | extracted only 63 chars
+  ∅ ede444ffab7f | extracted only 63 chars
+  ∅ 17ed0b9464ba | extracted only 63 chars
+  ✗ 9446da5d7094 | TypeError: object of type 'NoneType' has no len()
+  ∅ 2697e516e3c7 | extracted only 50 chars
+  ✗ 2c872de7fac2 | HTTP 403
+  ✗ 5a40aea23372 | HTTP 403
+  ∅ 402379514b0b | extracted only 65 chars
+  ✗ 7983f228c6db | HTTP 403
+  ∅ be737879ec62 | extracted only 148 chars
+  ✗ d2a39068329c | HTTP 403
+  ✗ c1645031ca22 | HTTP 403
+  ∅ 5d05a3eb8588 | extracted only 63 chars
+  ∅ e77de0c1cf95 | extracted only 30 chars
+  ∅ bbb706beb4d7 | extracted only 43 chars
+  ✗ f27d43c57275 | HTTP 403
+  ✗ 24f89a27304b | HTTP 403
+  ✗ 8df875b39bd5 | HTTP 403
+  ✗ 21498142103f | HTTP 403
+  ∅ f830fa14ea9a | extracted only 34 chars
+  ∅ 7e69da22bbca | extracted only 59 chars
+  ∅ e82be2d9d9e1 | extracted only 158 chars
+  ∅ cda1b1e53c7c | extracted only 63 chars
+  ✗ e527af61aff2 | HTTP 403
+  ∅ 689a8834433b | extracted only 41 chars
+  ✗ 1a9cfcfcf3bb | HTTP 429
+  ✗ c735772b20a7 | TypeError: object of type 'NoneType' has no len()
+  ✗ 3a4dd3f53ba9 | HTTP 429
+  ✗ bc64d813bea6 | HTTP 403
+  ✗ 016bc729fe32 | TypeError: object of type 'NoneType' has no len()
+  ✗ c7e9ec2f9cfc | HTTP 403
+  ✗ ffa842dcf3bd | HTTP 403
+  ✗ eaf499b9a946 | TypeError: object of type 'NoneType' has no len()
+  ✗ 77bb088c8b8c | TypeError: object of type 'NoneType' has no len()
+  ✗ dab7a18c14a0 | HTTP 429
+  ✗ 9ae1f34dd05b | HTTP 403
+  ✗ 9633954f61a5 | HTTP 429
+  ∅ 71358576e302 | extracted only 63 chars
+  ✗ 52f9dee7d65f | HTTP 403
+  ✗ db217a525e31 | HTTP 401
+  ✗ ed0715ff067e | HTTP 403
+  ✗ df4515d5ec7d | TypeError: object of type 'NoneType' has no len()
+  ✗ d575c29211b0 | TypeError: object of type 'NoneType' has no len()
+  ✗ 2452465d7eb7 | TypeError: object of type 'NoneType' has no len()
+  ∅ 98a08af5f927 | extracted only 63 chars
+  ✗ 88b053027acf | TypeError: object of type 'NoneType' has no len()
+  ✗ e188441c2a1b | HTTP 429
+  ✗ 1e0ef6ffe88a | HTTP 403
+  ∅ 6f086e68082e | extracted only 70 chars
+  ✗ 1b040cfa3010 | HTTP 403
+  ∅ f00cacf986d5 | extracted only 63 chars
+  ∅ c33f7ab21e4e | extracted only 32 chars
+  ✗ 3b94d27f3167 | HTTP 403
+  ✗ cdc77122c42d | TypeError: object of type 'NoneType' has no len()
+  ∅ 01bdde42cb8a | extracted only 118 chars
+  ✗ 44dabad91e90 | TypeError: object of type 'NoneType' has no len()
+  ✗ de0a2342d5aa | HTTP 403
+  ∅ d70ab91669c5 | extracted only 63 chars
+  ∅ 01d1d5ad22fa | extracted only 175 chars
+  ✗ 164e6b41b04f | TypeError: object of type 'NoneType' has no len()
+  ✗ 111249c4a0a1 | HTTP 403
+  ✗ 13c1b67fae58 | HTTP 403
+  ✗ fbb449340331 | HTTP 403
+  ∅ d391b77fd50a | extracted only 189 chars
+  ✓ 0b3f8fff3520 |  23071 chars | https://farnoy.dev/posts/linux-latency
+  ∅ 07d5368371b5 | extracted only 159 chars
+  ✗ 10facf05fa4a | HTTP 403
+  ✗ af66e09c143d | HTTP 403
+  ✗ e3d6eea6b1f6 | TypeError: object of type 'NoneType' has no len()
+  ✗ fa9af36cb131 | HTTP 403
+  ∅ 1611a86de2bd | extracted only 63 chars
+  ∅ b26ab52ac66a | extracted only 81 chars
+  ∅ f052e69a2c85 | extracted only 63 chars
+  ✗ 504e31b94d5d | TypeError: object of type 'NoneType' has no len()
+  ∅ 67f63f0cf248 | extracted only 63 chars
+  ✗ 1506aff82566 | HTTP 403
+  ∅ 754ab53253ac | extracted only 63 chars
+  ∅ 980d5243bfa6 | extracted only 43 chars
+  ∅ 022a25e4c914 | extracted only 63 chars
+  ✗ 5438335ffb3f | HTTP 403
+  ∅ f4557f0e4129 | extracted only 135 chars
+  ∅ 00f3495eb305 | extracted only 40 chars
+  ✗ 65edefcb4544 | HTTP 403
+  ∅ 9de1acc7f074 | extracted only 163 chars
+  ✗ fb355d349393 | HTTP 429
+  ✗ 942c2dce9a4f | TypeError: object of type 'NoneType' has no len()
+  ✗ 9d1e8253f802 | TypeError: object of type 'NoneType' has no len()
+  ✗ 45c904623418 | HTTP 429
+  ✗ 303c8a580452 | TypeError: object of type 'NoneType' has no len()
+  ✗ 4c725aba5849 | HTTP 429
+  ✗ 9358a6d9e28c | TypeError: object of type 'NoneType' has no len()
+  ∅ 698a4858aa05 | extracted only 37 chars
+  ✗ 1de78fdb5609 | HTTP 403
+  ✓ 93dfae259213 |  16136 chars | https://bytecodealliance.org/articles/the-road-to-component-model-1-0
+  ∅ 2c68c8931f06 | extracted only 114 chars
+  ∅ 526308ee5eb8 | extracted only 63 chars
+  ∅ a63d47c3659a | extracted only 63 chars
+  ∅ 33d5b3df063c | extracted only 96 chars
+  ✗ 60ee186ed27e | HTTP 403
+  ✗ 5f27e3f6e381 | HTTP 403
+  ✗ 96bd04fb4168 | HTTP 429
+  ✗ e5f73b71d1d7 | HTTP 403
+  ✗ fea054d073ef | HTTP 403
+  ✗ 8c5165e41bff | HTTP 403
+  ✗ d7fc1fd0b63a | TypeError: object of type 'NoneType' has no len()
+  ✗ 50f1d6a03255 | HTTP 429
+  ✗ c39ad57d6bd7 | HTTP 403
+  ✗ fc29f46972f4 | HTTP 429
+  ✗ 5d2b78cc5505 | HTTP 403
+  ∅ 5cdddecceb2d | extracted only 63 chars
+  ∅ d0b0632e41e6 | extracted only 63 chars
+  ✗ fd8a1011ce17 | HTTP 429
+  ✗ 4a38fc96f335 | HTTP 429
+  ✗ 22640148bbb8 | HTTP 429
+  ∅ 2a0772d26773 | extracted only 63 chars
+  ∅ 6af0cf9d459f | extracted only 43 chars
+  ✗ 536604e9e1ff | HTTP 403
+  ✗ ce11913b6867 | HTTP 429
+  ∅ 394013ae03e1 | extracted only 186 chars
+  ✗ f4ee2a7a3a8a | HTTP 403
+  ✗ b5b0b8f48092 | TypeError: object of type 'NoneType' has no len()
+  ✗ ff5a4a44cecd | HTTP 429
+  ✗ 0901313655c3 | HTTP 429
+  ✗ 3c9d08d90b63 | HTTP 429
+  ✗ fa8938d21530 | HTTP 429
+  ✗ 127067f71f2f | HTTP 429
+  ✗ aec9ee43a4e0 | HTTP 429
+  ✓ 483f24cdf424 |   9884 chars | https://blog.nns.ee/2026/02/20/katana-v2x-re/
+  ✗ b684b4162c5b | HTTP 403
+  ✗ 97a7da2be7ee | HTTP 429
+  ✗ 6cda6a773635 | HTTP 429
+  ✗ 844cea98b634 | HTTP 429
+  ✗ 1e588e61972d | HTTP 429
+  ✗ 5e410d7d5998 | HTTP 429
+  ✗ 459e411b31d6 | HTTP 429
+  ✗ c2a5de2dea82 | HTTP 429
+  ✗ a8c9be6b3557 | HTTP 404
+  ✗ ae995b9c3e75 | HTTP 403
+  ✗ 785dbaa6ae56 | HTTP 403
+  ✗ d2e2b63f84b9 | TypeError: object of type 'NoneType' has no len()
+  ✗ 5be6c3392056 | HTTP 403
+  ∅ 5123a7ffc6d3 | extracted only 48 chars
+  ∅ 969e8f000a09 | extracted only 108 chars
+  ✗ 1a654943dc71 | HTTP 403
+  ✗ 0af0c5c72218 | HTTP 403
+  ✗ b918a5525a80 | HTTP 403
+  ✗ 985e9a4f3bc7 | HTTP 403
+  ∅ 97b4f792a746 | extracted only 116 chars
+  ∅ 143db56507ef | extracted only 181 chars
+  ∅ cda8325eed1e | extracted only 54 chars
+  ∅ 7a50c6644e2a | extracted only 131 chars
+  ∅ 77d7d49e6045 | extracted only 82 chars
+  ✗ 4740ac952fc0 | HTTP 403
+  ✗ eac79a5c60c8 | TypeError: object of type 'NoneType' has no len()
+  ✗ 96478f6d7290 | HTTP 429
+  ∅ 7bdc5d9ebdb8 | extracted only 63 chars
+  ✗ d6e1c1967533 | HTTP 429
+  ✗ 0efb1d95f4e9 | HTTP 429
+  ✗ 270397becd06 | HTTP 429
+  ✗ 75a21cff80bc | HTTP 429
+  ✗ 38273f0329c3 | HTTP 429
+  ✗ bd33c9586894 | HTTP 429
+  ✗ 301a5c5b332a | HTTP 403
+  ∅ b708414e5e0b | extracted only 63 chars
+  ✗ 3ae259933be7 | HTTP 429
+  ✗ f69a41d0dc92 | HTTP 429
+  ✗ 3e18cf905585 | HTTP 429
+  ✗ 17c526822161 | HTTP 403
+  ∅ 74d8dba0d29b | extracted only 160 chars
+  ✗ f74ade91ac54 | HTTP 429
+  ✗ dbbceee803d6 | TypeError: object of type 'NoneType' has no len()
+  ✗ e836b40cf4fb | HTTP 429
+  ✗ 237ed067d5e3 | HTTP 429
+  ✗ fd6598b3f132 | HTTP 429
+  ✗ 85152a6df9c7 | HTTP 429
+  ✗ 19fbdcc90cad | HTTP 429
+  ✗ 66a0a8d2765c | TypeError: object of type 'NoneType' has no len()
+  ✗ 402b4fbdd5e6 | HTTP 429
+  ✗ 07ea7bde8118 | HTTP 403
+  ✗ ebef91fec56b | HTTP 429
+  ✗ f275023484a8 | HTTP 429
+  ✗ 5eef0aa74879 | HTTP 429
+  ✗ 1377694f18fe | HTTP 429
+  ∅ f311c75ca60b | extracted only 107 chars
+  ∅ 682693a20f63 | extracted only 28 chars
+  ✗ 8faac1f45750 | HTTP 429
+  ∅ e3757bb16d1f | extracted only 61 chars
+  ✗ 41e4dcda2336 | HTTP 429
+  ✗ cdf77ea8aff3 | HTTP 429
+  ∅ 010d8d81002d | extracted only 51 chars
+  ∅ bc5bbaafced6 | extracted only 43 chars
+  ✗ fa84d034356c | HTTP 403
+  ∅ 15f47e9b558b | extracted only 26 chars
+  ✗ cf4ec4222171 | HTTP 429
+  ✗ 9b923bad35af | HTTP 403
+  ✗ ffa5f8be5836 | HTTP 403
+  ✗ aaeba9d9642e | HTTP 403
+  ∅ 63e7b658aefc | extracted only 63 chars
+  ∅ 0c3e10fe64e4 | extracted only 43 chars
+  ✗ 7ac1244a9454 | HTTP 429
+  ✗ 062afd5ad1f9 | HTTP 429
+  ∅ ce2c2e78a8f9 | extracted only 63 chars
+  ✗ e4841d06b7f2 | HTTP 403
+  ✗ 890b25eddf68 | HTTP 403
+  ∅ c5bb26e67939 | extracted only 71 chars
+  ✗ 0417997d923f | HTTP 403
+  ✗ be876b176720 | HTTP 403
+  ✗ ce0322c55738 | HTTP 403
+  ✗ 2f358dc4a504 | HTTP 403
+  ✗ fdf6c4e98bb2 | HTTP 403
+  ✗ 907279281489 | TypeError: object of type 'NoneType' has no len()
+  ✗ 6b1fa8ae684f | HTTP 403
+  ✗ 78758b8ec5bc | HTTP 403
+  ✗ 702fb607570e | HTTP 403
+  ✗ efdf5cf9f641 | TypeError: object of type 'NoneType' has no len()
+  ✗ b5479ebcde18 | HTTP 403
+  ✗ ab13f533d5f5 | TypeError: object of type 'NoneType' has no len()
+  ∅ 1124c6b8de11 | extracted only 63 chars
+  ✗ 919d46e19bc3 | HTTP 403
+  ✗ 5899b169bc6e | HTTP 403
+  ✗ 1c77cec1ddad | HTTP 403
+  ✗ 86df175a446d | HTTP 403
+  ✗ f2261073b77c | HTTP 403
+  ✗ 0316568c46ec | TypeError: object of type 'NoneType' has no len()
+  ✗ 74f5123204ea | TypeError: object of type 'NoneType' has no len()
+  ✗ e7785d8c77e3 | HTTP 429
+  ✗ 740545d72e85 | HTTP 403
+  ✗ e70e88d9a498 | TypeError: object of type 'NoneType' has no len()
+  ✗ e670024b9a32 | HTTP 429
+  ✗ b454f8817363 | TypeError: object of type 'NoneType' has no len()
+  ✗ 1bd5d5f60cc3 | HTTP 429
+  ∅ aa254796804e | extracted only 101 chars
+  ✗ ca731494b194 | HTTP 429
+  ∅ e6e12a7181a1 | extracted only 83 chars
+  ✗ db7ff708ed2f | HTTP 429
+  ✗ a102a18a5efc | HTTP 429
+  ✗ b37d93646457 | HTTP 429
+  ✗ 809a45a56fbf | HTTP 503
+  ✗ 6d653b00387c | HTTP 503
+  ✗ 948a351ef591 | HTTP 503
+  ✗ 920341bd8742 | HTTP 503
+  ✗ 834df0857ecb | HTTP 503
+  ✗ 4ea7906564a9 | HTTP 503
+  ✗ 382e39f87631 | HTTP 503
+  ✗ 7779c471760a | HTTP 503
+  ✗ e8a2c25d1618 | HTTP 503
+  ✗ 4157a20247b1 | HTTP 503
+  ⏱ 5eccb25dccad | timeout
+
+✅ Готово за 45.8s
+   ✓ OK: 4
+   ∅ too_short: 73
+   ⏱ timeout: 1
+   ✗ error: 201
+   📁 Файлы: /home/apps_maker/ai-digest/archive/full_text
+   📝 Пометка has_full_text проставлена в архиве
+
+📰 Step 2: digest.py --input /home/apps_maker/ai-digest/storage/posts_2026-06-11.json --full
+📄 Прочитано 1232 постов из /home/apps_maker/ai-digest/storage/posts_2026-06-11.json
+💬 Telegram-версия: /home/apps_maker/ai-digest/output/digest_2026-06-11_telegram.md (3724 chars)
+📄 Полная MD: /home/apps_maker/ai-digest/output/digest_2026-06-11.md (251854 chars)
+🌐 HTML: /home/apps_maker/ai-digest/output/digest_2026-06-11.html (54KB)
+   → Telegram-версия: output/daily_telegram_2026-06-11.txt (4744 bytes)
+
+📊 Step 3: archive.py --stats (кратко)
+📊 Всего постов: 3135
+📡 Уникальных источников: 87
+📅 Период: 2018-07-13 → 2026-06-11
+🌐 Языки: {'ru': 642, 'en': 2493}
+
+📂 По категориям:
+   ai_research         : 1502
+   startups_vc         :  969
+   ru_corp_it          :  309
+   ru_startups         :  282
+
+✅ Готово. Время: 08:11:48 UTC

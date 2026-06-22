@@ -1,0 +1,1173 @@
+
+========================================
+🤖 AI-Digest daily run: 2026-06-15 03:00:36 UTC
+   hours=48, mode=full
+========================================
+
+📡 Step 1: fetch.py --hours 48 --archive
+📡 Скачиваю 101 источников (с 2026-06-13T03:00:37.490374+00:00)...
+  ✓ MIT Technology Review                    → 10 posts
+  ✓ arXiv cs.AI                              → 0 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ DeepMind Blog                            → 20 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ arXiv cs.LG                              → 0 posts
+  ✓ BDTechTalks                              → 30 posts
+  ✓ MIT Technology Review (AI topic)         → 10 posts
+  ✓ Meta Newsroom                            → 10 posts
+  ✓ NVIDIA Blog                              → 18 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ Import AI (Jack Clark)                   → 20 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ The Information                          → 20 posts
+  ✓ TechMeme                                 → 15 posts
+  ✓ PE Hub                                   → 10 posts
+  ✓ Crunchbase News                          → 10 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ Rusbase (rb.ru)                          → 20 posts
+  ✓ Hacker News (frontpage)                  → 20 posts
+  ✓ OpenAI Blog                              → 30 posts
+  ✓ a16z (via Substack)                      → 20 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ ПостНаука (RU)                           → 16 posts
+  ✓ D-Russia                                 → 10 posts
+  ✓ Tproger                                  → 30 posts
+  ✓ Google AI Blog                           → 20 posts
+  ✓ MIT Tech Review AI                       → 10 posts
+  ✓ arXiv cs.AI                              → 0 posts
+  ✓ DeepMind Blog                            → 30 posts
+  ✓ arXiv cs.LG                              → 0 posts
+  ✓ Hugging Face Blog                        → 30 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ arXiv cs.CL (NLP)                        → 0 posts
+  ✓ arXiv cs.CV (Vision)                     → 0 posts
+  ✓ arXiv stat.ML                            → 0 posts
+  ✓ NVIDIA AI Blog                           → 18 posts
+  ✓ Microsoft Research Blog                  → 10 posts
+  ✓ BAIR Blog (Berkeley)                     → 10 posts
+  ✓ Last Week in AI                          → 20 posts
+  ✓ Wired                                    → 30 posts
+  ✓ The Verge (AI)                           → 10 posts
+  ✓ Techmeme                                 → 15 posts
+  ✓ Stratechery                              → 10 posts
+  ✓ Simon Willison (via Substack)            → 20 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ The Next Web                             → 10 posts
+  ✓ N+1 (наука)                              → 10 posts
+  ✓ KDNuggets                                → 10 posts
+  ✓ Sequoia Capital                          → 10 posts
+  ✓ Towards Data Science                     → 20 posts
+  ✓ Habr (news)                              → 30 posts
+  ✓ Spark.ru                                 → 30 posts
+  ✓ VC.ru                                    → 12 posts
+  ✓ AI Weirdness                             → 15 posts
+  ✓ Roem.ru                                  → 30 posts
+  ✓ AWS Machine Learning Blog                → 20 posts
+  ✓ Analytics Vidhya                         → 10 posts
+  ✓ The Information                          → 20 posts
+  ✓ Semiconductor Engineering                → 10 posts
+  ✓ Semantic Kernel Blog                     → 10 posts
+  ✓ The Decoder                              → 10 posts
+  ✓ Хабр Статьи                              → 30 posts
+  ✓ Cohere Blog                              → 0 posts
+  ✓ Import AI Newsletter                     → 20 posts
+  ✓ AI Weekly                                → 20 posts
+  ✓ Becoming Human: AI Magazine              → 10 posts
+  ✓ TechCrunch AI                            → 20 posts
+  ✓ The Verge (Technology)                   → 0 posts
+  ✓ Finxter AI Blog                          → 0 posts
+  ✓ TechCrunch Startups                      → 18 posts
+  ✓ VentureBeat AI                           → 7 posts
+  ✓ DataRobot Blog                           → 10 posts
+  ✓ TechCrunch                               → 20 posts
+  ✓ Engadget                                 → 20 posts
+  ✓ Ars Technica                             → 20 posts
+  ✓ CNET                                     → 25 posts
+  ✓ arXiv q-bio.NC                           → 0 posts
+  ✓ arXiv cs.RO (Robotics)                   → 0 posts
+  ✓ VentureBeat                              → 7 posts
+  ✓ arXiv cs.NE (Neural Evo)                 → 0 posts
+  ✓ arXiv eess.IV (Image Video)              → 0 posts
+  ✓ arXiv cs.MM (Multimodal)                 → 0 posts
+  ✓ arXiv eess.AS (Audio Speech)             → 0 posts
+  ✓ Hacker News                              → 30 posts
+  ✓ Apple ML Research                        → 10 posts
+  ✓ AI Finder                                → 0 posts
+  ✓ Augmented Coding Weekly                  → 30 posts
+  ✓ Spotify Engineering                      → 5 posts
+  ✓ AI Business Daily                        → 0 posts
+  ✓ AI Defense News                          → 0 posts
+  ✓ Microsoft Research                       → 10 posts
+  ✓ Vercel AI Blog                           → 30 posts
+  ✗ Open AI Today                            → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Finance News                          → fallback timeout: Missing dependencies for SOCKS support.
+  ✗ AI Safety News                           → fallback timeout: Missing dependencies for SOCKS support.
+
+✅ Готово за 56.2s
+   Источников OK: 98/101
+   Постов собрано (с дедупликацией): 1018
+   Файл: /home/apps_maker/ai-digest/storage/posts_2026-06-15.json
+
+📥 Архив: добавлено 163, обновлено 855, пропущено 0. Всего в архиве: 4290
+/home/apps_maker/ai-digest/storage/posts_2026-06-15.json
+   → результат: /home/apps_maker/ai-digest/storage/posts_2026-06-15.json
+
+🌐 Step 1.5: scrape.py --missing (только high-priority)
+📚 В архиве: 4290 постов
+🎯 К скрапингу: 1209
+  ✓ 5229711b6939 |  22321 chars | https://habr.com/ru/articles/1047444/?utm_source=habrahabr&utm_medium=
+  ✓ c6b782f08930 |  36834 chars | https://habr.com/ru/articles/1047442/?utm_source=habrahabr&utm_medium=
+  ✓ 0ae23308e117 |   3620 chars | https://psychedelics.co.uk/news/a-mushroom-genus-that-gets-people-high
+  ✓ b68cfc2572e3 |    634 chars | https://www.techmeme.com/260614/p21#a260614p21
+  ✓ e8ae5fb3151d |   4690 chars | https://habr.com/ru/articles/1047440/?utm_source=habrahabr&utm_medium=
+  ✓ ae260895b378 |   4492 chars | https://habr.com/ru/articles/1047438/?utm_source=habrahabr&utm_medium=
+  ✓ 918163999e31 |    623 chars | https://www.techmeme.com/260614/p19#a260614p19
+  ✓ 131869f8d6a0 |  12046 chars | https://blog.apnic.net/2025/12/08/21-years-and-counting-of-eight-falla
+  ✓ cb26d3e6b6a3 |    634 chars | https://www.techmeme.com/260614/p20#a260614p20
+  ✓ 1c51ada7fb55 |    634 chars | https://www.techmeme.com/260614/p18#a260614p18
+  ✓ ea939e369102 |   5959 chars | https://andreklein.net/your-epub-is-fine-kobo-disagrees-blame-adobe/
+  ✓ 75ade6114b4c |    607 chars | https://www.techmeme.com/260614/p17#a260614p17
+  ✓ 54abe40acc79 |  10805 chars | https://habr.com/ru/articles/1047424/?utm_source=habrahabr&utm_medium=
+  ✓ d706ae5dbc60 |   1469 chars | https://www.engadget.com/2193925/nasa-x-59-reaches-speed-and-altitude-
+  ✓ f2a8053f7a60 |   1438 chars | https://techcrunch.com/2026/06/14/startup-ceo-charlie-javice-is-report
+  ✓ 3402610b59c9 |    607 chars | https://www.techmeme.com/260614/p16#a260614p16
+  ✓ 228cc30d6552 |   5258 chars | https://www.windowscentral.com/microsoft/windows-11/windows-11-users-a
+  ✓ 1bf537b5b0c8 |   8157 chars | https://habr.com/ru/articles/1047422/?utm_source=habrahabr&utm_medium=
+  ∅ 85b327d62a62 | extracted only 66 chars
+  ✓ 14988effe0b9 |   4416 chars | https://www.theregister.com/ai-and-ml/2026/06/14/ai-is-code-and-cant-b
+  ✓ 0f0b44cbb340 |   2030 chars | https://techcrunch.com/2026/06/14/uk-may-ban-social-media-for-children
+  ✓ a4da30b55dad |   2138 chars | https://habr.com/ru/news/1047414/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 431edcfacc8d |    639 chars | https://www.techmeme.com/260614/p15#a260614p15
+  ∅ d632652cb1a9 | extracted only 45 chars
+  ✓ 8806a2fa90f8 |   1994 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-hints-answers-
+  ✓ ac55132c6347 |    695 chars | https://www.techmeme.com/260614/p14#a260614p14
+  ✓ 606d14a17514 |   1972 chars | https://www.cnet.com/tech/gaming/todays-nyt-strands-hints-answers-and-
+  ✓ 639f39c1f416 |   1499 chars | https://www.engadget.com/2193909/a-rare-sticker-sealed-copy-of-super-m
+  ✓ 8643f50699d3 |   1270 chars | https://www.cnet.com/tech/gaming/todays-wordle-hints-answer-and-help-f
+  ✓ 211026162075 |   6036 chars | https://thenextweb.com/news/chinese-ai-models-gaming-safety-tests-eval
+  ✓ eae01f218c61 |   5744 chars | https://habr.com/ru/articles/1047402/?utm_source=habrahabr&utm_medium=
+  ✓ 5fcfcc468c61 |   4850 chars | https://thenextweb.com/news/hong-kong-european-family-offices-wealth-h
+  ✓ e28d1fb2d6dd |  28997 chars | https://habr.com/ru/articles/1046936/?utm_source=habrahabr&utm_medium=
+  ✓ df1451116b6d |   4707 chars | https://thenextweb.com/news/geely-capacity-cuts-restructuring-global-e
+  ✓ 3327db5e4c62 |    607 chars | https://www.techmeme.com/260614/p13#a260614p13
+  ✓ 70f430d85b92 |   2237 chars | https://habr.com/ru/news/1047396/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 569aa46bfd68 | 167973 chars | https://tumbleweed.nu/r/lm-3/uv/amber.html
+  ✓ ef5fbaedd2e0 |   4372 chars | https://thenextweb.com/news/carney-anthropic-fable-ai-model-risk-g7
+  ✓ 8c40a81e0c0c |   6651 chars | https://www.engadget.com/2193475/kindle-unlimited-cheaper-pay-less/
+  ✓ 358918814398 |   1494 chars | https://www.theverge.com/ai-artificial-intelligence/949644/china-white
+  ✓ 7bacd313c664 |   5522 chars | https://thenextweb.com/news/finq-ai-managed-etfs-outperform-sp500-2026
+  ✓ bf757301e7f6 |   4913 chars | https://thenextweb.com/news/de-beers-tracr-blockchain-diamonds-lab-gro
+  ✓ 802dd3c8a52a |  15072 chars | https://habr.com/ru/companies/timeweb/articles/1029660/?utm_source=hab
+  ✓ f94a1737a3ee |    607 chars | https://www.techmeme.com/260614/p12#a260614p12
+  ✓ 8b1e0b04f03d |    834 chars | https://habr.com/ru/news/1047386/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 3bd959313c89 |   1753 chars | https://www.engadget.com/2193891/apple-reportedly-has-three-more-ios-2
+  ✓ fb8b1359688a |   6575 chars | https://habr.com/ru/articles/1047384/?utm_source=habrahabr&utm_medium=
+  ✓ 2508812ebff9 |   6307 chars | https://thenextweb.com/news/india-sovereign-ai-anthropic-fable-suspens
+  ✓ 9c9b284b1d19 |   9942 chars | https://thenextweb.com/news/intercall-real-time-ai-professional-interp
+  ∅ cc779a956073 | extracted only 71 chars
+  ✓ 3967348d9846 |   2159 chars | https://habr.com/ru/articles/1047378/?utm_source=habrahabr&utm_medium=
+  ✓ 10c8ecc5bc0a |  17317 chars | https://habr.com/ru/articles/1047376/?utm_source=habrahabr&utm_medium=
+  ✓ e3c43adcd546 |   3602 chars | https://habr.com/ru/news/1047216/?utm_source=habrahabr&utm_medium=rss&
+  ✗ 9b41ef631f1c | HTTP 403
+  ✓ f794c19b9618 |  28474 chars | https://habr.com/ru/articles/1047374/?utm_source=habrahabr&utm_medium=
+  ✓ ba7f12545c7f |   7774 chars | https://techcrunch.com/2026/06/14/as-ai-companies-race-to-go-public-wh
+  ✓ 77645118947e |  11368 chars | https://github.com/tamnd/kage
+  ✓ 0312fecd073b |   9197 chars | https://towardsdatascience.com/4-lines-you-must-include-in-your-claude
+  ✓ 24b714a4e8bb |   1478 chars | https://www.engadget.com/2193871/anbernic-now-has-a-store-page-where-y
+  ✓ c2f9e1fe15c1 |   6041 chars | https://thenextweb.com/news/apple-siri-extensions-third-party-ai-missi
+  ✓ fddb6bc9998e |    655 chars | https://www.techmeme.com/260614/p11#a260614p11
+  ✓ 0de2480270f8 |  15136 chars | https://habr.com/ru/articles/1047364/?utm_source=habrahabr&utm_medium=
+  ✓ eab45ba1aad3 |   6980 chars | https://techcrunch.com/2026/06/14/techcrunch-mobility-spacex-rockets-p
+  ✓ d76d77327ba6 |   1068 chars | https://lore.kernel.org/lkml/CAHk-=wi4BF4bMhZNZ1tqs+FFV4OuZRe3ZqdWB+Lx
+  ✓ f3e3940ae2c5 |    607 chars | https://www.techmeme.com/260614/p10#a260614p10
+  ✓ 35b6e896a2fb |   4139 chars | https://thenextweb.com/news/iqm-quantum-nasdaq-listing-board-venneman
+  ✓ cd29d5c0094e |   1682 chars | https://arstechnica.com/science/2026/06/did-a-medieval-flying-monk-spo
+  ✓ 5d8922e208d5 |   7759 chars | https://tproger.ru/articles/doh-dot-doq-i-doh3-kakoj-protokol-wifrovan
+  ✓ 8784759b4e53 |   6184 chars | https://www.engadget.com/2192697/kindle-free-books-guide/
+  ✓ cf241c570d87 |    607 chars | https://www.techmeme.com/260614/p9#a260614p9
+  ✓ a2621a0b7560 |    911 chars | https://github.com/nex-agi/Nex-N2/issues/4
+  ✓ c9bec2a84092 |  21189 chars | https://habr.com/ru/companies/ru_mts/articles/1046626/?utm_source=habr
+  ✓ 235898201160 |    607 chars | https://www.techmeme.com/260614/p8#a260614p8
+  ✓ e5a6d6a0d84e |   2137 chars | https://habr.com/ru/articles/1047362/?utm_source=habrahabr&utm_medium=
+  ✓ 41928ed7f397 |   4492 chars | https://www.cnet.com/tech/gaming/bad-magpie-is-a-game-about-being-a-ch
+  ✓ 811f7d6b5c3a |    526 chars | https://news.ycombinator.com/item?id=48528029
+  ✓ ff15b1cd74f2 |   5048 chars | https://habr.com/ru/articles/1047356/?utm_source=habrahabr&utm_medium=
+  ✓ f569f54f2ffb |    661 chars | https://www.techmeme.com/260614/p7#a260614p7
+  ✓ 0871875d205d |   5579 chars | https://habr.com/ru/articles/1047354/?utm_source=habrahabr&utm_medium=
+  ∅ 9a319d2ec34e | extracted only 72 chars
+  ✓ 4a4faa86ac82 |  16122 chars | https://towardsdatascience.com/vision-llms-are-pdf-parsers-too-reading
+  ✓ d201ad20a95e |   2872 chars | https://habr.com/ru/news/1047348/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 45cd8d6e9a1b |  12301 chars | https://www.cs.yale.edu/homes/perlis-alan/quotes.html
+  ✓ b73a820abdc4 |   3445 chars | https://www.cnet.com/tech/mobile/how-to-claim-apple-250-million-ai-iph
+  ✓ ad0092ac6791 |  11704 chars | https://habr.com/ru/articles/1047352/?utm_source=habrahabr&utm_medium=
+  ✓ 3b929493655d |   8335 chars | https://gabrielweinberg.com/p/people-are-consuming-ai-like-they
+  ✓ 9c61ed972510 | 181608 chars | https://news.ycombinator.com/item?id=48528779
+  ∅ 9e1da6246e50 | extracted only 141 chars
+  ✓ 9d54f6571b7d |   4226 chars | https://techcrunch.com/2026/06/14/the-new-sonos-play-has-become-my-go-
+  ✓ d2a192775072 |   7744 chars | https://habr.com/ru/articles/1047344/?utm_source=habrahabr&utm_medium=
+  ✓ e5d5a37ceb25 |   2259 chars | https://habr.com/ru/news/1047340/?utm_source=habrahabr&utm_medium=rss&
+  ✓ f19f21a3bf91 |   5912 chars | https://habr.com/ru/articles/1047342/?utm_source=habrahabr&utm_medium=
+  ✓ 2ce499703558 |   1496 chars | https://su3.io/posts/zeroserve-caddy-compat
+  ✓ 491c83c08bb2 |   7461 chars | https://www.engadget.com/2192442/apple-tv-4k-multiview-sports-live-eve
+  ∅ 786f72f8607c | extracted only 15 chars
+  ✓ e9d59d132e8b |   4942 chars | https://the-decoder.com/microsoft-researchs-mirage-gives-video-generat
+  ✓ fe01501600c5 |  22051 chars | https://habr.com/ru/articles/1047336/?utm_source=habrahabr&utm_medium=
+  ✓ 94c87eb2745e |   1838 chars | https://habr.com/ru/news/1047334/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 840e252b2fcd |  13800 chars | https://habr.com/ru/companies/ruvds/articles/1043528/?utm_source=habra
+  ✓ 16d9a282b61f |   2803 chars | https://the-decoder.com/google-clouds-open-knowledge-format-turns-scat
+  ✓ c6b87cef7720 |   4808 chars | https://www.cnet.com/tech/services-and-software/maximum-pleasure-guara
+  ✓ ad84a31f22f3 |  25829 chars | https://towardsdatascience.com/gpu-time-slicing-for-concurrent-llm-age
+  ✓ d2654504e490 |   8561 chars | https://blog.janestreet.com/formal-methods-at-jane-street-index/?from_
+  ✓ 747bd7843840 |   7369 chars | https://habr.com/ru/articles/1047332/?utm_source=habrahabr&utm_medium=
+  ✓ 7c99a0f29ec1 |   3984 chars | https://tproger.ru/articles/kak-stroit-diagrammy-rasseyaniya-v-python-
+  ✓ 0ab085f7d9aa |    669 chars | https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javasc
+  ✓ fc7096c6d878 |   6842 chars | https://www.cnet.com/tech/services-and-software/pixar-toy-story-5-tech
+  ✓ 35867a34c302 |   4284 chars | https://www.cnet.com/culture/entertainment/june-17th-1994-netflix-espn
+  ✓ d85f6874780c |    269 chars | https://vc.ru/money/2978216-zakrytie-brendov-odezhdy-v-rossii?from=rss
+  ✓ 2258e55c2bc2 |  13067 chars | https://paulgraham.com/earn.html
+  ✓ b6d150276dd2 |   7337 chars | https://habr.com/ru/articles/1047328/?utm_source=habrahabr&utm_medium=
+  ✓ e869df129f64 |  15823 chars | https://www.wired.com/gallery/best-gifts-for-men-2026/
+  ✓ a2a062f5f32c |   9397 chars | https://habr.com/ru/articles/1047326/?utm_source=habrahabr&utm_medium=
+  ✓ 64af697060c5 |   3404 chars | https://www.cnet.com/tech/services-and-software/its-official-agentic-b
+  ✓ ea3048aa2ac3 |   1888 chars | https://habr.com/ru/news/1046830/?utm_source=habrahabr&utm_medium=rss&
+  ✓ cccc74ced69d |  18337 chars | https://www.wired.com/story/the-best-gifts-for-plant-lovers-and-garden
+  ✓ 5cdd1cf71417 |   5243 chars | https://habr.com/ru/articles/1045628/?utm_source=habrahabr&utm_medium=
+  ✓ 8a724869c1a7 |   6066 chars | https://habr.com/ru/companies/onlinepatent/articles/1047324/?utm_sourc
+  ✓ c24f7c182993 |   1290 chars | https://www.wired.com/review/suunto-spark/
+  ✓ ee3a975cf20a |   2505 chars | https://habr.com/ru/news/1047314/?utm_source=habrahabr&utm_medium=rss&
+  ✓ a6d1da093b01 |   1628 chars | https://habr.com/ru/news/1047312/?utm_source=habrahabr&utm_medium=rss&
+  ✓ e900d45f8b55 |  23540 chars | https://habr.com/ru/articles/1047316/?utm_source=habrahabr&utm_medium=
+  ✓ ae802709aa3a |   4894 chars | https://www.wired.com/story/strait-of-hormuz-closed-100-days-why-arent
+  ✓ d19f6c3c5fe9 |   3760 chars | https://www.cnet.com/tech/services-and-software/your-iphone-11-will-ru
+  ✓ 02e6cee74f21 |   6434 chars | https://habr.com/ru/articles/1047308/?utm_source=habrahabr&utm_medium=
+  ✓ f0d9d04ffcb7 |   1631 chars | https://www.wired.com/review/laduora-duo-4-in-1-pod-based-scalp-and-ha
+  ✓ e90b7dec11ff |  35987 chars | https://tproger.ru/translations/frejmvork-nezavisimye-dizajn-sistemy-p
+  ✓ 6648b67b7eed |   2135 chars | https://habr.com/ru/news/1047294/?utm_source=habrahabr&utm_medium=rss&
+  ✓ e1a91a5b4e33 |   1477 chars | https://the-decoder.com/kpmg-fabricated-ai-case-studies-in-a-report-de
+  ✓ e0de007d00b5 |   2168 chars | https://habr.com/ru/news/1047282/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 2904709a02e5 |   3770 chars | https://www.wired.com/story/skoda-peaq-will-likely-be-its-most-expensi
+  ✓ bb3e898fd35c |  26057 chars | https://www.wired.com/gallery/best-coffee-makers/
+  ✓ da14c893ffe7 |   2032 chars | https://habr.com/ru/news/1047172/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 09c30606465b |   5181 chars | https://the-decoder.com/ai-coding-agents-find-the-right-file-but-miss-
+  ✓ 8d633aef062c |   1155 chars | https://habr.com/ru/news/1047272/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 57491845d5f1 |   2216 chars | https://habr.com/ru/news/1047270/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 100b8b43bc55 |   2771 chars | https://habr.com/ru/news/1047188/?utm_source=habrahabr&utm_medium=rss&
+  ✓ fa3380d498fb |   4939 chars | https://the-decoder.com/amazon-and-five-other-companies-reportedly-tri
+  ✓ f59d27034bea |   2750 chars | https://habr.com/ru/news/1047250/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 3b10cc4d5d7d |   3852 chars | https://habr.com/ru/news/1047244/?utm_source=habrahabr&utm_medium=rss&
+  ✗ ede3c3382a26 | HTTP 429
+  ✓ 3b3793caaeda |   4571 chars | https://habr.com/ru/news/1047240/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 11b57756489f |   1537 chars | https://habr.com/ru/news/1047234/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 7c79a9d8a18f |   3490 chars | https://habr.com/ru/news/1047218/?utm_source=habrahabr&utm_medium=rss&
+  ✓ 2d38b8187bcd |   3906 chars | https://habr.com/ru/news/1047148/?utm_source=habrahabr&utm_medium=rss&
+  ✗ a1a9919ade2b | HTTP 403
+  ✓ 8f76f16dd09c |   2159 chars | https://habr.com/ru/news/1047004/?utm_source=habrahabr&utm_medium=rss&
+  ✗ 3d865fb6cb13 | HTTP 403
+  ✓ 8b443d6e6441 |   3159 chars | https://traceapp.info
+  ✗ 894c51df33f4 | HTTP 403
+  ✗ 12eae63a62c9 | HTTP 403
+  ✓ 3ed08f4d87f5 |   1907 chars | https://www.cnet.com/tech/gaming/todays-nyt-connections-sports-edition
+  ∅ 94ad53243a1b | extracted only 45 chars
+  ✗ f582d40c501d | HTTP 401
+  ✓ 577b370598c2 |   6227 chars | https://www.engadget.com/2192635/apple-watch-alternatives-7-day-batter
+  ✓ 69d2b914e866 |   1252 chars | https://www.cnet.com/tech/gaming/todays-nyt-mini-crossword-answers-for
+  ✓ 88196749f683 |    442 chars | https://vc.ru/money/2977440-kachestvennyj-otdyh-za-granicej?from=rss
+  ∅ f13b51934424 | extracted only 86 chars
+  ✗ 4329a5d6d8fc | HTTP 429
+  ∅ 6a1ae3f6558f | extracted only 70 chars
+  ✗ 9cc7608624a9 | HTTP 403
+  ∅ c5ff2a049b40 | extracted only 81 chars
+  ∅ 8b36ee9d5815 | extracted only 50 chars
+  ✗ 49d8ffca9954 | HTTP 401
+  ∅ 5caf59a41944 | extracted only 97 chars
+  ✗ d9131872dea3 | HTTP 429
+  ✗ 03b9d0436f50 | HTTP 429
+  ✗ ae938806e82e | HTTP 403
+  ∅ b2918d7687a2 | extracted only 45 chars
+  ∅ df34e6426a59 | extracted only 45 chars
+  ∅ 712562552311 | extracted only 45 chars
+  ∅ 26ffe7764930 | extracted only 45 chars
+  ∅ e22307c01088 | extracted only 57 chars
+  ∅ 752c5f4be8c4 | extracted only 83 chars
+  ✗ c53775f381f8 | TypeError: object of type 'NoneType' has no len()
+  ✗ 22725d685a35 | HTTP 429
+  ✗ 523a34c56360 | TypeError: object of type 'NoneType' has no len()
+  ✗ 4fb17ef91977 | TypeError: object of type 'NoneType' has no len()
+  ∅ 3ce03914ef43 | extracted only 80 chars
+  ✗ 2580e38db21f | HTTP 429
+  ✗ 20874038c8c2 | HTTP 403
+  ∅ f4d6fb20f321 | extracted only 45 chars
+  ∅ fc04f8df5cbd | extracted only 54 chars
+  ∅ 555091f95a86 | extracted only 63 chars
+  ∅ 1928b7cd6895 | extracted only 63 chars
+  ∅ daa47b4928cc | extracted only 74 chars
+  ✗ 31e268b2c07a | HTTP 403
+  ∅ e29639034d58 | extracted only 106 chars
+  ∅ 135f2c51e013 | extracted only 106 chars
+  ∅ 5545b24ba8b3 | extracted only 45 chars
+  ∅ 5686d1e1acd6 | extracted only 134 chars
+  ∅ 4acb729ab617 | extracted only 63 chars
+  ∅ 124cfd150b7f | extracted only 45 chars
+  ✗ e5e9bd931104 | HTTP 403
+  ✗ 26162e6eb29d | TypeError: object of type 'NoneType' has no len()
+  ✗ eb6c51388309 | HTTP 429
+  ✗ e9d97d1dbf62 | HTTP 429
+  ✗ 478835b2440e | HTTP 403
+  ∅ ca53f907fa67 | extracted only 63 chars
+  ∅ 1c1d3c4d0b02 | extracted only 28 chars
+  ∅ 96d13a8536b6 | extracted only 55 chars
+  ∅ 0d16b78293a3 | extracted only 159 chars
+  ✓ 22c8018cf34b |    221 chars | https://bitsy.org/
+  ∅ 2f31e7c2d2cb | extracted only 49 chars
+  ∅ b55db24f8bc4 | extracted only 74 chars
+  ✗ 668cabe7e63a | HTTP 429
+  ∅ 369980a34df2 | extracted only 63 chars
+  ✗ 2690b8a748c9 | TypeError: object of type 'NoneType' has no len()
+  ✓ 902bc3767d15 |   6967 chars | https://planetscale.com/blog/the-only-scalable-delete
+  ∅ 0b4bc654a1ee | extracted only 45 chars
+  ✗ 8c2ae86ddddb | HTTP 403
+  ∅ 74eb9777868d | extracted only 62 chars
+  ✗ 9f5f1f2c5ad7 | HTTP 403
+  ✗ dec76480b787 | HTTP 429
+  ∅ d3d15fdbd3ec | extracted only 45 chars
+  ✓ 03f355caa1b0 |  17089 chars | https://prawns.dev/blogs/memory-wall
+  ✗ 52bcb696380e | HTTP 429
+  ✗ 254518332313 | HTTP 403
+  ∅ 7fe58de4b60a | extracted only 66 chars
+  ∅ 07fc09adb4be | extracted only 82 chars
+  ✗ 579e41d9846a | HTTP 429
+  ✗ e0acdb0472e8 | HTTP 403
+  ∅ 81a30507eba6 | extracted only 45 chars
+  ✗ f18a92aafd8d | HTTP 429
+  ✗ 50220b7f864d | HTTP 403
+  ✗ 98f62c93b442 | TypeError: object of type 'NoneType' has no len()
+  ✗ b798dc6802e0 | HTTP 403
+  ✗ e85cee36591c | HTTP 429
+  ∅ dfda7c2e713c | extracted only 63 chars
+  ∅ 327605752df4 | extracted only 43 chars
+  ∅ 77522466b298 | extracted only 63 chars
+  ✓ 06edd0c74c07 |   7368 chars | https://www.aptiv.com/en/insights/article/usb-power-delivery-plugging-
+  ✗ 8451d6b1bc06 | TypeError: object of type 'NoneType' has no len()
+  ∅ 4098db80be4f | extracted only 87 chars
+  ∅ c3eea14342bb | extracted only 154 chars
+  ∅ a6656ddbe585 | extracted only 63 chars
+  ∅ d1be6c45f39e | extracted only 187 chars
+  ✗ be86c9d09a56 | HTTP 403
+  ✗ 1dcfcce12691 | HTTP 403
+  ∅ efd37e95e9af | extracted only 63 chars
+  ∅ 7e72301cc14f | extracted only 113 chars
+  ✗ 772a4899481f | HTTP 403
+  ∅ 15b98d3bf229 | extracted only 63 chars
+  ∅ 90ff33a85065 | extracted only 29 chars
+  ✗ 626890cbe540 | HTTP 429
+  ✗ 21c10abe484e | HTTP 403
+  ✗ dddca4da835f | HTTP 403
+  ✗ 9b8ca91ae050 | HTTP 403
+  ✗ 1eb04e1b753d | HTTP 403
+  ✗ ebd8c99b3573 | HTTP 429
+  ✗ 88ea5d74b3ce | HTTP 403
+  ✗ 8448c9fea336 | HTTP 404
+  ✗ bfbf641beda5 | HTTP 403
+  ✗ f5fdb80fa91a | HTTP 403
+  ✗ 8926e37d73b8 | HTTP 403
+  ✗ 9b77dce7b354 | HTTP 403
+  ✗ ed424537b7c4 | HTTP 403
+  ✗ b4837f5c5415 | HTTP 429
+  ✗ 94f5302d08b7 | HTTP 429
+  ✗ 73c80418f56e | HTTP 429
+  ∅ dc509934b4dd | extracted only 63 chars
+  ✓ 789eeacc6290 |   7019 chars | https://0xkrt26.github.io/math_behind_security/2026/06/09/the-story-of
+  ✗ c41a1120a0bf | HTTP 429
+  ✗ 828be2b1e9ca | HTTP 429
+  ∅ b8e445ee70c6 | extracted only 63 chars
+  ✗ b5dbfc5b53a2 | HTTP 429
+  ✗ 6cb09c1a7d3b | HTTP 403
+  ✗ c6fecd915567 | HTTP 403
+  ✗ fb4992f6b9a8 | HTTP 429
+  ✗ 86b97dc0f300 | HTTP 403
+  ∅ a889548638f1 | extracted only 93 chars
+  ✗ 4f5ef584ded3 | HTTP 429
+  ✗ 76303ce3234b | HTTP 429
+  ✗ 080d9ca25141 | HTTP 429
+  ✗ 3f4e8d7a4d52 | HTTP 429
+  ✗ 4a54946aed78 | HTTP 403
+  ∅ 7432e94a82e4 | extracted only 111 chars
+  ✗ 76201c4160f3 | TypeError: object of type 'NoneType' has no len()
+  ✓ 54f4a491be6e |   1326 chars | https://github.com/meta-pytorch/torchcodec/releases/tag/v0.14.0
+  ∅ e63a22222453 | extracted only 63 chars
+  ✗ 563dd4bbd0d3 | HTTP 429
+  ∅ 17ed0b9464ba | extracted only 63 chars
+  ∅ 62a23b28bcbe | extracted only 63 chars
+  ∅ cda1b1e53c7c | extracted only 63 chars
+  ✗ 9446da5d7094 | HTTP 429
+  ∅ db2c55ed4177 | extracted only 63 chars
+  ∅ 2fbdf1eb1f69 | extracted only 63 chars
+  ∅ 402379514b0b | extracted only 65 chars
+  ∅ 2697e516e3c7 | extracted only 50 chars
+  ∅ ede444ffab7f | extracted only 63 chars
+  ✗ 5a40aea23372 | HTTP 403
+  ✗ 2c872de7fac2 | HTTP 403
+  ∅ be737879ec62 | extracted only 148 chars
+  ✗ 7983f228c6db | HTTP 403
+  ∅ 5d05a3eb8588 | extracted only 63 chars
+  ✗ d2a39068329c | HTTP 403
+  ✗ c1645031ca22 | HTTP 403
+  ∅ e77de0c1cf95 | extracted only 30 chars
+  ✗ f27d43c57275 | HTTP 403
+  ✗ 24f89a27304b | HTTP 403
+  ∅ bbb706beb4d7 | extracted only 43 chars
+  ✗ 8df875b39bd5 | HTTP 403
+  ✗ 21498142103f | HTTP 403
+  ∅ e82be2d9d9e1 | extracted only 158 chars
+  ∅ f830fa14ea9a | extracted only 34 chars
+  ∅ 7e69da22bbca | extracted only 59 chars
+  ✗ c735772b20a7 | HTTP 429
+  ∅ 689a8834433b | extracted only 41 chars
+  ✗ ef3f18f446fc | TypeError: object of type 'NoneType' has no len()
+  ✗ 669c28a42d49 | HTTP 403
+  ✗ e527af61aff2 | HTTP 403
+  ✗ 241e2cda759e | HTTP 403
+  ✗ eaf499b9a946 | HTTP 429
+  ✗ 77bb088c8b8c | HTTP 429
+  ✗ 1a9cfcfcf3bb | HTTP 429
+  ✗ 87abe9ee367a | HTTP 403
+  ✗ 3a4dd3f53ba9 | HTTP 429
+  ✗ bc64d813bea6 | HTTP 403
+  ✗ 016bc729fe32 | HTTP 429
+  ✗ dab7a18c14a0 | HTTP 429
+  ✗ c7e9ec2f9cfc | HTTP 403
+  ✗ ffa842dcf3bd | HTTP 403
+  ✗ 9ae1f34dd05b | HTTP 403
+  ✗ df4515d5ec7d | HTTP 429
+  ✗ 9633954f61a5 | HTTP 429
+  ✗ db217a525e31 | HTTP 401
+  ∅ 71358576e302 | extracted only 63 chars
+  ✗ 52f9dee7d65f | HTTP 403
+  ✗ ed0715ff067e | HTTP 403
+  ✗ 2452465d7eb7 | HTTP 429
+  ✗ 88b053027acf | HTTP 429
+  ✗ d575c29211b0 | HTTP 429
+  ✗ e188441c2a1b | HTTP 429
+  ✗ 1e0ef6ffe88a | HTTP 403
+  ∅ 6f086e68082e | extracted only 70 chars
+  ✗ 1b040cfa3010 | HTTP 403
+  ∅ c33f7ab21e4e | extracted only 32 chars
+  ∅ 01bdde42cb8a | extracted only 118 chars
+  ✗ cdc77122c42d | TypeError: object of type 'NoneType' has no len()
+  ✗ 3b94d27f3167 | HTTP 403
+  ✗ 44dabad91e90 | HTTP 429
+  ∅ f00cacf986d5 | extracted only 63 chars
+  ∅ 98a08af5f927 | extracted only 63 chars
+  ✗ de0a2342d5aa | HTTP 403
+  ∅ d70ab91669c5 | extracted only 63 chars
+  ∅ 01d1d5ad22fa | extracted only 175 chars
+  ✗ 164e6b41b04f | TypeError: object of type 'NoneType' has no len()
+  ✗ 111249c4a0a1 | HTTP 403
+  ✗ 13c1b67fae58 | HTTP 403
+  ✗ fbb449340331 | HTTP 403
+  ∅ f052e69a2c85 | extracted only 63 chars
+  ✗ 10facf05fa4a | HTTP 403
+  ✗ e3d6eea6b1f6 | HTTP 429
+  ∅ 07d5368371b5 | extracted only 159 chars
+  ∅ d391b77fd50a | extracted only 189 chars
+  ✗ fa9af36cb131 | HTTP 403
+  ∅ b26ab52ac66a | extracted only 81 chars
+  ✗ 504e31b94d5d | TypeError: object of type 'NoneType' has no len()
+  ∅ 980d5243bfa6 | extracted only 43 chars
+  ✗ 1506aff82566 | HTTP 403
+  ∅ 022a25e4c914 | extracted only 63 chars
+  ∅ f4557f0e4129 | extracted only 135 chars
+  ∅ 00f3495eb305 | extracted only 40 chars
+  ∅ 754ab53253ac | extracted only 63 chars
+  ∅ 9de1acc7f074 | extracted only 163 chars
+  ∅ 1611a86de2bd | extracted only 63 chars
+  ✗ 5438335ffb3f | HTTP 403
+  ✗ 9d1e8253f802 | HTTP 429
+  ✗ 65edefcb4544 | HTTP 403
+  ✗ 4c725aba5849 | HTTP 429
+  ✗ fb355d349393 | HTTP 429
+  ✗ 942c2dce9a4f | TypeError: object of type 'NoneType' has no len()
+  ✗ 45c904623418 | HTTP 429
+  ✗ 303c8a580452 | HTTP 429
+  ✗ 9358a6d9e28c | TypeError: object of type 'NoneType' has no len()
+  ∅ 67f63f0cf248 | extracted only 63 chars
+  ∅ 698a4858aa05 | extracted only 37 chars
+  ✗ 1de78fdb5609 | HTTP 403
+  ∅ 2c68c8931f06 | extracted only 114 chars
+  ∅ 33d5b3df063c | extracted only 96 chars
+  ∅ 5cdddecceb2d | extracted only 63 chars
+  ∅ 526308ee5eb8 | extracted only 63 chars
+  ✗ 60ee186ed27e | HTTP 403
+  ✗ 5f27e3f6e381 | HTTP 403
+  ✗ 96bd04fb4168 | HTTP 429
+  ✗ e5f73b71d1d7 | HTTP 403
+  ✗ fea054d073ef | HTTP 403
+  ✗ 8c5165e41bff | HTTP 403
+  ∅ a63d47c3659a | extracted only 63 chars
+  ✗ 50f1d6a03255 | HTTP 429
+  ∅ 2a0772d26773 | extracted only 63 chars
+  ✗ d7fc1fd0b63a | TypeError: object of type 'NoneType' has no len()
+  ✗ c39ad57d6bd7 | HTTP 403
+  ✗ fc29f46972f4 | HTTP 429
+  ✗ 5d2b78cc5505 | HTTP 403
+  ✗ 22640148bbb8 | HTTP 429
+  ✗ fd8a1011ce17 | HTTP 429
+  ✗ 4a38fc96f335 | HTTP 429
+  ∅ 6af0cf9d459f | extracted only 43 chars
+  ∅ 394013ae03e1 | extracted only 186 chars
+  ✗ 536604e9e1ff | HTTP 403
+  ✗ ce11913b6867 | HTTP 429
+  ✗ b5b0b8f48092 | TypeError: object of type 'NoneType' has no len()
+  ✗ f4ee2a7a3a8a | HTTP 403
+  ✗ ff5a4a44cecd | HTTP 429
+  ∅ d0b0632e41e6 | extracted only 63 chars
+  ✗ 3c9d08d90b63 | HTTP 429
+  ✗ fa8938d21530 | HTTP 429
+  ✗ 0901313655c3 | HTTP 429
+  ✗ 127067f71f2f | HTTP 429
+  ✗ 844cea98b634 | HTTP 429
+  ✗ 6cda6a773635 | HTTP 429
+  ✗ 97a7da2be7ee | HTTP 429
+  ✗ b684b4162c5b | HTTP 403
+  ✗ 1e588e61972d | HTTP 429
+  ✗ aec9ee43a4e0 | HTTP 429
+  ✗ 459e411b31d6 | HTTP 429
+  ✗ a8c9be6b3557 | HTTP 404
+  ✗ c2a5de2dea82 | HTTP 429
+  ✗ 5e410d7d5998 | HTTP 429
+  ∅ 5123a7ffc6d3 | extracted only 48 chars
+  ✗ d2e2b63f84b9 | TypeError: object of type 'NoneType' has no len()
+  ✗ ae995b9c3e75 | HTTP 403
+  ∅ 1c644c2822bd | extracted only 108 chars
+  ✗ 785dbaa6ae56 | HTTP 403
+  ✗ 5be6c3392056 | HTTP 403
+  ∅ 969e8f000a09 | extracted only 108 chars
+  ✗ 1a654943dc71 | HTTP 403
+  ✗ 0af0c5c72218 | HTTP 403
+  ✗ b918a5525a80 | HTTP 403
+  ✗ 985e9a4f3bc7 | HTTP 403
+  ∅ 97b4f792a746 | extracted only 116 chars
+  ∅ 143db56507ef | extracted only 181 chars
+  ∅ cda8325eed1e | extracted only 54 chars
+  ∅ 7a50c6644e2a | extracted only 131 chars
+  ∅ 77d7d49e6045 | extracted only 82 chars
+  ✗ 4740ac952fc0 | HTTP 403
+  ∅ 7bdc5d9ebdb8 | extracted only 63 chars
+  ✗ 96478f6d7290 | HTTP 429
+  ✗ eac79a5c60c8 | TypeError: object of type 'NoneType' has no len()
+  ✗ d6e1c1967533 | HTTP 429
+  ∅ 74d8dba0d29b | extracted only 160 chars
+  ✗ 0efb1d95f4e9 | HTTP 429
+  ✗ 270397becd06 | HTTP 429
+  ✗ 75a21cff80bc | HTTP 429
+  ∅ b708414e5e0b | extracted only 63 chars
+  ✗ 38273f0329c3 | HTTP 429
+  ✗ bd33c9586894 | HTTP 429
+  ✗ 3e18cf905585 | HTTP 429
+  ✗ 3ae259933be7 | HTTP 429
+  ✗ f69a41d0dc92 | HTTP 429
+  ✗ 301a5c5b332a | HTTP 403
+  ✗ f74ade91ac54 | HTTP 429
+  ✗ dbbceee803d6 | TypeError: object of type 'NoneType' has no len()
+  ✗ 17c526822161 | HTTP 403
+  ✗ e836b40cf4fb | HTTP 429
+  ✗ 237ed067d5e3 | HTTP 429
+  ✗ fd6598b3f132 | HTTP 429
+  ✗ 66a0a8d2765c | TypeError: object of type 'NoneType' has no len()
+  ✗ 19fbdcc90cad | HTTP 429
+  ✗ 85152a6df9c7 | HTTP 429
+  ✓ 2257aa459d16 |   7392 chars | https://www.analyticsvidhya.com/blog/2026/06/claude-managed-agents/
+  ✓ e7d3d12fb576 |  30896 chars | https://aws.amazon.com/blogs/machine-learning/the-art-and-science-of-h
+  ✗ ebef91fec56b | HTTP 429
+  ✓ e459c3ca3830 |   2783 chars | https://techcrunch.com/2026/06/02/focused-energy-raises-whopping-240m-
+  ✗ 07ea7bde8118 | HTTP 403
+  ✓ 1bb22f381b91 |  11045 chars | https://aws.amazon.com/blogs/machine-learning/object-detection-with-am
+  ✗ 402b4fbdd5e6 | HTTP 429
+  ✗ f275023484a8 | HTTP 429
+  ✓ c57a9353d873 |   5164 chars | https://rb.ru/news/v-rossii-utverdili-novye-pravila-podschyota-prosmot
+  ✗ 1377694f18fe | HTTP 429
+  ✓ 414f4944b373 |   4762 chars | https://rb.ru/news/yandeks-pej-razreshil-podtverzhdat-podozritelnye-pe
+  ✓ 02620d5cd5ae |   1640 chars | https://techcrunch.com/2026/06/02/trump-signs-narrower-executive-order
+  ∅ f311c75ca60b | extracted only 107 chars
+  ✓ 3e7a75789f2f |   9268 chars | https://www.kapa.ai/blog/how-we-index-images-for-rag
+  ✓ 770b391e6f5e |   2658 chars | https://techcrunch.com/2026/06/02/openai-launches-new-codex-tools-for-
+  ✗ 5eef0aa74879 | HTTP 429
+  ✓ dc05c87a1d98 |   8053 chars | https://github.com/shiihaa-app/shiihaa-breath-detection
+  ✓ 778cfc8dc6ad |   2719 chars | https://techcrunch.com/2026/06/02/board-the-new-game-startup-from-mirr
+  ✓ 1a2e9442063e |   4492 chars | https://rb.ru/news/kikshering-yurent-teper-mozhno-ispolzovat-kak-korpo
+  ✓ bb5e16bdb653 |   5464 chars | https://rb.ru/news/v-moskve-proshyol-festival-startup-village-startapy
+  ✓ 964b3939a91b |   5018 chars | https://www.a16z.news/p/introducing-special
+  ∅ 682693a20f63 | extracted only 28 chars
+  ✓ c81ce1b246a0 |   7576 chars | https://aws.amazon.com/blogs/machine-learning/how-baz-improved-its-ai-
+  ✓ 3f745125eec9 |  15641 chars | https://blog.ammaraskar.com/github-token-stealing/
+  ✓ e72c5050b8ff |   3300 chars | https://techcrunch.com/2026/06/02/why-vivatech-2026-is-the-place-to-se
+  ∅ e3757bb16d1f | extracted only 61 chars
+  ✓ 48ea50918f62 |   3081 chars | https://tproger.ru/articles/senorov-mnogo-rulit-nekomu-kakie-it-specia
+  ✓ c6fc4eb45cfd |   5342 chars | https://d-russia.ru/mintsifry-opublikovalo-novyy-pasport-svoey-program
+  ✓ bcc7d6d68cee |   2453 chars | https://techcrunch.com/2026/06/02/anthropic-scales-claude-mythos-to-cr
+  ✓ 224866a5b203 |   3896 chars | https://rb.ru/news/t-tehnologii-zakryli-sdelku-po-pokupke-avtoru-u-yan
+  ✓ 2014e144df6b |  22373 chars | https://d-russia.ru/luchshe-doktorskoy-kolbasy.html
+  ✓ 371e2e343cdc |   9161 chars | https://www.datarobot.com/blog/digital-twin-agent/
+  ✓ c54e51b33629 |   6120 chars | https://www.a16z.news/p/investing-in-westmag
+  ✓ f245250fc101 |   5865 chars | https://www.a16z.news/p/why-we-founded-westmag
+  ∅ ce2c2e78a8f9 | extracted only 63 chars
+  ✓ c9edca228384 |   4535 chars | https://huggingface.co/blog/Hcompany/holo31
+  ∅ 8faac1f45750 | extracted only 45 chars
+  ✓ bd04690d3c13 |  13996 chars | https://www.a16z.news/p/the-next-frontier-of-visual-ai-is
+  ✓ 8ad42a9f4c8c |   5334 chars | https://www.kdnuggets.com/a-gentle-primer-on-llm-explainability
+  ∅ 41e4dcda2336 | extracted only 70 chars
+  ∅ 010d8d81002d | extracted only 51 chars
+  ✓ a59f420c6456 |    619 chars | https://www.pehub.com/carlyles-ian-fujiyama-details-mid-market-adg-str
+  ✓ 99236cadc6f7 |   4362 chars | https://news.crunchbase.com/defense-tech/startup-venture-funding-all-t
+  ∅ cdf77ea8aff3 | extracted only 59 chars
+  ✓ 41157fc9d81c |   5198 chars | https://rb.ru/news/aeroflot-opublikoval-finansovye-rezultaty-za-i-kvar
+  ∅ bc5bbaafced6 | extracted only 43 chars
+  ✓ da51b1b61f5f |   5709 chars | https://rb.ru/news/lenta-priobretaet-gipermarkety-okej-vmesto-pryamoj-
+  ✓ 180799a56a65 |   1175 chars | https://d-russia.ru/na-amazon-podali-v-sud-za-raspoznavaniya-lits.html
+  ✓ 2f1eb8680096 |   2271 chars | https://techcrunch.com/2026/06/02/zerodrift-raises-10-million-to-prote
+  ∅ 15f47e9b558b | extracted only 26 chars
+  ✓ 9a8e2382bccc |   2741 chars | https://techcrunch.com/2026/06/02/rocket-engine-startup-impulse-raises
+  ✗ fa84d034356c | HTTP 403
+  ✓ 8462d1d00387 |   5057 chars | https://www.technologyreview.com/2026/06/02/1138277/the-download-ai-ti
+  ∅ cf4ec4222171 | extracted only 45 chars
+  ✓ b6de9c67bd2c |   4758 chars | https://rb.ru/news/mts-vpervye-s-2009-goda-privlekla-kredit-ot-rossijs
+  ✓ 00ffaa42035c |   5395 chars | https://rb.ru/news/sboi-v-rabote-vpn-zamedlyayut-rabotu-rossijskih-raz
+  ✓ 2d4c74357145 |   2156 chars | https://d-russia.ru/pravitelstvo-utverdilo-trebovaniya-k-ispolzovaniyu
+  ✓ 3f0ea8908706 |   5321 chars | https://rb.ru/news/84-rossijskih-prilozhenij-soderzhat-kriticheskie-uy
+  ✓ 5661d34b543f |   4379 chars | https://rb.ru/news/yandeks-market-obyavil-o-smene-rukovodstva-post-zaj
+  ✓ 7c39f76db0bd |   8773 chars | https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-globa
+  ∅ 63e7b658aefc | extracted only 63 chars
+  ✓ e6b6fcea445c |   9638 chars | https://news.crunchbase.com/saas/knowledge-work-investment-ai-morse-st
+  ✓ 567b2e31874b |   2698 chars | https://d-russia.ru/ofitsialnoe-issledovanie-auditorii-onlayn-resursov
+  ✓ 6e9ec14666c1 |   4679 chars | https://rb.ru/news/yandeks-dal-vozmozhnost-servisam-upravlyat-pokazom-
+  ✓ 7232316f3797 |  14969 chars | https://stratechery.com/2026/the-google-capital-company/
+  ✓ b17ad431d6dd |   1251 chars | https://d-russia.ru/vnesyon-zakonoproekt-o-prave-uchaschihsya-i-pedago
+  ✓ e0ba9cd4bb87 |   7229 chars | https://www.technologyreview.com/2026/06/02/1138227/how-small-business
+  ✗ 9b923bad35af | HTTP 403
+  ⏱ 5eccb25dccad | timeout
+  ✓ 73c100675d7b |   1188 chars | https://d-russia.ru/opredelyon-edinstvennyy-ispolnitel-dlya-razvitiya-
+  ✓ f02f51ebc60b |   5192 chars | https://rb.ru/news/cian-obyavil-o-rebrendinge-kompaniya-obnovila-logot
+  ✓ b50346d4ad8f |   5660 chars | https://about.fb.com/news/2026/06/new-13-plus-content-settings-for-tee
+  ∅ 0c3e10fe64e4 | extracted only 43 chars
+  ✓ e13ebc106194 |   2225 chars | https://d-russia.ru/kontseptsiya-profilaktiki-detskoy-prestupnosti-o-n
+  ✗ ffa5f8be5836 | HTTP 403
+  ✓ 74875a3dbdf3 |    275 chars | https://www.pehub.com/data-quality-visibility-key-to-exits-says-jman-g
+  ✓ 7a8bfae3ab5d |   7171 chars | https://blogs.nvidia.com/blog/financial-institutions-transaction-found
+  ✓ 5aa120380848 |    667 chars | https://vc.ru/money/2959336-problemy-malogo-biznesa-s-oplatami-ot-krup
+  ✓ 4ba910c0df64 |    443 chars | https://vercel.com/changelog/edit-git-settings-for-all-projects-in-a-r
+  ✗ aaeba9d9642e | HTTP 403
+  ✓ 997164041698 |  17299 chars | https://aws.amazon.com/blogs/machine-learning/building-a-secure-auth-c
+  ✓ 80283ce2365c |   4530 chars | https://rb.ru/news/v-2gis-poyavilas-vozmozhnost-otpravit-posylku-sdeko
+  ✓ d2d3f1a5f8a1 |   7495 chars | https://blogs.nvidia.com/blog/jetson-agentic-ai-physical-world/
+  ∅ 062afd5ad1f9 | extracted only 45 chars
+  ✓ 9060072abe30 |   2262 chars | https://vercel.com/changelog/signed-urls-are-now-available-for-vercel-
+  ✓ 6443a814d8d0 |    871 chars | https://vercel.com/changelog/build-chat-sdk-web-uis-in-vue-or-svelte
+  ✓ 50598288c44d |   5312 chars | https://techcrunch.com/2026/06/01/how-to-make-the-startup-battlefield-
+  ✓ c7d67e6d468c |   1292 chars | https://vercel.com/changelog/build-custom-slack-runtimes
+  ∅ 7ac1244a9454 | extracted only 45 chars
+  ✓ 97fd2150ce72 |   1426 chars | https://techcrunch.com/2026/06/01/alphabet-plans-to-raise-80-billion-t
+  ✓ e3c9aad93a6b |   4389 chars | https://techcrunch.com/2026/06/01/defense-tech-darling-mach-industries
+  ✓ ed37af53929c |   8659 chars | https://aws.amazon.com/blogs/machine-learning/reference-your-own-aws-s
+  ✓ 7a8f5bd4e587 |   3450 chars | https://techcrunch.com/2026/06/01/nvidia-chases-200b-cpu-market-with-a
+  ✓ aa3542ef1be2 |  13002 chars | https://aws.amazon.com/blogs/machine-learning/transforming-rare-cancer
+  ✓ 53757847869a |   6086 chars | https://aws.amazon.com/blogs/machine-learning/openai-models-and-codex-
+  ✓ bb212983c015 |   5784 chars | https://techcrunch.com/2026/06/01/from-the-stage-to-the-future-where-a
+  ✓ 7d21ec3ff9c0 |   2724 chars | https://techcrunch.com/2026/06/01/florida-sues-openai-sam-altman-in-fi
+  ✓ ad01ffda0458 |   5402 chars | https://sequoiacap.com/article/listen-to-the-market/
+  ✓ 3179cbd705cd |  18851 chars | https://aws.amazon.com/blogs/machine-learning/extending-mcp-support-fo
+  ✓ e8a9a8411839 |    709 chars | https://vercel.com/changelog/elastic-build-machines-now-protect-agains
+  ✓ 1a40ff2a49b0 |   2920 chars | https://techcrunch.com/2026/06/01/water-access-is-now-a-risk-factor-in
+  ✓ 8b75acc1f9b5 |   9087 chars | https://bdtechtalks.com/2026/06/01/ai-harness-scaling/?utm_source=rss&
+  ∅ c5bb26e67939 | extracted only 71 chars
+  ✓ f9aa15045de4 |    619 chars | https://www.pehub.com/civc-invests-in-nationwide-legal/
+  ✓ 73dc7a6da666 |  24851 chars | https://aws.amazon.com/blogs/machine-learning/secure-ai-agents-with-po
+  ✓ 21bed726942b |   5945 chars | https://rb.ru/news/bloomberg-opublikoval-rejting-bogatejshih-lyudej-mi
+  ✓ d33084faea39 |   2450 chars | https://news.crunchbase.com/public/ai-unicorn-anthropic-files-confiden
+  ✗ e4841d06b7f2 | HTTP 403
+  ✓ 388c0763bb7e |   3034 chars | https://techcrunch.com/2026/06/01/anthropic-files-to-go-public/
+  ✓ c7878e746123 |    619 chars | https://www.pehub.com/wynnchurch-to-sell-labrie-environmental-group-to
+  ✓ 4be325886964 |   9006 chars | https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/
+  ✓ 69df71b86a42 |   4796 chars | https://rb.ru/news/mosbirzha-vpervye-protestirovala-torgovlyu-s-pomosh
+  ✗ 907279281489 | TypeError: object of type 'NoneType' has no len()
+  ✓ 2015d5b1d007 |   4732 chars | https://techcrunch.com/2026/06/01/this-ai-weather-startup-is-out-forec
+  ✓ fe953d88d468 |    254 chars | https://www.pehub.com/thoma-bravo-portcos-wwex-group-and-auctane-compl
+  ∅ 1124c6b8de11 | extracted only 63 chars
+  ✓ 17944c067e42 |   4024 chars | https://techcrunch.com/2026/06/01/revolut-rolls-out-services-to-thousa
+  ✓ 03e6e22cffa5 |   2918 chars | https://techcrunch.com/2026/06/01/duckduckgo-makes-its-no-ai-search-en
+  ✓ 3cf2c3be558d |   3627 chars | https://huggingface.co/blog/JetBrains/mellum2-launch
+  ✓ 892787d0c419 |   4749 chars | https://rb.ru/news/yandeks-zapustil-v-alise-ai-novye-detskie-rezhimy-n
+  ✓ 8b3d86573bde |   4602 chars | https://rb.ru/news/wildberries-mozhet-kupit-dolyu-v-aliexpress-rossiya
+  ✓ d6631acf6c8b |   3618 chars | https://www.a16z.news/p/investing-in-endra
+  ✓ ebd4bc574f2f |  13635 chars | https://www.a16z.news/p/keeping-the-drone-swarm-alive
+  ✓ 0457d3e0e2a6 |   1014 chars | https://vercel.com/changelog/chat-sdk-adds-velt-support
+  ✓ 1fd1e439302f |   4491 chars | https://rb.ru/news/apple-otlozhila-vypusk-ar-ochkov-do-2027-goda-proek
+  ✓ 662d18c1f0ab |   1161 chars | https://vercel.com/changelog/chat-sdk-adds-agentphone-support
+  ✓ f85ba61840da |  22329 chars | https://importai.substack.com/p/import-ai-459-ai-oversight-is-difficul
+  ✓ 287852ed7fbc |  15266 chars | https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-a
+  ✗ 890b25eddf68 | HTTP 403
+  ✓ 2538a1f7d666 |   7662 chars | https://news.crunchbase.com/venture/startup-founder-building-personal-
+  ✓ 174e051a93ad |   4478 chars | https://news.crunchbase.com/venture/boston-startup-funding-gains-ai-bi
+  ✓ 4066e7386373 |   4750 chars | https://rb.ru/news/kazhdaya-tretya-kompaniya-v-rossii-v-2026-godu-povy
+  ✓ 40a078879743 |   4662 chars | https://www.technologyreview.com/2026/06/01/1138207/the-download-china
+  ✓ edda576551eb |   4609 chars | https://techcrunch.com/2026/06/01/unastella-a-south-korean-rocket-star
+  ✗ 0417997d923f | HTTP 403
+  ✓ c3d74f8595c8 |   3646 chars | https://stratechery.com/2026/youtubers-win-the-box-office-goodbye-gate
+  ✓ dc7c3c3870de |   8828 chars | https://www.technologyreview.com/2026/06/01/1138133/china-world-first-
+  ✓ 71b0ef8ea6ba |   4689 chars | https://www.analyticsvidhya.com/blog/2026/06/google-ai-studio-vs-gemin
+  ✓ 3b379a04800e |   1260 chars | https://vercel.com/changelog/qwen-3-7-plus-now-available-on-ai-gateway
+  ✓ 8ed91a11dc4f |   2645 chars | https://devblogs.microsoft.com/agent-framework/microsoft-agent-framewo
+  ✓ 62ec228a88f1 |   9294 chars | https://blogs.nvidia.com/blog/ai-cloud-ecosystem/
+  ✓ 92cc0c1be44d |   6550 chars | https://blogs.nvidia.com/blog/factory-operations-fox-blueprint-ai-brai
+  ✓ d7f8c187aad7 |  24827 chars | https://tproger.ru/articles/analogi-canva-top-10-alternativ-dlya-dizaj
+  ✓ 3041ae5e998f |   5363 chars | https://blogs.nvidia.com/blog/taiwan-ecosystem-ai-infrastructure/
+  ✓ 594228079104 |   5447 chars | https://blogs.nvidia.com/blog/cosmos-3-physical-ai-open-world-foundati
+  ✓ 70abe1bbdd2b |  11199 chars | https://blogs.nvidia.com/blog/rtx-ai-garage-computex-spark-local-agent
+  ✓ 1a2bf41a704e |   1169 chars | https://vercel.com/changelog/vercel-blob-now-supports-oidc-authenticat
+  ✓ 8ebf1e8f27fe |   8742 chars | https://aiweekly.co/issues/anthropic-files-for-an-ipo-nvidia-ships-its
+  ✓ 965771006e08 |    999 chars | https://vercel.com/changelog/chat-sdk-adds-lark-feishu-support
+  ✓ c456a12d23d2 |   4485 chars | https://tproger.ru/news/vywel-wine-11-10-s-vkd3d-2-0-i-uluchwennoj-sov
+  ✓ bb0319888f69 |    958 chars | https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded
+  ✓ d5e89efc25a5 |   1483 chars | https://vercel.com/changelog/minimax-m3-on-ai-gateway
+  ✓ ae626be606d7 |   6056 chars | https://redrocketvc.blogspot.com/2026/05/lesson-381-stick-to-your-plan
+  ✓ 97f3012b6ad8 |  27697 chars | https://www.analyticsvidhya.com/blog/2026/05/ai-workflows-for-sales-te
+  ✓ 6aee6b02d3b5 |   6364 chars | https://blog.google/innovation-and-ai/models-and-research/gemini-model
+  ✓ 0eacbee36d9c |   3446 chars | https://stratechery.com/2026/luceing-their-mind/
+  ✓ 7a1c98af09d2 |   1532 chars | https://blog.google/innovation-and-ai/technology/ai/university-waterlo
+  ✓ c591da14787a |  12351 chars | https://www.a16z.news/p/charts-of-the-week-retail-to-the
+  ✗ ce0322c55738 | HTTP 403
+  ✗ be876b176720 | HTTP 403
+  ✓ 91b089c22fa4 |  17616 chars | https://www.analyticsvidhya.com/blog/2026/05/25-most-influential-ai-pi
+  ✓ f706a3b8d9c5 |   7337 chars | https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magn
+  ✗ 2f358dc4a504 | HTTP 403
+  ✓ 888782243401 |    695 chars | https://vercel.com/changelog/function-invocations-now-billed-per-unit
+  ✓ eef4afa5badb |   8009 chars | https://www.analyticsvidhya.com/blog/2026/05/claude-opus-4-8-pricing-a
+  ✓ e8ec84dec1fa |    683 chars | https://www.cbinsights.com/research/finalist-interview-claira/
+  ✓ f3384fe0ce81 |   7270 chars | https://vercel.com/blog/protecting-against-token-theft
+  ✗ fdf6c4e98bb2 | HTTP 403
+  ✓ bd7271cedbbf |   1419 chars | https://vercel.com/changelog/run-docker-containers-inside-vercel-sandb
+  ✓ eb29d6cac64d |    520 chars | https://vercel.com/changelog/port-8080-is-now-available-in-vercel-sand
+  ✓ ccbf46fb0bda |   5716 chars | http://augmentedcoding.dev/issue-46/
+  ✓ 89f9181bc510 |   7543 chars | https://aiweekly.co/issues/ais-labor-war-just-went-global
+  ✓ d0a67d3ed4fb |  39817 chars | https://simonw.substack.com/p/i-think-anthropic-and-openai-have
+  ✓ 442e91c104b6 |  28550 chars | https://huggingface.co/blog/torch-profiler
+  ✗ efdf5cf9f641 | TypeError: object of type 'NoneType' has no len()
+  ✗ ab13f533d5f5 | TypeError: object of type 'NoneType' has no len()
+  ✓ 3404b326f5b4 |   9847 chars | https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-mo
+  ✓ 6543f911eaf6 |   6140 chars | https://about.fb.com/news/2026/05/protecting-players-and-fans-during-f
+  ✓ e17c02a83a35 |    704 chars | https://www.cbinsights.com/research/executive-interview-ninjatech-ai/
+  ✓ 8770fbb5e025 |    796 chars | https://www.cbinsights.com/research/ceo-interview-gale-payments/
+  ✓ fafc6a0cd1ba |   4673 chars | https://www.microsoft.com/en-us/research/blog/data-formulator-0-7-ai-p
+  ✓ b984c07f98c4 |   7616 chars | https://www.a16z.news/p/narrative-violation-in-b2b-customer
+  ✓ 2f29b6393442 |   9635 chars | https://blogs.nvidia.com/blog/icra-research-robotics-simulation-to-rea
+  ✓ 8e0086390eae |   4969 chars | https://www.a16z.news/p/introducing-the-a16z-fde-fellowship
+  ✗ 6b1fa8ae684f | HTTP 403
+  ✓ 824125bf5682 |   3684 chars | https://stratechery.com/2026/an-interview-with-eric-seufert-about-mode
+  ✓ 2c6e5bbca2bc |   1720 chars | https://www.technologyreview.com/2026/05/28/1138053/the-ai-hype-index-
+  ✗ 78758b8ec5bc | HTTP 403
+  ✗ 702fb607570e | HTTP 403
+  ✓ 4b8e6dfb5e2f |   1259 chars | https://vercel.com/changelog/opus-4-8-on-ai-gateway
+  ✓ 72349f1322a7 |    799 chars | https://www.cbinsights.com/research/ceo-interview-rulebricks/
+  ✓ 56ec5bbae978 |   2620 chars | https://vercel.com/changelog/team-wide-provider-allowlist-on-ai-gatewa
+  ✓ 6d6253d3f1f0 |   1531 chars | https://www.cbinsights.com/research/ceo-interview-weeknd/
+  ✓ 6b440667ccff |   8548 chars | https://machinelearning.apple.com/updates/apple-at-cvpr-2026
+  ✓ 80592c958ede |   2748 chars | https://vercel.com/changelog/amazon-opensearch-serverless-is-now-avail
+  ✓ 37483f51d6da |    818 chars | https://www.cbinsights.com/research/ceo-interview-beegol/
+  ✓ 578e5502e2d6 |    948 chars | https://www.cbinsights.com/research/ceo-interview-humata-health/
+  ✓ 2d1bdfc7c103 |    668 chars | https://www.cbinsights.com/research/ceo-interview-imagry/
+  ✓ 93463b7f1ecd |   7228 chars | https://www.microsoft.com/en-us/research/blog/extending-human-intellig
+  ✓ c69cebac31a5 |   1415 chars | https://www.cbinsights.com/research/ceo-interview-recess-labs/
+  ✗ b5479ebcde18 | HTTP 403
+  ✓ 5ded9dc287cc |  22501 chars | https://www.a16z.news/p/avoiding-death-on-the-yellow-brick
+  ✓ 96d5266165be |   3660 chars | https://vercel.com/blog/how-conductor-moved-parallel-coding-agents-fro
+  ✓ 3d0351eefe90 |  19888 chars | https://stratechery.com/2026/the-spacex-ipo-and-data-centers-in-space/
+  ✓ 20cd1fcf60c3 |  13436 chars | https://www.datarobot.com/blog/industry-standard-llm-benchmarks/
+  ✗ 5899b169bc6e | HTTP 403
+  ✗ 0316568c46ec | TypeError: object of type 'NoneType' has no len()
+  ✗ 74f5123204ea | TypeError: object of type 'NoneType' has no len()
+  ✗ 919d46e19bc3 | HTTP 403
+  ✗ 1c77cec1ddad | HTTP 403
+  ✓ a64e304ddb2f |  20746 chars | https://lastweekin.ai/p/last-week-in-ai-341-musk-loses-to
+  ✓ 7cdcfd616873 |  10381 chars | https://huggingface.co/blog/local-reachy-mini-conversation
+  ✓ 0b817a02bd1d |    772 chars | https://vercel.com/changelog/experimental-native-binaries-for-vercel-c
+  ✓ 3b3971cee4f2 |  22698 chars | https://huggingface.co/blog/delta-weight-sync
+  ✓ 3a7abad9d590 |  10931 chars | https://aiweekly.co/issues/anthropics-pentagon-model-is-now-everyones-
+  ✓ b920d871e577 |   9737 chars | https://www.technologyreview.com/2026/05/26/1137584/rethinking-organiz
+  ✓ a76dd875abeb |    380 chars | https://vercel.com/changelog/redesigned-deployments-list
+  ✗ e70e88d9a498 | TypeError: object of type 'NoneType' has no len()
+  ✓ 7400dc01b3a1 |  19038 chars | https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on
+  ✓ 5fa6d197b415 |  16230 chars | https://www.a16z.news/p/everything-everywhere-is-compliance
+  ✓ 1e2aa2621f26 |   1102 chars | https://postnauka.org/tv/158046
+  ✓ ab036e9a693c |  37272 chars | https://importai.substack.com/p/import-ai-458-reckoning-with-the
+  ✓ e8227e1ef5eb |   3710 chars | https://lastweekin.ai/p/lwiai-podcast-246-gemini-35-omni
+  ✓ a772ee776d38 |   2409 chars | https://vercel.com/changelog/sandbox-persistence-is-now-ga
+  ✓ 8f270d9731c1 |    358 chars | https://vercel.com/changelog/vercel-domains-now-supports-price-sorting
+  ✓ 376e96997d09 |    634 chars | https://vercel.com/changelog/firecrawl-joins-the-vercel-marketplace
+  ✗ 86df175a446d | HTTP 403
+  ✓ a2b3b1fe0438 |    773 chars | https://vercel.com/changelog/microfrontends-routing-now-applies-to-vc-
+  ✓ 37be5f050c29 |  11483 chars | https://huggingface.co/blog/agent-glossary
+  ✓ 18f4f93feb30 |   1187 chars | https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-
+  ✓ 4dddeb36d0d4 |  10821 chars | https://aiweekly.co/issues/musk-zuckerberg-killed-trumps-ai-safety-ord
+  ✓ c814bef41a39 |  14507 chars | https://www.datarobot.com/blog/rate-limiting-quota-reservations/
+  ✓ ee59e13db839 |   7841 chars | https://bdtechtalks.com/2026/05/25/composer-25-llm-self-distillation/?
+  ✓ b6e123e9507d |  13313 chars | https://devblogs.microsoft.com/agent-framework/agent-skills-for-python
+  ✗ f2261073b77c | HTTP 403
+  ✓ 2b712628b265 |   5230 chars | http://augmentedcoding.dev/issue-45/
+  ✓ 607ed963287a |  13466 chars | https://simonw.substack.com/p/datasette-agent-an-ai-assistant-for
+  ✗ 740545d72e85 | HTTP 403
+  ✓ ea937afeb068 |  13552 chars | https://bdtechtalks.com/2026/05/24/vertical-integration-as-ai-infrastr
+  ✓ 3e572aa5602b |  21198 chars | https://sequoiacap.com/article/all-systems-nominal-nominal-spotlight/
+  ✓ d87fa4829619 |   3220 chars | https://machinelearning.apple.com/research/vsas-bench-streaming-assist
+  ✓ a5b423e0d34d |   1001 chars | https://deepmind.google/blog/were-launching-the-google-deepmind-accele
+  ✓ 5da14d5c1a98 |    604 chars | https://vercel.com/changelog/pull-anomaly-alert-details-using-the-verc
+  ✓ 31271732ee75 |   6997 chars | https://aiweekly.co/issues/spacex-wants-80-billion-openai-wants-a-tril
+  ✓ 01ec5fbbb35e |   6395 chars | https://www.datarobot.com/blog/datarobot-skills-cursor-gemini-claude/
+  ✓ 7dff812584f6 |  11233 chars | https://www.microsoft.com/en-us/research/blog/magenticlite-magenticbra
+  ✓ 58130303da4c |   1003 chars | https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-
+  ✓ c1e2764b80c5 |  29943 chars | https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all
+  ✓ f3c47f4e5dde |  13815 chars | https://www.microsoft.com/en-us/research/blog/vega-zero-knowledge-proo
+  ✓ 9e924c46a871 |   1530 chars | https://blog.google/innovation-and-ai/models-and-research/google-resea
+  ✓ 53c31cd9e9d2 |    505 chars | https://www.cbinsights.com/research/ceo-interview-handy-signs/
+  ✓ d54be31d592f |  16817 chars | https://devblogs.microsoft.com/agent-framework/fides/
+  ✓ 690e95dda273 |   1136 chars | https://www.cbinsights.com/research/ceo-interview-riffsec/
+  ✓ 6ac1894394a8 |   1614 chars | https://www.cbinsights.com/research/ceo-interview-multiply/
+  ✓ 255658a2ed6a |   1203 chars | https://www.cbinsights.com/research/executive-interview-defendsphere/
+  ✓ 53cae1d9f02d |   2795 chars | https://lastweekin.ai/p/lwiai-podcast-245-tml-interaction
+  ✓ 21db34dc984e |   3341 chars | https://blog.google/innovation-and-ai/models-and-research/google-deepm
+  ✓ 63751fb3a376 |   4928 chars | https://huggingface.co/blog/allenai/olmoearth-v1-1
+  ✓ 96698b79864f |    709 chars | https://www.cbinsights.com/research/executive-interview-nerdsleaze/
+  ✓ b0c6de878f2b |   1170 chars | https://www.cbinsights.com/research/ceo-interview-anxiety-checklist/
+  ✓ 10861640c1d2 |   4471 chars | https://blog.google/innovation-and-ai/products/identifying-ai-generate
+  ✓ c2e11eb5aa5c |    569 chars | https://www.cbinsights.com/research/ceo-interview-mindfit/
+  ✓ ffefb38b8f9a |    539 chars | https://www.cbinsights.com/research/ceo-interview-smartsec/
+  ✓ 512dc73fda87 |   2741 chars | https://blog.google/innovation-and-ai/models-and-research/google-deepm
+  ✓ c4a1df62bd71 |   6848 chars | https://blog.google/innovation-and-ai/technology/research/gemini-for-s
+  ✓ 757b4a2a57b0 |   1617 chars | https://blog.google/products-and-platforms/products/search/ai-mode-us-
+  ✓ adac55b4e4fe |   7230 chars | https://blog.google/products-and-platforms/products/workspace/workspac
+  ✓ cd2fbffde559 |  18170 chars | https://blog.google/innovation-and-ai/sundar-pichai-io-2026/
+  ✓ 388f97def8c6 |   7161 chars | https://blog.google/innovation-and-ai/models-and-research/gemini-model
+  ✓ 6cad7b8bd247 |   6422 chars | https://blog.google/products-and-platforms/products/search/search-io-2
+  ✗ e7785d8c77e3 | HTTP 429
+  ✓ 6277c54bdb44 |   6137 chars | https://blog.google/products-and-platforms/products/google-one/google-
+  ✓ 97094a738fe1 |   1128 chars | https://www.cbinsights.com/research/ceo-interiew-stargo/
+  ✓ 8feaaef8f93e |   1175 chars | https://blog.google/innovation-and-ai/technology/developers-tools/goog
+  ✓ 16f3bbb12126 |   1809 chars | https://www.cbinsights.com/research/ceo-interview-kubegrade/
+  ✓ 19a26d4a853d |   2838 chars | https://machinelearning.apple.com/research/epicache
+  ✓ 0f4d83dea22f |   6393 chars | https://aiweekly.co/issues/meta-hired-145b-in-capex-and-fired-8000-peo
+  ✓ 1f9e966d4c74 |  30620 chars | https://simonw.substack.com/p/the-last-six-months-in-llms-in-five
+  ✓ 14010cdfe089 |   4384 chars | https://www.datarobot.com/blog/skills-mcp-agent-developer/
+  ✓ 0c2850c01e44 |   1505 chars | https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-ce
+  ✓ e05bf9ebf2f8 |  39721 chars | https://huggingface.co/blog/ettin-reranker
+  ✓ 1c021b3b89f4 |  13889 chars | https://importai.substack.com/p/import-ai-457-ai-stuxnet-cursed-muon
+  ✓ 210dad3ca6f9 |   5374 chars | https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers
+  ✓ 50e6453b15f5 |   2741 chars | https://deepmind.google/blog/simulate-real-world-places-with-project-g
+  ✓ d8e8eb026813 |   6512 chars | https://about.fb.com/news/2026/05/meta-ai-wearables-changing-the-game-
+  ✗ b454f8817363 | TypeError: object of type 'NoneType' has no len()
+  ✓ 79a8e72243ca |  10180 chars | https://www.datarobot.com/blog/agentic-ai-factory-problems/
+  ✓ 94cadebaf45d |  13421 chars | https://bdtechtalks.com/2026/05/18/openclaw-sandbox-vulnerability/?utm
+  ✓ 750113e8e058 |   8032 chars | https://deepmind.google/blog/introducing-gemini-omni/
+  ✓ 7dd26d19052d |   1001 chars | https://blog.google/innovation-and-ai/models-and-research/google-deepm
+  ✓ 182491f5bb0f |   6102 chars | https://deepmind.google/blog/strengthening-singapores-ai-future-a-new-
+  ✓ 519b4bba1e12 |   6848 chars | https://deepmind.google/blog/gemini-for-science-ai-experiments-and-too
+  ✓ 421028a9f1c3 |   6174 chars | https://engineering.atspotify.com/2026/5/better-experiments-with-llm-e
+  ✓ 3ab403eea4ca |   1668 chars | https://deepmind.google/blog/finding-the-molecular-switches-behind-new
+  ✓ c27234506bbb |   4471 chars | https://deepmind.google/blog/making-it-easier-to-understand-how-conten
+  ✓ 5effe6badffb |   1358 chars | https://deepmind.google/blog/opening-new-paths-in-aging-research/
+  ✓ f7b73f332bd7 |   1509 chars | https://deepmind.google/blog/accelerating-discovery-of-liver-disease-m
+  ✓ e8450671f6ee |   1553 chars | https://deepmind.google/blog/uniting-biological-toolkits-for-a-new-app
+  ✓ 01c87a6f50fe |   1567 chars | https://deepmind.google/blog/uncovering-repurposed-medicines-to-fight-
+  ✓ 0c6bed52fbbd |    647 chars | https://deepmind.google/blog/how-weathernext-helped-the-national-hurri
+  ✓ fc2ee7451534 |   7028 chars | http://augmentedcoding.dev/issue-44/
+  ✓ 8ec382739a7d |   7161 chars | https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-act
+  ✓ f96cf296842e |  13014 chars | https://devblogs.microsoft.com/agent-framework/governance-at-the-speed
+  ✓ 3d30727982c4 |  24112 chars | https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual
+  ✓ 576166d12472 |   4325 chars | https://www.microsoft.com/en-us/research/blog/further-notes-on-our-rec
+  ✓ e8c0ad032aca |   4592 chars | https://about.fb.com/news/2026/05/introducing-business-ai-on-whatsapp-
+  ✓ c2fad0632e54 |  22173 chars | https://huggingface.co/blog/continuous_async
+  ✓ 6baee2da6392 |  13083 chars | https://www.datarobot.com/blog/agent-build-club/
+  ✓ 56dca08f75a4 |   9168 chars | https://aiweekly.co/issues/ai-slop-a-725b-bet-on-what-no-one-wanted
+  ✓ 15deeae3d860 |   2225 chars | https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-
+  ✓ 3719f3ae10a0 |  13610 chars | https://venturefounders.com/startup-with-purpose-flourish-and-contribu
+  ✓ acd360206c0f |  12553 chars | https://www.microsoft.com/en-us/research/blog/mimalloc-a-high-performa
+  ✓ 2ddd2570e3d4 |  18834 chars | https://www.microsoft.com/en-us/research/blog/gridsfm-a-new-small-foun
+  ✓ 7c51094def4d |   1006 chars | https://becominghuman.ai/ai-bias-in-hiring-tools-real-disasters-and-ho
+  ✓ 3bee7290591a |  30603 chars | https://huggingface.co/blog/amazon/foundation-model-building-blocks
+  ✓ 9155cb8e56b8 |  20701 chars | https://importai.substack.com/p/import-ai-456-rsi-and-economic-growth
+  ✓ 493dd3fda709 |   1017 chars | https://blog.google/products-and-platforms/products/search/ai-powered-
+  ✓ 827a2f104a20 |   8185 chars | https://bdtechtalks.com/2026/05/11/google-gemma-4-multi-token-predicti
+  ✓ 55f8cdd33ed6 |  17133 chars | https://www.microsoft.com/en-us/research/blog/socialreasoning-bench-me
+  ✓ 4f0e51d00909 |  11711 chars | https://www.microsoft.com/en-us/research/blog/advancing-ai-for-materia
+  ✓ caa8bc3ba563 |   9553 chars | https://www.datarobot.com/blog/from-planning-to-action-sap-enterprise-
+  ✓ 81099b76cd14 |   2737 chars | https://machinelearning.apple.com/research/balcaprl-mllm-image-caption
+  ✓ f8266f2d9d5a |   7924 chars | https://aiweekly.co/issues/100-years-from-now-the-last-election
+  ✓ 228a9e5ac18c |   1399 chars | https://sequoiacap.com/article/ai-ascent-2026/
+  ✓ f1bb07285992 |  16297 chars | https://devblogs.microsoft.com/agent-framework/a-tour-of-handoff-orche
+  ✓ 70615ef3544f |    923 chars | https://blog.google/company-news/inside-google/company-announcements/t
+  ✓ e821b92b41de |  24253 chars | https://simonw.substack.com/p/vibe-coding-and-agentic-engineering
+  ✓ 213e4bb8e11b |   3039 chars | https://machinelearning.apple.com/research/rvpo-risk-sensitive-alignme
+  ✓ a8b82a1934b2 |  24122 chars | http://bair.berkeley.edu/blog/2026/05/08/adaptive-parallel-reasoning/
+  ✓ 779a7f812523 |   7023 chars | http://augmentedcoding.dev/issue-43/
+  ✓ e9ff30bb5734 |   1632 chars | https://machinelearning.apple.com/research/gaussian-head-reconstructio
+  ✓ 4d3a2b074941 |   8194 chars | https://machinelearning.apple.com/updates/ppml-2026
+  ✓ 9bf773ad67f3 |   2400 chars | https://machinelearning.apple.com/research/velox
+  ✓ 1d2d1b5181d6 |   1277 chars | https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-
+  ✓ 42ec19cc96ff |   2829 chars | https://machinelearning.apple.com/research/compression
+  ✓ 37faf91af5b8 |  12751 chars | https://www.microsoft.com/en-us/research/blog/building-realistic-elect
+  ✓ c45f503fbeab |   8762 chars | https://aiweekly.co/issues/anthropic-just-had-ais-biggest-week-of-2026
+  ✓ f2ec42e75fc0 |   6539 chars | https://devblogs.microsoft.com/agent-framework/from-local-to-productio
+  ✓ 11e756df6b84 |   7913 chars | https://huggingface.co/blog/ServiceNow-AI/correctness-before-correctio
+  ✓ c122dcde12a0 |   5767 chars | https://deepmind.google/blog/alphaevolve-impact/
+  ✓ 864ace2c6c6f |    253 chars | https://lastweekin.ai/p/last-week-in-ai-340-openai-vs-musk
+  ✓ 6491f8c1211c |   8012 chars | https://huggingface.co/blog/open-asr-leaderboard-private-data
+  ✓ 767cdb089f7e |  26250 chars | https://importai.substack.com/p/import-ai-455-automating-ai-research
+  ✓ c0480881e3b2 |   3086 chars | https://lastweekin.ai/p/lwiai-podcast-243-gpt-55-deepseek
+  ✓ 195495635b55 |   7427 chars | https://aiweekly.co/issues/pe-built-ais-new-distribution-layer
+  ✓ 1c584c59586b |   5680 chars | http://augmentedcoding.dev/issue-42/
+  ✓ d7cb78ef84f0 |  10670 chars | https://bdtechtalks.com/2026/05/04/memory-sparse-attention/?utm_source
+  ✓ 8c5a961c2076 |   4104 chars | https://sequoiacap.com/article/standard-intelligence-training-general-
+  ✓ 9d706b219a96 |  36651 chars | https://simonw.substack.com/p/deepseek-v4-and-the-end-of-the-openaimic
+  ✓ b59858efc780 |   3529 chars | https://deepmind.google/blog/ai-co-clinician/
+  ✓ 3f75090b306f |  11978 chars | https://engineering.atspotify.com/2026/5/spotify-ads-api-claude-plugin
+  ✓ e1e400db4541 |   3403 chars | https://lastweekin.ai/p/lwiai-podcast-242-chatgpt-images
+  ✓ 271b85f10848 |   7696 chars | https://aiweekly.co/issues/openai-lost-three-things-in-five-days
+  ✓ 4af17d3dfa66 |  11913 chars | https://devblogs.microsoft.com/agent-framework/a2a-v1-is-here-cross-pl
+  ✓ 59ef3aa9e68b |  19431 chars | https://huggingface.co/blog/ibm-granite/granite-4-1
+  ✓ f6674537e2b8 |   4589 chars | https://huggingface.co/blog/inference-providers-deepinfra
+  ✓ 29488e13238b |    938 chars | https://blog.google/innovation-and-ai/technology/developers-tools/kagg
+  ✓ 8af849db36d4 |   3560 chars | https://sequoiacap.com/article/partnering-with-ineffable-intelligence-
+  ✓ 3fabcf9934d1 |  20296 chars | https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-int
+  ✓ 86d148703bef |   3400 chars | https://deepmind.google/blog/announcing-our-partnership-with-the-repub
+  ✓ 5c1e2a49e9c6 |   3898 chars | https://aiweekly.co/issues/100-years-from-now-the-allowance
+  ✓ 845ff3d3f8ae |  18623 chars | https://devblogs.microsoft.com/agent-framework/chat-history-storage-pa
+  ✓ 100e89029424 |   9255 chars | https://huggingface.co/blog/openai-privacy-filter-web-apps
+  ✓ 9b870ee1e1e9 |   2869 chars | http://augmentedcoding.dev/issue-41/
+  ✓ 845a82356a94 |  47212 chars | https://simonw.substack.com/p/gpt-55-chatgpt-images-20-qwen36-27b
+  ✓ 807d3648751f |   8389 chars | https://huggingface.co/blog/deepseekv4
+  ✓ a864e973c2d0 |  18591 chars | https://devblogs.microsoft.com/agent-framework/codeact-with-hyperlight
+  ✓ 2eb43756616e |   8152 chars | https://bdtechtalks.com/2026/04/27/claude-code-api-token-leak/?utm_sou
+  ✓ 2447fb670a86 |   2058 chars | https://deepmind.google/blog/decoupled-diloco/
+  ✓ 2314893d28bc |  10127 chars | https://www.datarobot.com/blog/acl-hydration/
+  ✓ 4de0d2dd0860 |   2837 chars | https://deepmind.google/blog/partnering-with-industry-leaders-to-accel
+  ✓ 5d6efed03eb1 |   7476 chars | https://aiweekly.co/issues/apple-is-replacing-tim-cook-because-of-ai
+  ✓ 66bd8767c347 |  10884 chars | https://huggingface.co/blog/transformersjs-chrome-extension
+  ✓ 3027bbe1d0f3 |   7057 chars | https://huggingface.co/blog/cybersecurity-openness
+  ✓ 200ccf22b473 |   9343 chars | https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard
+  ✓ e1d05b7e37ad |  19882 chars | https://importai.substack.com/p/import-ai-454-automating-alignment
+  ✓ 32f15c5cd602 |   8058 chars | https://engineering.atspotify.com/2026/4/background-coding-agents-data
+  ✓ 2d5993c5cc4f |   6285 chars | http://augmentedcoding.dev/issue-40/
+  ✓ 6a8158fcfc81 |  11341 chars | https://aiweekly.co/issues/when-ai-teaches-ai-it-teaches-in-secret
+  ✓ 434526b1fd71 |  17716 chars | http://bair.berkeley.edu/blog/2026/04/20/grasp/
+  ✓ 76376cb3ea8c |   8622 chars | https://bdtechtalks.com/2026/04/20/anthropic-mcp-vulnerability/?utm_so
+  ✓ cb9db3dd4d90 |  25675 chars | https://simonw.substack.com/p/qwen36-35b-a3b-on-my-laptop-drew
+  ✓ 2cfbad63e5f5 |   7665 chars | https://aiweekly.co/issues/your-ai-chats-can-be-used-against-you-in-co
+  ✓ 7d5299a21017 |   2685 chars | https://sequoiacap.com/article/partnering-with-auctor/
+  ✓ 4e60aa4d4161 |   1048 chars | https://blog.google/innovation-and-ai/models-and-research/google-deepm
+  ✓ f846584e94ff |   1758 chars | https://deepmind.google/blog/gemini-robotics-er-1-6/
+  ✓ 369ff4dca1f3 |  16034 chars | https://importai.substack.com/p/import-ai-453-breaking-ai-agents
+  ✓ 1bce4c3eeade |   3434 chars | https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-
+  ✓ e41240389cf1 |   5816 chars | https://aiweekly.co/issues/100-years-from-now-the-ghost-in-the-contrac
+  ✓ e77ead0302b2 |   7450 chars | https://redrocketvc.blogspot.com/2026/04/what-happens-to-your-business
+  ✓ d691cabca694 |   4412 chars | http://augmentedcoding.dev/issue-39/
+  ✓ 23cef888482a |    913 chars | https://redrocketvc.blogspot.com/2026/04/video-dont-chase-short-term-r
+  ✓ 8c6a60260fc7 |   6880 chars | https://aiweekly.co/issues/ai-is-now-the-weapon-and-the-target-things-
+  ✓ 5a458d29f559 |  30710 chars | https://simonw.substack.com/p/metas-new-model-is-muse-spark-and
+  ✓ 40bb90aafff6 |   8607 chars | https://bdtechtalks.com/2026/04/13/llm-self-distillation-tradeoffs/?ut
+  ✓ 771aa0072ade |   7892 chars | https://aiweekly.co/issues/musk-wants-altman-fired-anthropic-passes-op
+  ✓ 5b8133d2264a |  17100 chars | https://importai.substack.com/p/import-ai-452-scaling-laws-for-cyberwa
+  ✓ 1aff884e34e6 |  31084 chars | https://simonw.substack.com/p/highlights-from-my-conversation-about
+  ✓ fc1fb9d4782e |   3942 chars | https://engineering.atspotify.com/2026/4/anthropic-agentic-development
+  ✓ 589a7dd06495 |   4467 chars | http://augmentedcoding.dev/issue-38/
+  ✓ e5c861df0a41 |   3192 chars | https://bdtechtalks.com/2026/04/06/ai-harness-engineering-claude-code-
+  ✓ bd7c01e3fd3b |  14428 chars | https://bdtechtalks.com/2026/04/05/topdawg-vs-zendrop-for-us-dropshipp
+  ✓ 560ddd11f9ff |   5863 chars | https://www.aiweirdness.com/get-working-on-your-april-fools-eiffel-tow
+  ✓ a6c378f48525 |    378 chars | https://www.aiweirdness.com/bonus-more-april-fools-pranks-from-eiffel-
+  ✓ c64eb2c5c469 |   8018 chars | https://deepmind.google/blog/gemma-4-byte-for-byte-the-most-capable-op
+  ✓ c10527d0fffd |   7548 chars | https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-
+  ✓ 94b2ee34348d |   3676 chars | https://lastweekin.ai/p/lwiai-podcast-238-gpt-54-mini-openai
+  ✓ 64a52583d67d |  16487 chars | https://sequoiacap.com/article/from-hierarchy-to-intelligence/
+  ✓ eb8a2480642b |   2560 chars | https://venturefounders.com/startup-steward-ownership/
+  ✓ 08b623973fb7 |  20292 chars | https://importai.substack.com/p/import-ai-451-political-superintellige
+  ✓ 29342363910c |   1147 chars | https://deepmind.google/blog/ai-pointer/
+  ✓ 991e21e85a94 |   4851 chars | http://augmentedcoding.dev/issue-37/
+  ✓ 9b5c3550ba4c |   4499 chars | https://venturefounders.com/startup-cash-flow-management/
+  ✓ ff3dd6c1215a |  37951 chars | https://simonw.substack.com/p/vibe-coding-swiftui-apps-is-a-lot
+  ✓ c6f8811a85b3 |   3745 chars | https://deepmind.google/blog/protecting-people-from-harmful-manipulati
+  ✓ 29b426110e0b |   9656 chars | https://bdtechtalks.com/2026/03/30/ghostclaw-malware-targets-openclaw-
+  ✓ 161f77b8cd23 |   3501 chars | https://deepmind.google/blog/gemini-3-1-flash-live-making-audio-ai-mor
+  ✓ 0a9d589f312b |   6083 chars | https://venturefounders.com/startups-should-expect-surprises/
+  ✓ 48227e4cc2c6 |   4267 chars | https://deepmind.google/blog/lyria-3-pro-create-longer-tracks-in-more/
+  ✓ edec015085ac |    857 chars | https://redrocketvc.blogspot.com/2026/03/stick-to-your-business-plan-m
+  ✓ 8de41f8a5393 |  14813 chars | https://importai.substack.com/p/import-ai-450-chinas-electronic-warfar
+  ∅ aa254796804e | extracted only 101 chars
+  ✓ 86ed50a005ea |   4772 chars | http://augmentedcoding.dev/issue-36/
+  ✓ 0249d364a29b |   3001 chars | https://sequoiacap.com/article/partnering-with-edra-context-for-agents
+  ✓ 88ffc9ca1833 |  14419 chars | https://simonw.substack.com/p/thoughts-on-openai-acquiring-astral
+  ✓ 6cb4fa334ff2 |  10679 chars | https://bdtechtalks.com/2026/03/23/v-jepa-2-1/?utm_source=rss&utm_medi
+  ✓ a56f1dd9fece |   3397 chars | https://blog.google/innovation-and-ai/models-and-research/google-deepm
+  ✓ 754cbde756fb |   7793 chars | https://bdtechtalks.com/2026/03/22/multi-level-ai-prompt-engineering-a
+  ✓ c4b3baf6b1c8 |  42612 chars | https://simonw.substack.com/p/fireside-chat-about-agentic-engineering
+  ✓ 7d4268752b84 |   3397 chars | https://deepmind.google/blog/measuring-progress-toward-agi-a-cognitive
+  ✓ cc2a6e93b13f |   3300 chars | https://blog.google/company-news/inside-google/around-the-globe/google
+  ✓ 58df5fb9906c |  20031 chars | https://importai.substack.com/p/importai-449-llms-training-other
+  ✓ 4b4e272cad9f |   3956 chars | https://lastweekin.ai/p/lwiai-podcast-237-nemotron-3-super
+  ✓ 132e7ff75e5e |    278 chars | https://lastweekin.ai/p/last-week-in-ai-338-anthropic-sues
+  ✓ bfcaf8229529 |   5996 chars | http://augmentedcoding.dev/issue-35/
+  ✓ d005e1ce1065 |   3270 chars | https://lastweekin.ai/p/lwiai-podcast-236-gpt-54-gemini-31
+  ✓ 0f90ede03a8d |   4612 chars | https://bdtechtalks.com/2026/03/16/why-ai-wont-kill-saas/?utm_source=r
+  ✓ 05d76e3fbf3c |   3238 chars | https://blog.google/company-news/inside-google/around-the-globe/google
+  ✓ 8a70deff3e62 |  10651 chars | http://bair.berkeley.edu/blog/2026/03/13/spex/
+  ✓ b80dc0e2fd42 |   4895 chars | https://deepmind.google/blog/10-years-of-alphago/
+  ✓ 36a93a053552 |   4475 chars | https://sequoiacap.com/article/partnering-with-scanner-every-log-tells
+  ✓ a68c832785b8 |  20801 chars | https://importai.substack.com/p/import-ai-448-ai-r-and-d-bytedances
+  ✓ 8a3407b4a8e5 |   9063 chars | https://sequoiacap.com/article/services-the-new-software/
+  ✓ 1d0aca8b5a2b |    573 chars | https://lastweekin.ai/p/last-week-in-ai-337-anthropic-risk
+  ✓ b6cf249b5f01 |   5494 chars | http://augmentedcoding.dev/issue-34/
+  ✓ f0b742e34384 |  13275 chars | https://bdtechtalks.com/2026/03/09/causal-jepa-world-model/?utm_source
+  ✓ 920254f65598 |  24743 chars | https://simonw.substack.com/p/can-coding-agents-relicense-open
+  ✓ 442508867b11 |   5939 chars | https://blog.google/innovation-and-ai/products/google-ai-updates-febru
+  ✓ 94cadf05be70 |   3696 chars | https://lastweekin.ai/p/lwiai-podcast-235-sonnet-46-deep
+  ✓ ed07b32904b5 |   3150 chars | https://blog.google/innovation-and-ai/models-and-research/google-deepm
+  ✓ 27665cddd774 |  23376 chars | https://importai.substack.com/p/import-ai-447-the-agi-economy-testing
+  ✓ 4316a04f2ed5 |   5554 chars | http://augmentedcoding.dev/issue-33/
+  ✓ 35157cad5e45 |   5889 chars | https://blog.google/company-news/inside-google/googlers/ask-a-techsper
+  ✓ dd74ffdf4d77 |  44177 chars | https://simonw.substack.com/p/agentic-engineering-patterns
+  ✓ 1b7366611233 |   8664 chars | https://redrocketvc.blogspot.com/2026/02/lesson-379-business-lessons-f
+  ✓ 7067e9eaeab8 |   9595 chars | https://bdtechtalks.com/2026/03/02/flashoptim-llm-training-optimizatio
+  ✓ 9df0a31407be |  15786 chars | https://importai.substack.com/p/import-ai-446-nuclear-llms-chinas
+  ∅ e6e12a7181a1 | extracted only 83 chars
+  ✓ ad7370906cd6 |   4587 chars | http://augmentedcoding.dev/issue-32/
+  ✓ fa323b7bf068 |    808 chars | https://redrocketvc.blogspot.com/2026/02/video-is-entrepreneurship-lea
+  ✓ 9db2dab80241 |   6901 chars | https://bdtechtalks.com/2026/02/23/llm-sparse-attention/?utm_source=rs
+  ✓ 6c0d8353ba15 |  11602 chars | https://venturefounders.com/connection-trust-love/
+  ✓ 1d24378728ea |  52444 chars | https://simonw.substack.com/p/two-new-showboat-tools-chartroom
+  ✓ 2df87f065d16 |  62137 chars | https://thegradient.pub/virtue-ethics-ai-alignment/
+  ✓ edd7f454a2f6 |   3034 chars | https://lastweekin.ai/p/lwiai-podcast-234-opus-46-gpt-53
+  ✓ cff0d3bb66b5 |  19372 chars | https://importai.substack.com/p/import-ai-445-timing-superintelligence
+  ✓ 851d73f37d8a |   4406 chars | http://augmentedcoding.dev/issue-31/
+  ✓ 1493b0201237 |    510 chars | https://lastweekin.ai/p/last-week-in-ai-335-opus-46-codex
+  ✓ e795181f01f6 |   4316 chars | https://blog.google/innovation-and-ai/models-and-research/gemini-model
+  ✓ 45375737bef3 |  20831 chars | https://simonw.substack.com/p/introducing-showboat-and-rodney-so
+  ✓ bd271bd0d8b8 |  18740 chars | https://importai.substack.com/p/import-ai-444-llm-societies-huawei
+  ✓ c5568844fd29 |  12998 chars | https://venturefounders.com/side-business-to-startup/
+  ✓ 9512661af073 |   6957 chars | https://bdtechtalks.com/2026/02/16/how-semantic-chaining-jailbreaks-im
+  ✓ cb17ba77e9d7 |  37762 chars | https://simonw.substack.com/p/how-strongdms-ai-team-build-serious
+  ✓ 35e0223df134 |   4023 chars | http://augmentedcoding.dev/issue-30/
+  ✓ dfc8c1534256 |   2479 chars | https://lastweekin.ai/p/lwiai-podcast-233-moltbot-genie-3
+  ✓ 5a91f296c7e8 |    524 chars | https://lastweekin.ai/p/last-week-in-ai-334-kimi-k25-and
+  ✓ 1eabfc9fe70e |   7462 chars | https://blog.google/innovation-and-ai/products/google-ai-updates-janua
+  ✓ 5f225fba38fd |  29758 chars | https://importai.substack.com/p/import-ai-443-into-the-mist-moltbook
+  ✓ 12f40143f5b2 |   5948 chars | https://blog.google/innovation-and-ai/models-and-research/google-deepm
+  ✓ 5502bfb97f1c |   7274 chars | https://bdtechtalks.com/2026/02/02/sakana-ai-repo-llm-token-positions/
+  ✓ 67e28d9a4509 |  12804 chars | https://simonw.substack.com/p/moltbook-is-the-most-interesting
+  ✓ e357cdab8755 |   4235 chars | http://augmentedcoding.dev/issue-29/
+  ✓ 1e38afe3c5ef |  28581 chars | https://simonw.substack.com/p/chatgpt-containers-can-now-run-bash
+  ✓ 4fd0315191b0 |  11775 chars | https://bdtechtalks.com/2026/01/31/smarter-trade-how-ai-turns-regulato
+  ✓ 4ef2abb3e57c |   2465 chars | https://lastweekin.ai/p/lwiai-podcast-232-chatgpt-ads-thinking
+  ✓ ae36c92a1b7d |  17316 chars | https://importai.substack.com/p/import-ai-442-winners-and-losers
+  ✓ eb1126460017 |   4395 chars | https://bdtechtalks.com/2026/01/26/recursive-language-models/?utm_sour
+  ✓ 28d70ab687e2 |   4946 chars | https://redrocketvc.blogspot.com/2026/01/lesson-378-artificial-intelli
+  ✓ 63426e7fbb1c |   1336 chars | https://roem.ru/09-04-2026/307612/ushyol-iz-zhizni-aleksej/?from=roem_
+  ✓ 48a62ed539f6 |   6165 chars | https://bdtechtalks.com/2026/01/23/microsofts-rho-alpha-vla-robotic-mo
+  ✓ 90033c0599c7 |    494 chars | https://lastweekin.ai/p/last-week-in-ai-333-chatgpt-ads-zhipuhuawei
+  ✓ 1fff0832aef0 |   4738 chars | http://augmentedcoding.dev/issue-28/
+  ✗ e670024b9a32 | HTTP 429
+  ✓ eb990cbc98cf |    778 chars | https://redrocketvc.blogspot.com/2026/01/video-investor-playbook-for-s
+  ✓ decd1f62057f |  16252 chars | https://importai.substack.com/p/import-ai-441-my-agents-are-working
+  ✗ 1bd5d5f60cc3 | HTTP 429
+  ✓ 867bd33a76b9 |  17823 chars | https://venturefounders.com/movement-for-business-purpose/
+  ✗ ca731494b194 | HTTP 429
+  ✓ c8180f9d1506 |   3059 chars | http://augmentedcoding.dev/issue-27/
+  ✗ db7ff708ed2f | HTTP 429
+  ✓ 7e2ddf3ad652 |   8479 chars | https://venturefounders.com/startup-statements-of-intent/
+  ✓ 5e237d9e858d |   6437 chars | https://bdtechtalks.com/2026/01/19/perplexity-browsesafe-prompt-inject
+  ✗ a102a18a5efc | HTTP 429
+  ✓ 0a68d1a2de41 |   6097 chars | http://augmentedcoding.dev/issue-26/
+  ✗ b37d93646457 | HTTP 429
+  ✓ 61f2be7f43b0 |   8302 chars | http://bair.berkeley.edu/blog/2026/01/10/information-driven-imaging/
+  ✓ 8327dd1c9843 |   4689 chars | https://bdtechtalks.com/2026/01/12/nvidia-end-to-end-test-time-trainin
+  ✓ 83e49c40e976 |   4820 chars | http://augmentedcoding.dev/issue-25/
+  ✓ d3f4aa6ff304 |   7999 chars | https://bdtechtalks.com/2026/01/03/meta-vl-jepa-vision-language-model/
+  ✓ bfd03aa1ef9d |   3269 chars | https://venturefounders.com/startup-mentor-checklist/
+  ✓ 9c69b14cda44 |   4202 chars | https://bdtechtalks.com/2025/12/29/llm-tool-use-agentic-ai/?utm_source
+  ✓ ba4da3d9f104 |   2968 chars | http://augmentedcoding.dev/issue-24/
+  ✓ 32f176befaac |   6239 chars | https://bdtechtalks.com/2025/12/22/universal-reasoning-model/?utm_sour
+  ✓ 8f9752779259 |   2998 chars | https://www.aiweirdness.com/when-a-chatbot-runs-your-store/
+  ✓ 8f4317dccc4b |   5412 chars | http://augmentedcoding.dev/issue-23/
+  ✓ 80584323b6b6 |    378 chars | https://www.aiweirdness.com/incorrect-christmas-carols/
+  ✓ da411f22fbaf |  10477 chars | https://bdtechtalks.com/2025/12/21/the-hidden-architecture-behind-ai-s
+  ✓ 8e243ec1c102 |  15421 chars | https://venturefounders.com/startup-exit-strategy/
+  ✓ b66a706833fe |   3346 chars | http://augmentedcoding.dev/issue-22/
+  ✓ 93c9603a40bf |    678 chars | https://redrocketvc.blogspot.com/2025/12/what-will-happen-to-your-busi
+  ✓ 9143aa952394 |   2982 chars | http://augmentedcoding.dev/issue-21/
+  ✓ ebe6abbf73bf |  54661 chars | https://techncruncher.blogspot.com/2025/12/how-i-get-free-traffic-from
+  ✓ 5271f472fca1 |   9738 chars | https://venturefounders.com/ai-for-startup/
+  ✓ 2db0b96f9937 |   6494 chars | https://venturefounders.com/startup-growth-on-purpose/
+  ✓ d2482a196908 |   4503 chars | http://augmentedcoding.dev/issue-20/
+  ✓ 4f1310fc1632 |  35719 chars | https://venturefounders.com/resources-founder-services/
+  ✓ 9b3f3c616127 |   4994 chars | https://redrocketvc.blogspot.com/2025/11/lesson-377-what-to-expect-aft
+  ✓ 54b464bce9ca |    924 chars | https://redrocketvc.blogspot.com/2025/11/video-how-founders-can-evalua
+  ✓ fb236092cdeb |   4578 chars | http://augmentedcoding.dev/issue-19/
+  ✓ 1f4e85483d88 |   2643 chars | http://augmentedcoding.dev/issue-18/
+  ✓ 2c9e0834e106 |    775 chars | https://redrocketvc.blogspot.com/2025/11/ai-can-do-everything-now-and-
+  ✓ ae910a600939 |   2288 chars | https://roem.ru/10-02-2026/307403/otkuda-v-smi-berutsya/?from=roem_rss
+  ✓ 9fd7868df037 |  11218 chars | http://bair.berkeley.edu/blog/2025/11/01/rl-without-td-learning/
+  ✓ d53f9b553379 |   3368 chars | https://www.aiweirdness.com/tiny-neural-net-halloween-costumes-are-the
+  ✓ a9ddd7aa451f |   6906 chars | https://redrocketvc.blogspot.com/2025/10/lesson-376-know-when-to-cut-y
+  ✓ f5081a146bbd |    378 chars | https://www.aiweirdness.com/more-tiny-neural-net-costumes/
+  ✓ 3e2a4ab28350 |   2370 chars | https://www.aiweirdness.com/halloween-costumes-by-tiny-neural-net/
+  ✓ 452857946070 |    378 chars | https://www.aiweirdness.com/bonus-more-halloween-costumes-from-tiny-ne
+  ✓ 4f4ad76918fb |   4193 chars | https://roem.ru/30-01-2026/307297/epoha-chatgpt-zakonchilas/?from=roem
+  ✓ 8f26578e3864 |   8466 chars | https://venturefounders.com/startup-registration/
+  ✓ 174a3aebe707 |    691 chars | https://redrocketvc.blogspot.com/2025/10/you-sold-your-business-what-h
+  ✓ a2c08b63ac4b |   2133 chars | https://www.aiweirdness.com/tiny-jello/
+  ✓ 527e2a3fbbab |    378 chars | https://www.aiweirdness.com/bonus-char-rnns-jello-creations/
+  ✓ 9320b7ca640a |   5557 chars | https://redrocketvc.blogspot.com/2025/09/lesson-375-why-having-co-ceos
+  ✓ 0e327d003011 |    915 chars | https://redrocketvc.blogspot.com/2025/09/video-why-product-market-fit-
+  ✓ 77d91ba9290a |   8110 chars | http://bair.berkeley.edu/blog/2025/09/01/qwem-word2vec-theory/
+  ✓ fb5626f10819 |   2822 chars | https://roem.ru/03-01-2026/307232/tri-belyh-konya/?from=roem_rss
+  ✓ 1f7fe759676a |   7798 chars | https://syncedreview.com/2025/08/14/which-agent-causes-task-failures-a
+  ✓ c34de180c1b5 |   1146 chars | https://redrocketvc.blogspot.com/2025/08/when-to-sell-your-business-be
+  ✓ 2fb493bf08de |   1021 chars | https://redrocketvc.blogspot.com/2025/08/video-four-pillars-of-equity.
+  ✓ 741009fd0ba4 |   3076 chars | https://www.aiweirdness.com/chatgpt-will-apologize-for-anything/
+  ✓ 504888455505 |    378 chars | https://www.aiweirdness.com/troubleshooting-the-warp-confabulator/
+  ✓ 6d35bd61cee5 |   5352 chars | https://redrocketvc.blogspot.com/2025/07/lesson-374-top-5-reasons-why-
+  ✓ a5d306602c8a |   2643 chars | https://roem.ru/12-12-2025/307155/zachem-yandeksu-nuzhen/?from=roem_rs
+  ✓ 741754487275 |    726 chars | https://redrocketvc.blogspot.com/2025/07/why-sharing-ceo-title-usually
+  ✓ b860ff1a08b7 |   9604 chars | http://bair.berkeley.edu/blog/2025/07/01/peva/
+  ✓ 1944a9dd7f60 |   4958 chars | https://redrocketvc.blogspot.com/2025/06/lesson-373-when-to-fire-yours
+  ✓ 51ec9c332aa6 |  10755 chars | https://syncedreview.com/2025/06/24/bytedance-introduces-astra-a-dual-
+  ✓ 4b4ab96ce277 |   6509 chars | https://syncedreview.com/2025/06/16/mit-researchers-unveil-seal-a-new-
+  ✓ 5050dce97019 |   7243 chars | https://syncedreview.com/2025/06/16/researchers-from-psu-and-duke-intr
+  ✓ 92924ad1fe75 |    822 chars | https://redrocketvc.blogspot.com/2025/06/5-good-reasons-why-people-buy
+  ✓ 6895a2b05ece |  26207 chars | https://thegradient.pub/agi-is-not-multimodal/
+  ✓ ba3765b33286 |   4992 chars | https://syncedreview.com/2025/05/28/adobe-research-unlocking-long-term
+  ✓ 0a65fed8e3a8 |    417 chars | https://roem.ru/24-10-2025/306657/dmitrij-mednikov-o-reklamnoj/?from=r
+  ✓ 9f81d633de6f |  18282 chars | https://syncedreview.com/2025/05/15/deepseek-v3-new-paper-is-coming-un
+  ✓ f71db3f0f35a |   4095 chars | https://roem.ru/16-10-2025/306576/ob-oborotnyh-nalogah-na/?from=roem_r
+  ✓ 98e41d3a602e |   4757 chars | https://syncedreview.com/2025/04/30/deepseek-unveils-deepseek-prover-v
+  ✓ d1eab7b9ab82 |  22100 chars | https://lilianweng.github.io/posts/2025-05-01-thinking/
+  ✓ aeb1b956189d |  18220 chars | https://roem.ru/25-08-2025/306390/sozdanie-i-prodvizhenie-messendzhera
+  ✓ 9129607b124a |  18421 chars | https://venturefounders.com/startup-purpose-is-why/
+  ✓ 9f99815cf6b2 |  11595 chars | https://syncedreview.com/2025/04/23/can-grpo-be-10x-efficient-kwai-ais
+  ✓ 7fa9871a792a |   3692 chars | https://syncedreview.com/2025/04/16/zhipu-ais-open-source-power-play-b
+  ✓ da3c5881d6aa |   2578 chars | https://roem.ru/16-07-2025/306341/my-otklyuchaem-na-sajte/?from=roem_r
+  ✓ 1deb13bea32b |   7007 chars | https://syncedreview.com/2025/04/11/deepseek-signals-next-gen-r2-model
+  ✓ b916d1d121b6 |   6198 chars | http://bair.berkeley.edu/blog/2025/04/11/prompt-injection-defense/
+  ✓ b15e62ca3240 |  12796 chars | https://venturefounders.com/startup-ethical-integrity/
+  ✓ ec0755071f28 |   7936 chars | http://bair.berkeley.edu/blog/2025/04/08/plaid/
+  ✓ bcf0aab7eb04 |  14081 chars | https://venturefounders.com/startups-for-good-choose-words-on-purpose/
+  ✓ eb8040157c80 |  11938 chars | http://bair.berkeley.edu/blog/2025/03/25/rl-av-smoothing/
+  ✓ e6741da030d4 |   2588 chars | https://roem.ru/19-05-2025/305893/kak-ne-nado-zakryvat/?from=roem_rss
+  ✓ a4ea27d9f48c |  12084 chars | https://venturefounders.com/startup-small-is-beautiful/
+  ✓ 1a0b4412bc8a |   9701 chars | https://venturefounders.com/startup-citizenship/
+  ✓ 6656af8dc63f |   8172 chars | https://venturefounders.com/dei-in-startups/
+  ✓ f57e9ba16963 |   2707 chars | https://becominghuman.ai/agi-in-2025-do-you-think-what-matters-today-w
+  ✓ a0d36867bcc4 |   2159 chars | https://roem.ru/29-04-2025/305860/skonchalsya-vyacheslav-varvanin/?fro
+  ✓ d94a5432d96f |   1527 chars | https://roem.ru/25-04-2025/305792/nuzhna-li-knopka-pusk/?from=roem_rss
+  ✓ bc98efbf84dc |    894 chars | https://becominghuman.ai/when-algorithms-dream-of-photons-can-ai-redef
+  ✓ a03dfb901f9e |   8743 chars | https://www.aiweirdness.com/minecraft-with-object-impermanence/
+  ✓ fd0af644501f |    378 chars | https://www.aiweirdness.com/bonus-in-which-the-adventurer-attempts-to-
