@@ -1,0 +1,12 @@
+Quantitative Biology > Biomolecules
+Title:Learning Topological Representations for Molecular Dynamics
+View PDF HTML (experimental)Abstract:Molecular dynamics (MD) simulations generate trajectories in a high-dimensional configuration space whose analysis critically depends on molecular descriptors, typically handcrafted observables or learned kinetic embeddings. Designing descriptors that are both expressive and broadly applicable, however, remains challenging. We study persistent homology (PH) as a general-purpose representation for MD and introduce the masked Flood complex, a protein-tailored modification of a recently introduced simplicial complex construction that emphasizes inter-residue structure at low computational cost. Vectorized persistence diagrams then provide information-rich, geometry-aware summaries of protein conformations, which we evaluate on protein class prediction, frame-level observable regression, and Markov state model (MSM) estimation from learned low-dimensional coordinates in a single shared representation space. Results on the mdCATH dataset show that PH-based descriptors are competitive across tasks, with masked Flood PH yielding the most consistent overall performance. Further, when using topologically-informed MSMs as a drop-in replacement within the recent MarS-FM framework for generative modeling of protein conformations, we obtain consistently better ensemble statistics than MSMs based on physical observables. Finally, we explore the transferability of the generative model to qualitatively different, fast folding, proteins.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

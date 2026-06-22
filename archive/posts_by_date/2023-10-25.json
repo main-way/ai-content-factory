@@ -1,0 +1,20 @@
+{
+  "date": "2023-10-25",
+  "count": 1,
+  "posts": [
+    {
+      "id": "81866df80fec",
+      "title": "Adversarial Attacks on LLMs",
+      "url": "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2023-10-25T00:00:00+00:00",
+      "summary": "The use of large language models in the real world has strongly accelerated by the launch of ChatGPT. We (including my team at OpenAI, shoutout to them) have invested a lot of effort to build default safe behavior into the model during the alignment process (e.g. via RLHF ). However, adversarial attacks or jailbreak prompts could potentially trigger the model to output something undesired. A large body of ground work on adversarial attacks is on images, and differently it operates in the continuous, high-dimensional space. Attacks for discrete data like text have been considered to be a lot…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

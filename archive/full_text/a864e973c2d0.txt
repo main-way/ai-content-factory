@@ -1,0 +1,228 @@
+Modern AI agents often aren’t bottlenecked by model quality, they are bottlenecked by orchestration overhead. When an agent chains together many small tool calls, each step typically requires a new model turn, driving up latency and token usage.
+With CodeAct support in Agent Framework, agents can collapse those multi-step plans into a single executable code block, cutting end-to-end latency by ~50% and token usage by over 60% in representative workloads, without compromising on safety or isolation. CodeAct ships in the new agent-framework-hyperlight
+(alpha) package, which runs the model-generated code in a fresh, locally isolated Hyperlight micro-VM per call.
+In this post, we walk through a concrete, realistic scenario where CodeAct provides meaningful gains: an agent task that involves many small, chainable tool calls (fetching data, performing light computation, assembling a result). Traditionally, this forces the agent into a loop of model → tool → model → tool interactions. Using CodeAct, the agent instead expresses the full plan as a short Python program that runs once in a sandboxed environment. The tools remain the same, the model remains the same, only the wiring changes. Later, we quantitatively compare both approaches on the same task to show where the latency and token savings come from, and more importantly, when those savings are worth pursuing in your own agents.
+Concretely, wiring CodeAct into an agent looks like this. All later snippets build on it, reusing the same imports and the get_weather
+tool defined here:
+from agent_framework import Agent, tool
+from agent_framework_hyperlight import HyperlightCodeActProvider
+@tool
+def get_weather(city: str) -> dict[str, float | str]:
+"""Return the current weather for a city."""
+return {"city": city, "temperature_c": 21.5, "conditions": "partly cloudy"}
+codeact = HyperlightCodeActProvider(
+tools=[get_weather],
+approval_mode="never_require",
+)
+agent = Agent(
+client=client,
+name="CodeActAgent",
+instructions="You are a helpful assistant.",
+context_providers=[codeact],
+)
+result = await agent.run(
+"Get the weather for Seattle and Amsterdam and compare them."
+)
+Why CodeAct
+Modern agents are increasingly limited not by model quality, but by how much tool-calling overhead they incur. An agent that needs to read a table, filter it, multiply a few values, and summarize the result will typically burn four or five tool-call round trips, one per step, each one a separate request to the model.
+The CodeAct pattern collapses that loop. Instead of asking the model to choose a tool, wait for the result, and choose the next tool, we give the model a single execute_code
+tool and let it express the entire plan as a short Python program. Tools the agent would otherwise call directly are exposed inside the program as call_tool(...)
+. The model writes the code once, the sandbox runs it, and the agent gets back a single consolidated result.
+Agents that do a lot of tool calling (data wrangling, light computation, chained lookups, report generation) benefit most. A five-step plan that used to be five model turns becomes one execute_code
+turn containing a short Python script that calls the same tools via call_tool(...)
+. You save latency, you save tokens, and you keep the reasoning trace compact and auditable, because the full plan lives in a single code block instead of being scattered across several tool-call messages.
+How CodeAct works in Agent Framework
+The agent-framework-hyperlight
+package ships two entry points (HyperlightCodeActProvider
+and HyperlightExecuteCodeTool
+) plus typed helpers for file mounts and network policy. The sections below walk through both wirings, explain how approvals interact with sandboxed code, and show how to grant the sandbox controlled access to the host filesystem and network.
+The provider, and the minimal setup
+The recommended entry point is HyperlightCodeActProvider
+, a ContextProvider
+that:
+- Registers an
+execute_code
+tool on every agent run. - Injects CodeAct instructions into the system prompt, describing the sandbox, the available helpers, and the tools reachable via
+call_tool(...)
+.
+The minimal setup shown at the top of the post is the recommended shape: construct the provider with your tools, pass it to the agent via context_providers=[...]
+, and let it handle execute_code
+registration and prompt injection for you.
+How a tool gets invoked
+Hyperlight does provide isolation, but it isolates the model-generated code, not your tools. The tools you write and register live in your application’s runtime, with whatever access your process has. The Python program the model writes inside execute_code
+runs inside the Hyperlight sandbox, with no host access except the file mounts and allowed domains you opted into. When that sandboxed program calls call_tool("name", ...)
+, Hyperlight bridges the call back out to your runtime, runs your tool there, and returns the result into the sandbox. call_tool(...)
+is that bridge; it is not an in-sandbox reimplementation of your tool.
+That split is the point. Your tools stay deterministic, fully managed code that you reviewed and shipped, and they keep the access they need to do their job (files, network, credentials, internal APIs). The model-generated glue that decides which tools to call, in what order, and how to combine the results stays in the sandbox, where it cannot touch anything except what you explicitly allowed. If you do want the model itself to read a file or hit an HTTP endpoint directly from inside execute_code
+, you can grant that with file_mounts
+and allowed_domains
+on the provider, and only those resources become reachable from sandboxed code.
+Approvals
+Agent Framework tools carry an approval_mode
+that controls whether a call is auto-invoked or paused for a human-in-the-loop decision. The two modes are never_require
+(the framework invokes the tool automatically) and always_require
+(every call raises a function-approval request the agent host has to resolve before the tool runs). This is the primary knob for deciding how much autonomy a given tool gets.
+With that in mind, the two registration sites differ like this:
+- Tools passed to
+HyperlightCodeActProvider(tools=...)
+are not shown to the model as direct tools. The model only sees the singleexecute_code
+tool, and it reaches your tools by writing a line of Python that callscall_tool("name", ...)
+. Approval, if any, applies to theexecute_code
+call as a whole, not to individualcall_tool(...)
+invocations within it. Right now, if theexecute_code
+tool or any of the tools passed to the provider require approval (regardless of whether they are invoked) the entire code block is gated behind a single approval prompt. - Tools passed to
+Agent(tools=...)
+are surfaced to the model as first-class tools. Each call is a separate tool message the model chooses explicitly, and each one honors its ownapproval_mode
+. - Tools passed to
+HyperlightCodeActProvider(tools=...)
+andAgent(tools=...)
+are surfaced to the model as first-class tools as well as being available inside the sandbox. The model can choose to call them directly as a first-class tool call, or indirectly viacall_tool(...)
+inside the sandbox. Approval applies according to how the model calls them: if called directly, the tool’s ownapproval_mode
+applies; if called viacall_tool(...)
+, theexecute_code
+tool’s approval mode applies. This means that the same tool can have different approval modes depending on how the model chooses to invoke it. For instance, if another tool passed to the provider hasapproval_mode="always_require"
+, the model can choose to call it viacall_tool(...)
+inside the sandbox, in which case it will be gated by the provider’s approval mode, or it can call it directly as a first-class tool, in which case it might not be need approval. This also allows the model to decide per-step what the easiest way of calling that tool is, if it just needs the raw result of that tool and only that tool, then it can call it directly, if it needs to manipulate the result or combine it with others, then it can call it viacall_tool(...)
+inside the sandbox and do all the processing in one turn.approval_mode
+.
+This gives you a clean rule of thumb. If a tool is cheap, pure, and safe to chain (data lookups, computations, formatting helpers, read-only API calls), register it on the provider so the model can compose many calls into a single execute_code
+turn. If a tool has side effects you want the user to gate individually (sending email, spending money, writing to production systems), keep it on the agent directly, typically with approval_mode="always_require"
+, so the model has to request each invocation as a first-class tool call. The same tool can also be passed to both; the model will then decide per-step whether to call it via call_tool(...)
+inside execute_code
+or as a first-class tool call.
+Building on the setup above, adding send_email
+as a direct, approval-gated tool alongside the sandboxed get_weather
+looks like this; everything else stays the same:
+# ... same imports, tools, and provider as above ...
+@tool(approval_mode="always_require")
+def send_email(to: str, subject: str, body: str) -> str:
+"""Send an email. Requires approval on every call."""
+...
+agent = Agent(
+client=client,
+name="MixedToolsAgent",
+instructions="You are a helpful assistant.",
+context_providers=[codeact],
+tools=[send_email], # invoked directly by the model, approval-gated
+)
+The standalone HyperlightExecuteCodeTool
+HyperlightExecuteCodeTool
+exposes the same sandbox plumbing as a standalone tool
+you add to Agent(tools=...)
+yourself, instead of letting the provider wire it in. Use it when you want full control over how execute_code
+is presented, for example to label it, wrap it in middleware, or build the CodeAct instructions once and embed them in a static agent definition.
+The tool takes the same tools=...
+list as the provider, and those tools are still reached from sandboxed code via call_tool(...)
+. The key difference from the provider is that the provider injects CodeAct instructions into the system prompt for you on every run; with the standalone tool, you are responsible for putting those instructions in the agent’s instructions
+yourself. Otherwise the model will see the execute_code
+tool as a regular tool that can run python code, but without guidance on how to use it or which tools are available inside the sandbox. HyperlightExecuteCodeTool
+exposes build_instructions(...)
+as a helper that produces exactly that prompt fragment, derived from the tools and sandbox configuration you passed in:
+from agent_framework_hyperlight import HyperlightExecuteCodeTool
+execute_code = HyperlightExecuteCodeTool(
+tools=[get_weather],
+approval_mode="never_require",
+)
+agent = Agent(
+client=client,
+name="StandaloneToolAgent",
+instructions=(
+"You are a helpful assistant.\n\n"
++ execute_code.build_instructions()
+),
+tools=[execute_code, send_email],
+)
+Because build_instructions()
+runs once at construction time, this path skips the per-run provider lifecycle entirely, useful for fully static agent definitions where the tool set and sandbox configuration do not change between runs.
+Controlled filesystem and network access
+By default the sandbox has no access to the host. When a workload needs more, you opt in explicitly on the provider (or on the standalone tool), leaving the rest of the setup unchanged:
+# ... same imports and tools as above ...
+codeact = HyperlightCodeActProvider(
+tools=[get_weather],
+approval_mode="never_require",
+file_mounts=[
+"/host/data", # same path inside the sandbox
+("/host/models", "/sandbox/models"), # host → sandbox mapping
+],
+allowed_domains=[
+"api.github.com", # all methods
+("internal.api.example.com", "GET"), # GET only
+],
+)
+Mounted paths show up in the generated CodeAct instructions so the model knows where to read from and where to write artifacts. Allowed domains are enforced at the sandbox boundary, not by convention.
+Hyperlight: the sandbox under the hood
+Hyperlight is a micro-VM runtime designed for very small, very fast, strongly isolated guests. Each execute_code
+call runs in a fresh guest with its own memory, no access to the host filesystem beyond what you explicitly mount, and no network access beyond the domains you allow. Guest startup is measured in milliseconds, so the isolation is essentially free at the granularity of a single tool call.
+The result is a local, protected, deterministic place to run the code your model writes: no container daemon, no remote code-interpreter service, no shared Python process with the host agent.
+Why Hyperlight
+The trade-off CodeAct has historically had to make is safety. Running model-generated code against a host process, or even against a general-purpose container, is a real risk: long-lived shared state, broad filesystem and network reach, and a startup cost high enough that you would not spin up a fresh sandbox per call. Hyperlight removes that trade-off. Because every execute_code
+call gets its own freshly created micro-VM, with only the mounts and domains you opted into, the sandbox is cheap enough to be disposable and strict enough to be the default. You keep the latency and token wins of CodeAct, and you do not pay for them in blast radius.
+Benchmark: same task, same tools, different wiring
+The repository contains a codeact_benchmark.py
+sample that compares the two wirings on a workload that is realistic for this style of agent: compute the grand total of every user’s orders, where the model has to look up users, look up each user’s orders, look up discount and tax rates, and call a single line-total computation tool for each order line. The dataset has eight users and a handful of orders each, so finishing the task takes dozens of tool calls.
+Both runs use the same FoundryChatClient
+, the same model, the same five tools (list_users
+, get_orders_for_user
+, get_discount_rate
+, get_tax_rate
+, compute_line_total
+), the same prompt, and the same structured output schema. The only difference is whether those tools are passed to Agent(tools=...)
+directly or registered on a HyperlightCodeActProvider
+behind a single execute_code
+tool. On a recent run the sample reports:
+| Wiring | Time | Tokens |
+|---|---|---|
+| Traditional | 27.81s | 6,890 |
+| CodeAct | 13.23s | 2,489 |
+| Improvement | 52.4% | 63.9% |
+When to use CodeAct, and when not to
+The benchmark above is one data point. CodeAct is not a free win for every agent. A rough guide:
+Reach for CodeAct when
+- The task naturally decomposes into many small, chainable tool calls (lookups, joins, light computation, formatting).
+- The tools are cheap, deterministic, and safe to invoke in sequence without per-call human gating.
+- You care about latency, token cost, or trace compactness, and individual tool calls do not need their own approval prompts.
+- You are running model-generated code and want strong, per-call isolation by default.
+Stay with traditional tool-calling when
+- The agent already does only one or two tool calls per turn; there is little overhead to collapse.
+- Each tool call has side effects you want the user to approve individually (sending email, spending money, writing to production systems). These belong on the agent directly with
+approval_mode="always_require"
+. - Tool descriptions are sparse or ambiguous. Because the model writes Python that calls your tools by name, docstrings, parameter annotations, and return-type hints become part of the contract the model is reasoning about. Weak descriptions hurt CodeAct more than they hurt direct tool-calling, because models by now are heavily optimized and tweaked for accurate tool calling.
+If you are unsure, continuously run a benchmark dataset against your own tool set and prompt before committing.
+Getting started
+To try it out, run:
+pip install agent-framework-hyperlight --pre
+# or:
+uv add --prerelease=allow agent-framework-hyperlight
+The hyperlight package depends on agent-framework-core
+but does not install any connectors, like Foundry
+or OpenAI
+.
+Samples are available under python/packages/hyperlight/samples/
+. There are multiple samples which walk through the three integration styles described above.
+The package is currently alpha, and it depends on the platform-specific Hyperlight backend being available; execute_code
+will report a clear error at runtime on unsupported platforms.
+Current limitations and what we want feedback on
+This is the first shape of the integration, and we are deliberately releasing it as alpha so we can iterate based on what you hit in practice. A few things to be aware of:
+- Platforms. The backend is available for Linux and Windows today. macOS support is on the way.
+- Languages. The integration currently targets Python. A .NET counterpart for Agent Framework is coming.
+- Guest runtime. The sandbox runs a Python guest. Hyperlight itself can host other guests – JavaScript, for instance, and we are open to adding them, but each additional guest means a different set of CodeAct instructions, a different
+call_tool
+surface, and different ergonomics. We would like to hear whether a non-Python guest is something you would reach for before we build it. - Approvals. The approval mechanism today is intentionally simple: approvals apply to the
+execute_code
+call as a whole, not to individualcall_tool(...)
+invocations within a single code block. That keeps the model’s reasoning intact inside one turn, but it also means that if you want per-operation gating you currently have to keep those operations as direct agent tools. There is room to grow here: per-tool prompts insideexecute_code
+, post-hoc audit hooks, policy-driven approval. We would like to hear which of those shapes would actually help you.
+If you run into a bug or have a feature request, please open an issue on the repository.
+For broader feedback on the limitations above, especially on approval ergonomics and non-Python guests, please join the discussion here.
+Thanks
+A big thank you to the Hyperlight team for the collaboration that made this integration possible. Their work on fast, minimal, strongly isolated guests is what lets us treat a secure sandbox as a normal part of an agent’s inner loop instead of a heavyweight piece of infrastructure. We are looking forward to building more on top of it.
+Useful links
+- Microsoft Agent Framework repository
+agent-framework-hyperlight
+package- Hyperlight CodeAct samples
+- CodeAct vs. traditional tool-calling benchmark
+agent-framework-hyperlight
+on PyPI- Hyperlight project
+- CodeAct paper (Wang et al., 2024)
+- Report a bug or request a feature
+- Alpha feedback discussion

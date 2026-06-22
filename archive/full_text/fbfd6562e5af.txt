@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Kernel of Partition Paths: A Unified Representation for Tree Ensembles
+View PDF HTML (experimental)Abstract:A recent line of work has reframed individual decision trees as linear models on engineered features associated with their splits, opening routes for oracle inequalities and feature-importance reinterpretation, but leaving open the question of what unified geometric object a forest induces when one indexes its feature map by nodes rather than by splits. The present paper studies that object. KPP indexes the feature map by the nodes of the forest, weighted by a path metric that turns each coordinate into a component of a squared-Euclidean path-isometric embedding. KPP unifies four pillars under a single non-diagonal Gram that carries a metric: prediction, exact additive attribution, deterministic Lipschitz robust radius in the KPP metric, and uniform Rademacher risk bounds for regression and classification under fixed, honest, or cross-fit conditioning. All probabilistic guarantees are conditional on the representation and are stated under three explicit conditioning regimes; the robust-radius guarantee is deterministic in the KPP metric rather than in a norm on the raw input. Conjectured fast-rate refinements for both regression and classification are stated as open problems and are not claimed as theorems.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

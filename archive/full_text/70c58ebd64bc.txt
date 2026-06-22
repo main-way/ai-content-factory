@@ -1,0 +1,12 @@
+Quantitative Biology > Neurons and Cognition
+Title:Fusion Learning from Dynamic Functional Connectivity: Combining the Amplitude and Phase of fMRI Signals to Identify Brain Disorders
+View PDFAbstract:Dynamic functional connectivity (dFC) derived from resting-state functional magnetic resonance imaging (fMRI) has been extensively utilized in brain science research. The sliding window correlation (SWC) method is a widely used approach for constructing dFC by computing correlation coefficients between amplitude time series of signals from pairs of brain regions. In this study, we propose an integrated approach that incorporates both amplitude and phase information of fMRI signals to improve the detection of brain disorders. Specifically, we introduce a multi-scale fusion learning framework, namely MSFL, which leverages two complementary dFC features derived from SWC and phase synchronization (PS). Here, SWC captures amplitude correlations, while PS measures phase coherence within dFC. We evaluated the efficacy of MSFL in classifying autism spectrum disorder and major depressive disorder using two publicly available datasets: ABIDE I and REST-meta-MDD, respectively. The results indicate that MSFL significantly outperforms existing comparative models. Moreover, we performed model explanation analysis using the SHAP framework, which showed that both types of dFC features from SWC and PS contribute to detecting brain disorders.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,15 @@
+Link to headingCreate a persistent sandbox
+import { Sandbox } from "@vercel/sandbox";
+// Filesystem is snapshotted automaticallyconst sandbox = await Sandbox.create({ name: "my-sandbox" });
+await sandbox.runCommand("npm", ["install"]);
+await sandbox.stop();
+Create a sandbox with persistence on by default
+import { Sandbox } from "@vercel/sandbox";
+const sandbox = await Sandbox.create({ persistent: false });
+// Or update an existing sandbox.await sandbox.update({ persistent: false });
+Create an ephemeral sandbox
+Link to headingResume a persistent sandbox
+import { Sandbox } from "@vercel/sandbox";
+const resumedSandbox = await Sandbox.get({ name: "my-sandbox" });
+// Automatically resumes the sandbox.await resumedSandbox.runCommand("npm", ["test"]);
+Automatically resume a stopped sandbox

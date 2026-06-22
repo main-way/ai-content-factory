@@ -1,0 +1,11 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Quantitative Performance Analysis of Stopping Criteria for CMA-ES
+View PDF HTML (experimental)Abstract:Covariance matrix adaptation evolution strategy (CMA-ES) is a state-of-the-art black-box optimization algorithm. In general, CMA-ES uses a portfolio of multiple stopping criteria to automatically determine when to stop the search. This mechanism aims to avoid unnecessary consumption of the function evaluation budget during stagnation. Stopping criteria play an important role in CMA-ES, particularly when restart strategies are employed. However, the effectiveness of stopping criteria in CMA-ES remains poorly understood. To address this issue, this paper investigates how the 11 stopping criteria in CMA-ES behave on the noiseless BBOB function set. The performance of the stopping criteria is quantitatively evaluated based on the optimal stopping point in terms of the number of function evaluations in a single run of CMA-ES. Our results show that, although which stopping criterion is triggered first depends significantly on the sample size $\lambda$ and the dimension $n$, \texttt{tolflatfitness} and \texttt{tolfun} are frequently the first criteria to be triggered among the portfolio of 11 stopping criteria. We also demonstrate that \texttt{tolfunhist} and the portfolio achieve the highest stopping accuracy in most cases. In addition, our results show that the \texttt{tolfun} and \texttt{tolfunhist} criteria are frequently triggered before CMA-ES reaches complete stagnation.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

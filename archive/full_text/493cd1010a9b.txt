@@ -1,0 +1,12 @@
+Mathematics > Optimization and Control
+Title:Operator Calculus for Population-Based Optimization: A Mean-Field Convergence Theory
+View PDF HTML (experimental)Abstract:Population-based and distributional optimization methods, from evolution strategies and consensus-based optimization to covariance-matrix adaptation and stochastic gradient methods viewed as distributional dynamics, are widely used for nonconvex or black-box problems, yet their convergence analyses remain fragmented across algorithm-specific techniques. We introduce an operator calculus in which a broad class of such methods, after choosing an appropriate state space and, where necessary, augmenting the state by memory or strategy variables, is described as a composition of three elementary operators (mutation, selection, and recombination) acting on probability measures. Under explicit stability and regularity conditions, the composite operator admits a pre-generator whose continuous-time limit is a transport-reaction-jump (TRJ) PDE that preserves the operator splitting. On this foundation we establish a modular Lyapunov principle. If a state-space Lyapunov function both dissipates under the full generator and controls the relevant search-space gauges, then the state-space Lyapunov functional and the induced search errors decay exponentially. The additive generator structure allows dissipation estimates to be assembled operator by operator, providing a toolkit for certifying convergence of composite mean-field algorithms.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

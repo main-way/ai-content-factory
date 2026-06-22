@@ -1,0 +1,12 @@
+Quantitative Biology > Neurons and Cognition
+Title:Bio-plausible Neuromorphic Disturbance Observer Based on Emulation Theory: Extended Version
+No PDF available, click to view other formatsAbstract:Biological neural systems achieve remarkable robustness and adaptability in uncertain environments through sparse, event-driven spike-based information processing and adaptive regulation. Inspired by this paradigm, this paper develops a neuromorhpic disturbance observer (NDO) and control framework that replaces conventional continuous-time signal representations with spike-timing encoding. Both disturbance estimates and control inputs are constructed via integrate-and-fire (IF) neuron dynamics from discrete spike events, yielding intrinsically event-driven updates. An adaptive-threshold triggering mechanism is inspired by spike-frequency adaptation (SFA), enabling history-dependent regulation of spike generation. Simulation results demonstrate that the proposed framework achieves neurally inspired robustness and adaptability, while the adaptive-threshold spiking scheme reduces spike events to 42.6% of the fixed-threshold case under noisy conditions.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,12 @@
+Quantitative Biology > Other Quantitative Biology
+Title:A Comparative and Hybrid Study of CNN and Transformer Models for Multi-Class Virus Classification in Transmission Electron Microscopy
+View PDF HTML (experimental)Abstract:The automatic recognition of virus particles in transmission electron microscopy (TEM) images remains a demanding task, primarily owing to strong inter-class similarity, scale variability, and pronounced class imbalance. In this study, several convolutional neural networks and transformer-based architectures were comparatively evaluated for the classification of 22 virus categories using the TEM virus dataset. All models were trained under identical preprocessing and optimization conditions, and imbalance effects were mitigated through a weighted cross-entropy formulation. Performance was quantified using overall accuracy together with macro-averaged precision, recall, and F1 score. Among standalone models, the Swin Transformer achieved the highest accuracy (0.8831) and macro-F1 score (0.8444), followed by DeiT (accuracy 0.8669). Convolutional architectures exhibited comparatively lower balanced performance, with ResNet50 demonstrating substantial degradation (accuracy 0.5887) under imbalanced conditions. To exploit complementary representational properties, decision-level hybrid strategies were implemented. The performance-weighted hybrid attained an accuracy of 0.8831 and the highest macro-F1 score (0.8528), slightly surpassing the equal-weight hybrid configuration. These observations indicate that architectural heterogeneity contributes to improved inter-class balance without sacrificing overall predictive accuracy. Future work may explore scale-aware representations, feature-level fusion mechanisms, and expanded TEM datasets to further enhance robustness and generalization in virus identification tasks.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,12 @@
+Computer Science > Multimedia
+Title:Teacher-Student Structure for Domain Adaptation in Ensemble Audio-Visual Video Deepfake Detection
+View PDF HTML (experimental)Abstract:The rapid advancement of generative AI models is leading to more realistic deepfake media, encompassing the manipulation of audio, video, or both. This raises severe privacy and societal concerns. Numerous studies in this area have yielded promising intra-domain results; however, these models frequently exhibit decreased efficacy when faced with data from dissimilar domains. Consequently, recent deepfake detection approaches focus on enhancing the generalization ability through multiple techniques that incorporate all input modalities, including audio, images, and their interactions. In this regard, we propose the EAV-DFD method, a generalized deep ensemble audio-visual model (EAV-DFD) combined with a domain adaptation mechanism utilizing a teacher-student framework to enhance the model's ability to perform and generalize effectively across unseen domains. To evaluate the model's performance, we used the FakeAVCeleb dataset as the primary domain and the DFDC, Deepfake_TIMIT, and PolyGlotFake datasets as an unseen domain. Our experimental results demonstrate that the proposed framework is efficient in domain adaptation, improving AUC performance of the model by 4.09%, 17.94%, and 0.5% on three unseen datasets, using only a small portion of them to train the student model. This leads to a novel deepfake detection model capable of adapting to new domains and interpreting which modality has been manipulated, highlighting the potential of our approach for real-world applications.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:Regime-Arrival Uncertainty in Generalization Bounds under Distribution Shift
+View PDF HTML (experimental)Abstract:The standard generalization bounds assume that the training and deployment distributions are the same, or are static, and don't consider regime switching environments where the ratio of calm vs crisis states is different. This paper proposes a framework that generalizes regime-aware models by quantifying the extra risk due to regime composition mismatch, when distribution shifts are Markov-switching. We obtain an exact decomposition, separating regime mismatch from regime sensitivity; we extend the bound to beta-mixing data using the effective sample size corrected for the spectral gap; and we show a minimax lower bound for synthetic data and on 25 years of global equity indices. The proposed penalty is an ex post realized generalization gap, whereas the training-only estimator does not show significant correlation: the feature geometry of crises can be detected, but not the temporal arrival. Thus, the framework is not a forecast machine. Forecasting the composition of the future regime is an open question in the rare cases of regime change.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

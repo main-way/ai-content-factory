@@ -1,0 +1,12 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Gray-Box Optimization and the Vertex Coloring Problem
+View PDFAbstract:Gray-box optimization is an approach for making some problem-specific information available to the algorithm while still relying on fitness information as the main guide to an optimum. This approach was shown to be beneficial in various combinatorial optimization tasks and neatly captures the continuum between fully black-box algorithms and tailored algorithms.
+In this work, we discuss different flavors of gray-box algorithms. We show that RLS can find a proper $2$-coloring in a bipartite graph starting from a random $2$-coloring, in an expected time of $\mathcal{O}(n \log n)$. In contrast, when starting from a proper $n$-coloring, the (1+1) EA cannot find such a coloring except when offered additional guiding on plateaus of the search space. Finally, we show the run time for this setting can be much improved by using gray-box operators.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

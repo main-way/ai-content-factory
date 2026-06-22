@@ -1,0 +1,32 @@
+This is 100 Years From Now, a weekly series. Once a week, we skip ahead a century and imagine ordinary life in a world that's had a hundred years to absorb the things we're only beginning to build. No predictions — just honest speculation about where our choices lead.
+This week: what happens when accountability disappears from the most powerful systems ever built.
+AI doesn't care about accountability. It can't. It's a system that produces outputs, and to the machine, wrecking a career and saving a life are the same event.
+Fine. A hammer doesn't care either.
+But the people building this thing are asking us to hand over our thinking to it. Alex Karp, CEO of Palantir, just told the next generation to quit the humanities. He has a PhD in philosophy. Jensen Huang of Nvidia has been telling kids to stop learning to code for two years. Sam Altman talks about "abundance" the way pastors talk about paradise. The pitch is theological: surrender your judgment, trust the oracle, the machine sees farther than you.
+Say we do it. What are we handing our thinking to?
+An entity that has already written itself out of the legal equation.
+Anthropic's Consumer Terms cap total liability at the greater of six months of fees or $100. Claude Code writes bad code, burns your credits, burns more credits fixing what it broke. You pay for both. If it nukes your production database tomorrow — $100.
+Microsoft went further. Copilot's Terms of Use say:
+"Copilot is for entertainment purposes only. It can make mistakes, and it may not work as intended. Don't rely on Copilot for important advice. Use Copilot at your own risk."
+Entertainment purposes only. The same language a psychic uses. On a tool Microsoft sells to enterprises for $30 a seat and bakes into Windows.
+Gemini's terms ship "as-is," disclaim all consequential damages, and warn: "Don't rely on the Services for medical, legal, financial, or other professional advice." That covers most of what knowledge workers do.
+The pattern is identical. Give us your thinking, give us your money, give us your profession. When the thing you trusted is wrong, that's on you.
+Now stack Huang on top. Don't learn to code. Okay — if you can't read the output, how do you catch the hallucination? The man telling you to stop learning is selling the hardware making the mistake. The company whose model wrote the mistake owes you $100.
+This is god-king logic. Surrender, trust, and if the harvest fails it's because you lacked faith. The god can't be wrong. The god can't be sued.
+Against this, one counterexample just landed. The Linux kernel maintainers published a formal policy on AI code. AI can assist, but AI cannot sign off. Every line in the kernel — the OS running most of the internet — has a human name on it, fully legally responsible. "The person using these tools is responsible for the output." That's the whole policy.
+The AI companies say the opposite: the AI does the work, and the human is liable anyway.
+The trap: if Huang wins and nobody learns to code, the Linux policy becomes meaningless. You can't hold someone responsible for approving code they can't read. The signature becomes a ritual. A blood offering to the legal system.
+If you think regulation will fix this, look at what happened when an actual liability bill showed up.
+In 2024, California passed SB 1047 — safety testing, a kill switch, liability for catastrophic harms. Assembly vote: 41–9. Public support in every poll. OpenAI, Meta, Google, and a16z lobbied hard against it. Newsom vetoed it. The industry won. OpenAI's federal lobbying went from $260K in 2023 to $1.76M in 2024 — a sevenfold jump. Anthropic more than doubled.
+You can have a technological singularity without accountability. Nothing in the physics requires the most powerful systems ever built to answer to anyone.
+How do you force a private industry to be accountable when every incentive points the other way?
+Look at tobacco. Fifty years of suppressed studies, manufactured doubt, doctors on the payroll. Millions of deaths. It took the 1998 Master Settlement — a legal mugging by 46 state attorneys general — to force them to stop. Nobody went to jail. That's what corporate accountability for civilizational harm looks like when capitalism polices itself. Fifty years late, and still no handcuffs.
+The AI lobbying is already further along than Big Tobacco's ever got.
+And here it stops being about code and starts being about who lives.
+In Gaza, an Israeli AI system called Lavender generated a kill list of 37,000 Palestinians with a 10% error rate. Human analysts reviewed each target for about 20 seconds before authorizing a strike. Thousands of civilians died in homes flagged by a machine and rubber-stamped by a human too rushed to decide. The journalist who broke the story, Yuval Abraham, summed it up in one line: "AI-based warfare allows people to escape accountability."
+It's the same companies. Palantir runs the Pentagon's Maven AI. Anthropic and OpenAI are chasing defense contracts. The philosopher telling you to stop thinking is the guy selling the targeting system.
+Same structure as the $100 liability cap. Just with bodies.
+That's where 2124 is headed. AI everywhere. Accountability nowhere. The people who called themselves enhanced will be the ones who signed every waiver, surrendered every judgment, and woke up in a world run by systems nobody can sue — where the code in your IDE and the drone over your head were built by the same company, licensed under the same terms, protected by the same lobbyists.
+Enhanced is a marketing word for the opposite of power. The truly enhanced person is the one who kept the ability to say no. Kept the judgment. Kept the lawsuit. Kept the code. Kept the trigger.
+The god-king doesn't give up the throne. You have to take it.
+Nobody's even reaching.

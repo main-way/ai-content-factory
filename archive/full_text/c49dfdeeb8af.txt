@@ -1,0 +1,12 @@
+Computer Science > Multimedia
+Title:Proactive Conversational Assistant for a Procedural Manual Task based on Audio and IMU
+View PDF HTML (experimental)Abstract:Real-time conversational assistants for procedural manual tasks often depend on video input, which can be computationally expensive and compromise user privacy. For the first time, we propose a real-time conversational assistant that provides comprehensive guidance for procedural manual tasks using only lightweight privacy-preserving modalities such as audio and IMU inputs from a user's wearable device to understand the context. Using a furniture assembly task and a cooking task, we show how this assistant proactively communicates step-by-step instructions to a user performing a procedural task, and answers user questions. We illustrate the data generation method and the system design to achieve such an assistant. On observing that an off-the-shelf language model is a talkative assistant but is not always able to answer questions correctly, we demonstrate how finetuning the model improves its ability to limit unnecessary dialogues with a 50% increase in the precision, while also improving its ability to answer questions correctly, measured by a 150% increase in the recall of answers. We further describe how such an assistant is implemented on an edge device with no dependence on the cloud.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

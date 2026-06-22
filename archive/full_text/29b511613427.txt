@@ -1,0 +1,12 @@
+Mathematics > Optimization and Control
+Title:Free Heavy-Tailed Lunch for Muon: A Theoretical Justification of Empirical Success
+View PDF HTML (experimental)Abstract:Non-Euclidean optimisation methods with matrix-valued updates, such as Muon and Scion, have recently shown strong empirical performance for training Transformer models, yet their theoretical advantages over Euclidean methods remain poorly understood. We address this gap in the heavy-tailed non-convex regime, where stochastic gradients have bounded $p$-th central moments, $p \in (1,2]$. We show that certain non-Euclidean methods achieve optimal sample complexity under stronger stationarity measures, while Euclidean methods incur additional dimension-dependent costs. As a consequence, for $m \times n$ matrices, Muon finds an $\varepsilon$-stationary point in nuclear norm within $\mathcal{O}\left(\min\{m, n\} \frac{\Delta_1 L}{\varepsilon^2} \left(\frac \sigma \varepsilon \right)^{\frac p {p-1}}\right)$ samples, absorbing heavy-tailed noise without extra dimension dependence, unlike Euclidean methods. We further prove this sample complexity, including its dimension dependence, is optimal for all first-order methods under nuclear-norm stationarity. Experiments on large language models support our theory. Surprisingly, our results suggest that other Schatten geometries beyond the spectral geometry of Muon can perform competitively in certain settings.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

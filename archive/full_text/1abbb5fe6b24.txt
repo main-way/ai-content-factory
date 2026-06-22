@@ -1,0 +1,12 @@
+Statistics > Methodology
+Title:Calibration without labels in multiple testing
+View PDF HTML (experimental)Abstract:Large-scale hypothesis testing supports probability claims about individual hypotheses, as in empirical Bayes methods for estimating local false discovery rates. We study how such claims can be interpreted as approximately calibrated forecasts of the null hypothesis, yielding interpretable error probabilities even under model misspecification. Our approach draws conceptual inspiration from probabilistic forecasting but addresses a different challenge: unlike forecasting, where labels are eventually observed, in multiple testing the ground truth is never revealed, so calibration must be assessed stochastically and established indirectly. We address this challenge by constructing a set of pseudo-labels, derived from the spacings of ordered $p$-values, which have the local false discovery rate as their regression target. Our construction unlocks existing tools for assessing and performing post-hoc calibration in multiple testing. Notably, we find on a large-scale empirical survey of published psychology and neuroscience literature that the $q$-value, a popular error measure based on the false discovery rate, can be severely miscalibrated.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Linear Recurrent Unit with Semantic Modulation for Image Super-Resolution
+View PDF HTML (experimental)Abstract:Linear recurrent unit (LRU), designed with a principled formulation for stable linear recurrence, has demonstrated promising accuracy and robustness on long-range dependency tasks. However, its static parameterization and single-scan method limits its applicability to 2D vision tasks. In this study, we propose a LRU-based restoration network with a semantic modulating unit (SMU) to achieve a harmonious balance between performance and efficiency in single-image super-resolution. The SMU plays three key roles: LRU modulation, spatial categorization, and feature enhancement through learned prototype. Extensive experiments demonstrate that our method quantitatively and qualitatively surpasses recent state-of-the-art methods. Notably, our approach achieves superior performance with computational complexity on par with existing methods. The source code and models are available at this https URL
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

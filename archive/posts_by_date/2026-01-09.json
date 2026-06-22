@@ -1,0 +1,20 @@
+{
+  "date": "2026-01-09",
+  "count": 1,
+  "posts": [
+    {
+      "id": "0a68d1a2de41",
+      "title": "Issue #26",
+      "url": "http://augmentedcoding.dev/issue-26/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-01-09T00:00:00+00:00",
+      "summary": "Tailwind lay off 75% of staff due to AI disruption GITHUB.COM There’s a lot going on here, beyond the disruption caused by AI coding tools. It touches on the economic ramifications caused by a reduction of organic traffic and the entitlement expressed by open source consumers. This pull request looks simple on the surface, the addition of an llms.txt endpoint to a popular open source project (Tailwind, a UI component library) that makes it easier for AI tools and agents to read the technical documentation. The project maintainer decided against merging for economic reasons. Despite growing…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

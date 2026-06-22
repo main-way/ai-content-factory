@@ -1,0 +1,3 @@
+This week we are gradually rolling out an update to Vercel Microfrontends routing for aliases and branch-assigned domains.
+Aliases inherit Microfrontends routing Aliasing a Microfrontends URL with vc alias now preserves the full microfrontends routing config from the source deployment. Previously, the new alias only inherited the deploymentId. Update to the latest Vercel CLI to pick up the change.
+Branch domains route across all projects A project domain assigned to a git branch now routes to that branch in every project in the Microfrontend that shares the branch name. Previously, the domain only routed to that branch within the project that owned the domain.

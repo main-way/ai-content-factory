@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Route-Constrained Robust Fusion Estimation for MEMS/GNSS Integrated Navigation of Unmanned Ground Vehicles in GNSS Degraded Environments
+View PDF HTML (experimental)Abstract:To address cumulative localization drift of unmanned ground vehicles in structured road environments under severe Global Navigation Satellite System signal occlusion, this paper proposes a robust route-constrained state estimation method. During periods without satellite signals, the proposed method establishes the correspondence between the historical dead reckoning trajectory and local segments of the mission route extracted from a high-definition map, and estimates a route-referenced position via a two-dimensional rigid transformation. The estimated position is then formulated as a pseudo-position observation and incorporated into an Extended Kalman Filter update. In this way, route constraints at the road level can be continuously injected into a unified state estimation framework, thereby suppressing position deviation relative to the mission route while indirectly improving azimuth estimation. To enhance practical applicability, engineering strategies, such as trigger control, matching quality validation, route offset compensation, and single update correction limiting, are further introduced. Experiments in three representative scenarios, including a long tunnel, a multi-segment tunnel, and a curved tunnel, show that the proposed method effectively suppresses error accumulation during satellite outages, reduces the risk of large maximum deviation, and improves localization continuity and road-level usability.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

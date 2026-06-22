@@ -1,0 +1,12 @@
+Computer Science > Computation and Language
+Title:BEACON: Behavioral Entropy Aggregation for Cross-Model Hallucination Detection in Large Language Models
+View PDFAbstract:Hallucination in large language models (LLMs), defined as the generation of factually incorrect or unsupported content, remains a critical barrier to reliable deployment. We present BEACON (Behavioral Entropy Aggregation for Cross-model hallucination detectiON), a black-box hallucination detection framework that operates purely on model outputs without requiring access to internal representations or external knowledge bases. BEACON extracts a 31-dimensional feature vector from structured multi-pass generation, integrating NLI-based semantic entropy, embedding geometry, chain-of-thought consistency, and paraphrase stability signals. A gradient-boosted classifier trained on 7,617 labeled examples across seven benchmarks achieves 0.8123 +/- 0.0102 AUROC (95% CI: 0.7632-0.8251), outperforming standalone semantic entropy (+0.2298) and SelfCheckGPT-style consistency baselines (+0.2457). Feature importance analysis shows that hallucination is inherently multi-dimensional, requiring combined uncertainty signals. An efficient 5-call variant achieves 0.7795 AUROC, enabling practical deployment across black-box LLM APIs.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

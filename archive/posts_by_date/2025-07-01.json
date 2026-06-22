@@ -1,0 +1,20 @@
+{
+  "date": "2025-07-01",
+  "count": 1,
+  "posts": [
+    {
+      "id": "b860ff1a08b7",
+      "title": "Whole-Body Conditioned Egocentric Video Prediction",
+      "url": "http://bair.berkeley.edu/blog/2025/07/01/peva/",
+      "source": "BAIR Blog (Berkeley)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2025-07-01T09:00:00+00:00",
+      "summary": "&times; Predicting Ego-centric Video from human Actions (PEVA) . Given past video frames and an action specifying a desired change in 3D pose, PEVA predicts the next video frame. Our results show that, given the first frame and a sequence of actions, our model can generate videos of atomic actions (a), simulate counterfactuals (b), and support long video generation (c). Recent years have brought significant advances in world models that learn to simulate future outcomes for planning and control. From intuitive physics to multi-step video prediction, these models have grown increasingly…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

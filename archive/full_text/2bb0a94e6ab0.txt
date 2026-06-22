@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Vendor-agnostic 4D Phase Contrast MRI: a complete open-source pipeline for velocities, displacement, and strain analysis
+View PDFAbstract:Phase contrast MRI (PC MRI) enables quantitative assessment of tissue motion and strain. Although it is increasingly used, standardized, vendor-agnostic pipelines for accelerated acquisitions remain scarce. We present a fully open-source 4D flow PC-MRI pipeline integrating a compressed sensing-accelerated sequence implemented in PyPulseq, BART-based reconstruction, and strain analysis. Additionally, a gradient probing sequence was developed to ensure correct velocity sign assignment across scanner orientations and vendors. The pipeline was validated across two Siemens MRI systems (3T MAGNETOM Prisma and 3T Vida Fit) in two anatomical applications: forearm (Flexor Digitorum Superficialis, n=9) and thigh (Vastus Lateralis, n=10) during Neuromuscular Electrical Stimulation (NMES)-induced contractions. Compressed sensing reduced acquisition times from 35 and 80 minutes to 5 and 11 minutes for the arm and leg acquisitions, respectively. Muscle strain maps and sigmoid-fitted strain curves enabled extraction of peak strain, mean strain, and buildup rate. Strains in the Vastus Lateralis were approximately one order of magnitude higher than in the Flexor Digitorum Superficialis (median peak strain 0.49 vs. 0.063, mean strain 0.31 vs. 0.031). The pipeline demonstrates multi-platform compatibility and provides a reproducible, open framework for quantitative muscle imaging.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,41 @@
+{
+  "date": "2024-08-17",
+  "count": 2,
+  "posts": [
+    {
+      "id": "d2157ea54dff",
+      "title": "Exploring the Convergence of Artificial Intelligence and Neuroscience",
+      "url": "https://blog.paperspace.com/exploring-the-convergence-of-artificial-intelligence-and-neuroscience/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-17T00:20:21+00:00",
+      "summary": "In this article we examine how AI technologies have improved various areas in Neuroscience research and study.",
+      "author": "Adrien Payong",
+      "tags": [
+        "Paper Review",
+        "Theory"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "d343997262b7",
+      "title": "Optimizing AI Models with Quanto on H100 GPUs",
+      "url": "https://blog.paperspace.com/optimizing-ai-models-with-quanto-on-h100-gpus/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-17T00:19:31+00:00",
+      "summary": "In this article discover Quanto a powerful quantization technique designed to optimize deep learning models without compromising the performance of the model.",
+      "author": "Shaoni Mukherjee",
+      "tags": [
+        "quantization",
+        "Large Language Models",
+        "Diffusion Models"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

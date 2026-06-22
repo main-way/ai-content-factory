@@ -1,0 +1,11 @@
+Computer Science > Machine Learning
+Title:Hyperparameter Learning for Latent Factorization of Tensors for Representation Learning to Large-scale Dynamic Weighted Directed Network
+View PDF HTML (experimental)Abstract:Large-scale dynamic weighted directed networks (DWDNs) are widely used to model time-varying interactions among nodes. Latent factorization of tensors (LFT) extracts target knowledge from DWDNs via low-rank embedding. However, similar to many machine learning models, the performance of LFT heavily depends on the selection of hyperparameters. In practice, these parameters are often tuned manually or through grid search, which requires significant computational resources and human effort. Motivated by this challenge, this paper proposes an automated hyperparameter optimization framework based on Differential Evolution (DE) for LFT (DE-LFT). The proposed method integrates DE into the training process of the LFT model to automatically learn optimal regularization parameters $\lambda_1$, $\lambda_2$ and $\lambda_3$. As a result, the model can adaptively search the hyperparameter space and improve prediction accuracy. Experimental results on four real-world datasets demonstrate that the proposed approach achieves lower MAE and RMSE compared with manually tuned baselines while reducing the need for extensive parameter tuning.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

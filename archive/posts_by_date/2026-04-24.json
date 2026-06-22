@@ -1,0 +1,67 @@
+{
+  "date": "2026-04-24",
+  "count": 4,
+  "posts": [
+    {
+      "id": "845ff3d3f8ae",
+      "title": "Chat History Storage Patterns in Microsoft Agent Framework",
+      "url": "https://devblogs.microsoft.com/agent-framework/chat-history-storage-patterns-in-microsoft-agent-framework/",
+      "source": "Semantic Kernel Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-24T15:00:14+00:00",
+      "summary": "When people talk about building AI agents, they usually focus on models, tools, and prompts. In practice, one of the most important architectural decisions is much simpler: where does the conversation history live? Imagine a user asks your agent a complex question, clicks “try again,” explores two different answers in parallel, and then comes back [&#8230;] The post Chat History Storage Patterns in Microsoft Agent Framework appeared first on Microsoft Agent Framework .",
+      "author": "Wes Steyn",
+      "tags": [
+        "Agent Framework",
+        "AI",
+        "Chat History",
+        "Microsoft Agent Framework"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "845a82356a94",
+      "title": "GPT 5.5, ChatGPT Images 2.0, Qwen3.6-27B",
+      "url": "https://simonw.substack.com/p/gpt-55-chatgpt-images-20-qwen36-27b",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-24T04:03:22+00:00",
+      "summary": "Plus Claude Code pricing confusion and changes in the system prompt between Claude Opus 4.6 and 4.7",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "807d3648751f",
+      "title": "DeepSeek-V4: a million-token context that agents can actually use",
+      "url": "https://huggingface.co/blog/deepseekv4",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-24T00:00:00+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "9b870ee1e1e9",
+      "title": "Issue #41",
+      "url": "http://augmentedcoding.dev/issue-41/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-24T00:00:00+00:00",
+      "summary": "I’ve had quite a busy week, and am about to head off on holiday, so haven’t had much time to keep up with the AI news this week, let alone write this newsletter. So for this week, I’m just sharing a few notes on articles that caught my attention. Normal service will resume next week! Claude 4.7 Tokenizer Cost Analysis CLAUDECODECOMP.COM&lt;/small We all know that LLMs require a considerable amount of compute in order to operate, and that the investment in OpenAI, Anthropic et al means that the service is heavily subsidised. Recently we’ve started seeing companies making small tweaks to model…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

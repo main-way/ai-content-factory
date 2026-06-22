@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Continuous-Speech Parkinson's Disease Detection Using Acoustic and Inharmonicity Features
+View PDF HTML (experimental)Abstract:Notable efforts have been made to identify Parkinson's disease (PD) from vocal data, primarily using sustained vowel phonations. In this work, we extend on these efforts introducing a PD identification approach for continuous speech, enabling a practical background monitoring of voice data to detect vocal changes indicative of PD. Using two distinct data sets, we compare the best sustained vowel model with that of the proposed continuous speech model, clearly illustrating the preferential performance of the latter. We examine approaches for speaker level evaluation and data leakage preventions, as well as how vowel information may be reliable extracted from continuous speech. The proposed method framework exploits both traditional acoustic representations and a promising novel inharmonicity based framework, showing how the latter provides complementary information improving the performance for one of the data sets; however, for the other data set, this information did not significantly improve (nor reduce) the performance, suggesting that further studies are required before being able to draw firm conclusions in its use. Overall, the work clearly illustrates the benefit of forming PD classification using continuous speech compared to using sustained vowel sounds.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

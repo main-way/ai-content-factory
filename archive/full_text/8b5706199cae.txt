@@ -1,0 +1,10 @@
+Anthropic released Claude Fable, its first Mythos-class AI model, yesterday and it’s already causing concerns inside Microsoft. Sources tell me that Microsoft is limiting the use of Claude Fable 5 for employees because of Anthropic’s new data retention requirements.
+Microsoft restricts Claude Fable for employees over data retention concerns
+Microsoft’s legal teams are evaluating Anthropic’s new data retention changes.
+Microsoft’s legal teams are evaluating Anthropic’s new data retention changes.
+While Microsoft quickly rolled out Claude Fable 5 to its GitHub Copilot and Foundry customers, I’m told the model isn’t available in the model picker that Microsoft employees use for internal versions of GitHub Copilot. All other Claude models are still available internally at Microsoft, because they operate under Zero Data Retention (ZDR) rules.
+I understand that Microsoft has been telling employees that its legal teams are evaluating changes to Anthropic’s data retention requirements. I’m told that the main concerns are around customer data and confidential information, and that it’s not yet clear whether Microsoft’s legal teams will clear Claude Fable for internal use.
+Claude Fable 5 requires data retention to operate Anthropic’s new safety classifiers, meaning Anthropic retains prompts and outputs and deletes this data after 30 days. Some prompts and outputs can even be stored for up to two years if they’re flagged as violating Anthropic’s usage policy, so there are legal concerns around how Microsoft should be using Claude Fable 5.
+Microsoft declined to comment.
+Claude Fable 5 is the first broad release from Anthropic’s Mythos class of AI models, and it arrives just weeks after the company said the family was so capable at cybersecurity tasks that it was too dangerous to release publicly. Anthropic has put prompt safeguards in place to make Fable 5 less dangerous, leading to these challenging data retention changes.
+Update, June 10th: Added that Microsoft declined to comment.

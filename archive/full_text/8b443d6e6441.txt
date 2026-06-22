@@ -1,0 +1,35 @@
+On-device only
+A local speech model, running on-device. No servers, no accounts, and nothing you record ever leaves your Mac.
+Trace captures your microphone and system audio, transcribes locally on your Mac, and hands you a markdown transcript with flagged moments inline.
+No accounts. No cloud. No meeting bots.
+Requires macOS 14 or later and Apple silicon.
+One keystroke brings Trace up over any application: Zoom, Teams, Meet, Slack, anything. No app to open, no window to place.
+Hit âK mid-call, type a short note, hit Enter. The moment is pinned to your transcript at the exact timestamp. You stay in the meeting, and any AI reading the transcript later sees exactly what mattered.
+Into Notion or Obsidian for the vault. Into ChatGPT, Claude, or any model you like for a different take. Trace hands you clean, contextual markdown for whatever comes next.
+Catch up without leaving the flow
+Press â? and the pill grows upward into a live transcript of the last two minutes, interleaved with every key moment you flagged. Runs entirely on-device, same as the final transcript. No uploads, no audio sent anywhere.
+Your library
+One window gathers every recording in one place. Play a session back with the transcript highlighting along, fix who said what right in the transcript, and search across everything you've recorded. Naming speakers is quick, with suggestions from voices Trace already knows.
+The menu bar keeps a quiet list of your sessions. Copy, reveal in Finder, or re-open without switching apps.
+tracecli reads your past transcripts and summaries straight off disk, and drives the live app with commands to start, stop, summarise, and more. It is built to be scripted, so the terminal and your AI agents can reach Trace the same way the menu bar does.
+Install with Homebrew. Everything it reads stays on your Mac, the same as the rest of Trace.
+A local speech model, running on-device. No servers, no accounts, and nothing you record ever leaves your Mac.
+Transcribes meetings in seconds on Apple silicon. No upload, no queue, no spinner while a cloud catches up.
+Record, flag, recap, pause, hide. Every action has a shortcut. Remap any of them to match your muscle memory.
+Every session lives in Finder as plain audio and markdown. Move them into your vault, version them in git, or delete them. They're yours.
+Hit âK mid-recording to mark a moment. Add a note while the conversation keeps going. Key moments sit inline in the transcript exactly where they happened, so you can scan to them in one pass.
+Connect your calendar and every recording picks up the event title automatically. A quiet reminder appears one minute before the meeting starts, offering to record. Use your Mac's calendar, on-device and covering any account, or link Google directly. Opt-in, read-only, off by default.
+Trace splits the call by voice and labels each one. After the meeting, put real names to them and merge any it double-counted. Name a voice once and Trace recognises it in your next call.
+Trace shows up in Shortcuts and Spotlight, with actions to start, stop, pause, flag a key moment, or grab the last transcript or summary. Have it run a Shortcut of your own the moment a transcription finishes.
+Both engines support multiple languages. The accurate model can understand over 99 languages and the faster model covers the major European languages.
+No servers, API keys, accounts or telemetry. Your audio and your transcripts never touch a machine that isn't yours.
+macOS asks for System Audio Recording permission so Trace can capture audio from your other apps. Trace never accesses your screen.
+What you get
+Key moments that you flag sit inline, right where they happened. Your future self, your teammates, and your AI of choice can scan straight to what mattered.
+Compare
+Honest, on-device comparisons for the people who do not want a bot in the call or their audio in the cloud.
+Record on your Mac with no bot in the call, transcribed on-device.
+Read more âEverything stays on your machine, and it works with the network off.
+Read more âThe same record-the-meeting simplicity, without the cloud notebook.
+Read more âCapture system audio with no extra participant in Zoom, Meet or Teams.
+Read more âNo accounts, no cloud, no telemetry.

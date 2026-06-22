@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Spatially Stratified Distillation for Heterogeneous Radar Place Recognition
+View PDF HTML (experimental)Abstract:Scalable, all-weather place recognition increasingly relies on heterogeneous radar place recognition to bridge diverse hardware platforms. A notable application is matching queries from cost-effective 4D automotive radars against high-fidelity reference maps built by dense spinning radars. This process is fundamentally limited by the extreme sparsity (and narrow field-of-view) of the 4D sensor, which captures only a fraction of the structural density present in the spinning radar database. Prior efforts address this issue by unifying different radar signals. That is, projecting both signals into a common representational space. Yet, they suffer performance degradation in multi-session environments. In this paper, we propose spatially-stratified distillation (SSD); a strategy that replaces standard uniform distillation with an asymmetric spatial alignment derived directly from physical radar returns. In regions where both radars exhibit overlapping returns, SSD enforces strong feature alignment. Crucially, in sparse regions where the 4D student lacks returns but the teacher contains valid structure within the shared field of view, SSD applies heavily discounted distillation weights. Extensive evaluations of the recent HeRCULES dataset demonstrate that SSD significantly outperforms prior place recognition methods, achieving state-of-the-art results on its challenging dynamic sequences.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

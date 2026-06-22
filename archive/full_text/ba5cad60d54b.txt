@@ -1,0 +1,11 @@
+Computer Science > Machine Learning
+Title:LFNO: Bridging Laplace and Fourier via Transient-Steady Decomposition
+View PDF HTML (experimental)Abstract:We introduce the Laplace-Fourier Neural Operator (LFNO), a unified framework for modeling dynamical systems across transient and steady-state regimes by integrating the spectral advantages of Laplace and Fourier Neural Operators. LFNO employs a dual-branch architecture that explicitly decomposes system dynamics into transient and steady-state components. We evaluate LFNO on nine benchmarks, including three ODE systems (Duffing, Lorenz, and Pendulum) and six PDE systems (Euler-Bernoulli beam, Heat, Reaction-diffusion, Brusselator, Burgers, and Navier-Stokes). LFNO significantly outperforms existing operators on ODE systems, where transient dynamics dominate, and consistently surpasses LNO while achieving performance competitive with FNO on PDE benchmarks. Furthermore, LFNO offers improved stability and physical interpretability through its component-wise decomposition. These results demonstrate that LFNO provides a robust and unified approach for learning complex dynamical systems across multiple temporal scales.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

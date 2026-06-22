@@ -1,0 +1,23 @@
+{
+  "date": "2023-10-14",
+  "count": 1,
+  "posts": [
+    {
+      "id": "f4364e5c33b8",
+      "title": "Neural algorithmic reasoning",
+      "url": "https://thegradient.pub/neural-algorithmic-reasoning/",
+      "source": "The Gradient",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2023-10-14T15:30:15+00:00",
+      "summary": "In this article, we will talk about classical computation : the kind of computation typically found in an undergraduate Computer Science course on Algorithms and Data Structures [1]. Think shortest path-finding, sorting, clever ways to break problems down into simpler problems, incredible ways to organise data for efficient retrieval and updates.",
+      "author": "Petar Veličković",
+      "tags": [
+        "Machine Learning",
+        "Overviews"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

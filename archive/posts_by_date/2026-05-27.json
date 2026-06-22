@@ -1,0 +1,319 @@
+{
+  "date": "2026-05-27",
+  "count": 21,
+  "posts": [
+    {
+      "id": "2d1bdfc7c103",
+      "title": "CEO Interview: Imagry",
+      "url": "https://www.cbinsights.com/research/ceo-interview-imagry/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T22:23:52+00:00",
+      "summary": "Eran Ofir, CEO of Imagry, tells CB Insights how they view the market, customer needs, and their company. How do you define your market, and where does your company fit into that space? Imagry provides fully integrated autonomous driving solutions &#8230; The post CEO Interview: Imagry appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "578e5502e2d6",
+      "title": "CEO Interview: Humata Health",
+      "url": "https://www.cbinsights.com/research/ceo-interview-humata-health/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T21:41:05+00:00",
+      "summary": "Jeremy Friese, Founder and CEO of Humata Health, tells CB Insights how they view the market, customer needs, and their company. How do you define your market and where does your company fit into that space? Here at Humata Health, &#8230; The post CEO Interview: Humata Health appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "c69cebac31a5",
+      "title": "CEO Interview: Recess Labs",
+      "url": "https://www.cbinsights.com/research/ceo-interview-recess-labs/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T21:10:46+00:00",
+      "summary": "Kelz Bethel, Cofounder &#38; CEO of Recess Labs, tells CB Insights how they view the market, customer needs, and their company. How do you define your market and where does your company fit into that space? Recess focuses on frontline &#8230; The post CEO Interview: Recess Labs appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "37483f51d6da",
+      "title": "CEO Interview: Beegol",
+      "url": "https://www.cbinsights.com/research/ceo-interview-beegol/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T20:37:23+00:00",
+      "summary": "Gilberto Mayor, CEO of Beegol, tells CB Insights how they view the market, customer needs, and their company. How do you define your market, and where does your company fit into that space? The problem that we solve is autonomous &#8230; The post CEO Interview: Beegol appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "93463b7f1ecd",
+      "title": "Extending Human Intelligence Through AI",
+      "url": "https://www.microsoft.com/en-us/research/blog/extending-human-intelligence-through-ai/",
+      "source": "Microsoft Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T16:00:00+00:00",
+      "summary": "Understanding AI as an extension of human intelligence—not a replacement for it—offers a more grounded path for building trustworthy AI systems. The post Extending Human Intelligence Through AI appeared first on Microsoft Research .",
+      "author": "Ken Archer, Harald Wiltsche",
+      "tags": [
+        "Research Blog"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "20cd1fcf60c3",
+      "title": "Industry-standard LLM benchmarks in DataRobot",
+      "url": "https://www.datarobot.com/blog/industry-standard-llm-benchmarks/",
+      "source": "DataRobot Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-27T15:40:03+00:00",
+      "summary": "Every LLM deployment has a ceiling, a latency curve, and a unit cost. Most teams operate blindly, discovering their deployment limits only when over-provisioning exhausts their GPU budget or peak traffic causes a catastrophic failure. Three numbers matter: maximum sustained concurrency before GPU saturation, end-to-end latency at that concurrency, and cost per million tokens at... The post Industry-standard LLM benchmarks in DataRobot appeared first on DataRobot .",
+      "author": "Abdelrahman (Abdo) Mahmoud, Will Cunningham, Drew Bednar",
+      "tags": [
+        "Generative AI",
+        "LLM Benchmarks"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "5ded9dc287cc",
+      "title": "Avoiding Death on the Yellow Brick Road",
+      "url": "https://www.a16z.news/p/avoiding-death-on-the-yellow-brick",
+      "source": "a16z (via Substack)",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T14:01:00+00:00",
+      "summary": "Why The App Layer Isn't Dead",
+      "author": "Joe Schmidt IV",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "96d5266165be",
+      "title": "How Conductor moved parallel coding agents from the laptop to the cloud with Vercel Sandbox",
+      "url": "https://vercel.com/blog/how-conductor-moved-parallel-coding-agents-from-the-laptop-to-the-cloud-with-vercel-sandbox",
+      "source": "Vercel AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-27T14:00:00+00:00",
+      "summary": "Conductor on Vercel Multiple parallel coding agents running at scale in the cloud Model-agnostic, works with Claude Code, Codex, and other coding agents Used by engineering teams at Notion, Linear, Ramp, and Life360 Interacting with a single coding agent feels natural, and Conductor makes directing a fleet of agents just as intuitive. It's a GUI for spinning up multiple coding agents in parallel, each working on an isolated branch of your codebase at once. You review their work, merge what works, and redirect the agents that need to keep iterating. Engineering teams loved it, but hardware was…",
+      "author": "Eric Dodds",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "b5479ebcde18",
+      "title": "Cisco and OpenAI redefine enterprise engineering with Codex",
+      "url": "https://openai.com/index/cisco",
+      "source": "OpenAI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T11:00:00+00:00",
+      "summary": "Cisco and OpenAI are redefining enterprise engineering with Codex, helping Cisco scale AI-native development, accelerate AI Defense work, and automate defect remediation.",
+      "author": "",
+      "tags": [],
+      "has_full_text": false
+    },
+    {
+      "id": "3d0351eefe90",
+      "title": "The SpaceX IPO and Data Centers in Space",
+      "url": "https://stratechery.com/2026/the-spacex-ipo-and-data-centers-in-space/",
+      "source": "Stratechery",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T10:00:00+00:00",
+      "summary": "There isn't a financial model that justifies the SpaceX IPO, but data centers in space are plausible, and that might be enough.",
+      "author": "Ben Thompson",
+      "tags": [
+        "Articles"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "0316568c46ec",
+      "title": "Почему опухолевые клетки очень коварны",
+      "url": "https://postnauka.org/longreads/158050",
+      "source": "ПостНаука (RU)",
+      "category": "ru_ai",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-05-27T09:53:00+00:00",
+      "summary": "Зачем клеткам нужна подвижность, как она меняется при раке и почему пластичность опухоли делает ее особенно опасной",
+      "author": "Иван Воробьев",
+      "tags": [
+        "Наука",
+        "evergreen"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "74f5123204ea",
+      "title": "Как мышление учёного становится инвестиционным инструментом",
+      "url": "https://postnauka.org/longreads/158049",
+      "source": "ПостНаука (RU)",
+      "category": "ru_ai",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-05-27T08:54:00+00:00",
+      "summary": "Чем математик отличается от финансиста, с чего началась сланцевая революция и кто должен решать, какие инновации нужны человечеству",
+      "author": "Алексей Фридлянд",
+      "tags": [
+        "Наука",
+        "evergreen"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "a64e304ddb2f",
+      "title": "Last Week in AI #341 - Musk loses to OpenAI, Google's IO updates, OpenAI solves Erdős",
+      "url": "https://lastweekin.ai/p/last-week-in-ai-341-musk-loses-to",
+      "source": "Last Week in AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-27T07:50:58+00:00",
+      "summary": "Elon Musk Loses $150 Billion Suit Against OpenAI and Sam Altman, Google updates its Gemini app to take on ChatGPT and Claude at IO 2026, and more!",
+      "author": "Last Week in AI",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "5899b169bc6e",
+      "title": "Building self-improving tax agents with Codex",
+      "url": "https://openai.com/index/building-self-improving-tax-agents-with-codex",
+      "source": "OpenAI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T07:00:00+00:00",
+      "summary": "See how OpenAI, Thrive, and Crete built a self-improving tax agent with Codex, automating filings, improving accuracy, and accelerating workflows.",
+      "author": "",
+      "tags": [
+        "Engineering"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "7cdcfd616873",
+      "title": "Reachy Mini goes fully local",
+      "url": "https://huggingface.co/blog/local-reachy-mini-conversation",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T00:00:00+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "3b3971cee4f2",
+      "title": "Shipping a Trillion Parameters With a Hub Bucket: Delta Weight Sync in TRL",
+      "url": "https://huggingface.co/blog/delta-weight-sync",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T00:00:00+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "919d46e19bc3",
+      "title": "Warp’s big bet on building open source with GPT-5.5",
+      "url": "https://openai.com/index/warp",
+      "source": "OpenAI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T00:00:00+00:00",
+      "summary": "Warp uses GPT-5.5 and OpenAI models to coordinate coding agents across local, cloud, and open-source development workflows.",
+      "author": "",
+      "tags": [
+        "Startup"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "1c77cec1ddad",
+      "title": "Election information and safeguards in 2026",
+      "url": "https://openai.com/index/election-safeguards-2026",
+      "source": "OpenAI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-27T00:00:00+00:00",
+      "summary": "Ahead of global elections, we’re helping people access information, supporting cyber defenders, and increasing AI transparency",
+      "author": "",
+      "tags": [
+        "Global Affairs"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "3a7abad9d590",
+      "title": "AI Weekly Issue #496: Anthropic's Pentagon model is now everyone's model",
+      "url": "https://aiweekly.co/issues/anthropics-pentagon-model-is-now-everyones-model",
+      "source": "AI Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-27T00:00:00+00:00",
+      "summary": "Anthropic released Mythos to the public, collapsing the wall between cleared-contractor frontier AI and developer-grade frontier AI in a single press release. DeepMind's Demis Hassabis moved his AGI timeline from \"five to ten years\" to \"a real possibility by 2029\" and tied it explicitly to AlphaProof Nexus solving nine open Erdős problems for the cost of a steak dinner. Critical zero-days hit Starlette (a million AI agents on the wire) and CrowdStrike led a coordinated takedown of the Glassworm developer botnet across four C2 channels. BNP Paribas formalized a sovereign-AI security…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "0b817a02bd1d",
+      "title": "Experimental native binaries for Vercel CLI",
+      "url": "https://vercel.com/changelog/experimental-native-binaries-for-vercel-cli",
+      "source": "Vercel AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-27T00:00:00+00:00",
+      "summary": "The Vercel CLI now ships an optional experimental native binary that starts faster, is even more secure, and requires no Node.js runtime dependency. Binaries are code-signed, allowing your OS to verify that they came from Vercel and haven't been modified. Additionally, on macOS, credentials are stored in the system Keychain scoped to the binary, so other processes cannot access them without explicit permission. You can opt in by installing the experimental package: The -f flag is required because @vercel/vc-native installs the same global vercel and vc bin names as the standard CLI. Once…",
+      "author": "Melkey Moksyakov",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "a76dd875abeb",
+      "title": "Redesigned Deployments List",
+      "url": "https://vercel.com/changelog/redesigned-deployments-list",
+      "source": "Vercel AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-27T00:00:00+00:00",
+      "summary": "The deployments list has been redesigned with a denser layout, so you can see more deployments at once. Environments are now grouped with statuses, and the updated layout makes branches and commits easier to scan. The mobile experience has also been improved, making it easier to scan deployment activity on busy projects. Open your dashboard to see the updated design. Read more",
+      "author": "Mery Kaftar",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

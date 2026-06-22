@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Polyp-D2ATL: Deep Domain-Adaptive Transfer Learning for Colorectal Polyp Classification under Label Distribution Shift
+View PDF HTML (experimental)Abstract:Early and highly accurate prediction of colorectal polyps, as an important sign of one of the most dangerous types of cancer, will result in saving more lives. Despite the advancements in colorectal polyp classification, many challenges remain in obtaining an automated polyp prediction system that is able to diagnose the difficult-to-predict polyps accompanied by different features in real scenarios, where the model can handle imbalanced data, label distribution shift, and cross-modality generalization successfully. In this study, we propose Polyp-D2ATL, a novel framework accompanied by a specific training strategy, which mitigates these limitations and effectively predicts the different classes of polyps belonging to the NICE classification. Our extensive experiments on the PICCOLO validation and test sets demonstrate that the proposed Polyp-D2ATL significantly outperforms existing state-of-the-art models across various reliable metrics, achieving an accuracy of 82.38%, a Macro-F1 of 77.49%, and a specificity of 87.47% on the validation set, alongside consistent improvements on the held-out test set which demonstrates the generalization capacity and clinical applicability of the proposed approach.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

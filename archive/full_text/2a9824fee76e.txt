@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Simulation-Based Multi-Fillet Evaluation of Woody Breast Poultry Fillets
+View PDF HTML (experimental)Abstract:Woody breast (WB) is a myopathy in modern broiler chickens that causes the breast muscle to become unusually stiff and fibrous, leading to decreased meat quality and significant economic losses. State-of-the-art automated WB detection relies on a side-view imaging system to analyze the bending behavior of a single fillet as it falls off a conveyor belt. While highly accurate, this approach is constrained by its single-fillet field of view, creating throughput bottlenecks on commercial processing lines. In this paper, we address this limitation via a novel multi-fillet detection architecture utilizing a top-down camera configuration. To validate our approach, we first develop a high-fidelity digital twin of an industrial conveyor system. Next, we synthesize a diverse dataset of 3D fillet meshes and model their viscoelastic bending dynamics using a physics-based simulation engine. Lastly, a continuous 2D shape deformation score is extracted from the top-down perspective as the simulated fillets traverse the roller precipice. Experimental results demonstrate that the top-down shape score effectively captures the contour changes of the fillets as it bends, providing a robust and scalable alternative to a side-view imaging system for simultaneous multi-fillet WB evaluation.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

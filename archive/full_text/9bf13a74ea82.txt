@@ -1,0 +1,12 @@
+Mathematics > Statistics Theory
+Title:Optimal score function estimation via derivatives constraints
+View PDF HTML (experimental)Abstract:We consider the problem of score function estimation via empirical risk minimization. We first start with the question of inferring the score function of a probability measure $\mu$ with density on the flat torus from a sample of distribution $\mu$. We show that constraining the hypothesis space to a Sobolev ball is sufficient to prevent overfitting and obtaining minimax estimation rates. We then consider the problem of score function estimation in the context of score-based generative modeling. Again, under a conjecture tying the score estimation rates to the quality of the output of a score-based generative model, we obtain minimax rates for such an approach using score function estimators obtained by constraining the hypothesis class to a Sobolev ball.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

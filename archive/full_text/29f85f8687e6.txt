@@ -1,0 +1,13 @@
+Computer Science > Multimedia
+Title:OlfactProfile: Profile-Conditioned Odor Prediction from Audiovisual Content
+View PDF HTML (experimental)Abstract:Automated video-odor matching predicts scents aligned with audiovisual content for scent-enhanced media. Existing methods usually treat odor labels as determined only by scene content, but odor judgment also depends on individual olfactory profiles, including scent sensitivity, tolerance to unpleasant odors, and affective preference. Ignoring this observer context limits current systems' ability to predict scents that match perceived experience.
+We present OlfactProfile, a framework for profile-conditioned odor prediction from audiovisual content. Our results show that olfactory profiles are not beneficial by default: with matched feature backbones, naive profile concatenation and uniform profile modulation can degrade performance, while structured field-wise profile conditioning consistently improves prediction. Thus, the key challenge is not merely whether observer context is available, but how it is integrated into multimodal reasoning.
+To study this setting, we construct an audiovisual benchmark pairing temporally aligned odor annotations with annotator olfactory preference profiles. It contains 1,350 video clips, a 99-class scent vocabulary, and three semantic odor tracks: Foreground Odor, Background Odor, and Emotion Odor. We also propose OAR (Olfactory-Aware Routing), a multimodal fusion module that performs track-aware audiovisual routing with field-wise profile modulation, allowing profile dimensions to influence odor reasoning according to perceptual role. Experiments show that OlfactProfile outperforms supervised baselines and general-purpose multimodal large models, is competitive with odor experts in a small human comparison, and improves perceived scent fit in scent-enhanced applications without task-specific fine-tuning. Per-track analysis shows that gains are strongest for Background Odor and Emotion Odor, where observer-dependent judgment is most important.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

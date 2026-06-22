@@ -1,0 +1,135 @@
+Show a PDF parser a chart and it sees an empty box. The text engines, native or cloud or local, all find the words on a page and put them in searchable tables. A chart has no words, so to every one of them the region is blank, and to a retrieval system it does not exist.
+A vision model is different. It looks at the page the way a person would. Ask it for the text and it gives you the text and the tables, just like the others. Show it a chart and it tells you what the chart says, in plain words you can search. That last part is what the others can’t do.
+The catch: it is slower, costs more, and reads numbers off a chart only roughly. It is also only as good as the model you pick. gpt-4.1
+reads a chart that the cheaper gpt-4o-mini
+half-misses. So you don’t use it everywhere. You save it for the pages that are mostly pictures, where the other parsers come back empty.
+Start with the reason this parser exists at all. The textual engines turn a page into the relational tables from the earlier articles, but a figure defeats them: they return a chart as a bounding box in image_df
+with maybe a stray axis label. There is no text in a chart, so to OCR and to a layout model the region is empty, and to a retrieval system it does not exist.
+A vision model reads the picture. Below are three figures pulled straight out of two PDFs: the Transformer diagrams from Attention Is All You Need (Vaswani et al. 2017) and the commodity-price charts from the World Bank Commodity Markets Outlook (April 2026 issue). Each figure sits next to the one-sentence description gpt-4.1
+wrote for it. Source documents and licensing details are listed at the end of the article.
+The price chart is now a sentence: commodity price indices by sector, falling since their 2022 peak. A user searching for “commodity price index since 2022” can now hit that page. Before, there was nothing on it to match.
+Here is the argument in its sharpest form. Picture a satellite image of a parking lot. It has no text at all. OCR finds nothing, layout finds one box, and to a retrieval system the image does not exist. A vision model writes “aerial view of a parking lot, roughly half full, around forty cars”. Now a search for parking occupancy finds it. That sentence is the parse, and only a vision model can produce it. OCR and layout cannot, by definition, because there were never any characters to read.
+The figure is the unique part, but a parser that only read pictures would be useless. A vision model reads the text and the tables too, and not worse than the textual engines on clean material. We pointed parse_page_vision
+at page 30 of the NIST Cybersecurity Framework, the Framework Core table, and asked for markdown. It returned the table columns intact, merged cells handled (the Function name sits on the first row of its block and the continuation rows leave it blank).
+This is the same cell structure Docling and Azure produce from the same page in the two previous articles: they emit markdown tables too, so the format is not what sets vision apart. The vision model never built a table object; it read the grid off the picture and wrote markdown (it returns HTML just as well). So the claim from the lead holds: it is a parser, returning the reusable model the others return, plus the figures they cannot.
+How good the parse is depends heavily on the model, and the gap shows precisely where it counts, on the figures. We ran the same CMO chart page through gpt-4o-mini
+and gpt-4.1
+.
+gpt-4o-mini
+found three of the six charts and labelled two of them as tables. gpt-4.1
+found all six and transcribed their axes down to the month, including the policy-uncertainty and temperature-anomaly charts the smaller model missed. Both read the page text and the NIST table correctly. The weaker model fell down on the pictures, the one thing you brought vision in to do. So with this parser the model is part of the quality, not just a latency and cost knob: a cheaper vision model degrades gracefully on text and badly on figures.
+None of this is free, and the catch is worth naming plainly. It is not that vision “isn’t really parsing”, because it is. It is that the parse is less exact and costs more per page.
+Two costs stand out.
+Exactness, with two faces: The values it reads off a curve are approximate: the shape and the gist are right, a specific tick can be off, so treat a transcribed number as a lead, not a fact. Worse, it can silently omit an element, a row of a table or one chart in a panel, the way gpt-4o-mini
+dropped half the charts in section 3. That is a completeness problem, a kind of hallucination by omission, and a deterministic parser never has it: when fitz or Docling reads a table, no row goes missing.
+Cost: Every page is a large image and a model call, billed per page, with no bounding boxes to highlight afterward. The textual parsers run once, cost almost nothing per page, and give you exact spans.
+So the rule is not “vision instead of parsing”. It is “vision for the pages the textual parsers go blind on”.
+The mechanism is small. The function renders the page, sends the image to the vision model through the same responses.parse
+structured-output call the series uses elsewhere, and returns a little object: the page as markdown, and a list of figures, each with a kind
+, a description
+, and a transcription
+.
+page = parse_page_vision("CMO-April-2026.pdf", 10, model="gpt-4.1")
+page.markdown # headings, paragraphs, tables
+page.figures # one entry per chart / diagram
+page.figures[0].description # "line chart, price index ..."
+page.figures[0].transcription # axes, legend, readable values
+parse_page_vision
+is a sibling of the fitz
+, azure_layout
+, and docling
+parsers, because it is a parser too. The adaptive-parsing dispatcher (Article 10) reaches for it when a page is visual enough that the textual engines come back empty.
+The body is short enough to read in one pass. Two Pydantic models set the output: the page as markdown, plus one entry per figure with its kind, description, and transcription. The function renders the page to an image, adds the instruction, and makes one structured call through the shared llm_parse
+wrapper. Retries, token limits, and the call cache come with the wrapper. There is no layout model and no OCR step: the model reads the pixels and fills the schema.
+class FigureContent(BaseModel):
+kind: str # chart, diagram, photo, map, ...
+description: str # what it shows, in searchable words
+transcription: str # axes, legend, readable values
+class VisionPageParse(BaseModel):
+markdown: str # the page as markdown, tables kept
+figures: list[FigureContent] # one entry per figure on the page
+def parse_page_vision(pdf_path, page, *, client=None, model=None, zoom=2.0):
+client = client or get_vision_client()
+model = model or vision_model()
+page_image = render_page_data_url(pdf_path, page, zoom=zoom)
+content = [{"type": "input_text", "text": "Parse this page."},
+{"type": "input_image", "image_url": page_image}]
+return llm_parse(
+input=[{"role": "system", "content": VISION_PARSE_SYSTEM_PROMPT},
+{"role": "user", "content": content}],
+text_format=VisionPageParse, # the Pydantic contract above
+client=client, model=model, label="vision.parse_page",
+)
+The system prompt (VISION_PARSE_SYSTEM_PROMPT
+) is the other half of the engine: it tells the model to keep headings and reading order, render every table as a markdown table, and add one entry per figure whose description someone could later search. Change that instruction and you change the parser.
+There is a one-off way to use the same capability. Instead of parsing the page into a reusable structure, hand the model the page and a single question and read back one answer. No markdown, no index, nothing kept. Useful when building a model would be overkill.
+ans = answer_from_pdf_vision(
+"data/nist/NIST.CSWP.04162018.pdf",
+"Category Unique Identifier for 'Asset Management'?",
+pages=30,
+)
+ans.answer # "ID.AM"
+ans.answer_found # True (False when not on the page)
+It behaves, and here the model barely matters: both gpt-4o-mini
+and gpt-4.1
+answer these the same way. The Framework Core lookup returned ID.AM
+, Function Identify
+; a question about Figure 1 of the Attention paper, readable from the diagram, came back right; and a question whose answer was not on the page returned nothing.
+That third row matters as much as the first two. A model that reads a page will invent a plausible answer unless the schema and the instruction give it an explicit way to say “not here”. The null path firing makes the mode safe to use.
+Same idea, packaged. The vision-as-parser pattern is now shipped as a tuned product by several vendors. Mistral Document AI on Azure AI Foundry (model mistral-document-ai-2512
+, available as a serverless API in East US / East US 2 / Sweden Central) bundles an OCR component (mistral-ocr-2512
+) with a small reasoning model (mistral-small-2506
+) and returns markdown plus a JSON object whose schema you can customise. The output contract differs from parse_page_vision
+, markdown rather than a line_df
+, structured extraction baked into the same call rather than punted to generation. Same underlying idea, packaged for a per-page billing model. For pipelines that already think in markdown or want the layout + extraction step folded into one API call, it’s worth a comparison against the OpenAI vision route used in this article.
+The bbox gap is real. Mistral OCR returns bounding boxes only for images embedded in the page (each image carries top_left_x
+/ top_left_y
+/ bottom_right_x
+/ bottom_right_y
+). The markdown body itself has no per-line, per-paragraph, or per-table-cell bboxes. That breaks two things the rest of the series relies on: Article 1’s PDF annotation step (highlight the cited lines on the source PDF needs bboxes) and Article 7’s line-level retrieval audit (every retrieved row points back to its bbox so the reader can verify on the page).
+An open question for the reader, then. How would you reconcile two parsers running on the same page, Mistral’s markdown (structured but bbox-less) and fitz / Docling’s line_df
+(bbox-rich but flatter), into one coherent output your downstream can use? Aligning two text streams at the line or token level is a known hard problem (segmentation differs, OCR errors differ, the markdown’s table flattening loses cell positions). The article does not propose a solution. If your downstream needs bbox-level traceability, the reconciliation cost is real and worth measuring before committing to the markdown contract.
+Sources for this section:
+- Mistral OCR API endpoint specification, input schema, response schema (pages with
+markdown
++images
+array, image bboxes only). - Mistral OCR processor docs (basic OCR),
+table_format
+parameter, per-page response structure. - Mistral Document Annotations docs, optional structured extraction with custom schemas, bbox-level annotations when explicitly requested.
+- Mistral Document AI 2512 on Azure AI Foundry catalog, serverless deployment in East US / East US 2 / Sweden Central, per-page billing.
+- Unlocking Document Understanding with Mistral Document AI in Microsoft Foundry, the bundled
+mistral-ocr-2512
++mistral-small-2506
+composition.
+All four engines are parsers. Three read text and structure; the fourth reads those too, and the images on top.
+Article 10 (adaptive parsing) builds the dispatcher that picks among them per page. The vision parser sits at the visual end: reach for it when a page is mostly a chart, when a diagram holds the answer, when a scan is too degraded for OCR, or when the content is an image with no text at all. It is the most expensive per page and the least exact on numbers, so it runs last. But it is the only engine that turns a picture into something you can retrieve.
+A vision model is a parser: ask for markdown, it returns text and tables like fitz or Azure; ask it to describe the figures, it returns the one thing the textual parsers cannot, searchable words about an image. The trade is real (less exact, no bounding boxes, one model call per page), so the vision parser does not replace the textual ones, it covers their blind spot. They read the words on the page; it reads the page that has no words.
+Vision-language models as document parsers descend from two lineages: the open VLM literature (PaliGemma, Florence-2, Qwen-VL family) and the frontier multimodal APIs (OpenAI GPT-4o / GPT-4.1, Anthropic Claude with vision, Google Gemini). The right cross-reading for this article is ColPali (Faysse et al. 2024), which makes the visual page the retrieval primitive itself, and the model-specific documentation pages where OpenAI publishes the vision capabilities of gpt-4.1
+and gpt-4o-mini
+.
+Same direction as the article:
+- OpenAI, Vision capabilities of the gpt-4.1 family. Reference documentation for the model behind
+parse_page_vision
+; same architectural pattern (vision LLM as a parser that returns markdown or structured output). - Faysse et al., ColPali: Efficient Document Retrieval with Vision Language Models, 2024 (arXiv:2407.01449). Vision-language retrieval on the page image itself. Anchors the visual row of the Article 4 diagnostic grid; same family of techniques applied to a different brick (retrieval rather than parsing).
+Different angle, different context:
+- Auer et al., Docling Technical Report, IBM Research 2024 (arXiv:2408.09869). Layout-based parsing without a generative model. Different cost-quality tradeoff: deterministic, cheap, blind to figures. Article 5ter (Docling parsing) develops this engine end to end.
+- Microsoft, Azure AI Document Intelligence. Cloud cell-level parser. Same blind spot as Docling on figures, complementary to vision LLM on every other content type.
+Source documents and licensing. The figures and tables in this article are reproduced from openly-licensed sources:
+- Attention Is All You Need (Vaswani et al. 2017), arXiv:1706.03762. arXiv non-exclusive distribution license, declared on the arXiv abstract page.
+- World Bank, Commodity Markets Outlook, April 2026 issue. CC BY 3.0 IGO, as declared on the OKR publication page.
+- NIST Cybersecurity Framework v1.1 (NIST CSWP 04162018). US Government work, public domain in the US (see the NIST copyright statement).
+gpt-4.1
+andgpt-4o-mini
+are proprietary OpenAI vision-capable models, governed by OpenAI’s Terms of Use.
+Earlier in the series:
+- Document Intelligence: series intro. What the series builds, brick by brick, and in what order.
+- Baseline Enterprise RAG, from PDF to highlighted answer. The four-brick pipeline end to end: PDF in, highlighted answer out.
+- Embeddings Aren’t Magic: The Predictable Failure Modes of RAG Retrieval. Where embedding similarity wins (synonyms, typos, paraphrase), where it predictably breaks (unknown terms, negation, term-vs-answer relevance), and how to use it anyway.
+- Rerankers Aren’t Magic Either: When the Cross-Encoder Layer Is Worth the Cost. What a cross-encoder adds over bi-encoder embeddings, measured, and when it is worth the latency.
+- RAG is not machine learning, and the ML toolkit solves the wrong problem. Why chunk-size sweeps and finetuning optimize the wrong thing; route by question type instead.
+- From regex to vision models: which RAG technique fits which problem. Two axes, document complexity and question control, that pick the technique for each case.
+- 10 common RAG mistakes we keep seeing in production. Ten production mistakes, organized brick by brick, with the fix for each.
+- Beyond extract_text: the two layers of a PDF that drive RAG quality. The first half of the parsing brick: the document’s nature, signals, and summary.
+- Stop returning flat text from a PDF: the relational shape RAG needs. The second half of the parsing brick: the relational tables every downstream brick reads.
+- When PyMuPDF can’t see the table: parse PDFs for RAG with Azure Layout (link to come). The same tables from Azure Layout: native table cells, OCR, paragraph roles.
+- Parse PDFs for RAG locally with Docling: rich tables, no cloud upload (link to come). The same tables computed locally with Docling: TableFormer cells, nothing leaves the machine.

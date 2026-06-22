@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Bayesian Magnetic Resonance Joint Image Reconstruction and Uncertainty Quantification using Sparsity Prior Models and Markov Chain Monte Carlo Sampling
+View PDF HTML (experimental)Abstract:We propose a novel framework for uncertainty quantification using compressed sensing magnetic resonance image reconstruction. The problem is formulated within a Bayesian framework as a linear inverse problem, with prior distributions assigned to the unknown model parameters. Specifically, the image to be reconstructed is assumed to be sparse in a given basis. We develop a general framework applicable to any basis and as examples, we test the sparsity of the image in its (1) spatial gradients using a total variation prior model, and in its (2) wavelet transform. A Markov chain Monte Carlo (MCMC) method, based on a split-and-augmented Gibbs sampler, is then employed to sample from the posterior distribution of the unknown parameters. The non-differentiable conditional distributions are efficiently sampled using a proximal MCMC method. The proposed algorithms are validated on both single-coil and multi-coil datasets using various k-space sub-sampling patterns and ratios. The results demonstrate the superior performance of each proposed approach in reconstructing images compared to its counterpart optimisation-based method. Moreover, our framework effectively quantifies uncertainty, showing a notable correlation between estimated uncertainty maps and error maps computed using ground truth and reconstructed images, compared with existing deep learning-based methods.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

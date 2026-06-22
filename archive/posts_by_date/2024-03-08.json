@@ -1,0 +1,23 @@
+{
+  "date": "2024-03-08",
+  "count": 1,
+  "posts": [
+    {
+      "id": "7c095f3c84eb",
+      "title": "Car-GPT: Could LLMs finally make self-driving cars happen?",
+      "url": "https://thegradient.pub/car-gpt/",
+      "source": "The Gradient",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-03-08T16:55:18+00:00",
+      "summary": "Exploring the utility of large language models in autonomous driving: Can they be trusted for self-driving cars, and what are the key challenges?",
+      "author": "Jérémy Cohen",
+      "tags": [
+        "LLM",
+        "Perspectives"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

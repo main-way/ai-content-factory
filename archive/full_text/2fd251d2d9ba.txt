@@ -1,0 +1,12 @@
+Computer Science > Computation and Language
+Title:TurnGuide: Enhancing Meaningful Full Duplex Spoken Interactions via Dynamic Turn-Level Text-Speech Interleaving
+View PDF HTML (experimental)Abstract:Full-Duplex Speech Language Models (FD-SLMs) are specialized foundation models designed to enable natural, real-time spoken interactions by modeling complex conversational turn-taking such as interruptions, backchannels, and overlapping speech. End-to-end (e2e) FD-SLMs leverage real-world double-channel conversational data to capture nuanced two-speaker dialogue patterns for human-like interactions, but their conversational abilities often degrade compared to pure-text conversation due to prolonged speech sequences and limited high-quality spoken dialogue data. Although interleaved text-speech generation could mitigate this degradation, integrating discrete text tokens into continuous double-channel audio streams could disrupt the precise time alignment required for fluid interaction. To address this, we propose TurnGuide, a novel text-speech interleaved generation approach for e2e FD-SLMs that dynamically segments assistant speech into dialogue turns and interleaves turn-level text and speech generation. This approach allows FD-SLMs to integrate the semantic intelligence of LLMs without compromising the natural acoustic flow. Extensive experiments show that TurnGuide not only significantly improves e2e FD-SLMs to produce semantically meaningful, coherent speech but also achieves state-of-the-art performance on various turn-taking events. Demos are available at this https URL. Code is available at this https URL.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

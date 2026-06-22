@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Spectral Adaptive Conformal Prediction for Structured Non-Exchangeable Data
+View PDF HTML (experimental)Abstract:Conformal prediction gives prediction intervals with finite-sample coverage when the data are exchangeable. Many time-indexed datasets are not exchangeable. They have seasons, recurring regimes, changing frequencies, or other forms of structured dependence. This paper studies a simple way to use that structure. We propose spectral adaptive conformal prediction, a method that forms weighted conformal quantiles using local spectral similarity and then updates the target miscoverage level online. The spectral weights choose calibration residuals that look relevant to the current test point. The adaptive update corrects the long-run miss rate when uncertainty changes over time. We give an approximate coverage result for the fixed spectral weighted quantile and a deterministic long-run calibration result for the adaptive update. Simulations with recurring regimes and slowly changing frequencies, together with three U.S. real-data examples, show that the hybrid method can improve on fixed spectral weighting, while also showing that spectral weighting must be monitored through effective sample size diagnostics.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

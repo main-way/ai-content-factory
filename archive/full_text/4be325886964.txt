@@ -1,0 +1,54 @@
+How we used Gemini to build Google I/O 2026
+Google I/O 2026 was all about how we’re making AI helpful for everyone in new ways. But we didn’t just make announcements about our innovations in AI at I/O — we used those tools to bring I/O to life, too.
+It’s both a strange and exciting moment to be building anything. We're living through an incredible shift where AI tools are getting better each month, effectively rewriting the rules of what we can create.
+This year, we challenged ourselves to use the same AI we were putting on stage to out-innovate, out-create and out-efficient ourselves.
+We moved faster than ever and prototyped in real-time — blending human artistry with experimental technology — with no better example than the "Timmy TPU" film.
+But the reward is showing how these tools unlock creativity and offload the mundane tasks, giving the team their best hours back for the parts they are uniquely suited to do. When done right, the event is amazing on its own, and, as a viewer, you stop thinking about how AI was used. That shift is the opportunity we want to share, because people keep asking, “What can you really do with AI?”
+Keep reading to learn which AI tools we used — and how we prompted them — to help make I/O 2026 happen.
+AI x Film
+“TPU Training Day” short film
+The AI products & models: Google AI Studio; experimental DeepMind models; Gemini Omni; Nano Banana
+What we did: We created a short film starring a bunch of TPUs getting ready to do some heavy lifting for I/O 2026.
+How we did it: This project started with a question: Could we make an animated film with the simplest materials — cardboard and markers — and then use AI to bring it to life? We worked with director Laurie Rowan and Nexus Studios to blend puppets, traditional animation and AI — keeping human craft and artistry right at the heart of "TPU Training Day" (also known as "Timmy TPU").
+First, we captured character performances through puppetry and simple 3D animation. This gave us full control over framing and camera movement. We then used Nano Banana to generate stylized first frames from that raw footage. To keep frames consistent, we built a custom tool inside Google AI Studio. This let us test Nano Banana frames at scale, ensuring pixel-perfect matches before generating sequences.
+We merged the base animation and stylized frames using Gemini Omni and other experimental models. This elevated the film to a cinematic level while retaining the original human intent. Preserving these tiny, human imperfections is what gives puppet films their charm, and our AI pipelines were designed to protect those details.
+AI x Visual Design
+I/O visual brand identity
+The AI products & models: Gemini models and Nano Banana
+What we did: We created the visual brand identity for I/O 2026, landing on a four-color gradient with overlapping transparencies and interlocking icons.
+How we did it: Our brand identity was a close collaboration between our team and AI. We started by feeding Gemini models our past brand guidelines and five years of I/O recaps. The early outputs didn't quite hit the mark, so we ran some micro-experiments. We generated new imagery and iteratively fed outputs back into Nano Banana with feedback. We also used Nano Banana to explore icon styles. Finally, we landed on flat 2D icons that dynamically transform into hyper-textured 3D icons. This created a cohesive brand expression across keynotes, physical signage and digital apps.
+Here’s a prompt we used to explore icon styles with Nano Banana:
+Our I/O YouTube trailer showcased our final icon style:
+AI x Immersive Experiences
+The I/O pre-show: Jellectronica
+The AI products & models: Google Antigravity; Google Colab; Google CoralNPU; Google Flow Music; Lyria 3 Pro
+What we did: We kicked off the pre-show with Jellectronica, a generative music experiment in partnership with the Monterey Bay Aquarium that translated moon jelly movements into sound with Lyria 3 Pro.
+How we did it: We trained a YOLO8 model in Google Colab, and then ran it on Google’s Coral NPU. This tracked jellyfish movement to control the music, which was made using Google Flow Music and the Lyria API. For example, more jellies in the bass section meant louder, more energetic bass. We also vibe-coded a mass stem generator in Google Antigravity to automate the production of music stems, like bass, chords, melody and drums.
+The I/O pre-show: Infinite Scaler and Code the Countdown
+The AI products & models: Google AI Studio; Gemini API; Gemini Canvas; Google Antigravity; Lyria 3; Nano Banana
+What we did: Infinite Scaler, another part of the pre-show, was a video game where players competed and generated the levels as they played.
+How we did it: We wanted players to build infinite 3D worlds quickly just using 2D image generation. To do this, we used Nano Banana to generate sprite sheets from user prompts and reference images via the Gemini API. We sent foreground elements back to Nano Banana to generate normal, roughness and emission maps. This inferred depth, letting us map textures to a 3D cardboard box rendered in WebGL before adding them to the global stack of worlds. We used Google AI Studio for rapid prototyping before moving to Google Antigravity for development; we generated in-game music entirely using Lyria 3.
+You can play the game and explore the levels we built together here.
+Here’s a sample user prompt for Infinite Scaler:
+Feeding that back into the Gemini API for a level plan gave us this prompt:
+That prompt resulted in this sprite sheet. The game’s sprite sheets combined multiple elements in a consistent template that used green screen backgrounds for easy masking.
+This process resulted in a fully playable 3D level like this:
+Finally, we played a generated countdown coded by creators worldwide in our Code the Countdown challenge. We asked you to design numbers between 1 and 10 in Canvas or AI Studio, then stitched them into a countdown powered by code.
+Antigravity Coffee Co. pop-up
+The AI products & models: Flutter; Gemini Enterprise Agent Platform; Google Antigravity; Nano Banana
+What we did: We created an app for I/O attendees to design and order lattes with custom art, then build their own version of the most unhinged coffee app ever.
+How we did it: We used generative UI and the A2UI protocol with Flutter to build adaptive interfaces that changed in real-time. This replaced static forms with dynamic user interactions. Firebase bridged the frontend to models like Nano Banana. This handled complex reasoning and content generation. A single Flutter codebase delivered a high-quality, zero-latency experience across different hardware. We relied on Google Cloud and Firebase — including Cloud Functions, Firestore and Cloud Ops. This solved the complexity of building and monitoring modern generative AI apps. Attendees also used Google Antigravity's agentic coding to quickly build their own order apps.
+AI x Creative Delight
+Speaker title cards
+The AI products & models: Gemini Omni; Google Flow; Nano Banana Pro
+What we did: Each speaker got their own custom generated title card made with our image and video generation models.
+How we did it: Josh Woodward — our VP of Google Labs & Google Gemini — is a great example. On stage, attendees saw a digital Josh riding Chrome Dino, then dunking a basketball.
+We used Nano Banana Pro to generate core assets like ingredient reference sheets. We used these ingredients to storyboard, trying variations and adding personal details. In Google Flow, we first used Veo to help prototype actions and generate animations like a slam dunk. We also generated animations with Gemini Omni in Google Flow, which was particularly helpful when dealing with intricate sports movements. Detailed text prompts kept the AI outputs consistent with our reference sheets. Finally, we composited and time-remapped raw motion from the generated videos into polished titles.
+Here’s a prompt we used for our ingredients reference sheet:
+Here’s a Google Flow video prompt we used after that:
+Sticker swag
+The AI products & models: Gemini and Nano Banana
+What we did: We generated and printed custom I/O stickers for attendees on the spot.
+How we did it: We built an interactive sticker game on a custom web app. Players had 20 seconds to catch falling prompts using an Android bot. There were over 100 prompt categories — from blueberries and disco balls to lasers and wood. Players selected two prompts, or hit "I'm feeling lucky" for a random mix. Our backend — using Nano Banana for Gemini and Android — fused these choices together. This created a highly personalized, custom I/O sticker design. Think of a 3D "I/O" made of solid gold waffles or a gummy bear motherboard. Designs were printed immediately for attendees to collect.
+Here’s an example prompt we used to generate the sticker designs, starting with some general guidelines:
+Next, we provided additional details about individual elements like color, lighting and in the example below, the iconic “I/O” shape:

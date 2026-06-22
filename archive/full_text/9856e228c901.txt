@@ -1,0 +1,12 @@
+Computer Science > Sound
+Title:Whisfusion: Parallel ASR Decoding with Masked Diffusion
+View PDF HTML (experimental)Abstract:Autoregressive (AR) encoder-decoder models dominate high-quality multilingual ASR, but their left-to-right decoders make inference latency scale with transcript length. A natural alternative, CTC-style non-autoregressive (NAR) systems avoid this bottleneck but their conditional independence assumption sacrifices transcript-level generative modeling. Masked diffusion language models (e.g., LLaDA, MDLM) offer a competitive NAR text-generation approach. We ask whether such models can bring NAR ASR into the accuracy regime of strong AR ASR systems while removing the left-to-right bottleneck. We propose Whisfusion, which trains a dedicated masked diffusion decoder from scratch on top of frozen Whisper-large-v3 audio embeddings, denoising masked transcripts in just a few steps. We train on ~68k hours of 11-language speech with high-mask specialization to align training with the fully masked starting point of inference, and decode via Parallel Diffusion Decoding. Whisfusion surpasses Whisper-large-v3 on group-average accuracy across English, European, and CJK benchmarks, while running 4-5x faster, additionally surpassing Whisper-turbo in both accuracy and throughput. It reaches accuracy competitive with Canary and Qwen3-ASR while running 3-7x faster. These results establish masked diffusion as a Pareto-competitive non-autoregressive paradigm for high-throughput multilingual transcription. Code and model weights are available at this https URL.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

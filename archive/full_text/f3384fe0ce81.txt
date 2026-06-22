@@ -1,0 +1,16 @@
+Link to headingWhat inference theft is
+Link to headingWhich AI endpoints are at risk?
+Link to headingWhy web defenses don't mitigate inference theft
+Link to headingThe architecture of abuse
+Link to headingThe shape of a real attack on our own endpoint
+Link to headingHow to defend against inference theft
+Link to headingVerification has to run on every AI request
+Link to headingImplementing request verification with BotID deep analysis
+// app/api/ai-chat/route.tsimport { checkBotId } from 'botid/server';import { NextRequest, NextResponse } from 'next/server';
+export async function POST(request: NextRequest) { const verification = await checkBotId(); if (verification.isBot) { return NextResponse.json({ error: 'Access denied' }, { status: 403 }); } // Your existing AI SDK call path}
+// instrumentation-client.tsimport { initBotId } from 'botid/client/core';
+initBotId({ protect: [{ path: '/api/ai-chat', method: 'POST' }],});
+Link to headingProtect inference, not just access
+Protect your AI endpoints with Vercel BotID
+Stop bots from draining your AI budget: see how to gate your endpoints with Vercel BotID in a few steps.
+Read the guide

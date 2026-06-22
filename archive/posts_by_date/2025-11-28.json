@@ -1,0 +1,20 @@
+{
+  "date": "2025-11-28",
+  "count": 1,
+  "posts": [
+    {
+      "id": "d2482a196908",
+      "title": "Issue #20",
+      "url": "http://augmentedcoding.dev/issue-20/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2025-11-28T00:00:00+00:00",
+      "summary": "Introducing Claude Opus 4.5 ANTHROPIC.COM It’s been an exciting few weeks for model releases, with recent foundation model releases all having a strong focus on autonomous AI coding. 18th Nov, Google released Gemini 3.0, with leading results across almost every benchmark (SWE-Bench being the notable exception). They also released Antigravity, their AI-first IDE. 19th Nov, OpenAI released GPT-5 Codex Max, trained on agentic tasks across software engineering, math, research - with a focus on speed and efficiency 24th Nov, Anthropic released Claude Opus 4.5, achieving substantial improvements in…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

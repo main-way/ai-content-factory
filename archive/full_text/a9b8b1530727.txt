@@ -1,0 +1,12 @@
+Computer Science > Sound
+Title:HyperPotter: Spell the Charm of High-Order Interactions in Audio Deepfake Detection
+View PDF HTML (experimental)Abstract:Advances in AIGC technologies have enabled the synthesis of highly realistic audio deepfakes capable of deceiving human auditory perception. Although numerous audio deepfake detection (ADD) methods have been developed, most rely on local temporal/spectral features or pairwise relations, overlooking high-order interactions (HOIs). HOIs capture discriminative patterns that emerge from multiple feature components beyond their individual contributions. We propose HyperPotter, a hypergraph-based framework designed to capture high-order relations associated with synergistic patterns through clustering-based hyperedges with class-aware prototype initialization. Extensive experiments on 13 test sets show that HyperPotter improves over the baseline on 11 sets, yielding an average relative EER reduction of 12.68\% across all test sets and 22.15\% on the improved sets. These results demonstrate strong cross-scenario generalization, while also revealing robustness limits under severe codec or channel distortion.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

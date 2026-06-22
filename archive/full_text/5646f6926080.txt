@@ -1,0 +1,274 @@
+Backbone, Neck, and Head
+Before we get into FPN, we first need to know that the structure of an object detection model is different from that of the classification model, in which the main difference lies in the very last layer. In a typical classification model, the last layer comprises a number of neurons where each of them corresponds to every single class available in the dataset. Or, in the case of binary classification, the output layer only consists of a single neuron, which is responsible to predict whether a sample belongs to class 0 or 1. This kind of output layer is actually not suitable for detection task since it also requires neurons dedicated for predicting the location and the size of an object in addition to its class.
+So, in order for a model to be able to predict object location and size, we need to replace the output layer, i.e., the classification head, with the so-called detection head. The remaining layers themselves (everything except the head) are commonly called backbone. Some models that use this structure are YOLOv1 and YOLOv2, where they use a stack of convolution layers as the backbone and a specific head for predicting object location and size within an image as well as its class.
+Older object detection models like YOLOv1 and YOLOv2 mentioned above only consist of a backbone and a head. As time went on, researchers found that this structure is still not quite optimal, hence they finally came up with an idea by adding a new component called neck. As the name suggests, this is essentially something we place between the backbone and the head. And FPN, which we are going to talk about in this article, is one of the earliest necks proposed for object detection models. Look at the Figure 1 below to see the high-level architectural view of the older and modern object detection models.
+The backbone of a model is mainly responsible for performing feature extraction, while the neck is useful for enhancing feature quality, and the head is for making predictions. Based on this notion, we can say that by applying FPN, a network can potentially achieve better accuracy thanks to the feature enhancement mechanism performed by the neck.
+The Evolution of Multi-Scale Detection Mechanism
+Previously I mentioned that using backbone and detection head without neck is not quite optimal. This is especially regarding its capability in detecting small objects. Now let’s take a look at the Figure 2 below. The first two YOLO versions I mentioned earlier utilize the structure in image (b), where the bounding box and the object class predictions are made solely on top of the feature map produced by the deepest layer in the backbone. This method is valid, but is effective only for large objects. The reason is pretty straightforward: as an image gets deeper into a network, the spatial dimension shrinks, and more importantly, the pixel information contained in the deeper feature maps becomes a representation of several neighboring pixels in the shallower ones, which causes the spatial information to blend. By doing this, feature maps from deeper layers got a large receptive field, allowing large objects to be detected and recognized easily. However, the degradation of spatial information as we get deeper prevents us from detecting small objects accurately because we do need a detailed pixel location in order to predict the exact coordinates of the objects.
+Additionally, the receptive field size of a feature map is positively correlated with the amount of semantic information it contains. In the figure below, a feature map of high semantic information is indicated by a thick blue outline. This is essentially why the deepest feature map in (b) has the thickest outline.
+The most straightforward approach to allow a network to simultaneously detect large and small objects is by using featurized image pyramid (a). This method is able to achieve high accuracy because we can make predictions from different image resolutions. What’s essentially done here is that we rescale our input image into multiple scales, perform feature extraction independently on each scale, and make predictions on the resulting feature maps. The smaller feature map is responsible to detect large objects, whereas the larger one is specialized to detect small objects thanks to its detailed spatial information. However, this method is computationally expensive since we need to process multiple raw images of different scales at once.
+Another solution was proposed by the authors of SSD (Single Shot Multibox Detector), which in Figure 2 above is the one referred to as pyramidal feature hierarchy (c). So, instead of feeding the network with the same image of different sizes, the authors of SSD attempted to use only the largest image and utilize the internal pyramidal structure of the CNN backbone to make predictions of varying scales. This approach allows the system to be computationally more feasible than option (a). Nevertheless, here we actually got a tradeoff like (b), where the feature map from the deeper layer contains a large amount of semantic information yet having minimal spatial information, while the feature map from the shallower layer has a lot of spatial information but it does not have that much semantic information. It is important to note that a detailed spatial information might not be quite important for large objects as we can just approximate the general shape of that object. However, both spatial and semantic information are necessary for detecting small objects because not only the detailed coordinates, but the model also needs to understand what’s actually inside the bounding box. So, while it is true that method (c) is indeed able to detect both large and small objects, but its ability in detecting the latter is not yet optimal.
+And here’s where FPN comes as a solution. If we take a look at image (d) in Figure 2, we can see that the predictions are made on top of the corresponding feature maps which are all semantically rich. This essentially allows objects of varying scales, including the smaller ones, to be detected accurately. We are going to talk about the details of how FPN enriches feature maps in the subsequent section.
+How FPN Works
+The idea of FPN is to inject information from the deeper feature maps into the shallower ones, and by doing so we will have the shallower feature maps not only containing high spatial information but also high semantic information coming from the deeper part of the network. In theory, this should result in a better detection accuracy on small objects since the large feature maps are now enriched with a lot of semantic information. In order to achieve this, they introduce the so-called top-down pathway and lateral connections. You can see the complete FPN architecture in Figure 3 below, which is essentially the detailed version of the one in Figure 2 (d).
+The authors of this paper decided to use ResNet-50 and ResNet-101 as the backbone. Suppose we were to use the former, we would later have the conv2, conv3, conv4, and conv5 layers repeated 3, 4, 6, and 3 times, respectively, as suggested by the architectural details of ResNet in Figure 4. C2, C3, C4, and C5, which are the tensors produced by the last layer of the corresponding stage, are going to be transferred to the top-down pathway through lateral connections, i.e., the arrows going out from the backbone.
+The top-down pathway is used to transfer semantic information from deeper layers, whereas lateral connections are used to preserve spatial information. We aggregate the two by performing element-wise summation, which the detailed process is given in Figure 5 below. For the tensors that come from the backbone (C), we first need to apply 1×1 conv to them. This convolution layer is responsible for adjusting the number of channels so that it matches with the tensor coming from the top-down pathway. The tensor from the top-down pathway itself (M+1) undergoes 2× nearest-neighbor upsampling. These processes are essentially done because we need both tensors to have the exact same dimension so that element-wise summation can be performed. As the summation is done, the resulting tensor is now referred to as M. This tensor has some aliasing effect due to the upsampling process we did earlier, hence we need to apply a 3×3 convolution to reduce that effect. Finally, we got the P tensor, which is ready to be forwarded to the detection head.
+Keep in mind that all processes described in Figure 5 above only apply to M2, M3, and M4. Computing M5 is actually much simpler (see Figure 6), where the only thing we need to do is just to adjust the number of channels using 1×1 conv to make it uniform with the tensors in the other lateral connections. The M5 tensor itself does not need to be processed further with 3×3 conv because there is nothing to be smoothed out due to the absence of upsampling mechanism. And so, we can basically say that P5 is the exact same tensor as M5.
+And well I think that’s everything about the theory behind FPN. In the next section I am going to bring you into the lower-level view of the architecture by implementing it from scratch with PyTorch.
+FPN From Scratch
+CNN Backbone
+So as seen in the Codeblock 1 below, the very first thing we need to do in the code is to import the required modules.
+# Codeblock 1
+import torch
+import torch.nn as nn
+Since the focus of this article is FPN, here I will use a dummy model for the backbone instead of using the actual ResNet in order to simplify things. But still, the layers in the code are named according to Figure 3 and 4: conv1
+, conv2
+, conv3
+, conv4
+and conv5
+as shown in Codeblock 2 below. The output tensor dimension of each stage is also set according to the original ResNet architecture. So, although this backbone is just a plain CNN-based model, you can think of this like a normal ResNet.
+Next, what we do inside the forward()
+method is to connect all the layers. If you take a closer look at the code, you will notice that each convolution layer is followed by a ReLU activation function and a maxpooling layer. The maxpooling layer itself is set to have the stride of 2, effectively halves the spatial dimension of the feature map. By repeating maxpooling layers multiple times, we will have our feature map gradually gets smaller as we get deeper into the network. This essentially creates a pyramidal structure within the CNN backbone which is leveraged by FPN to achieve high detection accuracy on varying object scales. In CNN, reducing spatial dimension like this is a standard practice to reduce computational complexity to compensate the increase of the number of channels.
+Still within the forward()
+method, don’t forget to clone the main tensor x
+as shown at the lines marked with #(1)
+, #(2)
+, and #(3)
+. The copied tensors, which are named c2
+, c3
+, and c4
+, will then be the return values of the CNN
+class alongside the feature map from the main flow (c5
+) (#(4)
+).
+# Codeblock 2
+class CNN(nn.Module):
+def __init__(self):
+super().__init__()
+self.relu = nn.ReLU()
+self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+self.conv1 = nn.Conv2d(in_channels=3, out_channels=64, kernel_size=3, padding=1)
+self.conv2 = nn.Conv2d(in_channels=64, out_channels=256, kernel_size=3, padding=1)
+self.conv3 = nn.Conv2d(in_channels=256, out_channels=512, kernel_size=3, padding=1)
+self.conv4 = nn.Conv2d(in_channels=512, out_channels=1024, kernel_size=3, padding=1)
+self.conv5 = nn.Conv2d(in_channels=1024, out_channels=2048, kernel_size=3, padding=1)
+def forward(self, x):
+print(f'original\t: {x.size()}\n')
+x = self.relu(self.conv1(x))
+print(f'after conv1\t: {x.size()}')
+x = self.maxpool(x)
+print(f'after maxpool\t: {x.size()}\n')
+x = self.relu(self.conv2(x))
+print(f'after conv2\t: {x.size()}')
+x = self.maxpool(x)
+print(f'after maxpool\t: {x.size()}\n')
+c2 = x.clone() #(1)
+x = self.relu(self.conv3(x))
+print(f'after conv3\t: {x.size()}')
+x = self.maxpool(x)
+print(f'after maxpool\t: {x.size()}\n')
+c3 = x.clone() #(2)
+x = self.relu(self.conv4(x))
+print(f'after conv4\t: {x.size()}')
+x = self.maxpool(x)
+print(f'after maxpool\t: {x.size()}\n')
+c4 = x.clone() #(3)
+x = self.relu(self.conv5(x))
+print(f'after conv5\t: {x.size()}')
+c5 = self.maxpool(x)
+print(f'after maxpool\t: {c5.size()}\n')
+return c2, c3, c4, c5 #(4)
+As the CNN
+class is done, we will now try to pass a dummy RGB image of size 224×224 through the network. This tensor dimension is chosen based on the input shape of the original ResNet.
+# Codeblock 3
+cnn = CNN()
+x = torch.randn(1, 3, 224, 224)
+out_cnn = cnn(x)
+And below is what the output looks like. Here we can see that the number of channels after each conv layer matches exactly with the ResNet structure given in Figure 4. Not only that, it is also seen that the spatial dimension of our dummy tensor successfully halved after each stage thanks to the maxpooling layers. This essentially indicates that our simple CNN model really mimics the general structure of a ResNet model.
+# Codeblock 3 Output
+original : torch.Size([1, 3, 224, 224])
+after conv1 : torch.Size([1, 64, 224, 224])
+after maxpool : torch.Size([1, 64, 112, 112])
+after conv2 : torch.Size([1, 256, 112, 112])
+after maxpool : torch.Size([1, 256, 56, 56])
+after conv3 : torch.Size([1, 512, 56, 56])
+after maxpool : torch.Size([1, 512, 28, 28])
+after conv4 : torch.Size([1, 1024, 28, 28])
+after maxpool : torch.Size([1, 1024, 14, 14])
+after conv5 : torch.Size([1, 2048, 14, 14])
+after maxpool : torch.Size([1, 2048, 7, 7])
+We can also check what the returned tensors look like by running the code below. You can see in the resulting output that the c2
+tensor has the shape of 256×56×56, c3
+is of shape 512×28×28, and so on. By the way, you can just ignore the number 1 in the 0th axis since it only indicates the number of samples we pass within a single batch.
+# Codeblock 4
+c2, c3, c4, c5 = out_cnn
+print(c2.shape)
+print(c3.shape)
+print(c4.shape)
+print(c5.shape)
+# Codeblock 4 Output
+torch.Size([1, 256, 56, 56])
+torch.Size([1, 512, 28, 28])
+torch.Size([1, 1024, 14, 14])
+torch.Size([1, 2048, 7, 7])
+FPN Neck
+As the CNN backbone is completed, now let’s move on to the FPN neck. In the Codeblock 5 below, we first initialize the upsample layer (#(1)
+) which we will use every time we want to double the spatial dimension of the M tensor. Here I set the mode
+parameter to nearest
+as suggested in the paper, which is actually a very simple interpolation method, allowing the process to be fast. Take a look at Figure 7 to see what a nearest-neighbor interpolation looks like.
+# Codeblock 5
+class FPN(nn.Module):
+def __init__(self):
+super().__init__()
+self.upsample = nn.Upsample(scale_factor=2, mode='nearest') #(1)
+self.lateral_c5 = nn.Conv2d(in_channels=2048, out_channels=256, kernel_size=1)
+self.lateral_c4 = nn.Conv2d(in_channels=1024, out_channels=256, kernel_size=1)
+self.lateral_c3 = nn.Conv2d(in_channels=512, out_channels=256, kernel_size=1)
+self.lateral_c2 = nn.Conv2d(in_channels=256, out_channels=256, kernel_size=1)
+self.smooth_m4 = nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1)
+self.smooth_m3 = nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1)
+self.smooth_m2 = nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1)
+def forward(self, c2, c3, c4, c5):
+m5 = self.lateral_c5(c5)
+p5 = m5
+m4 = self.upsample(m5) + self.lateral_c4(c4)
+p4 = self.smooth_m4(m4)
+m3 = self.upsample(m4) + self.lateral_c3(c3)
+p3 = self.smooth_m3(m3)
+m2 = self.upsample(m3) + self.lateral_c2(c2)
+p2 = self.smooth_m2(m2)
+return p2, p3, p4, p5
+If you go back to Codeblock 4, you will see that the c{5,4,3,2}
+tensors returned by the backbone have different number of channels. This is basically the reason that we initialize the lateral_c{5,4,3,2}
+layers to process these tensors so that the resulting channel counts will be uniform. According to the paper, we need to set these convolution layers to produce 256 output channels, which is the reason why we use that number for the out_channels
+parameter.
+Next, based on the Figure 7, you can just imagine how pixelated the resulting feature maps are after being upsampled. Thus, we need to process the m{4,3,2}
+tensors further with the 3×3 conv layers which I refer to as smooth_m{4,3,2}
+. As all layers have been initialized, what we need to do next is to assemble them in the forward()
+method according to the structure I showed you earlier in Figure 3.
+In addition to this, the paper also mentions that we don’t need to implement any nonlinearities within the FPN, which is the reason that all the convolution layers in the FPN
+class above are not followed with ReLU. Now in Codeblock 6 below I try to pass the Ctensors we obtained earlier through the FPN neck we just created. We can see in the output that the resulting tensors have different spatial resolutions. Later on, the p2
+tensor (the one that has 56×56 dimension) will be forwarded to a detection head to detect small objects, whereas p5
+(the 7×7 tensor) is going to be responsible for large objects.
+# Codeblock 6
+fpn = FPN()
+out_fpn = fpn(c2, c3, c4, c5)
+p2, p3, p4, p5 = out_fpn
+print(p2.shape)
+print(p3.shape)
+print(p4.shape)
+print(p5.shape)
+# Codeblock 6 Output
+torch.Size([1, 256, 56, 56])
+torch.Size([1, 256, 28, 28])
+torch.Size([1, 256, 14, 14])
+torch.Size([1, 256, 7, 7])
+Here have already completed the FPN part. Remember that FPN is just the neck of a detection model, which essentially means that at this point we still haven’t got the bounding box prediction just yet. In order to actually obtain the prediction result, we need to connect a specific head to the FPN, and in this case I will use the RPN (Region Proposal Network) head.
+RPN Head
+In case you’re still not yet familiar with RPN, this is essentially the head of an object detection model used for creating bounding box, which was first proposed in the Faster R-CNN paper. Note that while in this demonstration we refer to the RPN as a head, keep in mind that it is actually not a complete detection head since it has no capability in performing classification on the detected objects.
+We can see in the RPN architecture below that it utilizes the so-called cls layer and reg layer, which produce objectness score and the bounding box coordinates, respectively. The objectness score tensor has the length of 2k, where k is the number of predetermined anchor boxes and 2 is the probability of the corresponding anchor box being there. We can think of this like a binary classification treated with a one-hot representation (object/non-object). Meanwhile, the number 4 in the 4k length of the coordinates tensor simply correspond to the xywh prediction.
+Going back to our code implementation, in the Codeblock 7 below we initialize the intermediate
+, cls
+, and reg
+layers within the __init__()
+method of the RPN class. Note that the intermediate layer is the only one that uses 3×3 convolution, whereas both the cls
+and reg
+layers use 1×1 convs. Regarding the number of channels, the intermediate
+layer maps the input tensor into 256 channels, while the cls
+and reg
+map it into 2k and 4k, respectively. Finally, we can simply connect these layers within the forward()
+method.
+# Codeblock 7
+NUM_ANCHORS = 3
+class RPN(nn.Module):
+def __init__(self):
+super().__init__()
+self.intermediate = nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3, padding=1)
+self.cls = nn.Conv2d(in_channels=256, out_channels=NUM_ANCHORS*2, kernel_size=1)
+self.reg = nn.Conv2d(in_channels=256, out_channels=NUM_ANCHORS*4, kernel_size=1)
+def forward(self, x):
+x = self.intermediate(x)
+objectness_scores = self.cls(x)
+bbox_regressions = self.reg(x)
+return objectness_scores, bbox_regressions
+Now let’s test if our RPN class works properly by running the Codeblock 8 below. Here I test it on the p2
+feature map we obtained from Codeblock 6.
+# Codeblock 8
+rpn = RPN()
+p2_objectness, p2_bbox = rpn(p2)
+print(p2_objectness.shape)
+print(p2_bbox.shape)
+Below is what the resulting output looks like. You can see that p2_objectness
+is a tensor having the size of 6×56×56, indicating that every single pixel in the 56×56 spatial dimension contains 6 prediction values, where the first 2 values are for the first anchor box, the second 2 values are for the second anchor box, and the last 2 values are for the third one. The similar thing also applies to the p2_bbox
+tensor, which in this case it contains the xywh values.
+# Codeblock 8 Output
+torch.Size([1, 6, 56, 56])
+torch.Size([1, 12, 56, 56])
+The Entire Detection Model
+In Codeblock 9 below we are going to construct the entire detection model so that you can better understand how FPN works together with the other components. Here in the __init__()
+method I initialize the CNN bottleneck, FPN neck, and RPN head. In the forward()
+method, we first pass the image tensor into the CNN (#(1)
+). This backbone returns 4 tensors, which are ready to be connected to the FPN through lateral connections. Next, at line #(2)
+we feed all the C tensors as the input of FPN, producing the P tensors. Lastly, we use all the Ps as the input to the RPN (#(3–4)
+). Keep in mind that RPN shares its parameters across all detection heads, so we only need to initialize it once and use it for all feature map of different scales.
+# Codeblock 9
+class DetectionModel(nn.Module):
+def __init__(self):
+super().__init__()
+self.cnn = CNN()
+self.fpn = FPN()
+self.rpn = RPN()
+def forward(self, x):
+c2, c3, c4, c5 = self.cnn(x) #(1)
+p2, p3, p4, p5 = self.fpn(c2, c3, c4, c5) #(2)
+p2_pred = self.rpn(p2) #(3)
+p3_pred = self.rpn(p3)
+p4_pred = self.rpn(p4)
+p5_pred = self.rpn(p5) #(4)
+return p2_pred, p3_pred, p4_pred, p5_pred
+Now as the detection head is complete, we can test it with the Codeblock 10 below. Here I try to pass a dummy tensor of size 1×3×224×224, simulating a single RGB image of size 224×224 (#(1)
+). Next, we can just pass it through the detection_model
+(#(2)
+) and unpack the prediction results (#(3–4)
+).
+# Codeblock 10
+detection_model = DetectionModel()
+x = torch.randn(1, 3, 224, 224) #(1)
+p2_pred, p3_pred, p4_pred, p5_pred = detection_model(x) #(2)
+p2_objectness, p2_bbox = p2_pred #(3)
+p3_objectness, p3_bbox = p3_pred
+p4_objectness, p4_bbox = p4_pred
+p5_objectness, p5_bbox = p5_pred #(4)
+print(p2_objectness.shape)
+print(p3_objectness.shape)
+print(p4_objectness.shape)
+print(p5_objectness.shape)
+print()
+print(p2_bbox.shape)
+print(p3_bbox.shape)
+print(p4_bbox.shape)
+print(p5_bbox.shape)
+Below is what the output looks like. You can see here that the resulting tensor dimensions are as intended, where the objectness
+and bbox
+tensors contain 6 and 12 values for each grid cell, respectively. So, I believe this implementation is correct and thus ready to be trained for object detection task.
+# Codeblock 10 Output
+torch.Size([1, 6, 56, 56])
+torch.Size([1, 6, 28, 28])
+torch.Size([1, 6, 14, 14])
+torch.Size([1, 6, 7, 7])
+torch.Size([1, 12, 56, 56])
+torch.Size([1, 12, 28, 28])
+torch.Size([1, 12, 14, 14])
+torch.Size([1, 12, 7, 7])
+Ending
+I think that’s pretty much all about the underlying theory and the from-scratch implementation of FPN. Here I challenge you to try implementing FPN on the real ResNet instead of a dummy CNN model like I demonstrated above. I actually got a separate article about ResNet, which you can check as a reference [5]. Or, it is also possible to use other models if you want, such as VGG, ResNeXt, ConvNeXt, etc since FPN can basically work on any CNN-based backbone model. Not only that, it would also be better if you can implement YOLO-style head as a replacement of RPN, which the examples can be seen in my previous articles given at references number [6] for YOLOv1, [7] for YOLOv2, and [1] for YOLOv3.
+Please let me know if there are mistakes in my writing or in the code. Thanks for reading! By the way, you can find the code used in this article in my GitHub repo [8].
+References
+[1] Muhammad Ardi. YOLOv3 Paper Walkthrough: Even Better, but Not That Much. Medium. https://ai.gopubby.com/yolov3-paper-walkthrough-even-better-but-not-that-much-4dc6c0c1b42c [Accessed June 1, 2026].
+[2] Tsung-Yi Lin. Feature Pyramid Networks for Object Detection. Arxiv. https://arxiv.org/abs/1612.03144 [Accessed September 9, 2025].
+[3] Image created originally by author.
+[4] Shaoqing Ren. Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks. Arxiv. https://arxiv.org/abs/1506.01497 [Accessed September 9, 2025].
+[5] Muhammad Ardi. Paper Walkthrough: Residual Network (ResNet). Python in Plain English. https://medium.com/python-in-plain-english/paper-walkthrough-residual-network-resnet-62af58d1c521 [Accessed September 9, 2025].
+[6] Muhammad Ardi. YOLOv1 Paper Walkthrough: The Day YOLO First Saw the World. Medium. https://medium.com/ai-advances/yolov1-paper-walkthrough-the-day-yolo-first-saw-the-world-ccff8b60d84b [Accessed June 1, 2026].
+[7] Muhammad Ardi. YOLOv2 & YOLO9000 Paper Walkthrough: Better, Faster, Stronger. Medium. https://ai.gopubby.com/yolov2-yolo9000-paper-walkthrough-better-faster-stronger-c9906e0438a3 [Accessed June 1, 2026].
+[8] MuhammadArdiPutra. FPN. GitHub. https://github.com/MuhammadArdiPutra/medium_articles/blob/main/FPN.ipynb [Accessed September 9, 2025].

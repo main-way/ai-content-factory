@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:A Controlled Audit of Pretraining Contamination in Public Medical Vision-Language Benchmarks
+View PDF HTML (experimental)Abstract:Medical vision-language models (VLMs) are evaluated on public benchmarks whose images and question-answer pairs have been freely downloadable for years, yet reported accuracy assumes these examples were absent from pretraining. We audit open VLMs on SLAKE-En, PathVQA, VQA-RAD, and an auxiliary public OmniMedVQA mirror using four detector families: image-side near-neighbour overlap against PMC-OA-beta, canonical-order exchangeability, cohort-relative Min-K%++ tail enrichment, and cross-model top-K overlap. We find measurable image-side source overlap on SLAKE-En: 19.8% of images are flagged under SigLIP-B-16 and 4.2% under SigLIP-SO400M, while out-of-domain controls produce 0/2000 flags. Manual adjudication shows same-modality, same-projection matches to different patients rather than verified pixel-level duplicates, so we interpret this as source or distributional overlap rather than confirmed per-image memorization. On the text side, Qwen2.5-VL on SLAKE-En shows a canonical-order exchangeability signal that survives ordering ablation and external non-medical baselines. On the OmniMedVQA mirror, exchangeability fires for five medical and general VLMs while BLIP-2 remains clean. In contrast, cohort-relative Min-K%++ tail enrichment and cross-model top-K overlap collapse under an external pre-domain baseline: BLIP-2 reproduces the apparent positive signals despite lacking plausible medical-VQA exposure. We conclude that these cohort-relative detectors are unreliable as standalone membership-inference signals on small medical-VLM cohorts.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

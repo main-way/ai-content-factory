@@ -1,0 +1,120 @@
+{
+  "date": "2026-05-11",
+  "count": 7,
+  "posts": [
+    {
+      "id": "3bee7290591a",
+      "title": "Building Blocks for Foundation Model Training and Inference on AWS",
+      "url": "https://huggingface.co/blog/amazon/foundation-model-building-blocks",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-11T23:18:26+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "55f8cdd33ed6",
+      "title": "SocialReasoning-Bench: Measuring whether AI agents act in users’ best interests",
+      "url": "https://www.microsoft.com/en-us/research/blog/socialreasoning-bench-measuring-whether-ai-agents-act-in-users-best-interests/",
+      "source": "Microsoft Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-11T17:19:28+00:00",
+      "summary": "Using SocialReasoning Bench, we observed a stable pattern across models—agents execute competently, but fail to consistently improve the user’s position, even with explicit instructions to optimize for user interest. The post SocialReasoning-Bench: Measuring whether AI agents act in users’ best interests appeared first on Microsoft Research .",
+      "author": "Tyler Payne, Will Epperson, Safoora Yousefi, Zachary Huang, Gagan Bansal, Wenyue Hua, Maya Murad, Asli Celikyilmaz, Saleema Amershi",
+      "tags": [
+        "Research Blog"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "827a2f104a20",
+      "title": "Google brings multi-token prediction Gemma 4 LLMs",
+      "url": "https://bdtechtalks.com/2026/05/11/google-gemma-4-multi-token-prediction/?utm_source=rss&utm_medium=rss&utm_campaign=google-gemma-4-multi-token-prediction",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-11T15:19:59+00:00",
+      "summary": "How Gemma 4’s multi-token prediction and community-driven DFlash are speeding up local LLM throughput by 3-6x. The post Google brings multi-token prediction Gemma 4 LLMs first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI research papers",
+        "Artificial intelligence (AI)",
+        "google",
+        "Google Gemma",
+        "large language models",
+        "Open source models"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "9155cb8e56b8",
+      "title": "Import AI 456: RSI and economic growth; radical optionality for AI regulation; and a neural computer",
+      "url": "https://importai.substack.com/p/import-ai-456-rsi-and-economic-growth",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-11T12:46:12+00:00",
+      "summary": "What laws does superintelligence demand?",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "caa8bc3ba563",
+      "title": "From Planning to Action: SAP Enterprise Planning enhanced by DataRobot",
+      "url": "https://www.datarobot.com/blog/from-planning-to-action-sap-enterprise-planning-enhanced-by-datarobot/",
+      "source": "DataRobot Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-11T11:00:00+00:00",
+      "summary": "A demand signal drops. A supplier goes dark. A competitor cuts prices. Your planning system gives you a dashboard. What you actually need is a decision in minutes, not weeks. That’s the gap SAP and DataRobot are closing together. Enterprise planning is undergoing a fundamental shift. For decades, organizations have relied on structured planning cycles,... The post From Planning to Action: SAP Enterprise Planning enhanced by DataRobot appeared first on DataRobot .",
+      "author": "Hari Ashvini, Eugen Winschel, Michael Emerson",
+      "tags": [
+        "Enterprise Planning",
+        "SAP"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "493dd3fda709",
+      "title": "The new AI-powered Google Finance is expanding to Europe.",
+      "url": "https://blog.google/products-and-platforms/products/search/ai-powered-google-finance-in-europe/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-11T06:00:00+00:00",
+      "summary": "A screenshot of the AI-powered experience on Google Finance.",
+      "author": "",
+      "tags": [
+        "Search",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "81099b76cd14",
+      "title": "BalCapRL: A Balanced Framework for RL-Based MLLM Image Captioning",
+      "url": "https://machinelearning.apple.com/research/balcaprl-mllm-image-captioning",
+      "source": "Apple ML Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-11T00:00:00+00:00",
+      "summary": "Image captioning is one of the most fundamental tasks in computer vision. Owing to its open-ended nature, it has received significant attention in the era of multimodal large language models (MLLMs). In pursuit of ever more detailed and accurate captions, recent work has increasingly turned to reinforcement learning (RL). However, existing captioning-RL methods and evaluation metrics often emphasize a narrow notion of caption quality, inducing trade-offs across core dimensions of captioning. For example, utility-oriented objectives can encourage noisy, hallucinated, or overlong captions that…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "date": "2026-03-06",
+  "count": 3,
+  "posts": [
+    {
+      "id": "920254f65598",
+      "title": "Can coding agents relicense open source through a “clean room” implementation of code?",
+      "url": "https://simonw.substack.com/p/can-coding-agents-relicense-open",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-06T03:55:36+00:00",
+      "summary": "Plus GPT-5.4 and Gemini 3.1 Flash-Lite and worrying news concerning team Qwen",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "8a3407b4a8e5",
+      "title": "Services: The New Software",
+      "url": "https://sequoiacap.com/article/services-the-new-software/",
+      "source": "Sequoia Capital",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-06T00:57:45+00:00",
+      "summary": "The post Services: The New Software appeared first on Sequoia Capital .",
+      "author": "amoore",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "b6cf249b5f01",
+      "title": "Issue #34",
+      "url": "http://augmentedcoding.dev/issue-34/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-03-06T00:00:00+00:00",
+      "summary": "Relicensing with AI-assisted rewrite TUANANH.NET In the last issue I covered how Cloudflare cloned Next.js in order to create a more cloud-native framework, sharing my wonder at how simple this was (due to an extensive test suite), but also sharing concerns about the impact on Next.js as a project, and its maintainers. This blog post uncovers yet another issue with AI re-writes. chardet, a popular open source project, has an LGPL licence (copyleft and restrictive), due to its dependency on some Mozilla code. The team used Claude Code to automate a re-write of the problematic dependency,…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

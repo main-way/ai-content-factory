@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Hierarchical GRU with Input-Conditioned Slot Queries for Ball Action Anticipation
+View PDF HTML (experimental)Abstract:We present a hierarchical model for ball action anticipation in football broadcast video. Given a 30-second observation window, the system predicts actions occurring in the subsequent 5-second window across 10 classes. A shared local Transformer encodes clip-level features within each 5-second sub-window; a GRU then aggregates temporal context across all sub-windows; finally, a Transformer decoder with K input-conditioned event slots decodes the anticipation target via three decoupled heads (objectness, class, temporal offset). We introduce frequency-reweighted Hungarian matching that systematically favours rare action classes, and Gaussian soft targets for temporal bin supervision. On the SoccerNet Ball Action Anticipation benchmark, our method achieves 17.91% mAP on the test server.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

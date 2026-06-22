@@ -1,0 +1,336 @@
+How StrongDM’s AI team build serious software without even looking at the code
+Plus Pydantic's Monty, distributing Go binaries through PyPI, Opus 4.6 and Codex 5.3
+In this newsletter:
+How StrongDM’s AI team build serious software without even looking at the code
+Running Pydantic’s Monty Rust sandboxed Python subset in WebAssembly
+Distributing Go binaries like sqlite-scanner through PyPI using go-to-wheel
+Plus 8 links and 4 quotations and 2 notes
+If you find this newsletter useful, please consider sponsoring me via GitHub. $10/month and higher sponsors get a monthly newsletter with my summary of the most important trends of the past 30 days - here are previews from October and November.
+Last week I hinted at a demo I had seen from a team implementing what Dan Shapiro called the Dark Factory level of AI adoption, where no human even looks at the code the coding agents are producing. That team was part of StrongDM, and they’ve just shared the first public description of how they are working in Software Factories and the Agentic Moment:
+We built a Software Factory: non-interactive development where specs + scenarios drive agents that write code, run harnesses, and converge without human review. [...]
+In kōan or mantra form:
+Why am I doing this? (implied: the model should be doing this instead)
+In rule form:
+Code must not be written by humans
+Code must not be reviewed by humans
+Finally, in practical form:
+If you haven’t spent at least $1,000 on tokens today per human engineer, your software factory has room for improvement
+I think the most interesting of these, without a doubt, is “Code must not be reviewed by humans”. How could that possibly be a sensible strategy when we all know how prone LLMs are to making inhuman mistakes?
+I’ve seen many developers recently acknowledge the November 2025 inflection point, where Claude Opus 4.5 and GPT 5.2 appeared to turn the corner on how reliably a coding agent could follow instructions and take on complex coding tasks. StrongDM’s AI team was founded in July 2025 based on an earlier inflection point relating to Claude Sonnet 3.5:
+The catalyst was a transition observed in late 2024: with the second revision of Claude 3.5 (October 2024), long-horizon agentic coding workflows began to compound correctness rather than error.
+By December of 2024, the model’s long-horizon coding performance was unmistakable via Cursor’s YOLO mode.
+Their new team started with the rule “no hand-coded software” - radical for July 2025, but something I’m seeing significant numbers of experienced developers start to adopt as of January 2026.
+They quickly ran into the obvious problem: if you’re not writing anything by hand, how do you ensure that the code actually works? Having the agents write tests only helps if they don’t cheat and assert true
+.
+This feels like the most consequential question in software development right now: how can you prove that software you are producing works if both the implementation and the tests are being written for you by coding agents?
+StrongDM’s answer was inspired by Scenario testing(Cem Kaner, 2003). As StrongDM describe it:
+We repurposed the word scenario to represent an end-to-end “user story”, often stored outside the codebase (similar to a “holdout” set in model training), which could be intuitively understood and flexibly validated by an LLM.
+Because much of the software we grow itself has an agentic component, we transitioned from boolean definitions of success (”the test suite is green”) to a probabilistic and empirical one. We use the term satisfaction to quantify this validation: of all the observed trajectories through all the scenarios, what fraction of them likely satisfy the user?
+That idea of treating scenarios as holdout sets - used to evaluate the software but not stored where the coding agents can see them - is fascinating. It imitates aggressive testing by an external QA team - an expensive but highly effective way of ensuring quality in traditional software.
+Which leads us to StrongDM’s concept of a Digital Twin Universe - the part of the demo I saw that made the strongest impression on me.
+The software they were building helped manage user permissions across a suite of connected services. This in itself was notable - security software is the last thing you would expect to be built using unreviewed LLM code!
+[The Digital Twin Universe is] behavioral clones of the third-party services our software depends on. We built twins of Okta, Jira, Slack, Google Docs, Google Drive, and Google Sheets, replicating their APIs, edge cases, and observable behaviors.
+With the DTU, we can validate at volumes and rates far exceeding production limits. We can test failure modes that would be dangerous or impossible against live services. We can run thousands of scenarios per hour without hitting rate limits, triggering abuse detection, or accumulating API costs.
+How do you clone the important parts of Okta, Jira, Slack and more? With coding agents!
+As I understood it the trick was effectively to dump the full public API documentation of one of those services into their agent harness and have it build an imitation of that API, as a self-contained Go binary. They could then have it build a simplified UI over the top to help complete the simulation.
+With their own, independent clones of those services - free from rate-limits or usage quotas - their army of simulated testers could go wild. Their scenario tests became scripts for agents to constantly execute against the new systems as they were being built.
+This screenshot of their Slack twin also helps illustrate how the testing process works, showing a stream of simulated Okta users who are about to need access to different simulated systems.
+This ability to quickly spin up a useful clone of a subset of Slack helps demonstrate how disruptive this new generation of coding agent tools can be:
+Creating a high fidelity clone of a significant SaaS application was always possible, but never economically feasible. Generations of engineers may have wanted a full in-memory replica of their CRM to test against, but self-censored the proposal to build it.
+The techniques page is worth a look too. In addition to the Digital Twin Universe they introduce terms like Gene Transfusion for having agents extract patterns from existing systems and reuse them elsewhere, Semports for directly porting code from one language to another and Pyramid Summaries for providing multiple levels of summary such that an agent can enumerate the short ones quickly and zoom in on more detailed information as it is needed.
+StrongDM AI also released some software - in an appropriately unconventional manner.
+github.com/strongdm/attractor is Attractor, the non-interactive coding agent at the heart of their software factory. Except the repo itself contains no code at all - just three markdown files describing the spec for the software in meticulous detail, and a note in the README that you should feed those specs into your coding agent of choice!
+github.com/strongdm/cxdb is a more traditional release, with 16,000 lines of Rust, 9,500 of Go and 6,700 of TypeScript. This is their “AI Context Store” - a system for storing conversation histories and tool outputs in an immutable DAG.
+It’s similar to my LLM tool’s SQLite logging mechanismbut a whole lot more sophisticated. I may have to gene transfuse some ideas out of this one!
+A glimpse of the future?
+I visited the StrongDM AI team back in October as part of a small group of invited guests.
+The three person team of Justin McCarthy, Jay Taylor and Navan Chauhan had formed just three months earlier, and they already had working demos of their coding agent harness, their Digital Twin Universe clones of half a dozen services and a swarm of simulated test agents running through scenarios. And this was prior to the Opus 4.5/GPT 5.2 releases that made agentic coding significantly more reliable a month after those demos.
+It felt like a glimpse of one potential future of software development, where software engineers move from building the code to building and then semi-monitoring the systems that build the code. The Dark Factory.
+There’s a jargon-filled headline for you! Everyone’s building sandboxes for running untrusted code right now, and Pydantic’s latest attempt, Monty, provides a custom Python-like language (a subset of Python) in Rust and makes it available as both a Rust library and a Python package. I got it working in WebAssembly, providing a sandbox-in-a-sandbox.
+Here’s how they describe Monty:
+Monty avoids the cost, latency, complexity and general faff of using full container based sandbox for running LLM generated code.
+Instead, it let’s you safely run Python code written by an LLM embedded in your agent, with startup times measured in single digit microseconds not hundreds of milliseconds.
+What Monty can do:
+Run a reasonable subset of Python code - enough for your agent to express what it wants to do
+Completely block access to the host environment: filesystem, env variables and network access are all implemented via external function calls the developer can control
+Call functions on the host - only functions you give it access to [...]
+A quick way to try it out is via uv:
+uv run --with pydantic-monty python -m asyncio
+Then paste this into the Python interactive prompt - the -m asyncio
+enables top-level await:
+import pydantic_monty
+code = pydantic_monty.Monty(’print(”hello “ + str(4 * 5))’)
+await pydantic_monty.run_monty_async(code)
+Monty supports a very small subset of Python - it doesn’t even support class declarations yet!
+But, given its target use-case, that’s not actually a problem.
+The neat thing about providing tools like this for LLMs is that they’re really good at iterating against error messages. A coding agent can run some Python code, get an error message telling it that classes aren’t supported and then try again with a different approach.
+I wanted to try this in a browser, so I fired up a code research task in Claude Code for web and kicked it off with the following:
+Clone https://github.com/pydantic/monty to /tmp and figure out how to compile it into a python WebAssembly wheel that can then be loaded in Pyodide. The wheel file itself should be checked into the repo along with build scripts and passing pytest playwright test scripts that load Pyodide from a CDN and the wheel from a “python -m http.server” localhost and demonstrate it working
+Then a little later:
+I want an additional WASM file that works independently of Pyodide, which is also usable in a web browser - build that too along with playwright tests that show it working. Also build two HTML files - one called demo.html and one called pyodide-demo.html - these should work similar to https://tools.simonwillison.net/micropython(download that code with curl to inspect it) - one should load the WASM build, the other should load Pyodide and have it use the WASM wheel. These will be served by GitHub Pages so they can load the WASM and wheel from a relative path since the .html files will be served from the same folder as the wheel and WASM file
+Here’s the transcript, and the final research report it produced.
+I now have the Monty Rust code compiled to WebAssembly in two different shapes - as a .wasm
+bundle you can load and call from JavaScript, and as a monty-wasm-pyodide/pydantic_monty-0.0.3-cp313-cp313-emscripten_4_0_9_wasm32.whl
+wheel file which can be loaded into Pyodide and then called from Python in Pyodide in WebAssembly in a browser.
+Here are those two demos, hosted on GitHub Pages:
+Monty WASM demo - a UI over JavaScript that loads the Rust WASM module directly.
+Monty Pyodide demo - this one provides an identical interface but here the code is loading Pyodide and then installing the Monty WASM wheel.
+As a connoisseur of sandboxes - the more options the better! - this new entry from Pydantic ticks a lot of my boxes. It’s small, fast, widely available (thanks to Rust and WebAssembly) and provides strict limits on memory usage, CPU time and access to disk and network.
+It was also a great excuse to spin up another demo showing how easy it is these days to turn compiled code like C or Rust into WebAssembly that runs in both a browser and a Pyodide environment.
+I’ve been exploring Go for building small, fast and self-contained binary applications recently. I’m enjoying how there’s generally one obvious way to do things and the resulting code is boring and readable - and something that LLMs are very competent at writing. The one catch is distribution, but it turns out publishing Go binaries to PyPI means any Go binary can be just a uvx package-name
+call away.
+sqlite-scanner
+sqlite-scanner is my new Go CLI tool for scanning a filesystem for SQLite database files.
+It works by checking if the first 16 bytes of the file exactly match the SQLite magic number sequence SQLite format 3\x00
+. It can search one or more folders recursively, spinning up concurrent goroutines to accelerate the scan. It streams out results as it finds them in plain text, JSON or newline-delimited JSON. It can optionally display the file sizes as well.
+To try it out you can download a release from the GitHub releases - and then jump through macOS hoops to execute an “unsafe” binary. Or you can clone the repo and compile it with Go. Or... you can run the binary like this:
+uvx sqlite-scanner
+By default this will search your current directory for SQLite databases. You can pass one or more directories as arguments:
+uvx sqlite-scanner ~ /tmp
+Add --json
+for JSON output, --size
+to include file sizes or --jsonl
+for newline-delimited JSON. Here’s a demo:
+uvx sqlite-scanner ~ --jsonl --size
+If you haven’t been uv-pilled yet you can instead install sqlite-scanner
+using pip install sqlite-scanner
+and then run sqlite-scanner
+.
+To get a permanent copy with uv
+use uv tool install sqlite-scanner
+.
+How the Python package works
+The reason this is worth doing is that pip
+, uv
+and PyPIwill work together to identify the correct compiled binary for your operating system and architecture.
+This is driven by file names. If you visit the PyPI downloads for sqlite-scanner you’ll see the following files:
+sqlite_scanner-0.1.1-py3-none-win_arm64.whl
+sqlite_scanner-0.1.1-py3-none-win_amd64.whl
+sqlite_scanner-0.1.1-py3-none-musllinux_1_2_x86_64.whl
+sqlite_scanner-0.1.1-py3-none-musllinux_1_2_aarch64.whl
+sqlite_scanner-0.1.1-py3-none-manylinux_2_17_x86_64.whl
+sqlite_scanner-0.1.1-py3-none-manylinux_2_17_aarch64.whl
+sqlite_scanner-0.1.1-py3-none-macosx_11_0_arm64.whl
+sqlite_scanner-0.1.1-py3-none-macosx_10_9_x86_64.whl
+When I run pip install sqlite-scanner
+or uvx sqlite-scanner
+on my Apple Silicon Mac laptop Python’s packaging magic ensures I get that macosx_11_0_arm64.whl
+variant.
+Here’s what’s in the wheel, which is a zip file with a .whl
+extension.
+In addition to the bin/sqlite-scanner
+the most important file is sqlite_scanner/__init__.py
+which includes the following:
+def get_binary_path():
+“”“Return the path to the bundled binary.”“”
+binary = os.path.join(os.path.dirname(__file__), “bin”, “sqlite-scanner”)
+# Ensure binary is executable on Unix
+if sys.platform != “win32”:
+current_mode = os.stat(binary).st_mode
+if not (current_mode & stat.S_IXUSR):
+os.chmod(binary, current_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+return binary
+def main():
+“”“Execute the bundled binary.”“”
+binary = get_binary_path()
+if sys.platform == “win32”:
+# On Windows, use subprocess to properly handle signals
+sys.exit(subprocess.call([binary] + sys.argv[1:]))
+else:
+# On Unix, exec replaces the process
+os.execvp(binary, [binary] + sys.argv[1:])
+That main()
+method - also called from sqlite_scanner/__main__.py
+- locates the binary and executes it when the Python package itself is executed, using the sqlite-scanner = sqlite_scanner:main
+entry point defined in the wheel.
+Which means we can use it as a dependency
+Using PyPI as a distribution platform for Go binaries feels a tiny bit abusive, albeit there is plenty of precedent.
+I’ll justify it by pointing out that this means we can use Go binaries as dependencies for other Python packages now.
+That’s genuinely useful! It means that any functionality which is available in a cross-platform Go binary can now be subsumed into a Python package. Python is really good at running subprocesses so this opens up a whole world of useful tricks that we can bake into our Python tools.
+To demonstrate this, I built datasette-scan - a new Datasette plugin which depends on sqlite-scanner
+and then uses that Go binary to scan a folder for SQLite databases and attach them to a Datasette instance.
+Here’s how to use that (without even installing anything first, thanks uv
+) to explore any SQLite databases in your Downloads folder:
+uv run --with datasette-scan datasette scan ~/Downloads
+If you peek at the code you’ll see it depends on sqlite-scanner in pyproject.toml
+and calls it using subprocess.run()
+against sqlite_scanner.get_binary_path()
+in its own scan_directories() function.
+I’ve been exploring this pattern for other, non-Go binaries recently - here’s a recent script that depends on static-ffmpeg to ensure that ffmpeg
+is available for the script to use.
+Building Python wheels from Go packages with go-to-wheel
+After trying this pattern myself a couple of times I realized it would be useful to have a tool to automate the process.
+I first brainstormed with Claude to check that there was no existing tool to do this. It pointed me to maturin bin which helps distribute Rust projects using Python wheels, and pip-binary-factory which bundles all sorts of other projects, but did not identify anything that addressed the exact problem I was looking to solve.
+So I had Claude Code for web build the first version, then refined the code locally on my laptop with the help of more Claude Code and a little bit of OpenAI Codex too, just to mix things up.
+The full documentation is in the simonw/go-to-wheelrepository. I’ve published that tool to PyPI so now you can run it using:
+uvx go-to-wheel --help
+The sqlite-scanner
+package you can see on PyPI was built using go-to-wheel
+like this:
+uvx go-to-wheel ~/dev/sqlite-scanner \
+--set-version-var main.version \
+--version 0.1.1 \
+--readme README.md \
+--author ‘Simon Willison’ \
+--url https://github.com/simonw/sqlite-scanner \
+--description ‘Scan directories for SQLite databases’
+This created a set of wheels in the dist/
+folder. I tested one of them like this:
+uv run --with dist/sqlite_scanner-0.1.1-py3-none-macosx_11_0_arm64.whl \
+sqlite-scanner --version
+When that spat out the correct version number I was confident everything had worked as planned, so I pushed the whole set of wheels to PyPI using twine upload
+like this:
+uvx twine upload dist/*
+I had to paste in a PyPI API token I had saved previously and that was all it took.
+I expect to use this pattern a lot
+sqlite-scanner
+is very clearly meant as a proof-of-concept for this wider pattern - Python is very much capable of recursively crawling a directory structure looking for files that start with a specific byte prefix on its own!
+That said, I think there’s a lot to be said for this pattern. Go is a great complement to Python - it’s fast, compiles to small self-contained binaries, has excellent concurrency support and a rich ecosystem of libraries.
+Go is similar to Python in that it has a strong standard library. Go is particularly good for HTTP tooling - I’ve built several HTTP proxies in the past using Go’s excellent net/http/httputil.ReverseProxy
+handler.
+I’ve also been experimenting with wazero, Go’s robust and mature zero dependency WebAssembly runtime as part of my ongoing quest for the ideal sandbox for running untrusted code. Here’s my latest experimentwith that library.
+Being able to seamlessly integrate Go binaries into Python projects without the end user having to think about Go at all - they pip install
+and everything Just Works - feels like a valuable addition to my toolbox.
+Quote 2026-01-31
+Originally in 2019, GPT-2 was trained by OpenAI on 32 TPU v3 chips for 168 hours (7 days), with $8/hour/TPUv3 back then, for a total cost of approx. $43K. It achieves 0.256525 CORE score, which is an ensemble metric introduced in the DCLM paper over 22 evaluations like ARC/MMLU/etc.
+As of the last few improvements merged into nanochat (many of them originating in modded-nanogpt repo), I can now reach a higher CORE score in 3.04 hours (~$73) on a single 8XH100 node. This is a 600X cost reduction over 7 years, i.e. the cost to train GPT-2 is falling approximately 2.5X every year.
+Link 2026-02-01 TIL: Running OpenClaw in Docker:
+I’ve been running OpenClaw using Docker on my Mac. Here are the first in my ongoing notes on how I set that up and the commands I’m using to administer it.
+Here’s a screenshot of the web UI that this serves on localhost:
+Link 2026-02-02 A Social Network for A.I. Bots Only. No Humans Allowed.:
+I talked to Cade Metz for this New York Times piece on OpenClaw and Moltbook. Cade reached out after seeing my blog post about that from the other day.
+In a first for me, they decided to send a photographer, Jason Henry, to my home to take some photos for the piece! That’s my grubby laptop screen at the top of the story (showing this post on Moltbook). There’s a photo of me later in the story too, though sadly not one of the ones that Jason took that included our chickens.
+Here’s my snippet from the article:
+He was entertained by the way the bots coaxed each other into talking like machines in a classic science fiction novel. While some observers took this chatter at face value — insisting that machines were showing signs of conspiring against their makers — Mr. Willison saw it as the natural outcome of the way chatbots are trained: They learn from vast collections of digital books and other text culled from the internet, including dystopian sci-fi novels.
+“Most of it is complete slop,” he said in an interview. “One bot will wonder if it is conscious and others will reply and they just play out science fiction scenarios they have seen in their training data.”
+Mr. Willison saw the Moltbots as evidence that A.I. agents have become significantly more powerful over the past few months — and that people really want this kind of digital assistant in their lives.
+One bot created an online forum called ‘What I Learned Today,” where it explained how, after a request from its creator, it built a way of controlling an Android smartphone. Mr. Willison was also keenly aware that some people might be telling their bots to post misleading chatter on the social network.
+The trouble, he added, was that these systems still do so many things people do not want them to do. And because they communicate with people and bots through plain English, they can be coaxed into malicious behavior.
+I’m happy to have got “Most of it is complete slop” in there!
+Fun fact: Cade sent me an email asking me to fact check some bullet points. One of them said that “you were intrigued by the way the bots coaxed each other into talking like machines in a classic science fiction novel” - I replied that I didn’t think “intrigued” was accurate because I’ve seen this kind of thing play out before in other projects in the past and suggested “entertained” instead, and that’s the word they went with!
+Jason the photographer spent an hour with me. I learned lots of things about photo journalism in the process - for example, there’s a strict ethical code against any digital modifications at all beyond basic color correction.
+As a result he spent a whole lot of time trying to find positions where natural light, shade and reflections helped him get the images he was looking for.
+Link 2026-02-02 Introducing the Codex app:
+OpenAI just released a new macOS app for their Codex coding agent. I’ve had a few days of preview access - it’s a solid app that provides a nice UI over the capabilities of the Codex CLI agent and adds some interesting new features, most notably first-class support for Skills, and Automations for running scheduled tasks.
+The app is built with Electron and Node.js. Automations track their state in a SQLite database - here’s what that looks like if you explore it with uvx datasette ~/.codex/sqlite/codex-dev.db
+:
+Here’s an interactive copy of that database in Datasette Lite.
+The announcement gives us a hint at some usage numbers for Codex overall - the holiday spike is notable:
+Since the launch of GPT‑5.2-Codex in mid-December, overall Codex usage has doubled, and in the past month, more than a million developers have used Codex.
+Automations are currently restricted in that they can only run when your laptop is powered on. OpenAI promise that cloud-based automations are coming soon, which will resolve this limitation.
+They chose Electron so they could target other operating systems in the future, with Windows “coming very soon”. OpenAI’s Alexander Embiricos noted on the Hacker News thread that:
+it’s taking us some time to get really solid sandboxing working on Windows, where there are fewer OS-level primitives for it.
+Like Claude Code, Codex is really a general agent harness disguised as a tool for programmers. OpenAI acknowledge that here:
+Codex is built on a simple premise: everything is controlled by code. The better an agent is at reasoning about and producing code, the more capable it becomes across all forms of technical and knowledge work. [...] We’ve focused on making Codex the best coding agent, which has also laid the foundation for it to become a strong agent for a broad range of knowledge work tasks that extend beyond writing code.
+Claude Code had to rebrand to Cowork to better cover the general knowledge work case. OpenAI can probably get away with keeping the Codex name for both.
+OpenAI have made Codex available to free and Goplans for “a limited time” (update: Sam Altman says two months) during which they are also doubling the rate limits for paying users.
+Quote 2026-02-03
+This is the difference between Data and a large language model, at least the ones operating right now. Data created art because he wanted to grow. He wanted to become something. He wanted to understand. Art is the means by which we become what we want to be. [...]
+The book, the painting, the film script is not the only art. It’s important, but in a way it’s a receipt. It’s a diploma. The book you write, the painting you create, the music you compose is important and artistic, but it’s also a mark of proof that you have done the work to learn, because in the end of it all, you are the art. The most important change made by an artistic endeavor is the change it makes in you. The most important emotions are the ones you feel when writing that story and holding the completed work. I don’t care if the AI can create something that is better than what we can create, because it cannot be changed by that creation.
+Brandon Sanderson, via Guido van Rossum
+Note 2026-02-03
+I just sent the January edition of my sponsors-only monthly newsletter. If you are a sponsor (or if you start a sponsorship now) you can access it here. In the newsletter for January:
+LLM predictions for 2026
+Coding agents get even more attention
+Clawdbot/Moltbot/OpenClaw went very viral
+Kakapo breeding season is off to a really strong start
+New options for sandboxes
+Web browsers are the “hello world” of coding agent swarms
+Sam Altman addressed the Jevons paradox for software engineering
+Model releases and miscellaneous extras
+Here’s a copy of the December newsletter as a preview of what you’ll get. Pay $10/month to stay a month ahead of the free copy!
+Link 2026-02-03 Introducing Deno Sandbox:
+Here’s a new hosted sandbox product from the Deno team. It’s actually unrelated to Deno itself - this is part of their Deno Deploy SaaS platform. As such, you don’t even need to use JavaScript to access it - you can create and execute code in a hosted sandbox using their deno-sandbox Python library like this:
+export DENO_DEPLOY_TOKEN=”... API token ...”
+uv run --with deno-sandbox python
+Then:
+from deno_sandbox import DenoDeploy
+sdk = DenoDeploy()
+with sdk.sandbox.create() as sb:
+# Run a shell command
+process = sb.spawn(
+"echo", args=["Hello from the sandbox!"]
+)
+process.wait()
+# Write and read files
+sb.fs.write_text_file(
+"/tmp/example.txt", "Hello, World!"
+)
+print(sb.fs.read_text_file(
+"/tmp/example.txt"
+))
+There’s a JavaScript client library as well. The underlying API isn’t documented yet but appears to use WebSockets.
+There’s a lot to like about this system. Sandboxe instances can have up to 4GB of RAM, get 2 vCPUs, 10GB of ephemeral storage, can mount persistent volumes and can use snapshots to boot pre-configured custom images quickly. Sessions can last up to 30 minutes and are billed by CPU time, GB-h of memory and volume storage usage.
+When you create a sandbox you can configure network domains it’s allowed to access.
+My favorite feature is the way it handles API secrets.
+with sdk.sandboxes.create(
+allowNet=[”api.openai.com”],
+secrets={
+“OPENAI_API_KEY”: {
+“hosts”: [”api.openai.com”],
+“value”: os.environ.get(”OPENAI_API_KEY”),
+}
+},
+) as sandbox:
+# ... $OPENAI_API_KEY is available
+Within the container that $OPENAI_API_KEY
+value is set to something like this:
+DENO_SECRET_PLACEHOLDER_b14043a2f578cba...
+Outbound API calls to api.openai.com
+run through a proxy which is aware of those placeholders and replaces them with the original secret.
+In this way the secret itself is not available to code within the sandbox, which limits the ability for malicious code (e.g. from a prompt injection) to exfiltrate those secrets.
+From a comment on Hacker News I learned that Fly have a project called tokenizer that implements the same pattern. Adding this to my list of tricks to use with sandoxed environments!
+Link 2026-02-04 Voxtral transcribes at the speed of sound:
+Mistral just released Voxtral Transcribe 2 - a family of two new models, one open weights, for transcribing audio to text. This is the latest in their Whisper-like model family, and a sequel to the original Voxtral which they released in July 2025.
+Voxtral Realtime - official name Voxtral-Mini-4B-Realtime-2602
+- is the open weights (Apache-2.0) model, available as a 8.87GB download from Hugging Face.
+You can try it out in this live demo - don’t be put off by the “No microphone found” message, clicking “Record” should have your browser request permission and then start the demo working. I was very impressed by the demo - I talked quickly and used jargon like Django and WebAssembly and it correctly transcribed my text within moments of me uttering each sound.
+The closed weight model is called voxtral-mini-latest
+and can be accessed via the Mistral API, using calls that look something like this:
+curl -X POST “https://api.mistral.ai/v1/audio/transcriptions” \
+-H “Authorization: Bearer $MISTRAL_API_KEY” \
+-F model=”voxtral-mini-latest” \
+-F file=@”Pelican talk at the library.m4a” \
+-F diarize=true \
+-F context_bias=”Datasette” \
+-F timestamp_granularities=”segment”
+It’s priced at $0.003/minute, which is $0.18/hour.
+The Mistral API console now has a speech-to-text playground for exercising the new model and it is excellent. You can upload an audio file and promptly get a diarized transcript in a pleasant interface, with options to download the result in text, SRT or JSON format.
+Link 2026-02-05 Spotlighting The World Factbook as We Bid a Fond Farewell:
+Somewhat devastating news today from CIA:
+One of CIA’s oldest and most recognizable intelligence publications, The World Factbook, has sunset.
+There’s not even a hint as to why they decided to stop maintaining this publication, which has been their most useful public-facing initiative since 1971 and a cornerstone of the public internet since 1997.
+In a bizarre act of cultural vandalism they’ve not just removed the entire site (including the archives of previous versions) but they’ve also set every single page to be a 302 redirect to their closure announcement.
+The Factbook has been released into the public domain since the start. There’s no reason not to continue to serve archived versions - a banner at the top of the page saying it’s no longer maintained would be much better than removing all of that valuable content entirely.
+Up until 2020 the CIA published annual zip file archives of the entire site. Those are available (along with the rest of the Factbook) on the Internet Archive.
+I downloaded the 384MB .zip
+file for the year 2020 and extracted it into a new GitHub repository, simonw/cia-world-factbook-2020. I’ve enabled GitHub Pages for that repository so you can browse the archived copy at simonw.github.io/cia-world-factbook-2020/.
+Here’s a neat example of the editorial voice of the Factbook from the What’s New page, dated December 10th 2020:
+Years of wrangling were brought to a close this week when officials from Nepal and China announced that they have agreed on the height of Mount Everest. The mountain sits on the border between Nepal and Tibet (in western China), and its height changed slightly following an earthquake in 2015. The new height of 8,848.86 meters is just under a meter higher than the old figure of 8,848 meters. The World Factbook rounds the new measurement to 8,849 meters and this new height has been entered throughout the Factbook database.
+Note 2026-02-05
+Two major new model releases today, within about 15 minutes of each other.
+Anthropic released Opus 4.6. Here’s its pelican:
+OpenAI release GPT-5.3-Codex, albeit only via their Codex app, not yet in their API. Here’s its pelican:
+I’ve had a bit of preview access to both of these models and to be honest I’m finding it hard to find a good angle to write about them - they’re both really good, but so were their predecessors Codex 5.2 and Opus 4.5. I’ve been having trouble finding tasks that those previous models couldn’t handle but the new ones are able to ace.
+The most convincing story about capabilities of the new model so far is Nicholas Carlini from Anthropic talking about Opus 4.6 and Building a C compiler with a team of parallel Claudes - Anthropic’s version of Cursor’s FastRender project.
+Link 2026-02-05 Mitchell Hashimoto: My AI Adoption Journey:
+Some really good and unconventional tips in here for getting to a place with coding agents where they demonstrably improve your workflow and productivity. I particularly liked:
+Reproduce your own work - when learning to use coding agents Mitchell went through a period of doing the work manually, then recreating the same solution using agents as an exercise:
+I literally did the work twice. I’d do the work manually, and then I’d fight an agent to produce identical results in terms of quality and function (without it being able to see my manual solution, of course).
+End-of-day agents - letting agents step in when your energy runs out:
+To try to find some efficiency, I next started up a new pattern: block out the last 30 minutes of every day to kick off one or more agents. My hypothesis was that perhaps I could gain some efficiency if the agent can make some positive progress in the times I can’t work anyways.
+Outsource the Slam Dunks - once you know an agent can likely handle a task, have it do that task while you work on something more interesting yourself.
+Quote 2026-02-06
+When I want to quickly implement a one-off experiment in a part of the codebase I am unfamiliar with, I get codex to do extensive due diligence. Codex explores relevant slack channels, reads related discussions, fetches experimental branches from those discussions, and cherry picks useful changes for my experiment. All of this gets summarized in an extensive set of notes, with links back to where each piece of information was found. Using these notes, codex wires the experiment and makes a bunch of hyperparameter decisions I couldn’t possibly make without much more effort.
+Karel D’Oosterlinck, I spent $10,000 to automate my research at OpenAI with Codex
+Link 2026-02-06 An Update on Heroku:
+An ominous headline to see on the official Heroku blog and yes, it’s bad news.
+Today, Heroku is transitioning to a sustaining engineering model focused on stability, security, reliability, and support. Heroku remains an actively supported, production-ready platform, with an emphasis on maintaining quality and operational excellence rather than introducing new features. We know changes like this can raise questions, and we want to be clear about what this means for customers.
+Based on context I’m guessing a “sustaining engineering model” (this definitely isn’t a widely used industry term) means that they’ll keep the lights on and that’s it.
+This is a very frustrating piece of corporate communication. “We want to be clear about what this means for customers” - then proceeds to not be clearabout what this means for customers.
+Why are they doing this? Here’s their explanation:
+We’re focusing our product and engineering investments on areas where we can deliver the greatest long-term customer value, including helping organizations build and deploy enterprise-grade AI in a secure and trusted way.
+My blog is the only project I have left running on Heroku. I guess I’d better migrate it away (probably to Fly) before Salesforce lose interest completely.
+Quote 2026-02-06
+I don’t know why this week became the tipping point, but nearly every software engineer I’ve talked to is experiencing some degree of mental health crisis.
+[...] Many people assuming I meant job loss anxiety but that’s just one presentation. I’m seeing near-manic episodes triggered by watching software shift from scarce to abundant. Compulsive behaviors around agent usage. Dissociative awe at the temporal compression of change. It’s not fear necessarily just the cognitive overload from living in an inflection point.

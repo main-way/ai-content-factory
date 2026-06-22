@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:Beyond Classification: A Cough Regression Benchmark for Respiratory Acoustic Foundation Models
+View PDF HTML (experimental)Abstract:Respiratory acoustic foundation models (FMs) excel at cough classification, yet their ability to predict continuous health quantities from cough audio remains largely unexplored, despite the clinical value of passive age, BMI, and disease probability estimation in settings where physical measurements are unavailable. We introduce the multi-model, multi-target cough regression benchmark evaluating five FMs (OPERA-CT, OPERA-CE, OPERA-GT, HeAR, M2D+Resp) across six targets on three datasets under subject-disjoint protocols, comparing linear, MLP-small, and full MLP regression heads. MLP-small beats the mean-predictor baseline on all tasks and linear probing in 23 of 30 model x task cases, with full MLP overfitting on small clinical data but recovering on larger sets, revealing a dataset size x head-capacity trade-off. HeAR leads within-dataset age regression on Coswara (9.12 yr MAE); its CIDRZ result is excluded from headline claims owing to possible HeAR-CIDRZ pretraining overlap. OPERA-GT is favored over OPERA-CT on age in all three datasets, with the CIDRZ margin within seed variance, extending a generative-pretraining advantage from breath to cough. HeAR and M2D+Resp reach near-full performance at N = 50 samples while OPERA models require N = 400. Cross-dataset transfer is strongly asymmetric as large diverse data generalises to small clinical populations (CoughVID to CIDRZ: -0.17 yr) but not vice versa (CIDRZ to Coswara: +2.43 yr, +26.6%).
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

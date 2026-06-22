@@ -1,0 +1,34 @@
+{
+  "date": "2018-10-23",
+  "count": 2,
+  "posts": [
+    {
+      "id": "d412b7da6411",
+      "title": "How AI Transforms Business – A New Microsoft Series",
+      "url": "https://docs.microsoft.com/archive/blogs/machinelearning/how-ai-transforms-business-a-new-microsoft-series",
+      "source": "Microsoft ML Blog (archive)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2018-10-23T09:30:23+00:00",
+      "summary": "Microsoft is privileged to work with leading-edge customers and partners who are...",
+      "author": "ML Blog Team",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "9588e6b7478d",
+      "title": "How Can Autonomous Drones Help the Energy and Utilities Industry?",
+      "url": "https://docs.microsoft.com/archive/blogs/machinelearning/how-can-autonomous-drones-help-the-energy-and-utilities-industry",
+      "source": "Microsoft ML Blog (archive)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2018-10-23T09:30:10+00:00",
+      "summary": "Welcome to How AI Transforms Business, a new series featuring insights from conversations with...",
+      "author": "ML Blog Team",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

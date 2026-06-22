@@ -1,0 +1,11 @@
+Computer Science > Neural and Evolutionary Computing
+Title:An Optimization Framework for Automated Assessment of Biological Plausibility of Spiking Neurons
+View PDF HTML (experimental)Abstract:Biological plausibility is a key concept in neuromorphic computing and spiking neural networks, yet it remains inconsistently defined and difficult to quantify. In this work, we present an open-source framework for the automated assessment of biological plausibility in spiking neuron models. Our method builds on the idea of evaluating a model's ability to replicate canonical neuronal firing patterns observed in biological systems, following the classification proposed by Izhikevich. By encoding these patterns into objective functions and optimizing model parameters accordingly, our framework enables empirical assessment without requiring prior analytical modeling. Treating neuron models as black boxes, it provides a practical and flexible means of characterizing their dynamic capabilities. We demonstrate the effectiveness of the framework on several established models and a previously unexplored custom model. Implemented in Python and compatible with PyTorch and the Norse library, the framework is tailored for machine learning contexts. It is intended as a starting point for systematic research into the relationship between biological plausibility and network-level performance metrics such as accuracy, energy efficiency, robustness, and adaptability.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

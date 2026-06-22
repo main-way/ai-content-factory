@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:Benchmarking Large Language Models for Safety Data Extraction
+View PDF HTML (experimental)Abstract:Accurate extraction of structured information from Safety Data Sheets (SDS) remains challenging in industrial safety due to heterogeneous document formats and the limitations of traditional rule-based methods. This study benchmarks state-of-the-art Large Language Models (LLMs) for automated SDS data extraction, comparing text-based and multimodal processing pipelines. We systematically evaluate four models: Gemini 1.5 Pro, GPT-4o, Claude 3.7 Sonnet, and Llama 3.1-70B, across three prompting strategies: zero-shot, few-shot, and chain-of-thought. The evaluation framework assessed accuracy, latency, and cost across more than 50,000 extracted data fields. Results show that text-based extraction consistently outperforms multimodal processing across all metrics. Gemini 1.5 Pro combined with a Chain-of-Thought prompt achieved the highest accuracy (84%), outperforming GPT-4o (81%) and Claude 3.7 Sonnet (79%). However, no model surpassed the 90% accuracy threshold commonly required for reliable real-world deployment. These findings indicate that general-purpose LLMs are not yet robust enough for unsupervised industrial use, though performance suggests strong potential with task-specific fine-tuning. Future research should focus on domain-adapted training, model calibration, and the integration of Human-in-the-Loop verification to ensure safety-critical reliability.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

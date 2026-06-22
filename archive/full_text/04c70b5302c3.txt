@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Comparing Commercial Depth Sensor Accuracy for Medical Applications
+View PDFAbstract:Depth estimation has numerous medical and surgical applications. We benchmark four depth sensors on a porcine bone specimen, a porcine belly specimen, and a silicone kidney phantom using stylus-sampled references. These objects contain several real-world challenges, including homogeneous surfaces, specular surfaces, and subsurface scattering. The comparison includes stereo, structured-light, and time-of-flight sensors at a distance of approximately 50 cm. Specifically, the Intel RealSense D405 (Intel RealSense, United States), PMD Flexx2 (pmdtechnologies, Germany), Stereolabs ZED 2i (Stereolabs, France), and Zivid 2M+ 60 (Zivid, Norway) are compared. The Zivid 2M+ 60 performed best across all objects and metrics considered in this work. The ZED ranked second for real tissue, but last on the phantom.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

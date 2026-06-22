@@ -1,0 +1,59 @@
+{
+  "date": "2026-05-12",
+  "count": 3,
+  "posts": [
+    {
+      "id": "3719f3ae10a0",
+      "title": "Startup with Purpose—Flourish and Contribute",
+      "url": "https://venturefounders.com/startup-with-purpose-flourish-and-contribute/",
+      "source": "Venture Founders",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "low",
+      "published": "2026-05-12T15:51:54+00:00",
+      "summary": "Startup with Purpose—Flourish and Contribute: The question of who benefits from economic growth is not always defined by those directing the levers of economic development, most particularly governments, big business, financiers and the journalists who write about economics. It is generally assumed that economic growth is good for everyone. In reality, the impact of economic [&#8230;] The post Startup with Purpose—Flourish and Contribute appeared first on Venture Founders .",
+      "author": "Will Keyser",
+      "tags": [
+        "Business Purpose: Priorities & Models",
+        "Remaking Capitalism—Future Economy",
+        "Challenges, Hurdles and Learning",
+        "Business Plan and Initial Funding",
+        "Benefit Venture Blog",
+        "strategy",
+        "entrepreneurship",
+        "purpose-driven"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "15deeae3d860",
+      "title": "Co-Scientist: A multi-agent AI partner to accelerate research",
+      "url": "https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-12T14:40:07+00:00",
+      "summary": "Introducing Co-Scientist, a collaborative AI partner built with Gemini to help researchers accelerate scientific breakthroughs.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "4f0e51d00909",
+      "title": "Advancing AI for materials with MatterSim: experimental synthesis, faster simulation, and multi-task models",
+      "url": "https://www.microsoft.com/en-us/research/blog/advancing-ai-for-materials-with-mattersim-experimental-synthesis-faster-simulation-and-multi-task-models/",
+      "source": "Microsoft Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-12T13:00:00+00:00",
+      "summary": "MatterSim is expanding what AI can do for materials science—from faster large-scale simulations to MatterSim-MT, a new multi-task model for simulating properties beyond potential energy surfaces alone. The post Advancing AI for materials with MatterSim: experimental synthesis, faster simulation, and multi-task models appeared first on Microsoft Research .",
+      "author": "Andrew Fowler, Claudio Zeni, Daniel Zügner, Fabian Thiemann, Robert Pinsler, Shoko Ueda, Kenji Takeda",
+      "tags": [
+        "Research Blog"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

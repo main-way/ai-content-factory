@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Geometrically Constrained Decentralized Independent Vector Analysis for Distributed Microphone Arrays
+View PDF HTML (experimental)Abstract:This paper proposes a geometrically constrained decentralized independent vector analysis (GC-Dec-IVA) method for distributed microphone arrays. Recently proposed Dec-IVA method enables source separation by exchanging only power-related statistics to exploit cross-array information. However, this initial attempt often provides negligible improvement over applying IVA locally at each array, mainly due to the potential permutation inconsistency among arrays and the strong cross-array dependency implied by its source model. To address these limitations, we incorporate direction-of-arrival (DOA) information to derive GC-Dec-IVA, which mitigates permutation mismatch across arrays and enhances source alignment. Furthermore, a new source model is introduced to weaken cross-array dependency, improving robustness against permutation inconsistency in noisy environments. Experiments show the proposed method improves both the separation performance and cross-array permutation consistency.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

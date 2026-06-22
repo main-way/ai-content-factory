@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Multiscale reconstruction of protein conformations from cryo-EM images
+View PDF HTML (experimental)Abstract:We present a novel multiscale algorithm for directly recovering the atomic model structure of a protein from single-particle cryo-EM data. Our algorithm is able to estimate protein structures to state-of-the-art accuracy for high-noise and low-contrast data. It is also robust to misspecifications in the TEM image formation model. These desirable properties are primarily due to the use of an explicit representation of the protein backbone in terms of bonds, torsion angles and bond angles, which supplies rich prior information to the structure recovery process. We apply our method on three protein cryo-EM datasets, generated using an electron microscope digital twin, and show that using a multiscale approach yields an improvement of the root-mean-square deviation (RMSD) and template modelling (TM) scores with respect to the ground truth. Furthermore, there is evidence that larger-scale structures are being prioritised with the multiscale algorithm, which reduces the possibility of convergence to bad local minima.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

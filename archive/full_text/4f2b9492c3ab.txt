@@ -1,0 +1,542 @@
+The runnable code paths in this article call the OpenAI gpt-4.1
+family for question parsing; that service is proprietary and governed by OpenAI’s Terms of Use.
+Take a one-page CV and the question “what is the name?”. Question parsing on its own returns keywords=["name"]
+and retrieval looks for the literal word name in the file. A CV never says name. Nothing matches, the answer comes back empty. A human would not answer that question with nothing else to go on: they would glance at the document first, see a resume, and read name as a request for the candidate’s name. The parser needs the same starting point. As soon as it sees that the document is a resume and that the candidate’s name sits at the top of page 1, the keyword name
+resolves to a person, not a literal token to grep for.
+Two more column families get filled by the dispatcher right after question parsing returns, using the parsed question PLUS the document’s profile. In the shipped code, that profile is the semantic zone of parsing_summary
+, the doc-level dict produced by the parser. It carries doc_type
+(resume, contract, invoice, …), typical_fields
+(the fields questions about this kind of document usually ask about), and a short LLM-written summary
+that fits at the head of a system prompt. The dispatcher reads these three fields and uses them to set chunk strategy and answer context. They land on the same question_df
+row, so retrieval and generation see one record.
+Once the parser has the literal info, three more decisions follow: how much surrounding text to read and return, whether to combine the top-k chunks in one LLM call or feed them in sequence, and which model to call. All three are defaults the project can override per concept, per answer type, or per question. The cascade is the same every time: concept-level override > shape/type default > project fallback.
+How much context to read and return: Three fields on StructuralHints
+carry this:
+detection_context
+: the granularity of the regex confirmation zone (Article 6_b, answer shape and answer type)."line"
+for amounts and dates,"paragraph"
+for narrative.answer_context
+: how much surrounding text the generator receives."line"
+for a single value,"paragraph"
+for an explanation,"page"
+for a recap,"section"
+for a topic,"chapter"
+or"document"
+for a broad summary.needs_summary
+:True
+when the answer spans more than fits in a verbatim quote.
+Defaults come from the same two satellite tables we already met: answer_shapes_df
+for shape-level defaults (the default_answer_context
+column), concepts_df
+for concept-level overrides. “What is the annual premium?” is (single, amount)
+with no specific concept; it gets answer_context = "line"
+from answer_shapes_df
+. “What are the exclusions of this contract?” matches the exclusions
+concept; it gets answer_context = "chapter"
+from concepts_df
+, which overrides the listing-shape default of "section"
+.
+Why shape AND length matter beyond retrieval. The same hints feed the generation brick’s combined-vs-sequential dispatch. When the answer is a single fact in one chunk (an amount, a date, an IBAN, a yes/no), generation calls the LLM sequentially, chunk by chunk in retrieval rank order, and stops as soon as answer_found=True
+and complete_answer_found=True
+. That saves ~⅔ of the input tokens at k=3 when the answer is in the top-1 chunk. When the answer is synthesised across passages (a list of exclusions scattered across pages, a definition plus its footnote, a comparison), generation combines all k chunks into one call. The decision is made once, here, by the parser; retrieval and generation just execute. At enterprise scale (millions of documents × top-k chunks per question), the per-question saving compounds into the bulk of the LLM bill.
+The strategy itself lives at the top level of ParsedQuestion.chunk_strategy
+, and the default value comes from the satellite tables, with this resolution order:
+def resolve_chunk_strategy(
+answer_shape: str,
+matched_concept: str | None,
+answer_shapes_df: pd.DataFrame,
+concepts_df: pd.DataFrame,
+) -> Literal["combined", "sequential"]:
+"""Concept-level override > answer-shape default > hard default."""
+if matched_concept is not None:
+row = concepts_df[concepts_df["concept"] == matched_concept]
+if not row.empty and pd.notna(row.iloc[0].get("default_chunk_strategy")):
+return row.iloc[0]["default_chunk_strategy"]
+row = answer_shapes_df[answer_shapes_df["shape"] == answer_shape]
+if not row.empty:
+return row.iloc[0]["default_chunk_strategy"]
+return "combined"
+The deterministic dispatcher (section 2.1, approach B) calls this right after question parsing returns, writes the result onto parsed.chunk_strategy
+(top-level), and the same cascade runs for answer_context
+(also driven by shape). needs_summary
+stays on structural_hints
+because it describes the document, not the dispatch. The LLM is allowed to override either default in PARSE_PROMPT (sub-task 6) when the question itself contradicts the convention. “Give me a one-line summary of the exclusions” overrides the exclusions
+concept’s default_answer_context = "chapter"
+. The defaults are conventions, not constraints.
+Picking the model: two satellites in cascade. The same idea applies to model choice. Extracting an amount
+from one line doesn’t need the same model as reading three pages of dense legalese. A small model is enough for the first; the second wants a stronger one. Hard-coding gpt-4.1
+everywhere is wasteful on the easy cases and cheap-looking on the hard ones. We split this into two satellites for a reason: a conceptual llm_model_tiers_df
+to reason about the buckets, and a precise llm_models_df
+with one row per specific model. The per-question default points to a precise model name, because at runtime we have to call something concrete. The models referenced in this article (the OpenAI gpt-4.1
+family and Anthropic’s Claude family) are proprietary cloud services governed respectively by OpenAI’s Terms of Use and Anthropic’s Usage Policy.
+The conceptual grouping first. Four tiers that survive vendor catalogue churn:
+Then the precise registry. One row per specific model the project can call, with the characteristics a dev needs to pick:
+Prices and context windows refresh every few months; the schema doesn’t. Pinning the table to one query (“as of 2026-05, what models is the project allowed to call?”) gives the deployment a single source of truth. When the team validates gpt-4.5
+six months from now, it’s one row update plus a re-run of the eval suite, not a code change.
+Defaults point to a precise model, not a tier. A nano
+-tier question doesn’t ask the dispatcher to “use some nano model”; it asks for the project’s blessed nano model, the one the team has evaluated on the corpus. So answer_types_df.default_model
+and concepts_df.default_model
+hold a precise name (FK to llm_models_df.model
+). The cascade resolves to that name directly:
+def resolve_model(
+answer_type: str,
+matched_concept: str | None,
+answer_types_df: pd.DataFrame,
+concepts_df: pd.DataFrame,
+fallback: str = "gpt-4.1-mini",
+) -> str:
+"""Concept-level override > answer-type default > project fallback. Returns a precise model name."""
+if matched_concept is not None:
+row = concepts_df[concepts_df["concept"] == matched_concept]
+if not row.empty and pd.notna(row.iloc[0].get("default_model")):
+return row.iloc[0]["default_model"]
+row = answer_types_df[answer_types_df["type"] == answer_type]
+if not row.empty and pd.notna(row.iloc[0].get("default_model")):
+return row.iloc[0]["default_model"]
+return fallback
+The dispatcher writes the result onto parsed.suggested_model
+(top-level). The generation brick reads that name, fetches the row from llm_models_df
+for context-window / pricing / capability checks, and calls. When the team wants to swap gpt-4.1
+for gpt-4.5
+after evaluation, it’s a UPDATE llm_models_df SET model='gpt-4.5' WHERE tier='standard'
+(or two row inserts plus a default-column update), not a code change.
+So far we’ve assumed the document plays along. It doesn’t always.
+Take “What does it say on page 1?” On a PDF, “page 1” is a real thing: pages are physical artifacts of the format and the parser knows their boundaries. On a Word file, “page 1” is renderer-dependent: the user’s font, the screen width, the print driver all shift the page breaks. The “page 1” the user saw may be different from “page 1” in another viewer. If the parser hard-codes extract_page_numbers=True
+, the system returns “see page 2” on a Word doc, wrong with high confidence.
+The same trap applies whenever the question references a structural element the document doesn’t carry: a TOC that doesn’t exist, a section heading that’s not declared, a table the parser couldn’t extract. The fix is for the parser to look at the document’s profile (metadata returned by the document parsing brick’s parse_pdf
+) and downgrade activations that don’t fit. The profile is a small typed object:
+class DocumentProfile(BaseModel):
+format: Literal["pdf", "docx", "html", "txt", "xlsx"]
+has_toc: bool = False
+has_tables: bool = False
+n_pages: int | None = None # None when the format has no real pages
+languages: list[str] = Field(default_factory=list)
+is_scanned: bool = False # OCR'd, expect more spelling noise
+The parser then consults the profile to keep activations honest:
+class ExecutionPlan(BaseModel):
+use_toc_navigation: bool = True
+use_keyword_retrieval: bool = True
+use_embeddings: bool = False
+follow_cross_references: bool = False
+decompose_compound: bool = False
+iterate_on_feedback: bool = True
+extract_page_numbers: bool = True
+def parse_question(question, doc_profile) -> ParsedQuestion:
+parsed = base_parse(question)
+if doc_profile.format == 'docx':
+parsed.activations.extract_page_numbers = False
+if not doc_profile.has_toc:
+parsed.activations.use_toc_navigation = False
+return parsed
+The parsing_notes
+field captures what the parser noticed but couldn’t enforce. It flows through to the answer’s _meta
+block on the generation side so the user knows the system understood the limitation. They don’t get a wrong with high confidence “page 2” answer; they get an answer with a note that page references are approximate in this format.
+The same idea applies elsewhere:
+Common pitfall: Hard-coding activation flags as defaults regardless of document type. A pipeline that always sets
+extract_page_numbers=True
+produces page citations even when the document has no real pages. Activations have to come from the document’s actual properties, not from project-wide defaults.
+At this point, the schema covers everything built up section by section, both in Article 6_b (extraction) and so far in this article. A few fields appear here for the first time: they are the relational links between the question row and the satellite tables, worth naming explicitly so the two consumer briefs introduced in Article 6_a make sense once assembled.
+class ParsedQuestion(BaseModel):
+# The raw input, kept for audit
+original_question: str
+corrected_question: str = "" # spell-corrected (section 2.1)
+# What the user is asking
+keywords: list[Keyword] = Field(default_factory=list) # → concept_keywords_df → concepts_df
+# Two orthogonal axes for the expected answer (section 2.2)
+answer_shape: Literal["single", "listing", "table", "tree", "nested_json"] = "single"
+answer_type: str = "text" # → FK into answer_types_df
+# How the question is structured (sections 2.4 + 2.3)
+decomposition: Decomposition = Field(default_factory=Decomposition)
+scope_filters: ScopeFilters = Field(default_factory=ScopeFilters)
+structural_hints: StructuralHints = Field(default_factory=StructuralHints)
+# How the pipeline dispatches the LLM calls (cascade from concept/type, section 2.6)
+chunk_strategy: Literal["combined", "sequential"] = "combined" # generation dispatch
+suggested_model: str = "gpt-4.1-mini" # → FK into llm_models_df
+# When the LLM should distinguish related concepts (section 3.2)
+disambiguation: str | None = None
+distractors: list[str] = Field(default_factory=list)
+# What the system should do (section 2.7)
+activations: ExecutionPlan = Field(default_factory=ExecutionPlan)
+# What the parser noticed about its own choices
+parsing_notes: list[str] = Field(default_factory=list)
+suggested_clarification: str | None = None
+ambiguity_reason: str | None = None
+# The two consumer briefs (derived assemblies, section 3)
+retrieval: RetrievalQuery | None = None
+generation: GenerationBrief | None = None
+Several relational layers come into play, mirroring document parsing. The central table is fixed; the satellites listed here are examples a project typically ends up needing, not a closed set:
+question_df
+(always). One row per parsed question, with the columns above. The row is what the_meta
+block (section 2.3) logs to disk for audit, and what corpus-level dashboards SQL over: “how many questions of typeamount
+did users ask last month?”, “which questions triggered a clarification?”, “which keywords got hit most?”.concepts_df
+(typical). One row per concept (premium
+,non_compete
+, …) with itsdocument_type
+anddefinition
+. Project-wide, maintained by domain experts.concept_keywords_df
+(typical). One row per(concept, language, keyword)
+. Joined toconcepts_df
+onconcept
+. The big growth area: every missed retrieval that turns out to be a vocabulary mismatch becomes a new row here.answer_types_df
+(typical). One row per registered answer type (amount
+,date
+,iban
+,text
+,address
+, …) withretrieval_patterns
+(used by the retrieval brick),output_schema_ref
+(used by the generation brick),definition
+, and the per-typedefault_model
+. Adding a new type is a single insert.answer_shapes_df
+(small, fixed). One row per registered answer shape (single
+,listing
+,table
+,tree
+,nested_json
+) with per-shape defaults forchunk_strategy
+andanswer_context
+. Shape drives how the answer is laid out; type drives what each value contains. The split makes “List the annual premiums” (a(listing, amount)
+question) a different dispatch decision from “What is the premium?” (a(single, amount)
+question).llm_model_tiers_df
+(small, conceptual). Four rows (nano
+,mini
+,standard
+,reasoning
+) with relative cost, latency, and the use cases each tier suits. Lets the team reason about model choice in vendor-agnostic terms.llm_models_df
+(one row per precise model the project is allowed to call). Includes provider, tier (FK tollm_model_tiers_df
+), context window, structured-output support, per-1M-token pricing, and notes. The per-question default points to a precise model name in this table; swappinggpt-4.1
+forgpt-4.5
+after evaluation is a row update.
+Other satellites get added when the domain calls for them. A legal RAG often grows a regulations_df
+mapping codes (“L131-1”) to their actual texts so the parser can resolve references. A corporate corpus grows an entity_alias_df
+so “BNP” and “BNP Paribas” and “the Bank” resolve to the same entity. A scientific one grows a unit_conversions_df
+. Same pattern as columns: start with what you need, add when a real case pushes for it.
+Two of the columns on question_df
+(retrieval
+, generation
+) are built from the others: the parser assembles them from the raw columns so retrieval and generation each receive only what they need. The next section is about why they’re split this way.
+Recap of question_df columns: For each column: what it carries, when it’s set, who consumes it downstream.
+Section 1 walked what the dispatcher decides on top of the parsed row: dispatch defaults, activation flags, the assembled schema. This one steps back: who writes each of those decisions (the user, a deterministic rule, or an LLM at runtime), how the choices land on the top-level call, and how every decision is audited.
+The execution plan field on the parsed question contains a set of activation flags: use_toc_navigation
+, use_keyword_retrieval
+, decompose_compound
+, and so on. Section 1.2 introduced them; this one covers who decides what they’re set to on a given run.
+This is one of the main architecture choices in the series. Three approaches.
+Approach A. User explicit overrides. The user passes activation flags as arguments to pdf_qa
+. To force semantic retrieval and skip both decomposition and feedback loops, the call reads pdf_qa(contract, question="What are all the obligations?", use_embeddings=True, decompose_compound=False, iterate_on_feedback=False)
+.
+Pro: total control, fully reproducible, debuggable. Con: the user has to understand the system to choose intelligently. In practice, no one does this for routine queries; it’s a manual override for development and debugging.
+Approach B. Deterministic dispatcher. The system looks at the parsed question and the document profile, and applies code-based rules to decide activations. The function below is illustrative; a production dispatcher carries 15-30 such rules, accumulated over the deployment’s lifetime:
+def decide_activations(parsed: ParsedQuestion, doc_profile: DocumentProfile) -> ExecutionPlan:
+plan = ExecutionPlan() # defaults
+if parsed.decomposition.pattern == "independent":
+plan.decompose_compound = True
+if doc_profile.format == "docx":
+plan.extract_page_numbers = False
+if parsed.answer_shape == "listing":
+plan.iterate_on_feedback = True
+return plan
+Pro: reproducible, debuggable, the team’s accumulated wisdom lives in code. Con: requires writing and maintaining the rules. Each new question pattern that doesn’t fit is a rule to add.
+Approach C. LLM-decides-everything (autonomous). The system describes the available sub-functions to an LLM and asks it to choose. Pro: flexible, handles cases the team hadn’t planned for. Con: non-reproducible (the LLM may decide differently each run), expensive (every question costs an extra LLM call for routing), hard to debug (the reasoning is in the LLM’s weights).
+The series’s position: Approach B as default, Approach A as manual override, Approach C rejected for enterprise.
+This is the same argument that recurs whenever “agentic RAG” comes up. For enterprise contexts (legal, insurance, financial services), reproducibility, auditability, and bounded cost matter more than whatever extra flexibility Approach C buys. Approach B gives you all three. Approach A lets you override when you need to test a specific configuration.
+This is also why “agentic RAG” works better than naive RAG, when it’s done well. The agentic part isn’t magic. It’s that the system parses the question before searching, instead of treating retrieval as a mechanical first step. Once you split the work between preparing for retrieval and preparing for generation, the rest of the pipeline becomes much easier to reason about, without needing the LLM to be in the control loop.
+Once the dispatcher decides activations automatically, the user’s pdf_qa(pdf_path, question)
+call is enough for most cases. But sometimes the user wants to override a specific behavior: tweak retrieval top_k
+, skip TOC routing on a document that has no usable outline, inject a pre-loaded PromptContext
+. The top-level call has to handle this without getting messy.
+The pattern that works: organize override arguments into five families, each named after the brick it affects. The current pdf_qa
+from docintel.pipeline.qa.pdf
+ships eight kwargs grouped that way:
+def pdf_qa(
+pdf_path: str | Path,
+question: str,
+*,
+# Parsing overrides (Article 5 / 10)
+method: str = "fitz",
+# Question-parsing overrides (this article)
+expert_dict: dict[str, list[str]] | None = None,
+# Retrieval overrides (Articles 7 / 9)
+top_k: int = 5,
+use_toc: bool = True,
+# Generation overrides (Article 8)
+include_bbox: bool = False,
+# Pipeline-behavior overrides
+store: "Store | None" = None,
+client: "OpenAI | None" = None,
+context: PromptContext | None = None,
+) -> AnswerWithEvidence:
+...
+The user who wants no overrides just calls pdf_qa(contract_pdf, "What is the premium?")
+. The user who wants to disable the LLM TOC router on a document with a broken outline does pdf_qa(contract_pdf, "What is the premium?", use_toc=False)
+. None of the overrides is required; all have defaults driven by the dispatcher. The cross-document sibling corpus_pdf_qa
+mirrors the same pattern with project_id
+in front and a top_k_docs
+cap.
+What’s coming. A few overrides the architecture has room for but the package does not ship today: an
+answer_schema=MyCustomSchema
+to override the registry per question (Article 8 (generation), section 3.5),retrieval_methods=["keyword", "embedding"]
+to pick the method-stack at runtime (Article 7, retrieval),iterate_on_feedback=True
++max_iterations=3
+to run the same-run retry on incomplete answers (Article 13 (the workflow pipeline) and Article 14 (the corpus problem)). Each one extends one of the five families above without rearranging the rest. The article keeps the families-by-brick layout precisely so adding kwargs later is mechanical.
+The parsed question is internal to pdf_qa
+. But traces of it appear in the output, and that matters for the user.
+The output JSON has the answer (the result of generation), and a _meta
+block that records what was done:
+{
+"answer": "The premium is €125,000 annually.",
+"page_number": 4,
+"line_start": 12,
+"line_end": 14,
+"quote": "Annual premium: €125,000",
+"_meta": {
+"decomposition": "single",
+"activations": {
+"use_toc_navigation": true,
+"use_keyword_retrieval": true,
+"use_embeddings": false,
+"extract_page_numbers": true
+},
+"skipped": [],
+"parsing_notes": [],
+"iterations": 1,
+"retrieval_methods_used": ["toc", "keyword"],
+"model": "gpt-4.1",
+"prompt_versions": {"question_parsing": "v2.4", "generation": "v4.2"}
+}
+}
+The _meta
+block carries the decomposition pattern, which activations were on or off, what was skipped (and why, from parsing_notes
+), how many iterations the pipeline went through, which retrieval methods fired, and the model and prompt versions for reproducibility (the same fields a per-failure-mode evaluation reads from later).
+This isn’t optional. It’s what makes the system auditable. When a user disputes an answer, the _meta
+block is the explanation. When the team debugs a regression, the _meta
+block is the trace. When compliance asks “why did the system give this answer?”, the _meta
+block is the answer.
+The user who doesn’t want to see _meta
+in their UI can hide it. But it’s always generated and always logged, because making it costs nothing and the audit trail is what production deployments need.
+The parsed question is also persisted to disk, following the convention the document parsing brick installs: save_parsed_question(pdf_path, question, parsed_question)
+writes the full ParsedQuestion
+to output/<subdir>/<stem>/questions/<question_slug>/parsed_question.json
+. The slug combines a readable prefix of the question with a short hash so near-identical questions never collide. The next brick (retrieval) reads the same file. No re-call to the LLM for question parsing when iterating on retrieval or generation downstream.
+Article 6_b walked each parser concern as its own helper, each with its own LLM call. That’s how the prose builds up the schema column by column. In production, one consolidated LLM call returns the whole row at once. One round-trip, one prompt to maintain, one place where the LLM sees the full question.
+The schema the LLM fills:
+class FullParse(BaseModel):
+"""Everything the LLM produces in a single call."""
+corrected_question: str
+keywords_extracted: list[str]
+keywords_rewritten: list[str]
+answer_shape: str # single | listing | table | tree | nested_json
+answer_type: str # FK into answer_types_df
+decomposition: Decomposition
+structural_hints: StructuralHints
+chunk_strategy: Literal['combined','sequential'] = 'combined'
+suggested_model: str = 'gpt-4.1-mini'
+suggested_clarification: str | None = None
+disambiguation: str | None = None
+distractors: list[str] = Field(default_factory=list)
+The prompt walks the LLM through the sub-tasks. Each sub-task in the prompt corresponds to one column in FullParse
+:
+def build_parse_prompt(
+answer_types_df: pd.DataFrame,
+answer_shapes_df: pd.DataFrame,
+) -> str:
+"""The answer-type and answer-shape lists are injected from the satellites
+so adding a new type or a new shape is a single row insert, no prompt edit."""
+types_label = ", ".join(answer_types_df["type"])
+shapes_label = ", ".join(answer_shapes_df["shape"])
+return (
+"You parse user questions into a structured object that downstream retrieval and "
+"generation will consume. Return JSON matching the FullParse schema.\n\n"
+"Sub-tasks:\n"
+"1. corrected_question: fix typos. No meaning change.\n"
+"2. keywords_extracted: 1-3 content noun phrases from the question.\n"
+"3. keywords_rewritten: 3-5 short phrases matching how the answer is likely to "
+"appear in the document. Document vocabulary, not the user's casual phrasing.\n"
+f"4. answer_shape: one label from {{{shapes_label}}}. The cardinality of the "
+"answer: 'single' for one value, 'listing' for a flat enumeration, 'table' for "
+"rows x columns, 'tree' for nested hierarchy, 'nested_json' for a structured "
+"object with named sub-fields.\n"
+f"5. answer_type: one label from {{{types_label}}}. The value type each element "
+"of the answer carries. 'List the annual premiums' is (listing, amount) ; 'What "
+"is the premium?' is (single, amount) ; 'List the exclusions' is (listing, text).\n"
+"6. decomposition: pattern (single/independent/sequential/unified/conditional), "
+"sub-questions if compound, and conditional_filter if the pattern is conditional.\n"
+"7. structural_hints: WHERE (toc_section_hint, pages_hint, layout_hint) and HOW "
+"MUCH (detection_context, answer_context, needs_summary). Leave answer_context, "
+"needs_summary, chunk_strategy, suggested_model at their defaults UNLESS the "
+"question itself contradicts them (e.g. 'one-line summary of the exclusions' "
+"overrides the exclusions concept's chapter-level default ; 'compare the indemnity "
+"clauses in this contract and the previous version' bumps suggested_model to a "
+"reasoning-tier model like o4-mini).\n"
+"8. suggested_clarification: short follow-up question if the input is too vague. "
+"null otherwise.\n"
+"9. disambiguation + distractors: 'limit, not deductible' patterns."
+)
+PARSE_PROMPT = build_parse_prompt(answer_types_df, answer_shapes_df)
+The pipeline. The single LLM call carries the parsing work. Two non-LLM steps stay separate: anchor keywords (regex, deterministic, fast) and the expert dictionary lookup (pandas filter, no model).
+def parse_question(
+question: str,
+*,
+expert_kw_df: pd.DataFrame | None = None,
+system_prompt: str = PARSE_PROMPT,
+) -> ParsedQuestion:
+resp = client.responses.parse(
+model="gpt-4.1-mini",
+input=[
+{"role": "system", "content": system_prompt},
+{"role": "user", "content": question},
+],
+text_format=FullParse,
+)
+full = FullParse.model_validate_json(resp.output_text)
+anchor_kw = extract_anchor_keywords(full.corrected_question) # regex
+dict_kw_df = (
+lookup_expert_keywords(full.corrected_question, expert_kw_df)
+if expert_kw_df is not None else pd.DataFrame()
+)
+keywords = (
+[Keyword(text=t, source="direct") for t in full.keywords_extracted]
++ [Keyword(text=t, source="anchor") for t in anchor_kw]
++ [Keyword(text=t, weight=0.7, source="llm_expansion") for t in full.keywords_rewritten]
++ [Keyword(text=row["keyword"], weight=row["weight"],
+source="expert_dictionary", semantic_group=row["concept"])
+for _, row in dict_kw_df.iterrows()]
+)
+return ParsedQuestion(
+original_question=question,
+corrected_question=full.corrected_question,
+keywords=keywords,
+answer_shape=full.answer_shape,
+answer_type=full.answer_type,
+decomposition=full.decomposition,
+structural_hints=full.structural_hints,
+chunk_strategy=full.chunk_strategy,
+suggested_model=full.suggested_model,
+suggested_clarification=full.suggested_clarification,
+disambiguation=full.disambiguation,
+distractors=full.distractors,
+# scope_filters, activations, retrieval, generation are filled by the
+# dispatcher (section 4.1) once the document profile is available.
+# parsing_notes is appended later when activations downgrade.
+)
+The trade-off versus the step-by-step pipeline of Article 6_b:
+- Step-by-step (one helper per concern): easy to debug per concern, easy to override one prompt without touching the others, easy to A/B test individual sub-prompts. 5+ LLM calls per question.
+- Consolidated (one call, one schema): one round-trip, one prompt, one model context. Harder to attribute an error to a specific sub-task. ~5x cheaper and ~5x faster.
+The series’s default is consolidated for production. The step-by-step pipeline stays useful for tests and debugging. When one field looks wrong, swap that field’s standalone helper in, rerun, compare.
+Most questions don’t fill every column. A simple lookup needs corrected_question
++ keywords
++ answer_shape
++ answer_type
+. A compound listing-question fills decomposition
+, structural_hints.answer_context = "chapter"
+, needs_summary = True
+. The schema’s defaults handle the unused fields, so parse_question
+always returns a complete row.
+A few concrete cases from the insurance broker context that comes back through Parts IV and V. Each example shows only the columns the case uses; the rest of the ParsedQuestion
+schema (corrected_question
+, structural_hints
+, retrieval
+, generation
+, …) keeps its defaults.
+Example 1. A point lookup with expert keywords.
+User question: “Quel est le montant de la prime annuelle?”
+ParsedQuestion(
+original_question="Quel est le montant de la prime annuelle ?",
+answer_shape="single",
+answer_type="amount",
+keywords=[
+Keyword(text="prime", weight=1.0, source="direct"),
+Keyword(text="montant", weight=0.8, source="direct"),
+Keyword(text="annuelle", weight=0.7, source="direct"),
+Keyword(text="premium", weight=0.9, source="expert_dictionary", semantic_group="prime"),
+Keyword(text="cotisation", weight=0.9, source="expert_dictionary", semantic_group="prime"),
+Keyword(text=r"\d+[\s.,]?\d*\s*(?:EUR|€)", weight=0.8,
+source="expert_dictionary", is_regex=True),
+],
+decomposition=Decomposition(pattern="single"),
+activations=ExecutionPlan(
+use_toc_navigation=True,
+use_keyword_retrieval=True,
+extract_page_numbers=True,
+),
+parsing_notes=["Question in French; expert dictionary applied."],
+)
+The amount
+regex in the keyword list is the type-confirmation pattern from Article 6_b (extraction), section 1.2: retrieval will require a monetary amount in the matched zone, not just keyword overlap.
+Example 2. A compound question, independent decomposition.
+User question: “What is the annual premium and what are the main exclusions?”
+ParsedQuestion(
+original_question="What is the annual premium and what are the main exclusions?",
+decomposition=Decomposition(
+pattern="independent",
+sub_questions=[
+"What is the annual premium?",
+"What are the main exclusions?",
+],
+),
+activations=ExecutionPlan(decompose_compound=True),
+parsing_notes=["Compound question detected. Decomposed into 2 independent sub-questions."],
+)
+The orchestrator sees decompose_compound=True
+and runs pdf_qa
+twice in parallel (once per sub-question), then assembles a combined output.
+Example 3. An ambiguous question that triggers clarification.
+User question: “What’s the limit?”
+ParsedQuestion(
+original_question="What's the limit?",
+suggested_clarification=(
+"Several types of limits exist in this contract: coverage limit, sublimit, "
+"deductible, aggregate limit. Which one are you asking about?"
+),
+ambiguity_reason="single_term_with_multiple_referents",
+parsing_notes=["Ambiguous question; clarification suggested before running pipeline."],
+)
+Example 4. A document-aware activation downgrade.
+User question: “What does it say on page 3 of the contract?”, document is Word format.
+ParsedQuestion(
+original_question="What does it say on page 3 of the contract?",
+activations=ExecutionPlan(
+extract_page_numbers=False,
+),
+parsing_notes=[
+"User mentioned 'page 3' but document is Word format. "
+"Page numbers in Word depend on renderer; treating as approximate location.",
+],
+)
+In the wild: Six months into production on the broker system:
+- Average parsing latency: 280 ms (one mid-tier LLM call for decomposition + keyword expansion)
+- Distribution by decomposition pattern: single 71%, independent 19%, conditional 6%, sequential 3%, unified 1%
+- Clarification triggered on 4% of questions
+- Expert dictionary entries: 340, growing by 5-10 per month
+- Document-aware activation downgrades: 12% of questions hit at least one
+Ablation: with parsing turned off (questions treated as flat strings), accuracy dropped from 91% to 76%. The 15-point gap is what parsing buys.
+A few traps when implementing question parsing in practice.
+Treating question parsing as just “extract keywords.” The keywords are one output among many. Pipelines that stop at keyword extraction miss decomposition, scope filters, format constraints, and activation decisions, all of which affect quality further down the pipeline.
+Caching the parsed question across documents. The parsed question depends on the document profile. The same question parsed for a PDF and for a Word document will have different activation flags. The cache key must include the document profile, not just the question text.
+Skipping the expert dictionary because “embeddings will handle synonyms.” They handle dictionary synonyms. They do not handle internal acronyms, jurisdiction-specific terms, or business-coded vocabulary the embedding model has never seen. The expert dictionary is something the project keeps growing.
+Decomposing aggressively: Over-decomposition produces answers that don’t hang together. “What are the exclusions and limitations?” is unified, not independent, in most policy contexts. The disambiguation test (replacing “and” with “; also”) is the cheap check; the LLM classification is the safety net.
+Mixing format constraints into the retrieval query. “Premium amount, formatted as integer, in EUR” should produce a retrieval query of “premium amount” and a generation brief that carries the format constraint. Mixing the format into retrieval pollutes the search.
+Setting all activation flags by hand at every call. This skips the whole point of the dispatcher. The default pdf_qa(pdf_path, question)
+should produce sensible activations from the parsed question and document profile. Explicit overrides are for the cases where the team knows better than the default.
+Forgetting that the parsed question is data. The parsed question is the artifact the rest of the pipeline reads. It’s worth making it inspectable, loggable, version-controlled. Production systems should be able to show “for question X, the parsed structure was Y, and that’s why the system did Z.”
+A parsed brief is only as useful as the routing layer that turns its columns into pipeline behaviour. The routing has three pieces: a RetrievalQuery
+view that hands retrieval the columns it can act on (keywords, rewrites, anchors, scope filters) and nothing else; a GenerationBrief
+view that gives generation what it needs (original question, format constraints, disambiguation, distractors); and an activations map that turns specific bricks off when the document profile makes them useless. The _meta
+block records every routing decision, so a misrouted question shows up as a diff in the audit trail, not as a mystery answer.
+A pipeline that tunes embedding models and chunk sizes but routes the raw user string to every brick is leaving most of its quality on the table before retrieval has even started. The dispatch step doesn’t add a model. It directs the ones that are already there.
+This article takes a position on the architecture choice behind question dispatch. The series defaults to a deterministic dispatcher (approach B in section 2.1): reproducible, auditable, bounded-cost. The contrast point is the agentic line where an LLM decides routing at runtime, which the literature has converged on under several names. Volume 3 (Agentic Bricks) develops the agentic alternative on top of the structured plan this article defines; here we cite the position the deterministic dispatcher is contrasted against.
+Different angle, different context:
+- Schick et al., Toolformer: Language Models Can Teach Themselves to Use Tools, NeurIPS 2023 (arXiv:2302.04761). The model decides when and which tool to call inline, with no upfront question parsing. The opposite of the deterministic dispatcher this article ships: routing pushed into the LLM at runtime, not extracted upfront into a typed plan.
+- Yao et al., ReAct: Synergizing Reasoning and Acting in Language Models, ICLR 2023 (arXiv:2210.03629). The agentic loop pattern that runtime-routes between reasoning and tool calls. The same trade-off as Toolformer: flexibility at the cost of reproducibility and bounded cost. Volume 3 covers the audit envelope that makes this workable in regulated contexts.
+Earlier in the series:
+- Document Intelligence: series intro. What the series builds, brick by brick, and in what order.
+Part I:
+- Baseline Enterprise RAG, from PDF to highlighted answer. The four-brick pipeline end to end: PDF in, highlighted answer out.
+- Embeddings Aren’t Magic: The Predictable Failure Modes of RAG Retrieval. Where embedding similarity wins (synonyms, typos, paraphrase), where it predictably breaks (unknown terms, negation, term-vs-answer relevance), and how to use it anyway.
+- Rerankers Aren’t Magic Either: When the Cross-Encoder Layer Is Worth the Cost. What a cross-encoder adds over bi-encoder embeddings, measured, and when it is worth the latency.
+- RAG is not machine learning, and the ML toolkit solves the wrong problem. Why chunk-size sweeps and finetuning optimize the wrong thing; route by question type instead.
+- From regex to vision models: which RAG technique fits which problem. Two axes, document complexity and question control, that pick the technique for each case.
+- 10 common RAG mistakes we keep seeing in production. Ten production mistakes, organized brick by brick, with the fix for each.
+Part II:
+- Beyond extract_text: the two layers of a PDF that drive RAG quality. The first half of the parsing brick: the document’s nature, signals, and summary.
+- Stop returning flat text from a PDF: the relational shape RAG needs. The second half of the parsing brick: the relational tables every downstream brick reads.

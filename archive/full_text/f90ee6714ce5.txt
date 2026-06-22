@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Mitigating Scoring Errors and Compensating for Nonverbal Subtests in Speech-Based Dementia Assessment
+View PDF HTML (experimental)Abstract:Early detection of cognitive impairment relies on neuropsychological tests to minimize subjectivity by assessing multiple cognitive domains. Speech-based evaluation can support diagnostics and improve accessibility, but transcription errors and the omission of nonverbal subtests (e.g., motor skills) limit accuracy. Beyond conventional test scores, speech-derived features can provide additional insights into cognitive status. This study investigates the speech-based evaluation of the German "Syndrom-Kurz-Test," a standardized dementia screening test comprising verbal and motor subtests. We train models that integrate transcript-derived scores and Whisper embeddings per verbal subtest to reduce scoring errors. To compensate for missing motor subtests, we then leverage these fused representations to approximate expert overall ratings. Despite omitting subtests, our models strongly correlate with expert ratings and efficiently and accurately discriminate between cognitive status groups.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

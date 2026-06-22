@@ -1,0 +1,39 @@
+OpenAI took $10B from a 19-firm Wall Street consortium. Anthropic is closing $1.5B from Blackstone, Goldman, and Hellman & Friedman. Same rooms, different portfolios. The week AI's go-to-market stopped being SaaS and started being private equity.
+Get more from AI Weekly
+More signal, less noise — pick your channels.
+You're reading the weekly brief. Below are the other ways to follow the story — every channel free, easy to leave.
+-
+→ Explore 16 deep divesWeekly topic-specific newsletters: Generative AI, Machine Learning, AI in Business, Robotics, Frontier Research, Geopolitics, Healthcare, and more.Browse all 16 deep dives →
+-
+→ Breaking AI alertsWhen something major breaks (a $60B acquisition, a regulator's emergency meeting, a frontier model leak), alert subscribers know within hours. Typically 0-2 emails per day.Get breaking alerts →
+-
+→ AI News Today (live)Live dashboard updated as the scanner finds news: scored stories from the last 48 hours, weekly entity movers, and quarterly trend lines across 113 AI companies, people, and topics.Open AI News Today →
+Quick Hits
+- WSJ: OpenAI execs overruled employees who urged the company to alert police about Tumbler Ridge shooter's ChatGPT threats — The shooter had used ChatGPT to draft and rehearse threats; staff escalated internally; leadership kept it in-house. The threats were real. WSJ has the timeline. Every regulatory conversation about AI safety review is going to start from this prior now. WSJ
+- Fortune: Google's Pentagon contract explicitly commits to removing AI safety filters on government request — More permissive than the OpenAI Pentagon deal. The clause sits inside a larger contract that Google staff opposed in an open letter last week. The "voluntary safety framework" era is being procured out of existence one government contract at a time. Fortune
+- OpenAI finalizes $10B "deployment company" JV with 19 PE firms to embed AI in their portfolio companies — Led by Blackstone. Mandate is explicit: deploy ChatGPT and OpenAI agents into the consortium's owned mid-market. This isn't growth capital — it's a distribution channel. Bloomberg
+- Jensen Huang: Nvidia has fallen to 0% AI market share in China; US export policy "already largely backfired" — Said on stage. The framing matters more than the number — Nvidia is no longer treating China loss as a quarterly blip but as a permanent reset that hyperscaler capex committees should plan around. Tom's Hardware
+- Meta begins 8,000-person layoff May 20, with more cuts queued for H2 — 10% of headcount. Officially restructuring; structurally an AI-capex-funded headcount swap. The "AI splurge funded out of payroll" thesis from last week's WSJ piece now has its second confirming data point. The Next Web
+- IBM releases Granite 4.1 family — 3B/8B/30B dense models with 512K context under Apache 2.0 — Lab-published, full open weights, commercial use permitted. The 30B is the real news: 512K context at zero licensing cost is a credible alternative for teams hitting GPT or Claude pricing walls. IBM Research
+- Berkshire Hathaway opens annual-meeting Q&A with a deepfake Warren Buffett to spotlight AI cyber risk — Buffett used the stunt to flag deepfake fraud as a board-level issue. When the most conservative institution in American finance opens its annual meeting with a synthetic Buffett, the corporate AI-security conversation has shifted permanently. CNBC
+- HN: Uber torched its entire 2026 AI coding budget on Claude Code in four months — CTO says $500–$2K/engineer/month sent the company "back to the drawing board" — Top of Hacker News for two days. Per-seat agentic coding economics are not what most enterprises priced into their 2026 plans. The "AI tools cost less than the engineers they augment" assumption is the next thing to break. Hacker News
+PE built AI's new distribution layer
+Two announcements landed inside five days. OpenAI took $10B from a 19-firm consortium led by Blackstone, with an explicit mandate to deploy its agents inside consortium-owned companies. Anthropic is closing $1.5B from Blackstone, Goldman, and Hellman & Friedman with the same structure — embed Claude across the mid-market they already own.
+What's new isn't the dollar size. It's the channel. For three years AI labs sold direct — enterprise sales, API contracts, sometimes a hyperscaler resale. Those motions still exist. The new motion is PE-mediated: pay one check, get one decision-maker, deploy across hundreds of portfolio companies. Blackstone alone has 250+ businesses. Across the firms involved this week the count is well past several thousand.
+For PE the pitch is symmetric — own the AI layer of your portfolio's productivity story, sell the upside at exit. For founders building AI infrastructure or app companies, the channel just narrowed: either you partner with the labs, or you compete with them through the same PE doors.
+The next AI sales call won't start with "what's your stack" — it'll start with "is your sponsor in the OpenAI consortium?"
+Key Takeaways
+- AI's distribution is now PE-mediated. Anyone selling AI tooling into PE-owned mid-market needs to know whether OpenAI or Anthropic got there first via the GP relationship. This is a new layer of the buying committee that didn't exist 90 days ago.
+- The Tumbler Ridge revelation is the safety-governance benchmark. WSJ documented executives overruling staff on a flagged threat that became a real shooting. Whatever any AI company says about internal safety review, this is the prior every regulator will start from.
+- Nvidia at 0% in China is a permanent reset, not a blip. Jensen's "export policy already largely backfired" line is the framing hyperscaler capex committees are planning around now. The China-shaped hole in Nvidia's TAM stays a hole.
+- Open-weights are catching up where it costs the most. Granite 4.1 at 30B/512K under Apache 2.0 is a real alternative when GPT or Claude pricing breaks the budget — see Uber. Western teams hitting agentic-coding cost walls now have a credible escape ramp.
+Worth Reading
+- arXiv: Refusal in Language Models Is Mediated by a Single Direction — Foundational jailbreak paper resurfacing on HN with 100+ pts. Worth re-reading alongside the UK AISI universal-jailbreak finding this week.
+- MIT: Superposition is the mechanistic reason LLM scaling laws work so reliably — The clearest mechanistic explanation yet of why bigger models keep getting reliably better. Reframes the scaling debate.
+- Google DeepMind: AI co-clinician beats GPT-5.4 in blind doctor tests, still trails experienced physicians — Specialty-tuned beats general-purpose, still loses to humans-with-context. Read the third number, not the first.
+- IBM Institute for Business Value: 76% of organizations now have a Chief AI Officer, up from 26% a year ago — The C-suite added a layer in 12 months. If you sell into the enterprise, you have a new buyer; if you work there, you have a new boss.
+- Sakana AI: KAME — tandem speech-to-speech architecture that injects LLM knowledge in real time — Most interesting model-architecture paper of the week. The speech-LLM stack has been ugly for years; this is the cleanest decoupling so far.
+This week's poll
+PE built AI's new distribution layer. What does that mean for your business?
+PE built AI's new distribution layer. What does that mean for your business?
+Thanks for reading AI Weekly. Forward this to one person whose AI sales motion just changed.

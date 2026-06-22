@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:LOTTERY: Learning from Reference-Only Samples in Two-Sample Testing under Size Asymmetry
+View PDF HTML (experimental)Abstract:Data-adaptive two-sample testing assesses if two samples come from the same distribution, using a discrepancy learned from the data (e.g., via kernel-based feature representations). Such methods typically rely on data splitting to decouple learning from testing and control type I error. However, this paradigm is ill-suited to few-shot settings with severe sample-size imbalance: abundant reference samples are available, while only a handful of query samples arrive. In this paper, we show how this imbalance can be leveraged constructively. Using abundant reference data, we learn reference-dependent representations that summarize salient structure of the reference distribution and provide informative signals for detecting departures. We incorporate a collection of representation families that capture both global and local structure, and adaptively weight them using only reference samples via an uncertainty-guided principle. Theoretically, we establish permutation-based type I error control and show consistency of the aggregated test: as the sample sizes grow, the test power converges to one whenever the representation set contains at least one consistent representation. Empirically, our aggregation achieves strong performance across a range of benchmarks while retaining type I error control.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

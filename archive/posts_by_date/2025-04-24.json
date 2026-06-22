@@ -1,0 +1,48 @@
+{
+  "date": "2025-04-24",
+  "count": 2,
+  "posts": [
+    {
+      "id": "9129607b124a",
+      "title": "Startup Purpose Is Why",
+      "url": "https://venturefounders.com/startup-purpose-is-why/",
+      "source": "Venture Founders",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "low",
+      "published": "2025-04-24T21:05:19+00:00",
+      "summary": "Startup Purpose Is Why: Startups, as well as small business and corporations across the globe have four principal terms for purposes aimed at improving social and environmental outcomes for people and the planet—Corporate Social Policy (CSR), Diversity Equity &#38; Inclusion, Environmental, Social &#38; Governance (ESG) and Sustainable Development Goals (SDG)1. Whole countries use the phrases [&#8230;] The post Startup Purpose Is Why appeared first on Venture Founders .",
+      "author": "Will Keyser",
+      "tags": [
+        "Passion or Autonomy",
+        "Business Purpose: Priorities & Models",
+        "strategy",
+        "startup",
+        "sustainability",
+        "entrepreneurship",
+        "leadership",
+        "purpose-driven",
+        "equity and inclusion for all startups"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "9f99815cf6b2",
+      "title": "Can GRPO be 10x Efficient? Kwai AI’s SRPO Suggests Yes with SRPO",
+      "url": "https://syncedreview.com/2025/04/23/can-grpo-be-10x-efficient-kwai-ais-srpo-suggests-yes-with-srpo/",
+      "source": "Synced Review",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2025-04-24T02:30:16+00:00",
+      "summary": "Kwai AI's SRPO framework slashes LLM RL post-training steps by 90% while matching DeepSeek-R1 performance in math and code. This two-stage RL approach with history resampling overcomes GRPO limitations. The post Can GRPO be 10x Efficient? Kwai AI’s SRPO Suggests Yes with SRPO first appeared on Synced .",
+      "author": "Synced",
+      "tags": [
+        "Nature Language Tech",
+        "Popular",
+        "Research"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,282 @@
+Зачем я вообще в это полез
+В какой-то момент я поймал себя на странной мысли: дома есть сервер под Proxmox, нормальная локальная сеть, несколько постоянных устройств, а VPN все равно живет на каждом клиенте отдельно. На ноутбуке один клиент, на телефоне другой, на рабочей машине лучше вообще ничего лишнего не трогать, на телевизоре поставить нормальный клиент почти невозможно.
+Сначала это не выглядит проблемой. Ну поставил VPN на ноутбук. Потом на телефон. Потом еще раз на второй ноутбук. Но дальше начинается обычный бытовой хаос: где-то VPN забыли включить, где-то он мешает локалке, где-то ломает банковское приложение, где-то тянет весь трафик через удаленный сервер без необходимости.
+Отдельная боль: устройства, на которые VPN-клиент нормально не поставить. Телевизоры, приставки, умные колонки, IoT, гостевые телефоны. Да и объяснять каждому домашнему пользователю, когда включать VPN, а когда выключать, тоже не хочется.
+Так появилась идея вынести логику на шлюз. Пусть клиент просто подключается к Wi-Fi или кабелю и получает интернет. А дальше уже домашний шлюз сам решает, что отправить напрямую, а что завернуть через туннель.
+Главная цель была не сделать “весь интернет через VPN”. Наоборот, хотелось нормальный split routing на уровне сети. Обычные сайты, обновления, локальные сервисы и тяжелые загрузки пусть идут напрямую. Через туннель нужны только конкретные домены и IP: YouTube, Telegram, WhatsApp, Discord, OpenAI и похожие сервисы.
+Что в итоге собираем
+В финале схема выглядит так: OpenWrt запущен виртуальной машиной в Proxmox, раздает DHCP, обслуживает DNS и становится основным gateway для клиентов. TCP-трафик клиентов через nftables перенаправляется на локальный порт sing-box. А sing-box уже решает, куда отправить соединение: direct или через Xray/VLESS Reality из Amnezia.
+Рисунок 1. Исходная схема: OpenWrt запущен в Proxmox и находится в той же подсети, что и клиенты.
+Самый важный момент: OpenWrt находится в той же подсети, что и клиенты. Это не классическая схема с отдельным LAN и отдельным WAN. Клиент получает gateway 192.168.0.2, сам OpenWrt дальше отправляет обычный трафик на основной роутер 192.168.0.1.
+Из-за этого некоторые стандартные красивые варианты, например TUN с auto_route и auto_redirect, повели себя не так, как хотелось. Они хорошо смотрятся в примерах, но в моей схеме начали ловить трафик самого OpenWrt и ломать DNS.
+План адресации
+Чтобы дальше команды читались нормально, зафиксируем условные адреса. Если у вас другая сеть, меняйте их под себя.
+Основная сеть: 192.168.0.0/24 Основной роутер: 192.168.0.1 OpenWrt VM: 192.168.0.2 DHCP-диапазон: 192.168.0.100-192.168.0.199 Тестовая LAN OpenWrt: 192.168.50.0/24 OpenWrt LAN IP: 192.168.50.1 sing-box redirect: 7892/tcp Xray/VLESS server: <XRAY_SERVER_IP>:443
+Что понадобится
+сервер с Proxmox, который постоянно включен;
+виртуальная машина OpenWrt x86_64;
+доступ к консоли OpenWrt через Proxmox, чтобы не потеряться при ошибках с сетью;
+основной роутер 192.168.0.1;
+возможность выключить DHCP на основном роутере;
+готовый рабочий конфиг Xray/VLESS Reality, например экспортированный из Amnezia;
+немного терпения, потому что сеть ломается быстро, а чинится внимательной проверкой по слоям.
+Важно: Перед изменениями лучше сделать snapshot VM в Proxmox. Если сломается DHCP, firewall или маршруты, откат snapshot экономит много нервов.
+Шаг 1. Скачать образ OpenWrt и подготовить VM в Proxmox
+Вот этого действительно часто не хватает в инструкциях. Обычно пишут “создайте VM с OpenWrt”, а дальше каждый сам догадывается, какой образ брать, куда его класть и как импортировать диск в Proxmox. Поэтому распишу этот кусок отдельно.
+Для Proxmox удобнее брать x86_64 образ OpenWrt. Я бы начинал с ext4 combined EFI образа. Ext4 проще расширять и чинить, а EFI обычно спокойнее грузится в новых виртуальных окружениях. Если у вас старая схема BIOS/SeaBIOS, можно взять обычный combined образ без EFI.
+Важно: Номер версии в командах ниже лучше заменить на актуальный. В статье я оставляю переменную OPENWRT_VERSION, чтобы не привязывать инструкцию к конкретному релизу.
+1.1. Скачать образ на Proxmox-хосте
+Команды ниже выполняются именно на Proxmox, то есть в консоли вида root@pve, а не внутри OpenWrt. Это важный момент. На Proxmox нет uci и нет /etc/config/firewall, зато именно там мы создаем VM и импортируем диск.
+mkdir -p /var/lib/vz/template/openwrt cd /var/lib/vz/template/openwrt OPENWRT_VERSION="24.10.7" OPENWRT_TARGET="x86/64" OPENWRT_BASE_URL="https://downloads.openwrt.org/releases/${OPENWRT_VERSION}/targets/${OPENWRT_TARGET}" wget "${OPENWRT_BASE_URL}/openwrt-${OPENWRT_VERSION}-x86-64-generic-ext4-combined-efi.img.gz" wget "${OPENWRT_BASE_URL}/sha256sums"
+Если нужной версии уже нет или вышла новая, проще открыть каталог downloads.openwrt.org в браузере и подставить свежий номер версии. Для статьи важен не конкретный номер, а принцип: берем x86/64 generic ext4 combined EFI image.
+1.2. Проверить checksum
+Это не обязательный, но правильный шаг. Образ будет использоваться как диск роутера, поэтому лучше убедиться, что он скачался без повреждений.
+sha256sum -c --ignore-missing sha256sums
+Если проверка пишет OK, можно распаковывать образ. Если файл не найден в sha256sums, значит имя образа отличается от ожидаемого. Тогда надо сверить название файла в каталоге релиза.
+1.3. Распаковать и конвертировать образ
+OpenWrt образ приходит как gzip-архив с raw-диском внутри. Proxmox умеет импортировать raw, но мне удобнее сначала конвертировать его в qcow2.
+gzip -dk openwrt-${OPENWRT_VERSION}-x86-64-generic-ext4-combined-efi.img.gz qemu-img convert -f raw -O qcow2 openwrt-${OPENWRT_VERSION}-x86-64-generic-ext4-combined-efi.img openwrt-${OPENWRT_VERSION}-x86-64-generic-ext4-combined-efi.qcow2 qemu-img info openwrt-${OPENWRT_VERSION}-x86-64-generic-ext4-combined-efi.qcow2
+Если qemu-img не найден, на Proxmox обычно это странно, но можно поставить qemu-utils. На обычном Debian это делается через apt install qemu-utils.
+1.4. Создать VM в Proxmox
+Дальше создаем VM. Номер VMID можно выбрать любой свободный. В примере я использую 150.
+VMID=150 VMNAME="openwrt-gateway" qm create ${VMID} --name ${VMNAME} --memory 1024 --cores 2 --cpu host --ostype l26 --net0 virtio,bridge=vmbr0 --net1 virtio,bridge=vmbr0
+В примере оба интерфейса подключены к vmbr0, потому что у меня основная задача была сначала завести OpenWrt в существующей сети. Если у вас есть отдельный bridge под тестовую LAN, например vmbr1, второй интерфейс можно повесить туда.
+# вариант, если есть отдельный bridge под тестовую LAN # qm set ${VMID} --net1 virtio,bridge=vmbr1
+Почему virtio: для виртуальной машины это нормальный быстрый сетевой драйвер. OpenWrt x86_64 с ним работает без лишних плясок.
+1.5. Импортировать диск в VM
+Дальше импортируем qcow2-диск в хранилище Proxmox. В примере используется local-lvm. Если у вас другое хранилище, например local, zfs, nvme или ceph, замените имя storage.
+qm importdisk ${VMID} openwrt-${OPENWRT_VERSION}-x86-64-generic-ext4-combined-efi.qcow2 local-lvm
+После импорта диск появится как unused disk у VM. Его нужно подключить как основной диск.
+qm set ${VMID} --scsihw virtio-scsi-pci qm set ${VMID} --scsi0 local-lvm:vm-${VMID}-disk-0 qm set ${VMID} --boot order=scsi0
+Важно: Если Proxmox назвал импортированный диск иначе, посмотрите VM в веб-морде или выполните qm config 150. Иногда имя диска отличается, особенно если VM уже создавалась раньше.
+1.6. Настроить консоль
+Чтобы было удобно заходить в OpenWrt через консоль Proxmox, можно включить serial console. Это особенно полезно, когда сеть сломалась и SSH недоступен.
+qm set ${VMID} --serial0 socket qm set ${VMID} --vga serial0
+Если с serial console что-то не нравится, можно оставить обычную VGA-консоль в веб-интерфейсе Proxmox. Главное, чтобы был аварийный доступ к VM не через сеть.
+1.7. Увеличить диск VM
+Образ OpenWrt обычно маленький. Для чистого роутера этого хватает, но мы будем ставить sing-box, tcpdump, curl, LuCI, WireGuard и другие пакеты. Поэтому лучше сразу увеличить диск.
+qm resize ${VMID} scsi0 +2G
+Это увеличивает виртуальный диск в Proxmox, но внутри OpenWrt раздел и файловую систему тоже надо расширить. Это можно сделать после первого запуска.
+1.8. Первый запуск VM
+qm start ${VMID} qm status ${VMID} qm terminal ${VMID}
+Если qm terminal не используется, просто откройте VM в веб-морде Proxmox: VM -> Console. После загрузки вы должны попасть в консоль OpenWrt.
+1.9. Первый вход в OpenWrt
+Внутри OpenWrt задаем пароль root:
+passwd
+Проверяем интерфейсы:
+ip a ifconfig
+На этом этапе важно понять, какой интерфейс стал eth0, а какой eth1. В статье дальше считаем, что eth0 смотрит в основную сеть 192.168.0.0/24, а eth1 используется для тестовой LAN.
+1.10. Расширить root-раздел OpenWrt
+Этот шаг опциональный, но я бы его сделал сразу. Иначе после установки пакетов можно быстро упереться в место. Сначала смотрим разметку диска:
+df -h lsblk 2>/dev/null || block info
+Если lsblk не установлен, можно поставить утилиты и расширить раздел. На x86 ext4 combined чаще всего root-раздел это /dev/sda2, но лучше проверить глазами.
+opkg update opkg install parted e2fsprogs resize2fs lsblk parted -s /dev/sda print parted -s /dev/sda resizepart 2 100% reboot
+После перезагрузки расширяем файловую систему:
+resize2fs /dev/sda2 df -h
+Важно: Если у вас диск называется не /dev/sda или root-раздел не /dev/sda2, команды надо адаптировать. Не выполняйте resizepart вслепую на незнакомой разметке.
+Шаг 2. Настроить сеть OpenWrt
+Теперь нужно сделать так, чтобы OpenWrt имел постоянный адрес 192.168.0.2 в основной сети и знал, что основной роутер находится на 192.168.0.1.
+2.1. Настройка WAN как статического адреса в основной сети
+uci set network.wan=interface uci set network.wan.device='eth0' uci set network.wan.proto='static' uci set network.wan.ipaddr='192.168.0.2' uci set network.wan.netmask='255.255.255.0' uci set network.wan.gateway='192.168.0.1' uci delete network.wan.dns 2>/dev/null uci add_list network.wan.dns='192.168.0.1' uci add_list network.wan.dns='1.1.1.1' uci commit network /etc/init.d/network restart
+Да, здесь интерфейс называется wan, хотя он находится в домашней сети. Это особенность нашей схемы. Физически eth0 подключен в основную сеть, а логически OpenWrt все еще считает его wan-зоной.
+2.2. Настройка тестовой LAN
+Если есть второй интерфейс eth1, можно оставить на нем отдельную LAN-сеть:
+uci set network.lan=interface uci set network.lan.device='eth1' uci set network.lan.proto='static' uci set network.lan.ipaddr='192.168.50.1' uci set network.lan.netmask='255.255.255.0' uci commit network /etc/init.d/network restart
+После этого OpenWrt должен открываться по адресу 192.168.0.2 из основной сети и по 192.168.50.1 из тестовой LAN, если она подключена.
+Шаг 3. Базовый firewall OpenWrt
+Так как клиенты приходят на OpenWrt со стороны wan-зоны, нужно аккуратно разрешить то, что для обычного WAN обычно запрещено: DHCP, DNS, LuCI/SSH из локальной сети и позже порт 7892 для sing-box redirect.
+3.1. Найти wan-зону и включить forward/NAT
+WAN_ZONE="$(uci show firewall | sed -n "s/^\(firewall\.@zone\[[0-9]\+\]\)\.name='wan'$/\1/p" | head -n1)" echo "$WAN_ZONE" uci set ${WAN_ZONE}.forward='ACCEPT' uci set ${WAN_ZONE}.masq='1' uci set ${WAN_ZONE}.mtu_fix='1' uci commit firewall /etc/init.d/firewall restart
+masq нужен, чтобы OpenWrt мог нормально выпускать клиентов дальше через основной роутер. В классической схеме это выглядело бы привычнее, но у нас gateway-on-a-stick, поэтому лучше явно зафиксировать поведение.
+3.2. Разрешить DHCP и DNS для клиентов
+uci add firewall rule uci set firewall.@rule[-1].name='Allow-DHCP-WAN-Clients' uci set firewall.@rule[-1].src='wan' uci set firewall.@rule[-1].proto='udp' uci set firewall.@rule[-1].src_port='68' uci set firewall.@rule[-1].dest_port='67' uci set firewall.@rule[-1].target='ACCEPT' uci add firewall rule uci set firewall.@rule[-1].name='Allow-DNS-WAN-Clients' uci set firewall.@rule[-1].src='wan' uci set firewall.@rule[-1].proto='tcp udp' uci set firewall.@rule[-1].dest_port='53' uci set firewall.@rule[-1].target='ACCEPT' uci commit firewall /etc/init.d/firewall restart
+3.3. Разрешить LuCI и SSH из локальной сети
+uci add firewall rule uci set firewall.@rule[-1].name='Allow-LuCI-SSH-from-main-LAN' uci set firewall.@rule[-1].src='wan' uci set firewall.@rule[-1].src_ip='192.168.0.0/24' uci set firewall.@rule[-1].proto='tcp' uci set firewall.@rule[-1].dest_port='22 80 443' uci set firewall.@rule[-1].target='ACCEPT' uci commit firewall /etc/init.d/firewall restart
+Важно: Не открывайте LuCI и SSH наружу в интернет. Здесь правило разрешает доступ только из 192.168.0.0/24.
+3.4. Отключить flow offloading
+Позже мы будем перехватывать трафик через nftables. Flow offloading может мешать отладке, потому что часть трафика проходит ускоренным путем. На время такой схемы я его отключил.
+uci set firewall.@defaults[0].flow_offloading='0' uci set firewall.@defaults[0].flow_offloading_hw='0' uci commit firewall /etc/init.d/firewall restart
+Шаг 4. Перенести DHCP на OpenWrt
+Рисунок 2. OpenWrt стал для клиентов DHCP-сервером, DNS-сервером и шлюзом.
+Теперь главный момент: клиенты должны получать от OpenWrt не только IP-адрес, но и gateway/DNS. Иначе они будут обходить OpenWrt, а sing-box вообще не увидит их трафик.
+4.1. Отключить DHCP на основном роутере
+На основном роутере 192.168.0.1 нужно выключить DHCP-сервер. Это делается в его веб-морде. Если оставить два DHCP-сервера, начнется лотерея: один клиент получит gateway 192.168.0.1, другой 192.168.0.2.
+Важно: Перед отключением DHCP убедитесь, что у вас есть доступ к OpenWrt через консоль Proxmox. Если DHCP сломается, вы сможете зайти в VM и поправить настройки.
+4.2. Включить DHCP на wan-интерфейсе OpenWrt
+uci delete dhcp.wan 2>/dev/null uci set dhcp.wan=dhcp uci set dhcp.wan.interface='wan' uci set dhcp.wan.ignore='0' uci set dhcp.wan.start='100' uci set dhcp.wan.limit='100' uci set dhcp.wan.leasetime='12h' uci set dhcp.wan.force='1' uci set dhcp.wan.dynamicdhcp='1' uci delete dhcp.wan.dhcp_option 2>/dev/null uci add_list dhcp.wan.dhcp_option='3,192.168.0.2' uci add_list dhcp.wan.dhcp_option='6,192.168.0.2' uci set dhcp.@dnsmasq[0].authoritative='1' uci set dhcp.@dnsmasq[0].localservice='0' uci set dhcp.@dnsmasq[0].rebind_protection='0' uci commit dhcp /etc/init.d/dnsmasq restart
+Опция 3 выдает gateway. Опция 6 выдает DNS. Поэтому клиент получает не просто адрес из диапазона, а полностью правильный маршрут через OpenWrt.
+4.3. Проверить DHCP
+logread -e dnsmasq cat /tmp/dhcp.leases netstat -ulnp | grep ':67'
+Нормальная последовательность выглядит так:
+DHCPDISCOVER(eth0) DHCPOFFER(eth0) 192.168.0.181 DHCPREQUEST(eth0) DHCPACK(eth0) 192.168.0.181
+Если есть DISCOVER и OFFER, но нет REQUEST и ACK, значит OpenWrt отвечает, но клиент не принимает ответ. У меня такое было с Wi-Fi точкой доступа, когда она была не в том режиме.
+Шаг 5. Привести Wi-Fi к режиму точки доступа
+Wi-Fi-роутер в этой схеме не должен быть отдельным маршрутизатором. Он должен быть простой точкой доступа в той же сети 192.168.0.0/24.
+DHCP на Wi-Fi-роутере выключен;
+кабель из основной сети подключен в LAN-порт, не в WAN;
+Wi-Fi включен;
+клиенты Wi-Fi получают IP от OpenWrt;
+guest network и client isolation лучше выключить на время проверки. Если воткнуть кабель в WAN-порт, Wi-Fi-роутер может создать отдельную подсеть и NAT. Тогда DHCP-запросы либо не дойдут до OpenWrt, либо ответы не вернутся клиентам. Снаружи это выглядит как бесконечное “Получение IP-адреса”.
+Шаг 6. Проверить, что клиенты реально идут через OpenWrt
+После DHCP надо проверить маршрут. На Windows это делается так:
+tracert 1.1.1.1
+Первым узлом должен быть OpenWrt:
+1 <1 ms OpenWrt.lan [192.168.0.2] 2 1 ms 192.168.0.1
+Если первым узлом идет основной роутер 192.168.0.1, дальше можно не продолжать. Клиент обходит OpenWrt, значит sing-box ничего не перехватит.
+Еще полезные проверки с клиента:
+ping 1.1.1.1 nslookup ya.ru 192.168.0.2 curl -4 https://api.ipify.org
+На этом этапе интернет должен работать напрямую, без sing-box. Сначала добиваемся стабильной базы, потом добавляем туннель.
+Шаг 7. Установить пакеты и подготовить OpenWrt к работе
+Теперь переходим к пакетам. На этом этапе базовая сеть уже должна работать: OpenWrt должен пинговать интернет, резолвить домены и открываться по SSH или через консоль Proxmox.
+7.1. Проверить интернет и DNS на самом OpenWrt
+ping -c 3 1.1.1.1 nslookup downloads.openwrt.org opkg update
+Если ping по IP работает, а nslookup нет, сначала чините DNS. Если opkg update не работает, пакеты дальше не установятся. В такой ситуации нет смысла переходить к sing-box.
+7.2. Поставить LuCI и веб-морду
+В некоторых образах LuCI уже есть, в некоторых нет. Я предпочитаю явно поставить веб-морду и uhttpd, чтобы потом управлять OpenWrt через браузер.
+opkg update opkg install luci luci-ssl uhttpd uhttpd-mod-ubus /etc/init.d/uhttpd enable /etc/init.d/uhttpd restart
+После этого LuCI должна открываться по адресу:
+http://192.168.0.2/ https://192.168.0.2/
+Если веб-морда не открывается, проверьте firewall-правило для портов 80/443 из сети 192.168.0.0/24 и что uhttpd действительно слушает порты:
+netstat -lntp | grep -E ':80|:443' /etc/init.d/uhttpd status
+7.3. Русский язык для LuCI
+Русификация не обязательна, но если удобнее работать в русской веб-морде, можно поставить языковые пакеты. Не все пакеты локализации существуют для каждой версии, поэтому ошибки вида Unknown package для отдельных luci-i18n-* не всегда критичны.
+opkg install luci-i18n-base-ru luci-i18n-firewall-ru luci-i18n-uhttpd-ru # Эти пакеты ставьте только если они есть в вашей версии OpenWrt: opkg install luci-i18n-mwan3-ru luci-i18n-pbr-ru 2>/dev/null || true
+После установки язык можно выбрать в LuCI: System -> System -> Language and Style. Если часть пунктов осталась на английском, значит для конкретного приложения нет ru-пакета или он не установлен.
+7.4. Поставить базовые диагностические утилиты
+Без диагностических утилит отладка сети превращается в гадание. Минимальный набор: curl, tcpdump, ip-full, nano и сертификаты.
+opkg install curl wget nano tcpdump ca-bundle ca-certificates opkg install ip-full jq htop bind-dig opkg install nftables-json 2>/dev/null || true
+Для проверки DNS можно использовать nslookup или dig. Для проверки трафика DHCP и TCP очень пригодился tcpdump.
+tcpdump -ni eth0 'port 67 or port 68' tcpdump -ni eth0 'tcp port 443'
+7.5. Поставить sing-box
+Главный пакет для этой схемы - sing-box. В моем случае он ставился из opkg.
+opkg install sing-box which sing-box sing-box version
+Если пакет sing-box не найден, значит в вашей сборке/репозиториях его нет. Тогда варианты такие: подключить подходящий feed, использовать пакет из стороннего репозитория под вашу версию OpenWrt или собрать образ с sing-box заранее. Но в статье дальше считаем, что команда sing-box version уже работает.
+Важно: Не смешивайте без необходимости несколько больших LuCI-надстроек вроде PassWall/HomeProxy/Momo с уже собранной вручную схемой. Они могут создать свои firewall/nft-правила и затереть нашу логику redirect.
+7.6. Поставить WireGuard на будущее
+WireGuard не нужен для базового заворота локальных клиентов через sing-box, но пригодится для следующего этапа: подключать внешние сети или MikroTik через интернет.
+opkg install kmod-wireguard wireguard-tools luci-proto-wireguard
+Проверка:
+wg --version modinfo wireguard 2>/dev/null | head || true
+7.7. Поставить mwan3/pbr только если планируете несколько WAN
+Изначально хотелось попробовать mwan3 и pbr для нескольких туннелей и policy routing. В финальной рабочей схеме для TCP redirect они не обязательны. Но если дальше будете балансировать несколько WAN или VPN, их можно поставить отдельно.
+opkg install mwan3 luci-app-mwan3 pbr luci-app-pbr
+Если pbr после установки пишет, что сервис disabled или не стартует, это не страшно для текущей статьи. Мы в финальной схеме не опираемся на pbr. Важно не пытаться чинить сразу все подряд: сначала базовый gateway, потом DHCP, потом sing-box redirect.
+7.8. Зафиксировать состояние перед sing-box
+Перед переходом к Xray и прозрачному redirect полезно сохранить текущее состояние. На Proxmox можно сделать snapshot VM. На самом OpenWrt можно сохранить конфиги в отдельный каталог.
+mkdir -p /root/backup-before-singbox cp /etc/config/network /root/backup-before-singbox/network cp /etc/config/firewall /root/backup-before-singbox/firewall cp /etc/config/dhcp /root/backup-before-singbox/dhcp uci show network > /root/backup-before-singbox/network.uci.txt uci show firewall > /root/backup-before-singbox/firewall.uci.txt uci show dhcp > /root/backup-before-singbox/dhcp.uci.txt
+Это не заменяет snapshot, но помогает быстро сравнить, что поменялось после серии команд.
+Шаг 8. Сначала проверить Xray/VLESS отдельно
+Самая большая ошибка в таких схемах: сразу включить прозрачный режим и потом гадать, что именно сломалось. Поэтому сначала проверяем сам outbound через локальный SOCKS/mixed proxy.
+Временный конфиг для проверки можно сделать так:
+cat > /etc/sing-box/config-test-mixed.json <<'EOF' { "log": { "level": "info", "timestamp": true }, "inbounds": [ { "type": "mixed", "tag": "mixed-in", "listen": "127.0.0.1", "listen_port": 2080 } ], "outbounds": [ { "type": "direct", "tag": "direct" }, { "type": "vless", "tag": "amnezia-xray", "server": "<XRAY_SERVER_IP>", "server_port": 443, "uuid": "<UUID>", "flow": "xtls-rprx-vision", "tls": { "enabled": true, "server_name": "www.googletagmanager.com", "utls": { "enabled": true, "fingerprint": "chrome" }, "reality": { "enabled": true, "public_key": "<REALITY_PUBLIC_KEY>", "short_id": "<REALITY_SHORT_ID>" } }, "packet_encoding": "xudp" } ], "route": { "final": "amnezia-xray" } } EOF sing-box check -c /etc/sing-box/config-test-mixed.json sing-box run -c /etc/sing-box/config-test-mixed.json
+В другом окне проверяем:
+curl -4 https://ifconfig.me curl -4 -x socks5h://127.0.0.1:2080 https://ifconfig.me
+Первый запрос должен показать прямой IP провайдера. Второй должен показать IP туннеля. Если так и есть, Xray/VLESS живой. Дальше проблемы будут уже в DNS, firewall, nftables или правилах маршрутизации.
+Шаг 9. Почему я не оставил TUN
+Первой попыткой был TUN-режим sing-box. Он выглядит заманчиво: включаешь auto_route и auto_redirect, а sing-box сам создает интерфейс и правила.
+{ "type": "tun", "auto_route": true, "auto_redirect": true }
+Но в моей схеме это начало ломать DNS и ловить трафик самого OpenWrt. В логах появлялись подключения от 192.168.0.2. Это адрес самого OpenWrt, а не клиента.
+inbound/tun[tun-in]: inbound packet connection from 192.168.0.2
+Снаружи это выглядело как классический сетевой ад: у клиентов DNS_PROBE_FINISHED_NO_INTERNET, где-то ERR_CONNECTION_REFUSED, где-то домен резолвится, но не открывается. При этом SOCKS-проверка показывала, что сам Xray работает.
+После этого я упростил схему: не пытаться перехватывать все через TUN, а явно перенаправлять TCP-трафик клиентов на локальный порт sing-box.
+Шаг 10. Рабочий вариант: TCP redirect
+Рисунок 3. Рабочий заворот: nftables перенаправляет TCP на sing-box, а sing-box выбирает direct или туннель.
+Рабочая логика такая: клиент делает TCP-запрос, nftables на OpenWrt перенаправляет его на локальный порт 7892, sing-box принимает соединение через redirect inbound, через sniff определяет домен и применяет route rules.
+10.1. Финальный inbound sing-box
+Внутри sing-box нужен redirect inbound:
+"inbounds": [ { "type": "redirect", "tag": "redirect-in", "listen": "0.0.0.0", "listen_port": 7892, "sniff": true, "sniff_override_destination": true } ]
+sniff нужен, чтобы sing-box мог понять домен из TLS/SNI. Без этого доменные правила будут работать хуже, потому что после redirect соединение приходит как TCP-соединение на IP.
+Шаг 11. Собрать основной config.json для sing-box
+Ниже пример полного конфига. Он специально содержит плейсхолдеры. В реальном файле нужно заменить <XRAY_SERVER_IP>, , <REALITY_PUBLIC_KEY> и <REALITY_SHORT_ID> на свои значения.
+cat > /etc/sing-box/config.json <<'EOF' { "log": { "level": "info", "timestamp": true }, "inbounds": [ { "type": "redirect", "tag": "redirect-in", "listen": "0.0.0.0", "listen_port": 7892, "sniff": true, "sniff_override_destination": true } ], "outbounds": [ { "type": "direct", "tag": "direct", "bind_interface": "eth0" }, { "type": "vless", "tag": "amnezia-xray", "server": "<XRAY_SERVER_IP>", "server_port": 443, "uuid": "<UUID>", "flow": "xtls-rprx-vision", "bind_interface": "eth0", "tls": { "enabled": true, "server_name": "www.googletagmanager.com", "utls": { "enabled": true, "fingerprint": "chrome" }, "reality": { "enabled": true, "public_key": "<REALITY_PUBLIC_KEY>", "short_id": "<REALITY_SHORT_ID>" } }, "packet_encoding": "xudp" } ], "route": { "rules": [ { "ip_is_private": true, "outbound": "direct" }, { "ip_cidr": [ "<XRAY_SERVER_IP>/32", "192.168.0.1/32", "192.168.0.2/32" ], "outbound": "direct" }, { "ip_cidr": [ "91.108.4.0/22", "91.108.8.0/22", "91.108.12.0/22", "91.108.16.0/22", "91.108.20.0/22", "91.108.56.0/22", "91.105.192.0/23", "149.154.160.0/20", "185.76.151.0/24" ], "outbound": "amnezia-xray" }, { "domain_suffix": [ "ifconfig.me", "ipinfo.io", "2ip.ru", "telegram.org", "telegram.me", "telegram.dog", "telegram.space", "telegram-cdn.org", "cdn-telegram.org", "t.me", "tdesktop.com", "telegra.ph", "telesco.pe", "whatsapp.com", "whatsapp.net", "wa.me", "web.whatsapp.com", "chat.whatsapp.com", "static.whatsapp.net", "scontent.whatsapp.net", "cdn.whatsapp.net", "fbsbx.com", "fbcdn.net", "facebook.com", "facebook.net", "youtube.com", "youtu.be", "googlevideo.com", "ytimg.com", "discord.com", "discordapp.com", "discord.gg", "openai.com", "chatgpt.com", "oaistatic.com", "oaiusercontent.com" ], "outbound": "amnezia-xray" }, { "domain_keyword": [ "telegram", "telegra", "telesco", "whatsapp", "fbcdn", "facebook", "fbsbx", "youtube", "googlevideo", "discord", "openai", "chatgpt" ], "outbound": "amnezia-xray" } ], "final": "direct" } } EOF sing-box check -c /etc/sing-box/config.json
+Важно: В JSON нельзя оставлять лишние запятые после последнего элемента массива. Одна такая запятая, и sing-box не стартует.
+Шаг 12. Настроить nftables redirect
+Теперь нужно отправить TCP-трафик клиентов на порт 7892. Для этого создаем отдельный nft table. Я вынес правила в скрипт, чтобы их можно было быстро применить и быстро удалить.
+cat > /root/singbox-redirect.sh <<'EOF' #!/bin/sh nft delete table ip sbxredir 2>/dev/null nft -f - <<'NFT' table ip sbxredir { chain prerouting { type nat hook prerouting priority dstnat; policy accept; ip daddr 10.0.0.0/8 return ip daddr 172.16.0.0/12 return ip daddr 192.168.0.0/16 return ip daddr <XRAY_SERVER_IP> return udp dport { 53, 67, 68, 123 } return tcp dport 53 return ip saddr 192.168.0.0/24 tcp dport != 7892 counter redirect to :7892 } chain forward { type filter hook forward priority filter; policy accept; ip saddr 192.168.0.0/24 udp dport 443 counter reject } } NFT EOF chmod +x /root/singbox-redirect.sh /root/singbox-redirect.sh nft list table ip sbxredir
+Здесь есть несколько важных исключений:
+локальные сети не трогаем, иначе можно сломать доступ к роутеру, Proxmox, OpenWrt и NAS;
+IP Xray-сервера не трогаем, иначе sing-box может завернуть собственное соединение к серверу обратно в себя;
+DNS, DHCP и NTP не трогаем, чтобы базовая сеть оставалась стабильной;
+UDP/443 блокируем, чтобы браузеры чаще откатывались с QUIC на TCP.
+Шаг 13. Разрешить порт 7892 в firewall
+Это была одна из самых неприятных граблей. nft-счетчики уже росли, значит пакеты клиентов действительно попадали в redirect. Но браузер все равно получал ERR_CONNECTION_REFUSED.
+Причина оказалась простой: в моей схеме клиенты приходят на OpenWrt со стороны зоны wan, а у wan по умолчанию input = REJECT. Значит OpenWrt сам же резал вход на локальный порт 7892.
+uci add firewall rule uci set firewall.@rule[-1].name='Allow-SingBox-Redirect-7892' uci set firewall.@rule[-1].src='wan' uci set firewall.@rule[-1].src_ip='192.168.0.0/24' uci set firewall.@rule[-1].proto='tcp' uci set firewall.@rule[-1].dest_port='7892' uci set firewall.@rule[-1].target='ACCEPT' uci commit firewall /etc/init.d/firewall restart
+После перезапуска firewall проверьте, что nft-таблица не пропала. Если пропала, просто примените скрипт заново:
+/root/singbox-redirect.sh nft list table ip sbxredir
+Шаг 14. Запустить sing-box и проверить, что трафик попадает внутрь
+На этапе отладки лучше запускать sing-box вручную, чтобы видеть лог прямо в консоли:
+killall sing-box 2>/dev/null sing-box run -c /etc/sing-box/config.json
+В другом окне проверяем, что порт слушается:
+netstat -lntp | grep 7892 nft list table ip sbxredir
+С клиента выполняем:
+curl -4 https://ifconfig.me curl -4 https://api.ipify.org
+Если ifconfig.me добавлен в список доменов для туннеля, он должен показать IP туннеля. Если api.ipify.org не добавлен, он должен показать прямой IP провайдера.
+Это лучший простой тест, потому что он показывает именно выборочную маршрутизацию, а не режим “все через туннель”.
+Шаг 15. Понять порядок правил sing-box
+Рисунок 4. Правила sing-box читаются сверху вниз. Первое совпадение побеждает.
+В sing-box порядок правил критичен. Первое совпадение побеждает. Именно поэтому служебные адреса должны идти выше, чем широкие правила на туннель.
+Моя логика получилась такой:
+Локальные и служебные адреса идут напрямую.
+IP самого Xray-сервера идет напрямую, чтобы не получить петлю.
+Telegram IP идут через amnezia-xray.
+Домены из списка идут через amnezia-xray.
+Если ничего не совпало, final: direct.
+На этом я ошибся один раз: положил Telegram IP в direct-правило. В итоге Telegram шел напрямую, хотя ниже были правильные доменные правила. Это хороший пример, почему порядок правил нужно проверять глазами.
+Шаг 16. Оформить автозапуск
+Когда все заработало руками, можно делать сервисы. Сначала init-скрипт для sing-box:
+cat > /etc/init.d/sing-box <<'EOF' #!/bin/sh /etc/rc.common START=99 STOP=10 USE_PROCD=1 PROG=/usr/bin/sing-box CONF=/etc/sing-box/config.json start_service() { procd_open_instance procd_set_param command "$PROG" run -c "$CONF" procd_set_param respawn procd_set_param stdout 1 procd_set_param stderr 1 procd_close_instance } EOF chmod +x /etc/init.d/sing-box /etc/init.d/sing-box enable /etc/init.d/sing-box restart
+Потом отдельный init-скрипт для nft-правил:
+cat > /etc/init.d/singbox-redirect <<'EOF' #!/bin/sh /etc/rc.common START=98 STOP=10 start() { /root/singbox-redirect.sh } stop() { nft delete table ip sbxredir 2>/dev/null } restart() { stop start } EOF chmod +x /etc/init.d/singbox-redirect /etc/init.d/singbox-redirect enable /etc/init.d/singbox-redirect start
+Порядок старта важен: сначала nft-правила, потом sing-box. В моем варианте redirect стартует с START=98, а sing-box с START=99.
+Шаг 17. Проверки после перезагрузки
+После reboot надо проверить всю цепочку, а не только один сервис.
+reboot
+После загрузки:
+ps | grep sing-box | grep -v grep netstat -lntp | grep 7892 nft list table ip sbxredir /etc/init.d/dnsmasq status ip route logread -e sing
+С клиента:
+ipconfig /all tracert 1.1.1.1 nslookup ya.ru 192.168.0.2 curl -4 https://ifconfig.me curl -4 https://api.ipify.org
+Нормальный результат: первый hop в tracert это 192.168.0.2, DNS отвечает через OpenWrt, ifconfig.me показывает IP туннеля, а api.ipify.org показывает прямой IP провайдера.
+Шаг 18. Что делать, если сломалось
+18.1. Клиент не получает IP
+Сначала смотрим DHCP:
+logread -e dnsmasq cat /tmp/dhcp.leases tcpdump -ni eth0 'port 67 or port 68'
+Если в tcpdump нет DHCPDISCOVER, запросы от клиента вообще не доходят до OpenWrt. Часто проблема в Wi-Fi точке доступа, WAN-порте или client isolation. Если DISCOVER есть, OFFER есть, но REQUEST нет, клиент не принимает ответ.
+18.2. IP есть, но интернета нет
+ping 1.1.1.1 nslookup ya.ru 192.168.0.2 tracert 1.1.1.1
+Если ping 1.1.1.1 работает, а DNS нет, проблема в dnsmasq или upstream DNS. Если первый hop не OpenWrt, клиент получает не тот gateway.
+18.3. nft counter не растет
+nft list table ip sbxredir
+Если счетчик redirect не растет при curl с клиента, значит трафик не попадает под правило. Проверяем source IP клиента, gateway, flow offloading и саму таблицу nft.
+18.4. counter растет, но браузер пишет ERR_CONNECTION_REFUSED
+Это почти точно firewall. Трафик редиректится на 7892, но OpenWrt не разрешает вход на этот локальный порт со стороны wan-зоны. Проверяем правило Allow-SingBox-Redirect-7892.
+18.5. Все идет напрямую, хотя домен есть в списке
+Проверяем порядок route rules в sing-box. Если выше стоит более широкое direct-правило, оно победит. Так я случайно отправил Telegram IP напрямую.
+18.6. Все легло после экспериментов
+На этот случай должен быть быстрый откат.
+Быстрый откат
+/etc/init.d/sing-box stop /etc/init.d/singbox-redirect stop /etc/init.d/firewall restart /etc/init.d/dnsmasq restart
+Или вручную:
+killall sing-box 2>/dev/null nft delete table ip sbxredir 2>/dev/null /etc/init.d/firewall restart /etc/init.d/dnsmasq restart
+После этого клиенты снова идут напрямую через OpenWrt. Это не откатывает DHCP, но убирает transparent proxy и redirect.
+Что получилось
+В финале получилась достаточно понятная схема. OpenWrt раздает DHCP, является DNS и gateway для клиентов. nftables перенаправляет TCP-трафик клиентов на sing-box. sing-box определяет домен или IP и решает, отправить соединение напрямую или через amnezia-xray.
+Главный плюс: VPN больше не нужно настраивать на каждом устройстве. Телефон, ноутбук, телевизор или гостевой клиент просто подключаются к сети. Если их трафик попадает под правила, он идет через туннель. Если не попадает, он идет напрямую.
+Второй плюс: обычный трафик не гоняется через удаленный сервер. Это экономит ресурс туннеля и снижает задержки для всего, что не требует обходного маршрута.
+Третий плюс: правила централизованы. Добавить домен или IP можно в одном месте, на OpenWrt, а не бегать по всем устройствам.
+Что осталось неидеальным
+Текущая схема хорошо работает для TCP: браузер, Telegram Web, WhatsApp Web, Discord, YouTube, OpenAI и часть desktop-приложений.
+Но мобильные приложения и звонки могут использовать UDP: Telegram calls, WhatsApp calls, QUIC, STUN/TURN. Частично помогает блокировка UDP/443, потому что клиенты откатываются на TCP. Но для полноценной поддержки UDP нужен следующий этап: UDP TProxy или заворот всего трафика конкретного устройства через туннель.
+Еще один компромисс связан с WhatsApp. Telegram имеет более понятные IP-диапазоны, а WhatsApp активно использует инфраструктуру Meta и CDN. Чем шире список доменов Meta, тем больше шансов поймать весь WhatsApp, но тем больше соседнего трафика тоже уйдет через туннель.
+Отдельный следующий этап: подключение внешнего MikroTik через WireGuard site-to-site, чтобы удаленная сеть тоже ходила через этот домашний шлюз. Но это уже отдельная история, потому что там добавляются peer keys, allowed IP, маршруты и проброс UDP-порта до OpenWrt.
+Выводы
+Сначала надо убедиться, что клиенты действительно ходят через OpenWrt. Если первый hop не 192.168.0.2, дальше можно не продолжать.
+Outbound надо проверять отдельно. SOCKS-тест через curl быстро показывает, работает ли Xray/VLESS Reality сам по себе.
+TUN не всегда лучший вариант. В моей схеме он ловил трафик самого OpenWrt и ломал DNS. TCP redirect оказался проще и стабильнее.
+Firewall может сломать все даже тогда, когда nft-счетчики растут. Если redirect ведет на локальный порт, этот порт должен быть разрешен для нужной зоны.
+Порядок правил в sing-box критичен. Первое совпадение побеждает.
+Любые сетевые эксперименты надо делать с планом отката. Snapshot в Proxmox и команда удаления nft-таблицы спасают время.
+Итог
+Началось все с бытовой потребности: надоело держать VPN-клиенты на каждом устройстве. Хотелось, чтобы сеть сама понимала, что куда отправлять. Дома уже был Proxmox, поэтому OpenWrt в виртуалке оказался удобной точкой для эксперимента.
+По пути пришлось пройти через DHCP, DNS, firewall, nftables, sing-box, Xray/VLESS Reality, неудачный TUN, неудачный TProxy, ERR_CONNECTION_REFUSED и DNS_PROBE_FINISHED_NO_INTERNET. Но финальная схема оказалась достаточно простой: OpenWrt как шлюз, nftables redirect, sing-box на 7892, нужные домены через туннель, все остальное напрямую.
+Когда после всех этих проверок ifconfig.me показывает IP туннеля, а api.ipify.org показывает прямой IP провайдера, это действительно приятный момент. Потому что теперь VPN живет не на каждом устройстве отдельно, а в одном понятном месте: на домашнем шлюзе.

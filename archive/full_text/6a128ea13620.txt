@@ -1,0 +1,12 @@
+Computer Science > Robotics
+Title:HRDX: A Large-Scale Vector HD-Map Dataset
+View PDF HTML (experimental)Abstract:Reliable autonomous driving requires vectorized HD maps that are geometrically accurate, semantically rich, and scalable to long-horizon driving. However, existing public HD map datasets are limited in scale, provide sparse semantic attributes, and lack modalities such as aerial imagery that could enable new research directions. We present HRDX, a large-scale dataset for vector HD-map construction, spanning about 40 hours (1,400 km) of minimally overlapping drives, which is several times larger than prior public HD map datasets. Data is captured using six synchronized surround cameras, a 128-beam LiDAR, and centimeter-level RTK GNSS/IMU, and is further complemented by precisely aligned aerial orthoimagery. Annotations cover 10 vector map classes, complemented with over 20 semantic and topological attributes. To evaluate this richer ontology, we introduce the Composite Score (CS) to jointly assess geometric fidelity and attribute correctness. Benchmark experiments show that HRDX's scale improves online vector-map construction, and that aligned aerial imagery provides a useful structural prior: using aerial imagery at training and/or inference improves geometric map quality, while aerial-augmented teachers can transfer part of this benefit to camera-only students without increasing inference-time sensor requirements. HRDX is intended to support reproducible research on large-scale HD-map learning, multimodal BEV fusion, and training-time privileged information. HRDX dataset and benchmarks are available at this https URL
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

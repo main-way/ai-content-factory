@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:Scalable Batch Bayesian Optimization Via Subspace Acquisition Functions
+View PDF HTML (experimental)Abstract:Extending Bayesian optimization to batch evaluation can enable the designer to make the most use of parallel computing technology. However, most of current batch approaches do not scale well with the batch size. That is, their optimization efficiencies often deteriorate as the batch size increases. To address this issue, we propose a simple and efficient approach to extend Bayesian optimization to large-scale batch evaluation in this work. Different from existing batch approaches, the idea of the new approach is to draw a batch of axis-aligned subspaces of the original problem and select one point from each subspace using existing acquisition functions. Numerical experiments show that our proposed approach speedups the convergence significantly when compared with the sequential Bayesian optimization algorithm, and performs very competitively when compared with ten batch Bayesian optimization algorithms. The implementation of our proposed approach is available at this https URL.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

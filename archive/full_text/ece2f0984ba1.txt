@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Generalized Conformal Predictive Systems Under Distributional Shifts
+View PDFAbstract:Conformal predictive systems (CPS) output calibrated bands of CDFs under exchangeability. We extend generalized CPS to non-exchangeable settings by encoding distributional shifts through observation-specific permutation weights. This yields shift-aware predictive systems that remain valid whenever the test point is, conditionally on the unordered sample, a weighted draw from the observed atoms. Since such weights are typically estimated, we introduce weight-uncertainty boxes and construct robust CPS envelopes with finite-sample or asymptotic confidence guarantees. We derive efficient computation for conformity-measure CPS, conformal binning, and conformal isotonic distributional regression. Experiments under covariate shift and feedback-driven biomolecular design show calibrated predictive bands that widen under stronger shifts and tighten as sample size increases.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

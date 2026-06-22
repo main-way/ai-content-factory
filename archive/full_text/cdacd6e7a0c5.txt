@@ -1,0 +1,17 @@
+Computer Science > Artificial Intelligence
+Title:Actionable Interpretability Must Be Defined in Terms of Symmetries
+View PDF HTML (experimental)Abstract:This paper argues that interpretability research in Artificial Intelligence (AI) is fundamentally ill-posed as existing definitions of interpretability fail to describe how interpretability can be formally tested or designed for. We posit that actionable definitions of interpretability must be formulated in terms of *symmetries* that inform model design and lead to testable conditions. Under a probabilistic view, we hypothesise that four symmetries (inference equivariance, information invariance, concept-closure invariance, and structural invariance) suffice to (i) formalise interpretable models as a subclass of probabilistic models, (ii) yield a unified formulation of interpretable inference (e.g., alignment, interventions, and counterfactuals) as a form of Bayesian inversion, and (iii) provide a formal framework to verify compliance with safety standards and regulations.
+Submission history
+From: Pietro Barbiero [view email][v1] Mon, 19 Jan 2026 10:10:17 UTC (1,523 KB)
+[v2] Wed, 28 Jan 2026 16:57:03 UTC (1,527 KB)
+[v3] Thu, 29 Jan 2026 07:12:49 UTC (1,527 KB)
+[v4] Fri, 12 Jun 2026 13:58:10 UTC (1,527 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

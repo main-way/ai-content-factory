@@ -1,0 +1,128 @@
+Привет, Хабр. Меня зовут Василий Щитов. Я старший инженер в команде CI-инфраструктуры ВКонтакте.
+Когда в компании десятки проектов и сотни сборок, ручное управление конфигурациями через UI быстро превращается в хаос. Внести однотипное изменение во все пайплайны, отследить историю правок или быстро развернуть окружение на новом инстансе TeamCity становится нетривиальной задачей. Можно превратить этот хаос в упорядоченную структуру, если описать конфигурацию как код с помощью Kotlin DSL. Но далеко не все понимают, как работать с Kotlin DSL для решения своих задач.
+Я расскажу об основных подходах и паттернах, которые мы применяем, чтобы облегчить жизнь при работе с TeamCity.
+TeamCity и два пути к CI/CD
+TeamCity — CI/CD-платформа, которая позволяет автоматизировать жизненный цикл программного продукта, начиная от компиляции и тестов и заканчивая развёртыванием готового решения.
+Управлять конфигурациями в TeamCity можно двумя способами:
+Через графический интерфейс (UI). Такой способ интуитивно понятен, позволяет быстро запустить первую сборку. Отлично подходит для знакомства с системой или настройки небольших уникальных задач
+Через Kotlin DSL — с помощью описания всей конфигурации как кода. Пайплайны, параметры, шаги и связи между ними описываются в текстовых файлах на языке Kotlin. Файлы хранятся в системе контроля версий вместе с исходным кодом приложения
+У обоих подходов своя область применения. Например, UI удобен для точечных изменений и быстрого старта. Но когда проектов становится больше, а процессы усложняются, его возможностей начинает не хватать. Масштабные изменения требуют рутинной ручной работы, а откатить настройку или перенести конфигурацию между проектами становится сложно.
+Для решения этих задач команды выбирают второй путь — Kotlin DSL. Этот подход сложнее, у него выше порог входа. Но он даёт больше возможностей, о которых я и расскажу.
+Подключение DSL к проекту
+Как основу для примера возьмём root-пространство — это самый простой уровень иерархии в TeamCity, который подходит для демонстрации базовой структуры.
+Вот простой пример с конфигурацией проектов:
+project { buildType(Build) } object Build : BuildType({ name = "Build" steps { script { scriptContent = "echo ‘Hello, World!’" } } })
+Здесь несколько основных компонентов конструкции:
+project { ... }
+— корневая сущность, определяющая весь проектbuildType(Build)
+— ссылка на объект сборки, созданный нижеobject Build: BuildType({... })
+— самоопределение объекта сборки, где указывается его название и пошаговые инструкцииsteps {... }
+— блок, содержащий шаги сборки. В примере шаг один — это скрипт с выводом текста Hello, World!
+Как видим, для работы с DSL достаточно уметь использовать несколько базовых сущностей. Оперируя ими, вы сможете строить сложные конструкции для управления конфигурацией.
+Но как только таких конструкций становится больше, возникают трудности. Основные из них:
+Дублирование кода. Даже при использовании шаблонов (templates) часто приходится копировать однотипные фрагменты кода. Нужно версионировать сами шаблоны, что усложняет процесс
+templates(UiSmokeVaultProperties, UiSmokeUniversalV4Jdk17, UiSmokePlaywrightStep)
+Сложность поддержки. Когда шаблонов много, становится трудно следить за последовательностью шагов. Нужно вручную контролировать их порядок, используя специальные списки (например, stepsOrder)
+stepsOrder = arrayListOf("HealthCheck", "CheckTriggerBy", "PrepareStep", "Allure.Download.Custom.Version", "Check_variable", "GitCheckoutTag", "DownloadXML", "Build", "PwTests", "Allure", "RerunFailedTests", "Verify_sprinter", "CleanUpTd")
+Отсутствие абстракций. Платформа не позволяет наследовать типы сборок (BuildType) или работать с шаблонами как с полноценными классами Kotlin, что ограничивает гибкость
+Эти вопросы можно решить, например, создав слой абстракций с помощью общих функций (common functions) или функций-расширений. Это позволяет инкапсулировать сложную или повторяющуюся логику в одну переиспользуемую функцию.
+Например, настройку шага генерации отчёта Allure с указанием версии JDK можно реализовать так:
+fun BuildSteps.allureReportGeneratorRunnerJDK( targetJDKHome: String, resultDirectory: String = "build/allure-results", reportPathPrefix: String = "build/allure-report", isEnabled: Boolean = true, allurePath: String = "%teamcity.tool.allure.DEFAULT%", init: BuildStep.() -> Unit = {} ) { allureReportGeneratorRunner(resultDirectory, reportPathPrefix, isEnabled) { params.apply { param("target.jdk.home", targetJDKHome) param("allure.version", allurePath) } init(this) } }
+После этого функцию достаточно импортировать и использовать внутри конфигурации buildType:
+import _Self.functionExtensions.buildSteps.allureReportGeneratorRunnerJDK … steps { allureReportGeneratorRunnerJDK("%env.JAVA_HOME%", "%env.allure.results.folder%", "%env.allure.report.folder%") }
+Такой подход эффективно решает сразу несколько задач:
+Уменьшение дублирования. Вся логика настройки Allure и JDK собрана в едином блоке. Если требования изменятся, править нужно будет только в этой функции
+Стандартизация. Все проекты в компании могут использовать единый проверенный подход к генерации отчётов, что снижает ошибки
+Ускорение масштабирования. Создать новую сборку с нужными функциями можно вызовом одной строки кода — не нужно копировать шаги вручную
+Работа с VCS
+Подключение к системе контроля версий (VCS) — это фундамент любого пайплайна. Но ручное подключение VCS Root в каждом проекте — это гарантированный путь к дублированию и ошибкам.
+Чтобы избежать этого, подключение к VCS лучше выносить в отдельный объект и после переиспользовать во всём проекте.
+Пример реализации:
+package _Self.vcsRoots import _Self.Secrets import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot object Gitlab : GitVcsRoot({ name = "git@%gitlab.host%" url = "git@%gitlab.host%:%gitlab.repo%.git" branch = "%gitlab.branch.default%" branchSpec = "%gitlab.branchSpec%" authMethod = uploadedKey { uploadedKey = Secrets.Gitlab.UPLOADED_KEY } })
+И в шаблоне или buildType
+:
+... params { text("gitlab.host", "gitlab.host", display = ParameterDisplay.HIDDEN) text("gitlab.repo", "sandbox/repo1", display = ParameterDisplay.HIDDEN) text("gitlab.branch.default", "master", display = ParameterDisplay.HIDDEN) text("gitlab.branchSpec", "refs/heads/*", display = ParameterDisplay.HIDDEN) } vcs { root(GitlabCorp) cleanCheckout = true } ...
+У такой реализации есть преимущества:
+Централизованное управление. Все параметры подключения собраны в одном объекте. Если нужно изменить адрес репозитория, достаточно только одной правки
+Безопасность. Аутентификация (например, SSH-ключи) выносится в отдельный объект Secrets
+Переиспользование и версионирование DSL
+Возможности TeamCity DSL выходят за рамки простого описания пайплайнов. Этот код можно:
+Хранить в системе контроля версий (VCS). Это позволяет версионировать пайплайны вместе с исходным кодом приложения, отслеживать историю изменений и проводить код-ревью
+Подключать к разным инсталляциям TeamCity. Один и тот же код DSL может работать на нескольких серверах. Это особенно полезно при миграции с одного хоста на другой или для поддержки нескольких контуров с единым стандартом — например, stage и prod
+Версионировать. Как и у любого другого кода, у конфигурации CI/CD могут быть версии. Это позволяет легко откатиться к рабочей конфигурации, если какое-либо изменение было неудачным
+Для реализации такой логики в коде можно использовать условные операторы, которые определяют, на каком сервере или в каком контуре выполняется сборка.
+Пример с условной логикой:
+fun BuildSteps.uploadToVkComRepo( fileMask: String, repositoryPath: String, token: String, init: ScriptBuildStep.() -> Unit = { } ) { if (DslContext.serverUrl == SERVER1) { uploadToNexus(fileMask, "${Secrets.Nexus.VKCOM}/$repositoryPath", token) { init(this) } } else { uploadToArtifactoryMVK(fileMask, "generic-vkcom/$repositoryPath", token) { init(this) } } }
+Хранение секретов
+Для хранения секретов (паролей, токенов, ключей) можно использовать встроенный Token Management TeamCity или внешние системы оркестрации секретов, например HashiCorp Vault.
+Встроенная система удобна для небольших проектов, но для крупных компаний её возможностей недостаточно. Основные проблемы:
+нет версионирования секретов
+сложности с разграничением доступа
+неудобная ротация
+Подключаемся через настройки DSL.
+Используем в конфигурациях. Как и в случае с шагами сборки или VCS, создаём общую функцию, которая скрывает детали реализации и позволяет поддерживать несколько инсталляций Vault.
+fun getVaultString(path: String, vaultId: String = Const.vaultConnectionID): String { return if (DslContext.serverUrl == SERVER1) { "%vault:$vaultId:$path%" } else { "%vault:$path%" } }
+Вызывается она так:
+password("env.testDataToken", getVaultString("secret/data/ci/services/internal/testdata!/testDataToken") )
+Такой подход централизует управление чувствительными данными и обеспечивает безопасный доступ к ним из пайплайнов.
+Публикация статуса билда
+Публикация статуса билда в систему контроля версий (например, GitLab) — это ключевой элемент прозрачности в процессе разработки. Когда разработчик открывает merge request, он хочет сразу видеть, прошли ли его изменения все проверки. Commit Status Publisher — это стандартная функция TeamCity, которая отвечает именно за это: она отображает статус сборки (успех, ошибка, в процессе) прямо в интерфейсе VCS.
+Если вы используете несколько инсталляций VCS или разные серверы, нужно дополнительно настраивать стандартный плагин. Это также можно упростить с помощью функции-расширения, которая инкапсулирует всю логику подключения.
+Пример реализации:
+package _Self.functionExtensions.buildFeatures import jetbrains.buildServer.configs.kotlin.BuildFeatures import jetbrains.buildServer.configs.kotlin.buildFeatures.CommitStatusPublisher import jetbrains.buildServer.configs.kotlin.buildFeatures.commitStatusPublisher /** * Подключить commitStatusPublisher для gitlab.host1 * * @param enabled определяет включённость фичи. По умолчанию — true */ fun BuildFeatures.gitlabHost1CommitStatusPublisher(enabled: Boolean = true, accessToken: String = "credentialsJSON:ffffb7e-903b-ffff-ffff-b75d953f206a", init: CommitStatusPublisher.() -> Unit = {}) { commitStatusPublisher { id = "commitStatusPublisherGitLabHost1" publisher = gitlab { gitlabApiUrl = "https://gitlab.host1/api/v4" this.accessToken = accessToken } this.enabled = enabled init(this) } }
+Чтобы подключить эту функцию к конкретному типу сборки (BuildType), достаточно добавить её вызов в блок features. Например, вот так можно связать публикацию статуса с определённым VCS-корнем:
+features { gitlabHost1CommitStatusPublisher() { vcsRootExtId = "${VcsRootVkcomMergeRequests.id}" }
+Отмечу, что в билд-фиче нельзя использовать vault
+или переменную %access.token%
+в accessToken
+.
+Pull Requests
+Интегрировать TeamCity с системами контроля версий, такими как GitLab, можно при помощи Pull Requests Provider. Он позволяет автоматически запускать сборки при создании или обновлении merge request (в терминологии GitLab) — это стандарт для современных процессов разработки.
+Как и в случае с публикацией статуса, для удобства и переиспользования создаётся функция-расширение, которая инкапсулирует логику подключения к конкретному инстансу GitLab.
+Пример реализации:
+package _Self.functionExtensions.buildFeatures import jetbrains.buildServer.configs.kotlin.BuildFeatures import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests import jetbrains.buildServer.configs.kotlin.buildFeatures.pullRequests /** * Подключить pullRequests для gitlab.host1 * * @param vcsRootExternalId ID vcsRoot, из которого вытаскивать информацию о MR. Если ничего или null — будет использован первый по порядку vcsRoot */ fun BuildFeatures.gitlabHost1PullRequestsProvider(vcsRootExternalId: String? = null, init: PullRequests.Provider.Gitlab.() -> Unit = {}) { pullRequests { id = "pullRequestsHost1" vcsRootExtId = vcsRootExternalId provider = gitlab { serverUrl = "https://gitlab.host1" authType = token { token = "credentialsJSON:648ffb7e-903b-4307-9233-b75d953f206a" } filterTargetBranch = "+:refs/heads/master" init(this) } } }
+Чтобы подключить эту функцию, достаточно добавить её вызов в блок features
+внутри buildType
+. Например, вот так можно настроить фильтрацию веток для merge requests:
+features { gitlabHost1PullRequestsProvider(VcsRootVkcomMergeRequests.id.toString()) { filterSourceBranch = "+:refs/heads/*" filterTargetBranch = """ +:refs/heads/master """.trimIndent() } ...
+После подключения провайдера становятся доступны специальные system properties (параметры сборки), которые можно использовать в скриптах или других шагах:
+teamcity.pullRequest.number
+teamcity.pullRequest.source.branch
+teamcity.pullRequest.target.branch
+Но у этого подхода есть недостаток — он приводит к дублированию токена доступа: тот же credentialsJSON
+приходится указывать и в Commit Status Publisher.
+Проверка DSL
+Перед отправкой нового коммита в мастер желательно проверить DSL, чтобы избежать ошибок в конфигурации. Это можно сделать как локально, так и с помощью отдельного CI-пайплайна.
+Локальная проверка
+Для проверки конфигурации на своей машине можно использовать Maven-плагин. Для этого выполните команду в каталоге с pom.xml
+:
+mvn teamcity-configs:generate -f pom.xml
+Эта команда сгенерирует конфигурацию на основе DSL-кода и позволит увидеть возможные ошибки без загрузки в TeamCity.
+Проверка в CI
+Также можно настроить автоматическую проверку в самом CI/CD-пайплайне. Для этого используйте команду:
+mvn clean verify -f .teamcity/pom.xml
+Запуск этой проверки на этапе merge request позволяет отлавливать ошибки до того, как они попадут в основную ветку.
+Работа с агентами
+У менеджмента агентов в TeamCity есть особенности. В отличие от многих других конфигураций, управление самим парком агентов (их регистрация, удаление) происходит через UI или API, но не через DSL.
+Это означает, что полностью описать инфраструктуру агентов как код сейчас невозможно. Например, нельзя из DSL создать нового агента или настроить для него автоскейлинг. Привязывать уже созданных агентов к пулам также нужно вручную.
+Но с помощью DSL можно управлять требованиями к агентам (Agent Requirements). Это позволяет логически распределять задачи, указывая, на каких именно агентах они должны выполняться.
+Для этого создаётся функция-расширение. Например, она может включать или исключать агентов из определённого облака.
+Пример реализации:
+package _Self.functionExtensions.buildFeatures import jetbrains.buildServer.configs.kotlin.BuildType /*** * Управляет Agent Requirements * * cloudAgent() // Включить агентов OneCloud * cloudAgent(false) // Исключить агентов OneCloud */ fun BuildType.cloudAgent(include: Boolean = true, pattern: String = "") { requirements { if (pattern.isNotEmpty()) { matches("system.agent.name", pattern) } else { if (include) { contains("system.agent.name", "cloud") } else { doesNotContain("system.agent.name", "cloud") } } } }
+Также можно добавить слой абстракции над именем хоста агента.
+enum class Agents(val value: String) { stagingClodStatsCsr("4.tc-agent-virt.teamcity-agent-vital.cloud.host") // ... другие агенты } fun BuildType.assignVkcomAgent(type: Agents) { requirements { when (type) { Agents.stagingClodStatsCsr -> { matches("system.agent.name", Agents.stagingClodStatsCsr.value ) } } } }
+Вызов в конфигурации:
+enum class Agents(val value: String) { stagingClodStatsCsr("4.tc-agent-virt.teamcity-agent-vital.cloud.host") … assignVkcomAgent(Agents.stagingClodStatsCsr)
+RBAC
+У управления доступом (RBAC) в TeamCity, как и у менеджмента агентов, есть ограничения в контексте DSL. Сейчас нет возможности описывать права доступа и роли в коде конфигурации, а у встроенной системы ролей не всегда достаточная гранулярность для сложных корпоративных требований.
+Поэтому выдача прав и аудит доступов реализуются с помощью сторонних инструментов. Основной способ — использование TeamCity REST API. Это позволяет автоматизировать рутинные операции по выдаче прав на проекты.
+Пример с использованием curl
+:
+curl -X PUT \ "http://teamcity/app/rest/projects/id:MyProject/permissions" \ -d '{"role": "PROJECT_DEVELOPER", "user": "john"}'
+На выходе получаем список пермиссий на каждый sub-project с репозиторием
+python teamcity_rbac.py ... dump --output permissions.json
+Что в итоге
+Работа с TeamCity DSL — шаг к реализации концепции Infrastructure as Code для процессов CI/CD. У этого подхода есть преимущества, но также он сопряжён со сложностями и ограничениями.
+Здесь есть версионирование пайплайнов, которые затем можно переиспользовать в разных проектах. Как следствие, повышается масштабируемость процессов. Но такой подход требует самостоятельной разработки и поддержки слоя абстракций. Кроме того, у платформы есть ограничения, из-за которых не все аспекты TeamCity можно описать через DSL — например, управление агентами или настройка прав доступа (RBAC).
+Но если правильно проектировать код на DSL и знать обходные пути, можно построить управляемую и гибкую систему автоматизации, которая будет развиваться вместе с проектом.
+А вы уже пробовали работать с TeamCity DSL? Делитесь в комментариях!

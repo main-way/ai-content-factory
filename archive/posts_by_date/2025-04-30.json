@@ -1,0 +1,22 @@
+{
+  "date": "2025-04-30",
+  "count": 1,
+  "posts": [
+    {
+      "id": "98e41d3a602e",
+      "title": "DeepSeek Unveils DeepSeek-Prover-V2: Advancing Neural Theorem Proving with Recursive Proof Search and a New Benchmark",
+      "url": "https://syncedreview.com/2025/04/30/deepseek-unveils-deepseek-prover-v2-advancing-neural-theorem-proving-with-recursive-proof-search-and-a-new-benchmark/",
+      "source": "Synced Review",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2025-04-30T15:46:20+00:00",
+      "summary": "DeepSeek AI releases DeepSeek-Prover-V2, an open-source LLM for Lean 4 theorem proving. It uses recursive proof search with DeepSeek-V3 for training data and reinforcement learning, achieving top results on MiniF2F. The post DeepSeek Unveils DeepSeek-Prover-V2: Advancing Neural Theorem Proving with Recursive Proof Search and a New Benchmark first appeared on Synced .",
+      "author": "Synced",
+      "tags": [
+        "Popular"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

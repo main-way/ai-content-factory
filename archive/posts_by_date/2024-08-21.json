@@ -1,0 +1,41 @@
+{
+  "date": "2024-08-21",
+  "count": 2,
+  "posts": [
+    {
+      "id": "78d2bfed8010",
+      "title": "How to Fine-Tune a FLUX Model in under an hour with AI Toolkit and a DigitalOcean H100 GPU",
+      "url": "https://blog.paperspace.com/fine-tune-flux-schnell-dev/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-21T22:31:19+00:00",
+      "summary": "in this tutorial, we show the step by step process for fine-tuning a FLUX.1 model on an NVIDIA GPU on the cloud.",
+      "author": "James Skelton",
+      "tags": [
+        "Stable Diffusion",
+        "Computer Vision"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "55a76bb59fe7",
+      "title": "Промо-предложение от наших партнёров на фоне ухода GetResponse",
+      "url": "https://roem.ru/21-08-2024/302972/promo-predlozhenie-ot-nashih-partnyorov/?from=roem_rss",
+      "source": "Roem.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2024-08-21T09:44:52+00:00",
+      "summary": "Недавно мы писали о том, что сервис рассылок GetResponse решил уйти из России буквально одним днём. Для тех, кто столкнулся с этой проблемой (и не только для них) этот материал. ? Sendsay — это российская омниканальная CDP для коммуникации с клиентами.",
+      "author": "Sendsay",
+      "tags": [
+        "Нам пишут",
+        "Sendsay",
+        "промо"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:VidCRAFT3: Camera, Object, and Lighting Control for Image-to-Video Generation
+View PDF HTML (experimental)Abstract:Controllable image-to-video (I2V) generation transforms a reference image into a coherent video guided by user-specified control signals. While precise control over camera motion, object motion, and lighting is essential for high-fidelity creation, existing methods often treat these factors independently. This overlooks the physical coupling among viewpoint, geometry, and illumination in dynamic scenes, leading to visual inconsistencies such as mismatched shadows and perspective drift under simultaneous changes. We present VidCRAFT3, a unified and flexible I2V framework that explicitly models cross-factor interactions among geometry, motion, and illumination, enabling both independent and joint control over camera motion, object motion, and lighting direction. Image2Cloud provides explicit 3D geometric priors for accurate camera motion control. ObjMotionNet encodes sparse object trajectories into multi-scale motion features to guide realistic object motion. A Spatial Triple-Attention Transformer integrates lighting direction through lighting cross-attention for consistent relighting. To address the scarcity of jointly annotated data, we construct the VideoLightingDirection (VLD) dataset with accurate per-frame lighting direction annotations, and introduce a three-stage progressive training strategy that enables robust learning without fully joint annotations. Extensive experiments demonstrate that VidCRAFT3 achieves state-of-the-art performance in control precision and visual coherence across diverse scenarios.
+Submission history
+From: Sixiao Zheng [view email][v1] Tue, 11 Feb 2025 13:11:59 UTC (30,544 KB) (withdrawn)
+[v2] Wed, 12 Feb 2025 07:35:56 UTC (30,544 KB)
+[v3] Wed, 2 Apr 2025 03:56:07 UTC (39,944 KB)
+[v4] Fri, 26 Sep 2025 05:44:52 UTC (46,841 KB)
+[v5] Wed, 17 Jun 2026 07:15:21 UTC (61,513 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

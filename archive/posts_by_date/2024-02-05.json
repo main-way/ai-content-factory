@@ -1,0 +1,20 @@
+{
+  "date": "2024-02-05",
+  "count": 1,
+  "posts": [
+    {
+      "id": "79c273e223be",
+      "title": "Thinking about High-Quality Human Data",
+      "url": "https://lilianweng.github.io/posts/2024-02-05-human-data-quality/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2024-02-05T00:00:00+00:00",
+      "summary": "[Special thank you to Ian Kivlichan for many useful pointers (E.g. the 100+ year old Nature paper &ldquo;Vox populi&rdquo;) and nice feedback. 🙏 ] High-quality data is the fuel for modern data deep learning model training. Most of the task-specific labeled data comes from human annotation, such as classification task or RLHF labeling (which can be constructed as classification format) for LLM alignment training. Lots of ML techniques in the post can help with data quality, but fundamentally human data collection involves attention to details and careful execution. The community knows the…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

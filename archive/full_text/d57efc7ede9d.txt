@@ -1,0 +1,12 @@
+Statistics > Methodology
+Title:Computationally tractable robust differentially private mean estimation
+View PDF HTML (experimental)Abstract:We develop a new, differentially private mean estimator called the balloon mean. The main features of the balloon mean are that it is computationally tractable and enjoys robustness to outlying observations. It is based on an iterative clipping procedure over expanding Mahalanobis balls, or ``balloons.'' The method satisfies zero-concentrated differential privacy and depends on a small number of interpretable tuning parameters. We provide theoretical guarantees under heavy-tailed and contaminated elliptical models, characterizing its statistical performance and robustness to outliers. Extensive simulations demonstrate that the balloon mean is robust to heavy-tailed and contaminated data, and outperforms existing differentially private mean estimators in contaminated settings.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,13 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:The Need for Neural ISP in the Small-Pixel Era: How Shrinking Pixels Push Optics to the Limit and Neural Restoration Pushes Back
+View PDF HTML (experimental)Abstract:Smartphone telephoto cameras are approaching a "telephoto physics wall": as pixel pitches shrink toward sub-0.5 micron, the optics remain limited by geometric aberrations, leading to diminishing returns on resolution. Traditional Image Signal Processors (ISPs) cannot eliminate these aberrations, because they operate through local, stage-wise processing with no explicit model of the underlying point spread function (PSF). We demonstrate how a learning-based Neural ISP for image restoration, trained on the underlying degradations, inverts what stage-wise pipelines cannot, turning small-pixel designs into a net advantage.
+We investigate this through a controlled simulation of a representative telephoto module, evaluating five configurations (0.35--0.75 micron pixel pitch). The aperture is scaled proportionally to keep per-pixel SNR and diffraction spot size fixed, thereby isolating geometric aberration and spatial sampling. While the traditional ISP improves only modestly with smaller pixels, the Neural ISP scales substantially: at 0.35 micron} it reaches 745 cycles/mm MTF50 (vertical), a 2.5--3x resolution improvement over the traditional ISP, and LPIPS improves significantly from 0.244 to 0.151 while traditional results stay comparatively flat. In a low-SNR extension (15 dB per-frame bursts at 0.35 micron), a multi-frame Neural ISP recovers performance close to the bright-light single-frame baseline, whereas a multi-frame traditional ISP shows no meaningful improvement -- indicating that traditional pipelines at small pixels are bottlenecked by uncorrected PSF blur rather than by noise. These results point to a design philosophy in which Neural ISPs enable high-resolution telephoto modules by correcting residual optical aberrations rather than requiring increasingly complex optics.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

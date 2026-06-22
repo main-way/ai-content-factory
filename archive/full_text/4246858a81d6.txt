@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Semantic Segmentation of Node and Edge Diagrams for Assistive Technology
+View PDF HTML (experimental)Abstract:In this paper, we present a novel set of related models for semantic segmentation of node-link diagrams. These diagrams are frequently used to represent mathematical graphs, relationships between concepts, and flowcharts. Such diagrams are difficult to access non-visually; while some assistive interfaces have been designed for node-link diagrams, they rely upon a machine-readable representation of the diagram, whereas such diagrams will generally be made available as bitmap images. Our compact deep learning models show excellent quantitative and qualitative performance on a large synthetic dataset of node-link diagrams, reaching per-pixel accuracy over 93\%.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

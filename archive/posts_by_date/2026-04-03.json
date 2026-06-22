@@ -1,0 +1,34 @@
+{
+  "date": "2026-04-03",
+  "count": 2,
+  "posts": [
+    {
+      "id": "1aff884e34e6",
+      "title": "Highlights from my conversation about agentic engineering on Lenny’s Podcast",
+      "url": "https://simonw.substack.com/p/highlights-from-my-conversation-about",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-03T03:49:08+00:00",
+      "summary": "Plus Mr. Chatterbox the Victorian LLM, and Google's excellent new Gemma 4",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "589a7dd06495",
+      "title": "Issue #38",
+      "url": "http://augmentedcoding.dev/issue-38/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-03T00:00:00+00:00",
+      "summary": "Anatomy of the .claude/ Folder DAILYDODEOFDS.COM Last week I shared a Claude Code Cheat Sheet that I am finding very useful. Claude Code, like many chat interfaces, has a discoverability issue (something I wrote about just over a year ago ), it is far from obvious what it is capable of, and in the AI-age we are even less likely to read the manual. This blog post is a great complement to the Cheat Sheet, taking a really deep dive into how your Claude Code configuration is encoded via the various files and folder structures. I’m guilty of treating the .claude folder as a black box, just post…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

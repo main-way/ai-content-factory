@@ -1,0 +1,48 @@
+{
+  "date": "2026-02-04",
+  "count": 2,
+  "posts": [
+    {
+      "id": "1eabfc9fe70e",
+      "title": "The latest AI news we announced in January",
+      "url": "https://blog.google/innovation-and-ai/products/google-ai-updates-january-2026/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-02-04T16:55:00+00:00",
+      "summary": "mp4 showing a carousel of images including a card reading \"Help that's made for you\"",
+      "author": "Keyword Team",
+      "tags": [
+        "Search",
+        "Chrome",
+        "Arts & Culture",
+        "Google Ads",
+        "Google DeepMind",
+        "Developer tools",
+        "Gmail",
+        "Learning & Education",
+        "Shopping",
+        "Gemini",
+        "Google Cloud",
+        "AI",
+        "Gemini App"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "5a91f296c7e8",
+      "title": "Last Week in AI #334 - Kimi K2.5 & Code, Genie 3, OpenClaw & Moltbook",
+      "url": "https://lastweekin.ai/p/last-week-in-ai-334-kimi-k25-and",
+      "source": "Last Week in AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-02-04T05:25:56+00:00",
+      "summary": "China&#8217;s Moonshot releases a new open source model Kimi K2.5 and a coding agent, Google Brings Genie 3&#8217;s Interactive World-Building Prototype to AI Ultra Subscribers, and more!",
+      "author": "Last Week in AI",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

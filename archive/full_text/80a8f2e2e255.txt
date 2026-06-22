@@ -1,0 +1,61 @@
+Недавно знакомый попросил помочь с небольшой задачей по проверке внешнего периметра сети компании. Сразу уточню: речь шла об инфраструктуре, на проверку которой было разрешение.
+Под внешним периметром обычно понимают всё, что доступно из интернета: публичные IP-адреса, домены, поддомены, облачные или VPS-серверы, а также сервисы, которые слушают внешние порты.
+Задача была простой по формулировке, но интересной технически: нужно понять, какие адреса доступны извне и к каким портам можно подключиться.
+Что мы будем делать
+В данной статье я покажу, как сделать простой TCP port scanner на Go.
+Он будет уметь:
+Читать IP-адреса и домены из файла
+Проверять диапазон портов
+Определять открытые порты и добавлять к ним условную оценку риска
+Сразу реализуем ограничение параллельности через семафор, чтобы обработка портов была быстрее
+Структура проекта и сам код
+Проект небольшой, поэтому структура получилась простой. Я разделил код на несколько пакетов, чтобы каждая часть отвечала за свою задачу.
+cmd/ bin/ main.go internal/ input/ input.go report/ csv.go resolver/ resolver.go scanner/ scanner.go services/ services.go perimeter.txt go.mod go.sum
+Коротко пройдёмся по пакетам внутри internal и разберём, за что отвечает каждый из них. Input
+- отвечает за чтения файла и возвращения массива string
+с нашими портами:
+func ReadTargets(path string) ([]string, error) { file, err := os.Open(path) if err != nil { return nil, err } defer file.Close() return ParseTargets(file) } func ParseTargets(reader io.Reader) ([]string, error) { targets := make([]string, 0) scanner := bufio.NewScanner(reader) for scanner.Scan() { text := strings.TrimSpace(scanner.Text()) if text == "" || strings.HasPrefix(text, "#") { continue } targets = append(targets, text) } if err := scanner.Err(); err != nil { return nil, err } return targets, nil }
+Здесь всё просто: открываем файл, читаем его построчно через bufio.Scanner
+, пропускаем пустые строки и комментарии, а остальные значения возвращаем как список целей.
+Services - данный пакет отвечает за справочную информацию о сервисах по номеру порта:
+package services type Info struct { Name string Risk string } func Lookup(port int) Info { switch port { case 22: return Info{Name: "SSH", Risk: "High"} case 80: return Info{Name: "HTTP", Risk: "Medium"} case 443: return Info{Name: "HTTPS", Risk: "Low"} case 3306: return Info{Name: "MySQL", Risk: "High"} case 3389: return Info{Name: "RDP", Risk: "High"} case 5432: return Info{Name: "PostgreSQL", Risk: "High"} case 6379: return Info{Name: "Redis", Risk: "High"} default: return Info{Name: "Unknown", Risk: "Unknown"} } }
+Lookup
+не делает fingerprint сервиса. Он просто подсказывает наиболее вероятный сервис по номеру порта.
+Структура Info
+- хранит в себе Name
+- это названия сервиса, например SSH или HTTP. А Risk
+- это условный уровень риска (Low, Medium, High, Unknown).
+Функция Lookup
+- получает порт смотрит к какому сервису он относиться и возвращает нам нашу структуру. Тоже довольно просто.
+Далее нам в пакете Scanner
+- надо описать структуру Result
+в которой как у нас будет вся нужная нам информация:
+package scanner type Result struct { Target string IP string Port int Protocol string ServiceGuess string Status string Risk string Error string }
+Данная структура просто формат ответа: какой домен/IP проверяли, какой порт, открыт он или закрыт, какой сервис, какой риск, была ли ошибка.
+Далее по списку нужно сделать функцию которая будем превращать домены в IP адреса и это функция будет лежать у нас в пакете resolver
+:
+package resolver import "net" func ResolveTarget(target string) ([]string, error) { parsedIP := net.ParseIP(target) if parsedIP != nil { if parsedIP.To4() == nil { return nil, nil } return []string{parsedIP.String()}, nil } ips, err := net.LookupIP(target) if err != nil { return nil, err } targets := make([]string, 0) for _, ip := range ips { if ip.To4() != nil { targets = append(targets, ip.String()) } } return targets, nil }
+Что здесь происходит, наша функция ResolveTarget
+принимает наши "Цели" - и смотрит является ли они IP адресами, если нет преобразует в IP адрес и возвращает.
+ResolveTarget
+принимает строку из файла. Если это уже IPv4-адрес, функция сразу возвращает его. Если это домен, она делает DNS-lookup через net.LookupIP
+и возвращает найденные IPv4-адреса.
+Теперь вернемся к нашему пакет Scanner - тут мы должны описать функцию ScanPort, сначала покажу а потом объясню:
+func ScanPort(target string, ip string, port int, timeout time.Duration) Result { info := services.Lookup(port) result := Result{ Target: target, IP: ip, Port: port, Protocol: "tcp", ServiceGuess: info.Name, Risk: info.Risk, } address := net.JoinHostPort(ip, strconv.Itoa(port)) conn, err := net.DialTimeout("tcp", address, timeout) if err != nil { if netErr, ok := err.(net.Error); ok && netErr.Timeout() { result.Status = "filtered" result.Error = netErr.Error() return result } result.Status = "closed" result.Error = err.Error() return result } conn.Close() result.Status = "open" return result }
+Функция выглядит по сложней чем другие, но уверяю вас тут все легко.
+ScanPort получает цель, IP, порт и timeout. Сначала мы получаем информацию о предполагаемом сервисе через services.Lookup. Затем собираем адрес через net.JoinHostPort — это безопаснее, чем склеивать ip + ":" + port вручную.
+После этого вызываем net.DialTimeout
+. Если соединение удалось, считаем порт открытым. Если произошла ошибка, считаем порт закрытым. Если ошибка связана с timeout, помечаем статус как filtered.
+Статус filtered здесь условный: я использую его для случаев, когда соединение не было явно отклонено, а завершилось по timeout.
+Ну и если ошибки не было просто говорим что статус = открыто и возвращаем на результат.
+Последний технический кусок — пакет report. Он отвечает за сохранение результатов в CSV-файл.
+package report import ( "encoding/csv" "io" "os" "perimeter-audit/internal/scanner" "strconv" ) func WriteCSV(results []scanner.Result, path string) error { file, err := os.Create(path) if err != nil { return err } defer file.Close() return WriteCSVWriter(file, results) } func WriteCSVWriter(writer io.Writer, results []scanner.Result) error { csvWriter := csv.NewWriter(writer) err := csvWriter.Write([]string{"target", "ip", "port", "protocol", "service_guess", "status", "risk", "error"}) if err != nil { return err } for _, result := range results { if err := csvWriter.Write([]string{result.Target, result.IP, strconv.Itoa(result.Port), result.Protocol, result.ServiceGuess, result.Status, result.Risk, result.Error}); err != nil { return err } } csvWriter.Flush() if err := csvWriter.Error(); err != nil { return err } return nil }
+Тут у нас report сохраняет результаты сканирования в CSV-файл: создает файл, записывает заголовки колонок и добавляет по строке на каждый результат.
+Теперь осталось связать все части в main.go: прочитать путь к файлу через флаг -input, загрузить цели, просканировать их и сохранить результат в CSV.
+package main var defaultPorts = []int{21, 22, 23, 25, 53, 80, 110, 143, 443, 445, 1433, 3306, 3389, 5432, 5900, 6379, 8080, 8443, 9200, 27017} func main() { inputFlag := flag.String("input", "", "path to targets file") outputFlag := flag.String("output", "report.csv", "path to CSV report") flag.Parse() if *inputFlag == "" { fmt.Fprintln(os.Stderr, "input flag is required") os.Exit(1) } targets, err := input.ReadTargets(*inputFlag) if err != nil { fmt.Fprintf(os.Stderr, "Error reading targets: %v\n", err) os.Exit(1) } results := scanTargets(targets, defaultPorts, 2*time.Second, 50) if err := report.WriteCSV(results, *outputFlag); err != nil { fmt.Fprintf(os.Stderr, "Error writing report: %v\n", err) os.Exit(1) } fmt.Printf("Results written to %s\n", *outputFlag) } func scanTargets(targets []string, ports []int, timeout time.Duration, maxConcurrency int) []scanner.Result { resultCh := make(chan scanner.Result) var wg sync.WaitGroup sem := make(chan struct{}, maxConcurrency) results := make([]scanner.Result, 0) for _, target := range targets { ips, err := resolver.ResolveTarget(target) if err != nil { results = append(results, scanner.Result{ Target: target, Status: "error", Error: err.Error(), }) continue } for _, ip := range ips { for _, port := range ports { wg.Add(1) go func(target string, ip string, port int) { defer wg.Done() sem <- struct{}{} defer func() { <-sem }() resultCh <- scanner.ScanPort(target, ip, port, timeout) }(target, ip, port) } } } go func() { wg.Wait() close(resultCh) }() for result := range resultCh { results = append(results, result) } sort.Slice(results, func(i int, j int) bool { if results[i].Target != results[j].Target { return results[i].Target < results[j].Target } if results[i].IP != results[j].IP { return results[i].IP < results[j].IP } return results[i].Port < results[j].Port }) return results }
+В main программа просто управляет всем процессом: берет путь к файлу с целями, читает эти цели, запускает сканирование, а потом сохраняет результат в CSV-файл.
+Если по шагам, то получается так: сначала проверяем, что пользователь передал -input, потом читаем список доменов или IP из файла, дальше для каждой цели получаем IP- адреса, проверяем нужные порты и в конце записываем все найденное в отчет.
+Семафор здесь нужен как ограничитель. Мы запускаем много проверок портов параллельно, но не хотим, чтобы их одновременно было слишком много. Поэтому семафором говорим: “одновременно можно выполнять максимум 50 проверок”. Когда одна проверка закончилась, она освобождает место, и запускается следующая.
+По сути, семафор защищает программу от ситуации, когда она сама себя перегрузит слишком большим количеством сетевых подключений.
+В итоге получился небольшой TCP-сканер, который читает список целей из файла, резолвит домены в IP-адреса, проверяет набор портов с ограничением параллельности и сохраняет результат в CSV. Проект небольшой, но на нём хорошо видно, как в Go можно работать с сетью, timeout, goroutine, WaitGroup и семафором.
+Ещё раз: такой инструмент стоит использовать только для своей инфраструктуры или с разрешения владельца.

@@ -1,0 +1,20 @@
+Quantitative Biology > Neurons and Cognition
+Title:DecNefSimulator: A Modular, Interpretable Framework for Decoded Neurofeedback Simulation Using Generative Models
+View PDFAbstract:Decoded Neurofeedback (DecNef) is a promising non-invasive approach to brain modulation with wide-ranging applications in neuromedicine and cognitive neuroscience. However, progress in DecNef research remains constrained by subject-dependent learning variability, reliance on indirect measures to quantify progress, and the high cost and time demands of experimentation.
+We present DecNefSimulator, a modular and interpretable simulation framework that formalizes DecNef as a machine learning problem. Beyond providing a virtual laboratory, DecNefSimulator enables researchers to model, analyze and understand neurofeedback dynamics. Using latent variable generative models as simulated participants, DecNefSimulator allows direct observation of internal cognitive states and systematic evaluation of how different protocol designs and subject characteristics influence learning.
+We demonstrate how this approach can (i) reproduce empirical phenomena of DecNef learning, (ii) identify conditions under which DecNef feedback fails to induce learning, and (iii) guide the design of more robust and reliable DecNef protocols in silico before human implementation.
+In summary, DecNefSimulator bridges computational modeling and cognitive neuroscience, offering a principled foundation for methodological innovation, robust protocol design, and ultimately, a deeper understanding of DecNef-based brain modulation.
+Submission history
+From: Alexander Olza [view email][v1] Tue, 18 Nov 2025 14:58:59 UTC (11,016 KB)
+[v2] Tue, 25 Nov 2025 10:10:25 UTC (11,016 KB)
+[v3] Wed, 4 Mar 2026 10:53:26 UTC (20,483 KB)
+[v4] Wed, 17 Jun 2026 15:22:15 UTC (10,522 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

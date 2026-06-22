@@ -1,0 +1,54 @@
+- A (big) tech company hits a technical or process limitation.
+- They solve it internally with new software/paradigm (designed for their own scale, constraints, and engineering culture).
+- They write about it. (and maybe, if the stars align, open source it).
+- A couple of engineers start a company to sell the managed version.
+- A few years later, for better or worse, the rest of the industry adopts it.
+The examples are many: Airbnb wrote about Airflow in 2015; the Modern Data Stack emerged from a wave of posts about internal data platforms at Uber, Netflix, and others; and dbt went from an internal tool to the de facto standard of how data teams model data today. Sometimes the tool travels cleanly, sometimes it only works in the environment it was built for, but the pattern holds.
+Each cycle was made possible by a foundational constraint getting solved or a resource becoming widely available. Distributed compute unlocked the Hadoop era, and then cheap cloud storage and the rise of self-service tooling unlocked the Modern Data Stack (MDS).
+During the MDS era, however, the bottleneck wasn’t technical — it was human analytical capacity: what questions to ask, where (and how) to look for answers, and how those answers connect to desired business outcomes. No amount of additional data or compute was going to solve that, as we’ve collectively proven by shipping thousands upon thousands of dbt models without any concrete business outcome. For a while, it seemed like an unsolvable constraint that we’d have to live with.
+Then AI agents arrived and flipped the script. For the first time, the capacity to ask questions, explore data, and surface answers is no longer tied to how many analysts you can hire or how many dashboards you can build. The analysis, fellow data person, is no longer a bottleneck.
+Which means the new cycle has already started.
+OpenAI, Meta, and ClickHouse (& more) have all published detailed posts in the past few months about how they’re moving away from dashboard-first analytics toward AI agents as their primary data consumption mechanism, completely disrupting the BI & Analytics process we’ve all become accustomed to. The pattern is familiar, but before drawing the obvious conclusion (“BI is dead, AI agents are the future”), it’s worth asking a more nuanced question: What should a world with free & unlimited analysis look like? What’s the model that we should be building toward?
+What was wrong with BI anyway?
+The typical workflow of BI has always looked like this:
+- A business user needs to answer a question.
+- They search for a relevant dashboard, find it doesn’t exist, submit a request.
+- They wait two weeks for the data team to build it. (Who said bottleneck?)
+- By the time the dashboard is live, they have either moved on or they glance at it once without it changing anything meaningful. (Difficult to measure business impact when it’s nonexistent.)
+The core problem with the above workflow (and with how we’ve approached BI for decades) is that it’s built around questions that have already been asked. A dashboard is, after all, an answer to a question someone had at a specific point in time, frozen in a chart (and probably no longer relevant).
+What makes this even more frustrating is what I’d call the closed-window problem. In a BI tool, you can see a slice of what’s happening — “Enterprise users are engaging less with this feature” — but you can never see the full picture. What else changed for Enterprise users? What are they doing instead? What changed in the feature? The tool can only show you what someone already decided to measure. It can’t surface what nobody thought to ask.
+AI agents are a genuine improvement on this. The new generation (like what Meta, OpenAI, and ClickHouse have built internally) goes far beyond Text-to-SQL: These agents can navigate business context, reason across documentation and code, and answer, in a few seconds/minutes, complex questions that would have taken an analyst days.
+But I think we’re optimizing at the wrong level. These state-of-the-art improvements are all in the “how do I answer this question?” step. The question before it — “what question should I even be asking?” — is still left entirely to the user.
+The yet-to-be-solved problem: what questions should I even be asking?
+When I was Head of Product at Sifflet, a data observability platform, we kept seeing the same unexpected behavior: customers were using our alerting features to track business metrics (watching for things like churn signals, demand shifts, and operational anomalies). These alerts had nothing to do with monitoring data pipelines or detecting data quality issues — their sole purpose was to understand which numbers were moving in the business and whether those movements were worth acting on.
+What made this striking, above all else, was that these customers had mature BI tools, dedicated analytics teams, and reporting infrastructure that most companies would envy. These weren’t scrappy startups without resources, yet they were still hacking a data observability product to get something none of those tools gave them: a system that watched their data across thousands of tables and told them — without being asked — when something worth caring about had changed.
+They weren’t misusing our product. They were building, with the closest thing they could find, the thing that didn’t exist yet.
+So what should the new model actually look like?
+Answering questions faster was never the hard(est) part. The real gap was always upstream: Knowing which questions were worth asking.
+Solving that requires operating at a different layer entirely: not the query layer, not the visualization layer, but the business intent layer. And as far-fetched as it may sound, it’s entirely buildable today.
+What it looks like in practice
+Company A (let’s imagine a SaaS company) defines three things:
+- Their core business goal: Net Revenue Retention (NRR)
+- The metrics that drive it: Feature adoption by account tier, support ticket volume, login frequency, etc.
+- The data that captures the above metrics.
+These inputs require very accessible tooling: a few markdown files, a metric tree (in any format, from dbt YAML to natural language), and pointers to the relevant tables.
+Now imagine how their product team tracks feature adoption today: they have a clean, filterable, and beautiful dashboard that shows adoption by cohort/tier/geography. But it doesn’t show that the accounts with the lowest adoption all share something in their CRM: they’re all mid-market companies that closed in Q4, when a specific sales team was handling onboarding. This onboarding problem, which has nothing to do with the product or its features, will never show up on the existing dashboard.
+No analyst built a dashboard for that correlation because no analyst thought to connect product usage data to sales team attribution data. Nobody asked the right question, because nobody knew it was the right question.
+An agent operating from a defined goal rather than a specific question, however, would have. With NRR as the outcome worth protecting, the agent has reason to look across product data, CRM records, and onboarding history simultaneously — and reason to surface patterns nobody thought to ask about.
+This is the model: define intent once, and then let the system watch and surface what matters without being asked.
+The business intent layer
+The obvious question is what separates a meaningful signal (i.e., “what matters”) from noise. Alert fatigue has, after all, killed more than one generation of monitoring tools, and nobody wants to build the next victim of it. The answer (thankfully) isn’t a smarter detector — it’s context.
+What makes a signal worth surfacing is its relationship to something you’ve already said you care about. A drop in logins means nothing on its own, but the same drop in a metric upstream of net revenue retention is a problem someone needs to know about. (And they need to know about it today, not at the next dashboard review.)
+Every component needed to build this exists today:
+- Business context lives in Notion or Confluence.
+- Metric definitions live in a semantic layer or markdown files.
+- Data meaning lives in your catalog and codebase.
+- Orchestration lives in dbt or Airflow.
+Individually, none of this is new. What’s been missing is the assembly: an agent that holds all of it together, monitors autonomously, and surfaces what matters before anyone thinks to ask.
+This is also, for what it’s worth, exactly what Sifflet’s customers were trying to piece together with a data observability tool: They had the components, but they were missing the thing that connected them with intent.
+Dashboard-era BI has the right intention (get an edge from data) but the wrong output format: It was built for a world where a human opened a browser, looked at a chart, and decided what it meant. It turns out, however, that the existence of that world was merely a consequence of the business intent bottleneck, and all the value lies in the step beforehand: where to look and what to look for?
+What comes next
+The Meta, OpenAI, and ClickHouse posts are the clearest signal yet that a new cycle has started. And if the pattern holds, what a handful of tech companies are running internally today will be the industry standard in three years.
+But while this current wave is brilliantly solving for self-serve analytics (any question you think to ask, answered faster and with more context than any dashboard could offer), the deeper question, “what should I be looking at in the first place?”, remains open. Whoever answers it isn’t just building a better BI tool. They’re defining what it means to be a data-driven company in the agent era.
+That’s the layer worth building for.
+Mahdi Karabiben is a data and product leader with a decade of experience building petabyte-scale data platforms. A former Staff Data Engineer at Zendesk and Head of Product at Sifflet, he is currently a Senior Product Manager at Neo4j. Mahdi frequently writes about the intersection of data and product via his newsletter, Data Espresso.

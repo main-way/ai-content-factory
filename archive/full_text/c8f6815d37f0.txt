@@ -1,0 +1,8 @@
+New benchmark exposes how badly AI struggles with real knowledge work
+Even the best AI model fails at realistic knowledge work, fully solving just 3 percent of tasks.
+The new AA-Briefcase benchmark from Artificial Analysis puts AI models through multi-week knowledge work projects built from thousands of fragmented source files like Slack threads, emails, meeting transcripts, and large data exports. The top performer, Claude Fable 5, hits the highest rubric pass rate but still nails all criteria on just 3 percent of tasks. On 31 out of 91 tasks, no model even clears 50 percent.
+The types of errors shift as models get better. Weaker models choke on basic execution as they miss relevant files or spit out unusable results. Stronger models fail more quietly, as they hit the obvious requirements but miss details you'd only catch by piecing together information from multiple sources.
+There also is a significant price gap: Per-task costs span more than 800x, from about $0.04 for DeepSeek V4 Flash to over $31 for Claude Fable 5.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

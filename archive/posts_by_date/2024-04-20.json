@@ -1,0 +1,23 @@
+{
+  "date": "2024-04-20",
+  "count": 1,
+  "posts": [
+    {
+      "id": "c7a7c84965a8",
+      "title": "Financial Market Applications of LLMs",
+      "url": "https://thegradient.pub/financial-market-applications-of-llms/",
+      "source": "The Gradient",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-04-20T17:57:39+00:00",
+      "summary": "The AI revolution drove frenzied investment in both private and public companies and captured the public&#x2019;s imagination in 2023. Transformational consumer products like ChatGPT are powered by Large Language Models (LLMs) that excel at modeling sequences of tokens that represent words or parts of words [2]. Amazingly, structural",
+      "author": "Richard Dewey",
+      "tags": [
+        "LLM",
+        "Overviews"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

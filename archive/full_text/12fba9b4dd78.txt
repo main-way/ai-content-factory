@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Trimodal Glioma Representation Alignment via Volumetric Contrastive Learning
+View PDF HTML (experimental)Abstract:Glioma grading and survival prediction require the integration of heterogeneous information collected at different spatial and biological scales. Histopathology describes tissue morphology, mRNA expression captures molecular activity, and magnetic resonance imaging provides a non-invasive view of tumor extent and radiological heterogeneity. Existing glioma prognosis models often combine only two of these sources, while their alignment objectives remain mostly pairwise. This paper introduces GLORIA, a novel trimodal framework for GLioma Omics - Radiology - hIstopathology Alignment. GLORIA processes whole-slide image regions, gene-expression profiles, and 3D MRI volumes through modality-specific encoders, projects them into a shared latent space, and aligns them with a Gramian contrastive loss that measures the volume spanned by the three modality embeddings. The aligned representations are fused through a cross-modal gating module and optimized jointly for three-class glioma grading and overall survival prediction. We evaluate GLORIA on a matched TCGA-GBM/LGG and BraTS21 cohort, comprising 132 patients with all three modalities. On the shared trimodal test set, GLORIA improves over the bimodal WSI-mRNA baseline in all the metrics considered.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

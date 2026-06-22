@@ -1,0 +1,111 @@
+Excessive nil pointer checks in Go
+Let’s talk about nil pointer checks in Go. You want to prevent panics in production, but that doesn’t start with a deferred recover
+. It starts with defensive programming. Check your inputs, check your bounds, and check pointers for nil before dereferencing them.
+I’ve started to see more nil checks in Go code. In the right place, they are necessary for writing safe code. In the wrong place, they are a sign that the code has stopped being clear about what can and cannot be nil. I have noticed this pattern more in generated code, but this symptom is not new and is not limited to AI.
+When a nil check is cheap and prevents a panic, why not add it? Your reflex may be, let’s just be safe. But the check also tells the next reader something, and often the wrong thing.
+Nil Check on a Dependency
+Consider a nil check on a dependency. A type RateLimiter
+holds a Redis client, and a nil check guards before using it in lines 10 to 12:
+1type RateLimiter struct {
+2 redis *redis.Client
+3}
+4
+5func (r *RateLimiter) Allow(ctx context.Context, req *Request) (bool, error) {
+6 userID := GetUserID(req)
+7 if userID == "" {
+8 return false, nil
+9 }
+10 if r.redis != nil {
+11 return r.checkLimit(ctx, userID)
+12 }
+13 return false, nil
+14}
+At a glance, it looks like the safe thing to do, but you should ask yourself: why would you construct RateLimiter
+with a nil dependency?
+If the Redis client is nil, the error happened earlier, at construction time. Checking for it now does not handle that error. Worse, it treats operating with the failed construction as an acceptable state. In Go, you want to fail fast and fail early.
+A nil check is not always defensive programming. In this example, it’s a sign that the code has lost track of the lineages of its objects. We no longer know where the pointer came from, who was responsible for initializing it, or what invariant should have made nil impossible.
+Nil Check on a Dependency in the Constructor
+You may attempt to address this by pushing the problem up one layer. You now check for nil and return an error to flag the nil dependency as an invalid state.
+func NewRateLimiter(client *redis.Client) (*RateLimiter, error) {
+if client == nil {
+return nil, errors.New("redis client is nil")
+}
+return &RateLimiter{
+redis: client,
+}, nil
+}
+It’s better, but it’s still not correct. Why not? Because we still allowed the invalid state to enter our system. A nil pointer is still being passed to our function, which puts the burden of deciding whether to trust the input on code that should have received a valid value in the first place.
+The constructor is not where the error happened. The error happens at the initialization site:
+redisClient, err := NewRedisClient(addr)
+if err != nil {
+return nil, err
+}
+limiter := NewRateLimiter(redisClient)
+Once initialization fails, we should handle that error immediately. We should not continue with a nil pointer and force the next, deeper layer to rediscover the outcome. Doing so also removes the need for the rate limiter constructor to return an error in the first place!
+If the system needs to tolerate the store being temporarily unavailable, do not propagate a nil, model it explicitly. Wrap it so the outer type is always non-nil and handles retries or degradation internally, exposing methods that are safe to call. The caller gets a type guaranteed to exist, and the messiness stays contained inside it. That is how you encapsulate complexity rather than expose your entire codebase to it.
+This is the same idea as a database constraint. A NOT NULL
+or foreign-key constraint guarantees a bad row cannot exist in the first place, so every query can trust the data without re-checking it. You want the same guarantee for your runtime values, with one difference. The database enforces its constraint on every write. You establish yours once, so the rest of the code can rely on it without having to repeat the checks.
+The Cost of Silent Failures
+When I flag code like the one above, I often get a response that reveals a well-intentioned instinct about reliability, and it goes something like this:
+“I don’t want to return an error here and risk taking the program down over my small change. Wrapping it in a nil check or just logging it feels safer.”
+The choice feels like crash (bad) versus continue (safe), but it’s actually loud failure (safe) versus silent failure (bad). An error explicitly returned is:
+- Loud: You find out it happened.
+- Immediate: You find out near the cause.
+- Attributable: The caller can connect the failure to the operation that failed.
+An error you swallow is the exact inverse. The failure becomes:
+- Silent: Nothing tells you it happened.
+- Delayed: It surfaces later, after more code has run.
+- Ambiguous: By the time you see the symptom, the original cause is harder to identify.
+The gap between cause and symptom is the cost, and it grows with every call the program survives in an invalid state. That is why the fix is not to hide the failure locally. The fix is to understand where the error goes. Who calls this function? How are errors propagated? Where do they become a rejected request, a failed job, a retry, an alert, or a shutdown?
+That requires looking beyond your immediate change set, but that is part of the work. If returning the error would take down more of the system than necessary, the problem lies at the error-handling boundary.
+Second-Order Cost
+Once failures are silent, you do not know what happened, which can hide bugs. It forces you to build infrastructure to detect the absence of operations: metrics, dashboards, and alerts. You are now spending engineering effort to reconstruct a signal you threw away. Every time you tolerate an impossible or unhandled state, you pay for it later by having to observe it.
+Outer vs Inner Layer
+It may not be clear yet when each check should happen. It can help to think of these as different stages in the program’s execution flow. Earlier, I wrote that the deeper layer would have to rediscover an error that was already handled above.
+That has to do with the order of operations: the outer layer is where execution starts and where data enters from the outside world, and the inner layer is the code those outer calls eventually reach. The deeper you go down the call stack, the further into the inner layer you are.
+At the start of execution, nothing is guaranteed, but you have not done anything either. During initialization, you set up the things your program depends on. For each one, you decide: is this a must-have, or is it something that can be unavailable at times? Your design should gravitate toward dependencies that are always available and minimize those that can drop out.
+Nil Check on Request-Scoped Data
+The other kind of nil shows up later, once the program is running and handling work. A request-scoped value, the request itself, its fields, and anything derived from it, is different from a dependency. A dependency is fixed at construction. A request arrives from outside on every call: from an HTTP handler, an RPC, a queue, a test helper, another package.
+It is tempting to have a nil check for the request itself in our RateLimiter
+:
+1func (r *RateLimiter) Allow(ctx context.Context, req *Request) (bool, error) {
+2 if req == nil {
+3 return false, nil
+4 }
+5 userID := GetUserID(req)
+6 if userID == "" {
+7 return false, nil
+8 }
+9 return r.checkLimit(ctx, userID)
+10}
+But that is the same mistake in a new place. The request did not arrive in Allow
+. It entered the program earlier, at the transport boundary, the HTTP handler, the RPC dispatch, the queue consumer, etc., and it has been traveling through our code ever since.
+By the time Allow
+runs, the request is already inner-layer data. Checking it here means a deep function is re-validating something an outer layer should have guaranteed, which is exactly what we rejected for the dependency. It spreads uncertainty. The check belongs at the boundary, where the untrusted bytes first become a *Request
+:
+func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+req, err := DecodeRequest(r)
+if err != nil {
+http.Error(w, err.Error(), http.StatusBadRequest)
+return
+}
+// req is now validated. Everything past this point can trust it.
+allowed, err := h.limiter.Allow(r.Context(), req)
+// ...
+}
+You do not control what you are handed, so checking it for nil at that boundary is reasonable. Data arrives from outside, and you treat it as untrusted, so you validate it: check for nil, check the constraints that must hold. Then it crosses into the inner layer, where you map it into your own types and business logic. Past that point, it is trusted. It has become an invariant of your system. Finally, Allow
+keeps no nil checks at all:
+func (r *RateLimiter) Allow(ctx context.Context, req *Request) (bool, error) {
+userID := GetUserID(req)
+if userID == "" {
+return false, nil
+}
+return r.checkLimit(ctx, userID)
+}
+This is what lets you focus on the actual logic instead of cluttering every function with nil checks. You could move the empty userID
+check out to the HTTP layer too, but here we deliberately let the rate limiter own that policy.
+Systems built this way are easier to reason about and easier to change. Systems that are not force the opposite: you add the checks, and then you have to decide what each one should do. What is the fallback? Does it even make sense here? Every check is a new branch, and every branch is a behavior you now have to define for a state that should not exist.
+Conclusion
+A nil check is good when it enforces a documented boundary or models an intentional optional state. A nil check is suspicious when it silently handles a state the program claims should be impossible.
+So when nil checks show up everywhere, they are telling you one of two things. Either the code is guarding untrusted boundary input, which is normal, or the codebase never established its invariants, which is a design problem.
+If you are working in a system where you cannot trust any parameters, the fix is not to add more checks. You may have to for the time being, but the real work is to start establishing the invariants those checks stand in for, and gradually replace fear-driven clutter with guarantees the rest of the system can rely on.

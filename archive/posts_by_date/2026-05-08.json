@@ -1,0 +1,168 @@
+{
+  "date": "2026-05-08",
+  "count": 11,
+  "posts": [
+    {
+      "id": "37faf91af5b8",
+      "title": "Building realistic electric transmission grid dataset at scale: a pipeline from open dataset",
+      "url": "https://www.microsoft.com/en-us/research/blog/building-realistic-electric-transmission-grid-dataset-at-scale-a-pipeline-from-open-dataset/",
+      "source": "Microsoft Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-08T19:53:56+00:00",
+      "summary": "Microsoft Research is excited to release an open dataset of approximate transmission topology of the U.S. power grid derived from publicly available data. The ability to study transmission-level power grid behavior is essential for modern power systems research. Analyses of congestion, transmission expansion, demand growth, and system resilience all depend on network models with realistic [&#8230;] The post Building realistic electric transmission grid dataset at scale: a pipeline from open dataset appeared first on Microsoft Research .",
+      "author": "Andrea Britto Mattos Lima, Thiago Vallin Spina, Weiwei Yang, Spencer Fowers, Ruslan Nagimov, Baosen   Zhang",
+      "tags": [
+        "Research Blog"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "e821b92b41de",
+      "title": "Vibe coding and agentic engineering are getting closer than I’d like",
+      "url": "https://simonw.substack.com/p/vibe-coding-and-agentic-engineering",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-08T17:33:22+00:00",
+      "summary": "Plus updates from Anthropic's Code w/ Claude conference",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "228a9e5ac18c",
+      "title": "AI Ascent 2026",
+      "url": "https://sequoiacap.com/article/ai-ascent-2026/",
+      "source": "Sequoia Capital",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-08T16:47:31+00:00",
+      "summary": "The post AI Ascent 2026 appeared first on Sequoia Capital .",
+      "author": "amoore",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "70615ef3544f",
+      "title": "See what happens when creative legends use AI to make ads for small businesses.",
+      "url": "https://blog.google/company-news/inside-google/company-announcements/the-small-brief/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-08T15:00:00+00:00",
+      "summary": "black and white card with headshots of susan credle, jayonta jenkins and tiffany rolfe",
+      "author": "",
+      "tags": [
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "a8b82a1934b2",
+      "title": "Adaptive Parallel Reasoning: The Next Paradigm in Efficient Inference Scaling",
+      "url": "http://bair.berkeley.edu/blog/2026/05/08/adaptive-parallel-reasoning/",
+      "source": "BAIR Blog (Berkeley)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-08T09:00:00+00:00",
+      "summary": "Overview of adaptive parallel reasoning. What if a reasoning model could decide for itself when to decompose and parallelize independent subtasks, how many concurrent threads to spawn, and how to coordinate them based on the problem at hand? We provide a detailed analysis of recent progress in the field of parallel reasoning, especially Adaptive Parallel Reasoning. Disclosure: this post is part landscape survey, part perspective on adaptive parallel reasoning. One of the authors (Tony Lian) co-led ThreadWeaver ( Lian et al., 2025 ), one of the methods discussed below. The authors aim to…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "f1bb07285992",
+      "title": "A Tour of Handoff Orchestration Pattern",
+      "url": "https://devblogs.microsoft.com/agent-framework/a-tour-of-handoff-orchestration-pattern/",
+      "source": "Semantic Kernel Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-08T00:58:12+00:00",
+      "summary": "A Tour of the Handoff Orchestration Pattern Most multi-agent systems start out simple: a router agent receives a user request, picks the right specialist, and forwards the conversation. As long as each specialist can complete its task in one pass, that model works fine. The first time it breaks is when an agent needs more: [&#8230;] The post A Tour of Handoff Orchestration Pattern appeared first on Microsoft Agent Framework .",
+      "author": "Jacob Alber",
+      "tags": [
+        ".NET",
+        "Agent Framework",
+        "Python"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "213e4bb8e11b",
+      "title": "RVPO: Risk-Sensitive Alignment via Variance Regularization",
+      "url": "https://machinelearning.apple.com/research/rvpo-risk-sensitive-alignment",
+      "source": "Apple ML Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-08T00:00:00+00:00",
+      "summary": "Current critic-less RLHF methods aggregate multi-objective rewards via an arithmetic mean, leaving them vulnerable to constraint neglect: high-magnitude success in one objective can numerically offset critical failures in others (e.g., safety or formatting), masking low-performing “bottleneck” rewards vital for reliable multi-objective alignment. We propose Reward-Variance Policy Optimization (RVPO), a risk-sensitive framework that penalizes inter-reward variance during advantage aggregation, shifting the objective from “maximize sum” to “maximize consistency.” We show via Taylor expansion…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "4d3a2b074941",
+      "title": "Apple Workshop on Privacy-Preserving Machine Learning & AI 2026",
+      "url": "https://machinelearning.apple.com/updates/ppml-2026",
+      "source": "Apple ML Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-08T00:00:00+00:00",
+      "summary": "At Apple, we believe privacy is a fundamental human right. As AI capabilities increase and become more integrated into people’s daily lives, advancing research in privacy-preserving techniques is increasingly important to ensure privacy is protected while users enjoy innovative AI experiences. Apple’s fundamental research has consistently pushed the state-of-the-art in this domain, and earlier this year, we hosted the Workshop on Privacy-Preserving Machine Learning & AI. This two-day event brought together Apple researchers and members of the broader research community to discuss the…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "e9ff30bb5734",
+      "title": "Large-Scale High-Quality 3D Gaussian Head Reconstruction from Multi-View Captures",
+      "url": "https://machinelearning.apple.com/research/gaussian-head-reconstruction",
+      "source": "Apple ML Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-08T00:00:00+00:00",
+      "summary": "We propose HeadsUp, a scalable feed-forward method for reconstructing high-quality 3D Gaussian heads from large-scale multi-camera setups. Our method employs an efficient encoder-decoder architecture that compresses input views into a compact latent representation. This latent representation is then decoded into a set of UV-parameterized 3D Gaussians anchored to a neutral head template. This UV representation decouples the number of 3D Gaussians from the number and resolution of input images, enabling training with many high-resolution input views. We train and evaluate our model on an…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "9bf773ad67f3",
+      "title": "Velox: Learning Representations of 4D Geometry and Appearance",
+      "url": "https://machinelearning.apple.com/research/velox",
+      "source": "Apple ML Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-08T00:00:00+00:00",
+      "summary": "We introduce a framework for learning latent representations of 4D objects which are descriptive, faithfully capturing object geometry and appearance; compressive, aiding in downstream efficiency; and accessible, requiring minimal input, i.e., an unstructured dynamic point cloud, to construct. Specifically, Velox trains an encoder to compress spatiotemporal color point clouds into a set of dynamic shape tokens. These tokens are supervised using two complementary decoders: a 4D surface decoder, which models the time-varying surface distribution capturing the geometry; and a Gaussian decoder…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "779a7f812523",
+      "title": "Issue #43",
+      "url": "http://augmentedcoding.dev/issue-43/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-08T00:00:00+00:00",
+      "summary": "Code w/ Claude CLAUDE.COM A couple of days ago Anthropic held its Code w/ Claude event in San Francisco, with future events planned for London and Tokyo. Anthropic used this event for a business update (an 80-fold growth in recurring revenues!) and various product launches. Notably there were no significant model launches or updates, reflecting the recent move towards investment in the harness that surrounds the model - which is where capability gains are being made. Anthropic are certainly a leader here, Claude Code was the first agentic harness from a model lab. There were some updates to…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

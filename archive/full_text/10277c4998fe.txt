@@ -1,0 +1,57 @@
+Hi everyone!
+I have been working on a new library for writing JVM bytecode with Haskell in a nice, high level way and I’d love some feedback on it! The motivation here is for compilers to the JVM so they can focus on the actual code generation, meanwhile H2JVM takes care of all the messy details like StackMapTable
+analysis, label/offset resolution, etc.
+Here is a quick example taken from the readme. It generates a simple class file with a single method static int add(int, int)
+which adds 2 numbers:
+main :: IO ()
+main = do
+-- Define the class name, method descriptor, and access flags
+let className = "Calculator"
+methodDesc = MethodDescriptor -- int (int, int)
+[PrimitiveFieldType JInt, PrimitiveFieldType JInt]
+(TypeReturn (PrimitiveFieldType JInt))
+-- Construct the class using ClassBuilder
+result <- runPureEff $ runErrorNoCallStack @StackMapError $ runClassBuilder className java8 $ do
+addAccessFlag CPublic
+-- add the method, which automatically handles stack map analysis, max stack/locals, etc
+addMethodWithCode "add" [MPublic, MStatic] methodDesc $ do
+emit $ ILoad 0
+emit $ ILoad 1
+emit IAdd
+emit IReturn
+case result of
+Left err -> putStrLn $ "Error building class: " <> show err
+Right (classFile, _) -> do
+-- Serialise the class to a file
+let path = classFilePath classFile -- returns "Calculator.class"
+case classFileBytes classFile of
+Left err -> putStrLn $ "Error generating bytecode: " <> show err
+Right bytes -> LBS.writeFile path bytes
+This is a less contrived example from real usage of the library in my compiler, which shows how label resolution “just works”. This implements the >
+operator in my language in the way you’d probably expect
+IR.BinaryOp op lhs rhs -> do
+emitExpr lhs
+emitExpr rhs
+case op of
+IR.GreaterThan -> do
+trueLabel <- newLabel
+endLabel <- newLabel
+emit $ JVM.IfICmp (IfGt trueLabel) -- if_icmpgt jump to trueLabel
+-- false case
+emit JVM.IConst0 -- push 0 onto stack
+emit $ Goto endLabel -- jump to end
+-- true case
+emit $ JVM.Label trueLabel
+emit JVM.IConst1 -- push 1 onto stack
+emit $ JVM.Label endLabel -- jump to end
+The generated code here looks something like this:
+29: blah (pushing lhs and rhs onto stack)
+32: if_icmpgt 39 -- trueLabel resolved as offset 39
+35: iconst_0
+36: goto 40 -- endLabel resolved as offset 40
+39: iconst_1
+40: blah blah (code after the binaryop, whatever that may be)
+The library is still in very very very early stages (only a very small subset of the instructions and attributes are supported), but I would love some preliminary feedback on things like the design!
+Happy to answer any questions anyone might have too
+If you’re interested, here’s the GitHub repo: GitHub - ElaraLang/h2jvm: Haskell library for writing JVM bytecode in a high level format · GitHub
+Thanks in advance!

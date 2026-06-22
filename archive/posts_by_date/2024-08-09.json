@@ -1,0 +1,41 @@
+{
+  "date": "2024-08-09",
+  "count": 2,
+  "posts": [
+    {
+      "id": "4cd22a2d6d5d",
+      "title": "Text Labeling and Image Resolution with the Monkey Chat Vision Model and DigitalOcean+Paperspace GPUs 🐒",
+      "url": "https://blog.paperspace.com/text-labeling-and-image-resolution-with-the-monkey-chat-vision-model-2/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-09T23:34:30+00:00",
+      "summary": "The Monkey Vision model, when combined with DigitalOcean + Paperspace's cloud GPUs, excels in generating detailed image captions and analyzing images through the Monkey Chat Vision model.",
+      "author": "Shaoni Mukherjee",
+      "tags": [
+        "Computer Vision",
+        "Vision-Model"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "596efbee00ee",
+      "title": "Understanding Adversarial Attacks Using Fast Gradient Sign Method",
+      "url": "https://blog.paperspace.com/understanding-adversarial-attacks-using-fast-gradient-sign-method/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-09T23:34:09+00:00",
+      "summary": "In this tutorial, we use Gradio to examine adversarial attacks and their potential for misdirecting models towards making inaccurate predictions.",
+      "author": "Adrien Payong",
+      "tags": [
+        "Computer Vision",
+        "Deep Learning",
+        "Tutorial"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

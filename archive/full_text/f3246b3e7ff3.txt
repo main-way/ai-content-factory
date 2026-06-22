@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Eyes All Around: Design and Analysis of 360-Degree LiDAR Perception Using Equivariant Feature Learning in Unstructured Traffic
+View PDF HTML (experimental)Abstract:Perception in dense, unstructured urban traffic remains a major challenge for autonomous driving because of the wide variety of road users, frequent occlusions, irregular motion patterns, and the lack of standardized road layouts. Although recent LiDAR based 3D object detectors have shown strong performance in structured driving scenarios, most are developed and evaluated for limited field of view settings, and their behavior under full surround 360-degree sensing is still not well understood. This paper studies a 360-degree LiDAR perception pipeline for autonomous driving, with particular attention to panoramic sensing, azimuthal sector wise spatial processing, and transformation equivariant feature extraction in complex urban scenes. The paper presents a practical 360-degree perception framework that combines sector wise panoramic processing with rotation equivariant sparse convolutions and evaluates its behavior on a custom Ouster OS0 LiDAR dataset collected across diverse Indian urban traffic conditions. The results show generally stable detection across several object classes, with the strongest performance for cars at 92.02/90.51, buses at 80.53/76.34, and trucks at 78.59/74.16, while lower scores for pedestrians at 67.45/61.02, cyclists at 73.21/69.54, and motorcyclists at 71.20/68.13 reflect the greater difficulty of detecting smaller and more variable road users in dense urban scenes.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

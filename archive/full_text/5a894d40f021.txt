@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Continual Online Personalization of Exoskeleton Control via Manifold-Aware Experience Replay
+View PDF HTML (experimental)Abstract:Personalizing exoskeleton control remains a critical challenge for clinical users with gait disabilities. Online adaptation (OA) offers an effective solution by adapting in real time to subject variability, device fit, and diverse locomotor tasks. However, OA involves a continual stream of user state data, which can lead to catastrophic forgetting of previously learned locomotor contexts. Here, we develop a manifold-aware experience replay-based online personalization framework designed to maintain user-specific representations across diverse tasks during OA of exoskeleton control. By replaying previously experienced tasks from a replay buffer, we preserve the personalized exoskeleton assistance across all learned tasks. Furthermore, we capture a gait manifold that distinguishes between different locomotor tasks, removing the need for explicit task labeling when selecting target replay bins. We evaluated our framework on emulated hemiplegic gait, which largely deviates from able-bodied patterns, across multiple forgetting scenarios with speed and incline transitions. Our manifold-aware replay framework achieved 40% and 60% improvements in torque and gait phase tracking accuracy, respectively, compared to a baseline framework without replay, which exhibited catastrophic forgetting during task transitions. This demonstrates that our proposed framework personalizes exoskeleton control in real time across diverse locomotor contexts in daily ambulation of clinical populations.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,17 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Navigating Distribution Shifts in Medical Image Analysis: A Survey
+View PDF HTML (experimental)Abstract:Medical Image Analysis (MedIA) has become indispensable in modern healthcare, enhancing clinical diagnostics and personalized treatment. Despite the remarkable advancements supported by deep learning (DL) technologies, their practical deployment faces challenges posed by distribution shifts, where models trained on specific datasets underperform on others from varying hospitals, or patient populations. To address this issue, researchers have been actively developing strategies to increase the adaptability of DL models, enabling their effective use in unfamiliar environments. This paper systematically reviews approaches that apply DL techniques to MedIA systems affected by distribution shifts. Rather than organizing existing methods by technical characteristics, we explicitly bridge real-world clinical constraints -- such as limited data accessibility, strict privacy requirements, and heterogeneous collaboration protocols -- with the technical paradigms able to address them. By establishing this connection between operational constraints and methodological evolution, we categorize existing works into Joint Training, Federated Learning, Fine-tuning, and Domain Generalization, each aligned with specific healthcare scenarios. Beyond this taxonomy, our empirical analysis suggests that, as domain information becomes progressively less accessible across these paradigms, performance improvements become increasingly constrained, and further uncovers a gradual shift in methodological focus from explicit distribution alignment toward uncertainty-aware modeling, ultimately pointing to the need for more deployability-aware design in real-world MedIA.
+Submission history
+From: Zixian Su [view email][v1] Tue, 5 Nov 2024 08:01:16 UTC (836 KB)
+[v2] Fri, 1 Aug 2025 16:00:18 UTC (839 KB)
+[v3] Sat, 18 Apr 2026 08:52:52 UTC (23,554 KB)
+[v4] Sat, 13 Jun 2026 17:17:03 UTC (35,046 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

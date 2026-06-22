@@ -1,0 +1,204 @@
+One TypeScript definition. Validation, OpenAPI, AsyncAPI, BDD tests, Gherkin, and database schemas — all generated from the same source of truth.
+Triad is a TypeScript-first API framework built on the idea that an API's specification, implementation, validation, and tests should never drift apart, because they are the same thing. You write TypeScript once using Triad's declarative DSL, and you get:
+- Runtime validation at the edges (parse + reject with structured errors)
+- Static types derived from the same schemas (
+t.infer<typeof X>
+) - OpenAPI 3.1 documentation for HTTP endpoints
+- AsyncAPI 3.0 documentation for WebSocket channels
+- Executable BDD scenarios that run as tests (
+triad test
+) - Automatic adversarial tests derived from your schema constraints (
+scenario.auto()
+) - Gherkin
+.feature
+files generated for non-technical stakeholders - Typed frontend hooks for React Query, Solid Query, Vue Query, Svelte Query (
+triad frontend generate
+) - Database schemas via a dialect-neutral Drizzle bridge (
+triad db generate
+)
+No codegen round-trips. No hand-maintained OpenAPI YAML. No duplicate Zod + OpenAPI + test-fixture schemas that fall out of sync.
+Triad's north star is that an AI coding assistant should be able to understand an entire API by reading one place. When schemas, handlers, responses, channel payloads, tests, and docs all live in the same typed definitions, an LLM (or a new engineer) doesn't have to stitch context together from a Zod file, an OpenAPI YAML, a separate test fixture, and a README that's three commits out of date. There is one source of truth, and every other artifact is a deterministic projection of it. That's what keeps humans productive — and it's what lets AI reason about your API without guessing.
+This repo doubles as a Claude Code marketplace, so the fastest path to a working TriadJS backend is to let Claude do the scaffolding.
+1. Add the TriadJS marketplace and install the plugin (one time, in any Claude Code session):
+/plugin marketplace add justhamade/triad
+/plugin install triadjs@triadjs
+This installs 10 skills (schema DSL, endpoints, channels, BDD behaviors with the authoritative assertion phrase table, testing, adapters, Drizzle, CLI, DI) and 8 slash commands (/triadjs:new
+, /triadjs:model
+, /triadjs:endpoint
+, /triadjs:channel
+, /triadjs:scenario
+, /triadjs:test
+, /triadjs:docs
+, /triadjs:validate
+).
+2. Scaffold your first project:
+/triadjs:new a petstore API with pets, adoptions, and a chat room channel
+Claude will create the full project layout — package.json
+, triad.config.ts
+, schemas, endpoints with behaviors, a Fastify server, and a test setup — then run triad test
+to confirm every scenario passes. Run npm run dev
+and Swagger UI is immediately live at http://localhost:3000/api-docs
+with the live OpenAPI spec at /api-docs/openapi.json
+. No extra step.
+3. Iterate:
+/triadjs:endpoint add a soft-delete endpoint for pets
+/triadjs:scenario cover the 404 case on getPet
+/triadjs:test
+/triadjs:docs
+Each command loads only the skills it needs, writes idiomatic TriadJS code that matches the phrase table the parser expects, and verifies its own output. See plugin/README.md
+for the full skill and command catalog.
+Don't use Claude Code? Skip to Taste of it below for a plain-TypeScript walkthrough, or the full Quickstart.
+import { t, endpoint, scenario, createRouter } from '@triadjs/core';
+const Pet = t.model('Pet', {
+id: t.string().format('uuid').identity(),
+name: t.string().minLength(1).example('Buddy'),
+species: t.enum('dog', 'cat', 'bird', 'fish'),
+age: t.int32().min(0).max(100),
+});
+const CreatePet = Pet.pick('name', 'species', 'age').named('CreatePet');
+const createPet = endpoint({
+method: 'POST',
+path: '/pets',
+summary: 'Create a pet',
+body: CreatePet,
+responses: { 201: Pet, 400: ApiError },
+handler: async (ctx) => {
+const pet = await ctx.services.petRepo.create(ctx.body);
+return ctx.respond[201](pet);
+},
+behaviors: [
+scenario('creates a pet with valid input')
+.when('POST /pets', { body: { name: 'Rex', species: 'dog', age: 3 } })
+.then('status is 201')
+.and('response body matches { name: "Rex", species: "dog" }'),
+// One line — the framework generates ~20 boundary/adversarial
+// tests from the schema constraints you already declared above.
+...scenario.auto(),
+],
+});
+const router = createRouter({ title: 'Petstore', version: '1.0.0' });
+router.add(createPet);
+From this single file:
+triad test
+runs your hand-written scenario AND the auto-generated boundary teststriad fuzz
+generates adversarial tests for every endpoint without touching any filetriad docs
+emitsopenapi.yaml
+triad gherkin
+emitsfeatures/pets.feature
+triad frontend generate
+emits typed React/Solid/Vue/Svelte Query hooksctx.body
+is fully typed —{ name: string; species: 'dog' | 'cat' | ... }
+scenario.auto()
+reads minLength(1)
+, max(100)
+, enum('dog', 'cat')
+and generates missing-field, boundary-value, invalid-enum, type-confusion, and random-fuzzing scenarios automatically. You write the business logic tests; the framework generates the boundary tests.
+For WebSocket channels, channel()
+works the same way and produces AsyncAPI + typed client libraries.
+| Package | Purpose |
+|---|---|
+@triadjs/core |
+Schema DSL, endpoint() , channel() , scenario() , scenario.auto() , createRouter() |
+@triadjs/openapi |
+Router → OpenAPI 3.1 (YAML/JSON) |
+@triadjs/asyncapi |
+Router → AsyncAPI 3.0 (YAML/JSON) |
+@triadjs/gherkin |
+Behaviors → .feature files |
+@triadjs/test-runner |
+In-process BDD runner + schema-derived auto-scenario generation |
+@triadjs/fastify |
+Fastify HTTP + WebSocket adapter |
+@triadjs/express |
+Express HTTP adapter |
+@triadjs/hono |
+Hono adapter (Node, Deno, Bun, Cloudflare Workers) |
+@triadjs/lambda |
+AWS Lambda adapter (API Gateway v1/v2, ALB, Function URL) |
+@triadjs/drizzle |
+Triad schemas → Drizzle tables + SQL migrations (SQLite, Postgres, MySQL) |
+@triadjs/tanstack-query |
+Router → typed React Query hooks |
+@triadjs/solid-query |
+Router → typed Solid Query hooks |
+@triadjs/vue-query |
+Router → typed Vue Query composables |
+@triadjs/svelte-query |
+Router → typed Svelte Query store factories |
+@triadjs/channel-client |
+Router → typed WebSocket clients (vanilla TS, React, Solid, Vue, Svelte) |
+@triadjs/forms |
+Router → form validators (react-hook-form, @tanstack/form) |
+@triadjs/jwt |
+requireJWT BeforeHandler factory wrapping jose |
+@triadjs/otel |
+OpenTelemetry tracing (opt-in router wrapper) |
+@triadjs/metrics |
+Prometheus metrics (opt-in router wrapper) |
+@triadjs/logging |
+Structured logging with AsyncLocalStorage (opt-in router wrapper) |
+@triadjs/security-headers |
+Security headers middleware (Fastify, Express, Hono) |
+@triadjs/cli |
+triad test , triad fuzz , triad docs , triad new , triad mock , triad db , triad validate , triad frontend |
+Start at the docs index — it points at everything below based on what you're trying to do.
+Learn by building
+- Tutorial — Build the "Bookshelf" app from hello-world to production-ready in 7 steps
+Pick your stack
+- Choosing an adapter — Fastify vs Express vs Hono
+- Choosing an ORM — Drizzle (the default), Prisma, Kysely, or raw SQL
+Work with AI
+- Working with AI assistants — Prompt library + how to use the AI Agent Guide
+- AI Agent Guide — Canonical source-grounded reference for Claude Code, Cursor, Copilot, Aider
+Reference
+Project
+Four reference implementations live under examples/
+— petstore
+(Fastify + channels), tasktracker
+(Express + auth + pagination), bookshelf
+(all features combined — the tutorial's final state), and supabase-edge
+(Hono + Supabase + Deno edge deployment). Each has both in-process behavior tests and real HTTP/WebSocket e2e tests.
+Triad is pre-1.0 and under active development. Feature-complete through Phase 26:
+- ✅ Schema DSL with full DDD composition (
+t.model
+,t.value
+,t.file
+, 14 primitive types) - ✅ Endpoint + router +
+beforeHandler
+auth extension +checkOwnership
+helper - ✅
+scenario.auto()
+— schema-derived adversarial test generation (missing fields, boundary values, type confusion, random fuzzing) - ✅ OpenAPI 3.1 + AsyncAPI 3.0 generators
+- ✅ Gherkin generator (HTTP + channels)
+- ✅ In-process BDD test runner +
+triad fuzz
+CLI fuzzer +triad validate --coverage
+linter - ✅ Four HTTP adapters: Fastify (+ channels), Express, Hono (edge runtimes), Lambda (AWS)
+- ✅ Drizzle bridge with SQL migration codegen (SQLite, Postgres, MySQL)
+- ✅ Frontend codegen: TanStack Query, Solid Query, Vue Query, Svelte Query, form validators, typed WebSocket clients
+- ✅ Observability: OpenTelemetry tracing, Prometheus metrics, structured logging (all opt-in router wrappers)
+- ✅ Auth:
+@triadjs/jwt
+with JWKS/HS256 + security headers middleware - ✅ Developer tooling:
+triad new
+scaffolding,triad mock
+server,triad docs check
+breaking-change detection
+21 packages, 4 reference examples, 83 behavior scenarios, 1000+ unit/integration/property tests. APIs may still shift before 1.0 — pin exact versions if you adopt early.
+See ROADMAP.md for phase-by-phase detail.
+Most TypeScript API stacks stitch together four or five libraries to get what Triad gives you in one:
+| Need | Typical stack | Triad |
+|---|---|---|
+| Runtime validation | Zod / Yup | t.model() |
+| Static types | z.infer<> |
+t.infer<> |
+| OpenAPI | zod-to-openapi + hand edits |
+triad docs |
+| BDD tests | Cucumber + step defs + fixtures | scenario().when().then() |
+| Boundary/fuzz tests | Schemathesis (external, Python) | scenario.auto() (built-in, zero-config) |
+| Frontend hooks | hand-written fetch wrappers | triad frontend generate |
+| WebSocket clients | hand-written WS wrappers | triad frontend generate --target channel-client-react |
+| WebSocket docs | hand-written AsyncAPI | triad docs |
+| DB schema | Drizzle (separate definitions) | triad db generate |
+| Breaking-change detection | manual OpenAPI diff | triad docs check |
+The point isn't just fewer dependencies — it's that a change to a schema is impossible to forget to propagate, because there is nothing to propagate to. And the boundary tests you'd never think to write? The framework writes them for you from the constraints you already declared.

@@ -1,0 +1,270 @@
+This article is the parsing brick of Enterprise Document Intelligence, a series that builds an enterprise RAG system from four bricks: parsing, question parsing, retrieval, and generation. Parsing comes first, and this is the first of its two parts. This part covers the first of parsing’s two layers: knowing the nature of the document (born-digital vs scanned, source software, declared metadata, native TOC) plus a short LLM-written summary of what it is. The next part turns the content into a relational set of tables.
+What is this thing? A CV, an insurance contract, a regulatory text, an academic paper? How many pages? Born digital or scanned, or stitched together from both? What does it carry: paragraphs, tables, multi-column layout, embedded images? In what language?
+Each of those checks is a failure case the rest of the pipeline cannot recover from:
+- A CV exported from a designer template. The candidate’s name sits in a logo image at the top of page 1, the rest of the page in clean text. Asked “what is the name?”, retrieval finds nothing matching and falls back to the PDF metadata’s
+author
+field, which is whoever last edited the file. The answer is wrong before generation ever runs. - An insurance contract with
+has_text_layer=True
+. The text layer is OCR output at quality 0.3. “Renewal fee EUR 250” comes through as “Renewa1 fee EUR 25O”. Keyword retrieval never matches; generation reads a different number nearby and commits to it. - A 200-page regulatory text with no TOC and no headings the parser can detect. The pipeline treats it as one homogeneous blob. The question parser has no idea page 4 holds the definitions and page 187 holds the exclusions.
+- An academic paper with two-column layout. Naive text extraction interleaves the left and right column line by line. The retrieved chunk reads as gibberish.
+Same shape every time. An expert was asked a question about a document they had never opened. They guessed. The pipeline did the same.
+Parsing has two layers. This article (5_A) covers the first: knowing the nature of the document (born-digital vs scanned, source software, declared metadata, native TOC if any) and a short LLM-written summary (page count, plus three or four sentences naming the document type, the main subject, the fields it carries). The next article (5_B) covers the second: knowing the content precisely through a relational base where every line, span, image, and TOC entry becomes one row keyed by page and position.
+The article uses PyMuPDF (also imported as fitz
+), a free Python library that reads PDF bytes directly. No external tools, no API key. Fast enough to run at ingest time and accurate on born-digital PDFs. The same parse_pdf
+contract can be re-implemented by heavier engines (Azure Layout, Docling, Camelot, vision-LLM fallback). When a page demands more depth than fitz can give, an adaptive cascade dispatches across them. That escalation is a follow-up topic, beyond this article’s scope.
+A PDF gives you two kinds of information. Document-level signals: metadata, native bookmarks, declared properties. Page-level content: what each page holds. The parser reads them in that order, and trusts content when the two disagree.
+Metadata is a handful of fields the PDF hands over in milliseconds. Producer, Creator, native bookmarks, encryption flag. Document-level, no walking pages. You read them at the very start of every parse to make a routing call. Word export → direct extraction. Kofax scan → OCR pipeline. Anything ambiguous → the slower content pass.
+Metadata lies sometimes. Ghostscript and qpdf overwrite the upstream Producer field when they recompress, so a Word PDF re-distilled twice will claim to be Ghostscript and tell you nothing about the true origin. The helper exposes both the inferred label and the raw creator_raw
+/ producer_raw
+strings so downstream rules can argue back.
+A PDF almost always advertises its origin through the Creator
+and Producer
+fields. That single signal tells us how hard the rest of the parsing will be, and lets us route to the right strategy before opening any page.
+Producers fall into roughly five buckets, ordered from easiest to hardest to parse. “Vector tables” below means tables drawn as native lines + text (the cells survive as data); the opposite is a table flattened into a single image (only OCR can recover the cells).
+- Office authoring tools (easiest). Microsoft Word, PowerPoint, LibreOffice (Writer / Impress), OpenOffice, Google Docs and Slides exports, Apple Pages and Keynote. They preserve logical structure (headings, lists, paragraphs) with native vector fonts. Direct text extraction works well, reading order is reliable, tables are usually vector tables. The bulk of “office documents” you’ll see in an enterprise corpus.
+- Document processors. LaTeX engines (pdfTeX, XeTeX, LuaTeX), Pandoc, Quarto, R Markdown, ReportLab, WeasyPrint. Excellent text fidelity but with their own quirks: hyphenation breaks words across lines, math is rendered as vector paths or images (not extractable text), references and citations have unusual spacing. Tables are vector tables most of the time.
+- Design and publishing tools. Adobe InDesign, Illustrator, QuarkXPress, Affinity Publisher. Multi-column flow with messy reading order. PyMuPDF often gets reading order wrong on dense layouts. Tables can be drawn as vector graphics rather than vector tables. Captions, sidebars, and decorative elements complicate parsing. Expect to escalate to a layout-aware parser on dense layouts.
+- Print pipelines and recompressors. Browser print (Chrome, Safari, Firefox), OS print-to-PDF dialogs, Ghostscript, qpdf, distiller-class tools. Mixed quality. Browser-printed PDFs preserve text but lose hyperlinks and bookmarks. Ghostscript and qpdf often pass the content through but overwrite the upstream
+Producer
+field, so the original signal is gone. That’s why the helper exposes bothcreator_raw
+andproducer_raw
+. - Scanner software and capture apps (hardest). Kofax, ABBYY, Adobe Scan, ScanSnap, CamScanner, fax pipelines. Pure image, no native text. OCR mandatory. CamScanner-class apps add image-quality issues (skew, low resolution, JPEG artefacts) on top.
+def detect_source_software(doc: fitz.Document) -> str:
+"""Classify the producing software using Creator/Producer metadata."""
+meta = doc.metadata or {}
+combined = f"{(meta.get('creator') or '').lower()} {(meta.get('producer') or '').lower()}"
+# Bucket 1 — office authoring tools
+if "microsoft" in combined and "word" in combined: return "word_export"
+if "pdfmaker" in combined and "word" in combined: return "word_export"
+if "powerpoint" in combined: return "powerpoint_export"
+if any(s in combined for s in ("libreoffice", "openoffice")): return "libreoffice_export"
+# Bucket 2 — document processors
+if any(s in combined for s in ("pdftex", "xetex", "luatex")): return "latex_export"
+if "pandoc" in combined: return "pandoc_export"
+# Bucket 3 — design and publishing tools
+if "indesign" in combined: return "indesign_export"
+# Bucket 4 — print pipelines and recompressors
+if "ghostscript" in combined: return "ghostscript"
+if any(s in combined for s in ("chrome", "safari", "firefox")): return "browser_print"
+# Bucket 5 — scanner software (OCR mandatory)
+if any(s in combined for s in ("kofax", "abbyy", "adobe scan", "scansnap", "camscanner")):
+return "scanner_software"
+return "unknown_source"
+The detection is imperfect: a Word PDF re-distilled through Ghostscript will have its Producer
+overwritten, and rare producers fall into unknown_source
+. On a mixed corpus of papers, scanned contracts, browser-printed reports, and Office exports, roughly nine PDFs out of ten land in the right bucket on first read. Enough to drive routing. We expose both the inferred source_software
+label and the raw creator_raw
+/ producer_raw
+strings so downstream rules can compensate when needed.
+Two demo PDFs carry the rest of this article: the Attention Is All You Need paper (Vaswani et al. 2017; arXiv non-exclusive distribution license, declared on the arXiv abstract page) and the NIST Cybersecurity Framework 2.0 (CSWP-29; US Government work, public domain in the US, see NIST copyright statement). The detector lands them in two different buckets:
+PyMuPDF exposes the document’s outline through doc.get_toc()
+, which returns a list of [level, title, page]
+triples. build_toc_df
+wraps that and adds parent_idx
+and breadcrumb
+so the hierarchy is queryable.
+Run it on the Attention Is All You Need paper (Vaswani et al. 2017; arXiv non-exclusive distribution license, declared on the arXiv abstract page) and you get a real, three-level structure:
+When the document has a TOC, we treat it as declared structure: the document telling us how it organizes itself.
+When the document has no TOC (most scans and quick exports), get_toc()
+returns an empty list. Reconstructing a TOC from typography signals (large bold lines, numbering patterns) is a separate problem, outside this article’s scope.
+Encryption (doc.is_encrypted
+, doc.needs_pass
+), form fields (doc.is_form_pdf
+), digital signatures, creation and modification dates. All cheap to read. Some matter for parsing routing (encrypted PDFs need handling); most matter at the corpus level (versioning, audit, access control) and are covered in the corpus articles (Articles 15-20).
+Once metadata is read, we walk the pages. Content is the ground truth: when a PDF claims to be a Word export but every page is a scan that someone pasted into Word and re-exported, only content catches it. Metadata says one thing, the bounding boxes say another. We believe the bounding boxes.
+For each page we extract content elements in priority order.
+Text is the most important deliverable. The natural unit is the line: a line carries a string along with its bounding box (the rectangle that encloses it on the page), dominant typography (font, size, bold, italic, color), and a critical flag, the render mode: a PDF-level code that tells us whether the text was written natively or placed invisibly by an OCR layer on top of a scanned image.
+raw = page.get_text("rawdict")
+native_chars = 0
+ocr_chars = 0
+for block in raw["blocks"]:
+if block["type"] != 0:
+continue
+for line in block["lines"]:
+for span in line["spans"]:
+if span.get("render_mode", 0) == 3:
+ocr_chars += len(span["text"])
+else:
+native_chars += len(span["text"])
+Render mode 3 means the text is drawn invisibly: a layer that OCR software places underneath the page image so the scan becomes searchable. The text is there, but only as hidden characters. Distinguishing render mode 3 from native text matters: it is the only reliable way to know whether a scanned page already has a usable searchable layer or needs to be re-OCR’d.
+Going further: When typography varies within a single line (a bold word in the middle of a sentence, a colored heading, a rotated label), capturing it requires going down to the span level. We introduce span-level extraction in section 3 of this article, because some downstream stages (heading detection, listing aggregation across long answers) need it.
+Images come second because they often contain text or critical visual information that the RAG pipeline would otherwise lose. Logos identify the issuing party. Schematics describe systems. Photographs document evidence. Tables exported as images carry data.
+For each embedded image we record its displayed bounding box (in PDF points), its intrinsic dimensions (in pixels), and a content hash for deduplication. The image is also extracted and persisted (S3 or local storage) so downstream stages can process it.
+A common pitfall: page.get_images()
+returns the intrinsic dimensions of each image, not the area displayed on the page. To compute true coverage, use page.get_image_info()
+, which returns the bounding box in PDF points as rendered.
+page_area = page.rect.width * page.rect.height
+max_coverage = 0.0
+for info in page.get_image_info():
+bbox = info["bbox"]
+img_area = (bbox[2] - bbox[0]) * (bbox[3] - bbox[1])
+max_coverage = max(max_coverage, img_area / page_area)
+has_full_page_image = max_coverage >= 0.95
+A page where one image covers ≥ 95% of the surface is, with very high probability, a scanned page. The 95% threshold is empirical: it tolerates the small margins a scanner adds around the page edge without catching pages that legitimately use a large hero image inside a layout. Values from 90% to 99% all work in practice; tighten the threshold if your corpus has many full-bleed cover pages, loosen it if scanners crop tightly.
+Tables don’t chunk like running text. Naive linearization destroys cell semantics. The parsing stage flags their presence and location; the actual structured extraction happens in a follow-up adaptive-parsing pass that escalates to a layout-aware engine when fitz’s row guess looks unreliable.
+PyMuPDF (since 1.23) detects vector tables, those built from drawn lines combined with native text, via page.find_tables()
+. The call returns a TableFinder
+object whose .tables
+list has one entry per detected table: tables = page.find_tables(); n_tables = len(tables.tables)
+.
+For scanned tables rendered as images, find_tables()
+won’t fire. Detection in that case requires visual tools (Camelot, Docling, PaddleStructure), beyond this article’s scope.
+Column detection is hard. Two-column layouts break the naive reading order: a research paper parsed without column awareness returns line 1 of column 1, then line 1 of column 2, then line 2 of column 1, and so on, splicing sentences from different columns into noise. Three or more columns make every reasonable heuristic shaky.
+The pragmatic move is to annotate each line with where it sits horizontally rather than try to recover a perfect reading order. We add a column_position
+field to line_df
+with four values:
+single
+: the page has one column.left
+/right
+: the page has two columns; the line falls in one or the other.multi
+: the page has three or more columns; we flag it instead of guessing.
+The detection clusters the left edge of each line along the x-axis: in line_df
+that edge is bbox_x0
+, the x coordinate where the line starts. A page where every line starts in roughly the same horizontal band is single-column. A page with two clear bands is two-column, and we split lines by which band they fall into. The Attention paper’s page 4 will give us the real numbers in section 4.2: x0 ≈ 148
+for the left column, x0 ≈ 364
+for the right one.
+def assign_column_positions(
+line_df: pd.DataFrame,
+gap_threshold: float = 80.0,
+min_cluster_fraction: float = 0.10,
+) -> pd.DataFrame:
+"""Add a `column_position` field: single / left / right / multi."""
+out = line_df.copy()
+out["column_position"] = "single"
+for _, sub in line_df.groupby("page_num"):
+x0_values = sub["x0"].tolist()
+if not x0_values:
+continue
+clusters = _cluster_x0(x0_values, gap_threshold)
+sig = _significant_clusters(clusters, len(x0_values), min_cluster_fraction)
+n_cols = max(1, len(sig))
+if n_cols == 1:
+continue
+if n_cols == 2:
+c1_center = sum(sig[0]) / len(sig[0])
+c2_center = sum(sig[1]) / len(sig[1])
+split = (c1_center + c2_center) / 2
+left_idx = sub.index[sub["x0"] < split]
+right_idx = sub.index[sub["x0"] >= split]
+out.loc[left_idx, "column_position"] = "left"
+out.loc[right_idx, "column_position"] = "right"
+else:
+out.loc[sub.index, "column_position"] = "multi"
+return out
+The gap_threshold
+defaults to 80 PDF points (1 PDF point = 1/72 inch, so 80 ≈ 2.8 cm). That’s the typical width of the gutter between columns in a NeurIPS-style paper or a two-column policy document. Anything narrower is more likely a paragraph indent than a column break.
+Why bother with left / right at all? The use case that earns this field its place is structured data on the page where position is the schema. On invoices, the issuer’s address sits top-left, the customer’s address sits top-right (or the inverse, depending on the template). Asking the retriever to pull “the customer block” from the right half of page 1 is far more natural than asking for an exact bbox. The same pattern shows up on forms, statements, and contracts with a header block. Once the field is in line_df
+, downstream stages can filter by column_position == "right"
+like any other table query.
+The user can also point at it directly. Operators familiar with their documents will say “the answer is in the left column” or “the policy number sits on the right”. That sentence is a query against column_position
+, not a vision task.
+Two columns is where this label earns its keep. With three or more columns, “left vs right” loses meaning and we mark the page multi
+rather than guess. Newspapers, dense reference manuals, and pages with side margins are the cases to watch. When column_position == "multi"
+shows up on a page that matters, that’s a signal to escalate to a layout-aware parser.
+A frequent failure mode of “minimal” RAG pipelines lives right here. The author tests on a Word doc (column_position == "single"
+everywhere), retrieval works, then a customer drops a two-column annual report and the system starts returning sentences cut in half. The bug looks like a generation problem (“the model can’t read”); the cause is a parsing problem (the lines were never in the right order to begin with).
+With the per-page signals collected, every page receives a primary type (mutually exclusive) and additive flags (independent booleans).
+The primary types:
+The additive flags describe what the page contains, independently of the type:
+has_text
+/has_native_text
+/has_ocr_layer
+: any text present; any native (non-OCR) text; any invisible OCR layer.has_image
+/has_full_page_image
+: any embedded image; one image covering ≥ 95% of the page.has_vector_table
+: at least one table detected viapage.find_tables()
+(lines + native text, not flattened to an image).has_vector_graphics
+: the page contains drawn paths that are NOT a vector table (charts, schematics, decorative shapes, mathematical figures). Worth flagging because these are PDF content the text extractor sees as nothing.
+Separating type from flags lets us cross criteria: “all pages with a vector table” regardless of type, “mixed pages that also contain a table”, and so on.
+The classifier consumes a PageFeatures
+object: the subset of per-page signals it needs to decide. The text_quality_score
+in that object is a 0–1 ratio: 0 means the page text is garbled (high proportion of unrecognised characters), 1 means clean native text. An adaptive cascade builds it in full from the raw signals; here it is just one input to the classifier:
+@dataclass
+class PageFeatures:
+char_count: int
+n_fonts: int
+n_images: int
+has_full_page_image: bool
+native_chars: int
+ocr_chars: int
+text_quality_score: float
+Three views of “page-level fields” live in this article. The schema (the page_df
+diagram below in section 3.3) lists every field the data model targets. PageFeatures
+is the subset classify_page
+reads. The current page_df
+sample is the core triplet the package builds today: additive flags from the schema land progressively as downstream stages ask for them.
+The classification logic itself is short:
+def classify_page(features: PageFeatures) -> str:
+if features.char_count < 10 and features.n_images == 0:
+return "empty"
+if features.n_fonts == 0 and features.has_full_page_image:
+return "scanned"
+if (features.has_full_page_image
+and features.ocr_chars > features.native_chars
+and features.ocr_chars > 50):
+return "scanned_ocr_good" if features.text_quality_score >= 0.7 else "scanned_ocr_bad"
+if features.has_full_page_image and features.native_chars > 50:
+return "mixed"
+if features.n_fonts > 0 and features.native_chars > 0:
+return "native_with_image" if features.n_images > 0 else "native"
+return "unknown"
+The decisive signals are structural, not statistical: declared fonts, render mode, displayed image coverage. We never rely on character-count thresholds alone to decide native vs scanned. A native page with three lines of text is still native.
+Going further: OCR quality scoring (the
+text_quality_score
+used above) deserves its own treatment. The two reliable signals are the proportion of Unicode replacement characters and the ratio of words found in a dictionary. Lists of “suspicious characters” like ●◦• should be avoided; those are perfectly legitimate bullets in formatted documents. The full scoring pipeline is a follow-up topic.
+Sections 1 and 2 went through NIST CSF and the Attention paper, both rich in structural signals. Section 3 turns to a document type where structure alone settles nothing: the one-page CV. The running example is a fictional CV, Sarah Mitchell, Data Analyst.
+The signals from sections 1 and 2 are everything a deterministic parser can produce in a few seconds without a model call. They tell us what the document is and how it is laid out. They do not tell us what it is about. Two one-pagers with the same page count, the same single-column layout, the same word_export
+producer still differ on every question retrieval will be asked.
+A short prose summary closes that gap. One LLM call at parsing time, fed the first one or two pages, asked to return three or four sentences naming the document type, the main subject, and the fields it carries. Around two hundred tokens. Cached forever, since parsing is run-once per document. The result lands in three fields of the same doc-level dict (parsing_summary
+): doc_type
+, typical_fields
+, and summary
+.
+Run that clean CV through parsing and the semantic zone of parsing_summary
+reads like this:
+{
+"doc_type": "resume",
+"typical_fields": ["name", "email", "phone", "experience", "education", "skills", "languages"],
+"summary": "One-page resume of Sarah Mitchell, a Data Analyst based in London with about four years of experience. Lists positions at Northwind Retail and Brightwave Insurance, a BSc in Statistics from Leeds, and skills in Python, SQL, BigQuery and Power BI. Standard CV sections: Summary, Experience, Education, Skills."
+}
+Dropped into the system prompt of the question parser, this fixes the “what is the name?” case from the opener. The parser now sees that this document is about Sarah Mitchell before it sees the user’s question. Name is no longer an ambiguous role word looking for a literal occurrence. The parser knows the candidate’s name is Sarah Mitchell and routes the question that way.
+The same three fields work for every question on the same document. “Where did she work?” now has a referent. “What’s her tech stack?” maps to the Skills section listed in typical_fields
+. Page count rides along for free in the same dict: “summarize page 1” on a one-page CV becomes “summarize the whole document”, retrieval is skipped, generation reads the full content.
+The shape of the summary
+field matters more than its length. A handful of working rules:
+- Three to four sentences, plain prose, factual register. No marketing tone (“a brilliant CV with extensive achievements” poisons every downstream answer with claims the parser will then propagate).
+- Open with the document type and the main subject: “One-page resume of Sarah Mitchell, a Data Analyst…”. The parser uses the first noun phrase to disambiguate role words like name, role, employer.
+- List the standard sections when they exist: “Standard CV sections: Summary, Experience, Education, Skills.”. The parser uses this to map question topics to retrieval scopes.
+- Stick to facts a reader could verify on the first page or two. No claims about content the LLM has not seen.
+A set of fictional CVs with the same shape (one to two pages, candidate at the top, sections below) but different layouts and content quality stresses this discipline. A summary that reads “resume of , , with ” generalises across all of them. A summary that drifts into rendering choices (“two-column layout with a coloured sidebar”) overfits to one file and breaks on the next.
+This is the piece that turns the glance at the document metaphor into something a chatbot can use. The deterministic signals from sections 1 and 2 say how to parse. The semantic zone of parsing_summary
+says what was parsed. Together they form the doc-level dict every downstream brick reads, starting with the question parser’s system prompt.
+All of this shows up in Enterprise Document Intelligence, the desktop app I’m building. The screenshot below has the same fictional CV open, with the document-context fields surfaced and highlighted on the page: candidate name, target role, years of experience. The short summary written once at parse time is what drives that panel.
+A PDF is two documents stacked on top of each other: the declared signals (metadata, native TOC, source software) and the page-level content (text vs scan, images, tables, columns, page profile). The parser reads them in that order and trusts the body when the two disagree. A short LLM-written summary
+field, paid once per document and cached, sits next to them in the same parsing_summary
+dict, and the question parser reads it as part of its system prompt on every call.
+Each signal saved at parse time becomes a column the rest of the pipeline reads. Each page-level decision routes the page to the right downstream handler: pure text pages go through OCR-skip, table-heavy pages go through a structured-extraction path, multi-column pages get a column-aware reading order. The difference between a parser that ships a flat string and a parser that ships something downstream code can query is right here, in the signals it bothered to record.
+The next article (“Stop returning flat text from a PDF: the relational shape RAG needs”) will show you the eight DataFrames the parser produces from these signals, demoed on two real documents. The same DataFrames are the input the minimal RAG pipeline consumes end-to-end, and they sit inside the broader Enterprise Document Intelligence series.
+Sources and further reading
+Earlier in the series:
+- From regex to vision models: which RAG technique fits which problem — the lens for picking a parsing technique per document
+- Document Intelligence — series intro — the four bricks, parsing first.
+- Rerankers Aren’t Magic Either: When the Cross-Encoder Layer Is Worth the Cost — the rerank layer that runs after parsing.
+The parser this article describes follows the same architecture as Docling (Auer et al., Docling Technical Report, IBM Research 2024): layout detection, TableFormer, reading-order. Borderless table extraction uses the model from Smock et al. (PubTables-1M / Table Transformer, CVPR 2022). The page-class taxonomy is built on the same baseline as Pfitzmann et al. (DocLayNet, KDD 2022). The article adds a render-mode detection pass (native / scanned / mixed) with OCR-quality scoring on top. The parser produces a relational set of tables (line_df
+, page_df
+, image_df
+, toc_df
+, object_registry
+, cross_ref_df
+, span_df
+, plus a parsing_summary
+dict); retrieval, generation, and annotation downstream do not read the PDF again, they query DataFrames.
+Same direction as the article:
+- Auer et al., Docling Technical Report, IBM Research 2024 (arXiv:2408.09869). Reference architecture for the pipeline this article describes: layout detection, TableFormer, reading-order, unified document representation.
+- Smock, Pesala, Abraham, PubTables-1M / Table Transformer (TATR), CVPR 2022 (arXiv:2110.00061). Vision-based table detection and structure recognition; the model behind most modern table parsers.
+- Pfitzmann et al., DocLayNet, KDD 2022 (arXiv:2206.01062). Empirical baseline for the page-class taxonomy and layout detection benchmarks.
+- Lo et al., PaperMage, EMNLP 2023 demos. Maps to the indexing-vs-reading split (parsing for retrieval is not parsing for answer generation).
+Different angle, different context:
+- Faysse et al., ColPali: Efficient Document Retrieval with Vision Language Models, 2024 (arXiv:2407.01449). Vision-language retrieval on the page image. The context is retrieval where the page image is the artefact, no parsing-into-tables step. This article uses bounding-box-anchored DataFrames as the foundation instead.
+- Wang et al., DocLLM: A Layout-Aware Generative Language Model for Multimodal Document Understanding, JPMorgan 2024 (arXiv:2401.00908). Layout-aware LLM that reads the PDF directly without an explicit relational parsing brick. Same family of approach as ColPali; different from this article’s queryable relational artefact.
+- Kim et al., OCR-free Document Understanding Transformer (Donut), ECCV 2022 (arXiv:2111.15664). End-to-end OCR-free document understanding; useful contrast with the OCR-quality-scoring pass this article adds on top of the render-mode detection.

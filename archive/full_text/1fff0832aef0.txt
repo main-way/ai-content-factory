@@ -1,0 +1,27 @@
+CAIMITO.NET
+… or why “We’ve Tried to Replace Developers Every Decade Since 1969”
+This is an excellent piece by Stephan Schwab, highlighting that replacing developers with some other technology (at the moment that is of course AI) is far from being a new concept. This recurring theme dates back to the birth of modern computers, with COBOL (or Common Business-Oriented Language to give its full name) being targeted at business people.
+This re-emerged in 80s with CASE tools, the 90s with Visual Basic and Delphi and in the 2000s with a plethora of no-code platforms.
+So why does this dream persist? it all comes down to our perception that software development is simple and can be described concisely in plain language. As Stephan notes, the complexity emerged in the details, the non functional requirements, failure modes, unexpected human inputs and more. These details tend to emerge within the software development process itself.
+Software development isn’t just mechanical, you can use COBOL, CASE tools, Visual Basic or AI to accelerate the production of code, but that misses a bigger point …
+“Yet the fundamental challenge persists because it’s not mechanical. It’s intellectual. Software development is thinking made tangible.”
+SEANGOEDECKE.COM
+This story is a strange one …
+A couple of the more ‘out there’ AI engineering projects to emerge recently are Geoff Huntley’s “Ralph Wiggum loop” (giving Claude code infinite context by running in a never ending loop) and Steve Yegge’s “Gas Town” (a whole village of LLM workers churning out code at speed). They might not be the most practical projects, but they are certainly generating discussion and more than a little bit of hype.
+I had this to say of Gas Town a few issues back:
+Personally I think of Gas Town as a work of modern art, it is a provocation rather than a solution.
+However, since then both Huntley and Yegge have been posting about $RALPH and $GAS cryptocurrency coins (meme coins). What on earth is going on?
+The Solana network has an app called Bags where you can create new meme coins, with a cut of the profit going to a nominated Twitter (X) account. SOmeone created meme coins for each of these projects, with the payout for $GAS totalling $300k at the moment.
+This is a complicated issue - for most people open source doesn’t pay, so having someone suddenly appear with a considerable bag of money is an enticing proposition. However, this is very much predatory behaviour on the part of the cryto grifters. Yes, Huntley and Yegge gain some funds, but they are then incentivised to increase this by promoting their respective meme coins, and the more people who buy them, the more money the grifters make, they will always ensure they get the lion’s share of the reward.
+Just as art attracts NFTs, open source is now attracting memecoins.
+HUMANLAYER.DEV
+If you’re not familiar with the “Ralph Wiggum Loop”, this post is a useful introduction.
+It’i’s a brisk, first-person timeline of how Geoff Huntley’s “Ralph Wiggum Technique” (an “agent in a loop” workflow) went from a small, agentic-coding meetup in June 2025 to something that “went viral” in the final weeks of 2025—and then kept evolving into early 2026.
+It isn’t all just memes, there are some practical lessons about “context engineering” and how to get leverage from coding agents. The post is explicit that the magic is not “run forever,” but breaking work into small, independent loops with clear desired-state specs—because bad specs yield bad output, and exploratory/iterative work may be a poor fit for the approach.
+GITHUB.IO
+The current cohort of frontier models (Claude, GPT, etc) all have very similar performance across a wide range of benchmarks, as a result, there seems to be a new way to compare performance - their ability to operate autonomously for long periods of time. There’s even a benchmark for this, developed and run by METR.
+Recent announcements cite models working for hours on complex tasks, Cursor have upped the ante - moving to weeks!
+A few days back the Cursor team published a blog, Scaling long-running autonomous coding, where they described their work in running a fleet of autonomous agents for weeks in order to build a highly complex application, a web browser. They shared the project repo, with 1,000 of files and more than a million lines of code.
+It’s impressive how much code they generated in such a short space of time.
+However, there’s a subtle issue here. The Cursor blog post implies this was a great success, but never states that the browser actually worked. Unfortunately it didn’t. This blog post picks apart the codebase, finding that it doesn’t compile, and is a rather disappointing mess.
+Another example of “hype first and context later”

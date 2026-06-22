@@ -1,0 +1,18 @@
+Mathematics > Optimization and Control
+Title:Optimizing Explicit Unit-Distance Lower-Bound Certificates
+View PDFAbstract:The 2026 disproof of Erdős's unit-distance conjecture and Sawin's quantitative refinement show that the maximum number $u(n)$ of unit distances among $n$ planar points can exceed $n^{1+\varepsilon}$ for a fixed positive $\varepsilon$. Sawin's explicit bound gives more than $n^{1.014}$ unit distances for arbitrarily large $n$ and exposes integer parameters whose choice is not fully optimized. This report treats Sawin's parameter selection as a nonlinear integer optimization problem and develops an open-source Python optimization and verification pipeline for certificates involving prime sets $T$ and $S_Q$, integer multiplicities $k(p)$, and a rationally encoded real parameter $R$. After reproducing Sawin's certificate with $\delta=0.014114\ldots$, the pipeline yields improved certificates with the same $T$. We develop a tailored integer evolution strategy achieving a certificate with $\delta=0.015263\ldots$ and supporting the cautious statement $u(n)>n^{1.0152}$ for arbitrarily large $n$. For extended ramified prime ranges, the Emmerich--Cordella certificate obtained with the same framework reports $u(n)>n^{1.031}$ for $\#T=67$, illustrating the importance of enlarging $T$. Very recent MathOverflow discussions, brought to the author's attention as of version~4, report further improvements, including certificates above $\delta>0.035$ and beyond $\delta>0.036$. Some of these improvements may rely not only on larger prime ranges but also on modified constraint systems and additional degrees of freedom that deviate from Sawin's original formulation. Beyond this application, the work illustrates how randomized optimization heuristics can improve, verify, and refine explicit certificates for combinatorial geometry through nonlinear integer optimization.
+Submission history
+From: Michael Emmerich [view email][v1] Tue, 2 Jun 2026 10:05:23 UTC (37 KB)
+[v2] Wed, 3 Jun 2026 04:25:51 UTC (37 KB)
+[v3] Fri, 5 Jun 2026 13:45:04 UTC (40 KB)
+[v4] Mon, 8 Jun 2026 12:12:44 UTC (41 KB)
+[v5] Tue, 9 Jun 2026 13:18:56 UTC (42 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:FairGen: Preference-Aligned Diffusion for Demographically Equitable Medical Image Synthesis
+View PDF HTML (experimental)Abstract:Medical imaging is central to modern diagnostics, and artificial intelligence (AI) systems are increasingly used to support image-based analysis by improving efficiency, accuracy, and access to care. However, inequities in healthcare access and differential disease prevalence create severe demographic imbalances in clinical image data. Such imbalances are compounded by the fact that diseases can manifest with distinct features across demographic groups, rendering certain phenotypic presentations naturally rare. AI models trained on such imbalanced data risk perpetuating diagnostic bias and widening healthcare disparities. Here we introduce FairGen, a fairness-aware diffusion framework that synthesizes demographically balanced medical images while preserving pathology-relevant visual features. By embedding physician-aligned preferences into the generation process, FairGen improves subgroup coverage during synthesis and downstream classification. Applied to dermatology, radiology, and neuroimaging benchmark tasks, FairGen achieves fairness improvements of 95.9% for skin images, 80.0% for chest radiography, and 35.2% for brain MRI, while maintaining competitive diagnostic accuracy relative to models trained on original clinical data. Clinician-facing expert review and external validation on independent cohorts further support that these gains extend beyond standard fidelity metrics and are not confined to the original in-distribution datasets.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

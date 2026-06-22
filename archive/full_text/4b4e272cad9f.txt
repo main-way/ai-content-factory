@@ -1,0 +1,42 @@
+Our 237th episode with a summary and discussion of last week’s big AI news!
+Recorded on 03/13/2026
+Hosted by Andrey Kurenkov and Jeremie Harris
+Feel free to email us your questions and feedback at andreyvkurenkov@gmail.com and/or hello@gladstone.ai
+In this episode:
+* Perplexity announced “Personal Computer,” a local Mac-based AI agent positioned as a safer alternative to OpenAI’s computer-use agents, while Anthropic added GitHub PR code review pricing reviews at $15–$25 and Cursor launched trigger-based “Automations” for always-on coding agents.
+* ChatGPT introduced interactive math/science visuals and Anthropic added in-chat interactive charts/diagrams; Nvidia released open weights for its 120B-parameter Natron Free Super hybrid Transformer–Mamba latent-MoE model trained natively at 4-bit for Blackwell GPUs.
+* Nvidia halted H200 production for China amid customs blocks and domestic chip pressure; xAI saw major co-founder departures; Anthropic previewed a Claude Marketplace for enterprise procurement; Yann LeCun’s aMI raised $1.3B; humanoid robot maker Sanctuary reached a $1.15B valuation.
+* Anthropic sued the Pentagon over a “supply chain risk” designation as memos ordered removal within 180 days; research covered models resisting activation steering, limits of chain-of-thought control, inference-scaling boosting cyber-task success, low-probability risky actions, weaknesses in SWE-bench, multimodal pretraining, long-context RNN memory caching, context-parallel training efficiency, RL for CUDA kernel optimization, and latent introspection detecting concept injection.
+A thank you to our current sponsors:
+Box - visit Box.com/AI to learn more
+ODSC AI - go to odsc.ai/east and use promo code LWAI for an additional 15% off your pass to ODSC AI East 2026.
+Factor - head to factormeals.com/lwai50off and use code lwai50off to get 50 percent off and free breakfast for a year
+Timestamps:
+(00:00:10) Intro / Banter
+(00:01:23) Response to listener comments
+Tools & Apps
+(00:02:06) Perplexity’s Personal Computer turns your spare Mac into an AI agent | The Verge
+(00:04:22) Anthropic launches code review tool to check flood of AI-generated code | TechCrunch
+(00:08:08 ) Cursor is rolling out a new kind of agentic coding tool | TechCrunch
+(00:11:56) Anthropic’s Claude AI can respond with charts, diagrams, and other visuals now | The Verge
+Projects & Open Source
+Applications & Business
+(00:21:22) Nvidia halts H200 production as China backs Huawei AI chips
+(00:28:33) Another XAI Cofounder Has Left, and Another Says He’s Leaving. - Business Insider
+(00:34:04) Anthropic’s Claude Marketplace allows customers to buy third-party cloud services | TechRadar
+(00:37:57) Yann LeCun’s AMI Labs raises $1.03 billion to build world models | TechCrunch
+(00:44:52) Humanoid robotics maker Sunday reaches $1.15B valuation to build household robots | TechCrunch
+Policy & Safety
+(00:46:09) Anthropic Sues Department of Defense Over ‘Supply Chain Risk’ Label - The New York Times + Google and OpenAI Just Filed a Legal Brief in Support of Anthropic
+(00:58:15) Endogenous Resistance to Activation Steering in Language Models
+(01:06:27) Reasoning Models Struggle to Control their Chains of Thought
+(01:09:52) ‘It means missile defence on datacentres’: drone strikes raise doubts over Gulf as AI superpower
+(01:18:24) Frontier Models Can Take Actions at Low Probabilities
+Research & Advancements
+(01:24:20) Research note: Many SWE-bench-Passing PRs Would Not Be Merged into Main
+(01:28:26) [2603.03276] Beyond Language Modeling: An Exploration of Multimodal Pretraining
+(01:40:09) Memory Caching: RNNs with Growing Memory
+(01:48:47) Untied Ulysses: Memory-Efficient Context Parallelism via Headwise Chunking
+(01:58:41) CUDA Agent: Large-Scale Agentic RL for High-Performance CUDA Kernel Generation
+(02:08:57) Latent Introspection: Models Can Detect Prior Concept Injections
+(02:16:45) Physics of RL: Toy scaling laws for the emergence of reward-seeking

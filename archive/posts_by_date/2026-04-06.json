@@ -1,0 +1,60 @@
+{
+  "date": "2026-04-06",
+  "count": 3,
+  "posts": [
+    {
+      "id": "fc1fb9d4782e",
+      "title": "Let’s Talk Agentic Development: Spotify x Anthropic Live",
+      "url": "https://engineering.atspotify.com/2026/4/anthropic-agentic-development/",
+      "source": "Spotify Engineering",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-06T19:49:18+00:00",
+      "summary": "AI agents are transforming the way we build — and even how we think of ourselves as software developers. Both... The post Let’s Talk Agentic Development: Spotify x Anthropic Live appeared first on Spotify Engineering .",
+      "author": "Spotify Engineering",
+      "tags": [
+        "AI",
+        "Developer Experience",
+        "Developer Tools",
+        "Infrastructure"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "e5c861df0a41",
+      "title": "Why harness engineering is becoming the new AI moat",
+      "url": "https://bdtechtalks.com/2026/04/06/ai-harness-engineering-claude-code-leak/?utm_source=rss&utm_medium=rss&utm_campaign=ai-harness-engineering-claude-code-leak",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-06T15:56:26+00:00",
+      "summary": "The recent leak of Anthropic's Claude Code reveals a hard truth: as LLMs become commoditized, the sophisticated engineering harness built around them is becoming the real moat. The post Why harness engineering is becoming the new AI moat first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "Anthropic",
+        "Artificial intelligence (AI)",
+        "Claude Code",
+        "Claude LLM",
+        "large language models"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "5b8133d2264a",
+      "title": "Import AI 452: Scaling laws for cyberwar; rising tides of AI automation; and a puzzle over gDP forecasting",
+      "url": "https://importai.substack.com/p/import-ai-452-scaling-laws-for-cyberwar",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-06T12:31:31+00:00",
+      "summary": "How much could AI revolutionize the economy?",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

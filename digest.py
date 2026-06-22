@@ -23,6 +23,106 @@ from pathlib import Path
 from dateutil import parser as dateparser
 import yaml
 import re
+import urllib.request
+import urllib.error
+
+
+# ─── Медиа-извлечение ────────────────────────────────────────────────────────
+
+def fetch_article_media(url: str, timeout: int = 8) -> dict:
+    """
+    Извлекает og:image, og:video, twitter:image из HTML статьи.
+    Возвращает dict: {'images': [url, ...], 'videos': [url, ...]}
+    Ничего не нашли — возвращает пустые списки.
+    """
+    result = {"images": [], "videos": []}
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": "Mozilla/5.0 (compatible; AI-Digest/1.0; +https://main-way.com)",
+                "Accept": "text/html,application/xhtml+xml",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            html = resp.read().decode("utf-8", errors="ignore")
+    except Exception:
+        return result
+
+    # og:image — основная картинка статьи
+    for tag in ('og:image', 'og:image:url', 'twitter:image', 'og:image:secure_url'):
+        matches = re.findall(
+            rf'<meta[^>]+{tag}[^>]+content=["\']([^"\']+)["\']',
+            html, re.IGNORECASE
+        )
+        if not matches:
+            matches = re.findall(
+                rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+{tag}',
+                html, re.IGNORECASE
+            )
+        for m in matches:
+            if m.startswith("http") and m not in result["images"]:
+                result["images"].append(m)
+
+    # og:video — превью/видео из статьи
+    for tag in ('og:video', 'og:video:url', 'og:video:secure_url'):
+        matches = re.findall(
+            rf'<meta[^>]+{tag}[^>]+content=["\']([^"\']+)["\']',
+            html, re.IGNORECASE
+        )
+        if not matches:
+            matches = re.findall(
+                rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+{tag}',
+                html, re.IGNORECASE
+            )
+        for m in matches:
+            if m.startswith("http") and m not in result["videos"]:
+                result["videos"].append(m)
+
+    return result
+
+
+def enrich_posts_with_media(posts: list[dict], timeout: int = 8,
+                            max_posts: int | None = None) -> list[dict]:
+    """
+    Для каждого поста догружает og:image / og:video и добавляет в dict:
+    {'images': [...], 'videos': [...], 'media_fetched': True}
+    Работает последовательно (важно — не спамить серверы).
+    """
+    target = posts[:max_posts] if max_posts else posts
+    enriched = []
+    for p in target:
+        url = p.get("url", "")
+        if not url:
+            enriched.append({**p, "images": [], "videos": [], "media_fetched": False})
+            continue
+        media = fetch_article_media(url, timeout=timeout)
+        enriched.append({
+            **p,
+            "images": media["images"],
+            "videos": media["videos"],
+            "media_fetched": True,
+        })
+    # Остальные посты без изменений
+    enriched.extend(posts[max_posts:] if max_posts else [])
+    return enriched
+
+
+def format_media_block(post: dict) -> str:
+    """Формирует блок 🖼 Изображения / 🎬 Видео для одного поста."""
+    parts = []
+    images = post.get("images", [])
+    videos = post.get("videos", [])
+
+    if images:
+        # До 3 картинок, только уникальные
+        for img in images[:3]:
+            parts.append(f"🖼 [{img[:80]}]({img})")
+    if videos:
+        for vid in videos[:2]:
+            parts.append(f"🎬 [{vid[:80]}]({vid})")
+
+    return "\n".join(parts) if parts else ""
 
 
 # AI/B2B ключевые слова для фильтрации. Регистронезависимо, по подстроке.
@@ -470,6 +570,9 @@ def make_markdown(posts: list[dict], top_per_cat: int = 10, min_priority: str | 
             age_str = f"{int(age)}ч" if age is not None and age < 72 else fmt_date(p.get("published"))
             lines.append(f"- **[{p['title']}]({p['url']})**")
             lines.append(f"  {p['source']} · {p.get('category', '?')} · {age_str}")
+            media = format_media_block(p)
+            if media:
+                lines.append(f"  {media.replace(chr(10), chr(10) + '  ')}")
         lines.append("")
 
     # По категориям
@@ -496,6 +599,9 @@ def make_markdown(posts: list[dict], top_per_cat: int = 10, min_priority: str | 
                 lines.append(f"> {p['summary'][:400]}")
             if p.get("author"):
                 lines.append(f"_автор: {p['author']}_")
+            media = format_media_block(p)
+            if media:
+                lines.append(media)
             lines.append("")
 
     # Полный список в конце
@@ -544,6 +650,10 @@ def main():
     ap.add_argument("--lang", choices=["en", "ru", "all"], default="all")
     ap.add_argument("--min-priority", choices=["high", "medium", "low"], default=None)
     ap.add_argument("--telegram-only", action="store_true", help="только Telegram-версия в stdout")
+    ap.add_argument("--fetch-media", action="store_true",
+                    help="догрузить og:image/og:video для top-N постов (медленно!)")
+    ap.add_argument("--media-timeout", type=int, default=8,
+                    help="таймаут HTTP для одного запроса медиа, сек (default: 8)")
     ap.add_argument("--trial", action="store_true",
                     help="пробный компактный режим: top-4, без STALE-источников, с блоком RSS-ссылок")
     ap.add_argument("--ai-filter", action="store_true",
@@ -647,6 +757,15 @@ def main():
     out_dir = base / args.output_dir
     out_dir.mkdir(parents=True, exist_ok=True)
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    # ── Медиа-обогащение (og:image / og:video) ──────────────────────────────
+    if args.fetch_media:
+        print(f"🖼  Догружаю медиа для top-{top * top} постов... (может занять ~{top * 10} сек)", file=sys.stderr)
+        posts = enrich_posts_with_media(
+            posts,
+            timeout=args.media_timeout,
+            max_posts=top * top,   # top_per_cat × categories ≈ top-N самых важных
+        )
 
     # Telegram-версия (короткая, для отправки в мессенджер)
     tg_text = make_telegram_summary(posts, top_in_cat=top_tg, per_source_cap=per_src_cap)

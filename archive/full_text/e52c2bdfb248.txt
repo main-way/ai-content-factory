@@ -1,0 +1,12 @@
+Quantitative Biology > Neurons and Cognition
+Title:Spectral Topological Data Analysis of Brain Signals
+View PDF HTML (experimental)Abstract:Topological analyses of brain functional connectivity usually reduce each pair of channels to a single scalar dependence, typically the Pearson correlation, and so cannot resolve the frequency-specific synchronisation that organises electrophysiology. We propose a topological summary that keeps the frequency information. The spectral landscape indexes the persistence landscape of Bubenik (2015) by Fourier frequency, building each filtration from a coherence-based distance, so that it is a function of both the filtration scale and the frequency. It is Lipschitz-stable in the coherence matrix and feeds a functional two-sample test over a chosen frequency band, whose limiting null distribution and consistency follow from standard functional-data arguments. In simulations the test recovers a topological difference in the band where it lives while holding its nominal level under the null. Applied to electroencephalography from 53 control and 51 ADHD children, a global test rejects equality of the two groups' cycle topology at the 95% level (p = 0.019); a band-by-band follow-up localises the difference to the gamma and theta bands, although none survives family-wise correction at this sample size. The pattern is consistent with the established role of these bands in ADHD.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

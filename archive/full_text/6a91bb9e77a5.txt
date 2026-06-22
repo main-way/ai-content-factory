@@ -1,0 +1,30 @@
+The Open Repair Data Standard (ORDS) defines a shared approach towards collecting and sharing repair data about small electricals and electronics. The goal of this standard is to make it easy to combine open data on electronics repair that has been collected by many different groups.
+Following a common standard helps us to identify trends and patterns globally, and also within countries and regions, by combining data from local community repair events. For example, when we combine our data, we could identify the most recurrent failures and fixes of blenders brought to community repair events in the UK, across Europe and even globally.
+The definition of the standard is an ongoing process, with version 0.3 the latest released version as of December 2021. If you would like to contribute to future discussions of ORDS, please get in touch with us.
+Our data available for download is combined using ORDS.
+ORDS v0.3
+In version 0.1 we concentrated on standardising elements already captured by most members, prioritising areas where there was already convergence, while leaving out other areas where more work was needed.
+Version 0.2 updated the standard based on insights learned from the first data aggregations. The main changes were
+- Recommended options for repair_status
+- Recommended options for product_category values
+- Addition of partner_product_category field
+- Addition of repair_barrier field
+- Addition of country field
+- Removal of model field due to problems with data collection and quality
+Summary
+- The standard focuses on repairs of small electrical and electronic products.
+- It focuses on collecting information about 3 main areas: Product Related; Repair Related; and Session Related.
+- For each primary module, it explains what they are and identifies the data we collect for them.
+- For each field, the standard explains how to collect data in ways that make it easy to aggregate and compare.
+- Data collected is shared with an open Creative Commons license.
+The modules of collected information are as follows:
+- Product related: Information about the product/device that someone has attempted to fix. Fields: Product category; Brand; Year of Manufacture.
+- Repair related: Information about the attempted fix and its outcome. Fields: Problem; Repair Status; Repair Barrier.
+- Session related: Information about when the repair took place and through which community repair group. Fields: Id; Group Identifier; Event Date.
+We collect repair data from organisations and community groups and compile this in to the common ORDS format. We publish these combined datasets every six months.
+The Open Repair Alliance keeps a record of all datasets complying with the standard, published on the Open Repair Alliance’s website, allowing interested parties to access them.
+ORDS vNext
+The ORDS is always evolving. Some points for discussion for future versions:
+- definition of fault types to categorise the problem field for key categories
+- investigation of UNU-keys for product categorisation
+If you would like would like to get involved in these discussions, please get in touch with us.

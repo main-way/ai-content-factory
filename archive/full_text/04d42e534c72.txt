@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Factors affecting ASR performance: A study using state of the art ASR models in Indic Languages
+View PDF HTML (experimental)Abstract:ASR performance varies across languages, speakers, and recording conditions, yet systematic analysis for Indic languages remain limited. We present a large-scale study of decoded outputs from multiple open-source ASR models evaluated on diverse Indian speech datasets in zero-shot settings. We analyze linguistic, speaker-level, and acoustic factors across Hindi, Bengali, Kannada, Telugu, and Marathi. We examine correlations between WER and speaker traits such as average word length, speaking rate, and utterance duration across multiple model dataset pairs. For Hindi, we further analyze audio factors including telephone codecs, bit depth, resampling, and background noise. Results reveal both cross lingual patterns and language-specific sensitivities, showing how speaker behavior and signal processing choices affect ASR robustness in real world Indic scenarios.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

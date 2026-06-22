@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:A Unified Latent Space Disentanglement VAE Framework with Robust Disentanglement Effectiveness Evaluation
+View PDF HTML (experimental)Abstract:Evaluating and interpreting latent representations, such as variational autoencoders (VAEs), remains a significant challenge for diverse data types, especially when ground-truth generative factors are unknown. To address this, we unify several state-of-the-art disentangled VAE approaches for latent space disentanglement into one framework -- bfVAE. To assess the effectiveness of a disentangled VAE model and enhance latent space interpretability, we propose Feature Variance Heterogeneity via Latent Traversal (FVH-LT) and Dirty Block Sparse Regression in Latent Space (DBSR-LS). To ensure robust interpretability of learned latent space, we develop a greedy alignment strategy (GAS) that mitigates label switching and aligns latent dimensions across runs to set the foundation of result aggregation. We also introduce a convenient scalar latent space separation index (LSSI) based on the GAS-aligned outputs of FVH-LT and DBSR-LS to summarize the overall latent structural separation without knowledge of the ground-truth generative factors. We compare bfVAE to five VAE models and validate the effectiveness FVH-LT, DBSR-LS, and LSSI in on seven tabular and image datasets. Under our examined experimental settings, bfVAE provides a more flexible disentanglement framework achieves more favorable overall trade-off between disentanglement and reconstruction than the benchmark VAE models; FVH-LT and DBSR-LS reliably uncover semantically meaningful and domain-relevant latent structures and generally yield consistent results; and LSSI makes an effective quantitative summary of latent structural separation.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

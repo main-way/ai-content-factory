@@ -1,0 +1,509 @@
+Making a vintage LLM from scratch
+In this blog post, I will share the adventures I had creating my own LLM, from (almost) scratch, trained only on old texts.
+I made my own base-training and fine-tuning scripts, data processing pipelines and custom datasets.
+("almost from scratch" means I did use existing programming languages and libraries, I didn't write in Assembly, just like anyone else who builds an AI "from scratch"...)
+The model can be found on HuggingFace: https://huggingface.co/croqaz/vintage-LLM-340m-v1-base ;
+All the code is open source at: https://github.com/croqaz/vintage-LLM ;
+If you want to check bigger Vintage models, see my previous post: Vintage LLM models.
+The idea
+Three months ago at the end of February I discovered a few Reddit posts by Hayk Grigorian, where he described creating his temporal gated language model. I was absolutely fascinated.
+Training an LLM only on 1800s London texts, 90GB dataset:
+https://reddit.com/r/LocalLLaMA/comments/1pkpsee/training_an_llm_only_on_1800s_london_texts_90gb
+LLM trained from scratch on only 1800s London texts brings up a real protest from 1834:
+https://reddit.com/r/LocalLLaMA/comments/1mvnmjo/my_llm_trained_from_scratch_on_only_1800s_london
+Obviously I read other posts from other people that made their own LLMs, but maybe I wasn't ready to do it myself, or the model they were working on wasn't that interesting. Anyway, the thought of having my own Victorian chat bot... fuckin' epic !!
+Since then, I worked on my own "Vintage LLM" every single day. Without exceptions. Even when I was sick.
+In the meantime, a lot more historic LLMs have been released like: Violet-1B4-Chat, Mr. Chatterbox, GPT-1900, Talkie and TypewriterLM-base.
+What, why, where and how?
+What?
+This is a time-locked LLM/ historical LLM, English only, and its knowledge cutoff is year 1900.
+(Limiting to a specific year is error prone, but I did my best effort).
+It is based on Llama architecture and has 340M (0.3B) params.
+Why?
+Because I can only learn if I do it myself and it's a super fun project.
+Where and how?
+I made my own dataset, my own processing and training code.
+The code is semi-vibe-coded with whatever LLM I had with VS-Code and PI (OpenRouter models).
+I checked and validated every single function and I deeply understand what every single code file is doing.
+The dataset processing took the most and I tried all sorts of things that didn't work, and I wasted a ton of time. Complicated solutions are the worst...
+I processed all the data on my own PC and I trained smaller versions of the LLM on my PC (Cachy OS Linux, AMD Ryzen 7 9700X CPU, 64GB RAM, Radeon RX 9070 16GB VRAM).
+As for the larger 340M model, I trained it on RunPod, ThunderCompute and Vast.ai. It would have taken forever on my PC.
+The total cost of this project was: ~$80, GPU costs only.
+That's because I have a decent PC to process the data. If I had more RAM, I could have processed some of the data much faster, especially when it comes to de-duplicating texts in memory.
+Disclaimer: This is a toy/ hobby LLM (but I treat it very seriously).
+It will hallucinate and generate historic semi-accurate content which, at the time was considered normal but by today's standards is considered: toxic, offensive and unsafe. This is expected, because I didn't do any alignment. Aligning (or censoring) the model requires significant effort and it would ruin the historic accuracy.
+Also, I can't guarantee that my model is strictly limited to the year 1900 (even if I did my best) eg: as to perform the "Albert Einstein test".
+The plan
+I use AI everyday at work and I understand how it works, but I never built an LLM myself. I ran specific AI training and fine-tuning pipelines at work, I built tiny neural networks in C and Python in the past, but when I started this project I didn't know how people are usually building LLMs.
+I searched for a week and I chatted with multiple bots to get different points of view (like I always do when I research a topic).
+In short, to build an LLM you need 4 things:
+- the data -- an LLM has no discernment or understanding. It will learn from anything you tell it to, good or bad. This is the longest process.
+- tokenization -- the Tokenizer is a little program that converts words or letters into numbers (tokens). LLMs don't understand words, they only understand numbers.
+- pre-training -- it's a confusing expression and it means "base-training", where the LLM learns to autocomplete text. If you're going for a 300m+ params, this is the most expensive process.
+- fine-tuning -- where the LLM learns how to chat in turns, question & answer.
+Well, there's a bit more to it than these simple steps, but I won't go super deep in this article.
+Now, let's look at each step in more detail.
+Initial experiments
+It's worth mentioning that I made lots of mistakes and I experimented with some datasets and model architectures before I settled on the "big" model.
+("big" in quotes here, because you know, compared to larger models like Talkie-13B or TypewriterLM-7.24B, my model is just a toy)
+Some details about my v2 toy EleutherAI/pythia-14m that I trained on my own PC:
+https://github.com/croqaz/vintage-LLM/tree/e272b94fcf96316f874babbed549d20809fe5a39/models/m-v2
+If you look at the validation loss and perplexity SVG files, you'll see huge jumps, because I didn't randomize the file chunks and the dataset files were tokenized in alphabetic order, and it happened that the clean book files were first and as soon as the model started to get exposed to the Time-Capsule dataset, it gradually become worse and worse because that dataset was bad with lots of weird OCR artefacts, broken words & sentences and so on.
+Mistakes were made ... but I learned from them.
+I was stuck for a while, until I started to filter out the bad documents.
+Data
+The data processing was the longest and most boring process by far, and I hope you understand why...
+There are plenty of modern, high quality datasets with data scraped from the internet, but I didn't want my LLM to learn about computers, atomic bombs and space-ships, so I had no choice but to make my own.
+Luckily there are some datasets available, but they are pretty bad quality and most of my work was to de-duplicate, filter the really bad texts and enhance some of the existing texts.
+The historic datasets are quite limited, the old books are all we have unless we discover more old books and someone scans them, so we have to use what we have.
+A few datasets worth mentioning are: Project Gutenberg, Oxford Text Archive, Internet Archive books, TheBritishLibrary/blbooks, storytracer/LoC-PD-Books, dell-research-harvard/AmericanStories, dell-research-harvard/NewsWire, Heritage Made Digital Newspapers (HMD).
+I did my best to find out the year and language of each dataset, so I can limit everything to English before year 1900.
+I completely ignored documents that don't specify a year, or I can't find date in the texts, even if they had good quality, just to be safe.
+As a side-project, I created the Book-Metadata HF dataset with lots of old books, title, author, book ID and source: https://huggingface.co/datasets/croqaz/book-metadata ; My goal was find out the year of all Gutenberg books, but I only found 5300 books where I'm 100% sure of the year.
+Again, this took absolutely forever and as I am writing this blog post, I'm still not completely finished.
+If I'll ever train another LLM, I'll have more and better data next time.
+Initially I wanted several de-duplication methods, including MinHash and embeddings vector similarity. If you don't know what it means, don't worry, I won't go into details. It was way too slow and expensive and I had to abandon it. Just to give you a taste of how slow this was, I had a beefy DEV server calculate embeddings for my short text datasets and I did 10% of the dataset in a week with the server running day & night. The server had a RTX 3090 GPU that I shared and so on.
+In the end, I de-duplicated based on the normalized text (lower-case text with all spacing removed). Basically the text "hello world" is identical to the text " Hello World " (notice the spaces and title case), and the text is only saved once in my dataset.
+From the start, I knew that the data is the most important: garbage in -> garbage out. I did lots and lots of experiments and iterations, I played with DBs like Qdrant, Zvec, Lance, ValKey, and LevelDB for storing the datasets.
+I dropped Qdrant because the DB disk size was huge even before I started adding many entries.
+I dropped Zvec because I had no way to cycle the DB entries, basically once you save them, there's no way to explore the DB. I created an issue for this. Zvec is also super new and I should probably give it more time to mature.
+I dropped Lance because of the versioning, the DB becomes slower and slower once you start adding more than a few million entries. This could be my fault, I'm sure I can find out a way to do this better.
+I dropped ValKey because I ran out of memory, after injesting something like 10 mil records, the server started to OOM crash on my PC, but I still had to injest way more data. Other than that, ValKey was really great.
+I ended up using LevelDB (which was used by local wallet apps to store BitCoin and Ethereum transactions), so I know it can scale on my PC. I injested 12 mil rows without any issues and with minimal CPU or RAM usage. LevelDB can be slow at times, but it's consistently reliable.
+If I had a better PC, or a super computer, I would probably have used ValKey all the way.
+To get a sense of the quality of the texts, I was first looking at the length and unique characters of each document. For the first stage I decided to use short texts (up to 32k long) and for the second, long texts up to 10MB. English shouldn't use more than 30-50 symbols normally; if a chunk of text has 100 or more unique symbols, it's not English, so I discarded those. And if a text has only 8 unique symbols, it doesn't make any sense, so I removed those too.
+I applied 3 more filters.
+Super easy metric, the compression ratio of ZLIB. Text that is too short and diverse will have a big value and text that is super repeated will be really small value.
+# ZLIB compression ratio
+# A good window is 0.5...0.7;
+def compression_ratio(text) -> float:
+raw = text.encode("utf-8")
+compressed = zlib.compress(raw)
+return len(compressed) / len(raw)
+compression_ratio("Lorem ipsum dolor sit amet")
+# 1.3
+compression_ratio("other, and other and other" * 100)
+# 0.01 -- very repeated
+compression_ratio("The President has nominated Thomas Johnson, William Cranch, and Charles\nSimms, Judges of the district of Columbia.\n\nOn Saturday last, Thomas Jefferson, at\npresent Vice President of the United States,\nand President of the Senate, took leave of\nthat body on which occasion he delivered\nthe following address:\n\nGentlemen of the Senate,\n\nTo give the usual opportunity")
+# 0.64 -- Regular text
+Also the Shannon entropy:
+# Shannon Entropy
+# The estimated entropy rate for printed English is approximately 4.2...5.5;
+def char_entropy(text) -> float:
+counts = Counter(text)
+total = len(text)
+entropy = 0.0
+for count in counts.values():
+p = count / total
+entropy -= p * log2(p)
+return entropy
+char_entropy(("a " * 10 + "!"))
+# 1.22 -- Too low
+char_entropy("Lorem ipsum dolor sit amet")
+# 3.6 -- A bit low
+char_entropy("IN the High court of Chancery for the Rich\nmond District,\nBetween\nHenry Banks plaintiff,\nAnd\nNathaniel Anderson, Robert Pollard.")
+# 4.5 -- Regular english
+char_entropy(''.join(chr(i) for i in range(200)))
+# 7.6 -- Super high entropy
+And my own quality detection filter. This helped me identify very bad OCR texts, with lots of weird symbols:
+_LETTER_RE = re.compile(r'[a-zα-ωàâäçèéêëîïôöùûüüÿæœß]$', re.I)
+_DIGIT_SPACE_RE = re.compile(r'[0-9 \n]$')
+_PUNCT_RE = re.compile(r'[.,;!?\'"_\-]$')
+# Cro's custom quality score
+# Regular letters get a score of 2;
+# Digits and spaces get a score of 1;
+# Punctuation gets 0.5;
+# Any other characters get -0.5.
+def quality_score(text: str) -> float:
+score = 0.0
+for c in text:
+if _LETTER_RE.match(c):
+score += 2
+elif _DIGIT_SPACE_RE.match(c):
+score += 1
+elif _PUNCT_RE.match(c):
+score += 0.5
+else:
+score -= 0.5
+return ((score / len(text)) - 0.75) * 100
+quality_score("-.•-, , _ ._. , •\n1.\n- ,\n.... - • 4\n-------._\n..77/:',. .., ..., : •\n':'#)).,-'' 1 -\n__LI -......-_-.A..-...',... ) •\nSilli° , A AilitA4‘\n' •:.:-',73 ..-.-..-_-_,N>\n4. .41t.")
+# -8.72
+quality_score("Lorem ipsum dolor sit amet")
+# 109.61
+I after calculating these metrics, I simply removed the documents with low quality.
+The percent of removed documents was less than 1%.
+All of these experiments took forever, and the limiting factor was always the compute. There's a few more datasets that I could process (eg: Institutional Books 1.0, massive 947GB dataset, 983K books, 386M pages, etc) but I don't want to kill my PC, and I already have plenty of data for my tiny LLM.
+You can find my dataset on HuggingFace: https://huggingface.co/datasets/croqaz/vintage-v1 ;
+Tokenization
+I had to make my own tokenizer, because my model will never need a vocabulary like "async function", "import sys", "public class Main", or any other programming language terms.
+And this is an English only LLM, so I don't want it to pickup expressions from other languages.
+If I had used an existing tokenizer, all of those useless words would have been wasted in the vocabulary.
+I trained my tokenizer on English Gutenberg and Oxford books, because they are very clean.
+Base-training stage-1
+Once I had a basic dataset, I quickly created a super basic Pythia-14M params model (that's 0.01B params), using litGPT framework. It was pretty straightforward and painless initially.
+I had to do some tricks to make it work on my PC, because I have a Radeon GPU and most of the AI training scripts just assume you have an NVIDIA GPU...
+In just one hour, I had a tiny LLM that was generating semi-random English-sounding gibberish, eg:
+He presented them with one of the soul, which was made in the same manner ;
+I have also been at this moment's, and that it was not that this month should be allowed to
+be without a short time. It was not yet a word for the sake of the man who was known that he
+was in the case of the law that he was going herein, which was made to it, and be a thing
+to be understood, that the word must be ...
+It was a wild and strange desire, and has, on his head, and the only farm, or the black sky,
+he was in the midst of the face of the night.
+But his first illness was a great, and the heart he was a man who had his hands,
+for he was a very much gotten, and he was very weak.
+His mouth were, but was in his hand.
+He was a man of great honour, and there was one of ...
+After playing with it a bit more, I tried to train a bigger Pythia-70M and litGPT started to crash randomly with errors like:
+ERROR: Unexpected segmentation fault encountered in worker.
+raise RuntimeError(
+f"DataLoader worker (pid(s) {pids_str}) exited unexpectedly"
+) from e
+I had the exact same tokenizer and dataset for Pythia-14M and I tried a Pythia-31M and Pythia-160M, but the 70M just didn't work. I tried debugging this for a while without success, I wasted a lot of time and in the end I decided to make my own training script, loosely inspired from litGPT and nanoChat.
+I discoverd that HuggingFace transformers library has a Trainer class and I did some vibe-coding to create something basic.
+I downloaded the source code for nano-GPT, nano-Chat, NanoWhale-100m, and a few more repos with code "from scratch", and I got different LLMs to extract the technical details of how they do the base-training, then I asked the LLMs to apply the best features on my own training script. This way I managed to get something pretty solid and flexible in a few iterations.
+I tweaked the code over and over again by hand, until I got it to my liking, and I understood what it was doing.
+I intentionally didn't want to use nanoChat, because I wanted 100% compatibility with the HuggingFace libraries and with GGUF in the future.
+After training a few debug versions on my own PC, it was time to go bigger and train in the cloud.
+I tried a 200M params (w 2048 tokens context) and a 340M params (w 4096 tokens context), both based on the Llama3 architecture.
+RunPod was OK and featureful, but pricey. I trained the 0.2B params LLM, but I didn't upload that anywhere, because it had a very small context, and I decided to discard it, even if I spent some money... I really wanted a 4k+ context size.
+I started training the 0.3B params Llama on ThunderCompute. It was very slow and the production price of the GPUs was even higher than RunPod, I big disapointment, but I put $25 credit and I wanted to spend all of it so I let the training run to consume all the credits.
+Vast.ai had all sorts of issues at first with their base Docker image, not being able to start any instances, but after some trying and re-trying, I found a good instance in Czechia with an NVIDIA RTX PRO 5000 and I let it run for 10,000 steps (a bit less than 3B tokens). I will definitely try Vast.ai again, because the price is very competitive and once you find a good instance, it's very fast and stable.
+This stage cost me $25 + $15 on ThunderCompute + Vast.ai.
+Training metrics for this stage:
+Base-training stage-2
+I used the long texts, from ~20k up to 10MB in size.
+In this stage I realized that the long texts have very good scores for all previous metrics: custom quality, entropy and compression, but they contain large chunks of bad OCR artefacts, eg:
+--- Match #5/12310 (0fc6a6f36d5e1f02f9e5b000c480efe5005b6be5de6f819b9309b60b577fb242) ---
+{
+"source": "LOC",
+"len": 385331,
+"uniqChar": 64,
+"tokens": 73087,
+"sentences": 4555,
+"entropy": 103.85,
+"quality": 95.95,
+"compress": 91.92,
+"text": "M; \n\n\n\n1 ? 70 \n\n\n\nary. \n\n\n\nwtodrawn. timm \n\nM COLLEGE LIBRARY \n\n\n\nMARK \n\n\n\nY \n\n\n\n\\ \n\n\n\nJ \n\n\n\nREV. JAMES DAVIE S \n\n\n\nCOFI ANT \n\n\n\nY DIWEDDAR \n\n\n\nB ARC II. JAMES DAYIES, \n\n\n\nGan Y PARCH. G. GRIFFITHS, \n\nCINCINNATI, 0. \n\n\n\nUTICA, N. Y. \n\nT. J. GRIFFITHS, ARGRAFFYDD, EXCHANGE BUILDINGS. \n1875. \n\n\n\nI \n\nw \n\n\n\nC YN W YS I AD. \n\n\n\nAt y Darllenydd 4 \n\nRhaglith 5 — 11 \n\ncofiant 12 — 4q \n\nEnglynion Coffadwriaethol 49 \n\nPregethau 50—96 \n\nAmlinelliad o'i Brif Weddnodau 97 — 106 \n\nAdgofion Personol am Dano 107 114 \n\nAdgofion Brodyr Eraill am Dano 114— 133 \n\nYsgubau o Loffion Difyrus am Dano i34_ I4 g \n\nPenillion Coffadwriaethol 149—156 \n\nEnglish Department 157 ^3 \n\nCawellaid o Fan Saethau ei Fwa 174—187 \n\nPynciau Ysgol < . 188—222 \n\n\n\nAT Y DARLLENYDD. \n\n\n\nEr ys llawer o flynyddoedd cyn ei farwolaeth ceisiasai y Parch. \nJames Davies gan ei hen gyfaill, Iorthryn Gwynedd, ysgrifenu ei \ngofiant, os goroesai ef. Addawodd yntau wneyd; a chydnabyddid yn \ngyffredinol ddoethineb y dewisiad. Ond o herwydd anghydwelediad \ncydrhyngddo a'r perthynasau, parthed i ddull ei ddygiad allan, efe a \nymwrthododd yn bendant a'r cyfrifoldeb. Teimlwn fod yn ddyled- \nswydd arnom ddweyd cymaint a hyna mewn cyflawnder a'r brawd \nThomas, er mwyn symud ymaith y dybiaeth mewn rhai manau, mai \nam na roddasid iddo fwy o arian at yr anturiaeth yr ymryddhaodd \noddiwrth ei ymrwymiad. Wedi iddo ef nacau, disgynodd y gwaith \narnom ni, trwy ddewisiad unol, a thaer ddymuniad y weddw a'i \nphlant. Yr oedd yn anhawdd genym gydsynio, o herwydd amledd a \nphwysigrwydd ein dyledswyddau i bobl ein gofal. Ond (i'w credyd \ncofnoder y ffaith), pan ddeallasant fod hyny yn peri i ni betruso, pas- \niasant yn unfrydol benderfyniad i ysgafnhau ein dyledswyddau idd- \nynt hwy tra yn parotoi y bywgraffiad, ac wedi y gorphenem, eu bod \nyn rhoddi i ni fis o orphwysiant. ... nnheilwng. Ymdrechwn fod yn gyfarwydd a nodau gwir \nGristion. Nac ymorphwyswn ar farn dda a ddwg dyn- \nion am danom. Gymerwn y gair yn rheol ; ymarferwn \nffydd ar aberth Iesu, a llefwn am oleuni a chymorth yr \nYsbryd Glan at y gorchwyl. Gochelwn gymeryd ein \ntymer na'n teimladau yn rheol i holi ein hunain ; ond \nBeibl Duw fyddo ein prif faen prawf. Dyma reol y \nfarn. \n\n\n\nY DIWEDD. \n\n\n\n"
+}
+--- Match #31/87899 (70fa969d373b988d5537a08ed47ccd6842c17bdcecb2cb55181e3cf37f3e13a1) ---
+{
+"source": "LOC",
+"len": 330083,
+"uniqChar": 64,
+"tokens": 62805,
+"sentences": 5311,
+"entropy": 104.92,
+"quality": 94.84,
+"compress": 92.95,
+"text": "\nQass_„L X724 ( \nBook _ \n\n\n\nCOFIANT, \n\n\n\nPREGETHAU, A BARDDONIAETH \n\n\n\nY DIWEDDAE \n\n\n\nBARCH. T. PIERCE, LIVERPOOL; \n\n\n\nPAKCH. H. E. THOMAS, \n\nBIEKENHEAD. \n\n\n\nLIVEKPOOLr AEGEAEEWYD GAN THOMAS LLOYD, \n\nTITHEEAKN STEEET. \n\n\n\nIBXtxgq \n\n\n\nIn Exchange \nThe Nat. Libr'y of Wales \nAug. 1928 \n\n\n\nAT Y DARLLENYDD, \n\n\n\nAmcenAIS wneyd y Cofiant nior fyr a cbryno ag y galhvn, er mwyn \nxhoi y Pregetliau a'r Farddoniaetb i mewn. Diau y buasai yn dda \ngan lawer ei gael yn gynt, ond nid oedd modd i mi \"vraeyd, a \nebredwyf fod peth mantais Avedi ei gyraedd trwy yr oediad. Dylai \nesgeulustra Mr. Pieece yn cadw cofnodion o'i fywyd, fod yn \nrhybydd i'r rhai y byddai eu Cofiant o ddyddordeb ac addysg i'r \nbyd. Dymunaf gydnabod yn y modd mnvyaf diolcbgar y lliaws \nCyfeillion a roisant bob cymbortb i mi gasglu y defnyddiau, ac \nyr -wyf yn gadael ar y rbai oeddynt yn adnabod fy amvyl dad \ny'nghyfraith oreu i fainu am gywirdeb y Cofiant. Bu llawer, ac \nrnae cryn nifer eto o'i Bregethau goreu ar wasgar, y rbai pe eu \ncesglid gyda'r gweddill Barddoniaetb, a alien t -vraeyd Ail Gyfiol \nwertbfawr. \n\nGwelir oddiwrth restr y Tanysgrifwyr am hvyddiant yr antur- \naetb, ac y mae genyf addewid y gwertbir Uawer mewn ardaloedd \nna ddaetb dim emvau oddiyno. \n\nBydd yn rbwydd iawn i'r cyfarwydd ddiwygio yr ycbydig \nwallau argraffyddol sydd yn y Gyfrol. \n\nGan ddiolcb am bob cymbortb, a dymuno am bob llwydd a \n\nbenditb, \n\nY gorpbwysaf, &c, \n\nH. E. THOMAS, \n\n50, Exmoeth Street, Birkenhead, \n\nMehefin 28ain, 1804. \n\n\n\nCYNHWYSIAD. \n\n\n\nCOFIANT, \n\n\n\nTUDAL. \n\nPen. I. Prif helyntion ei \nFywyd Boreuol 5 \n\nPen. II. Ei Fywyd a'i lafur \nGweinidogaethol . . . . 17 V. Esgeuluso cyd- \ngynnulliad \n\nPeeg. VI. Anfeidrol rinwedd \naberth y Groes \n\n\n\n62 \n\n\n\ni)0 \n\n69 \n\n71 \n71 \n\n74 \n\n\n\nPeeg. VII. Galwad ar Sion i \nDdeffroi \n\nPeeg. VIII. Y gwr ar y march \ngwyn \n\nPeeg. IX. Gogoniant a di- \ngonolrwydd trefn gras yn \nngwyneb trueni dyn fel \npechadur \n\nPeeg. X. Yr henbobl.. .. \n\nPeeg. XI. Gogoniant ac ar- \ndderchawgrwydd eglwys Dduw \nyn y dyddiau diweddaf . . \n\nPeeg. XII. Cysylltiad bywyd \nduwiol a manv dedwydd . . \n\n\n\n78 \n\n\n\n79 \n\n\n\n97 \n\n\n\nBAEDDON1AETH. \n\n\n\nMawrnad Dewi Wyn o Eifion 101 \nHaman a Mordecai . . . . 121 \nGalareb am y diweddar Barch. \n\nJ. Breeze 137 \n\nMarwnadyParch.J. P.Davies 148 \n\nCywydd i'r Goleudy . . . . \n\nA WORLD LEADER IN PAPER PRESERVATION \n1 1 1 Thomson Park Drive \nCranberry Township, PA 16066 \n(724)779-2111 ' \n\n\n\n"
+}
+These samples have very good scores overall, but they are useless. I am guessing it's not English text... I counted a few hundred examples mostly from LOC-PD and other few hundred in the OTA datasets. Imagine if I feed that crap to my LLM, what will it learn?
+I searched around and I decided to calculate a few more metrics like: dictionary word search, vowels in words, noise count. With these news values, I was able to keep only the best quality documents, after I combined all the values together in a single score. I'm sure it's not perfect, but when I explore the dataset I'm pretty happy with the data I'm seeing.
+I calculated that the low quality documents were less than 1% of total, which was consistent with the short texts dataset.
+By the way, all of this code to import, query and count the dataset entries is open source: https://github.com/croqaz/vintage-LLM/tree/main/dataset ;
+I have a ton more data that I could use if I had more compute, or if I trained a larger LLM, but I decided to limit myself because this was taking forever already.
+I ran this training on Vast.ai again, on a RTX PRO 6000 WS in France, for 10,150 steps (~6B tokens).
+I did 2 rounds of training as you can see in the metrics below, because I started the instance and my tokenization script crashed due to OOM just when I was uploading the model checkpoints, so while I fixed it and ran it again, I quickly tokenized a sub-dataset of old poems, quotes, proverbs and Oxford clean books that I wanted to use anyway (all within the time period) just to keep the GPU busy. The second round was just the randomized long documents mentioned above.
+This stage cost me $40.
+Metrics for this stage:
+Acording to the Chinchilla Scaling Law, 3+6=9B tokens is roughly the correct amount of training tokens for this 340M params model.
+Fine-tuning
+This stage is not finished as I'm writing this blog, and I'll make another post when it's ready.
+I created a series of Python scripts to generate a "base knowledge" dataset so I can fine-tune the model on, to make it understand dialogs. Basic question/ answers about foods, fruits, vegetables, some animals and birds, colors, a few numbers. After fine-tuning it a few times with different tweaks, I got it to spit stable dialogs. I was happy to see that it's learning the structure of Question:... followed by Answer:... with just a few hundred examples.
+A few samples at this point, with the final model + a light fine-tuning with my CommonSense dataset.
+User: What is God?
+LLM #1: God is the absolute ruler, and in him only we have hope and strength.
+LLM #2: A Being of a God-like character would be a being who knew himself to be the supreme Being, and by whom alone we can act.
+LLM #3: The sun shines on the earth and the stars reflect the light.
+User: What is love?
+LLM #1: Love is a powerful impulse and it enables us to overcome our inclinations.
+LLM #2: Love is the result of a certain condition of the human being in which love exists; as, love a man because he loves you.
+LLM #3: Love is a desire to please and the object of an action is the gratification of some passion or affection for a particular person or thing.
+User: What is life?
+LLM #1: Life is a warfare against pain, and the longer we live the more we suffer.
+LLM #2: Life is a great struggle for existence, in which each one has to sacrifice his own individual pleasure and to seek the best good of others.
+LLM #3: Life is life, and its issues are to the soul what the heart is the heart.
+# Trying a few greetings
+User: How are you?
+LLM #1: Heat, fire and cold are required of them in order to overcome their resistance.
+LLM #2: We use our best books on astronomy.
+LLM #2: The weather is charming.
+User: Greetings, good sir!
+LLM #1: The best of all is that when you have done.
+LLM #2: Gladly! Thanks for the honor. I was thinking of writing one.
+LLM #2: No; I hate their thoughts. They are not of my mind, but my memory.
+# Asking for a few names
+User: What's your name?
+LLM #1: Charles Emile de Saint-Valerie.
+LLM #2: Ninette. I belong to the ancient class.
+LLM #3: Charles Rickards.
+LLM #4: Charles Bamford, of the "Nineteenth Century".
+LLM #5: My mother was a slave, my father a slave.
+All samples generated with my "generate.py" script, temperature=1.0, top-p=0.9, top-k=25, min-p=0.01, repetition-penalty=1.1.
+The model halucinates a lot and doesn't really follow dialogs. You can't chat with it yet, it needs more baking.
+All dialogs are like a gambling machine: add a coin, pull the lever and hope for the best. You can sometimes get something nice.
+It was a nice surprise to see the model answer so well to the questions of God, love and life, especially that I don't have any of that in my "base knowledge" dataset, so the model picked it up from the long base-training and learned to apply the chat template on top.
+Can the model memorize math?
+In my fine-tuning knowledge file I had some simple math operations that I casually added without thinking too much, but when I was vibe-checking the model with different prompts across stages of training, I was actually asking "How much is 1 + 1?" to see how it goes and the answer was usually a random number, or complete nonsense.
+So I wanted to find out: can the model memorize base math operations for numbers, say, -2 to 12?
+I generated a dataset of 5300 questions about math, all basic operations (+ - / *) for all numbers between -2 up to 12, with different ways of asking, eg:
+- "What is 10 - 3?"
+- "How much is 7 * 10?"
+- "Multiply 9 by 2."
+- "Calculate -2 * 6."
+I made a math benchmark where I was asking "Calculate X and Y." for all possible operations and number pairs (0 to 12) (I skipped the negative numbers).
+Fine-tuning is super fast compared to full training, so I was able to experiment a lot and see the result within minutes.
+I fine-tuned a few models from the base model, played with different hyper params and I got the best results with LR=5e-5, max_seq_length=2048, neftune_noise_alpha=0.0 (very important for this case) and obviously temperature=0.
+The best score:
+[ + ] addition: 75/169 (44.4%)
+y│ 0 1 2 3 4 5 6 7 8 9 10 11 12
+──┼────────────────────────────────────────────────────
+0 │ ✗ ✗ ✓ ✗ ✗ ✓ ✗ ✗ ✗ ✗ ✓ ✗ ✓
+1 │ ✓ ✗ ✓ ✓ ✓ ✗ ✗ ✗ ✓ ✗ ✗ ✓ ✓
+2 │ ✗ ✗ ✗ ✗ ✗ ✗ ✗ ✗ ✗ ✓ ✗ ✓ ✗
+3 │ ✗ ✗ ✓ ✓ ✗ ✗ ✓ ✓ ✗ ✓ ✗ ✓ ✓
+4 │ ✗ ✗ ✗ ✗ ✓ ✓ ✓ ✓ ✗ ✗ ✗ ✓ ✓
+5 │ ✓ ✗ ✗ ✗ ✗ ✓ ✗ ✓ ✗ ✗ ✗ ✓ ✓
+6 │ ✓ ✗ ✗ ✓ ✓ ✗ ✓ ✓ ✓ ✗ ✗ ✓ ✓
+7 │ ✓ ✗ ✗ ✓ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✓ ✓
+8 │ ✗ ✗ ✗ ✗ ✗ ✗ ✗ ✓ ✗ ✗ ✗ ✓ ✗
+9 │ ✗ ✗ ✗ ✓ ✗ ✓ ✗ ✓ ✗ ✓ ✗ ✗ ✓
+10 │ ✗ ✗ ✗ ✗ ✗ ✓ ✗ ✗ ✗ ✓ ✓ ✗ ✓
+11 │ ✗ ✗ ✓ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✓ ✓ ✓
+12 │ ✗ ✗ ✓ ✓ ✗ ✓ ✗ ✓ ✗ ✗ ✗ ✓ ✗
+[ - ] subtraction: 114/169 (67.5%)
+y│ 0 1 2 3 4 5 6 7 8 9 10 11 12
+──┼────────────────────────────────────────────────────
+0 │ ✗ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓
+1 │ ✓ ✗ ✗ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✗ ✓ ✓
+2 │ ✗ ✓ ✗ ✓ ✓ ✗ ✓ ✓ ✗ ✓ ✓ ✓ ✓
+3 │ ✗ ✓ ✓ ✓ ✓ ✗ ✓ ✓ ✗ ✓ ✓ ✓ ✗
+4 │ ✗ ✓ ✓ ✓ ✓ ✓ ✗ ✓ ✗ ✓ ✗ ✓ ✗
+5 │ ✓ ✓ ✗ ✓ ✓ ✗ ✓ ✓ ✓ ✓ ✗ ✗ ✓
+6 │ ✗ ✓ ✓ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✗ ✓ ✓
+7 │ ✓ ✓ ✗ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✗ ✗
+8 │ ✓ ✓ ✗ ✓ ✓ ✗ ✓ ✓ ✗ ✓ ✗ ✗ ✓
+9 │ ✗ ✓ ✗ ✓ ✓ ✗ ✓ ✓ ✓ ✓ ✗ ✗ ✓
+10 │ ✗ ✓ ✗ ✓ ✗ ✓ ✗ ✓ ✓ ✓ ✓ ✓ ✓
+11 │ ✗ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✗ ✗ ✗
+12 │ ✗ ✓ ✗ ✓ ✗ ✗ ✗ ✓ ✓ ✗ ✗ ✓ ✗
+[ * ] multiplication: 118/169 (69.8%)
+y│ 0 1 2 3 4 5 6 7 8 9 10 11 12
+──┼────────────────────────────────────────────────────
+0 │ ✓ ✓ ✓ ✓ ✓ ✗ ✓ ✓ ✗ ✓ ✗ ✓ ✓
+1 │ ✗ ✓ ✗ ✗ ✓ ✓ ✓ ✓ ✓ ✓ ✗ ✓ ✗
+2 │ ✓ ✓ ✓ ✗ ✗ ✗ ✓ ✓ ✓ ✓ ✓ ✓ ✓
+3 │ ✓ ✗ ✓ ✓ ✗ ✗ ✓ ✓ ✓ ✓ ✓ ✗ ✗
+4 │ ✓ ✓ ✓ ✗ ✗ ✗ ✗ ✗ ✓ ✗ ✓ ✓ ✓
+5 │ ✓ ✓ ✓ ✗ ✓ ✗ ✓ ✓ ✓ ✓ ✓ ✓ ✓
+6 │ ✓ ✓ ✓ ✗ ✓ ✗ ✓ ✓ ✓ ✓ ✗ ✓ ✗
+7 │ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✗ ✓ ✗
+8 │ ✓ ✓ ✗ ✓ ✗ ✗ ✓ ✓ ✓ ✓ ✓ ✓ ✗
+9 │ ✗ ✓ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✓ ✗ ✗ ✗
+10 │ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✗ ✗ ✓ ✗ ✗ ✓
+11 │ ✓ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✓ ✓ ✓ ✓ ✓
+12 │ ✗ ✗ ✓ ✓ ✗ ✗ ✗ ✓ ✓ ✓ ✗ ✓ ✗
+[ / ] division: 85/156 (54.5%)
+y│ 0 1 2 3 4 5 6 7 8 9 10 11 12
+──┼────────────────────────────────────────────────────
+0 │ · ✓ ✓ ✓ ✗ ✗ ✓ ✓ ✓ ✓ ✓ ✓ ✓
+1 │ · ✗ ✗ ✓ ✓ ✗ ✗ ✓ ✓ ✓ ✗ ✓ ✗
+2 │ · ✓ ✓ ✗ ✓ ✗ ✗ ✓ ✗ ✓ ✓ ✓ ✓
+3 │ · ✗ ✗ ✗ ✗ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✓
+4 │ · ✓ ✗ ✗ ✓ ✓ ✓ ✗ ✗ ✗ ✓ ✗ ✗
+5 │ · ✓ ✗ ✗ ✗ ✗ ✓ ✓ ✗ ✗ ✓ ✓ ✓
+6 │ · ✗ ✓ ✗ ✓ ✓ ✗ ✓ ✗ ✗ ✓ ✗ ✗
+7 │ · ✗ ✗ ✓ ✓ ✗ ✓ ✗ ✓ ✓ ✓ ✓ ✗
+8 │ · ✗ ✓ ✓ ✓ ✗ ✗ ✗ ✗ ✓ ✓ ✗ ✗
+9 │ · ✓ ✓ ✓ ✗ ✗ ✗ ✓ ✗ ✗ ✗ ✗ ✓
+10 │ · ✓ ✗ ✓ ✓ ✓ ✗ ✓ ✓ ✓ ✗ ✓ ✗
+11 │ · ✓ ✓ ✓ ✗ ✗ ✓ ✓ ✗ ✓ ✓ ✗ ✓
+12 │ · ✗ ✗ ✗ ✗ ✗ ✗ ✓ ✓ ✓ ✓ ✓ ✗
+SUMMARY
++ addition 75/169 ( 44.4%) ████████
+- subtraction 114/169 ( 67.5%) █████████████
+* multiplication 118/169 ( 69.8%) █████████████
+/ division 85/156 ( 54.5%) ██████████
+--------------------------------------------------
+TOTAL 392/663 ( 59.1%)
+I am surprised that the model consistently performs better at subtraction than addition, because the way subtraction is formulated is a bit more complicated, eg: "Subtract 2 from 3." and "Subtract 3 - 2.", the order of numbers is reversed. I would have guessed that the model will perform the best at addition (like humans do), but addition had the worst score...
+Anyway, I wasn't able to get a score better than 60%, so I think this model can't memorize basic math.
+Correct me if I'm wrong! Leave a comment and tell me what I'm missing!
+Obviously I won't upload this model on HuggingFace just so you download a 650MB brain that answers 1 + 1 correctly half the time... Use a calculator OK?
+Vibe checking during training
+Playing with the model at different steps to see what they generate.
+It's interesting that, at the begining of training, the model is learning the order of words, what word should follow what. Then, it starts to learn the words in a larger sequence like a sentence. Then, it learns to stitch 2-3 sentences together. If you continue to train it, it will learn how to build a long paragraph, but it takes a while...
+Step 200
+The model is still mostly random noise.
+--- Prompt 1 ---
+User: Hello!
+Model:
+Hello!ltO,til,le
+cansia
+the tst. .
+m'
+o. the i6n
+a 1
+M. B. C. C. PI
+.h.,
+The
+Fn.l
+i.
+n.
+L
+--- Prompt 2 ---
+User: Who are you?
+Model:
+Who are you? a man
+of the country, who was born for the
+purpose of having been laid. We're to-day
+the present occasion. The number of votes
+was given up to the Bank from the South
+Carolina in the county of War. In which they
+had taken the whole. The proceedings were
+allowed to produce from this great mass. This
+were one of the most unnecessarily, and the
+question ensued on the part of the company.
+--- Prompt 3 ---
+User: Greetings, my friend
+Model:
+Greetings, my friend of her Ma t'estl. In all the other nations of his life and honour,
+he would make a more than an instant, to any such thing as that has ever been done in the world.
+It is impossible to expect that this country is in a condition in it...
+--- Prompt 4 ---
+User: What's this place?
+Model:
+What's this place?
+the first and most important to which the State, and in its opinion, has been the great
+and valuable to us. The Legislature of Russia was as follows :—" That the House of
+Mr. H. M'Neard (Mr. S. H.) in Ireland was referred to an early period of money in
+Step 1000
+The model learns to connect some words together.
+--- Prompt 1 ---
+User: Hello!
+Model:
+Hello! CIR. and HI, RAJUy
+DESTROYED BUSINESS.
+By Mr. j. r. FULLER, and Messrs. A. & J.
+Mclean and J. E. Hubbard, MIR G. P. Roulton,
+Mr. G. w. Harris of the firm Of E. +. Dexter,
+and J. A. Brown OF the firm of
+--- Prompt 2 ---
+User: Who are you?
+Model:
+Who are you? — but God has a child, who wants to be the same, and he is a most excellent man. It has been an ornament of manners for a lady and an officer. I have always observed that the author does not write to me. — I am no stranger, my good friend ; but I shall look over his life with pleasure, if I do not be a stranger. As a stranger I believe, it will be my duty to speak to the young lady, the stranger, if not
+--- Prompt 3 ---
+User: Greetings, my friend
+Model:
+Greetings, my friend, but in the course of an old acquaintance. — It is rather remarkable how much your lordship seems to be the manu facture of this most noble family, that you have so many a favouritewith me. — But this is not all I can conceive of; for it seems to me, that even this great object of that kind is to procure the benefit of our religious institutions to which I have referred. — The only difference be tween your own personal merit and his attachment. It is
+--- Prompt 4 ---
+User: What's this place?
+Model:
+What's this place?
+He said there was no danger of such occurrence.
+The plaintiff, the defendant, is a man of very respectable
+character, and who has been in the service of the firm
+of Messrs. Barrett and Co. for a period of three years, at
+the rate of 50 per cent. on the gross value of his estate in
+which he resided in the year 1830. He had for many
+years previously kept an account of the business of the bank,
+and it appeared
+Step 10,000 (end of stage-1)
+This model generates clean text because I did a very light fine-tuning with my CommonSense dataset at this point.
+--- Prompt 1 ---
+User: Hello!
+Model:
+Hello! What a fine idea ! How many legs is this ? It is a sort of animal ; that's the beast. Oh, what is it? What is it? The horse has no tail. But it's a brute, and I am afraid I cannot find a tail in it. A horse has no tail, and he eats it, and eats it. And how is it? Oh, how much does it take to eat it? Oh, how much do they eat? And the horse is
+--- Prompt 2 ---
+User: Who are you?
+Model:
+Who are you?
+Then, what is the difference between a man and his wife?
+--- Prompt 3 ---
+User: Greetings, my friend
+Model:
+Greetings, my friend has been in the habit of walking about the streets for the last two or three days. He has walked to and fro in all directions in search of a place where he could purchase some articles at a cheap rate. This is not true, as you know; but it seems that you have been thinking about a place where you could buy a few articles at wholesale prices. This is a strange way of doing business, and you are often told that a man may make his goods cheap by buying them cheap
+--- Prompt 4 ---
+User: What's this place?
+Model:
+What's this place? Do you see it ? Do you see it ? I have seen it. Do you see it ? Is the tree that bears its fruit, and the fruit which is in the tree? Do you see it ? Are there trees that stand upon the ground? Is there any other trees of the same sort? Do you see them ? DO you see them ? Do you see them? Do you see them? Are they more common? Do you see them ? What are those ? Do you see them?
+Step 20,000 (end of stage-2)
+At this stage the text is semi-random, but it's consistent. The whole chunk of text seems to be from the same book, which is great to see.
+No fine-tuning.
+--- Prompt 1 ---
+User: Hello!
+Model:
+Hello!” cried Mr. Dyer, “ the man is a
+foolish fellow ; he must be made of some use.”
+“ But I do not think so, sir,” said the lawyer, “ I
+will tell you a story in one of my books. The case
+of the old gentleman is this : — He had been living in
+a strange country. His wife died, and his son took
+charge of him. He did not
+--- Prompt 2 ---
+User: Who are you?
+Model:
+Who are you?”
+The detective was standing by the table, with his
+back toward the door.
+“ You are going to get up that row?” he said.
+‘‘Yes,” he replied.
+“And go to get it done?”
+“No.”
+“Then we will see about it.”
+--- Prompt 3 ---
+User: Greetings, my friend
+Model:
+Greetings, my friend, and I will give you the
+advice of an honest man.
+" The above is a literal translation : I do not doubt it ; but
+I do not know whether the reader has read it himself.
+" P. S. — I have just returned from the country. I am very
+sorry to say I had rather be in the house myself than in any one's
+house. If you please to remember me, sir, it shall be your
+--- Prompt 4 ---
+User: What's this place?
+Model:
+What's this place?
+The devil himself is the devil !
+THE VOICE OF THE HEART. 53
+VOICE OF THE HEART.
+I wish that I had never been born !
+I'll never tell the tale of my sin !
+I'll never tell it !
+But, ah ! the words are full of pain ;
+They sound as if they had grown more plain :
+Next steps
+I don't have a good instruct model yet and I wont't share something half-baked, but I have plenty of datasets that I'm working on:
+- my CommonSense dataset is expanding, I have ~7k rows prepared and more ideas to add in there;
+- I have a list of quotes from philosophers like: Aristotle, Freud, Plato, etc and I'll get them in shape for Q&A pairs;
+- I extracted clean questions and answers from several pre 1900 books like:
+- The new common school question book 1888
+- The advanced question book 1883
+- A complete dictionary of synonyms and antonyms 1835, etc ;
+- I didn't process all of them yet, but I'll publish them as a separate dataset.
+- I have old dictionaries that I plan to extract word definitions from, and I'll convert them to more Q&A ;
+- I want to extract different topics from King James Bible to create more Q&A pairs;
+- I also have Talkie-13B-Q8-GGUF and Monad-GPT-Q8-GGUF! I'm sure I can generate a few synth datasets.
+These datasets, or part of them at least should help the model understand the dialog structure. I'll experiment.
+I will write another post once I have a good enough model to share.
+Finis
+When I started this project, I intentionally didn't define "success". I didn't start with a clear goal. It was a learning project first of all.
+I was only hoping to get some kind of usable Victorian dialog out of it.
+But I was surprised how bad it is without any fine-tuning, after spending so much time and energy on it... therefore I want to use all my creative energies to create something decent enough to share.
+What do you think?
+Are you interested in this kind of work?
+What would you use this kind of LLM for?
+What would you like me to try, in this context of Vintage LLMs?
+If you want to reach out, you have a few ways:
+- leave a comment here ;
+- leave a comment on HF discussions: https://huggingface.co/croqaz/vintage-LLM-340m-v1-base/discussions ;
+- raise an issue on Vintage-LLM repo: https://github.com/croqaz/vintage-LLM/issues ;
+- join our Vintage-LLM Discord Server and send a message.
+If you want to reach out in private, my e-mail is my short name at this domain.
+If you're a cloud GPU provider, you have some GPUs collecting dust and want to sponsor the training of my next model, do reach out! I will use all the compute for a bigger 1B model, with a better dataset; or I can base-train this 340M model up to 50,000 steps, I have plenty of data, your choice!
+If you want to read more about these kinds of LLMs, check my previous post: Vintage LLM models, lots of links.
+I encourage anyone who is curious or hyped about AI and LLMs to do what I did, and play with it along the way between training stages, to get a peek behind the curtain. You'll forget about AGI in no time, but it will be fun, I promise!
+Maybe find a twist in your process, something that you didn't see anyone else do, perhaps some unique dataset, or unique training method, or LLM architecture? But you don't have to, you'll learn new things anyway. I know I did!
+Note: This blog post is 100% written by me. No AI has been used whatsoever.

@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:FrequencyFormer: A Co-Designed Sensor-to-Processor Pipeline for Frequency-Domain Vision Transformer Inference
+View PDF HTML (experimental)Abstract:Deploying vision transformers (ViTs) on sensor-edge systems is limited not only by on-device compute, but also by the energy and bandwidth required to transmit high-dimensional image data from the sensor to the processor. While in-sensor and near-sensor computing reduce this cost through early feature extraction, existing methods often provide only modest compression. We observe that the frequency domain provides a naturally compact representation of visual information and can be exploited at the sensor level to reduce sensor-to-processor data movement. Building on this insight, we present FrequencyFormer, a co-designed sensor-to-processor pipeline for efficient ViT inference. FrequencyFormer includes: (1) a multi-scale DCT tokenizer that compresses a 224x224 image into compact frequency-domain tokens, achieving up to 128x reduction in off-chip data volume with modest accuracy loss; (2) a LUT-based near-sensor hardware implementation that leverages fixed DCT coefficients for multiplier-free, energy- and area-efficient tokenization; and (3) a modified MIPI-based low-power communication architecture that further reduces transfer energy. FrequencyFormer serves as a drop-in replacement for standard ViT patch embedding and remains compatible with pretrained backbones across classification, detection, and segmentation tasks. The pipeline achieves 28.8 TOPS/W, reduces communication energy by 230x, and lowers total sensor-side energy by 2.22x, demonstrating frequency-domain tokenization as a scalable foundation for in-sensor ViT deployment.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

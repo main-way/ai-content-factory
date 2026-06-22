@@ -1,0 +1,61 @@
+Three seismic shifts in one week. Anthropic's revenue run rate passed OpenAI's — $30 billion to $24 billion — powered by enterprise demand that doubled its million-dollar customers in under two months. Meta launched its first proprietary model under Alexandr Wang's Superintelligence Labs, abandoning the open-source ethos that defined Llama. And the legal apparatus around AI went into overdrive: Musk wants Altman fired, OpenAI wants Musk investigated, and Hollywood's writers just locked down four more years of AI protections.
+Get more from AI Weekly
+More signal, less noise — pick your channels.
+You're reading the weekly brief. Below are the other ways to follow the story — every channel free, easy to leave.
+-
+→ Explore 16 deep divesWeekly topic-specific newsletters: Generative AI, Machine Learning, AI in Business, Robotics, Frontier Research, Geopolitics, Healthcare, and more.Browse all 16 deep dives →
+-
+→ Breaking AI alertsWhen something major breaks (a $60B acquisition, a regulator's emergency meeting, a frontier model leak), alert subscribers know within hours. Typically 0-2 emails per day.Get breaking alerts →
+-
+→ AI News Today (live)Live dashboard updated as the scanner finds news: scored stories from the last 48 hours, weekly entity movers, and quarterly trend lines across 113 AI companies, people, and topics.Open AI News Today →
+April 3 – 9, 2026
+Anthropic makes more money than OpenAI. Meta stopped sharing its best work. Musk and Altman want each other fired. And somewhere in Abu Dhabi, someone is re-evaluating data center insurance premiums.
+Key Takeaways
+- Anthropic is now the highest-revenue AI lab. $30B run rate vs. OpenAI's $24B. Enterprise demand — not consumer — drove it. If you're building on Claude, you're betting on the market leader.
+- Meta killed open-source AI's biggest champion. Muse Spark is closed. The hybrid strategy means open-source gets the scraps; the best models stay locked. Developers who built on Llama's openness need a Plan B.
+- OpenAI's IPO is in real trouble. When your own CFO says the timeline is too aggressive and gets excluded from meetings for saying it, the market reads that as a warning, not a disagreement.
+- China can build frontier AI without US chips. DeepSeek V4 on Huawei silicon is the proof point that export controls were buying time, not solving the problem.
+- AI infrastructure is now a military target. Iran threatening the Stargate data center means physical security is no longer optional for AI buildouts in contested regions.
+Quick Hits
+- Intel joins Musk's Terafab: Signed on to the $20B+ AI chip fab alongside Tesla, SpaceX, and xAI.
+- Eclipse raises $1.3B: Largest fund yet for physical AI, robotics, and defense.
+- Flowise CVSS 10.0: Open-source AI agent builder under active exploit — 12K+ instances exposed.
+- First deepfake conviction: Federal Take It Down Act gets its first guilty verdict.
+- UnitedHealth's $3B AI bet: 22K engineers automating claims and clinical docs.
+- Big Three vs. China: Sharing intelligence to block model cloning via 24K fake Claude accounts.
+- OpenClaw blocked: Claude subs no longer cover third-party agents. API pricing required.
+- AI scribes inflating costs: Insurers and providers agree AI coding drives up bills.
+🎬 Watch & Listen First
+Dario Amodei: "We Are Near the End of the Exponential" · Dwarkesh Podcast · Listen on Spotify
+→ Anthropic's CEO on why the scaling hypothesis may be reaching its limits, how AI will diffuse through the economy, and whether regulation will destroy the benefits. Essential context for the $30B revenue number this week.
+OpenClaw: The Viral AI Agent That Broke the Internet · Lex Fridman #491 · Watch on YouTube
+→ Peter Steinberger on how a side project hit 180K GitHub stars and forced Anthropic to block third-party agent access. Context for the OpenClaw crackdown above.
+The Revenue Crown Changes Hands
+Anthropic Hits $30B Run Rate, Passes OpenAI · Apr 7 · Bloomberg
+→ From $9B to $30B in four months. Enterprise demand doubled — 1,000+ businesses now spend $1M+ annually on Claude — and Anthropic locked in 3.5 gigawatts of next-gen TPU compute via Google and Broadcom. The company that bet on safety is winning on revenue.
+Claude Mythos Unleashed for Cybersecurity Only · Apr 7 · TechCrunch
+→ The most powerful AI model in the world exists and you can't use it. Mythos found thousands of zero-days under Project Glasswing with 12 partner orgs. Frontier models may debut in specialized domains before consumers — cybersecurity first, general release never.
+Meta Goes Closed-Source
+Meta Launches Muse Spark — First Proprietary Model · Apr 8 · CNBC
+→ Alexandr Wang's Superintelligence Labs shipped a closed model that matches Llama's midsize variant "for an order of magnitude less compute." Coming to Facebook, Instagram, WhatsApp, and Ray-Ban glasses. The company that built its AI brand on openness just decided the best models are too valuable to share.
+Meta Will Open-Source Small Models, Keep the Best Locked · Apr 6 · Axios
+→ The hybrid strategy: release the small stuff, gate the crown jewels. After abandoning the 2-trillion-parameter Behemoth, Meta pivoted to smaller, efficient, proprietary models. Llama's open-source community should read the writing on the wall.
+OpenAI vs. Everyone
+CFO Breaks Ranks: 2026 IPO "Too Aggressive" · Apr 6 · WinBuzzer
+→ Sarah Friar told colleagues the Q4 IPO won't happen, citing a $14B projected loss and $600B in cumulative spending. She's been excluded from key financial meetings since. When your CFO publicly contradicts your CEO on the biggest financial event in tech history, the market notices.
+Musk Seeks Court-Ordered Removal of Altman and Brockman · Apr 8 · CNBC
+→ $79–97 billion in damages, nonprofit reversion, and removal of both co-founders — ahead of the April 27 trial. OpenAI fired back by asking two state AGs to investigate Musk's "anti-competitive behavior" via xAI, Tesla, and SpaceX.
+OpenAI Proposes Robot Taxes, Public Wealth Fund, 4-Day Workweek · Apr 6 · TechCrunch
+→ A 13-page policy vision from the company losing $14 billion a year. Proposing how governments should redistribute the wealth AI creates — while simultaneously fighting to keep its own structure for-profit.
+The Open-Source Race
+Google Releases Gemma 4 Under Apache 2.0 · Apr 2 · Google Blog
+→ Four models from edge to 31B params, all fully permissive — the first Gemma with zero commercial restrictions. Native multimodal, 256K context, and competitive with closed models at a fraction of the cost. As Meta goes proprietary, Google fills the open-source vacuum.
+DeepSeek V4 to Run Entirely on Huawei Chips · Apr 5 · TechWire Asia
+→ The first 1-trillion-parameter frontier model trained without any NVIDIA hardware. If it performs at scale on Huawei Ascend 950PR silicon, the entire premise of US chip export controls needs rethinking. China proved you can train cheap; now they're proving you can train sovereign.
+AI Meets the Real World
+Iran Threatens "Complete Annihilation" of Stargate Data Center · Apr 6 · TechCrunch
+→ The IRGC published satellite coordinates of OpenAI's $30B Abu Dhabi facility and threatened strikes. First time a nation-state has explicitly threatened AI infrastructure. Data center security just went from IT problem to national security problem.
+Tech Layoffs Pass 165,000 — AI Cited in 25% of March Cuts · Apr 7 · Bloomberg
+→ Up from single digits a year ago. The AP offered buyouts to 120+ journalists pivoting to AI revenue. "Will AI take my job" is becoming past tense for a growing share of knowledge workers.
+WGA Locks Down Four-Year Deal With Expanded AI Protections · Apr 4 · Variety
+→ $321M health fund, higher residuals, and new language requiring studios to disclose and license writers' work before AI training. Studios still won't pay for training data — but writers now have the right to know when their words feed the machine. Vote runs April 16–24.

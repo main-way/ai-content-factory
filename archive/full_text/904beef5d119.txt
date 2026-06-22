@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:A 399uW 114.3 dB DR Companding Readout ASIC for MEMS Microphones Employing a Multirate Time-Domain ADC
+View PDF HTML (experimental)Abstract:Improvements in the dynamic range and sensitivity of digital MEMS microphones are essential in applications like advanced noise canceling and voice recognition. A cost effective solution to achieve these goals is the companding ADC architecture. Companding ADCs split the dynamic range in several segments with different quantization noise levels, relaxing power constraints. A common problem of companding microphones are audible artifacts generated when the input signal crosses the boundaries between different amplitude segments. We show in this paper a companding ADC architecture that mitigates the boundary artifacts by leveraging the instantaneous and high-resolution time-domain representation of the input signal in a VCO-based ADC. The use of a multi-rate frequency-to-digital converter allows to decouple quantization noise from the VCO frequency, keeping standard audio sampling rates. Co-optimization of the driver and oscillator circuits enables our VCO-ADC to reach \textgreater 112dBc of peak SFDR without a feedback DAC, keeping a Giga-Ohm input impedance compatible with a capacitive MEMS. We show measurements of a 0.13 $\mu$m ASIC implementing a complete readout circuit for a digital MEMS microphone. This includes two analog channels and the digital signal processing and calibration blocks required to deliver a standard single-bit PDM output. This ADC reaches a dynamic range of 114.3dB with a power budget under 400 uW, a Schreier FoM_{SNDR} of 171.0 dB and a FoM_{DR} of 191.3 dB.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

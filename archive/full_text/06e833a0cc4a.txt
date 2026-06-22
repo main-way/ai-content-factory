@@ -1,0 +1,371 @@
+Ok, the first thought that comes to your mind is: let’s build a powerful agent!
+But immediately you ask yourself: which agent framework should I use? Should it be CrewAI? LangGraph? Microsoft Agent Framework? Or something else?
+You then open a few documentation pages, compare examples, and try to decide which framework best suits your problem at hand. A couple of hours passed by, you feel overwhelmed, and you haven’t even started coding.
+But wait a second: Do you really need an agent framework here? In fact, do you even need to build an LLM agent?
+In the past two years, I have built quite a few LLM applications across different domains. One lesson I learned is that for many useful LLM applications, what reliably works in the end is not really an autonomous agent. It’s workflow.
+And for building workflows, you might not even need any frameworks in the first place.
+In this post, I’ll show you how to prototype an LLM workflow using plain Python, local functions, structured outputs, and the OpenAI Responses API (the same pattern also applies to other LLM providers). We’ll get hands-on and solve an anomaly explanation problem.
+My goal here is not to argue that frameworks are bad. They are clearly useful in various scenarios, and we’ll discuss that at the end of this post. My goal is to show that for many applications, a clear workflow may be the first abstraction you actually need.
+1. Try Workflows Before Jumping to Agents
+An LLM agent usually refers to an autonomous system that can decide for itself what to do next.
+You give it a goal and a set of tools. It will then plan, act, observe the result, and continue iterating. Instead of following a fixed path, the agent dynamically chooses the next step based on the current situation. For open-ended problems, this is powerful.
+But many real-world problems are not that open-ended.
+In many cases, we do know roughly how the problem should be solved. But if we know that already, why ask the model to reinvent the wheel?
+This is where workflows come in.
+In an LLM workflow, we developers define the main steps, and the LLM is used inside selected steps as a reasoning engine. This is still an LLM-powered application. The difference is that the LLM is not treated as the whole system. It is treated only as a decision node inside a larger process.
+So, what are the benefits of adopting an LLM workflow? The following points are important in my opinion:
+- A workflow is transparent. You can easily examine, as each step has a well-defined role and a clear input and output contract.
+- A workflow is modular, meaning that you can change one step without rewriting the entire application.
+- Most importantly, a workflow has deterministic control flow. The LLM’s reasoning and decisions can still vary inside a step, but the overall path is owned by code. That alone removes a lot of uncertainty when we are trying to build something reliable.
+I know, this sounds less exciting than building a fully autonomous agent. But your goal is to deliver an effective solution. If boring stuff works, then we should happily use it.
+2. What We Actually Need to Design
+In my experience, there are four key ingredients:
+- Control flow
+- Role instructions (system prompts)
+- Prompt builders
+- Structured output
+Let me unpack each of them.
+2.1 Control flow
+Control flow defines how the application moves from input to output.
+A useful way to think about control flow is to view it as a graph. In this graph, we have nodes and edges:
+- Nodes: Each node represents one step in the application. It can be a deterministic processing step performed by the code (e.g., loading data, calling a local function). It can also be an LLM step, where an LLM is employed to make a decision, extract information, or write an explanation.
+- Edges: Each edge represents how information moves from one step to the next. Just like nodes, edges also have different types. For example, the edge can be static, i.e., always calling a predefined next step after processing the current step; or it can be conditional, for instance, if the LLM in the current steps says more evidence is needed, the edge links to a local tool node; if the LLM believes enough evidence has been gathered, the edge points to the final explanation.
+A key thing: in a workflow, code owns this graph. LLMs are bound to specific nodes rather than running freely.
+I’d start here as it forces you to first think through what the application actually has to do, which tasks should be handled by deterministic code, which go to LLM, where the workflow branches, and when it should stop.
+2.2 Role Instructions
+A workflow typically uses LLMs in several roles, and each role needs its own instruction (system prompts).
+A role instruction defines how the LLM should behave inside one specific node. It typically tells the LLM its persona, what tasks it’s performing, what it should pay attend to, and what to avoid. Any domain-specific rules should also be specified here.
+2.3 Prompt Builders
+While role instructions define how an LLM should behave, prompt builders decide what the LLM can see.
+Prompt builders assemble the context for an LLM call based on the objective of this LLM and the current workflow state.
+In practice, it’s just a function: it takes in the dynamic values from the current workflow, optionally preprocesses them, and feeds them into a prompt template. The output is the final prompt payload sent to the LLM.
+Prompt builders are where we control the context window. The context must be tailored and sufficient to support LLM’s reasoning.
+2.4 Structured Output
+In a workflow, LLM outputs are often intermediate results consumed by the next step. Letting LLM output free-form texts is not a good idea here, as it makes the downstream parsing fragile.
+A better approach would be to ask the LLMs to return a structured output that follows a predefined data schema, commonly represented as a JSON object or a Pydantic model.
+That schema is the contract between LLM steps. When designing the schema, you need to think through what fields should exist, what types they should have, and what values are allowed. When the model output follows that schema, the next step can read the fields directly.
+In fact, structured output is also what enables tool/function calling. Specifically, we give the schema one field for a function name and another for its arguments, and the next step can read both and let Python execute the corresponding local function.
+Now that we have seen four core workflow ingredients, it’s time to see how they work in action.
+3. Let’s Build A Real Workflow
+Here, we build a small data-quality investigation workflow using the Iris dataset (CC BY 4.0).
+In practice, we often need to screen datasets and flag suspicious records before submitting to model training. But flagging alone is rarely enough; oftentimes, we also want to understand the why: is it a real data-quality issue, and what evidence supports that assessment?
+This is where LLMs can help.
+3.1 Problem Setup
+For this case study, we use the Iris dataset. Of course, Iris is a classification dataset with no labeled anomalies. But to make things more interesting, we deliberately perturb one sample: this sample has the versicolor
+label, but we changed its sepal measurements to unusual values. This gives us one clear feature-level data-quality anomaly.
+After that, we follow a normal screening workflow. First, we leverage simple logic to flag suspicious samples. Then, we use LLMs to diagnose the flagged sample and produce an assessment with evidence.
+Our workflow has two LLM roles. The first one is an LLM investigator who determines what diagnostic evidence to gather next. This step involves calling tools that we have pre-defined. The second one is an LLM explainer. Its job is to receive the collected evidence and produce a final assessment with confidence.
+We’ll build this workflow without using any agentic framework.
+3.2 Step 0: Preparing the LLM Call
+We start by defining a reusable helper for calling the LLM:
+client = AzureOpenAI(
+api_key=os.environ["OPENAI_API_KEY"],
+azure_endpoint=os.environ["OPENAI_API_BASE"],
+api_version=os.environ["OPENAI_API_VERSION"],
+)
+def call_llm(
+step_name: str,
+instructions: str,
+prompt: str,
+output_schema: type[BaseModel],
+) -> BaseModel:
+"""Call the LLM once and return a parsed structured output."""
+model = "gpt-5.4-mini"
+started = time.perf_counter()
+response = client.responses.parse(
+model=model,
+instructions=instructions,
+input=prompt,
+reasoning={"effort": "medium"},
+text_format=output_schema,
+)
+usage = response.usage.model_dump() if response.usage else {}
+llm_telemetry.append(
+{
+"step": step_name,
+"schema": output_schema.__name__,
+"model": model,
+"prompt_chars": len(prompt),
+"elapsed_s": round(time.perf_counter() - started, 2),
+"input_tokens": usage.get("input_tokens"),
+"output_tokens": usage.get("output_tokens"),
+"total_tokens": usage.get("total_tokens"),
+}
+)
+return response.output_parsed
+Here, we use OpenAI’s Responses API, which allows us to specify the system instruction, the input prompt, and the output schema. For our current task, we use GPT-5.4-mini with medium thinking effort. Additionally, we add some lightweight telemetry to record latency and costs. Note that we need to use output_parsed
+to retrieve the structured output.
+3.3 Step 1: Screen Suspicious Sample
+We now enter the screening step.
+The purpose of this step is to employ some simple detection logic to flag abnormal data samples. This step does not need an LLM.
+Concretely, for each sample, we compute per-feature z-scores relative to the samples with the same species label. We keep the largest absolute z-score as the “anomaly score”.
+Row 55 is identified correctly, as this is the sample we modified:
+Ok, but in a practical setting, identification alone does not say anything about how or why. We need to take a closer look in the next step.
+3.4 Step 2: Iterative Evidence Gathering
+In this step, we want the LLM to first gather sufficient evidence before trying to explain the abnormal sample. Toward that end, we configured an LLM investigator role to do this evidence-gathering task.
+We start by configuring its role instruction, following a Role-Task-Expected Output-Rules structure:
+# Note: This instruction is polished by AI
+INVESTIGATOR_INSTRUCTIONS = """
+[Role]:
+You are a data-quality investigator reviewing a flagged record from a tabular Iris-measurement dataset.
+Each record contains sepal measurements, petal measurements, and a species label.
+[Task]:
+Your job is to gather diagnostic evidence that will help a separate analyst assess why the record may be abnormal.
+You are not responsible for making the final assessment.
+At each step, review the flagged record and any evidence already collected.
+Then decide whether one more diagnostic check is needed, or whether the available evidence is sufficient.
+[Expected output]:
+Return either a request for one diagnostic function,
+including the function name and concrete arguments,
+or a decision that enough evidence has been collected.
+[Rules]:
+Use only the diagnostic functions made available to you.
+Request at most one function call at a time.
+Choose function arguments that are relevant to the flagged record.
+Do not make the final assessment yourself.
+Do not invent measurements, species profiles, neighbor records, or tool results.
+"""
+For this investigator, we expose two local tools. One is to compare the flagged sample against the species profile using the per-feature z-score, so that LLM can judge how statistically unusual the current sample appears:
+FEATURES = [
+"sepal_length_cm",
+"sepal_width_cm",
+"petal_length_cm",
+"petal_width_cm",
+]
+def compare_row_to_species_profile(row_id: int, species: str) -> dict[str, Any]:
+"""Compare one row with one species profile using feature-level z-scores."""
+row = working_df.loc[working_df["row_id"] == row_id].iloc[0]
+profile_rows = working_df[(working_df["species"] == species) & (working_df["row_id"] != row_id)]
+profile_stats = profile_rows[FEATURES].agg(["mean", "std"])
+feature_comparisons = []
+for feature in FEATURES:
+mean = profile_stats.loc["mean", feature]
+std = profile_stats.loc["std", feature]
+value = float(row[feature])
+feature_comparisons.append(
+{
+"feature": feature,
+"value": value,
+"species_mean": round(float(mean), 3),
+"species_std": round(float(std), 3),
+"zscore": round(float((value - mean) / std), 3),
+}
+)
+return {
+"row_id": row_id,
+"species": species,
+"feature_comparisons": feature_comparisons,
+}
+The other one is to find the K nearest samples using the standard scikit-learn library. This allows the LLM to understand which samples look most similar to the flagged record in the measurement space:
+def find_nearest_neighbors(row_id: int, k: int = 5) -> dict[str, Any]:
+"""Find nearest rows with a KNN model on standardized measurements."""
+rows = working_df.reset_index(drop=True)
+row_position = rows.index[rows["row_id"] == row_id][0]
+scaled_features = StandardScaler().fit_transform(rows[FEATURES])
+knn = NearestNeighbors(n_neighbors=k + 1).fit(scaled_features)
+distances, neighbor_positions = knn.kneighbors(scaled_features[[row_position]])
+neighbors = []
+for distance, neighbor_position in zip(distances[0], neighbor_positions[0]):
+if neighbor_position == row_position:
+continue
+neighbor = rows.iloc[neighbor_position]
+neighbors.append(
+{
+"row_id": int(neighbor["row_id"]),
+"species": str(neighbor["species"]),
+"distance": round(float(distance), 3),
+"measurements": {feature: float(neighbor[feature]) for feature in FEATURES},
+}
+)
+return {"row_id": row_id, "neighbors": neighbors}
+Now that we have defined the local tools, we need to tell the LLM what it can see at each investigation step. This is the job of the prompt builder:
+def build_investigation_prompt(
+flagged_row: dict[str, Any],
+collected_evidence: list[dict[str, Any]],
+) -> str:
+return f"""
+Flagged record:
+{json.dumps(flagged_row, indent=2)}
+Evidence collected so far:
+{json.dumps(collected_evidence, indent=2)}
+Available diagnostic functions:
+{json.dumps(TOOL_DESCRIPTIONS, indent=2)}
+Task:
+Decide whether to request one more diagnostic function or stop because enough
+evidence has been collected.
+""".strip()
+There are two inputs:
+flagged_row
+is the sample currently under investigation. It consists of the row ID, the four measurements, and the species label.collected_evidence
+is a list of diagnostic results gathered in previous rounds. At the beginning, this list is empty. After each tool call, the workflow appends the tool result to this list and passes it back into the next LLM call.
+TOOL_DESCRIPTIONS
+is the small menu of functions exposed to the LLM:
+TOOL_DESCRIPTIONS = [
+{
+"name": "compare_row_to_species_profile",
+"description": "Compare one row to one species profile using feature-level z-scores.",
+"arguments": {"row_id": "integer", "species": "setosa | versicolor | virginica"},
+},
+{
+"name": "find_nearest_neighbors",
+"description": "Find nearest rows with a KNN model on standardized measurements.",
+"arguments": {"row_id": "integer", "k": "integer"},
+},
+]
+The investigation loop is directly implemented in Python:
+collected_evidence = []
+for round_id in range(1, MAX_ROUNDS + 1):
+decision = call_llm(
+step_name=f"investigator_row_{row_id}_round_{round_id}",
+output_schema=InvestigationDecision,
+instructions=INVESTIGATOR_INSTRUCTIONS,
+prompt=build_investigation_prompt(flagged_row, collected_evidence),
+)
+if decision.status == "enough_evidence":
+break
+tool_result = execute_tool_call(row_id, decision)
+collected_evidence.append(tool_result)
+In the loop, once the LLM investigator returns a decision, Python is responsible for executing the selected local function. The function is defined as follows:
+def execute_tool_call(row_id: int, decision: InvestigationDecision) -> dict[str, Any]:
+if decision.tool_name == "compare_row_to_species_profile":
+arguments = {"species": decision.species}
+result = compare_row_to_species_profile(row_id=row_id, **arguments)
+else:
+arguments = {"k": decision.k}
+result = find_nearest_neighbors(row_id=row_id, **arguments)
+return {
+"tool": decision.tool_name,
+"arguments": arguments,
+"result": result,
+}
+The loop above uses the output schema InvestigationDecision
+, which is defined below:
+from typing import Literal
+from pydantic import BaseModel, Field
+Species = Literal["setosa", "versicolor", "virginica"]
+ToolName = Literal["compare_row_to_species_profile", "find_nearest_neighbors"]
+class InvestigationDecision(BaseModel):
+status: Literal["need_more_evidence", "enough_evidence"] = Field(
+...,
+description="Whether another local function call is useful.",
+)
+reasoning: str = Field(..., description="Brief evidence-grounded rationale.")
+tool_name: ToolName | None = Field(
+None,
+description="Local diagnostic function to call, or null when evidence is sufficient.",
+)
+species: Species | None = Field(
+None,
+description="Species profile to compare against; only used for compare_row_to_species_profile.",
+)
+k: int | None = Field(
+None,
+description="Number of nearest rows to return; only used for find_nearest_neighbors.",
+)
+Here, Pydantic, a Python library for defining typed data models, is used to define the schema. In Pydantic, Field(...)
+means this field is required, and this applies to status
+and reasoning
+. For other fields, however, they are only needed when the LLM investigator wants to call a local function. As a result, their type are ToolCall/Species/int | None
+, and their defaults are None
+.
+Great! This was the densest step in the workflow. But that is also the point: once we make the role instruction, prompt builder, schema, tools, and loop explicit, there is no hidden orchestration left.
+We can now move to the final LLM explanation step. You’ll see how the pattern repeats itself.
+3.5 Step 3: Explaining the Flagged Sample
+With evidence gathered, the final step is to ask another LLM to interpret the evidence and generate an assessment.
+We configure the LLM explainer with a separate role instruction:
+# Note: This instruction is polished by AI
+EXPLAINER_INSTRUCTIONS = """
+[Role]:
+You are a data-quality analyst reviewing a flagged record from a tabular iris-measurement dataset.
+Each record contains sepal measurements, petal measurements, and a species label.
+[Task]:
+Your job is to produce the final assessment for the flagged record using the record itself and the gathered diagnostic evidence.
+Decide whether the evidence points to a feature outlier, a likely mislabel, a class-boundary case, or no clear issue.
+[Expected output]:
+Return a concise assessment with a confidence level, a confidence rationale, a human-facing explanation, and the key evidence supporting the assessment.
+[Rules]:
+Use only the flagged record and diagnostic evidence provided in the prompt.
+Do not request more evidence or call tools.
+Do not invent measurements, species profiles, neighbor records, or tool results.
+Use high confidence only when the evidence strongly supports the assessment; otherwise use low confidence.
+""".strip()
+The prompt builder for LLM explainer is simpler than the investigator’s, because it only needs to pass the flagged record and the diagnostic evidence gathered by the investigator:
+def build_explanation_prompt(
+flagged_row: dict[str, Any],
+collected_evidence: list[dict[str, Any]],
+) -> str:
+return f"""
+Flagged record:
+{json.dumps(flagged_row, indent=2)}
+Diagnostic evidence:
+{json.dumps(collected_evidence, indent=2)}
+Task:
+Assess this flagged row and explain the evidence.
+""".strip()
+Finally, we define the structured output for the LLM explainer:
+class CandidateExplanation(BaseModel):
+assessment: Literal[
+"likely_mislabel",
+"feature_outlier",
+"class_boundary_case",
+"no_clear_issue",
+] = Field(..., description="Best evidence-based interpretation of the flagged row.")
+confidence: Literal["low", "high"] = Field(
+...,
+description="High when evidence strongly supports the assessment; low otherwise.",
+)
+confidence_rationale: str = Field(
+...,
+description="Why this confidence level is appropriate given the collected evidence.",
+)
+explanation: str = Field(..., description="Concise explanation for a human reviewer.")
+key_evidence: list[str] = Field(..., description="Evidence items supporting the assessment.")
+Note that we pre-defined a small set of possible categories for assessment
+. This is a common strategy in practice, where we can inject domain knowledge into the workflow and prevent the LLM from inventing arbitrary labels.
+Finally, we can reuse the same call_llm
+helper to launch the explainer call:
+explanation = call_llm(
+step_name=f"explainer_row_{row_id}",
+output_schema=CandidateExplanation,
+instructions=EXPLAINER_INSTRUCTIONS,
+prompt=build_explanation_prompt(flagged_row, collected_evidence),
+)
+This completes the workflow.
+4. Running the Workflow End to End
+Now we have the full workflow in place, let’s give it a spin. Just a quick reminder of the workflow we have built:
+- A Python screening step flags one suspicious record.
+- An LLM investigator that gathers diagnostic evidence by iteratively calling tools.
+- An LLM explainer that turns the collected evidence into a final assessment.
+After running the workflow, we saw that the LLM investigator took four rounds to collect the evidence, which was then fed into the LLM explainer. The produced final assessment is feature_outlier
+with high
+confidence. The rationale given by the LLM explainer is this:
+“The current sample looks like a feature outlier because its sepal measurements are extreme, while its petal measurements remain broadly compatible with
+versicolor
+.“
+This assessment is correct. Indeed, we deliberately modified the sample such that it has outlier feature values. So a feature_outlier
+label is appropriate.
+We can further inspect the full investigator trace to understand what evidence was collected:
+We can see that the LLM investigator has followed a sensible path for gathering evidence. It first checked the labeled species profile, then inspected nearest neighbors, and finally compared the row against an alternative species. After these checks, it decided that the evidence was enough for the explainer to produce a meaningful feature-outlier assessment.
+This completes the case study. We built a small but fully functional LLM workflow using plain Python. The workflow is iterative and inspectable. Not bad!
+5. When Do We Actually Need Agents or Frameworks?
+So far, we have intentionally avoided both agents and frameworks. But this does not mean they are not useful.
+It’s only a matter of which types of problems we are solving.
+Here, it’s helpful to separate two decisions that often get blurred together. The first is how much autonomy you grant the LLM, with a fixed workflow and a free-running agent on the two ends of the spectrum. The second is whether you adopt someone else’s abstractions. You can either hand-roll a plain Python from scratch or adopt an established framework. These are independent choices, and our case study happened to live in one corner, i.e., a workflow, hand-rolled.
+We can then look at when it makes sense to move along each axis.
+5.1 When you actually need an agent
+Short answer: when you do not know the best solution path in advance. And it can happen in two scenarios.
+The first scenario is that you simply don’t know how to solve the problem. There is no established procedure or domain know-how to encode.
+The second scenario is that you do know something about how to solve the problem. But the issue is that the space of feasible paths is so vast that enumerating it by hand is just impossible. Either we can’t cover all the branches, or we can, but only by adding so many conditional edges that make the workflow hard to reason about.
+But do keep in mind when embracing the LLM agents: you gain flexibility, but at the cost of reliability and debuggability. Those are the exact things a workflow gives you for free.
+So, before adopting the LLM agents, ask yourself: is your problem open-ended enough to need that power?
+5.2 When you actually need a framework
+Even if you’ve decided a workflow is the right shape, you might still reach for a framework to actually build it.
+My experience is that a plain Python version is great for fast prototyping. You can be hyper-focused on learning whether the workflow can work and what it should look like, without being bothered by learning the syntax of any libraries.
+However, that calculus changes when you shift from asking “Does this work?” to “Does this keep working in production?”
+That is the gap frameworks fill, with better failure handling, observability, human-in-the-loop control, persistence, etc.
+In short, frameworks are great at solving problems you might have after your idea works.
+6. So, What Did We Learn?
+For many useful LLM applications, what you need first is probably not an autonomous agent or a heavyweight framework.
+What you need is a clear workflow, with control flow, role instructions, prompt builders, structured outputs, and plain Python code to wire them together.
+And don’t worry that the hand-rolled workflow will be wasted effort. It won’t. The control flow, prompts, schemas, and tools you write by hand can all carry over if you later transition to an agent or a framework.
+Start simple, validate the key idea fast, then add complexity only when the problem demands it.

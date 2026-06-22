@@ -1,0 +1,410 @@
+Python 3.14 garbage collection rigamarole
+Python 3.14.0 introduced a new incremental garbage collector. But reports of higher memory usage caused the Python team to revert the garbage collector changes in 3.14.5.
+We investigate how memory management works in Python and workloads that perform best and worst for the incremental garbage collector.
+Python 3.14.5 was just released and is the current latest stable version of Python. Python 3.14.0 (released in October, 2025) changed the garbage collector (GC) from traditional generational garbage collection to incremental garbage collection. We’ll get into what this means in this article.
+From the pull request merging this change into Python:
+The cycle garbage collector is now incremental. This means that maximum pause times are reduced by an order of magnitude or more for larger heaps.
+There are now only two generations: young and old. When gc.collect() is not called directly, the GC is invoked a little less frequently. When invoked, it collects the young generation and an increment of the old generation, instead of collecting one or more generations.
+This pull request made it into Python’s main branch in 2024 but was removed from the 3.13 release branch. Python 3.14.0 was the first release that included this change.
+But users reported “memory pressure” so the Python team reverted changes to the garbage collector in the 3.14.5 release. We’ll get into what “memory pressure” means in this article as well.
+Unfortunately the garbage collection changes were somewhat intentionally (if that’s not too strong to say) not implemented as an alternative that users could switch between (which, for example, you can do in Java or Go). Users who liked the new incremental garbage collector (and they exist) can no longer use it at all. Also interestingly, the GC changes did not go through the usual PEP process in the first place.
+To understand what all of this means though, we need to start before the GC: with reference counting.
+Throughout this post I’ll say “Python” when I am only necessarily talking about “CPython”.
+Python#
+Before we get into reference counting, let’s build two versions of Python locally: 3.14.4 and 3.14.5. Since we cannot switch between which GC we use within a single version, the best we can do (as we demonstrate behavior throughout this post) is to switch between these two patch versions. 3.14.4 has the incremental GC and 3.14.5 has the traditional GC.
+sudo apt-get update -y
+sudo apt-get install -y build-essential pkg-config
+git clone --depth 1 --branch v3.14.4 https://github.com/python/cpython cpython3.14.4
+git clone --depth 1 --branch v3.14.5 https://github.com/python/cpython cpython3.14.5
+(cd cpython3.14.4 && ./configure --with-trace-refs && make -j16)
+(cd cpython3.14.5 && ./configure --with-trace-refs && make -j16)
+The --with-trace-refs
+enables an additional debug method we’ll talk about later.
+So now you’ve got both versions.
+$ ./cpython3.14.4/python --version
+Python 3.14.4
+$ ./cpython3.14.5/python --version
+Python 3.14.5
+Let’s get into memory management!
+Reference counting primer#
+Objects in Python are reference counted. New references to an object increment the count. The count is decremented in a few scenarios. For example: when a variable goes out of scope, or a variable is del
+-ed, or a variable is bound to a different object.
+We can observe reference counts through sys.getrefcount
+.
+import sys
+print(sys.getrefcount([])) # 1
+refcount1.py
+Run it.
+$ ./cpython3.14.4/python refcount1.py
+1
+$ ./cpython3.14.5/python refcount1.py
+1
+In this case we created a new object and there is only a single reference to it. It will get deallocated as soon as sys.getrefcount()
+completes because its reference count goes to 0.
+Variables create additional references.
+import sys
+a = []
+# refcount for this object is 1
+print(sys.getrefcount(a)) # 2: `a` and a temp reference passed to `sys.getrefcount`
+refcount2.py
+Run it.
+$ ./cpython3.14.4/python refcount2.py
+2
+$ ./cpython3.14.5/python refcount2.py
+2
+Multiple variables pointing at the same object create multiple references. We can print id(obj)
+(which in CPython is the actual memory address of the object) on multiple variables pointing to the same object and observe that the ids are the same. Python reference counting acts on the object, not the variable.
+import sys
+a = []
+print("a memory", hex(id(a))) # 0x1026e1680 in a run on my machine
+# 0x1026e1680 refcount is 1: `a`
+print(sys.getrefcount(a)) # 2: `a` itself and the argument to sys.getrefcount
+b = a
+print("b memory", hex(id(b))) # same as `a memory`, 0x1026e1680 in the same run
+# 0x1026e1680 refcount is 2: `a`, and `b`
+print(sys.getrefcount(a)) # 3: `a` itself, `b` and the object as argument
+print(sys.getrefcount(b)) # 3: `b` itself, `a`, and the object as argument
+del b
+# 0x1026e1680 refcount is 1
+print(sys.getrefcount(a)) # 2: `a` itself and the object as argument
+del a
+# 0x1026e1680 refcount is 0, deleted
+refcount3.py
+Run it.
+$ ./cpython3.14.4/python refcount3.py
+a memory 0xfed730bdda40
+2
+b memory 0xfed730bdda40
+3
+3
+2
+$ ./cpython3.14.5/python refcount3.py
+a memory 0xf1331f9dda40
+2
+b memory 0xf1331f9dda40
+3
+3
+2
+We cannot observe deallocations for most builtin objects (e.g. lists, dicts, etc.) but we can observe deallocations in user objects either by implementing the __del__
+method or by assigning a callback with weakref.finalize
+.
+import sys, weakref
+class Obj: pass
+a = Obj()
+weakref.finalize(a, print, "freeing "+hex(id(a)))
+print("a memory", hex(id(a))) # 0x1005b4d70 in a run on my machine
+# 0x1005b4d70 refcount is 1: `a`
+print(sys.getrefcount(a)) # 2: `a` itself and the argument to sys.getrefcount
+b = a
+print("b memory", hex(id(b))) # same as `a memory`, 0x1005b4d70 in the same run
+# 0x1005b4d70 refcount is 2: `a`, and `b`
+print(sys.getrefcount(a)) # 3: `a` itself, `b` and the object as argument
+print(sys.getrefcount(b)) # 3: `b` itself, `a`, and the object as argument
+del b
+# 0x1005b4d70 refcount is 1
+print(sys.getrefcount(a)) # 2: `a` itself and the object as argument
+del a
+# 0x1005b4d70 refcount is 0, deleted, observe `freeing 0x1005b4d70` printed
+refcount4.py
+Run it.
+$ ./cpython3.14.4/python refcount4.py
+a memory 0xe496a9bc5160
+2
+b memory 0xe496a9bc5160
+3
+3
+2
+freeing 0xe496a9bc5160
+$ ./cpython3.14.5/python refcount4.py
+a memory 0xfdfcf15b1160
+2
+b memory 0xfdfcf15b1160
+3
+3
+2
+freeing 0xfdfcf15b1160
+All of this goes out the window when you’ve got circular references.
+Reference cycles#
+Reference counting is a local algorithm, with no knowledge of other objects. So while automatic reference counting can usually decrement reference counts down to zero (allowing an object to be de-allocated) as scopes complete or as we call del
+in Python, automatic reference counting cannot decrement reference counts down to zero when cycles are involved.
+We’ll observe this by finding our object still in sys.getobjects(limit), which is a list of all allocated objects (only available in these --with-trace-refs
+builds). It will be in this list even after we call del
+on our object, because our object contains a circular reference such that the reference count cannot go down to zero on its own.
+import sys
+class Obj: pass
+a = Obj() # 1 reference to Obj()
+i = id(a)
+a.me = a # 2 references to Obj()
+assert any(id(o) == i for o in sys.getobjects(0))
+del a # 1 reference to Obj()
+assert any(id(o) == i for o in sys.getobjects(0))
+refcount5.py
+Run it.
+$ ./cpython3.14.4/python refcount5.py
+$ ./cpython3.14.5/python refcount5.py
+It’s easy to confuse del
+as a method to deallocate an object (in which case: who cares if it references itself, we should be able to delete it, right?). But all del
+does is remove the name a
+from scope and decrement the reference count of the object it points to. The object still exists and it still has a reference to itself, but we’ve now lost all bindings to the object. That’s a memory leak! Or it would be.
+One way we can manually break a reference counting cycle is via weak references.
+import sys, weakref
+class Obj: pass
+a = Obj() # 1 reference to Obj()
+i = id(a)
+a.me = weakref.ref(a) # still 1 reference to Obj()
+assert any(id(o) == i for o in sys.getobjects(0))
+del a # 1 reference to Obj()
+assert not any(id(o) == i for o in sys.getobjects(0))
+refcount6.py
+Run it.
+$ ./cpython3.14.4/python refcount6.py
+$ ./cpython3.14.5/python refcount6.py
+a.me
+is now a weak reference to the object. So the final assertion is reversed and everything works nicely. The object a
+pointed to has been deallocated through reference counting mechanisms.
+For some reason this program periodically, but reliably segfaults, in both 3.14.4 and 3.14.5.
+#0 free_object (obj=0x7dbdbb11bbf2) at Objects/object.c:921
+#1 clear_freelist (dofree=<optimized out>, is_finalization=<optimized out>, freelist=<optimized out>) at Objects/object.c:907
+#2 _PyObject_ClearFreeLists (freelists=0x592f73db8e30 <_PyRuntime+101872>, is_finalization=is_finalization@entry=0) at Objects/object.c:952
+#3 0x0000592f73a898e2 in _PyGC_ClearAllFreeLists (interp=<optimized out>) at Python/gc_gil.c:14
+#4 0x0000592f73a88791 in gc_collect_main (tstate=tstate@entry=0x592f73ded168 <_PyRuntime+315688>, generation=<optimized out>, generation@entry=2,
+reason=reason@entry=_Py_GC_REASON_MANUAL) at Python/gc.c:1495
+#5 0x0000592f73a88e60 in PyGC_Collect () at Python/gc.c:1682
+#6 0x0000592f73ac2d29 in _Py_Finalize (runtime=0x592f73da0040 <_PyRuntime>) at Python/pylifecycle.c:2140
+#7 0x0000592f73ac30cd in _Py_Finalize (runtime=0x592f73da0040 <_PyRuntime>) at Python/pylifecycle.c:2268
+#8 0x0000592f73afbc1d in Py_RunMain () at Modules/main.c:778
+#9 pymain_main (args=0x7ffdbcb39900) at Modules/main.c:806
+#10 Py_BytesMain (argc=<optimized out>, argv=<optimized out>) at Modules/main.c:830
+#11 0x00007dbdbb22a1ca in __libc_start_call_main (main=main@entry=0x592f73870320 <main>, argc=argc@entry=2, argv=argv@entry=0x7ffdbcb39a98)
+at ../sysdeps/nptl/libc_start_call_main.h:58
+#12 0x00007dbdbb22a28b in __libc_start_main_impl (main=0x592f73870320 <main>, argc=2, argv=0x7ffdbcb39a98, init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>,
+stack_end=0x7ffdbcb39a88) at ../csu/libc-start.c:360
+#13 0x0000592f738827d5 in _start ()
+Which I’m going to ignore.
+Generational garbage collection#
+Python falls back to a generational garbage collector to handle objects that have not been deallocated via reference counting and that no live object references.
+The GC module allows us to register callbacks which are executed when the GC starts and stops collection. So we’ll set a global variable when the collection starts and unset it when it stops. Then in our weakref.finalize
+callback we can print if the finalizing happened during GC collection or not. If it didn’t happen during GC collection then we know it was reference counting that deallocated the object.
+import gc, weakref
+_in_gc = False
+def _track(phase, info):
+global _in_gc
+_in_gc = phase == "start"
+gc.callbacks.append(_track)
+def watch(obj, label):
+weakref.finalize(obj, lambda: print(
+label, "freed by", "GC" if _in_gc else "refcount"))
+class Obj(): pass
+o = Obj()
+watch(o, "o")
+del o # o freed by refcount
+p = Obj()
+p.me = p
+watch(p, "p")
+del p
+gc.collect() # p freed by GC
+gc1.py
+Run it.
+$ ./cpython3.14.4/python gc1.py
+o freed by refcount
+p freed by GC
+$ ./cpython3.14.5/python gc1.py
+o freed by refcount
+p freed by GC
+Was it actually finalized by reference counting?#
+Objects can be freed by either the GC or by reference counting. And in previous examples we used weakref.finalize
+to observe deallocation when the object’s reference count went to 0. How do we know it was actually reference counting and not the GC that did the deallocation?
+Well, we can disable the GC and watch the finalizer still happen.
+import gc, sys, weakref
+gc.disable()
+class Obj: pass
+a = Obj()
+weakref.finalize(a, print, "freeing "+hex(id(a)))
+print("a memory", hex(id(a))) # 0x1005b4d70 in a run on my machine
+# 0x1005b4d70 refcount is 1: `a`
+print(sys.getrefcount(a)) # 2: `a` itself and the argument to sys.getrefcount
+b = a
+print("b memory", hex(id(b))) # same as `a memory`, 0x1005b4d70 in the same run
+# 0x1005b4d70 refcount is 2: `a`, and `b`
+print(sys.getrefcount(a)) # 3: `a` itself, `b` and the object as argument
+print(sys.getrefcount(b)) # 3: `b` itself, `a`, and the object as argument
+del b
+# 0x1005b4d70 refcount is 1
+print(sys.getrefcount(a)) # 2: `a` itself and the object as argument
+del a
+# 0x1005b4d70 refcount is 0, deleted, observe `freeing 0x1005b4d70` printed
+refcount7.py
+Run it.
+$ ./cpython3.14.4/python refcount7.py
+a memory 0xf6e64bf71160
+2
+b memory 0xf6e64bf71160
+3
+3
+2
+freeing 0xf6e64bf71160
+$ ./cpython3.14.5/python refcount7.py
+a memory 0xec231a391160
+2
+b memory 0xec231a391160
+3
+3
+2
+freeing 0xec231a391160
+Pauses#
+Since the GC needs to run periodically, and since Python is single-threaded, program execution appears to pause when the GC is running. Minimizing pauses is one of the goals of a GC. One way it does so is by splitting objects into generations. From the Python docs:
+The GC classifies objects into three generations depending on how many collection sweeps they have survived. New objects are placed in the youngest generation (generation 0). If an object survives a collection it is moved into the next older generation. Since generation 2 is the oldest generation, objects in that generation remain there after a collection. In order to decide when to run, the collector keeps track of the number object allocations and deallocations since the last collection.
+Every L allocations, the GC runs. Every time it runs it checks generation 0 objects. Every M times the GC runs it checks generation 1 objects. And every N times the GC runs it checks generation 2 objects. L, M, and N are set via gc.set_threshold(L, M, N)
+.
+$ ./cpython3.14.4/python -c 'import gc; print(gc.get_threshold())'
+(2000, 10, 0)
+$ ./cpython3.14.5/python -c 'import gc; print(gc.get_threshold())'
+(2000, 10, 10)
+But Python 3.14’s change to the garbage collector was to do less work each time the GC runs. They collapsed generations 1 and 2 into a single “old” generation (which is why N=0
+above in Python 3.14.4). From the internal Python 3.14.0 docs (before the revert):
+Each garbage collection scans the entire young generation and part of the old generation. The time taken to scan the young generation can be controlled by controlling its size, but the size of the old generation cannot be controlled.
+The goal was to decrease the long tail latency of GC pause times.
+We can observe this happening for ourselves by creating 1) a lot of (potential) garbage that 2) must be scanned by the GC (i.e. reference count for these objects does not go down to 0).
+import gc, resource, statistics, time
+t = 0
+ts = []
+def _track(phase, info):
+global t
+if phase == "start":
+t = time.perf_counter_ns()
+else:
+d = time.perf_counter_ns() - t
+ts.append(d)
+gc.callbacks.append(_track)
+objs = []
+for i in range(50_000_000):
+objs.append([])
+p = statistics.quantiles(ts, n=100)
+rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+print(
+f"gc runs: {len(ts):,}\n"
+f"max: {max(ts)/1e6:,.3f} ms\n"
+f"avg: {statistics.mean(ts)/1e3:,.1f} µs\n"
+f"stddev: {statistics.stdev(ts)/1e6:,.3f} ms\n"
+f"p99: {p[98]/1e6:,.3f} ms\n"
+f"max rss: {rss/1024:,.1f} MB"
+)
+a_best_case_incremental_gc.py
+Run it.
+$ ./cpython3.14.4/python a_best_case_incremental_gc.py
+gc runs: 24,987
+max: 1,394.344 ms
+avg: 264.4 µs
+stddev: 13.934 ms
+p99: 0.019 ms
+max rss: 6,774.1 MB
+$ ./cpython3.14.5/python a_best_case_incremental_gc.py
+gc runs: 24,987
+max: 3,922.962 ms
+avg: 896.1 µs
+stddev: 41.094 ms
+p99: 1.079 ms
+max rss: 6,773.9 MB
+In this example of a best case scenario for incremental GC, there’s no difference in memory usage. But average, max, and p99 GC pauses are much lower in the incremental GC.
+On the other hand, doing less work each time means that it can take longer for memory to be freed. And if a long-running system is consistently generating “old” garbage, the process can end up taking ever more memory and, on Linux, might eventually get killed by the OOM killer. This could not have happened in the original Python 3.13 GC.
+So rather than keeping all data around, let’s allow some data to become actual garbage that can get cleaned up periodically.
+import gc, resource, statistics, time
+t = 0
+ts = []
+def _track(phase, info):
+global t
+if phase == "start":
+t = time.perf_counter_ns()
+else:
+d = time.perf_counter_ns() - t
+ts.append(d)
+gc.callbacks.append(_track)
+class Obj: pass
+objs = []
+for i in range(10_000_000):
+o = Obj()
+o.me = o
+objs.append(o)
+if i % 1_000 == 0:
+objs = []
+p = statistics.quantiles(ts, n=100)
+rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+print(
+f"gc runs: {len(ts):,}\n"
+f"max: {max(ts)/1e6:,.3f} ms\n"
+f"avg: {statistics.mean(ts)/1e3:,.1f} µs\n"
+f"stddev: {statistics.stdev(ts)/1e6:,.3f} ms\n"
+f"p99: {p[98]/1e6:,.3f} ms\n"
+f"max rss: {rss/1024:,.1f} MB"
+)
+a_worst_case_incremental_gc.py
+Run it.
+$ ./cpython3.14.4/python a_worst_case_incremental_gc.py
+gc runs: 25,000
+max: 11.793 ms
+avg: 900.7 µs
+stddev: 1.587 ms
+p99: 7.186 ms
+max rss: 27.1 MB
+$ ./cpython3.14.5/python a_worst_case_incremental_gc.py
+gc runs: 24,988
+max: 12.339 ms
+avg: 785.1 µs
+stddev: 0.958 ms
+p99: 5.188 ms
+max rss: 20.8 MB
+And we begin to see the issue. While the max pause in this case was still smaller for the incremental GC, everything else performed worse. In particular, the incremental GC took up significantly more total memory than the traditional GC.
+This is not just noise, run the program repeatedly and you'll see similar results.
+And we can make things even worse by increasing the size of the objects we’ve been working with.
+import gc, resource, statistics, time
+t = 0
+ts = []
+def _track(phase, info):
+global t
+if phase == "start":
+t = time.perf_counter_ns()
+else:
+d = time.perf_counter_ns() - t
+ts.append(d)
+gc.callbacks.append(_track)
+class Obj: pass
+objs = []
+for i in range(10_000_000):
+o = Obj()
+o.me = o
+o.payload = list(range(500))
+objs.append(o)
+if i % 1_000 == 0:
+objs = []
+p = statistics.quantiles(ts, n=100)
+rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+print(
+f"gc runs: {len(ts):,}\n"
+f"max: {max(ts)/1e6:,.3f} ms\n"
+f"avg: {statistics.mean(ts)/1e3:,.1f} µs\n"
+f"stddev: {statistics.stdev(ts)/1e6:,.3f} ms\n"
+f"p99: {p[98]/1e6:,.3f} ms\n"
+f"max rss: {rss/1024:,.1f} MB"
+)
+a_worst_case_incremental_gc_take2.py
+We give each obj
+we create a 500-element list. The sole difference.
+$ diff a_worst_case_incremental_gc.py a_worst_case_incremental_gc_take2.py
+19a20
+> o.payload = list(range(500))
+Run it. (This might take a while.)
+$ ./cpython3.14.4/python a_worst_case_incremental_gc_take2.py
+gc runs: 9,999
+max: 520.756 ms
+avg: 46,756.5 µs
+stddev: 75.110 ms
+p99: 317.631 ms
+max rss: 2,849.4 MB
+$ ./cpython3.14.5/python a_worst_case_incremental_gc_take2.py
+gc runs: 9,995
+max: 572.420 ms
+avg: 37,215.0 µs
+stddev: 59.688 ms
+p99: 320.846 ms
+max rss: 717.0 MB
+So we’ve got these situations where the new incremental GC might take up significantly more memory than the previous GC. And this, along with that they don’t want to support two different GCs, is why they decided to revert the incremental GC for now.

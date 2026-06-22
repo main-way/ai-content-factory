@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Is My Vision-Language Data in Your AI? Membership Inference Test (MINT) Demo 2
+View PDF HTML (experimental)Abstract:We present the Membership Inference Test (MINT) Demo 2, a framework designed to improve transparency in machine learning training processes. MINT is a technique for experimentally determining whether specific data were used during machine learning model training. We establish the theoretical framework and propose multiple architectures for MINT depending on the amount of information known about the models that are being audited. Experimental results using a popular face recognition model, 4 state-of-the-art LLMs, and multiple, diverse, and large-scale public image and text databases achieve promising accuracy levels in the detection of training data of up to 90%. Building on these results, we introduce a comprehensive web platform1 that expands these capabilities to image and text modalities. The platform integrates a diverse technological stack, including MINT, aMINT, and gMINT, allowing users to audit a wide range of models. This demonstrator aims to promote AI transparency and provides a practical tool to foster compliance with emerging AI regulations.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

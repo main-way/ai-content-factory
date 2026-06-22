@@ -1,0 +1,45 @@
+{
+  "date": "2024-08-16",
+  "count": 2,
+  "posts": [
+    {
+      "id": "b9bab7db64a4",
+      "title": "Building a Local Face Search Engine — A Step by Step Guide",
+      "url": "https://becominghuman.ai/building-a-local-face-search-engine-a-step-by-step-guide-ec34751a2715?source=rss----5e5bef33608a---4",
+      "source": "Becoming Human: AI Magazine",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-16T17:34:51+00:00",
+      "summary": "Building a Local Face Search Engine — A Step by Step Guide Part 1: on face embeddings and how to run face search on the fly Sample demonstration of face recognition and search for the cast of “The Office” In this entry (Part 1) we’ll introduce the basic concepts for face recognition and search, and implement a basic working solution purely in Python. At the end of the article you will be able to run arbitrary face search on the fly, locally on your own images. In Part 2 we’ll scale the learning of Part 1, by using a vector database to optimize interfacing and querying. Face matching,…",
+      "author": "Alex Martinelli",
+      "tags": [
+        "face-search",
+        "face-recognition",
+        "machine-learning",
+        "embedding"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "4119f570dce2",
+      "title": "Understanding the cp Command in Bash",
+      "url": "https://becominghuman.ai/understanding-the-cp-command-in-bash-b5d657713bca?source=rss----5e5bef33608a---4",
+      "source": "Becoming Human: AI Magazine",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-16T17:21:47+00:00",
+      "summary": "The cp command in Bash is used to copy files and directories from one location to another. Continue reading on Becoming Human: Artificial Intelligence Magazine »",
+      "author": "Javascript Jeep",
+      "tags": [
+        "bash",
+        "terminal",
+        "programming",
+        "linux",
+        "learning"
+      ],
+      "has_full_text": false
+    }
+  ]
+}

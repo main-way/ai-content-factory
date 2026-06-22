@@ -1,0 +1,211 @@
+{
+  "date": "2026-05-20",
+  "count": 13,
+  "posts": [
+    {
+      "id": "53c31cd9e9d2",
+      "title": "CEO Interview: Handy Signs",
+      "url": "https://www.cbinsights.com/research/ceo-interview-handy-signs/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T20:50:24+00:00",
+      "summary": "Emanuele Chiusaroli, Founder &#38; CEO of Handy Signs, tells CB Insights how they view the market, customer needs, and their company. How do you define your market, and where does your company fit into that space? Handy Signs has developed &#8230; The post CEO Interview: Handy Signs appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "58130303da4c",
+      "title": "We’re announcing new community investments in Missouri.",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T20:40:00+00:00",
+      "summary": "We’re helping build the state’s next-generation workforce and investing in energy programs.",
+      "author": "",
+      "tags": [
+        "Google.org",
+        "Global Network",
+        "Creating opportunity",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "255658a2ed6a",
+      "title": "Executive Interview: DefendSphere",
+      "url": "https://www.cbinsights.com/research/executive-interview-defendsphere/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T20:18:37+00:00",
+      "summary": "Aleksandr Abalakin, Chief Commercial Officer and Chief Marketing Officer at DefendSphere, tells CB Insights how they view the market, customer needs, and their company. How do you define your market and where does your company fit into that space? We &#8230; The post Executive Interview: DefendSphere appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "690e95dda273",
+      "title": "CEO Interview: RIFFSEC",
+      "url": "https://www.cbinsights.com/research/ceo-interview-riffsec/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T20:02:47+00:00",
+      "summary": "Konrad Latowski, CEO of RIFFSEC, tells CB Insights how they view the market, customer needs, and their company. How do you define your market and where does your company fit into that space? RIFFSEC operates in what we define as &#8230; The post CEO Interview: RIFFSEC appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "c1e2764b80c5",
+      "title": "100 things we announced at I/O 2026",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T19:30:00+00:00",
+      "summary": "Image with the words \"Ready, Set, I/O\" and a colorful Gemini logo",
+      "author": "Keyword Team",
+      "tags": [
+        "Search",
+        "Gemini",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "6ac1894394a8",
+      "title": "CEO Interview : Multiply",
+      "url": "https://www.cbinsights.com/research/ceo-interview-multiply/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T18:51:00+00:00",
+      "summary": "Anchala Tomar, Founder and CEO of Multiply, tells CB Insights how they view the market, customer needs, and their company. How do you define your market, and where does your company fit into that space? Our market consists of content &#8230; The post CEO Interview : Multiply appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "9e924c46a871",
+      "title": "A new experiment brings better group meetings to Google Beam",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T16:45:00+00:00",
+      "summary": "A small group meeting featuring two in-room participants and three participants on-screen.",
+      "author": "Mohamed Abdelgany",
+      "tags": [
+        "Google Workspace",
+        "Google Research",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "d54be31d592f",
+      "title": "Stop prompt injection from hijacking your agent, new security capabilities now released within Agent Framework",
+      "url": "https://devblogs.microsoft.com/agent-framework/fides/",
+      "source": "Semantic Kernel Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-20T14:58:20+00:00",
+      "summary": "Prompt injection is the #1 risk on the OWASP LLM Top 10, and most agents in production today defend against it with one of two heuristics: a defensive system prompt, or a hand-rolled allowlist. Neither is deterministic. Both fail silently the day someone slips a [SYSTEM OVERRIDE] line into an issue body, an email, or [&#8230;] The post Stop prompt injection from hijacking your agent, new security capabilities now released within Agent Framework appeared first on Microsoft Agent Framework .",
+      "author": "Eduard van Valkenburg, Shruti Tople",
+      "tags": [
+        "Agent Framework",
+        "Announcement",
+        "Ecosystem",
+        "Python",
+        "Samples"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "b0c6de878f2b",
+      "title": "CEO Interview: Anxiety Checklist",
+      "url": "https://www.cbinsights.com/research/ceo-interview-anxiety-checklist/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T14:47:05+00:00",
+      "summary": "Romain Brabant, CEO of Anxiety Checklist, tells CB Insights how they view the market, customer needs, and their company. How do you define your market and where does your company fit into that space? We operate in the digital mental &#8230; The post CEO Interview: Anxiety Checklist appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "96698b79864f",
+      "title": "Executive Interview: Nerdsleaze",
+      "url": "https://www.cbinsights.com/research/executive-interview-nerdsleaze/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T14:38:26+00:00",
+      "summary": "Zelda Darling, Editor in Chief of Nerdsleaze, tells CB Insights how they view the market, customer needs, and their company. How do you define your market and where does your company fit into that space? We created Nerdsleaze because I &#8230; The post Executive Interview: Nerdsleaze appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "c2e11eb5aa5c",
+      "title": "CEO Interview: MindFit",
+      "url": "https://www.cbinsights.com/research/ceo-interview-mindfit/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T14:08:13+00:00",
+      "summary": "Nicholas Singh, Founder &#38; CEO of MindFit, tells CB Insights how they view the market, customer needs, and their company. How do you define your market, and where does your company fit into that space? Estimated total addressable market — &#8230; The post CEO Interview: MindFit appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "53cae1d9f02d",
+      "title": "LWiAI Podcast #245 - TML-Interaction, Claude For Legal, Sam Altman on Stand",
+      "url": "https://lastweekin.ai/p/lwiai-podcast-245-tml-interaction",
+      "source": "Last Week in AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-20T07:45:49+00:00",
+      "summary": "OpenAI launches new voice intelligence features in its API, Thinking Machines drops a new, highly responsive model designed for humanlike interactions in real time, and more!",
+      "author": "Last Week in AI",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "21db34dc984e",
+      "title": "Running Guide agent: A step towards running unbounded",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/running-guide-agent/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-20T00:01:00+00:00",
+      "summary": "Video demonstrating Running guide agent with a person using it running on a track",
+      "author": "Miguel de Andrés-Clavera",
+      "tags": [
+        "Accessibility",
+        "Google DeepMind",
+        "Google in Asia"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

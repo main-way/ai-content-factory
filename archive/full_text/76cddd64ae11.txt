@@ -1,0 +1,78 @@
+Bringing up DeepSeek-V4-Flash on AMD MI300X
+At Doubleword we are building an inference cloud designed for volume. To do that we have to reckon with the enveloping compute shortage.
+AMD’s MI300X launched in December 2023“Advancing AI” event, 6 December 2023. as AMD’s response to NVIDIA’s H100, arriving alongside H200 in the same generation. It is an odd duck in the world of high-end AI accelerators. While H100 prices are climbing (up 40% in five months on one-year rentals, with on-demand capacity sold out across every major NVIDIA partThe Great GPU Shortage: Rental Capacity, April 2026.), MI300X is perhaps still underappreciated. 192GB of HBM3 per card against the H100’s 80GB, comparable FP8 compute, list price roughly half. Yet you can rent one on-demand today (from Hotaisle, for instance) for noticeably less than the equivalent NVIDIA capacity.
+The reason is software. The problems with running AI workloads on AMD have been written about elsewhere exhaustively, and there are signs the gap is closing on AMD’s newer chipsInferenceX dashboard tracks the latest AMD parts (MI350X, MI355X) against current NVIDIA generations.. That new focus on software hasn’t extended back to old parts. As of early May 2026, running vLLM with DeepSeek-V4-Flash on MI300X just doesn’t work.
+On paper MI300X is an excellent accelerator. We want it to work. This post is a worklog of all the sharp edges and winding paths we found when we tried to get it working.
+The MI300X was part of the accelerator generation that kicked off the march toward lower bitwidths. LLM weights, and to a lesser extent activations and KV caches, are less sensitive to numerical imprecision than typical HPC workloads, so the Hopper generation of NVIDIA chips and the first Instinct chips added hardware support for sub-16-bit precision for the first time. The result is twice as many FLOPs applied to workloads that correspondingly transfer half as much data.
+The problem is that there was disagreement on the best way to build an FP8 datatype. Graphcore and AMD proposed one standard in a 2022 preprint, backed by Qualcomm. Arm, Intel, and NVIDIA proposed another through the Open Compute Project. In a rehash of some of the forks in the road that led to IEEE 754William Kahan is great read for how an arithmetic standard actually gets made, including which arguments win and which are forgotten., different providers built in different and incompatible behaviours.
+Perhaps unsurprisingly given the list of backers on each side, the
+AMD / Graphcore standard didn’t make it. AMD’s newer MI325, MI350, and
+MI355X chips all moved over to OCP-standard FP8. But MI300X still only
+works in the fnuz
+dialectfnuz
+means “finite, nans, unsigned zero”, i.e. no -0
+and no
+inf
+. These seem like sensible things to cut out for AI workloads at
+small floating-point range, where every bit matters, but the dialect
+never quite took off, and later AMD generations went back to the more
+normal-looking FP8., so the initial vLLM work that went into
+bringing up DeepSeek on AMD didn’t actually work for bringing DeepSeek
+up on MI300X.
+Lots of vLLM’s FP8 paths are aware of e4m3
+versus e5m2
+but not of
+fnuz
+versus OCP. The two share their bit layout but differ in exponent
+bias by one, so the same byte read as the wrong dialect comes back off
+by exactly a factor of two. MI300X is the only major accelerator where
+that distinction matters in practice236de4e64
+makes the
+DeepSeek v4 compressor and fused compress / quant / cache writes use the
+platform FP8 dtype so scales and cache bytes agree, and
+bd06e5d87
+routes the
+sliding-window K-cache through a fnuz-aware fused quantise-and-insert helper..
+DeepSeek v4’s attention is sparse. Each query attends to a top-k subset of the KV cache picked by a learned indexer, with sliding-window context handled separately.
+It’s got a lot of moving pieces: KV compression, the indexer, the sliding-window path, FP8 caches feeding each. In a production deployment for maximum performance, each piece needs special attention (no pun intended) in the form of a tuned kernel.
+The source of fast tuned kernels on AMD is AITER. AITER is AMD’s tuned-kernel library, roughly the analog of what NVIDIA users get from cuBLAS, cuDNN, FlashAttention, and Transformer Engine combined. vLLM falls back to generic Triton when AITER doesn’t have a path for a given shape, and generic Triton attention is several times slower than a tuned kernel. AITER’s coverage for DSV4 is uneven, and what coverage exists tends to target later AMD parts (CDNA4) rather than the CDNA3 (gfx942) cores in MI300X.
+The fallout from this has two different shapes. Some pieces are missing AITER paths
+entirely on gfx942: paged MQA logits, sparse MLA prefill, sparse MLA
+decode. For each we need to put in a ROCm-specific helper that calls into AITER
+where it exists and falls through to a Triton implementation where it
+doesn’t. Some pieces have AITER paths that exist but break specifically on
+gfx942: AITER prefill MQA logits and AITER sparse prefill logits both
+fall here. The fix is to refuse to dispatch into them when
+current_platform
+reports gfx942 and let the Triton fallback handle
+the call insteadcb8a18556
+: paged MQA and sparse MLA fallbacks, AITER guards on gfx942, and correctness coverage..
+HIP graphs are AMD’s analog of CUDA graphs, with effectively the same semantics: record the stream of operations once at warmup, replay the recorded graph on every subsequent step. The win is removing per-launch Python overhead from the decode loop, which matters a lot when you launch hundreds of small kernels per token. Since DeepSeek v4 has so many moving parts, there would be a lot of kernel launches if we didn’t leverage graphs.
+The price is that the captured region has to be a pure function of its device inputs. Anything that reads from the host, allocates a ragged tensor whose shape depends on the live batch, or synchronises inside the captured region gets recorded with whatever value it had at warmup and replayed forever after.
+The AITER tuned kernels compose with this by construction. AITER kernels are C++
+launches that take device pointers and sizes; they don’t allocate
+ragged scratch from Python and they don’t read host scalars mid-stream.
+It’s pretty easy to write a Triton kernel that doesn’t work nicely, we did that a couple times22cc02230
+rebuilds the sparse MLA decode metadata as static, capture-safe tensors: no dynamic ragged allocations, no host-to-device scalar writes under capture..
+We ran into a bunch of smaller issues:
+- An MoE routing bug where the expert-mask shape was gated on whether
+ROCm AITER was globally enabled, not on whether the matmul about to
+be called was actually AITER’s. With AITER globally on but MXFP4
+falling through to the emulation backend, the kernel got the wrong
+mask and tokens routed to the wrong experts.
+8b5f7aa2c
+. - A Triton kernel that masks padded lanes against the global tensor
+bound rather than the logical block size. At high concurrency the
+padded lanes scribbled across the MoE routing bitmatrix.
+c32932bb9
+.
+With correctness sorted, we can do some basic optimization.
+The first profile of a working DSV4-Flash on MI300X shows that the expensive layers are the sparse MLA path and the MXFP4 MoE path. This is good — if it wasn’t the case we’d be really screwed.
+However, after first bring up a meaningful slice of the time is not in the matmuls
+themselves but in the bookkeeping & tuning around themdoublewordai/vllm-amd-blog-doubleword#2
+..
+On our simple benchmark that takes the box from 2485 to 2699 output tok/s per GPU, about +8.6%.
+After bringing up the model, optimizing it, and testing it, we get pretty good numbers:
+This is a win: MI300X rents for roughly half the price of the NVIDIA capacity it competes with, carries more than twice the HBM per card, and is available on-demand right now, even as H100 and H200 lead times stretch out. We haven’t done the maths to prove that we can get a win on tokens per second per dollar over NVIDIA hardware, but we’ve proven that with hard work we can get close enough to make it useful.
+Most of what made it so hard is temporary. The FP8 dialect problem is specific to CDNA3: MI325, MI350, and MI355X all moved to OCP-standard FP8, so the off-by-a-factor-of-two trap does not exist on newer parts. The AITER coverage gaps will fill in over time as AMD’s kernel work catches up to its own hardware. And since we did this work, even while we prepared to open-source it, vLLM’s performance & stability on this model have improved.
+AMD’s hardware has been good for a while. The reason the software gap is finally closing is partly AMD’s own focus, and partly that the cost of doing this kind of workvLLM repo we put up to accompany it; the commits are linked inline throughout. We intend to upstream the parts that make sense for everyone. has dropped through the floor with the rise of agentic coding. As a result of both factors, if you send your DeepSeek-V4-Flash requests to the Doubleword API, the response might be AMD-powered.

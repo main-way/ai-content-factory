@@ -1,0 +1,8 @@
+Вполне возможно что SSL сертификаты Let's Encrypt, которыми все так привыкли пользоваться за последний десяток лет или около того, больше не будут выдаваться и продлеваться для .RU и .SU доменов. Необходимая клаузула включена в последнюю версию пользовательского соглашения LE-SA v1.7 от 4 июня 2026.
+Что закономерно, к санкциям также присоединился другой провайдер бесплатных сертификатов ZeroSSL.
+UPD: Получил ответ от Let's Encrypt. Буквально следующий:
+Hi,
+Let's Encrypt can issue certificates for non-government entities in Russia due to statutory exemptions protecting personal communications, alongside specific Office of Foreign Assets Control (OFAC) authorizations designed to promote Internet freedom and human rights.
+- The Let's Encrypt team
+Однако в переводе с легального английского на русский "can", совсем не значит "will continue". Попросил уточнить.
+UPD+UPD: "Бобёр - выдыхай". Уточнили. Let's Encrypt прямо ответил в переписке что малышню, не имеющую отношения к государству трогать не будут. Но это может оказаться как эмм.... с расширением НАТО. Так что тем кто может, лучше импортозаместиться.

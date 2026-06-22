@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:Bidirectional Small-Granularity Search between Code and Text
+View PDF HTML (experimental)Abstract:We introduce the novel task of bidirectional small-granularity search between code and text, where the queries are small snippets of text or code and the results are also small fragments of the opposite modality, i.e., code or text. This task establishes direct links between text in scientific publications and corresponding code segments, in support of better and faster understanding of scientific methods. We introduce a large dataset for the proposed task that includes a training partition with textual descriptions of code generated automatically using GPT-4, and three testing partitions, one in-domain and two out-of-domain (OOD) that contain manually-annotated data as well as material from other domains. We also propose a modular approach to address this task. Our approach shares an encoder across four different subtasks that learn start/end of answer spans in both directions. We show that our method achieves good results in-domain, and encouraging results OOD. This suggests that addressing this task with automatically-generated data is possible, but there is exciting future work to be done.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

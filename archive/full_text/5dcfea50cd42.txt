@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:A Decision-Theoretic View of Test-Time Training: When, How Far, and Which Directions to Adapt
+View PDF HTML (experimental)Abstract:Test-time training (TTT) adapts a pretrained model to each prompt via parameter updates, improving accuracy under pretraining-to-test distribution shifts. Yet, its performance often suffers from instability and sensitivity to hyperparameters such as update steps and subspace. We explain this behavior through a decision-theoretic lens, treating TTT as implicit Bayesian inference in the kernel regime. Under a Gaussian process benchmark, we show that TTT reduces prediction error when updates are spectrally matched to the prompt's signal-to-noise ratio and aligned with query-relevant eigen-directions. This perspective underpins the following results: (1) we show when fixed update steps and subspaces fail under distribution shifts, motivating adaptive strategies; (2) we prove that selecting update steps via prompt evidence admits a PAC-Bayes guarantee against overfitting; and (3) we characterize the Bayes-optimal update subspace under a linear-Gaussian correction model, yielding a scoring rule for selecting Transformer blocks and heads. Our theory helps explain the empirical instability of TTT, taking a step toward principled guidance for when, how far, and which directions to adapt.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

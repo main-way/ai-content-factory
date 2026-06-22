@@ -1,0 +1,402 @@
+In Part 1 of this series,
+But as we noted at the end of Part 1, zero-shot isn’t always enough.
+In cases when:
+- Your data may look unlike anything in the pretraining mix.
+- The model keeps making systematic errors.
+- You do have rich historical data that can be leveraged.
+- Your downstream objective may be misaligned with the objective that Chronos-2’s training optimizes for.
+Fine-tuning is the natural next step.
+In this post, we’ll continue the same building electricity-demand case study from Part 1, and walk through five fine-tuning scenarios of Chronos-2:
+- Single-building adaptation: how to fine-tune on the one asset.
+- Portfolio fine-tuning: how to pool history across the fleet for a shared adapter.
+- Covariate-informed fine-tuning: how to fine-tune with known-future signals.
+- Portfolio + covariates: how to leverage both covariate and fleet information.
+- Held-out transfer: how to adapt once, then deploy on assets the model never saw during fine-tuning.
+By the end, you’ll have a working template for fine-tuning a TSFM that is ready to adapt to your own data.
+Part 1 of this series introduces how to make Chronos-2 forecasting for univariate, multivariate, covariate-informed, and cross-learning scenarios. If you want to use Chronos-2 out of the box, check the post here.
+1. The case study, recapped
+Let’s quickly revisit the setup from Part 1.
+We have a synthetic dataset of eight commercial buildings that records hourly electricity demand. The task we aim to solve is to forecast the total electricity load one week ahead, i.e., 168 hours. We have a physical simulator to generate the dataset, where the total load is decomposed into base, plug, lighting, and HVAC loads. Physically, plug and lighting loads are determined by weekday occupancy patterns, while HVAC load is determined by outdoor temperature.
+Now, what’s new for Part 2 is that we simulate a longer time span so that we can have data for fine-tuning. And we keep a clean separation between fine-tuning data and inference data. Specifically, we divide the timeline into four contiguous windows:
+- Train (12 weeks): 2025-03-01 to 2025-05-22, the only window fine-tuning sees.
+- Validation (1 week): 2025-05-23 to 2025-05-29, used for checkpoint selection and early stopping.
+- Inference context (45 days): 2025-05-30 to 2025-07-13, the window used as context when making forecasts. The zero-shot pipeline in Part 1 also consumed 45 days of context.
+- Test (1 week): 2025-07-14 to 2025-07-20, the forecast horizon for testing the fine-tuned model.
+Note that the fine-tuning process would only see data in the train & validation set, so there is no leakage in the analysis.
+2. Brief on fine-tuning and LoRA
+Before our walk-through, let’s first briefly discuss the concept of fine-tuning and one of its specific technologies, i.e., LoRA.
+2.1 What is fine-tuning?
+Fine-tuning means we continue training a pretrained model on our own data. Effectively, we are adapting the weights of the pretrained model such that it understands and follows the patterns specific to our problem.
+For Chronos-2 specifically, it is a 120M-parameter Transformer that has already learned a lot of generic time-series structure. Fine-tuning would allow us to further nudge its behavior in the direction of our data.
+But should we update all 120M parameters?
+Probably not.
+This can be expensive in both compute and storage. Also, in practice, we might not have enough data to support adjusting all 120M parameters.
+We need a more efficient way to do the fine-tuning. One such solution is LoRA.
+2.2 What is LoRA?
+LoRA stands for Low-Rank Adaptation [1]. Its core idea is simple: instead of updating the full weight matrices, we freeze the original pre-trained model and only learn a small set of additional parameters that slightly modify its behavior.
+To give an example, suppose one layer in the pretrained model contains a weight matrix W, with a shape of d_out x d_in, where d_out=d_in=1024.
+The update of the weight matrix would imply:
+Then, the size of ΔW would also need to be 1024 x 1024. If we want to do a full update, that would mean that we update more than one million trainable parameters.
+The trick that LoRA adopts is that ΔW is not learned as a full matrix. Instead, LoRA represents it as the product of two much smaller matrices:
+where A has a shape of r x d_in and B has a shape of d_out x r. And r is the rank of the adapter. The reason why it’s called a low-rank method is that r is usually quite small, such as 4, 8, 16, or 32.
+What this implies is that LoRA does not allow the fine-tuning to make an arbitrary full-dimensional change to W. The updates are restricted to a lower-dimensional subspace. And that restriction is exactly where the efficiency comes from.
+This works in practice because many downstream adaptations do not really require changing the model in every possible direction. Often, the useful change lives in a much smaller subspace. LoRA directly exploits this assumption.
+In practice, this gives us several advantages. Since we have many fewer trainable parameters, the GPU memory usage, which is consumed by gradients and optimizer states, can be made much lower. We also have smaller checkpoints, because we don’t need to save a full copy of the 120M-parameter model for every experiment; we only save the adapter. And it reduces overfitting risk, especially when the downstream dataset is not large.
+3. How to do LoRA for Chronos-2?
+To do LoRA for the Chronos-2 model, the first thing we need to decide is which layers of Chronos-2 we want to adapt.
+To answer this question, we should first take a look at how the model is built.
+In Part 1, we explained that Chronos-2 is a Transformer encoder organized around three building blocks:
+- An input patch embedding.
+- A stack of attention layers, alternating between time attention and group attention.
+- An output patch embedding.
+Our LoRA configuration adapts two of these three blocks:
+- The Q, K, V, and O projections in every attention layer. This is where we can fine-tune how the model attends both temporally within each series and across series within a group.
+In Chronos-2, each attention layer involves four linear projections to map from layer’s input to the output. The query (Q), key (K), and value (V) produce three different views of the input, the attention mechanism then computes a similarity score between every query and every key, and uses those scores to compute the weighted aggregation of the values. The result then passes through the output projection (O), which combines information across attention heads and reshapes it back to match the layer’s standard output dimensions.
+- The output patch embedding. This allows us to fine-tune the way the model projects its internal states into final forecasts.
+In code, we have:
+LORA_CONFIG = {
+"r": 8,
+"lora_alpha": 16,
+"target_modules": [
+"self_attention.q",
+"self_attention.v",
+"self_attention.k",
+"self_attention.o",
+"output_patch_embedding.output_layer",
+],
+}
+where lora_alpha
+is a scaling factor. It controls how strongly the LoRA update is applied, where a larger α means a more aggressive adaptation.
+In our current study, we use Hugging Face peft
+library to fine-tune Chronos-2.
+Now we are ready to get hands-on.
+4. Five fine-tuning scenarios
+For the following experiments, we also start from the same base model, i.e., amazon/chronos-2
+checkpoint, with the same LoRA configuration. What changes is the data we expose to fine-tuning.
+The main metric we’ll use is weighted absolute percentage error:
+With that setup, let’s walk through the five scenarios one by one.
+If you haven’t yet set up the proper Chronos environment, please refer to Part 1: 4.1 Setting up the Chronos-2 model.
+4.1 Single-building adaptation
+Can we fine-tune on one asset?
+Suppose we only care about one building, say Building 03. We do have its historical load data, and we want to adapt Chronos-2 to this particular building’s patterns.
+This would be the simplest fine-tuning setup. No covariates, no portfolio information, just one target series.
+As mentioned earlier, we start from amazon/chronos-2
+checkpoint, leave the base model frozen, and only learn a small LoRA adapter on top of it.
+Chronos-2’s fine-tuning API expects training data as a list of task dictionaries. For our current target-only univariate task, each dictionary only needs one key: target
+.
+For Building 03, we can prepare the fine-tuning input like this:
+story_building = "Building 03"
+train_df = full_df[full_df["timestamp"] < "2025-05-23"]
+single_building_train = train_df[
+train_df["building"].eq(story_building)
+].sort_values("timestamp")
+train_inputs = [
+{
+"target": single_building_train[["total_load_kw"]]
+.to_numpy(dtype="float32")
+.T
+}
+]
+The reason why we need a “transpose” above is that Chronos-2 expects the target array to have shape:
+(num_target_series, time_steps)
+Since we only have a single univariate target, we have:
+(1, T)
+In addition to training data, we should prepare validation data in the same format:
+validation_df = full_df[full_df["timestamp"] < "2025-05-30"]
+single_building_validation = validation_df[
+validation_df["building"].eq(story_building)
+].sort_values("timestamp")
+validation_inputs = [
+{
+"target": single_building_validation[["total_load_kw"]]
+.to_numpy(dtype="float32")
+.T
+}
+]
+There are two things worth mentioning here:
+First of all, just a reminder: the validation data here is not used to update the LoRA adapter; it is used to decide which adapter checkpoint to keep. It’s the same pattern you would normally use for training a neural network model.
+Then, you might notice that validation_df
+is not only May 23-29, but also contains everything before that. We need that because, for making forecasts, Chronos-2 needs context. Based on the set prediction_length
+, Chronos internally treats the last prediction_length
+hours of validation_df
+as the true validation forecast target. The preceding values are the context.
+In the current case, we only configured one validation task in
+validation_inputs
+. This means we effectively only have one validation forecast window, because internally Chronos-2 always uses the dataframe’s lastprediction_length
+steps as the target window and the precedingcontext_length
+steps as the context, NO MATTER how many more steps you feed in that dataframe. In other words, simply feeding a longer validation dataframe does not automatically create more validation windows.In practice, if you want more validation forecast windows, e.g., doing a rolling window based validation, we would need to create multiple validation tasks, each ending at a different cutoff date. This way, Chronos-2 would validate on the last 168 hours of each task.
+For training, though, we don’t really need any special treatment, as we can simply pass Chronos-2 a long historical series and let it sample many training windows internally.
+Now we can fine-tune:
+fine_tuned_model = base_model.fit(
+train_inputs,
+prediction_length=168,
+validation_inputs=validation_inputs,
+finetune_mode="lora",
+lora_config=LORA_CONFIG,
+context_length=1080, # 45-day context window
+learning_rate=2e-5,
+num_steps=1000,
+batch_size=32,
+output_dir="finetuned_models/fine_tuning_modes/single_target",
+finetuned_ckpt_name="checkpoint",
+callbacks=[EarlyStoppingCallback(early_stopping_patience=6)],
+save_steps=25,
+eval_steps=25,
+)
+Here, we set prediction_length=168
+, so that the model is trained for the same task we care about at test time, i.e., one-week ahead hourly forecasting. Also, we set context_length=45 * 24
+, which represents a 45-day context window. This is the same context length we used in Part 1. Finally, since we have used validation_inputs
+, the checkpoint selection is activated. Every 25 training steps, Chronos-2 evaluates validation loss, and if validation loss stops improving for 6 validation checks in a row (early_stopping_patience=6
+), early stop will kick in and stop the fine-tuning.
+I ran the fine-tuning job on an NVIDIA RTX 2000 Ada Laptop GPU with 8 GB VRAM. This run finished in about 42s.
+Once the adapter is trained, inference looks almost the same as zero-shot forecasting:
+single_context = test_context_df[
+test_context_df["building"].eq(story_building)
+][["building", "timestamp", "total_load_kw"]]
+pred_single_finetuned = fine_tuned_model.predict_df(
+single_context,
+prediction_length=168,
+quantile_levels=[0.025, 0.5, 0.975],
+id_column="building",
+timestamp_column="timestamp",
+target="total_load_kw",
+)
+For Building 03, the target-only zero-shot baseline has a WAPE of 8.3%. After fine-tuning on Building 03 only, WAPE reduces to 7.6%. We do see that fine-tuning has brought some improvements.
+4.2 Portfolio fine-tuning
+Can we pool history across the fleet for a shared adapter?
+In practice, we often have multiple related assets in a portfolio.
+In our case, that means eight buildings. They are not identical, but they follow similar daily and weekly demand patterns.
+So the next natural question is: can we fine-tune one adapter on the whole building portfolio, instead of just one building at a time?
+Here, we still forecast only total_load_kw
+, this means the setup is almost the same as before:
+target_column = "total_load_kw"
+train_inputs = [
+{
+"target": building_df[[target_column]].to_numpy(dtype="float32").T,
+}
+for _, building_df in train_df.groupby("building", sort=True)
+]
+validation_inputs = [
+{
+"target": building_df[[target_column]].to_numpy(dtype="float32").T,
+}
+for _, building_df in validation_df.groupby("building", sort=True)
+]
+Effectively, each building becomes one training task. Then we fine-tune Chronos-2 with the same LoRA configuration as before:
+fine_tuned_model = base_model.fit(
+inputs=train_inputs,
+validation_inputs=validation_inputs,
+prediction_length=168,
+context_length=1080,
+lora_config=LORA_CONFIG,
+learning_rate=2e-5,
+max_steps=1000,
+)
+It’s worth emphasizing that here we are not training eight separate adapters. Instead, we are asking Chronos-2 to learn one shared adaptation that works across the fleet. In practice, if there are recurring patterns across buildings, the adapter could have more chances to learn them. However, if each building is completely independent, this strategy may not help much.
+The fine-tuning reasons are shown below, where we compare the forecasting quality between the zero-shot and fine-tuned Chronos-2:
+Building Zero-shot WAPE Fine-tuned WAPE
+Building 01 8.0% 7.4%
+Building 02 12.2% 11.3%
+Building 03 8.3% 7.5%
+Building 04 8.0% 7.6%
+Building 05 7.2% 6.8%
+Building 06 10.9% 9.9%
+Building 07 7.7% 7.2%
+Building 08 6.6% 6.3%
+We see improvements across all the buildings, which is a good sign that every building is benefiting from the shared adapter.
+4.3 Covariate-informed fine-tuning
+Can we give Chronos-2 the known covariates during fine-tuning?
+So far, Chronos-2 only sees the target series itself, i.e., historical total_load_kw
+.
+But in our building-demand case, we do know or can reasonably well forecast the underlying driving factors, including outdoor temperature, occupancy pattern, solar irradiance, and weekend indicator. They are the covariates that drive the change of total_load_kw
+.
+Therefore, in this fine-tuning scenario, we would like to know if we can fine-tune Chronos-2 not only on the target history, but also on the relationship between the target and known-future covariates
+This is where the fine-tuning input has to be changed. Instead of only passing the target, each training task should now also contain past_covariates
+and future_covariates
+:
+known_future_columns = [
+"outdoor_temp_c",
+"occupancy",
+"solar_irradiance",
+"is_weekend",
+]
+single_building_train = train_df[
+train_df["building"].eq(story_building)
+].sort_values("timestamp")
+train_inputs = [
+{
+"target": single_building_train[["total_load_kw"]]
+.to_numpy(dtype="float32")
+.T,
+"past_covariates": {
+column: single_building_train[column].to_numpy(dtype="float32")
+for column in known_future_columns
+},
+"future_covariates": {
+column: None
+for column in known_future_columns
+},
+}
+]
+The past_covariates
+part contains the historical values of the covariate series. During fine-tuning, Chronos-2 can see how covariates of temperature, occupancy, solar irradiance, and weekends change the load.
+The future_covariates
+part tells Chronos-2 that these covariates are also available in the forecast horizon. We set them to None here because Chronos-2 constructs the future windows internally from the same historical series. Later, at inference time, we will provide the actual future covariate values through future_df
+, just like we did in Part 1.
+The fine-tuning call itself stays almost the same:
+fine_tuned_model = base_model.fit(
+train_inputs,
+prediction_length=168,
+validation_inputs=validation_inputs,
+finetune_mode="lora",
+lora_config=LORA_CONFIG,
+context_length=1080,
+learning_rate=2e-5,
+num_steps=1000,
+batch_size=32,
+output_dir="finetuned_models/fine_tuning_modes/single_covariate",
+finetuned_ckpt_name="checkpoint",
+callbacks=[EarlyStoppingCallback(early_stopping_patience=6)],
+save_steps=25,
+eval_steps=25,
+)
+After the fine-tuning is done, at inference time, we pass both the historical context and the known future covariates:
+context_with_covariates = test_context_df[
+["building", "timestamp", "total_load_kw"] + known_future_columns
+]
+future_covariates_df = test_truth_df[
+["building", "timestamp"] + known_future_columns
+]
+pred_single_covariate = fine_tuned_model.predict_df(
+context_with_covariates,
+future_df=future_covariates_df,
+prediction_length=168,
+quantile_levels=[0.025, 0.5, 0.975],
+id_column="building",
+timestamp_column="timestamp",
+target="total_load_kw",
+)
+For Building 03, covariate-informed zero-shot WAPE is 4.0%. After fine-tuning the covariate-informed adapter on Building 03, WAPE drops to 2.8%, leading to a 30.7% relative reduction.
+This is a much larger gain than target-only fine-tuning.
+This is also an interesting practical lesson here: sometimes the biggest win is not “fine-tuning” by itself. It is fine-tuning the model with the right information.
+4.4 Portfolio + covariates
+Can we leverage both covariate and fleet information for fine-tuning?
+The previous two scenarios added the “Portfolio” ingredient and “covariate” ingredient separately. Naturally, we want to use both.
+This is the setup I believe to be most relevant in many real use cases, because in practice, we rarely just have one asset, and more often than not, we do have known or forecastable external signals that can support target series forecasting. Using both for fine-tuning is not only logical, but probably also preferable.
+Concretely, for our current case, we fine-tune on all eight buildings, and for each building, we provide total_load_kw
+as the target and outdoor_temp_c
+, occupancy
+, solar_irradiance
+, and is_weekend
+as known-future covariates:
+train_inputs = []
+for building, building_df in train_df.groupby("building", sort=True):
+building_df = building_df.sort_values("timestamp")
+train_inputs.append(
+{
+"target": building_df[["total_load_kw"]]
+.to_numpy(dtype="float32")
+.T,
+"past_covariates": {
+column: building_df[column].to_numpy(dtype="float32")
+for column in known_future_columns
+},
+"future_covariates": {
+column: None
+for column in known_future_columns
+},
+}
+)
+In the code snippet above, we create one task per building. The same idea applies to validation data as well. Each building is associated with one validation task, and Chronos-2 uses the last 168 hours of each task as the validation forecast window.
+The fine-tuning call itself still stays the same:
+fine_tuned_model = base_model.fit(
+train_inputs,
+prediction_length=168,
+validation_inputs=validation_inputs,
+finetune_mode="lora",
+lora_config=LORA_CONFIG,
+context_length=1080,
+learning_rate=2e-5,
+num_steps=1000,
+batch_size=32,
+output_dir="finetuned_models/fine_tuning_modes/portfolio_covariate",
+finetuned_ckpt_name="checkpoint",
+callbacks=[EarlyStoppingCallback(early_stopping_patience=6)],
+save_steps=25,
+eval_steps=25,
+)
+For inference, we pass 45-day historical context, as well as the known future covariates for the forecast week:
+context_with_covariates = test_context_df[
+["building", "timestamp", "total_load_kw"] + known_future_columns
+]
+future_covariates_df = test_truth_df[
+["building", "timestamp"] + known_future_columns
+]
+pred_portfolio_covariate = fine_tuned_model.predict_df(
+context_with_covariates,
+future_df=future_covariates_df,
+prediction_length=168,
+quantile_levels=[0.025, 0.5, 0.975],
+id_column="building",
+timestamp_column="timestamp",
+target="total_load_kw",
+)
+The figure below shows the fine-tuning results for Building 03, where we can clearly see the improvement brought by fine-tuning:
+Across all eight buildings, the plain zero-shot baseline has a WAPE of 8.4%. After portfolio + covariate fine-tuning, WAPE drops to 2.8%, a 66.8% relative reduction.
+4.5 Held-out transfer
+Can we adapt once, then deploy on assets the model never saw during fine-tuning?
+So far, every fine-tuning scenario has used the same buildings that later appear at inference time.
+But there is one more important question: What if a new building comes online only very recently?
+So in this final scenario, we hold out Building 06 during fine-tuning, so that Chronos-2 never sees its data while learning the LoRA adapter. We fine-tune on the other seven buildings, using both target histories and known-future covariates. Then, at inference time, we apply the adapter to Building 06.
+The code change is small:
+held_out_building = "Building 06"
+train_buildings = [
+building
+for building in sorted(train_df["building"].unique())
+if building != held_out_building
+]
+train_inputs = []
+for building in train_buildings:
+building_df = train_df[
+train_df["building"].eq(building)
+].sort_values("timestamp")
+train_inputs.append(
+{
+"target": building_df[["total_load_kw"]]
+.to_numpy(dtype="float32")
+.T,
+"past_covariates": {
+column: building_df[column].to_numpy(dtype="float32")
+for column in known_future_columns
+},
+"future_covariates": {
+column: None
+for column in known_future_columns
+},
+}
+)
+Then, at inference time, we target Building 06 for forecasting:
+building_06_context = test_context_df[
+test_context_df["building"].eq(held_out_building)
+][["building", "timestamp", "total_load_kw"] + known_future_columns]
+building_06_future_covariates = test_truth_df[
+test_truth_df["building"].eq(held_out_building)
+][["building", "timestamp"] + known_future_columns]
+pred_heldout = fine_tuned_model.predict_df(
+building_06_context,
+future_df=building_06_future_covariates,
+prediction_length=168,
+quantile_levels=[0.025, 0.5, 0.975],
+id_column="building",
+timestamp_column="timestamp",
+target="total_load_kw",
+)
+For Building 06, the covariate-informed zero-shot baseline has a WAPE of 4.2%. After applying the adapter fine-tuned on the other seven buildings, WAPE drops to 3.1%. That’s a 26.8% relative reduction.
+For real deployment, our current Q5 investigation represents a more scalable pattern, that is, we fine-tune an adapter on a representative portfolio, then deploy it to related assets as they come online. For each new asset, we still provide its recent context and known-future covariates, but we do not have to fine-tune again immediately. We won’t have enough data for that anyway.
+5. What did we learn?
+After walking through the five scenarios one by one, let’s put their results side by side.
+For each row, I compare the fine-tuned model against the matching zero-shot baseline. Concretely, that means target-only fine-tuning is compared with target-only zero-shot, and covariate-informed fine-tuning is compared with covariate-informed zero-shot:
+The pattern is pretty clear. Target-only fine-tuning helps to some degree, but only modestly. The larger gains appear when we give Chronos-2 the known-future covariates, and then fine-tune the adapter around that. The held-out transfer result is also encouraging: even for a building excluded from fine-tuning, the adapter can learn from related buildings and still improve over the covariate-informed zero-shot baseline.
+You can find the full notebook here: https://github.com/ShuaiGuo16/chronos-2-forecasting/blob/main/02_chronos2_fine_tuning_building_demand.ipynb
+Reference
+[1] LoRA: Low-Rank Adaptation of Large Language Models. arXiv, 2021.

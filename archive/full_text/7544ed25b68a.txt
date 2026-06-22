@@ -1,0 +1,12 @@
+Computer Science > Data Structures and Algorithms
+Title:Diffusion-Network Alignment: An Efficient Algorithm and Explicit Probability Bounds
+View PDF HTML (experimental)Abstract:This paper studies a variation of the classic network alignment problem, named diffusion-network alignment. The goal is to align the vertices of a rooted diffusion tree to the vertices of a network, where the diffusion tree could be from a communication trace or contact tracing, and the network could be an online or offline social network. Different from the classic network alignment where both networks are fully observed, this model captures the information asymmetry of two networks. To solve this problem, this paper presents an efficient algorithm based on tree correlation tests to extract alignment information from local neighborhoods. We analyze the performance of the algorithm in the sparse graph regime and show that with high probability, all matched pairs are correct. Furthermore, for each vertex on the diffusion tree, this paper establishes an explicit lower bound on the probability that the vertex is correctly matched. These lower bounds are depth-dependent and increase as vertices get closer to the root.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

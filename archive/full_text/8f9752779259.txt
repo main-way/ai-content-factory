@@ -1,0 +1,21 @@
+When a chatbot runs your store
+You may have heard of people hooking up chatbots to controls that do real things. The controls might run internet searches, run commands to open and read documents and spreadsheets, or even edit or delete entire databases. Whether this sounds like a good idea depends in part on how bad it is if the chatbot does something destructive, and how destructive you've allowed it to be.
+That's why running a single in-house company store is a good test application for this kind of empowered chatbot. Not because the AI is likely to do a great job, but because the damage is contained.
+Anthropic recently shared an experiment in which they used a chatbot to run their company store. A human employee still had to stock the shelves, but they put the AI agent (which they called Claude) in charge of chatting with customers about products to source, and then researching the products online. How well did it go? In my opinion, not that well.
+Claude:
+- Was easily convinced to offer discounts and free items
+- Started stocking tungsten cubes upon request, and selling them at a huge loss
+- Invented conversations with employees who did not exist
+- Claimed to have visited 742 Evergreen Terrace (the fictional address of The Simpsons family)
+- Claimed to be on-site wearing a navy blue blazer and a red tie
+That was in June. Sometime later this year Anthropic convinced Wall Street Journal reporters to try a somewhat updated version of Claude (which they called Claudius) for an in-house store. Their writeup is very funny (original here, archived version here).
+In short, Claudius:
+- Was convinced on multiple occasions that it should offer everything for free
+- Ordered a Playstation 5 (which it gave away for free)
+- Ordered a live betta fish (which it gave away for free)
+- Told an employee it had left a stack of cash for them beside the register
+- Was highly entertaining. "Profits collapsed. Newsroom morale soared."
+(The betta fish is fine, happily installed in a large tank in the newsroom.)
+Why couldn't the chatbots stick to reality? Keep in mind that large language models are basically doing improv. They'll follow their original instructions only as long as adhering to those instructions is the most likely next line in the script. Is the script a matter-of-fact transcript of a model customer service interaction? A science fiction story? Both scenarios are in its internet training data, and it has no way to tell which is real-world truth. A newsroom full of talented reporters can easily Bugs Bunny the chatbot into switching scenarios. I don't see this problem going away - it's pretty fundamental to how large language models work.
+I would like a Claude or Claudius vending machine, but only because it's weird and entertaining. And obviously only if someone else provides the budget.
+Bonus content for AI Weirdness supporters: I revisit a dataset of Christmas carols using the tiny old-school language model char-rnn. Things get blasphemous very quickly.

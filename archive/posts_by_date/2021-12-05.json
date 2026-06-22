@@ -1,0 +1,20 @@
+{
+  "date": "2021-12-05",
+  "count": 1,
+  "posts": [
+    {
+      "id": "f6c26bb1da7a",
+      "title": "Learning with not Enough Data Part 1: Semi-Supervised Learning",
+      "url": "https://lilianweng.github.io/posts/2021-12-05-semi-supervised/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2021-12-05T00:00:00+00:00",
+      "summary": "When facing a limited amount of labeled data for supervised learning tasks, four approaches are commonly discussed.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

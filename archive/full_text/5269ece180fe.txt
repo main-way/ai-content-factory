@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:MPPI-based Informative Trajectory Planning for Search and Capture of Drifting Targets with ASVs
+View PDF HTML (experimental)Abstract:Autonomous surface vehicles offer an efficient solution for environmental cleanup as well as search and rescue operations in open waters. Targets in these settings drift continuously, so efficient search must balance exploration of unobserved regions with tracking of known targets. However, most target tracking and pursuit scenarios consider simple guidance behaviours and short-term predictions for decision-making. In this letter, we address the problem of search and capture of multiple drifting targets, such as litter, in dynamic environments, using a hybrid planning framework. A key aspect of our strategy is a spatiotemporal informative planning method based on model predictive path integral (MPPI) control, a sampling-based model predictive control approach. The planner directly generates kinematic-level commands by optimising continuous trajectories over long horizons. A multi-objective cost balances search and tracking objectives while ensuring safe, feasible trajectories. In the interception stage, we switch to a pure pursuit guidance controller for the physical capture of moving targets. Experiments show that our planner outperforms the chosen planning baselines. Finally, we validate our approach in field trials with an ASV.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

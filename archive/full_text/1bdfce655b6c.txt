@@ -1,0 +1,4 @@
+import { streamText } from 'ai';
+const result = streamText({ model: 'nvidia/nemotron-3-ultra-550b-a55b', prompt: 'Plan and run a multi-step research task and synthesize a report.',});
+import { streamText } from 'ai';
+const result = streamText({ model: 'nvidia/nemotron-3-ultra-550b-a55b', prompt: 'Plan and run a multi-step research task and synthesize a report.',});

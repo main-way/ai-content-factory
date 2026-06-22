@@ -1,0 +1,5 @@
+import { Sandbox } from "@vercel/sandbox";
+const sandbox = await Sandbox.create({ ports: [8080],});
+await sandbox.runCommand({ cmd: "python3", args: ["-m", "http.server", "8080", "--bind", "0.0.0.0"], detached: true,});
+console.log(`url: ${sandbox.domain(8080)}`);
+Create a sandbox with port 8080 open

@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:$k$-Nearest Neighbors in Gromov--Wasserstein Space
+View PDF HTML (experimental)Abstract:The Gromov--Wasserstein (GW) distance provides a framework for comparing metric measure spaces, regardless of their underlying structure or geometry. For network-based data, it enables direct comparisons of graphs with different numbers of nodes, without requiring an embedding or other abstraction. Furthermore, through a variant of GW known as fused Gromov--Wasserstein (fGW), it is also possible to incorporate node features in addition to graph structure. In this work, we implement $k$-nearest neighbors ($k$-NN) classification using the GW and fGW distances. We prove the universal consistency of the GW-$k$-NN classifier on the space of equivalence classes of metric measure spaces with finite support and uniform probability measure. By viewing graphs as finitely supported metric measure spaces equipped with the pairwise distance metric and a uniform probability measure on the nodes, we obtain universal consistency of GW-$k$-NN for the space of graphs. Likewise for fGW-$k$-NN, we prove universal consistency on the space of weak isomorphism classes of structured objects consisting of metric measure spaces with finite support and uniform probability measure and feature maps into Euclidean space, thus establishing universal consistency on the space of node-attributed graphs. Our numerical experiments show that GW-$k$-NN and fGW-$k$-NN consistently perform well across multiple graph datasets, suggesting that metric classifiers such as $k$-NN work well in the GW framework.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

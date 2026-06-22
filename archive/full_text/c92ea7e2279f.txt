@@ -1,0 +1,90 @@
+Welcome
+Capstone is a lightweight multi-platform, multi-architecture disassembly framework.
+Our target is to make Capstone the ultimate disassembly engine for binary analysis and reversing in the security community.
+Highlight features
+-
+Multi-architectures: ARM, ARM64 (ARMv8), BPF, Ethereum VM, M68K, M680X, Mips, MOS65XX, PowerPC, RISC-V, SH, Sparc, SystemZ, TMS320C64X, TriCore, Webassembly, XCore and X86 (16, 32, 64).
+-
+Clean/simple/lightweight/intuitive architecture-neutral API.
+-
+Provide details on disassembled instruction (called “decomposer” by some others).
+-
+Provide some semantics of the disassembled instruction, such as list of implicit registers read & written.
+-
+Implemented in pure C language, with bindings for D, Clojure, F#, Common Lisp, Visual Basic, PHP, PowerShell, Haskell, Perl, Python, Ruby, C#, NodeJS, Java, GO, C++, OCaml, Lua, Rust, Delphi, Free Pascal & Vala available.
+-
+Native support for Windows & *nix (with Mac OSX, iOS, Android, Linux, *BSD & Solaris confirmed).
+-
+Thread-safe by design.
+-
+Special support for embedding into firmware or OS kernel.
+-
+High performance & suitable for malware analysis (capable of handling various X86 malware tricks).
+-
+Distributed under the open source BSD license.
+Some of the reasons making Capstone unique are elaborated here.
+Find in this Blackhat USA 2014 slides more technical details behind our disassembly engine.
+Testimonials
+“Capstone is something people have wanted for years; the value is apparent in the implementation, and it’s nice to finally have an industry standard for this”.
+– George “Geohot” Hotz.
+“Capstone has changed the Reverse Engineering landscape: We finally have a solid, independent, and free disassembler engine”.
+– Felix “FX” Lindner.
+“Capstone will soon be the standard disassembly engine”.
+– Bruce Dang.
+“Capstone solves a well known issue in the reversing community by a well tested and maintained library for most common architectures using a generic API”.
+– Pancake.
+“And, nowadays, Capstone is the best embeddable disassembler out there”.
+– Joxean Koret.
+“I must have mentioned it at least 25 times today with our client. Not sure yet, but this engine might just be the gold standard”.
+– Stephen Ridley.
+“Developers of Capstone provide great support. Its small size and high modularity makes it perfectly working in kernel as well!”.
+– Peter Hlavaty.
+“Love at first sight! Beautiful API, support latest instructions, Capstone truly is the ultimate disassembly framework!”.
+– Ole André Vadla Ravnås.
+“Simply the best - recommended to anyone asking which disassembler to use!”.
+– Jurriaan Bremer.
+“The most complete disassembler library available for the reverse engineering and information security communities”.
+– Pedro “osxreverser” Vilaça.
+“The API is straightforward and easy to work with, and on the few occasions we have run into issues the Capstone developers have provided bug fixes, new features, and support in a matter of hours”.
+– Sean Heelan.
+“I expect Capstone to become the standard, a stepping stone for all projects everywhere”.
+– Ange Albertini.
+See complete testimonials for Capstone here.
+May 29, 2026
+We are happy to announce Capstone 6.0.0-Alpha9.
+This release fixes the security advisories GHSA-5m9f-vqcm-g5pr and GHSA-jrw4-wj52-2vw8, and adds the pre-release version to capstone.h
+.
+See the full release notes at https://github.com/capstone-engine/capstone/releases/tag/6.0.0-Alpha9
+May 28, 2026
+We are happy to announce Capstone 5.0.9.
+This stable patch release sets the correct version number in CS_VERSION_EXTRA
+and includes backports of CVE fixes and #2935.
+See the full release notes at https://github.com/capstone-engine/capstone/releases/tag/5.0.9
+May 23, 2026
+We are happy to announce Capstone 6.0.0-Alpha8.
+This patch alpha release adds ColdFire ISA support, expands M680X support, improves RISC-V details, speeds up x86 decoding, and adds x86 MOVSXD
+.
+See the full release notes at https://github.com/capstone-engine/capstone/releases/tag/6.0.0-Alpha8
+May 23, 2026
+We are happy to announce Capstone 5.0.8.
+This patch release adds x86 decoding speedups, RTLD_DEEPBIND loading for Python on Linux, and support for x86 MOVSXD
+instructions.
+See the full release notes at https://github.com/capstone-engine/capstone/releases/tag/5.0.8
+February 16, 2026
+We are happy to announce Capstone 6.0.0-Alpha7.
+This alpha release delivers the major RISC-V module update, 32-bit build coverage, consistent CS_ERR_MEM
+reporting, and x86-64 segment override behavior fixes.
+See the full release notes at https://github.com/capstone-engine/capstone/releases/tag/6.0.0-Alpha7
+February 9, 2026
+We are happy to announce Capstone 5.0.7.
+This security release fixes CMake 4 build issues and backports fixes for CVE-2025-68114 and CVE-2025-67873.
+See the full release notes at https://github.com/capstone-engine/capstone/releases/tag/5.0.7
+January 13, 2026
+We are happy to announce Capstone 6.0.0-Alpha6.
+This alpha release improves x86 register semantics, cross-build support, M68K handling, Alpha immediates, PIC static libraries, and fixes CVE-related issues.
+See the full release notes at https://github.com/capstone-engine/capstone/releases/tag/6.0.0-Alpha6
+August 5, 2025
+We are happy to announce Capstone 6.0.0-Alpha5.
+This alpha release updates the SPARC module to LLVM 18, adds Apple proprietary AArch64 instructions, ABI3 Python wheels, and multiple decoder/detail fixes.
+See the full release notes at https://github.com/capstone-engine/capstone/releases/tag/6.0.0-Alpha5
+See the news archive for older posts.

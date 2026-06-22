@@ -1,0 +1,65 @@
+After six years, it’s time to release Pluto version 1.0! With this release, I want to celebrate all the progress over the past years, and to symbolise that Pluto is ready. I am proud of what we have achieved, and I hope you enjoy it!
+This is a long post, so I will give a table of contents. This post will take 10 minutes to read. It will take longer if you click on links with additional information.
+Pluto is an interactive environment for notebook programming in Julia. Our goal is to make scientific computing more accessible and fun! You can use Pluto to experiment with code in a safe and friendly environment, and you can use it to write interactive articles, lecture notes and presentations (literate programming).
+What’s special about Pluto is:
+- Interactive: cells are reactive (like a spreadsheet) and it’s very easy to add buttons and sliders to control your code.
+- Reproducible: From package management to execution order, Pluto goes to great lengths to make sure that someone else will be able to run your notebook when you’re done!
+- Accessible: We designed Pluto to teach our own course: Computational Thinking at MIT. The result is a programming environment that prioritizes beginners over advanced users!
+And Pluto is popular! It’s used by people all around the world (like these online courses) and Pluto has been the #1 starred Julia package on GitHub since 2021.
+Pluto is free and open source, written in Julia and JavaScript. Pluto is super easy to install using Julia’s package manager. Start Julia, and run:
+import Pluto
+Pluto.run()
+Want to know more? Check out our website →
+Well… the 1.0.0
+release itself is a bit unspectacular (just one PR: “removed deprecations”), but in this post I want to give an overview of highlights from the past years. If you tried Pluto before, then now might be a good time to check it out again!
+Pluto 1.0 is very reliable! Courses of 100+ students often report that everyone was able to install Pluto and run course notebooks without problems.
+This is the result of countless design choices, bug fixes, testing, built-in strategies to automatically recover from broken states, and care. We have ~2500 automatic test cases, including tests that use web browsers to test Pluto by clicking and typing in the UI.
+Every notebook has an isolated Pkg environment, and packages are automatically added and removed when needed. When you open a notebook from someone else, the same versions of packages will be used.
+We developed GracefulPkg.jl to improve reproducibility when mixing Julia versions. And there is also a new Project.toml editor, which gives precise control over which versions are used. You can use the new Julia [sources]
+feature to use packages from github in a reproducible way.
+Pluto notebooks can be exported directly to Julia, PDF and HTML. The HTML format is special: it is a self-contained file that renders your notebook exactly as it looked when you exported. It also contains the Julia source code and package environment, which means that if you can read it, you can run it. Here is an example. Since 2025, the Pluto web assets are also self-contained, which means you can open HTML export files without internet. Read more about exporting →
+You can use static-export-template
+to automatically generate a website from a repository of notebooks, and with PlutoSliderServer.jl you can serve Pluto-based websites that are instantly interactive.
+We also launched pluto.land, a free web service to easily share Pluto HTML exports. It’s like a pastebin, but only for Pluto notebooks.
+Pluto notebooks are reactive. Changing one cell instantly shows effects on all other cells, giving you a fast and fun way to experiment with your model. There are new ways to control reactivity, which helps when you have long-running cells.
+Pluto allows you to disable a cell, which means that it will not get executed with reactivity. When one of the dependencies of a disabled cell changes, the disabled cell will not get executed as usual.
+The cell disabling feature is reactive – any cells that depend on a disabled cell will also be disabled. This is a really powerful feature, because you can easily disable a large number of cells at once, by disabling a core cell that is used in all of them. Learn more →
+A new feature in Pluto will ask for confirmation when you trigger a reactive chain of cells that might take a long time to run (based on previous runtimes). This gives the option to cancel the run, make more changes, and run everything in a single reactive batch.
+Pluto is super interactive since day 1! What’s new: more interactive elements in PlutoUI.jl and new APIs for designing your own widgets.
+The PlutoUI.jl package contains lots of new input widgets. You have sliders, switches, buttons, dropdowns, multiselects, textfields, you name it! And it also has a click-for-more widget, a reading-time-calculator, an extra wide Pluto cell, a cell in the side margin, advanced tools for 2D layout, and tools for composing multiple widgets into one! Check out the complete showcase →
+There is also PlutoTeachingTools.jl, co-developed with other teachers who use Pluto. It contains everything you need to write interactive lectures, and live homeworks that react to student input.
+We have gradually rolled out lots of API that lets you write your own widgets, using a high level of integration into the Pluto engine. We expose a JavaScript runtime, Pluto’s high-performance Julia-JS connection, our display system, and more. With this API, you can easily add Pluto-specific widgets to an existing package (without adding a Pluto dependency), or write a new package. PlutoUI.jl is also built using this API. Read an overview →
+Pluto is more accessible than ever! We have worked hard to improve keyboard-only, mouse-only and touch-only use, visual accessibility and screen reader support. Learn more →
+Also new: Pluto can be used in 16 different languages: Chinese (Chinese) (by @Fromduststar), Dansk (Danish) (by @gwr-de), Deutsch (German) (by @kellertuer), Ελληνικά (Greek) (by @pankgeorg), English, Español Latinoamericano (Latin American Spanish) (by @gruumsh1), Français (French) (by @Pangoraw and @gdalle), Čeština (Czech) (by @kunzaatko), Italiano (Italian) (by @disberd), Japanese (Japanese) (by @Itou-Kouki), Nederlands (Dutch) (by @fonsp), Norsk Bokmål (Norwegian) (by @kellertuer), فارسی (Persian) (by @shosseinib), Polski (Polish) (by @s-zymon), Português (Portugal) (Portuguese Portuguese) (by @rgouveiamendes) and Suomi (Finnish) (by @eteppo).
+Are you interested to contribute to Pluto’s localization? Check out our documentation →
+Inspiration for Pluto comes from my experience teaching Julia. (I currently work on Pluto alongside the course Bayesian ML at TU Eindhoven, check it out!)
+Getting an error message can be scary and demotivating for new programmers, so we did our best to improve the error experience in Pluto. Using web design and Julia heuristics, we try to present the error message and stack trace the way we would explain it to someone else.
+Features include:
+- Mini preview for your own code
+- Explaining what the stack trace is
+- Fade-out of internal Julia functions in the stack trace
+- Click-to-show the stack trace if the error comes from the cell itself
+- Click-to-show stack frames that happened before your own code
+- Click-to-show long type annotations
+We developed computational-thinking-template
+, a repository template for building awesome looking course websites! It features a sidebar, a colorful homepage, built-in search, GitHub Actions, “Edit this Page” links, run with Binder, and much more! This template is based on the successful online course Computational Thinking at MIT. The technology behind this course is open source (developed by the Pluto team), and now available as a standalone template. Read more about the template, or you can explore all publishing options →
+PlutoTurtles.jl is a fun way to get started with Julia programming. You can move a little turtle with simple commands to draw lines in any color you want – you make a drawing with code. With Pluto, you can make the drawings interactive, by controlling variables with sliders, and Pluto can highlight lines of code while the turtle takes steps.
+We have a programming tutorial based on PlutoTurtles.jl, and a showcase of some simple turtle art.
+Pluto is not a vibe coding tool, and we are not planning to make it one! We think that AI code generation is useful, but right now, Pluto should still be a tool that helps people get better at writing Julia code.
+At the moment, we have one AI-powered feature, which can automatically fix syntax errors (like a missing end
+or "
+), but no other types of errors. We hope that this will help you with what you are trying to do, without taking over your creativity.
+There are multiple ways to disable AI features if it’s not what you want. Check out our documentation about AI editor features →
+Also new! We have a collection of 40 featured notebooks, which showcase the exciting things you can do with Julia and Pluto. You can read and interact with the featured notebooks directly from the Pluto main menu, or from our website.
+And we have a shiny new website – plutojl.org ! The website shows what Pluto can do, and it has lots of documentation to explain how to best use Pluto. Oh, and the website is built with PlutoPages.jl, a new SSG package.
+The Pluto editor has lots of improvements. Sergio Vargas wrote a new parser for Julia that runs in CodeMirror 6, the new code editing system that we use. The new parser is very detailed and performant, which allowed us to (re)write lots of functionality based on syntax-pattern-matching.
+Pluto has a carefully crafted autocomplete system, which gives code suggestions while you type. It combines static code analysis (from the JS parser) with scope analysis and Julia REPL autocomplete results – an experience optimized for Julia notebooks. I believe it’s good enough to enable automatically while you type, but you can also disable this in the settings.
+We implemented a jump-to-definition plugin, more keyboard shortcuts, a mixed language parser (when using Python/SQL/HTML inside Julia), tabs/spaces setting, copy-link-to-header, and much more.
+Pluto also got support for Logging (like @info
+), retro terminal streams (like println
+) and ANSI color rendering. And we improved our rich object viewer, with high-performance displays for HTML, LaTeX, SVG, PNG, and our interactive tree viewer for vector, tuple and dictionary data structures.
+Along the way, we have contributed several packages to the Julia ecosystem: Malt.jl, HypertextLiteral.jl, GracefulPkg.jl, MIMEs.jl, ExpressionExplorer.jl, PlutoDependencyExplorer.jl and contributions to base Julia and the Julia web ecosystem. These packages are also used in projects unrelated to Pluto!
+We now have a formal governance structure, architecture overview, and I transfered the repository to a collective JuliaPluto
+organisation.
+Pluto has been a collaborative effort. You can read some highlights about how Pluto works and who designed it. Open source software development is challenging, but I’m very grateful for people I met along the way. Thank you for supporting me in difficult times, for teaching me new ways of thinking, and for your contributions to the project. It means a lot to me!
+If you have used Pluto and you enjoy it, I’m happy! Please reach out and share your experience, I would love to hear from you. You can contact me here on discourse, or email fons-at-plutojl-dot-org.

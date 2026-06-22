@@ -1,0 +1,12 @@
+Mathematics > Statistics Theory
+Title:A Polyak-Ruppert Central Limit Theorem for SA-Adam with Momentum and Non-Convergent Adaptive Preconditioning
+View PDF HTML (experimental)Abstract:Adaptive optimizers combining preconditioning, momentum, and weight decay (Adam and AdamW) are, under Polyak-Ruppert averaging, candidate engines for one-pass inference. Does the averaged iterate keep the classical Polyak-Ruppert central limit theorem (CLT), with sandwich covariance $H^{-1}SH^{-1}$ (Hessian $H$, gradient covariance $S$), under momentum and non-convergent preconditioning? The preconditioner-only analysis does not carry over: with momentum the canonical decomposition collapses to a tautology. Treating the augmented state (iterate, momentum buffer) as a time-varying linear stochastic approximation (SA), we prove (under local stabilization) positive drift stability, a non-autonomous Polyak-Ruppert CLT, and a projection identity. The upshot: the iterate-marginal covariance is exactly the plain stochastic gradient descent (SGD) sandwich $H^{-1}SH^{-1}$, so the adaptivity is asymptotically invisible. This holds for SA-Adam (sub-linearly vanishing momentum gain, $\gamma\in(\alpha,1)$; the sub-linear regime is essential), not constant-$\beta$ deployed Adam. Coupled $L_2$ weight decay yields the ridge-penalized sandwich, extending one-pass inference to regularized problems.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

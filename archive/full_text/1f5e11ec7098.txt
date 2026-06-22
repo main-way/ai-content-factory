@@ -1,0 +1,389 @@
+Серия: redb ecosystem (часть 2 к LLM-анонсу)
+В предыдущей статье я анонсировал redb.Route.Llm
+как 24-й транспорт redb.Route
+— мы делали LLM ещё одним endpoint'ом наравне с Kafka, RabbitMQ и HTTP, чтобы выкинуть отдельную «AI-инфраструктуру», стоящую рядом с интеграционной. Заодно я повесил в конец статьи «честный skip-list» — список того, что в 3.1.0 ещё не доделано: streaming, ToolCacheStore, KnowledgeStore, BatchStore, EvalRunStore, sliding-window память, sandbox-инструменты.
+Из этого skip-list'а делано больше, чем я планировал. Но не это главное. Главное — что в процессе доделывания обнаружилась настоящая ценность всей затеи: LLM-транспорт оказался не очередным чат-фреймворком, а недостающим звеном в ESB, после которого «бизнес-агент в проде» перестаёт быть отдельным проектом. Эта статья — про то, как чат-демо превращается в enterprise-агентскую платформу, не переписываясь и не превращаясь в «AI-монолит сбоку».
+Всё, что ниже — реальный код из репозитория, не псевдокод. Ссылки на демо-маршруты в конце.
+Это вторая часть серии про
+redb.Route.Llm
+. Первая часть — здесь:Контекст серии redb.Route целиком:
+Маленькая ремарка про EIP. В этой статье я многократно опираюсь на Enterprise Integration Patterns —
+Multicast
+,Aggregator
+,Scatter-Gather
+,Wire-Tap
+,Choice
+,Aggregate-by-window
+— не разбирая каждый из них подробно. Это сознательный выбор: статей серии «EIP в .NET через redb.Route» с детальным разбором каждого паттерна (с диаграммами, кодом и сравнениями) ещё не вышло, я их пишу параллельно. Здесь я немного забегаю вперёд.Если вы работали с Apache Camel или WSO2 Micro Integrator — узнаете паттерны на ходу, имена и семантика идентичны. Я сам много лет писал и поддерживал интеграционные проекты на WSO2 MI (и ESB-предке), архитектурно
+redb.Route
+ближе всё-таки к Camel — компилируемая DSL поверх типизированного Exchange, а не XML-конфиг. Сопоставления «Camel ↔ redb.Route» и «WSO2 MI ↔ redb.Route» — это отдельные большие статьи, тоже в работе. Если что-то по EIP-части в коде ниже окажется непонятным, спрашивайте в комментариях — отвечу сразу, заодно соберу материал для тех самых будущих статей.
+Чем это всё отличается от «ещё одного агентского фреймворка»
+В индустрии много инструментов, которые делают LLM-tool-use из коробки: LangChain, langchain4j, Semantic Kernel, AutoGen, LlamaIndex и десятки нишевых. Все они решают одну проблему: «как у меня модель будет вызывать функции и помнить разговор». И все они оставляют решать вам остальные восемнадцать: retry, idempotency, audit, multi-tenant, бюджет, observability, governance, approval, batch, scheduling.
+Идея redb.Route.Llm
+— сделать LLM транспортом в ESB, у которого эти восемнадцать уже решены на уровне фреймворка. Не «у нас есть библиотека интеграций, плюс отдельная LLM-библиотека», а ровно та же DSL, ровно тот же runtime, ровно те же hook'и для governance. Если у вас в redb.Route
+уже есть policy-перехватчик, который пишет в Kafka каждое действие — он автоматически пишет туда и каждый tool-вызов агента, потому что это всё один и тот же Exchange.
+Это не теоретическая красота. Это снимает главную боль продакшена с агентами: «а что произойдёт, когда LLM попросит удалить production-таблицу?» В конструкции «LangChain + хуки» ответ — «подключите наши approval-callbacks и не забудьте». В конструкции «LLM как транспорт в ESB» ответ — «перехватите Exchange до .To("exec://...")
+тем же .Process(...)
+, которым вы перехватываете любой потенциально опасный шаг в любом другом маршруте». Не «новый паттерн для AI», а тот же паттерн, что для FTP и для Kafka.
+Что доделано из «честного skip-list» 3.1.0
+Я обещал — я говорю.
+Skip-list пункт | Статус 3.1.1 |
+|---|---|
+Streaming end-to-end (HTTP SSE + WS per-frame) | Готово. |
+ToolCacheStore (REDB) | Готово. |
+KnowledgeStore — RAG-чанки в REDB | Готово (частично). |
+BatchStore + LlmCallbackProcessor | Готово. Anthropic Message Batches и OpenAI Batch — асинхронный webhook-консьюмер, идемпотентная обработка, retry. |
+EvalRunStore | Готово. Прогоны eval'ов сохраняются как первоклассные сущности с trace-id'ами. |
+PromptTemplateStore | Готово. Версионированный реестр промптов, ссылка |
+Sliding-window память | Не сделано. Сделано иначе: tree-branching конверсаций как REDB-tree (см. ниже). |
+Sandbox-инструменты | Не сделано в виде «контейнер на каждый вызов». Сделан |
+Бонусом, чего в skip-list не было:
+?redb=<name>
+per-exchange — мульти-tenant: одна и та же конфигурация маршрута, REDB-instance выбирается из заголовка/URI на лету;DSL/tool split — пакеты
+redb.Route.Llm.Abstractions
+(контракты) иredb.Route.Llm.Tools
+(готовые утилитарные инструменты), чтобы 22 коннектора могли регистрировать.AsLlmTool()
+без bump'а минорки на каждый чих;6 утилитарных инструментов из коробки:
+HttpFetch
+,JsonPath
+,XPath
+,RegexExtract
+,MathEval
+,TavilyWebSearch
+— каждый и как DSL-расширение, и как standalone tool-route;Bug fixes, которые нашлись только в проде: orphan-
+tool_use
+(когда модель просит инструмент, а Anthropic-провайдер обрывает на ошибке) и OEM-codepage вProcess.StandardOutput
+(windows-1251 в выхлопеcmd /c
+ломает UTF-8 контракт инструмента).
+11 REDB-схем теперь стоят за всем этим: ConversationProps
+, MessageProps
+, ApprovalProps
+, CostBudgetProps
+, ToolCacheProps
+, ToolAuditProps
+, KnowledgeChunkProps
+, PromptTemplateProps
+, EvalRunProps
+, LlmBatchProps
+, ToolIdempotencyProps
+. Это не «база данных под чат-историю». Это операционный слой агентской платформы, который вы получаете за AddRedbLlmStorage()
+в одну строку.
+Десять enterprise-паттернов, которые становятся одной строчкой DSL
+Дальше — паттерны. Не «Hello, world», а то, ради чего вообще существует ESB-подход к LLM.
+1. Жёсткий бюджет на разговор как circuit-breaker
+В пет-проекте «бюджет токенов» — это лог. В проде это техника защиты от инцидентов: модель не должна иметь права съесть 10к долларов из-за бага в промпте. CostBudgetProps
+— это не observability-сущность, это превентивное правило. На каждом провайдер-вызове агент-engine считает потраченное по conversation-id и прибавляет ожидаемое (по max_tokens
+). Если суммарно превысит лимит — LlmBudgetExceededException
+бросается до отправки запроса, а не после.
+From("kafka://support-tickets") .To(Llm.Factory("claude") .Conversation(e => "ticket-" + e.In.Headers["TicketId"]) .CostBudget(usd: 0.50) // hard ceiling per conversation-id .CostBudgetExceeded(BudgetPolicy.FailFast) .AsUri()) .To("kafka://support-replies");
+Поверх этого паттерна сразу появляются производные: «бюджет на тенант», «бюджет на промпт-шаблон», «бюджет на модель». Все они — это просто разные ключи в CostBudgetProps
+. Конструкция остаётся одна.
+2. Approval-gate с человеком в цикле
+Самый недооценённый enterprise-паттерн в LLM. Если модель имеет право удалять записи или отправлять платежи — между tool-вызовом и реальным выполнением должен стоять человек, и эта пауза должна быть нативной частью runtime, а не «костылём из webhook'ов».
+From("direct:tool-payments-refund") .AsLlmTool("issue_refund") .Description("Refund a payment by id and reason.") .Input(/* JSON Schema */) .SideEffect(ToolSideEffect.Mutating) // hook governance reads this .Cost(ToolCostClass.Expensive) .Then() .Process<ApprovalGate>() // suspend exchange, write ApprovalProps, // notify Slack, wait for HTTP callback .To("kafka://payments.refund.commands");
+ApprovalProps
+хранит exchange-id, conversation-id, входные аргументы, человека-аппрувера, время ожидания, исход. Slack-bot/email/web-form подключаются как обычный HTTP-маршрут в том же redb.Route
+. Когда аппрувер кликает «approve» — webhook будит exchange и доставляет результат в агент-engine. Если timeout — agent получает tool_result
+со status:"timeout"
+и сам решает, что делать.
+Главное здесь — это не AI-логика. Это паттерн EIP «Aggregator + Correlation Identifier + Wire-Tap + JMS Reply-To», который применим и к refund-engine'у без LLM, и к LLM-агенту, потому что они оба — Exchange'и в одном runtime.
+3. Идемпотентный retry с ToolIdempotencyProps
+Webhook-консьюмеры повторяются. Сетевые таймауты — повторяются. Anthropic Batch иногда доставляет дважды. Если ваш tool-вызов «issue refund $50» обрабатывается два раза — это плохая среда.
+ToolIdempotencyProps
+хранит idempotency-key → tool-result
+с TTL. В DSL:
+From("direct:tool-issue-invoice") .AsLlmTool("issue_invoice") .Caching(ToolCachingPolicy.Idempotent) .Then() .Process(BuildIdempotencyKey) // sha256(args + customer-id + day) .To("...");
+Когда агент-engine видит Caching = Idempotent
+— он до запуска маршрута проверяет ToolIdempotencyProps
+по ключу. Hit — отдаёт сохранённый tool_result
+, маршрут не запускается. Miss — запускается, результат записывается. На уровне фреймворка, а не на уровне «не забудьте».
+4. Multi-tenant через ?redb=
+Один воркер обслуживает 50-100 клиентов. Каждый клиент — это свой REDB-instance (свои conversations, свой cost-budget, свои approvals, своя knowledge-base). Раньше это значило бы «50 -100 ServiceProvider'ов или ScopedFactory с маршрутом на каждый». В 3.1.1 это per-exchange hint:
+From("http:0.0.0.0:5088/api/llm/ask?inOut=true") .Process(e => e.In.Headers[LlmHeaders.Redb] = e.In.Headers["X-Tenant"]?.ToString()) .To("llm://claude?conversationFromHeader=true");
+?redb=acme
+или заголовок — engine выбирает named REDB-instance из реестра, на текущем Exchange, без смены маршрута, без фабрики, без перезапуска. Conversations, ToolAudit, ApprovalProps — всё пишется в нужный tenant. Каждый tenant получает свой биллинг и свой governance, не зная про существование других.
+5. Audit trail без отдельной интеграции
+ToolAuditProps
+— это REDB-объект с tenant-id, conversation-id, exchange-id, tool-name, входными аргументами (или хэшом, если PII), выходом (или хэшом), длительностью, статусом. Каждый вызов инструмента пишется автоматически, потому что инструмент это всё равно маршрут, а у redb.Route
+есть стандартные post-processors.
+Запрос вида «покажи мне все tool-вызовы Claude в tenant acme за последние 7 дней с side-effect=mutating и cost=expensive, упорядочены по времени» — это не отдельный аналитический пайплайн. Это value_string
+индекс на REDB-объекте + один SQL (см. предыдущую серию «REDB storage», ссылки в конце).
+6. Async batch + callback-consumer
+Anthropic Message Batches и OpenAI Batch — это до 50% дешевле, но цена за это — задержка до 24 часов. Для офлайн-обработок (классификация миллиона тикетов, экстракция полей из миллиона PDF) это идеальный режим.
+LlmBatchProps
+хранит batch-id, statuses, мета-связь с исходной коллекцией Exchange'ов. LlmCallbackProcessor
+— это обычный From("http://...?inOut=true")
+-маршрут, который провайдер вызывает по готовности batch'а. Маршрут читает batch-id, забирает результаты, диспетчит каждый ответ обратно в нужный Exchange (через correlation-id) — и они продолжают идти по своему пути, как будто синхронный вызов закончился.
+Поверх — идемпотентность (тот же ToolIdempotencyProps), retry (стандартный circuit-breaker redb.Route
+), backpressure. Не нужно писать свой батчер. Не нужно писать свой webhook-handler. Не нужно отдельно тестировать «а что если callback пришёл два раза».
+7. Версионированный реестр промптов: #-refs
+Один из самых тоскливых багов прода: «модель стала отвечать иначе». Идёшь смотреть git-blame, оказывается — кто-то 3 недели назад тронул системный промпт, и тесты прошли. Промпт — это код, и должен жить в реестре с версией.
+// Where you register prompts: promptRegistry.Register("triage-system", version: "v3", body: """ You are a support triage agent. Classify into [billing, tech, sales, abuse]... """); // In the route: .To(Llm.Factory("claude").SystemPromptRef("#triage-system@v3").AsUri())
+PromptTemplateProps
+— это REDB-объект с именем, версией, телом, метаданными (автор, дата, эксперимент). Engine при разрешении #name
+фиксирует именно эту версию в MessageProps
+для каждого вызова. Через полгода вы можете полностью точно сказать: «этот разговор шёл на версии v3 промпта triage-system», а не «вероятно, v3, мы тогда так делали».
+И — самое полезное — EvalRunStore
+фиксирует прогоны eval-test'ов в привязке к версии промпта. «Версия v4 даёт +12% accuracy на golden-set'е» — это не excel-табличка, это запрос в REDB.
+8. Tree-branching конверсаций для A/B и «что было бы, если»
+ConversationProps
+хранится как REDB-tree через нативный parent_id
+. Это значит, что разговор — не плоский список сообщений, а дерево. Вы можете:
+ветвить разговор от любого сообщения, чтобы запустить «альтернативный» прогон с другой моделью или температурой;
+хранить пользовательскую ветку и эксперимент-ветку параллельно;
+считать метрики по парам веток («с-инструментами vs без-инструментов на одном и том же контексте»).
+В sliding-window памяти вы отрезаете прошлое. В tree-branching памяти вы пишете альтернативное прошлое и сравниваете. Для production-агентов второе ценнее на порядок, потому что улучшение промптов в проде — это и есть «возьми реальный разговор, проиграй с новым промптом, сравни оценки».
+И технически здесь ничего не было сделано «специально для LLM». Tree через parent_id
+— это штатная возможность REDB, которая используется для иерархий объектов с самого начала. LLM просто написала на этом свою сущность.
+9. Jury из младших моделей с arbiter'ом — Scatter-Gather + Aggregator
+Один из самых недооценённых production-приёмов: не верить одной модели. Одна и та же задача отправляется одновременно в несколько дешёвых моделей (Haiku, GPT-4o-mini, Mistral-Small, Gemini-Flash, Llama-3.1-70b через Groq), их ответы собираются, и старшая модель (Sonnet, Opus, GPT-4o) получает оригинальный запрос плюс пять кандидатов и работает как арбитр: выбирает лучший, синтезирует новый или говорит «никто не справился, переспроси». В литературе это называется mixture-of-agents или ensemble voting — паттерн, который даёт +10..20% accuracy на сложных задачах при цене ниже, чем «всё через Opus».
+В чистой LangChain-конструкции это превращается в стостраничный orchestrator с try/catch, retry на каждую модель, таймаутами на каждый вызов и собственной aggregation-логикой. В ESB-конструкции это штатный EIP-паттерн Scatter-Gather + Aggregator, у которого 25-летняя история в интеграционных шинах. LLM просто становится одним из endpoint'ов, по которому Scatter-Gather разлетается:
+From("kafka://contract-clauses-to-classify") .RouteId("contract-jury") .Multicast() // Scatter .Parallel() .StopOnException(false) // одна модель упала — терпим .Timeout(TimeSpan.FromSeconds(30)) // на каждую ветку .To(Llm.Factory("haiku") .SystemPromptRef("#contract-classify@v3") .Temperature(0.0).MaxTokens(200).AsUri()) .To(Llm.Factory("gpt-4o-mini") .SystemPromptRef("#contract-classify@v3") .Temperature(0.0).MaxTokens(200).AsUri()) .To(Llm.Factory("groq-llama-70b") .SystemPromptRef("#contract-classify@v3") .Temperature(0.0).MaxTokens(200).AsUri()) .To(Llm.Factory("mistral-small") .SystemPromptRef("#contract-classify@v3") .Temperature(0.0).MaxTokens(200).AsUri()) .End() // Gather: ответы собрались в Exchange.Properties["multicast.results"] .Process<JuryAggregator>() // склеиваем кандидатов в один промпт для арбитра .To(Llm.Factory("sonnet") // Arbiter .SystemPromptRef("#jury-arbiter@v2") .Temperature(0.1).MaxTokens(500) .CostBudget(usd: 0.05) .AsUri()) .To("kafka://contract-clauses-classified");
+JuryAggregator
+— это короткий процессор, который из четырёх ответов и оригинального запроса собирает один промпт вида «вот задача; вот ответы кандидатов A/B/C/D; верни итоговую классификацию или скажи unclear». Arbiter получает всё в одном вызове, отвечает структурированным JSON. Хедеры llm.tokens.in/out
+пишутся отдельно для каждой ветки, плюс отдельно для арбитра — стоимость прозрачна на уровне маршрута.
+Что здесь делает ESB-форма ценным:
+Параллелизм бесплатно. Multicast EIP уже умеет fan-out по N веткам, ждать всех или N из M, обрабатывать таймауты и частичные сбои. Не нужно писать
+Task.WhenAll
+с custom-обработкой ошибок.Идемпотентность бесплатно. Если одна из веток упала и retry дал тот же запрос —
+ToolIdempotencyProps
+(или provider-side cache по prompt-hash) дедуплицирует. Не платим за дубль.Бюджет бесплатно.
+.CostBudget(usd: 0.05)
+на arbiter'е стоит как отдельный circuit-breaker; на ветках можно поставить свой.CostBudget(usd: 0.01)
+. Cap на всё суммарно — черезCostBudgetProps
+с другим ключом. Если jury вышло за лимит — failfast, классификация откатывается на rule-based fallback (его же пишем как ещё одну ветку маршрута).Audit бесплатно. Каждый из пяти LLM-вызовов автоматически попадает в
+ToolAuditProps
+, привязанный к одному exchange-id. Через месяц можно ответить «модель Х согласилась с арбитром в 73% случаев, можно её отключить и сэкономить».Eval бесплатно.
+EvalRunProps
+записывает прогон с пятью моделями + одним арбитром — потом на golden-set'е можно подобрать оптимальный состав jury (заменить gpt-4o-mini на gemini-flash, проверить, упало ли accuracy).
+В реальности этот паттерн даёт две ощутимые победы. Первая — точность: в задачах вида «классифицировать пункт договора как риск/не-риск», где одна модель регулярно ошибается, jury из четырёх дешёвых + арбитр-Sonnet уверенно обгоняет одиночный Opus, в 2.5 раза дешевле. Вторая — робастность: если Anthropic лежит, ветка через Anthropic упала, остальные четыре дали ответ, арбитр получил четыре кандидата вместо пяти и спокойно вынес вердикт. Деградация мягкая, а не «упало всё».
+Тонкость, которую видишь только в проде: арбитру нельзя давать имена моделей. Если в промпте арбитра написано «вот ответ Claude Haiku, вот ответ GPT-4o-mini» — арбитр развивает фавориты (как и человек). Поэтому в JuryAggregator
+мы анонимизируем кандидаты как A/B/C/D
+, перемешиваем порядок (Latin square по exchange-id
+для воспроизводимости) и только после ответа арбитра мапим обратно «кто был A». Это даёт чистый сигнал для post-hoc анализа «какая модель чаще угадывает с арбитром».
+10. Sub-agents: агент как инструмент другого агента
+Прямое следствие архитектуры «инструмент = маршрут»: если маршрут может содержать .To("llm://...")
+, то инструмент — это сам по себе агент. Главный агент не «знает», что под капотом инструмента сидит ещё одна LLM. Для него research_topic
+— это обычный tool, как web_search
+или math_eval
+. Внутри же — полноценный second-tier агент со своими: моделью, промптом, набором инструментов, бюджетом, итерационным потолком, политиками retry, RAG-источниками.
+В коде это выглядит так:
+// Subagent: исследовательский специалист с собственными инструментами From("direct:research-subagent") .AsLlmTool("research_topic") .Description("Глубокое исследование темы. Принимает {topic, depth}. " + "Возвращает структурированный summary с источниками.") .Input("""{"type":"object","properties":{ "topic":{"type":"string"}, "depth":{"type":"string","enum":["short","deep"]}}, "required":["topic"]}""") .SideEffect(ToolSideEffect.ReadOnly) .Cost(ToolCostClass.Expensive) // главный агент видит, что вызов недешёвый .Then() .Knowledge("research-corpus", k: 12) // sub-agent имеет свою RAG-базу .To(Llm.Factory("sonnet") // средняя модель — research-специалист .SystemPromptRef("#research-specialist@v3") .Tools("tavily_web_search", "http_fetch", "regex_extract") .MaxIterations(8) .CostBudget(usd: 0.30) // sub-agent имеет свой бюджет .Temperature(0.1).AsUri()) .Process<ExtractResearchSummary>(); // Главный агент использует sub-agent как обычный tool в своём наборе From("kafka://complex-business-questions") .To(Llm.Factory("opus") // planner — старшая модель .SystemPromptRef("#senior-analyst@v1") .Tools("research_topic", // ← наш sub-agent "sql_query", // ← обычный data-tool "math_eval", // ← вычисления "draft_report") // ← ещё один sub-agent (черновик отчёта) .MaxIterations(15) .CostBudget(usd: 2.00) // budget верхнего уровня .AsUri()) .To("kafka://business-answers");
+Что здесь происходит технически: когда Opus решает позвать research_topic
+, агент-engine строит JSON-вход и через RouteToolBridge
+отправляет его на direct:research-subagent
+. Этот маршрут запускается как новый Exchange, наследуя transaction-scope, principal, headers и DI-scope от родительского. Внутри него Sonnet делает свой собственный tool-use loop (web search → fetch → extract), потенциально с десятью итерациями и тремя инструментами. Возвращает структурированный summary в Out.Body
+, который агент-engine упаковывает обратно как tool_result
+для Opus. Opus видит результат, продолжает свою работу, при необходимости зовёт ещё.
+Иными словами: архитектура рекурсивна без единой строки спецкода. Sub-agent внутри sub-agent'а работает по тем же правилам. На третьем уровне всё ещё работают audit, budget, idempotency, prompt-versioning, RAG, governance — потому что они не привязаны к «уровню агента», они привязаны к Exchange'у, а Exchange один и тот же примитив на любой глубине.
+Это даёт три производных паттерна, которые в плоской «один-агент-много-инструментов» архитектуре собирать неудобно:
+(а) Hierarchical agents — planner и workers. Старшая модель (Opus, GPT-4o) играет роль планировщика: разбивает задачу на куски и распределяет по специалистам. Каждый специалист — sub-agent с узким промптом и узким набором инструментов. У planner'а собственного доступа к данным может вообще не быть — только через subagent'ов. Это даёт жёсткое разграничение полномочий: planner не может случайно дёрнуть delete_records
+, потому что у него такого инструмента нет; его есть только у data-cleanup-subagent
+, к которому planner обращается явно.
+(б) Specialist subagents с собственной памятью. Sub-agent может иметь свой собственный conversationId
+(другая ветка REDB-tree), свой собственный набор Knowledge(...)
+-источников, свой собственный реестр промптов. Условный legal-review-subagent
+живёт внутри корпоративной legal-knowledge базы, видит только её, отвечает строго в правовом регистре, и старший агент никогда не получает доступ к этим документам напрямую. ACL соблюдается на уровне маршрута, не на уровне «надеемся, модель не процитирует».
+(в) Cost-shaped escalation. Дешёвый агент (Haiku) пытается решить задачу первым. Если он возвращает unclear
+или confidence ниже порога, он сам вызывает escalate_to_senior
+как tool — и под этим инструментом сидит маршрут к Opus с полным контекстом. Большая часть запросов оседает на Haiku за копейки; в Opus уходят только сложные. На big-volume workloads это меняет экономику в разы.
+Сравнение со static-jury из паттерна №9: jury — статически зашитый subagent pattern. Маршрут заранее знает, что должно быть N кандидатов и один арбитр; DAG зафиксирован в DSL. Sub-agents-as-tools — динамическая версия: главный агент сам решает, кого позвать и сколько раз. Jury лучше для предсказуемых конвейеров классификации/прогноза. Sub-agents — для open-ended исследовательских задач, где количество шагов и состав инструментов заранее неизвестны.
+Подводный камень — циклы. Если sub-agent A может звать B, а B может звать A, теоретически возможен бесконечный спуск. На практике он гасится тремя ограничителями: MaxIterations
+на каждом уровне (sub-agent не может крутиться вечно), CostBudgetProps
+(родительский бюджет тратится на каждый вложенный вызов), и опциональный depth-limit в headers (LlmHeaders.SubAgentDepth
+инкрементируется на каждом вложении, маршрут отбрасывает запросы при превышении). На практике после depth = 3-4
+реальные задачи уже не выигрывают.
+И ещё одна архитектурная красота: subagent — это просто маршрут, а значит у него есть стандартный URI. Разные родительские агенты могут шарить одного research-subagent
+, у которого собственный ?redb=acme
+для tenant-isolation, собственный rate-limiter (?throttle=5/sec
+), собственный circuit-breaker. Sub-agent ведёт себя как внутренний микросервис LLM-уровня, который вы переиспользуете между маршрутами, не дублируя промпт и не плодя клиенты.
+Streaming: что на самом деле меняется, когда токен покидает провайдера
+В 3.1.0 streaming был у провайдеров, но не доходил до клиента — мы аккумулировали токены в строку и возвращали целиком. В 3.1.1 закрыли всю цепочку:
+провайдер отдаёт
+IAsyncEnumerable<string>
+— кадры по мере прибытия;агент-engine кладёт это в
+Out.Body
+какIAsyncEnumerable<string>
+, не материализуя;HTTP-консьюмер видит
+IAsyncEnumerable<string>
+и переключается в SSE-режим — каждый кадр отдельнымdata: ...\n\n
+;WS-консьюмер — каждый кадр отдельным WebSocket message;
+non-streaming consumer'ы (Kafka, RabbitMQ, ActiveMQ) — материализуют в строку, как раньше.
+Что это даёт архитектурно: streaming перестаёт быть отдельным режимом «у нас есть streaming-API и обычный API». Это просто тип значения в Out.Body
+, который consumer-side обрабатывает в зависимости от своих возможностей. Тот же exchange может быть отправлен и в SSE, и в Kafka одновременно (multicast EIP) — Kafka-сторона дождётся материализации, SSE-сторона увидит кадры по мере поступления.
+Под капотом — стандартный паттерн «Iterator вместо Collection в payload»: на pipe'ах он давно живёт. Единственное специфичное — это, что async-iteration должен работать внутри end-to-end Exchange-tracking'а, чтобы tracing/metrics видели весь путь, а не «получили один Exchange и отвалились».
+RAG: чанки в REDB как первоклассные объекты
+В 3.1.1 KnowledgeChunkProps
+— это REDB-объект с:
+содержимым (
+text
+),источником (
+source-uri
+,tenant-id
+,doc-id
+,chunk-index
+),метаданными (язык, дата, теги, ACL — кто имеет право видеть),
+placeholder'ом для embedding (вектор поедет отдельным релизом, MVP — keyword search через
+value_string
+-индексы и FTS).
+Это значит, что RAG-источник = маршрут, а не «отдельный векторный сервис». Маршрут From("file://docs?include=*.md").To("knowledge://acme")
+индексирует документы. Маршрут From("kafka://support-tickets").Knowledge("acme", k: 5)
+подмешивает топ-5 чанков в системный промпт перед .To("llm://claude")
+. ACL и tenant-фильтрация — это value_*
+-индексы, которые применяются в SQL до отправки чанков в промпт.
+Когда подключим vector-store — он встанет рядом с keyword-search через тот же IKnowledgeStore
+интерфейс, без изменений в маршрутах. Это главная цель архитектуры: будущие фичи не ломают сегодняшние маршруты.
+Три реальных enterprise-кейса: отчёты, прогнозы, оповещения
+Паттерны выше — это атомарные кирпичики. Дальше — три полноценных сценария, в которых эти кирпичики складываются в реально работающий enterprise-маршрут. Без AI-хайпа, без «когнитивной автоматизации», без слов «трансформирует индустрию». Просто рутина, которую люди делают руками каждый день, и которая снимается агентом, потому что он живёт в той же шине, что и данные.
+Кейс 1. Ежедневный финансовый отчёт CFO на email — со сравнением с прошлым кварталом
+Каждый рабочий день в 7:00 финансовый аналитик собирает: выручку за вчера, расходы по статьям, отклонения от плана, top-5 крупнейших операций, остатки по счетам, курсы валют. Потом пишет короткую сопроводиловку — «выручка +3.2% к плану, расходы +1.7%, отклонения объясняются Х». Уходит на это час-полтора. Есть ли смысл это автоматизировать? Однозначно. Можно ли это сделать на отдельном AI-сервисе? Можно. Стоит ли? Нет.
+Маршрут целиком:
+// Каждое утро в 07:00 по локальному времени From("cron://daily-cfo-report?schedule=0 0 7 ? * MON-FRI") .RouteId("daily-cfo-report") .Process<LoadYesterdayMetrics>() // тянет из 1С/SAP/банковского API // → e.In.Body = {revenue, expenses, accounts, fx, top5} .Process<LoadQuarterContext>() // из того же ETL: план, прошлый квартал, MTD/QTD .ConvertBody<FinancialDailySnapshot>() // strongly-typed payload .Multicast().Parallel() .To(Llm.Factory("haiku") // ветка A: коротко по-русски, для CFO .SystemPromptRef("#cfo-daily-summary-ru@v7") .Temperature(0.1).MaxTokens(800) .CostBudget(usd: 0.02).AsUri()) .To(Llm.Factory("haiku") // ветка B: english, для board chat .SystemPromptRef("#cfo-daily-summary-en@v7") .Temperature(0.1).MaxTokens(800) .CostBudget(usd: 0.02).AsUri()) .End() .Process<RenderHtmlReport>() // mustache-шаблон: цифры таблицей, // текст моделей вверху как summary .To("smtp://mail.acme.com?to=cfo@acme.com,board@acme.com" + "&subject=Daily%20FY%20snapshot%20${date:yyyy-MM-dd}") .To("teams://board-channel?card=adaptive") // та же html-секция → Teams adaptive card .Wiretap("kafka://reports.cfo-daily.archive"); // копия в архив для аудита и обучения
+Семь шагов, и в этих семи шагах закрыто всё:
+Расписание —
+cron
+-выражение в URI, без отдельного шедулера;redb.Route
+уже умеет.Сбор данных —
+LoadYesterdayMetrics
+это обычный процессор, который дёргает существующие интеграции через тот жеredb.Route
+(Kafka/REST/JDBC), и любые retry/circuit-breaker'ы у этих интеграций уже стоят.Двуязычная генерация — multicast в две ветки одного дешёвого Haiku с разными промпт-шаблонами. Стоит копейки, бюджет фиксирован.
+Версионированный промпт —
+#cfo-daily-summary-ru@v7
+. Через полгода CFO скажет «отчёт стал хуже» — открываемEvalRunProps
+, видим, что v7 регрессирует на эталоне → откатываемся на v6 без redeploy.Канал доставки — два transport'а (SMTP + Teams), оба штатные
+redb.Route
+-коннекторы. Завтра CFO попросит «ещё в Slack» — добавляется одна строка.To("slack://...")
+.Аудит —
+Wiretap
+копирует в Kafka-архив. Регулятор через год спрашивает «покажи отчёт за 2026-04-15» — вынимается из архива с метаданными «модель X, версия промпта Y, исходные данные Z» (потому чтоMessageProps
+хранит и input, и output).Бюджет —
+.CostBudget(usd: 0.02)
+на ветке. 250 рабочих дней × 2 ветки × $0.02 = $10/год на отчёты. Финансовая редактура за час времени аналитика — $50. Окупается за день первого месяца.
+Что это делает enterprise-кейсом, а не игрушкой: в момент, когда CFO жалуется на «странную цифру в отчёте», аудитор по trace-id за 30 секунд показывает: какой snapshot был на входе, какая версия промпта применилась, какой именно output пришёл от модели, какой файл ушёл на email, кто прочитал в Teams. Не «давайте я завтра разберусь и пришлю». А прямо сейчас, потому что всё это — REDB-объекты, привязанные к одному exchange-id.
+Кейс 2. Прогноз cash-flow на 30 дней с jury из моделей и арбитром
+Финансовый прогноз — это типичная задача, где одна модель вреднее, чем ноль моделей: ошибка модели уверенным голосом приводит к решению, которое стоит дороже, чем месяц работы аналитика. Поэтому здесь — паттерн №9 (jury + arbiter) во весь рост.
+From("cron://weekly-cashflow-forecast?schedule=0 0 9 ? * MON") .RouteId("weekly-cashflow-forecast") .Process<BuildCashflowFeatures>() // банковские счета, дебиторка/кредиторка, // плановые платежи, сезонность, FX-позиции .Knowledge("acme-finance", k: 8) // RAG: внутренние гайдлайны прогнозирования, // прошлые отчёты, методология .Multicast().Parallel().Timeout(TimeSpan.FromMinutes(2)) .To(Llm.Factory("sonnet") // 4 разные модели, чтобы ошибки были .SystemPromptRef("#cashflow-forecast@v4") // независимыми, а не коррелированными .Temperature(0.2).MaxTokens(2000).AsUri()) .To(Llm.Factory("gpt-4o") .SystemPromptRef("#cashflow-forecast@v4") .Temperature(0.2).MaxTokens(2000).AsUri()) .To(Llm.Factory("gemini-pro") .SystemPromptRef("#cashflow-forecast@v4") .Temperature(0.2).MaxTokens(2000).AsUri()) .To(Llm.Factory("mistral-large") .SystemPromptRef("#cashflow-forecast@v4") .Temperature(0.2).MaxTokens(2000).AsUri()) .End() .Process<JuryAggregator>() // анонимизация A/B/C/D + перемешивание .To(Llm.Factory("opus") // arbiter — самая мощная модель .SystemPromptRef("#cashflow-arbiter@v2") .Temperature(0.1).MaxTokens(3000) .CostBudget(usd: 0.50).AsUri()) .Process<ExtractStructuredForecast>() // парсим JSON: 30 дней с low/mid/high .Choice() .When(e => e.In.Body<Forecast>().ConfidenceLow < 0.6) .Process<ApprovalGate>() // низкая уверенность → жди CFO .To("smtp://...?to=cfo@acme.com&priority=high") .Otherwise() .Process<RenderForecastReport>() .To("smtp://...?to=treasury@acme.com") .End() .Wiretap("kafka://reports.cashflow.archive");
+Этот маршрут стоит ~$2-3 за прогон, прогон делается раз в неделю — то есть ~$150/год. Аналитик потратил бы день на ту же задачу. Ключевая ценность не в экономии — в робастности: четыре независимых ответа от разных провайдеров (Anthropic, OpenAI, Google, Mistral) дают модель «согласия» как сигнала уверенности. Если четыре модели сошлись — арбитр Opus просто кодифицирует. Если разъехались — арбитр пишет «модель A видит риск Х, остальные нет, рекомендую человеческую проверку», и Choice
+-ветка сама уходит в approval-gate.
+Через год treasury-команда смотрит на EvalRunProps
+и видит: «модель Gemini-Pro расходится с консенсусом в 18% случаев, и в 70% этих случаев права именно она» — отличный сигнал, что её надо повысить в весе в jury, а не убрать. Это не догадка, а запрос в REDB.
+Кейс 3. Производственный прогноз и проактивный алерт инженеру
+В производстве (не финансовом, а реальном — заводы, склады, логистика) типичная задача: по SCADA-метрикам предсказать, что через 4-6 часов случится сбой, и заранее уведомить инженера. Раньше для этого делали отдельные ML-сервисы с feature-store и моделями градиентного бустинга. Это всё ещё корректный путь, и LLM не заменяет его. Но LLM хорошо закрывает «последнюю милю» — превращение «вектор отклонений + контекст» в внятное человеческое объяснение.
+// Слушаем поток метрик из SCADA-шины (через MQTT/Kafka), окно 5 минут From("kafka://scada.metrics?groupId=plant-anomaly-watcher") .RouteId("plant-anomaly-watcher") .Aggregate(by: e => e.In.Headers["LineId"], window: TimeSpan.FromMinutes(5)) // окно по линии производства .Process<RunAnomalyModel>() // классический ML — XGBoost, ничего нового; // выдаёт {score, top-features, line-context} .Choice() .When(e => e.In.Body<AnomalyReport>().Score > 0.8) .Knowledge("plant-runbooks", k: 3) // RAG: runbook'и по этой линии, // история похожих инцидентов .To(Llm.Factory("haiku") .SystemPromptRef("#plant-incident-explainer@v9") .Temperature(0.0).MaxTokens(600) .Tools("metrics-history", "fetch-shift-log") // агент сам дотянет данные .MaxIterations(4) .CostBudget(usd: 0.10).AsUri()) .Process<EnrichWithOnDutyEngineer>() // кто сегодня в смене на этой линии .Multicast() .To("teams://engineering-shift-{LineId}?card=adaptive") .To("sms://twilio?to={engineer.phone}") .To("kafka://incidents.predicted.archive") .End() .Otherwise() .To("kafka://scada.metrics.normal") // просто архивируем .End();
+Что здесь происходит и почему это работает:
+ML-модель не выкидывается. Anomaly score считает старый добрый XGBoost, который всю жизнь хорошо это делал. LLM встаёт после него.
+LLM объясняет, а не предсказывает. Промпт: «вот аномалия на линии 7, top-3 фичи такие-то, runbook говорит так-то, история инцидентов такова. Объясни на одной странице, что вероятно произошло, что инженеру делать в ближайший час, и какие три параметра проверить первыми». Это работа, в которой LLM объективно сильна — синтез.
+Tools у агента — это доступ к данным завода.
+metrics-history
+— этоdirect:metrics-history
+маршрут, который запрашивает Influx/Prometheus.fetch-shift-log
+— REDB-запрос к журналу смены. Агент сам решит, нужно ли ему дёргать эти инструменты, и сколько раз.MaxIterations(4)
+— потолок, чтобы не зацикливался.Доставка — multi-channel. Teams-карточка с кнопкой «принял в работу» (которая, кстати, дёрнет ApprovalGate-подобный webhook), SMS на дежурный телефон через Twilio (этот transport уже есть в
+redb.Route
+), архив в Kafka.Aggregate by LineId, window 5min
+— это EIP Aggregator, который буферизует метрики по группам. Никакойredb.Route.Llm
+-специфики; это обычная интеграционная логика, которая работает у вас уже годы.
+Что это даёт бизнесу: время от появления аномалии до «инженер на линии знает, что искать» падает с 40 минут (старый процесс — оператор увидел, позвонил, описал, инженер пришёл, начал искать) до 4-5 минут. На дорогостоящих линиях каждый час простоя — это десятки тысяч долларов; этот маршрут окупается за первое предотвращённое срабатывание.
+И заметьте, что во всех трёх кейсах роль LLM — узкая. Не «AI управляет фабрикой». Не «AI ведёт финансы компании». LLM делает одну конкретную вещь в маршруте — суммаризацию, синтез, выбор из кандидатов, объяснение. А вокруг неё стоит вся обычная enterprise-инфраструктура: расписания, ETL, RAG, мульти-канальная доставка, аудит, governance, бюджеты. Эта инфраструктура — и есть redb.Route
+. LLM — последний кирпич, который раньше требовал отдельного сервиса.
+Storytelling: как чат-демо вырастает в платформу
+Расскажу путь, как он происходит у живой команды (видел его уже несколько раз).
+День 1. Кто-то показывает коллегам, что Claude может ответить на тикет. Файл LlmHttpRoutes.cs
+— 6 строк, From("http://...").To("llm://haiku")
+, и demo работает. Это проект, не платформа.
+From("http:0.0.0.0:5088/api/llm/ask?inOut=true") .ConvertBody<string>() .To(Llm.Factory("haiku").MaxIterations(1).AsUri());
+День 7. Коллеги говорят: «модель не помнит, что я писал минуту назад». Добавляется X-Chat-Id
+header → ConversationId
+-поле → ConversationFromHeader()
+. Один Process(...)
+-шаг, никакой инфраструктуры — AddRedbLlmStorage()
+уже в Program.cs
+, MessageProps
+уже пишутся.
+.Process(e => e.In.Headers[LlmHeaders.ConversationId] = e.In.Headers["X-Chat-Id"]?.ToString() ?? "default")
+День 14. «Хочу, чтобы он мог запускать команды на сервере». Появляется tool-shell
+— отдельный маршрут с .AsLlmTool("shell")
+, через redb.Route.Exec
+с allowlist [cmd, pwsh]
+, working-dir в temp, timeout 5 сек, cap 8KB на stdout. Безопасность — в DSL, а не в советах в промпте.
+From("direct:tool-shell") .AsLlmTool("shell").SideEffect(ToolSideEffect.ReadOnly).Cost(ToolCostClass.Cheap) .Then() .To(ExecDsl.Run().AllowedCommands("pwsh", "cmd").TimeoutMs(5000).MaxStdoutBytes(8192));
+День 21. «Финансы говорят, что счёт за токены превысил план в 4 раза». Добавляется .CostBudget(usd: 0.50)
+на conversation-id. Без новых сервисов, без новых дашбордов — он попадает в CostBudgetProps
+, и tsak.web уже умеет его показывать.
+День 30. «Нужно, чтобы каждое действие агента было audit-able». Уже работает: ToolAuditProps
+пишется автоматически с момента, когда инструмент стал маршрутом. Аудитор открывает SQL-запрос — все вызовы за квартал, фильтрованные по tenant и side-effect. Никакого «mes давайте интегрируем».
+День 45. «Юристы хотят human-in-loop на refund-инструмент». Добавляется .Process<ApprovalGate>()
+перед exec. ApprovalProps
+пишется, Slack-bot подключается как ещё один HTTP-маршрут. Всё.
+День 60. «Запускаем второго клиента — отдельная база, отдельный биллинг». Добавляется Process(e =>
+e.In
+.Headers[LlmHeaders.Redb] =
+e.In
+.Headers["X-Tenant"])
+. Один маршрут, два tenant'а, ноль изменений в логике.
+День 90. «Хочу прогнать ночью миллион тикетов через классификатор». Маршрут уже есть. Меняется один аргумент: .Mode(LlmMode.Batch)
+— вместо синхронного вызова открывается Anthropic Batch, LlmBatchProps
+хранит id, LlmCallbackProcessor
+ждёт webhook, результаты идут в тот же Kafka, что и днём. -50% к токен-счёту.
+День 120. «Нужны метрики по версиям промптов: которая хуже». EvalRunProps
+уже хранит прогоны. Открыли SQL, посчитали accuracy по PromptTemplateRef
+, увидели регрессию в v4, откатились на v3 — без redeploy.
+В этом нарративе нет сюжета «и тут мы переписали всё на Kubernetes-операторе». Нет момента «а потом мы добавили AI-платформу». Те шесть строк чат-демо, которые работали в День 1, — это буквально тот же файл, который в День 120 ведёт двух тенантов с jury-арбитражем, batch-классификацией миллиона тикетов за ночь и audit'ом регуляторного уровня. Не было миграции. Не было переписывания. Не было «архитектуры v2». Просто в маршрут добавлялись строчки по мере появления требований. Чат-демо не «вырастает» в платформу — он с первого дня стоит на платформе и постепенно включает её фичи.
+Demo-маршруты: где это посмотреть живьём
+Все паттерны выше — не concept-art. В репозитории redbase-app/redb-route
+есть два демо-файла:
+LlmDemoRoutes.cs
+— три формы LLM-вызова: inline-step (.Llm("demo-stub")
+), endpoint (.To("llm://demo-stub")
+), tool (.AsLlmTool("echo_tool")
+). Все на stub-провайдере, без API-ключей.LlmHttpRoutes.cs
+— два HTTP endpoint'а (/api/llm/ask
+без инструментов,/api/llm/shell
+с shell-инструментом черезredb.Route.Exec
+), оба с conversation-id из заголовка, оба с реальным Claude Haiku.
+Запускается одной командой dotnet run
+в redb.Route.Demo
+— открывается порт 5088, можно curl'ом проверять прямо сейчас:
+curl -d "what time is it on this host?" -H "X-Chat-Id: test1" \ http://localhost:5088/api/llm/shell
+Repo: github.com/redbase-app/redb-route (Apache 2.0).
+Что не сделано, и почему я это говорю
+Sliding-window память не сделана. Полноценный векторный store ещё не сделан. Нет «AI-graph editor» в tsak.web — runtime-инспекция конверсаций показывается как обычные REDB-объекты в существующем UI, без отдельного pane. Нет встроенной интеграции с одним из коммерческих eval-сервисов — EvalRunStore
+хранит прогоны, но «нажми кнопку и сравни с продом» нет.
+Это нормально. Skip-list — это техника, не оправдание. Open-source-проект, который врёт в README про скоп — это проект, в который никто не зайдёт во второй раз. Я лучше скажу «не сделано» и сделаю в следующей минорке, чем «сделано» и буду отбиваться от issue про падающий feature.
+Zoom out: почему именно ESB
+В индустрии популярен термин «AI-нативная архитектура». Под ним обычно понимают «у нас всё построено вокруг LLM», и обычно за этим стоит новый dev-stack рядом со старым. Проблема не в стеке — проблема в дублировании политики.
+Если у вас retry — в двух местах. Если у вас audit — в двух местах. Если у вас governance — в двух местах. Если у вас tenant-isolation — в двух местах. И эти две реализации разъезжаются через год: AI-stack добавил bounded-context-аудит, integration-stack — нет. Юристы спрашивают «один отчёт за всё» — никто не может его собрать.
+ESB-подход — это сознательный выбор одной точки контроля для I/O всех видов. LLM — это вид I/O (асинхронный, с инструментами, с контекстом, но всё ещё I/O). Поместить его в ESB — это не философская поза, а инженерная экономия: одна governance-политика покрывает всё.
+Это не новый поинт, на эту тему писали Гарланд и Рипли (см. SOA-литературу 2000-х). Новое — что в 2026 этот поинт стал применим к LLM, потому что у LLM появились стандартные интерфейсы (tool-use, streaming, batch-API, embeddings). До этого момента «LLM в ESB» означало «налепить REST-обёртку и молиться». Сейчас означает «использовать существующие EIP-паттерны с минорными адаптациями».
+И именно в эту экономию упирается весь смысл redb.Route.Llm
+. Не «у нас лучший агент-движок». Лучший — у Microsoft и LangChain. У нас — тот же средненький агент-движок, но в правильном месте архитектуры. Я считаю, что это важнее.
+Roadmap
+3.1.2:
+sliding-window память как штатная политика;
+vector-store interface поверх существующего
+IKnowledgeStore
+;интеграция с pgvector и Qdrant как первые back-end'ы;
+EvalCompare
+-DSL для side-by-side прогонов между версиями промптов.
+3.2:
+ConversationProps-tree UI в tsak.web;
+streaming-aware aggregator EIP (буферизация частичных кадров до семантических границ);
+distributed batch — несколько worker'ов на один LlmCallbackProcessor.
+Потом:
+multi-modal (image input/output как вариант
+Out.Body
+);voice-агенты как ещё один transport (
+voice://...
+);routing по cost/latency/accuracy SLA per-message.
+Ссылки
+Первая статья (анонс 3.1.0): redb.Route 3.1.0 — LLM как ещё один транспорт
+GitHub: github.com/redbase-app/redb-route (Apache 2.0)
+Демо-маршруты:
+redb.Route/demos/redb.Route.Demo/Routes/LlmDemoRoutes.cs
+,LlmHttpRoutes.cs
+Storage-серия (REDB изнутри): см. серию статей про REDB на Хабре
+dev.to companion: ссылка появится после публикации (не перевод — отдельный текст на ту же тему)
+TL;DR. В 3.1.0 я обещал — в 3.1.1 сделал. Streaming end-to-end, ToolCache, KnowledgeStore (RAG-чанки), BatchStore с webhook-консьюмером, EvalRunStore, PromptTemplate-реестр с версионированными #
+-refs, мульти-tenant ?redb=<name>
+, идемпотентные tool-вызовы, approval-gates с человеком в цикле, audit trail. Поверх — два мощных паттерна: jury из дешёвых моделей с arbiter-моделью сверху через штатный Scatter-Gather + Aggregator EIP, и sub-agents as tools — рекурсивная архитектура, где инструмент агента сам по себе агент со своей моделью/промптом/бюджетом/RAG, реализованная без единой строки спецкода благодаря RouteToolBridge → direct: → llm://
+. И три полноценных enterprise-кейса с кодом: ежедневный финансовый отчёт CFO на email, недельный cash-flow forecast с jury-арбитражем, проактивный production-алерт инженеру через гибрид XGBoost + LLM. Главный поинт не в фичах — enterprise-уровневые свойства появляются ровно в тот день, когда они вам нужны, без переписывания, потому что LLM лежит в ESB вместе со всем остальным I/O. Те шесть строк чат-демо, которые вы написали в День 1, — это буквально тот же файл, который в День 90 работает как мульти-tenant платформа с audit'ом, бюджетами и jury-арбитражем. Точки «а теперь давайте перепишем» в этой истории нет.

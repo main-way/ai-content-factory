@@ -1,0 +1,93 @@
+{
+  "date": "2026-05-17",
+  "count": 6,
+  "posts": [
+    {
+      "id": "50e6453b15f5",
+      "title": "Simulate real-world places with Project Genie and Street View",
+      "url": "https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-17T19:53:18+00:00",
+      "summary": "We’re expanding access to Google AI Ultra subscribers globally and introducing a new capability powered by Street View.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "750113e8e058",
+      "title": "Introducing Gemini Omni",
+      "url": "https://deepmind.google/blog/introducing-gemini-omni/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-17T19:50:57+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "b454f8817363",
+      "title": "Introducing Google Antigravity 2.0",
+      "url": "https://deepmind.google/blog/introducing-google-antigravity-2-0/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-17T19:43:45+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": false
+    },
+    {
+      "id": "7dd26d19052d",
+      "title": "We’re launching the Google DeepMind Accelerator program in Asia Pacific to tackle environmental risks.",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/accelerator-ai-for-the-planet/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-17T18:00:00+00:00",
+      "summary": "The Asia-Pacific region is a global engine for economic growth, but it's also highly vulnerable to climate change. While green technologies are gaining momentum, a recen…",
+      "author": "Dr. Ramine Tinati",
+      "tags": [
+        "Google DeepMind",
+        "Google in Asia"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "519b4bba1e12",
+      "title": "Gemini for Science: AI experiments and tools for a new era of discovery",
+      "url": "https://deepmind.google/blog/gemini-for-science-ai-experiments-and-tools-for-a-new-era-of-discovery/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-17T13:50:34+00:00",
+      "summary": "A collection of science tools and experiments to expand the scale and precision of scientific exploration.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "c27234506bbb",
+      "title": "Making it easier to understand how content was created and edited",
+      "url": "https://deepmind.google/blog/making-it-easier-to-understand-how-content-was-created-and-edited/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-17T13:43:50+00:00",
+      "summary": "We're expanding our tools to help you understand how content was created and edited across the web.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

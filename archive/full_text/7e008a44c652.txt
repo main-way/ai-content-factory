@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:FlexPath: Learned Semantic Path Priors for Image-Based Planning
+View PDFAbstract:Recent learning-based path planners use neural networks to process visual map representations and approximate heuristics for classical search algorithms, yielding near-optimal paths with reduced search effort. However, these methods are tied to the shortest-path objective implicit in their supervision, which limits their flexibility to accommodate alternative criteria. We introduce FlexPath, a two-stage framework that decouples feasibility from preference. In Stage 1, we use imitation learning to acquire a task-independent spatial prior over feasible paths from visual map inputs. In Stage 2, differentiable Path Shape Objectives (PSOs) adapt this prior toward task-specific criteria without relearning path structure, requiring only efficient objective-level adaptation. A single pretrained model can be adapted to multiple objectives. For shortest-path planning, FlexPath reduces search effort on TMP by 14.3% compared to the state-of-the-art TransPath, while also finding lower-cost paths on average and demonstrating strong zero-shot generalization across three unseen domains. For obstacle clearance with minimum clearance distance 2, it achieves 96.8% full obstacle avoidance while maintaining low search cost. The framework further extends to semantic-aware avoidance and waypoint guidance via objective-level adaptation, and remains compatible with classical planners at inference time. Data and code are available at this https URL.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

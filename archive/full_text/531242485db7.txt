@@ -1,0 +1,12 @@
+Statistics > Methodology
+Title:On Response-Adaptive Targeting Strategies for Multi-Treatment Experiments
+View PDF HTML (experimental)Abstract:Response-adaptive randomization (RAR) in clinical trials aims to improve ethical and statistical efficiency by dynamically allocating patients to treatments based on observed outcomes. While RAR based on a target optimal allocation have been extensively studied for two-arms settings, their extension to multi-treatment experiments ($K \geq 2$) remains theoretically fragmented, with most existing methods focusing on specific algorithms or restricted target allocations. In this paper, we introduce a unified framework for response-adaptive targeting, the $\alpha$-Rebalancing Targeting Strategies ($\alpha$RTS), which generalize the ERADE two-armed strategy of Hu et al. [2009]. We prove that all designs in this family share fundamental asymptotic properties: strong consistency, asymptotic normality of allocation proportions and treatment effect estimators, and asymptotic efficiency. To address sparse target regimes (where some treatments are asymptotically eliminated), we further propose $\alpha$RTS with Forced Exploration, a variant that guarantees infinite sampling for all treatments while preserving the asymptotic guarantees. Extensive simulations illustrate the finite-sample behavior of $\alpha$RTS variants in a 3-armed context, highlighting in particular the critical role of forced exploration in sparse settings.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

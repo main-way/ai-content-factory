@@ -1,0 +1,17 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:H.265/HEVC Video Steganalysis Based on CU Block Structure Gradients and IPM Mapping
+View PDF HTML (experimental)Abstract:Existing H.265/HEVC video steganalysis research mainly focuses on detecting the steganography based on motion vectors, intra prediction modes, and transform coefficients. However, there is currently no effective steganalysis method capable of detecting steganography based on Coding Unit (CU) block structure. To address this issue, we propose, for the first time, a H.265/HEVC video steganalysis algorithm based on CU block structure gradients and intra prediction mode mapping. The proposed method first constructs a new gradient map to explicitly describe changes in CU block structure, and combines it with a block level mapping representation of IPM. It can jointly model the structural perturbations introduced by steganography based on CU block structure. Then, we design a novel steganalysis network called GradIPMFormer, whose core innovation is an integrated architecture that combines convolutional local embedding with Transformer-based token modeling to jointly capture local CU boundary perturbations and long-range cross-CU structural dependencies, thereby effectively enhancing the capability to perceive CU block structure embedding. Experimental results show that under different quantization parameters and resolution settings, the proposed method consistently achieves superior detection performance across multiple steganography methods based on CU block structure. This study provides a new CU block structure steganalysis paradigm for H.265/HEVC and has significant research value for covert communication security detection.
+Submission history
+From: Xiang Zhang [view email][v1] Thu, 12 Feb 2026 04:14:06 UTC (1,764 KB)
+[v2] Sun, 15 Mar 2026 09:37:37 UTC (3,987 KB)
+[v3] Mon, 11 May 2026 15:52:49 UTC (12,513 KB)
+[v4] Mon, 15 Jun 2026 02:32:58 UTC (10,878 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

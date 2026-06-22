@@ -1,0 +1,55 @@
+Physical AI is the
+NVIDIA is talking about it, consulting firms are talking about it, and so are the investors and robotics startups. They are all talking about Physical AI. Suddenly, the term is everywhere.
+But what exactly is Physical AI? And just as importantly, what is it not?
+In this post, let’s demystify the term. We’ll not only explain the concept itself but also try to separate it from nearby terms it’s often confused with — world models, embodied AI, physics AI, and digital twins.
+1. What Physical AI Is
+A working definition I find useful is this [1]:
+Most AIs today live on screens. They do tasks such as classifying images, summarizing documents, drafting emails, or recommending which movie to watch next. All of them are certainly useful works, but they all happen in the digital world.
+A physical AI is different than that. It breaks out of the digital world and actually interacts with the real world. It takes in what’s happening around it through sensors, works out what needs to be done, and finally actually does it. The action might be achieved through a robot arm, a humanoid, a drone, a self-driving car, or an industrial machine on a factory floor.
+The output of Physical AI is no longer just text on a screen; it’s an actual movement in the world.
+Think about picking up a cup. A chatbot that simply explains how to do it is not Physical AI. But a robot that can see the cup, and adjust its gripper to move the cup to where you want, that’s much closer to a Physical AI.
+So, Physical AI isn’t really a single model doing one thing. It’s a whole system that has to:
+With this definition in mind, we can now separate Physical AI from the nearby terms it most often gets mixed up with.
+Let’s start with the World Model.
+2. Physical AI vs World Model
+The term World Models [2] often appears in the same conversations of robots, autonomous agents, simulation, synthetic environments, etc. If we are not careful, it’s very easy to slide into treating it as just another way of saying Physical AI.
+But that’s not true.
+World Model is, as the name suggests, a model. More concretely, this model is an internal representation of how an environment changes. What naturally comes out of it is the prediction capability. It lets an agent in that environment anticipate what comes next. If I move forward, what do I run into? If I push this object, does it slide or topple? If that car changes lanes, where will it be in two seconds? All those questions can be answered with that prediction capability.
+A robot might use a world model to imagine what could happen if it approaches the cup from different angles. But the key realization here is that the world model itself is not the robot, not the gripper, not the motor controller, and not the full system that actually moves the cup.
+That’s actually the key relationship here: A world model can live inside of Physical AI, especially for simulation, training, and planning. But on its own, it only predicts possible futures; it doesn’t act. Without sensors/controls/actuators that connect to the real world, it can only imagine.
+To summarize: world models predict what could happen. Physical AI acts in the real world.
+3. Physical AI vs Embodied AI
+This is the pair people mix up most. You can see that people and many companies use the two terms interchangeably. In fact, in a recent post from Cambridge Consultants [3], Capgemini’s innovation chief literally called it “physical AI, or embodied AI as some call it.”
+But I believe there’s a useful distinction we can keep in mind, and the key is about what they emphasize.
+Physical AI emphasizes what a system does, and this includes perceiving, deciding, and acting in the real world. Embodied AI, on the other hand, is more about what shapes the intelligence.
+The “embodied” in its name comes from the embodiment hypothesis [4]. That hypothesis believes that intelligence doesn’t just live in software you load onto a machine. It’s growing out of having a body. With the body, it can sense, try out things, and learn from what happens. The body here isn’t the output device at the end of the process; it’s effectively part of how it learns to think in the first place.
+In practice, however, Physical AI and Embodied AI usually go hand in hand. This is especially true in practical robotics discussions, as many real robots are both embodied AI and Physical AI.
+To summarize: Physical AI is about acting in the world. Embodied AI is about intelligence being shaped by a body and its interaction with the environment.
+4. Physical AI vs Physics AI
+This pair is easy to confuse if you are not careful in reading their names. One is Physical, the other is Physics.
+When people say Physics AI, what they usually refer to is AI methods that incorporate the laws of physics. A good example is the physics-informed neural network, or PINN [5].
+Technically, PINN is just an ordinary neural network. What makes them different is the loss formulation. On top of the usual mean-squared loss between the predictions and observations, the model also gets penalized whenever its predictions violate the known physical equations or constraints.
+Take battery cooling as an example. Say we want to predict the temperature evolution inside a battery pack under different battery working conditions. A pure data-driven neural model would learn the pattern straight from sensor readings. A PINN would learn from the same data, but additionally, it’s also required to respect energy-balance equations and known initial/boundary constraints by injecting those physics-informed loss terms.
+This is very useful because the model can produce physically plausible predictions instead of hallucinating. Also, it has the potential to let the model reach the same level of accuracy but with reduced data size. An additional benefit is that it can generalize better under conditions not covered by the training set.
+However, on its own, physics AI is still just a model. It can predict or simulate a physical process, but it does not make the action in the real world.
+And that’s the key distinction from Physical AI.
+In practice, Physics AI can cross into Physical AI when it is wired into the action loop. For our battery cooling example, if an intelligent cooling control system reads in the predictions produced by the temperature model and adjusts fan speed accordingly in real time, then the physics-aware model is now part of a Physical AI system.
+To summarize: Physics AI is about physical laws. Physical AI is about physical action.
+5. Physical AI vs Digital Twin
+Digital twins is another confusing term, especially in industrial settings such as factories, warehouses, or autonomous systems.
+Here is a widely adopted definition for digital twin [6]: it’s a virtual representation of a real physical object, process, or system. The digital twin is usually connected to data from the real system, and can update itself when the real system evolves.
+On the factory floor, a production line digital twin is commonly used. A factory production line usually consists of machines, conveyors, sensors, products, quality-control stations, etc., and the corresponding digital twin is a virtual replica of that line. It ingests various sensor readings, machine status, and maintenance records to understand the current status of the line. As the real production line changes, it updates the virtual view in real time.
+Now, with this virtual twin, production engineers can monitor the health status of the line and possibly identify efficiency bottlenecks. Another common usage of a digital twin is to simulate what-if scenarios to optimize the operation policy before deploying it in reality.
+But none of that makes the digital twin a Physical AI, as the digital twin doesn’t decide or act on the real production line by itself.
+To summarize: A digital twin represents a physical system. Physical AI acts in a physical system.
+6. Putting It Together
+Now that we look back at the different terms we’ve covered, we can see one pattern stands out: world models, embodied AI, physics AI, and digital twins are all about understanding or representing the physical world. Physical AI is the only one defined by acting in it.
+In a real system, those different concepts can definitely (and probably should) work together: to support a single robot that acts in the physical world, digital twins might be used to help the robot plan, and a world model or a physics-aware model might be used to generate the predictions to guide the robot’s action.
+Hopefully, the next time you come across these terms in a headline, a paper, or a product pitch, you’ll be able to tell them apart instead of letting them blur together.
+References
+[1] NVIDIA, “What is Physical AI?” Link: https://www.nvidia.com/en-us/glossary/generative-physical-ai/
+[2] Ha & Schmidhuber, “World Models,” 2018. Link: https://arxiv.org/abs/1803.10122
+[3] Cambridge Consultants, “Physical AI and humanoid robotics are at a turning point.” Link: https://www.cambridgeconsultants.com/physical-ai-and-humanoid-robotics-at-a-turning-point/
+[4] Smith & Gasser, “The development of embodied cognition: six lessons from babies.” Link: https://pubmed.ncbi.nlm.nih.gov/15811218/
+[5] Raissi, Perdikaris, and Karniadakis, “Physics-informed neural networks,” 2019. Link: https://doi.org/10.1016/j.jcp.2018.10.045
+[6] IBM, “What is a digital twin?” Link: https://www.ibm.com/think/topics/digital-twin

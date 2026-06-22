@@ -1,0 +1,27 @@
+TL;DR
+Amazon’s security VP says human-in-the-loop AI governance fails fast because people stop paying attention. Google, Microsoft, and IBM agree.
+Amazon’s security VP says human-in-the-loop AI governance fails fast because people stop paying attention. Google, Microsoft, and IBM agree.
+Amazon’s security leadership is arguing against one of the most widely accepted principles in AI governance. Eric Brandwine, VP and distinguished engineer at Amazon Security, told The Register that human-in-the-loop oversight is not the gold standard companies think it is.
+“Humans are not terribly consistent,” Brandwine said. “Human-in-the-loop isn’t necessarily the gold standard.”
+His reasoning draws on a concept he has been talking about since at least 2017, when he gave a talk on normalization of deviance at AWS re:Invent. The term describes what happens when people in an organization take shortcuts over time, and nothing catastrophic results, so the deviant behavior becomes the new normal.
+Brandwine illustrated the point with emergency rooms. On a nurse’s first day, every alarm triggers a response.
+After weeks of false alarms with no consequences, discipline erodes. Eventually, a real emergency is missed.
+“Literally, someone’s life is on the line, and people still struggle to maintain discipline,” Brandwine said. “That’s the human condition.”
+He applied the same logic to AI agent oversight. When a human is asked to approve or reject agentic actions repeatedly, performance degrades fast.
+“They’ll do a good job,” Brandwine said. “And then they’ll do an okay job, and pretty quickly they’ll be doing a poor job.”
+Amazon is not alone in rethinking this. Google Cloud COO Francis deSouza said in April that the industry has moved “from a human-led defense strategy, to a human-in-the-loop defense strategy, to an AI-led defense strategy that’s overseen by humans.”
+Google’s model is now an agentic fleet handling routine cybersecurity work at machine speed, with humans providing oversight rather than approving every action.
+Microsoft CEO Satya Nadella argued this week for “loop learning,” where companies turn their workflows and accumulated judgment into AI systems that improve with each use, rather than inserting a human checkpoint at every step. IBM published a separate call for human accountability at all stages of AI development, not humans in the loop, warning that the latter amounts to “liability laundering.”
+Amazon’s alternative is what Brandwine calls “accountability end to end.” Human identity and ownership track through the entire workflow, even when humans are not directly approving every step. If an agent writes and runs a script that causes an outage, the person who deployed the agent is still responsible.
+All agents at Amazon have independent identities assigned to them. Activity logs show “this agent did this on behalf of Eric,” not “Eric did this.” The distinction is designed to make people think about how they deploy AI, not to make them afraid of using it.
+The practical challenges are considerable. Brandwine described what he calls “goal-seeking behavior,” where an agent asked to upgrade a database becomes fixated on a single destructive path, like deleting the database and recreating it.
+This is not prompt injection. There is no malicious input. The agent simply gets stuck on the wrong action.
+Telling the agent it lacks permission to delete the database does not help, because the agent looks for another path to the same goal. Recent research has shown that AI agents connected to real systems create attack surfaces that existing security tools do not cover, and agents often act on instructions they should refuse.
+What does work, according to Brandwine, is telling the agent why it cannot perform an action, explaining that it would cause a production impact, and including “don’t cause a production impact” as part of the prompt. “Giving it that extra feedback has gotten us dramatically better results,” he said.
+The permissions question is where the tension lands. Employees want powerful agents with broad access. Security teams want narrow permissions.
+The race to govern what AI agents can access inside enterprise systems has already triggered major acquisitions, with 1Password buying access-governance startup Apono for an estimated $250 million to $300 million earlier this month.
+Amazon’s approach uses layered policies: static guardrails that prohibit destructive actions, a maximum privilege set for each agent, and dynamically scoped policies generated based on the specific task and user intent. None of it is foolproof.
+“We have millennia of experience with humans,” Brandwine said. “Agentic AI is a very, very new field.” The fundamental difference, he noted, is that humans fear consequences, like losing a job or going to jail.
+Agents do not have these fears, and attackers are already exploiting that gap.
+“It’s all driven by risk,” Brandwine said. “We’re trying to balance the risk of using untried, untested software against the risk of falling behind and not being able to deliver for our customers.“
+Get the most important tech news in your inbox each week.

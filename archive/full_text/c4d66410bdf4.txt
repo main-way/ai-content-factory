@@ -1,0 +1,8 @@
+I had the same issue on Volvo. They have a developer API so i was able to make an alternative application
+https://github.com/rachyandco/vlv-companion
+What is important to know is that ANY manufacturer has to follow the EU DATA ACT
+https://eur-lex.europa.eu/eli/reg/2023/2854/oj/eng
+in there, article 3 is pretty clear:
+"Connected products shall be designed and manufactured, and related services shall be designed and provided, in such a manner that product data and related service data, including the relevant metadata necessary to interpret and use those data, are, by default, easily, securely, free of charge, in a comprehensive, structured, commonly used and machine-readable format, and, where relevant and technically feasible, directly accessible to the user."
+this mean they should AT LEAST provide a read only API.
+So send them a request to follow the Data Act.

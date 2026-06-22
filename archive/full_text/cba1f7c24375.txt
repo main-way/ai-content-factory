@@ -1,0 +1,12 @@
+Computer Science > Sound
+Title:AP-GRPO: Anchor-Gated Phonetic Alignment with Policy Optimization for Pathological Speech Reconstruction
+View PDF HTML (experimental)Abstract:Pathological speech from patients with neurodegenerative and neuromotor disorders is often acoustically distorted and linguistically fragmented, making pathological speech reconstruction necessary to recover intended textual content from distorted and incomplete speech recordings. Crucially, such recordings are rarely uniformly degraded: some words or short phrases remain reliable and can serve as audible anchors for reconstructing the corrupted surrounding content. We introduce Anchor-gated Phonetic Group Relative Policy Optimization (AP-GRPO), a GRPO framework with phonetic reward that aligns speech language models (SLMs) through audible-anchor preservation and inter-anchor phonetic compatibility to the original speech signal. AP-GRPO consists of: (i) an anchor-gated reward that matches reliable audible anchors in clear regions; and (ii) an inter-anchor phonetic alignment reward that evaluates whether recovered contents are phonetically supported by the corresponding corrupted inter-anchor speech span. Across four disease conditions, AP-GRPO improves faithful speech reconstruction, and the learned anchor constraint automatically adapts to each condition and thus reveals interpretable disease-specific profiles: conditions with severe articulatory degradation require stronger anchor enforcement, whereas milder impairment or linguistically impaired conditions rely more on phonetic alignment for inter-anchor recovery.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

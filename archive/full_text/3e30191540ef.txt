@@ -1,0 +1,103 @@
+Привет, Хабр!
+Какие варианты?
+Когда речь заходит о десктопных приложениях на веб‑технологиях, большинство разработчиков сразу вспоминают Electron. VS Code, Discord, Slack, Postman — все это работает именно на нем.
+Но за последние несколько лет появилось множество альтернатив, которые обещают меньший расход памяти, лучшую производительность и более простой доступ к системным ресурсам.
+В рамках небольшого R&D я решил сравнить три современных решения:
+Tauri я в этот список включать не стал, так как учить Rust ради контейнера для веб‑приложения это слишком. По крайней мере для моих задач уж точно.
+Electron не включил потому что все итак знают что он медленный, прожорливый, но достаточно стабильный и production‑ready.
+Условия эксперимента
+Чтобы сравнение было более‑менее честным, во всех трех случаях использовался одинаковый стек для фронтенда:
+React 18.3.1
+TypeScript 5.7.2
+Vite 6.0.3
+Тестовое приложение выполняло одинаковый набор действий:
+запрос списка TODO через https://jsonplaceholder.typicode.com/;
+отображение списка TODO
+получение информации о системе
+отображение загрузки процессора
+отображение использования памяти
+работа с API операционной системы
+Таким образом сравнивалась не логика приложения, а именно накладные расходы каждого фреймворка.
+Внимание!
+Во всех трех приложениях стили в UI отличаются!
+Что происходит под капотом?
+Самое интересное начинается именно здесь.
+Хоть все три решения позволяют писать интерфейс на React (подставьте ваш любимый фреймворк), архитектурно они устроены совершенно по-разному.
+ElectroBun
+ElectroBun позиционируется как современная альтернатива Electron.
+Под капотом находятся:
+Bun Runtime
+Chromium Embedded Framework (CEF) — опциональный рендерер на базе Chromium, но может использовать и WebView ОС
+Zig
+нативная оболочка поверх ОС
+В отличие от Electron здесь нет Chromium + Node.js в классическом понимании.
+Однако концептуально подход остается похожим:
+Frontend ↓ RPC/Bridge ↓ Backend Runtime ↓ Операционная система
+Для доступа к файловой системе или системным API необходимо описывать RPC-вызовы между фронтендом и бэкендом.
+Например, для определения функции, которую мы хотим вызвать из UI необходимо определить RPC:
+// Бэкенд import { BrowserView } from "electrobun/bun"; // Общие типы, описывающие созданные в бэкенде процедуры import type { AppRPCType } from "../shared/types"; import os from "os"; const appRPC = BrowserView.defineRPC<AppRPCType>({ maxRequestTime: 5000, handlers: { requests: { getSystemInfo: () => { const cpus = os.cpus(); return { platform: os.platform(), arch: os.arch(), hostname: os.hostname(), cpuModel: cpus[0]?.model || "Unknown", cpuCores: cpus.length, totalMemory: formatBytes(os.totalmem()), bunVersion: process.versions.bun, pid: process.pid, }; }, // ... остальные RPC процедуры } } })
+Затем на клиенте инициализировать Electroview
+для вызова RPC напрямую с фронтенда:
+// Фронтенд (rpc.ts) import { Electroview } from "electrobun/view"; // Общие типы, описывающие созданные в бэкенде процедуры import type { AppRPCType } from "../shared/types"; const rpc = Electroview.defineRPC<AppRPCType>({ handlers: { requests: {}, }, }); export const electroview = new Electroview({ rpc });
+И затем уже вызов в кастомном хуке:
+// Фронтенд (useSystemInfo.ts) import { electroview } from "../rpc"; export function useSystemInfo() { // ... логика const fetchSystemInfo = useCallback(async () => { setError(null); try { const rpc = electroview.rpc; if (!rpc) { setError("RPC недоступен"); return; } const sys = await rpc.request.getSystemInfo(); const mem = await rpc.request.getMemoryInfo(); const proc = await rpc.request.getProcessInfo(); setSystemInfo(sys); setMemoryInfo(mem); setProcessInfo(proc); } catch (err) { setError(err instanceof Error ? err.message : "Ошибка загрузки"); } }, []); // ... логика }
+И на выходе получаем следующее приложение:
+Тут нас больше всего интересует потребление памяти в простое - 278 мегабайт, не мало! От Electron по потреблению памяти отличается не сильно, что впрочем и неудивительно - ведь мы тащим практически полноценный браузерный движок.
+Интересно, что примерно через 30-40 минут простоя ElectroBun снижал потребление памяти примерно до 70-80МБ, однако даже в таком случае это в 2 раза больше, чем у конкурентов.
+NeutralinoJS
+Архитектура
+NeutralinoJS использует совершенно другой подход. Под капотом находится небольшой нативный сервер на C++. Вместо поставки собственного Chromium используется встроенный WebView операционной системы:
+Windows - WebView2 (Edge)
+Linux - WebKitGTK
+macOS - WKWebView
+Схема выглядит примерно так:
+Frontend ↓ Neutralino API ↓ Нативный процесс C++ ↓ ОС
+Самое интересное — системные функции доступны напрямую из фронтенда! То есть никакой промежуточный бэкенд писать вообще не нужно. Для небольших десктопных приложений это невероятно удобно.
+Немного примеров кода, сразу станет все понятно:
+// Конфигурация приложения (neutralino.config.json) { "applicationId": "test-app", "version": "1.0.0", "defaultMode": "window", "documentRoot": "/react-src/dist/", "url": "/", "enableServer": true, "enableNativeAPI": true, "nativeAllowList": ["app.*", "filesystem.*", "computer.*", "os.*"], "modes": { "window": { "title": "test-app", "width": 800, "height": 500, "minWidth": 400, "minHeight": 200, "icon": "/react-src/public/favicon.svg", "enableInspector": false } }, "cli": { "binaryName": "test-app", "resourcesPath": "/react-src/dist/", "extensionsPath": "/extensions/", "binaryVersion": "6.8.0", "clientVersion": "6.8.0", "frontendLibrary": { "patchFile": "/react-src/index.html", "devUrl": "http://localhost:5173", "projectPath": "/react-src/", "initCommand": "npm install", "devCommand": "npm run dev", "buildCommand": "npm run build" } } }
+Сверху явно видно к каким именно предметным областям библиотеки мы дали доступ приложению - к методам: файловой системы, ОС, компьютере пользователя.
+И сразу пишем фронтенд, не отвлекаясь на написание чего-либо еще!
+// Фронтенд (useSystemInfo.ts) import { filesystem, computer, os } from "@neutralinojs/lib"; // глобальные константы, вместо которых в рантайме автоматически будут подставлены значения declare const NL_VERSION: string; declare const NL_PID: number; export function useSystemInfo() { // ... логика const fetchSystemInfo = useCallback(async () => { try { const [cpuInfo, memInfo, osInfo, arch, hostnameResult] = await Promise.all([ computer.getCPUInfo(), computer.getMemoryInfo(), computer.getOSInfo(), computer.getArch(), os.execCommand("hostname"), ]); const totalMemory = memInfo.physical.total; const availableMemory = memInfo.physical.available; const usedMemory = totalMemory - availableMemory; const memoryPercent = (usedMemory / totalMemory) * 100; setSystemInfo({ platform: `${osInfo.name} (${arch})`, host: hostnameResult.stdOut.trim(), cpu: { model: cpuInfo.model, cores: (cpuInfo as any).cores ?? 0, speed: (cpuInfo as any).speed ?? 0, }, runtime: `Neutralino v${NL_VERSION} (PID: ${NL_PID})`, memory: { total: totalMemory, used: usedMemory, percent: memoryPercent, }, }); } catch (err) { console.error("Failed to fetch system info:", err); } }, []); // ... логика }
+Вот такой результат у нас получился:
+25 мегабайт! В 10 раз меньше чем у ElectronBun! Это впечатляет, но впереди еще Wails, который на Go... Даст ли ему это какое то преимущество в этом сценарии?
+Wails
+Архитектура
+Wails занимает промежуточное положение между предыдущими решениями. Для отображения интерфейса также используется системный WebView:
+Edge WebView2
+WKWebView
+WebKitGTK
+Однако вместо встроенного API разработчик пишет полноценный backend на Go.
+Схематично это выглядит примерно так:
+Frontend ↓ Bindings ↓ Go Backend ↓ ОС
+Под капотом фреймворк Wails автоматически сгенерирует биндинги методов Go для вызова на вашем фронтенде, давайте сразу покажу код, так понятнее всего, даже если вы никогда не писали на Go (как и я):
+// Бэкенд (app.go) import ( // ...зависимости // зависимость для сбора метрик "github.com/shirou/gopsutil/v3/cpu" "github.com/shirou/gopsutil/v3/mem" "github.com/shirou/gopsutil/v3/process" ) // функция сбора метрик func (a *App) collectOnce(proc *process.Process) { metrics := &SystemMetrics{} metrics.Pid = int32(os.Getpid()) if infos, err := cpu.Info(); err == nil && len(infos) > 0 { metrics.CpuModel = infos[0].ModelName } // Системная память if v, err := mem.VirtualMemory(); err == nil { metrics.TotalRAM = v.Total metrics.AvailRAM = v.Available } // Память процесса if proc != nil { if mi, err := proc.MemoryInfo(); err == nil { metrics.ProcessRAM = mi.RSS // физически занятая процессом память } } // CPU системы (общая загрузка всех ядер, 0..100) if cpuPcts, err := cpu.Percent(0, false); err == nil && len(cpuPcts) > 0 { metrics.SystemCPU = cpuPcts[0] } // CPU процесса if proc != nil { if p, err := proc.Percent(0); err == nil { metrics.ProcessCPU = p } } metrics.CollectedAt = time.Now().UnixMilli() // Сохраняем последние метрики a.mu.Lock() // Сохраняем статические поля, которые заполнились в startup if metrics.Platform == "" { metrics.Platform = a.lastMetrics.Platform metrics.Host = a.lastMetrics.Host metrics.Arch = a.lastMetrics.Arch metrics.Runtime = a.lastMetrics.Runtime } a.lastMetrics = metrics a.mu.Unlock() } // ...логика // функция, которая вернет JSON с метриками на фронтенд func (a *App) SystemInfo() string { a.mu.RLock() m := a.lastMetrics a.mu.RUnlock() data, err := json.Marshal(m) if err != nil { return "{}" } return string(data) }
+Для функции SystemInfo
+автоматически будут сгенерированы биндинги в папке wailsjs/go/main
+. Примерно это будет выглядеть вот так:
+// @ts-check // Cynhyrchwyd y ffeil hon yn awtomatig. PEIDIWCH Â MODIWL // This file is automatically generated. DO NOT EDIT export function SystemInfo() { return window['go']['main']['App']['SystemInfo'](); }
+А также типы:
+// Cynhyrchwyd y ffeil hon yn awtomatig. PEIDIWCH Â MODIWL // This file is automatically generated. DO NOT EDIT export function SystemInfo():Promise<string>;
+Далее смело вызываем биндинг на фронтенде:
+// Фронтенд (useSystemInfo.ts) import { SystemInfo } from "../../wailsjs/go/main/App"; interface ISystemInfo { platform: string; host: string; arch: string; runtime: string; totalRam: number; pid: number; availRam: number; processRam: number; systemCpu: number; processCpu: number; collectedAt: number; cpuModel: string; } export function useSystemInfo() { const [info, setInfo] = useState<ISystemInfo | null>(null); const [loading, setLoading] = useState<boolean>(true); const [error, setError] = useState<string | null>(null); // ... логика const fetchSystemInfo = useCallback(async () => { const loadSystemInfo = async () => { try { const systemInfoStr = await SystemInfo(); // вызов биндинга const parsed: SystemInfo = JSON.parse(systemInfoStr); setInfo(parsed); } catch (err) { setError("Failed to fetch system info"); console.error(err); } finally { setLoading(false); } }; }, []); // ... логика }
+По сути получается полноценное приложение на Go с современным веб-интерфейсом. И вот такой результат:
+Выводы
+Главным открытием для меня стал NeutralinoJS.
+До эксперимента я ожидал увидеть очередную нишевую обертку над WebView, но на практике получил очень легковесный и удобный инструмент для создания десктопных приложений с привычным веб-стеком.
+Wails тоже произвел хорошее впечатление и выглядит отличным вариантом для Go-разработчиков.
+А вот ElectroBun пока оставил смешанные ощущения: интересная технология с современным стеком, но выигрыш по потреблению памяти относительно других современных решений я в своем сценарии не увидел.
+Для удобства сделал сводную таблицу-сравнение по трем технологиям:
+Критерий | ElectroBun | NeutralinoJS | Wails |
+Язык backend | TypeScript (Bun) | Не требуется | Go |
+Frontend | Любой веб | Любой веб | Любой веб |
+Рендеринг UI | Браузерный движок + системные WebView | Системный WebView | Системный WebView |
+Полноценное Browser API | ✅ Практически полностью | ⚠️ Зависит от WebView ОС | ⚠️ Зависит от WebView ОС |
+Canvas API | ✅ | ✅ | ✅ |
+WebGL | ✅ Полная поддержка | ⚠️ Зависит от WebView ОС | ⚠️ Зависит от WebView ОС |
+WebGPU | ✅ Поддерживается | ⚠️ Зависит от WebView ОС (практически не поддерживается) | ⚠️ Зависит от WebView ОС (практически не поддерживается) |
+Работа с ОС | Через RPC | Напрямую через Neutralino API | Через Go |
+Работа с файловой системой | Через RPC | Из JS напрямую | Через Go |
+Подходит для игр и тяжелой графики | ✅ | ❌Нет полноценного браузерного движка | ❌ Нет полноценного браузерного движка |
+Подходит для CRUD/корпоративных приложений | ✅ | ✅ Оптимальный выбор в среде TS | ✅ Оптимальный выбор в среде Go |
+Подходит для системных утилит | ⚠️ Системная утилита не должна потреблять ресурсов как целый браузер | ✅ | ✅ |
+Подходит для сложной бизнес-логики | ✅Достаточно ознакомиться с демо-проектами | ❌ Слишком большие ограничения, как по ЯП, так и по API | ✅ Вся сила и мощь Go |
+P.S. Я периодически публикую результаты подобных R&D, сравнения технологий и практические эксперименты по разработке. Больше таких материалов — в моем Telegram-канале.

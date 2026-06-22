@@ -1,0 +1,321 @@
+This is Part 3 of the “Production-Grade Agentic Inference” series. Each part removes one kind of redundant work from an agentic LLM pipeline. Part 1 killed redundant prefill. Part 2 killed redundant waiting — how multiple micro-agents share one GPU through time-slicing. Part 3 (this post) keeps RAG retrieval on the GPU with a custom CUDA Top-K kernel. Part 4 persists agent state across hand-offs so the next agent never has the cold-start problem.
+Key Takeaways
+The problem: in agentic RAG, every tool call that needs context fires a similarity search. A default pipeline ships the query embedding from the GPU to Python, lets the CPU score N corpus rows and pick the best K, then ships the answer back. That round-trip is the silent tax. The compute is fine; the travel is the bill. We all know, travel is never cheap, no matter where you want to go (pun intended!)
+The easy fix: upload the corpus to VRAM once, then keep the similarity scoring, the Top-K selection, and the merge step on the device. Only the tiny per-query embedding (D floats) and the K results travel across PCIe.
+The receipts: on the same 7-year-old GTX 1080 used in Parts 1 and 2, the GPU-resident path runs the retrieval hop up to 8.57× faster than a CPU brute-force baseline. At K=8 it wins on all 15 sweep configurations (N ∈ {10k, 50k, 100k, 500k, 1M}, D ∈ {384, 768, 1024}) with speedups from 2.43× to 8.57×. At K=32 it wins on 13 of 15 configs, peaking at 7.76×. At K=100 — where the V1 selector intentionally stays simple — the CPU wins on 14 of 15 configs. That last sentence is the honest part (Well, even if I had lied, you could have easily caught it).
+The kicker: the wins are not “magic kernel” wins. They are “we stopped shipping the corpus back to host RAM for no reason” wins. It is also exactly the kind of “measure many candidates, report only the best K back to the consumer” decision a 5G base station and your phone have been making every few milliseconds since CSI feedback became a thing.
+TL;DR: Default agentic RAG treats the GPU as a serving box and the retrieval as a Python concern. Every tool call ships the query embedding D→H, lets the CPU compute N dot products, sort the candidates, pick the top K, and ship indices and scores H→D. For an agent that calls a vector store ten times per reasoning step, that round-trip is the dominant cost — not the model, not the embedding, it is the travel. CUDA-TopK-Retrieval keeps the corpus resident on the device, runs scoring + per-block partial Top-K + a multi-way merge entirely on the GPU, and exposes a tiny C++ orchestrator API (upload_corpus_rowmajor
+once, search_resident
+per query). The host-touching bytes per query collapse to one D-length embedding up and 2K results down. On a GTX 1080, across a 45-config sweep, the GPU-resident path beats the CPU-round-trip baseline on all 15 K=8 configs (2.43× to 8.57×, peaking at N=1M, D=1024) and on 13 of 15 K=32 configs (the two losses are both at the smallest N=10k for D=384 and D=768, where the round-trip itself is already cheap; big-N K=32 wins climb to 7.76×). At K=100 the V1 kernel deliberately stays simple — single-lane-per-block bubble sort with a serial merge — and the CPU wins on 14 of 15 configs; that ceiling is the article’s honest punchline and a clean setup for Part 4.
+(Quick confession before we start: I came at this from a 5G/6G RAN engineering background. Beam selection at a base station looks shockingly close to RAG Top-K — the UE scores a codebook of candidate beams by received power and reports the best handful back over the air. There is a whole section on that below — section 8 — but it is also why this kernel exists in the shape it does.)
+Architecture mental model — keep this open while you read.
+agent.embed(query) → cudaMemcpy H→D (D floats) → row_dot_scores_kernel → partial_topk_block_kernel (P blocks) → merge_partial_topk_kernel → cudaMemcpy D→H (K indices + K scores)
+Everything below is just commentary on one part of that line.
+1. A confession: every RAG step in your agent is a tiny PCIe road trip
+In Part 2 of this series, we successfully isolated our LLM agent’s inference loop, keeping token generation running hot and fast on the device. We designed a system which avoids stalling. But the moment we give that agent a tool to search an external knowledge base—the core of any multi-hop Retrieval-Augmented Generation (RAG) pipeline—we silently destroy all that hard-won performance and we hit the wall. If you have ever wired an “agentic” pipeline to a vector store through a Python retriever, here is what really happens on each tool call (with a little intentional dramatization):
+You: “Agent, find me the five chunks most relevant to ‘how do I claim deduction under section 80C?’“
+Agent: “Sure. Embedding the query on the GPU. ✅”
+Agent: “Now bouncing the query embedding back to host.”
+(cudaMemcpy D→H, ~1,024 floats) Python retriever: “Got it. NumPy loop. Dot product N times. argpartition. Top-5.”
+(CPU scores half a million corpus rows, one row at a time, while a 9 TFLOP GPU watches) Python retriever: “Done. Here are the indices and scores.”
+Agent: “Cool. Bouncing them back to the GPU now.”
+(cudaMemcpy H→D, 10 numbers) Agent: “Ready. What was the question again?”
+The agent has a perfectly good GPU. The corpus is sitting in 4 GB of the VRAM. The query embedding was already on the GPU — we just generated it there. And then, on every single retrieval hop, we ship the query back to the host, do brute-force similarity in NumPy / FAISS-on-CPU / a hand-rolled loop, and ship the answer back.
+Your GPU’s utility meter: spends most of the retrieval step idle. Your PCIe bus: gets a workout it did not sign up for. Your agent’s tool-call latency: dominated by something that is neither the model nor the embedding. That is the joke.
+That is also the dirty secret of every agentic RAG demo that scales past the toy “ten chunks in memory” stage. The retrieval hop bounces off the GPU and back, every time, and the bigger the corpus, the worse the tax. At a million rows of 1024-dim embeddings, the round-trip alone — not even the scoring, yes, just the round-trip — eats most of the budget of the retrieval step itself.
+CUDA-TopK-Retrieval is what happens when you decide the round-trip is optional and you would rather write 343 lines of CUDA than let the agent vacation through host RAM every time it wants a neighbor.
+Now imagine the real workload behind this. It is not “five chunks for one question.” It is multiple specialized micro-agents — each one running its own RAG hops, each one needing Top-K against the same corpus, each one currently paying its own PCIe bill on every tool call. Part 1 of this series killed the prefill round-trip. Part 2 made the GPU shareable across those multiple agents. Part 3 says: now that they are sharing the card fairly, stop making each one of them drive back to the host to look up a neighbor.
+2. Why does Top-K retrieval exist? (a one-minute crash course)
+Skip this if you already have a background on this. For everyone else, who are new to this field, here is a short, amateur explanation.
+A modern agent does not stuff the whole knowledge base into the prompt. It retrieves. For every reasoning step that needs grounded context, it embeds the query into a fixed-dimensional vector (D floats — typically 384, 768, or 1024), scores that vector against every row of a corpus of pre-embedded chunks (N rows, also D floats each), and returns the K corpus rows with the highest similarity. That’s it. That’s Top-K vector search. Retrieval-Augmented Generation is just a polite way of saying “Top-K plus a prompt template.”
+Two flavors of similarity show up everywhere. Dot product is the cheap one: a single fused multiply-add per dimension, N×D work in total. Cosine is dot product divided by the product of L2 norms, which becomes a free dot product if you pre-normalize the corpus once at ingest. Most production vector stores do the pre-normalization trick and call it “cosine” while running raw dot-product math at query time. The CUDA-TopK-Retrieval kernel supports both — it just multiplies by a precomputed per-row norm pointer when cosine mode is on.
+Mainstream tools (FAISS, hnswlib, the Python side of cuVS, your favorite SaaS vector DB) all do this scoring + Top-K work. Most of them do it well. The problem is where they do it. Almost every agent framework on the planet calls into the retriever from Python, and the moment Python is on the hot path, the retrieval step is no longer a GPU operation — it is a PCIe operation with a GPU on one end.
+The fix is not “a better algorithm.” It is “a much shorter road trip.”
+3. The “just keep the corpus on the GPU” lightbulb (and why it’s harder than it sounds)
+The pitch is simple
+- Upload the corpus to VRAM once at ingest.
+- For every incoming query,
+cudaMemcpy
+a tinyD
+-dimensional float embedding to the device. - Launch a scoring kernel where one CUDA thread per corpus row computes the dot product.
+- Launch a partial Top-K kernel where each block scans a disjoint row range to emit its own local top candidates.
+- Finally, launch a merge kernel to walk the per-block heads and emit the global Top-K in best-first order.
+You cudaMemcpy
+exactly 2K
+numbers back to the host: K
+indices, and K
+scores.
+This is the “treat memory retrieval as a hardware primitive, not a software API call” paradigm. The only reason this takes more than a 30-line PyTorch script to achieve is that three tedious edge cases will immediately break the naive approach.
+Problem A: Top-K on a GPU is structurally awkward
+Scoring the vectors is the easy part. It’s just matrix multiplication, and your GPU was literally born to do that—it is the hardware’s love language. Selection, however, is where the romance dies. Asking a GPU to do a full O(N log N)
+sort just to grab the top K
+results is computationally offensive; it’s like alphabetizing your entire recycling bin just to find a single receipt. You could try an O(N)
+argpartition
+, but that requires a tree-walk, which shatters GPU memory coalescing into a million unaligned reads. Tournament selection is fast, assuming you want to spend your weekend debugging edge cases. And the moment you cave and reach for a thrust
+or cub
+sorting primitive, congratulations: you have just infected your lightweight, standalone C++ pipeline with a massive build dependency.
+The architecture picks the boring answer on purpose. It relies on a tiny per-block O(K2) bubble sort over a disjoint row range, driven by a single thread per block, and capped off with a serial multi-way merge. On paper, this sounds terrible. In practice, it works beautifully, for the exact reason stated honestly in the kernel’s comments:
+// Single-threaded per-block scan that materializes a local Top-K list for its row partition.
+// This is not the fastest global selection, but it is easy to reason about and matches the CPU ordering rule exactly.
+__device__ void bubble_downward(float* const s, int* const ids, const int n) {
+// Tiny O(K^2) sort acceptable because K is capped (kMaxSupportedK) and this runs on a single lane per block.
+for (int i = 0; i < n - 1; ++i) {
+for (int j = 0; j < n - 1 - i; ++j) {
+if (device_is_better(s[j + 1], ids[j + 1], s[j], ids[j])) {
+const float ts = s[j];
+s[j] = s[j + 1];
+s[j + 1] = ts;
+const int ti = ids[j];
+ids[j] = ids[j + 1];
+ids[j + 1] = ti;
+}
+}
+}
+}
+This is the design contract: V1 picks auditability over cleverness. The whole kernel is small enough that a reviewer can read it end-to-end in a coffee break, line it up against the CPU oracle, and convince themselves the GPU output is bitwise correct. The day someone wants a 2× kernel, this gets replaced with a warp-specialized tournament selector — the article’s section 9 promises that explicitly. For K ≤ 32
+, the single-lane bubble sort is genuinely fine. For K=100
+, it falls off a cliff. That cliff is documented and benchmarked. (Section 9 again.)
+Problem B: GPU and CPU must agree, bit-for-bit, on the tiebreak
+Well, like any World Cup Football group league match, ties happen more than often. Two corpus rows have the same score down to fp32 precision. Which one wins?
+If the CPU oracle and the GPU kernel disagree on the tiebreak, you can never trust a benchmark, because every “mismatch” alarm is now ambiguous: did the GPU score a row wrong, or did the GPU just break ties differently? You will spend a week in a 3 AM Slack channel.
+The fix is to define the comparator in one sentence and implement it in two places — once on the host, once on the device — and make those two implementations literally the same expression.
+On the host side it looks like:
+// Lexicographic "better" relation for (score, index) pairs under float equality semantics.
+// We use strict weak ordering for std::partial_sort: higher score wins; on exact tie, smaller index wins.
+bool is_better_score_pair(const float32_t score_lhs, const index_t idx_lhs, const float32_t score_rhs,
+const index_t idx_rhs) {
+// Primary key: similarity score (higher is better for retrieval).
+if (score_lhs != score_rhs) {
+return score_lhs > score_rhs;
+}
+// Deterministic tie surface: prefer the smaller corpus row id to mirror stable DB primary keys.
+return idx_lhs < idx_rhs;
+}
+On the device side it looks like:
+// Device-side replica of the host comparator to avoid cross-TU linkage issues for __device__ code paths.
+__device__ bool device_is_better(const float score_lhs, const int idx_lhs, const float score_rhs, const int idx_rhs) {
+// Same ordering semantics as topk::is_better_score_pair for bitwise-identical tie surfaces.
+if (score_lhs != score_rhs) {
+return score_lhs > score_rhs;
+}
+return idx_lhs < idx_rhs;
+}
+That is the whole tiebreak policy in five lines, twice. Higher score wins; on exact tie, smaller corpus row index wins. The CPU oracle uses it in std::partial_sort
+, the GPU uses it in the bubble sort and in the multi-way merge, and the benchmark harness will not start timing until the GPU output matches the CPU output exactly — same indices in the same order, scores within a small fp32 tolerance.
+That single comparator is the reason the article can quote a speedup at all. Without it, “the GPU is 8× faster” is just “the GPU is 8× faster at being wrong differently.”
+Problem C: VRAM is precious, and the worst place to do malloc
+is the hot path
+Allocating GPU memory per-query is like signing a new car lease every time you need to drive to the grocery store. It is the easiest way to turn a 1-millisecond search into a 50-millisecond traffic jam.
+Instead, GpuTopkEngine::initialize
+buys the car upfront. It runs all the cudaMalloc
+calls during engine startup, sizing the buffers for the worst possible configuration. Once the engine is actively serving queries, the hot path is completely free of memory management. It is just fast kernel launches and tiny data copies. No fragmentation, no negotiating with the allocator, and cudaMalloc
+is permanently banned from showing up in your performance traces.
+4. The four-stage pipeline (the actually-cool part)
+Step 0: Engine init — eight cudaMallocs sized for (max_n, max_d, max_k) (GpuTopkEngine::initialize)
+Step 1: Upload corpus once into VRAM (upload_corpus_rowmajor)
+Step 2: Per query — H→D the embedding (search_resident, first line)
+Step 3: Score N rows on device (row_dot_scores_kernel)
+Step 4: Per-block partial Top-K (partial_topk_block_kernel)
+Step 5: Multi-way merge into global Top-K (merge_partial_topk_kernel)
+Step 6: D→H the K indices + K scores (search_resident, last lines)
+Let’s walk through each one with the real code. The snippets are even shorter than the tiny source files.
+Step 1 — Upload the corpus once
+This is the boring step that makes the rest of the article possible. The corpus goes up exactly one time per ingest, and stays there for the lifetime of the engine:
+cudaError_t GpuTopkEngine::upload_corpus_rowmajor(const float32_t* const host_corpus_rowmajor, const index_t N,
+const index_t D) {
+if (N > max_n_ || D > max_d_) {
+return cudaErrorInvalidValue;
+}
+const std::size_t corpus_bytes = sizeof(float) * static_cast<std::size_t>(N) * static_cast<std::size_t>(D);
+const cudaError_t st = cudaMemcpy(d_corpus_, host_corpus_rowmajor, corpus_bytes, cudaMemcpyHostToDevice);
+if (st != cudaSuccess) {
+return st;
+}
+resident_n_ = N;
+resident_d_ = D;
+return cudaSuccess;
+}
+And that is the entire ingest API. At 1024 dimensions, one million vectors is exactly 4 GB of float32
+data, sliding perfectly into the 8 GB VRAM of a vintage GTX 1080. What happens when your corpus hits 10 million vectors? That becomes a distributed systems problem, not a kernel problem. If your data exceeds VRAM, you need a sharding strategy, which we cover in Section 9. But for now, we are here to solve the compute bottleneck, not to invent a new database.
+Step 2 — Score N rows on the device
+One CUDA thread per corpus row. 256 threads per block. Each thread accumulates the dot product across D dimensions and writes one float into the dense scores[N]
+buffer:
+// Row-major dot-product with optional cosine normalization; coalesced reads along D are sacrificed for clarity in v1.
+// Microarchitectural note: one thread per row is simple; a follow-up can tile D across warps to raise arithmetic intensity.
+__global__ void row_dot_scores_kernel(const float* const corpus, const float* const query, const float* const row_l2,
+const float query_l2, const int N, const int D, const int cosine_enabled,
+float* const scores) {
+// Map each CUDA thread to exactly one corpus row to keep the reduction logic easy to audit against the CPU reference.
+const int row = static_cast<int>(blockIdx.x) * static_cast<int>(blockDim.x) + static_cast<int>(threadIdx.x);
+if (row >= N) {
+return;
+}
+float acc = 0.0F;
+const int base = row * D;
+for (int col = 0; col < D; ++col) {
+acc += corpus[static_cast<std::size_t>(base + col)] * query[static_cast<std::size_t>(col)];
+}
+if (cosine_enabled != 0) {
+const float denom = query_l2 * row_l2_fetch(row_l2, row);
+scores[static_cast<std::size_t>(row)] =
+denom > 0.0F ? (acc / denom) : -std::numeric_limits<float>::infinity();
+} else {
+scores[static_cast<std::size_t>(row)] = acc;
+}
+}
+One thread per row is the simplest possible mapping. The code comment is honest about it: a follow-up can tile D
+across warps to raise the arithmetic intensity. For V1, this gives the auditor a one-to-one correspondence with the CPU loop and lets them sleep peacefully at night.
+Step 3 — Each block builds its own local Top-K
+Now comes the most awkward part. Picking the top K
+out of N
+is conceptually “sort and slice,” but a full sort wastes most of the work. We split the row range across P
+blocks (capped at 128), each block walks its disjoint slice with the tiny bubble sort from Section 3, and writes its own local top-K list out:
+const int P = std::min(kMaxPartialBlocks, std::max(1, (static_cast<int>(N) + 4095) / 4096));
+partial_topk_block_kernel<<<P, 1>>>(d_scores_, static_cast<int>(N), static_cast<int>(K), P, d_partial_scores_,
+d_partial_indices_);
+One thread per block. Yes, that is wasteful on paper. It is also why a human can audit this kernel in twenty minutes — the policy if (threadIdx.x != 0 || blockIdx.x >= P) return;
+collapses the whole intra-block reasoning down to “this block’s lane 0 owns rows [start, end)
+.” Every block’s s[]
+and ids[]
+arrays live in registers / local memory, sized by the compile-time kMaxSupportedK = 256
+cap.
+Step 4 — Merge the partials into the global Top-K
+Finally, one thread on one block walks P
+cursors over the per-block lists. Each list is already best-first. Pick the best head; emit; advance that one cursor; repeat K
+times:
+for (int out = 0; out < K; ++out) {
+int best_p = -1;
+float best_s = -std::numeric_limits<float>::infinity();
+int best_i = std::numeric_limits<int>::max();
+for (int p = 0; p < P; ++p) {
+if (heads[p] >= K) {
+continue;
+}
+const float s = partial_scores[static_cast<std::size_t>(p * K + heads[p])];
+const int idx = partial_indices[static_cast<std::size_t>(p * K + heads[p])];
+if (best_p < 0 || device_is_better(s, idx, best_s, best_i)) {
+best_p = p;
+best_s = s;
+best_i = idx;
+}
+}
+out_scores[static_cast<std::size_t>(out)] = best_s;
+out_indices[static_cast<std::size_t>(out)] = best_i;
+heads[best_p] += 1;
+}
+The merge is ruthlessly efficient: at most P * K
+reads and exactly K
+writes, executed by a single thread. To prevent floating-point chaos, the device_is_better
+comparator enforces strict determinism—if two heads tie on score, the lower corpus row index wins, mirroring the CPU oracle perfectly. Finally, two microscopic cudaMemcpy
+calls shuttle the K
+winning indices and scores back to the host. The agent ingests them, and the RAG loop fires again.
+That is the entire hot path: one H -> D
+embedding transfer, three kernel launches, and two tiny D -> H
+result copies. No Python host loops, no framework overhead, and absolutely no PCIe vacations.
+5. The receipts (i.e., the numbers)
+Let’s now evaluate it against the baseline, and see if it was worth the trouble.
+A quick note on methodology, before the benchmarking police arrives: every comparison below runs on the same GPU as Part 1 and Part 2 (NVIDIA GeForce GTX 1080, Pascal sm_61, 8 GB), driver 535.309.01, CUDA 12.2, host CPU Intel Core i7-8700K, compiler flags -O3 -march=native --expt-relaxed-constexpr
+. Three trials, one warmup, seed 1, fixed RNG (std::mt19937
+with std::normal_distribution
+), Gaussian embeddings, L2-normalized in dot-product mode. The full sweep is N ∈ {10k, 50k, 100k, 500k, 1M} × D ∈ {384, 768, 1024} × K ∈ {8, 32, 100} → 45 configurations, all measured via cudaEventElapsedTime
+with cudaDeviceSynchronize
+bracketing every interval. Code in src/host/bench_main.cpp
+; raw numbers in examples/example-run-results/benchmark_run_results.csv
+.
+The two paths timed:
+- GPU-resident (treatment). Corpus is already on the device. Each timed iteration: cudaMemcpy query H→D (D floats) + score kernel + per-block partial Top-K + merge + cudaMemcpy K scores D→H + cudaMemcpy K indices D→H. End to end.
+- CPU round-trip (baseline). Models the default agent flow: cudaMemcpy query D→H + CPU brute-force scoring +
+std::partial_sort
+with the same comparator + cudaMemcpy indices H→D + cudaMemcpy scores H→D. End to end.
+Both paths run inside the same process, use the same query bytes and the same comparator. The only difference is where the work happens. If you have ever held the position “PCIe is fine, we benchmark the kernels in isolation,” this is what it costs you when you stop pretending the round-trip is free.
+Headline (GTX 1080, three trials, mean ms, ratios computed from per-trial means):
+| Config (N × D, K) | Baseline mean (ms) | GPU mean (ms) | Speed-up |
+|---|---|---|---|
+| 10,000 × 1024, K=8 | 9.56 | 1.35 | 7.10× |
+| 100,000 × 768, K=8 | 70.66 | 25.70 | 2.75× |
+| 500,000 × 1024, K=8 | 483.90 | 69.79 | 6.93× |
+| 1,000,000 × 1024, K=8 | 977.80 | 114.12 | 8.57× |
+| 1,000,000 × 1024, K=32 | 973.89 | 125.46 | 7.76× |
+| 10,000 × 384, K=100 | 3.37 | 155.25 | GPU is 46× slower |
+| 1,000,000 × 384, K=100 | 329.49 | 682.38 | GPU is 2.07× slower |
+Yes, you are reading the numbers right.
+The first five rows are the article’s point: at K=8, the GPU-resident path wins on every single configuration in the sweep (all 15 of them), by ratios ranging from a polite 2.43× at N=50k, D=384 to a loud 8.57× at N=1M, D=1024. At K=32 it wins on 13 of 15 — the two losses are both at the smallest N (10k), for D=384 and D=768, where the round-trip itself only costs ~3–7 ms and the GPU’s three kernel launches barely have room to amortize. By the time you reach realistic agentic-corpus sizes (N ≥ 50k), K=32 also wins comfortably, peaking at 7.76×. The big speedups are not “magic kernel” speedups — they are “we stopped shipping the corpus back to host RAM for no reason” speedups. The GPU was always going to win this race; the only reason it ever lost was that we kept making it commute unnecessarily.
+The last two rows are where this article earns its right to call itself honest. At K=100, the single-lane bubble sort per block becomes O(K²) = O(10,000) sequential comparisons per block, and the serial merge walks P × K
+head positions. The CPU’s std::partial_sort
+is heap-based, vectorized by the compiler, and effectively O(N log K) — much friendlier to K=100. So the GPU loses on 14 of 15 K=100 configs, sometimes by 2×, sometimes by 46×. (There is exactly one K=100 config where the GPU still wins — N=1M, D=1024, 1.44× — because by then there is enough scoring work to dominate the selection ceiling. One row out of fifteen is not a save; it is a curiosity.) That is not a bug; it is the V1 design statement (“auditability over cleverness”) meeting its first concrete consequence. The fix is in Section 9, and it is a warp-specialized tournament selector — not a frantic refactor.
+One more honest caveat in the numbers above: in this committed snapshot, the GPU clocks were not locked. That means absolute milliseconds move slightly with thermals and DVFS; the ratios stay stable. The repo ships scripts/lock_gpu_clocks.sh
+for anyone who wants to reproduce the table with locked clocks on a GTX 1080. Needless to mention, the structural finding does not change.
+6. “OK, but how is this different from FAISS / cuVS / hnswlib?”
+A very reasonable question, and worth answering directly, because the vector-search world has a lot of overlapping primitives and an HPC reader will ask this in the first comment.
+- FAISS (CPU index). The default in most agent frameworks. Excellent library. Lives on the CPU. Every query an agent makes pays the PCIe round-trip this article exists to delete. If you’re already on
+IndexFlatIP
+and you’re CPU-bound on retrieval, you are the target audience. - FAISS (GPU index). Solves the GPU residency problem, with a much more mature kernel suite than this repo. The point of CUDA-TopK-Retrieval is not “I out-engineered FAISS-GPU” — it never was and neither does it try to be. The point is to show, in 343 lines, what the actually-cool retrieval primitive looks like and why agentic pipelines feel slow when it isn’t there. If you need a production index today, use FAISS-GPU. If you want to understand the small hot path that makes the difference — one tiny H→D copy, three kernel launches, two small D→H copies — read this kernel.
+- NVIDIA cuVS / RAFT. The serious, production-grade in-GPU vector-search stack. Bigger, faster, more algorithms, more dependencies. Same caveat as FAISS-GPU: this kernel is the pedagogical / single-binary version, not a competitor.
+- hnswlib and friends (approximate nearest neighbor). Different shape of trade-off entirely — they trade exactness for sublinear query time on huge corpora. CUDA-TopK-Retrieval is exact brute-force scoring + selection; the speedup story is purely about residency, not about skipping work.
+The point of this repo is not “build your production vector DB on it.” The point is: the agent’s retrieval hop wants to stay on the GPU, and once you accept that, even a tiny hand-written kernel beats a hosted-on-CPU brute force across most realistic K values on a 7-year-old card.
+7. So… how do I actually try it?
+Clone the repo, then build with CMake (the -DGGML_CUDA=ON
+flag mirrors the llama.cpp build ergonomics from earlier parts of the series):
+cmake -S . -B build -DGGML_CUDA=ON -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j
+cd build && ctest --output-on-failure
+Then run the demo and the benchmark exactly as the README does:
+./build/topk_demo # tiny smoke story (GPU required)
+./build/topk_bench --n 20000 --d 384 --k 32 --trials 3 --warmup 1 --seed 1 --metric 0
+topk_demo
+is the tiny smoke story — 4,096 corpus rows, 128 dims, K=8, prints the neighbor IDs. topk_bench
+is the harness that emits the TOPK_BENCH_JSON
+line the Python campaign script consumes. For the full 45-config sweep on canonical hardware:
+python3 scripts/benchmark_campaign.py.example # full sweep (GPU required; writes under examples/benchmark-campaign-runs/run-*)
+Before publishing-grade runs, lock the GPU clocks (the repo provides the script):
+sudo bash scripts/lock_gpu_clocks.sh
+Requirements: Linux, CUDA toolkit, an NVIDIA GPU (Pascal or newer), and the patience to read a CMake file once. Artifacts land under examples/example-run-results/
+for the quick path or examples/benchmark-campaign-runs/run-<UTC>-<pid>/
+for the full sweep, and the README is explicit that committing .nsys-rep
+databases is forbidden — PNG timelines only.
+8. Plot twist — this is just 5G beam selection in a CUDA costume
+I should probably confess at this point: I am still not a “GPU person” by training. I came up through telecom — 5G NR with a foot creeping firmly into 6G research — and I keep noticing that every infrastructure problem in agentic AI is a problem which was already solved at the radio layer, maybe around twenty years ago.
+For readers without a 3GPP background: in a modern 5G base station, the antenna does not radiate equally in every direction. It forms a codebook of directional beams — narrow lobes of radio energy — and at any given moment your phone is being served by the one beam (or the small handful of beams) whose received power is highest on your device. Choosing the right beam, fast, is one of the most-studied retrieval problems in wireless. The UE measures L1-RSRP (a per-beam received-power score) across the candidate beams the gNB (5G base station) has told it to measure, then reports back the best handful via the CSI feedback channel. The gNB uses those reports to decide which beams to schedule (Well, this was as simple as I could make it, the real story is really ugly!).
+That is Top-K vector search, in radio costume. The candidate beams are the corpus. The instantaneous channel measurement is the query. The score is received power. K is the number of best beams the report carries back. The UE does the scoring down at the baseband DSP layer — it does not ship the I/Q samples back to a central CPU farm and ask a Python script which beam is best, because doing so on a per-millisecond loop would melt the air interface.
+Look at this side-by-side and tell me with a straight face these are different problems:
+| 5G NR beam selection (at the UE / baseband) | CUDA-TopK-Retrieval (at the GPU) |
+|---|---|
+| Codebook of candidate beams (fixed at config) | Corpus of pre-embedded chunks (uploaded once) |
+| Instantaneous channel measurement | Query embedding for this hop |
+| L1-RSRP per candidate beam | Cosine / dot-product score per corpus row |
+| Top best beams reported back to gNB | Top-K row indices returned to the agent |
+| Per-beam score lives in baseband DSP, not in a host CPU | Per-row score lives in VRAM, not in host RAM |
+| Doing this on a CPU round-trip would melt the air interface | Doing this on a CPU round-trip melts the agent’s throughput |
+A quick aside to two very different audiences
+To my HPC and CUDA-first friends reading this: I hear you. None of the mathematical primitives here are novel. We all know cuBLAS
+runs matmuls faster, cuVS
+handles Top-K at datacenter scale, and a highly tuned tournament selection will crush this per-block bubble sort. But the goal here isn’t to reinvent NVIDIA’s enterprise libraries. The value is the zero-dependency packaging. This is a 343-line architectural proof—complete with a strict CPU oracle and a 45-config benchmark sweep—designed to run entirely on a vintage 8 GB consumer GPU. It’s the kind of end-to-end engineering artifact you build to prove you actually understand hardware memory bottlenecks, rather than just knowing how to call a framework API.
+To my telecom friends: if “Top-K vector search” sounded like a foreign language until ten minutes ago, you are not behind — you are early. For twenty years our world was FPGAs, ASICs, PRBs, and constellation diagrams. We optimized spectrum, not silicon. Then AI-RAN, NWDAF, NVIDIA Aerial, and the 3GPP Rel-20 study items all happened too fast within a few months, and the next decade of telecom careers now demands being bilingual between spectrum-world and GPU-world. The intuition translates cleanly. You have been doing receiver-side Top-K under hard real-time constraints since the first MIMO codebook. Same animal, just in a new zoo.
+9. Honest caveats (because the comments are coming)
+If you came here to find what is wrong with this project — congratulations, you are this article’s first careful reader. Straight from the README’s LIMITATIONS section and the inline code comments:
+- K=100 is where V1 loses. The partial Top-K path uses single-lane-per-block selection for auditability; it is not yet a warp-specialized tournament-selection kernel. At K=100 the O(K²) bubble sort dominates, and on the CSV the CPU pulls ahead on 14 of 15 K=100 rows (sometimes by 2×, sometimes by 46×). The lone GPU win at K=100 — N=1M, D=1024, 1.44× — is the scoring work finally being big enough to swamp the selection ceiling, not the selector getting any better. This is documented; the fix is a known follow-up.
+- GPU clocks are not locked in the committed receipt. The committed
+environment.json
+reportsgpu_clocks_locked: false
+. Absolute milliseconds shift with thermals on a consumer card; the ratios in the headline table are durable. The repo shipsscripts/lock_gpu_clocks.sh
+(persistence mode + lock to 1607 MHz application clocks for a stock GTX 1080) for anyone who needs publication-grade numbers. - Numeric tolerance, not exact float equality. GPU vs CPU score comparisons use a small fp32 tolerance per score; ties are still resolved deterministically by index. This is a real-world necessity — fp32 reductions associate differently on a GPU than on a CPU — and the harness will not start timing until indices match exactly.
+- Synthetic embeddings. The benchmark uses Gaussian-random vectors (
+std::normal_distribution
+, seed 1) to isolate the residency-vs-round-trip signal from content effects and keep trials reproducible bit-for-bit. Real embeddings will produce noisier per-trial absolute timings; the structural ratio between PCIe-vacation and on-device math does not move. - One CUDA architecture class. All numbers come from one Pascal-class GTX 1080. On Ada / Hopper the absolute milliseconds will shrink for both paths; the structural finding (PCIe round-trip cost dominates a CPU-side retrieval) becomes more important on faster GPUs, not less, because the kernel time shrinks faster than the round-trip does.
+- RAG slice, not a full vector DB. This is a similarity + Top-K slice. No compression (PQ, OPQ), no filtering, no multi-GPU sharding, no concurrency between queries inside one engine instance. It is the retrieval-hop primitive an agent calls — not a replacement for FAISS-GPU or cuVS.
+Everything on this list is on the roadmap. None of it changes the headline result. The point of putting it in writing is that you should not have to dig for it — and the moment a benchmark blog post hides its caveats is the moment its numbers stop being trustworthy.
+10. Wrap (and the setup for the final part)
+If you build agentic pipelines for a living: please go and look at your retriever. Open whatever profiler you trust. Time one tool call end-to-end. If your GPU utilization drops to zero while a Python host process grinds through a similarity search, you have already won the diagnostic battle. The fix is on GitHub.
+If you write CUDA for a living: Yes, the O(K2) bubble sort is intentional. A warp-specialized tournament selector is on the roadmap.
+If you build telecom infrastructure for a living: Yes, you caught me. This is the exact same baseband retrieval primitive you have been writing in DSP code for twenty years. The AI industry just changed the vocabulary; the math hasn’t budged.
+Coming up next: How to Stop Your Agents from Trauma-Dumping on Each Other
+CUDA-TopK-Retrieval proves you can stop bouncing every retrieval hop off the GPU. But if you reread caveat #1 plus the K=100 rows in Section 5, you have already spotted the next ceiling: the per-query work is independent across queries.
+Every retrieval hop starts cold. The corpus is on the device, sure. But the agent’s state — the embeddings of its previous decisions, the keys and values that it would naturally attend back over — gets dropped and rebuilt on every hand-off. The GPU stays warm; the agent’s memory stays cold.
+That is fine for a one-shot RAG step. It falls apart the moment you run the workload this series was built for: multi-hop reasoning across a swarm of specialized agents. At that scale you stop caring about “did we keep the retrieval on the GPU” and start caring about questions a single-shot kernel cannot answer:
+- When agent A hands off to agent B, can B resume with A’s accumulated context instead of cold-starting?
+- How small can the per-hop persistent state be, and still be useful?
+- What is the latency cost of restoring that state on the next agent’s GPU?
+- How do we make hand-offs not lose information?
+To get the answer of these questions, you will have to do exactly what your CPU does during a cudaMemcpy
+: sit there patiently and wait for the next part.
+See you in Part 4, the final one.

@@ -1,0 +1,23 @@
+Let’s Talk Agentic Development: Spotify x Anthropic Live
+AI agents are transforming the way we build — and even how we think of ourselves as software developers. Both Spotify and Anthropic have been exploring what this shift means in practice, and on March 30, we got together at Spotify's London HQ to share what we're learning.
+In our fireside chat “Let’s Talk Agentic Development”, Spotify's chief architect, Niklas Gustavsson, sat down with Anthropic’s David Soria Parra (co-creator of MCP) and Christian Ryan (applied AI lead) for a wide-ranging discussion on what agentic-first development actually looks like at scale — from the tools and infrastructure that make it work, to the organizational shifts it demands.
+Watch our special fireside chat with Anthropic
+Some highlights from the conversation:
+More than vibes: The day Opus 4.5 went online
+November 25, 2025 — the moment when agentic-first software development got real. One model release showed up as a visible inflection point on Spotify's internal charts — and changed how engineers at both companies work day to day. Hear what it was like from the inside.
+“That has really been the shift for me — going into the office one week, seeing people in front of an IDE, coming back three weeks later and seeing everyone in front of terminals only.” — David Soria Parra, Anthropic
+Honk: Spotify's background coding agent, powered by Claude
+Spotify lets anyone prompt an agent with a Slack message. What could go wrong? Hear about the journey from deterministic code migrations to a Slack-native coding agent to using agents to perform complex software migrations across thousands of repos at once — and where Honk is headed next.
+“A very typical user interaction these days is some people discussing some problem they want to solve on Slack and then just @mentioning Honk — like, go solve this.” — Niklas Gustavsson, Spotify
+Context and control: Foundations for AI at scale
+How to standardize your ecosystem and orchestrate Claude across thousands of repos. Both teams share what's actually working — and where the gaps still are — when it comes to giving agents the right context at enterprise scale.
+“When it comes to context management and context engineering, I think having a good set of actually fairly simplistic setup that is reproducible across engineers, with a good set of Claude MD setups, a good set of skills that really capture the essence of the role you're trying to do or the domain you're trying to operate in. I think that's really it and don't overthink it.” — Christian Ryan, Anthropic
+Humans vs. agents: Testing, reviews, and governance
+What changes when agents can ship code faster than humans can review it? The panel gets into the new bottlenecks — and the hard questions about accountability — that come with scaling agent-generated output.
+“It doesn't really matter who generated what or what was behind it. If it’s an agent or a human, it’s very much outcome-based, and you also want to have someone who’s accountable for the outcome.” — Christian Ryan, Anthropic
+What’s next?
+Toward the end of the conversation, David points out that 2025 has been about the creation of code, but the next frontier is agents taking on the full software lifecycle — maintenance, deletion, and the kind of work nobody wants to do but everyone needs.
+Backstage is evolving from a human-facing developer portal into an agent-first platform, with MCP connections replacing manual workflows.
+And at Anthropic, the same internal dogfooding (or as Anthropic calls it, “ant-fooding”) culture that produced Claude Code and Cowork continues to surface new product ideas at a pace that surprises even the people building them.
+Watch the full conversation above, and check out our Honk blog series for a deeper dive into how we're using background coding agents at Spotify:
+Thanks to our friends at Anthropic for a great discussion and to everyone who joined us online and in person.

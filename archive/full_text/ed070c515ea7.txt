@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Perceptually-Weighted Video Quality Metric for Asymmetric Encoded Sports Videos
+View PDF HTML (experimental)Abstract:Objective video quality metrics commonly assume uniform spatial attention, an assumption that conflicts with the selective nature of human visual perception, particularly in sports videos. Here, allocating more bits for salient regions through semantic encoding can lead to significant bitrate savings. We present a Perceptually-Weighted Video Quality Metric (PW-VQM), a full-reference metric that accounts for the unequal perceptual importance of spatial regions and therefore targets quality evaluation for asymmetrically encoded content. SSIM maps computed in a multiscale wavelet domain are weighted by differentiating between foreground and background regions. Perceptually salient foreground regions are identified by combining open-vocabulary object detection with optical flow analysis, and are assigned higher weight during quality aggregation. Evaluated on sports video content, PW-VQM achieves a Spearman Rank Order Correlation Coefficient of 0.9511, outperforming established metrics including SSIM, VMAF, FUNQUE, and LPIPS. An ablation study confirms the individual contributions of the components of the perceptual weighting.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

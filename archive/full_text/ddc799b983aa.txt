@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Exploring Adaptive Masked Reconstruction for Self-Supervised Skeleton-Based Action Recognition
+View PDF HTML (experimental)Abstract:Recently, masked skeleton reconstruction models have emerged as strong action representation learners, driving significant progress in self-supervised skeleton-based action recognition. However, existing state-of-the-art methods must predict an exceedingly large number of spatiotemporal patches, significantly prolonging training time. Besides, by treating all spatiotemporal regions equally during reconstruction, these models are distracted from learning the critical motion patterns that underlie action semantics. To address these challenges, we propose Adaptive Masked Reconstruction (AMR), a faster and stronger pre-training framework. We first decouple the decoder from the encoder, enabling flexible prediction of larger spatiotemporal patches and dramatically reducing reconstruction complexity. Given that larger patches contain more complex information, which is challenging to predict and consequently degrades performance, we accordingly introduce an adaptive guidance module. This module identifies regions of high motion informativeness, guiding the model to focus on the most discriminative parts of each patch and alleviating reconstruction difficulty. Experiments on NTU RGB+D 60, NTU RGB+D 120, and PKU-MMD datasets demonstrate that AMR not only accelerates pre-training substantially but also improves downstream recognition accuracy, surpassing current state-of-the-art approaches.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

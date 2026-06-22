@@ -1,0 +1,59 @@
+A Deep Dive into Calibration of Language Models: Platt Scaling, Isotonic Regression, Temperature Scaling
+Discover three post-hoc methods for closing the gap between confidence and accuracy.
+# Introduction
+A model that says it is 90% confident should be right 90% of the time. When that relationship breaks down, you get a miscalibration problem. The model's scores stop telling you anything useful about reliability.
+For large language models (LLMs), miscalibration is widespread. A 2024 NAACL survey found that confidence scores diverge from actual correctness rates across factual QA, code generation, and reasoning tasks.
+Another study on biomedical models found mean calibration scores ranging from only 23.9% to 46.6% across all tested models. The gap is consistent.
+The standard solution in classical machine learning is post-hoc recalibration: fit a simple function on a held-out validation set to map raw confidence scores to better-calibrated probabilities.
+Three methods dominate: temperature scaling, Platt scaling, and isotonic regression. All three were designed for discriminative classifiers, and applying them to LLMs requires care.
+# Measuring Calibration
+The dominant metric is Expected Calibration Error (ECE). It groups predictions into confidence bins, computes the gap between mean confidence and the observed accuracy in each bin, and averages across bins weighted by size. ECE = 0 is perfect calibration.
+A reliability diagram plots confidence against accuracy. A perfectly calibrated model sits on the diagonal. An overconfident model sits below it: the curve shows high confidence, but accuracy doesn't keep up.
+A 2025 evaluation of GPT-4o-mini as a text classifier found that 66.7% of its errors occurred at over 80% confidence — the canonical overconfidence pattern.
+ECE alone is increasingly viewed as insufficient. A research paper recommends pairing ECE with the Brier score, overconfidence rates, and reliability diagrams together. A single number obscures meaningful variation in where and how a model misbehaves.
+# Why LLMs Complicate the Standard Setup
+The three methods we cover assume a fixed output space. A classifier produces one probability per class, and calibration maps them to better estimates.
+LLMs don't work this way.
+Four complications matter here.
+The output space is exponentially large: sequence-level confidence can't be enumerated. Semantically equivalent outputs may have very different token-level probabilities. Confidence disagrees across granularities; a research paper on atomic calibration showed that generative models exhibit their lowest average confidence in the middle of generation, not at the start or end.
+And many LLMs only expose top-k token probabilities through their API, so classical calibration approaches that rely on full logit access need modification.
+# Applying Temperature Scaling
+Temperature scaling divides the logit vector by a scalar T before applying softmax. When T > 1, the distribution flattens and confidence drops. When T < 1, the distribution sharpens and confidence rises.
+T is fit on a held-out validation set by minimizing negative log-likelihood. The method adds one parameter, preserves prediction rankings, and is cheap to compute.
+The original formulation targeted DenseNet image classifiers. For LLMs, temperature controls the probability distribution over the vocabulary at each decoding step, so the same logic applies.
+The problem is Reinforcement Learning from Human Feedback (RLHF). Post-RLHF models develop input-dependent overconfidence: the degree of miscalibration varies across inputs, and a single T can't account for that variation.
+Average ECE scores above 0.377 have been documented for models like GPT-3 in verbalized confidence tasks, and a 2025 survey confirms that RLHF-tuned models consistently overestimate confidence across the board.
+Adaptive Temperature Scaling (ATS) addresses this directly. ATS predicts a per-token temperature from token-level hidden features, fit on a supervised fine-tuning dataset, instead of using a single fixed T. Researchers confirmed that ATS improved calibration by 10–50% without hurting task performance. For any RLHF-tuned model, ATS is a stronger baseline than standard temperature scaling.
+Standard temperature scaling still works well for base models before RLHF. When miscalibration is roughly uniform across inputs, a single T is often enough to correct systematic over- or underconfidence.
+The problem is specific to post-RLHF models, where input-dependent overconfidence means a single T can't correct all inputs.
+# Applying Platt Scaling
+Platt scaling fits a logistic function over the uncalibrated scores: p = σ(A·s + B), where A and B are learned from a held-out validation set with binary correctness labels.
+The sigmoid shape gives a parametric mapping with two free parameters.
+Platt scaling was originally developed for SVMs but generalizes to any system that produces a scalar confidence score.
+The two-parameter fit is also data-efficient compared to isotonic regression: it can produce usable estimates from a smaller calibration set, which matters in deployment contexts where labeled correctness data is limited.
+In LLM contexts, Platt scaling operates over sequence-level or token-level confidence scores.
+A paper on LLM-generated code confidence found that Platt scaling produced better-calibrated outputs than uncalibrated scores. Another study on LLMs for text-to-SQL introduced Multivariate Platt Scaling (MPS), extending single-variable Platt scaling to combine sub-clause frequency scores across multiple generated samples — consistently outperforming single-score baselines.
+Two limitations are documented. First, global sequence-level Platt scaling is too coarse for tasks where correctness depends on local edit decisions: a single sigmoid mapping can't capture sample-dependent miscalibration patterns.
+Besides, Platt scaling can degrade proper scoring performance for strong models.
+# Applying Isotonic Regression
+Isotonic regression takes the non-parametric route.
+It learns a piecewise-constant, monotonically non-decreasing mapping from uncalibrated scores to calibrated probabilities using the Pool Adjacent Violators Algorithm (PAVA). There's no assumed shape for the calibration function, which makes it more flexible than Platt scaling when the confidence-accuracy relationship isn't sigmoid-shaped.
+The piecewise-constant output adapts to any monotone shape: linear, stepped, or concave. That adaptability is the main reason isotonic regression tends to outperform Platt scaling in empirical comparisons.
+The cost is overfitting risk on small calibration sets. The mapping only generalizes well when there's enough data to constrain it.
+Empirically, isotonic regression outperforms Platt scaling.
+A rigorous comparison across multiple datasets and architectures found that isotonic regression beat Platt scaling on ECE and Brier score with statistical significance, using paired t-tests with Bonferroni correction at α = 0.003.
+In that study, a Random Forest baseline improved from a reliability score of 0.8268 uncalibrated, to 0.9551 with Platt scaling, to 0.9660 with isotonic regression. Both methods could degrade proper scoring performance for strong models, but the isotonic edge held consistently.
+For LLM multiclass settings, it has been shown that standard isotonic regression can be improved further with normalization-aware extensions, consistently outperforming both OvR isotonic regression and standard parametric methods on NLL and ECE.
+The data requirement is the binding constraint. Isotonic regression's advantage is real, but it doesn't transfer to low-data deployment scenarios.
+# What the Literature Leaves Open
+Three gaps are worth flagging before deploying any of these methods.
+The RLHF interaction has been studied only for temperature scaling. How Platt scaling and isotonic regression perform on post-RLHF models hasn't been systematically tested. ATS exists because standard temperature scaling needed an explicit fix for this case. Whether the other two methods need similar extensions is an open question.
+Most direct comparisons of all three methods come from the general machine learning calibration literature. LLM-specific benchmarks that test all three head-to-head are rare. The ICSE 2025 code calibration paper is one of the few, and its scope is limited to code generation.
+Calibration set size is a real deployment constraint. Isotonic regression results from papers assume datasets large enough to constrain the mapping. In production with limited labeled examples, the gap between isotonic regression and Platt scaling may close or reverse.
+# Conclusion
+Temperature scaling is the right starting point for most teams. For base models without RLHF, a single T often does enough.
+For RLHF-tuned models, switch to ATS: the per-token temperature handles the input-dependent overconfidence that a global scalar misses.
+Platt scaling is the practical choice when the calibration set is small or when calibration needs to slot into a larger pipeline. It's data-efficient and straightforward to implement. The limitation is scope: it can't capture miscalibration that varies across samples, and it tends to degrade performance for strong models.
+Isotonic regression has the strongest empirical track record of the three. Use it when the calibration set is large enough to constrain the mapping without overfitting, and pair it with normalization-aware extensions in multiclass settings.
+The decision that comes before all of these is what "confidence" means for the task. Token probability, sequence probability, verbalized confidence, and consistency across samples can give different values for the same output. A calibration method applied to the wrong signal doesn't improve reliability. Getting that definition right is the prerequisite for any of the methods above to work.
+Nate Rosidi is a data scientist and in product strategy. He's also an adjunct professor teaching analytics, and is the founder of StrataScratch, a platform helping data scientists prepare for their interviews with real interview questions from top companies. Nate writes on the latest trends in the career market, gives interview advice, shares data science projects, and covers everything SQL.

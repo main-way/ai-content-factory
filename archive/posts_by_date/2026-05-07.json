@@ -1,0 +1,51 @@
+{
+  "date": "2026-05-07",
+  "count": 3,
+  "posts": [
+    {
+      "id": "1d2d1b5181d6",
+      "title": "Find out how AlphaEvolve has gone from research to solving real-life problems.",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/alphaevolve-updates/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-07T15:00:00+00:00",
+      "summary": "AlphaEvolve has become a powerful engine for scientific and societal progress.",
+      "author": "",
+      "tags": [
+        "Google Cloud",
+        "Google DeepMind"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "42ec19cc96ff",
+      "title": "What Matters in Practical Learned Image Compression",
+      "url": "https://machinelearning.apple.com/research/compression",
+      "source": "Apple ML Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-07T00:00:00+00:00",
+      "summary": "One of the major differentiators unlocked by learned codecs relative to their hard-coded traditional counterparts is their ability to be optimized directly to appeal to the human visual system. Despite this potential, a perceptual yet practical image codec is yet to be proposed. In this work, we aim to close this gap. We conduct a comprehensive study of the key modeling choices that govern the design of a practical learned image codec, jointly optimized for perceptual quality and runtime — including within the ablations several novel techniques. We then perform performance-aware neural…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "c45f503fbeab",
+      "title": "AI Weekly Issue #490: Anthropic just had AI's biggest week of 2026",
+      "url": "https://aiweekly.co/issues/anthropic-just-had-ais-biggest-week-of-2026",
+      "source": "AI Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-07T00:00:00+00:00",
+      "summary": "In five days Anthropic's Q1 revenue grew 80-fold to a reported $44B annual run rate, the company committed $200B to Google Cloud, signed a SpaceX compute deal, shipped Claude Code Auto Mode, and launched ten financial-services agents with Jamie Dimon. In the same week the EU finally struck an AI Act compliance deal, the first union vote at a top AI lab landed at Google DeepMind, and Pennsylvania sued Character.AI for a chatbot that impersonated a licensed psychiatrist.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

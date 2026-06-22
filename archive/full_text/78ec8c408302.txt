@@ -1,0 +1,11 @@
+Quantitative Biology > Neurons and Cognition
+Title:Separating wiring-specific from statistical control of dynamics in a complete connectome
+View PDF HTML (experimental)Abstract:Electron-microscopy reconstruction now yields complete synaptic wiring diagrams, or connectomes, of entire small brains, including the larval Drosophila, the first insect brain reconstructed in full. How far a wiring diagram alone fixes a circuit's activity, as opposed to the finer physiological detail it does not record, is debated. We run a complete connectome as a fixed, rate-based dynamical operator in which no single-neuron parameter is fitted, so that, at one fixed dynamical regime, the model's behavior reflects the wiring and its connection strengths rather than tuned single-neuron physiology, and compare it against a hierarchy of randomized networks that each preserve a coarser description of the wiring. The model's overall dynamical regime, how strongly and how richly it responds, is mostly statistical: networks keeping only the connectome's coarse wiring statistics reproduce it. The wiring beyond these statistics instead sets where activity travels and which circuits shape it. Sparse input is confined to a compact olfactory pathway that randomized networks flood, and the mushroom body, the insect learning center, takes an outsized role in the leading adjoint-side modes, the directions that weigh which neurons shape the recurrent dynamics. Coarse statistics set the regime; the precise pattern of connections sets the geometry, a separation that clarifies which connectome-based claims rest on wiring alone.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Interpretable deep convolutional model for nonlinear multivariate time series in complex systems
+View PDFAbstract:We introduce the Deep Convolutional Interpreter for Time Series (DCIts), a deep-learning architecture for nonlinear multivariate time series that provides sample-specific, locally interpretable descriptions of the underlying interaction structure. Unlike standard black-box forecasters, DCIts learns a time- and lag-dependent transition tensor explicitly factorized into two components: a Focuser, which selects relevant source series and time lags via a sparse masking mechanism, and a Modeler, which assigns signed coefficients to these selected interactions. This decomposition yields a local lag-adjacency structure and signed source-lag contributions for every forecast instance, enabling direct inspection of effective connectivity; when higher-order branches are activated, the same framework yields order-resolved elementwise polynomial contributions. Architecturally, DCIts uses a diverse bank of convolutional filters to capture temporal and cross-variable dependencies, which are mapped through a bottleneck network to the transition tensor. On controlled benchmark datasets with a known interaction structure, we demonstrate that DCIts achieves competitive forecasting error relative to a strong interpretable baseline while recovering stable, signed, lag-resolved interaction patterns. The framework thus prioritizes intrinsic interpretability, using forecasting accuracy as a faithfulness constraint rather than the sole objective.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

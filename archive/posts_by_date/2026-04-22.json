@@ -1,0 +1,53 @@
+{
+  "date": "2026-04-22",
+  "count": 3,
+  "posts": [
+    {
+      "id": "32f15c5cd602",
+      "title": "Background Coding Agents: Supercharging Downstream Consumer Dataset Migrations (Honk, Part 4)",
+      "url": "https://engineering.atspotify.com/2026/4/background-coding-agents-dataset-migrations-honk-part-4/",
+      "source": "Spotify Engineering",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-22T19:39:08+00:00",
+      "summary": "How we used Honk, Backstage, and Fleet Management to ease the pain of migrating thousands of datasets. The post Background Coding Agents: Supercharging Downstream Consumer Dataset Migrations (Honk, Part 4) appeared first on Spotify Engineering .",
+      "author": "Spotify Engineering",
+      "tags": [
+        "AI",
+        "Platform",
+        "Data",
+        "Developer Tools"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "2447fb670a86",
+      "title": "Decoupled DiLoCo: A new frontier for resilient, distributed AI training",
+      "url": "https://deepmind.google/blog/decoupled-diloco/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-22T10:20:03+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "5d6efed03eb1",
+      "title": "AI Weekly Issue #486: Apple is replacing Tim Cook because of AI",
+      "url": "https://aiweekly.co/issues/apple-is-replacing-tim-cook-because-of-ai",
+      "source": "AI Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-22T00:00:00+00:00",
+      "summary": "Apple handed the next decade to a silicon engineer. Bezos hit $38B in five months. Brin came out of retirement to code. When the founders stop delegating AI, the stakes have passed the point of no return.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

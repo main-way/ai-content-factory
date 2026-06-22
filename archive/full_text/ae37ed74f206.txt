@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:GHOST-CAT: An Efficient and Practical Network for Mesh Generation from 3D Echocardiography
+View PDF HTML (experimental)Abstract:Recent advances in deep learning have significantly accelerated cardiac imaging workflows, from segmentation to the generation of meshes for computational modelling. Nevertheless, analysis of 3D echocardiograms presents unique challenges due to their low contrast-to-noise ratio, conical field of view, and susceptibility to acoustic shadowing. Here, we present an efficient and practical network tailored for 3D echocardiograms. Our method consists of a two-stage network that combines convolutional neural networks, graph convolutional networks, and transformers, to create accurate time-varying 3D meshes of the left ventricle that are topologically consistent and temporally coherent throughout the cardiac cycle. Our model achieved superior mesh reconstruction accuracy compared to current state-of-the-art methods on a held-out test dataset of 100 3D echo images, with a Dice coefficient of 0.87 +/- 0.05 (cavity) and 0.75 +/- 0.07 (myocardium), and mean +/- SD surface distances of 3.3 +/- 0.6 mm (endocardium) and 3.5 +/- 0.5 mm (epicardium), against reference segmentations derived from cardiac magnetic resonance imaging. The reconstructed mesh enables automated calculation of routine clinical indices, such as volume, mass, and strain, and enables advanced applications with biophysical digital twins. Source code is openly shared at this https URL.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

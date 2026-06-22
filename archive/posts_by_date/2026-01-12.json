@@ -1,0 +1,46 @@
+{
+  "date": "2026-01-12",
+  "count": 2,
+  "posts": [
+    {
+      "id": "8327dd1c9843",
+      "title": "How test-time training allows models to ‘learn’ long documents instead of just caching them",
+      "url": "https://bdtechtalks.com/2026/01/12/nvidia-end-to-end-test-time-training/?utm_source=rss&utm_medium=rss&utm_campaign=nvidia-end-to-end-test-time-training",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-01-12T21:53:46+00:00",
+      "summary": "By treating language modeling as a continual learning problem, the TTT-E2E architecture achieves the accuracy of full-attention Transformers on 128k context tasks while matching the speed of linear models. The post How test-time training allows models to ‘learn’ long documents instead of just caching them first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI research papers",
+        "Artificial intelligence (AI)",
+        "Continual learning",
+        "large language models",
+        "Nvidia",
+        "Stanford University"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "a102a18a5efc",
+      "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required",
+      "url": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
+      "source": "VentureBeat AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-01-12T11:30:00+00:00",
+      "summary": "Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users — and according to company insiders, the team built the entire feature in approximately a week and a half, largely using Claude Code itself. The launch marks a major inflection point in the race to deliver practical AI agents to mainstream users, positioning Anthropic to compete not just with OpenAI and Google in conversational AI, but with Microsoft&#x27;s Copilot in the burgeoning market for AI-powered productivity tools. &quot;Cowork lets…",
+      "author": "michael.nunez@venturebeat.com (Michael Nuñez)",
+      "tags": [
+        "Technology",
+        "AI",
+        "Automation"
+      ],
+      "has_full_text": false
+    }
+  ]
+}

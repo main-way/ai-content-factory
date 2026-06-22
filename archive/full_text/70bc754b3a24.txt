@@ -1,0 +1,11 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Multi-Objective Coevolution of Prompts and Templates for Circuit Approximation
+View PDF HTML (experimental)Abstract:Approximate multipliers deliberately relax computational accuracy to achieve gains in power efficiency, latency, and silicon area, which makes them well-suited for error-resilient applications such as neural networks. In this work, we introduce a co-evolutionary algorithm that leverages an off-the-shelf large language model (LLM) without requiring domain-specific training to automate the design of optimized 8-bit approximate multipliers. The approach simultaneously evolves a population of candidate circuits and a population of prompt templates that steer LLM-driven modifications. Experimental results for several target design objectives demonstrate that the proposed method discovers approximate multipliers with improved error-area trade-offs compared to highly optimized circuits from the EvoApproxLib library.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,17 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:PolyBench: A Benchmark for Compositional Reasoning in Polyphonic Audio
+View PDF HTML (experimental)Abstract:Large Audio Language Models (LALMs) are increasingly capable of reasoning over audio, yet existing benchmarks offer limited coverage of reasoning in polyphonic audio, where multiple sound events co-occur and induce compositional structure. To address this gap, we introduce PolyBench, a benchmark designed to evaluate compositional reasoning in polyphonic audio, comprising five evaluation subsets that cover counting, classification, detection, concurrency, and duration estimation, all of which require reasoning over multiple concurrent events and their relations. Our evaluation of state-of-the-art LALMs reveals consistent performance degradation in polyphonic settings, indicating a fundamental bottleneck in current LALMs.
+Submission history
+From: Yuanjian Chen [view email][v1] Thu, 5 Mar 2026 12:54:52 UTC (479 KB)
+[v2] Fri, 6 Mar 2026 10:06:17 UTC (479 KB)
+[v3] Tue, 10 Mar 2026 01:06:51 UTC (479 KB)
+[v4] Wed, 17 Jun 2026 06:48:33 UTC (438 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

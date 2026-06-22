@@ -1,0 +1,5 @@
+You can now access anomaly alerts and their details directly through the Vercel CLI.
+With the vercel alerts command, you can list all alerts for a team or given project. For each alert, you can view the start time, the type of alert, and whether or not the alert is still active.
+With the --ai option, the AI investigation results appear alongside each alert. You and your agent can act on alerts without leaving the terminal.
+vercel alerts --ai
+Shows alert details with AI investigation results inline.

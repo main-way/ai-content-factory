@@ -1,0 +1,16 @@
+Computer Science > Distributed, Parallel, and Cluster Computing
+Title:Fast Linear Reservoirs via Diagonalization
+View PDFAbstract:We introduce a diagonalization-based optimization for Linear Echo State Networks (ESNs) that reduces the per-step computational complexity of reservoir state updates from quadratic to linear. By reformulating reservoir dynamics in the eigenbasis of the recurrent matrix, the recurrent update becomes a set of independent element-wise operations, eliminating the matrix multiplication. We further propose three methods to use our optimization depending on the situation: (i) Eigenbasis Weight Transformation (EWT), which preserves the dynamics of standard and trained Linear ESNs, (ii) End-to-End Eigenbasis Training (EET), which directly optimizes readout weights in the transformed space and (iii) Direct Parameter Generation (DPG), that bypasses matrix diagonalization by directly sampling eigenvalues and eigenvectors, achieving comparable performance to standard Linear ESNs. Across all experiments, both our methods preserve predictive accuracy while offering significant computational speedups, making them a replacement for standard Linear ESNs computations and training, and suggesting a shift of paradigm in linear ESN towards the direct selection of eigenvalues.
+Submission history
+From: Yannis Bendi-Ouis [view email] [via CCSD proxy][v1] Mon, 23 Feb 2026 12:58:34 UTC (1,251 KB)
+[v2] Tue, 2 Jun 2026 09:02:38 UTC (1,245 KB)
+[v3] Mon, 8 Jun 2026 11:49:23 UTC (1,245 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,44 @@
+Tim Cook went out with a goodbye speech bookending his last appearance as CEO helming Apple's Worldwide Developers Conference; next year, barring unforeseen problems, we'll have John Ternus on the stage in his new role. While there were performance and display rendering enhancements announced across all the device operating systems, which are always welcome, Apple fast-forwarded through them to make way for Apple Intelligence. The company also introduced reworking controls and protections for kids.
+Whether you love it, hate it or simply choose to ignore it, Apple Intelligence (and its eyes, Visual Intelligence, and words, Siri) is the centerpiece of the company's chatbot-slash-agent-slash-generative strategy for MacOS 27 Golden Gate, iOS 27, iPadOS 27, WatchOS 27 and VisionOS 27.
+Initially announced at WWDC 2024 and then drastically dialed back for a slower-paced rollout, at this year's WWDC, Apple ramped it up to where it would have been -- where everyone else's AI is -- in the absence of a delay.
+It wasn't until I began writing, though, that I realized there's a lot here that was interesting, though not always flashy. Here are my highlights, and you can check out CNET's WWDC live blog for more details.
+Liquid Glass
+At launch last year, the Liquid Glass interface for all Apple devices needed refinements, as is typical of operating system redesigns. In particular, some people found that the icons' transparency made visibility harder than before (me, included).
+This year, we're getting granular control, via a slider, over opacity and tint across the entire operating system, along with some rendering enhancements to make the icons look sharper. That, plus some tweaks to the appearance of menus and sidebars. I'm persnickety, but I don't really care about the consistency of corner radii in MacOS, although it looks like some of my colleagues do.
+What I'm still disappointed with, in this respect, is the lack of streamlining in the settings organization across all of the operating systems. For instance, burying a lot of settings under Accessibility when they're more generally appearance and behavior focused, like motion behavior, makes them harder to find or even to know they're adjustable.
+Of course, Apple may be relying on Apple Intelligence to find and fix settings, a trend I've increasingly noticed and had meh experiences with in software.
+Optimize me
+Performance improvements include better screen response, faster mobile app launching (including precaching), more robust file handling (import, copy and transfer), rearchitected indexing for search (which means better results), smarter Wi-Fi switching when roaming and CPU scheduler optimizations supported back as far as iPhone 11.
+While speedups are always welcome, many of the specific updates and optimizations are essential for a decent experience using the AI features. For instance, CPU scheduling juggles the processing resources essential for agents and a host of other AI tasks. And without the faster app loading and precaching, accessing those capabilities in the background to incorporate and act on all the contextual info necessary to provide detailed answers would take too long.
+Apple Intelligence and Siri AI
+Apple emphasized cross-device, system-wide AI-driven features, with syncing via iCloud -- that 5GB default amount is looking even more insufficient right now -- so there was less of "here's what you can do on the iPhone," than "here's what you can do." (And Siri has been replaced by Siri AI, so you know it's the new, whizzy Siri and not the old, sad Siri.)
+For context, our transcript of the event had:
+- iOS mentions: 9
+- MacOS mentions: 9
+- iPadOS mentions: 4
+- WatchOS mentions: 2
+- TVOS mentions: 1
+- Siri mentions: 102
+And if a lot of the capabilities sound familiar to some folks, that's because they're the same features first wishcasted at WWDC 2024 and touted by Google for its own platforms -- though Apple's was a little less of a tone-deaf presentation than at Google I/O, with demos centered around splitting a bill versus arranging your next luxury vacation -- and because Apple's building a lot of its intelligence by adapting Google's Gemini models.
+Apple's been stressing its "privacy first," on-device and "private cloud compute" operation since Day 1, but what struck me in the keynote was the company's mention of external auditing. That's a missing piece in many discussions of AI by big tech, which tend to offer up the far less believable self-policing strategy.
+And if I understood correctly how the system operates, I think it's smart of Apple to separate the history and context of your complex and cloud-based AI interactions, like chats, from the basic interactions, like on-device search, into a separate Siri App. At the very least, it gives you a sense of what data lives where.
+Finally, you'll be able to control the pace and level of emoting of Siri's voice -- a bonus for impatient and fast-talking New Yorkers.
+Think of the children
+Implementation means everything for effective access controls when it comes to kids. Apple's done a few things that at least sound smart, though we won't really know until they've been put to the test.
+I think the new capabilities, which allow for on-the-fly parental decisions on a case-by-case basis, are key: Ask to Browse notifies you when a child wants to visit a new website, Ask to Buy does the same for downloading an app.
+You'll be able to approve new conversations, automatically blur objectionable content in Messages, set Time Allowances for apps based on categories like gaming and social media, and more. And it sets defaults based on age range, with more aggressive settings for kids under 13.
+Some of it sounds like it requires specific support by the app developers, so it will be interesting to see how, for instance, social media companies with a reputation for resisting controls like these fare.
+On Safari
+I'm not a big Safari user, but I am a big fan of tab organization, and the updated Safari coming in the new operating systems will automatically group tabs by topic and add new tabs. In theory, that sounds terrific. In practice, unless you browse among very distinct subjects, I'm not sure how effective it could be. I have tab groups for gaming laptops, data centers and shortages, and sadly, they overlap a lot.
+Another potentially useful capability is vibe extension creation -- you'll be able to describe an extension and get it built on the fly. It's not clear exactly what types of extensions it encompasses, though.
+And if you're a user of Apple's Passwords app, it will be able to automatically update passwords. But it's not clear what they'll be updated to, or what control you have over how it decides.
+MacOS 27
+To me, the most important change in MacOS wasn't mentioned. It inherited an iPhone Dynamic Island-type interface for Siri AI interaction, which you access by swiping down. Swiping. That probably heralds the forthcoming touchscreen MacBooks we've been expecting.
+Nice-to-haves
+There are some random new features that struck me as useful across Apple's apps. To name a few:
+- Image Playground gets more style types and photorealism.
+- Expanded visual intelligence capabilities -- that's what lets you ask about or shop for what you see, for instance -- as a Siri mode in the iPhone's camera app and in VisionOS 27.
+- You'll be able to receive a single notification for related accessory activity notifications in Home rather than multiple, as well as search recorded clips by content.
+- Photos adds the ability to extend an image background, supports collaboration in shared albums and improves the accuracy for removing unwanted elements in a photo. It also adds Spatial Reframing, which allows you to adjust the viewing angle of a photo, but in demos, it only allowed a slight adjustment.
+- Health now includes perimenopausal and menopausal tracking.
+- There will be custom EQ adjustments for AirPods.

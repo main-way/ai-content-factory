@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:A Prototypical Signature Approach for Writer-Independent Offline Signature Verification
+View PDFAbstract:Offline handwritten signature verification aims to distinguish genuine from forged signatures using static images. Since real forgeries are rarely available, negative samples are usually randomly drawn from genuine signatures of other users to create training data. However, this random selection often lacks diversity, increases redundancy, and escalates computational cost, leading to inefficient training. We propose a data-driven strategy to generate diverse, informative negative samples using prototypical signatures, which are compact, non-identifiable summaries of genuine signature features. Based on the experiments results, we conclude that (i) prototypical signatures yield more informative negative samples, improving the detection of skilled forgeries; (ii) the proposed approach is backbone-agnostic, showing robustness across architectures; and (iii) when combined with a primal-form linear SVM, it serves as an alternative to RBF-based models while significantly improving scalability and computational efficiency. Implementation of the method is available at this https URL.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

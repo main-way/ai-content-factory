@@ -1,0 +1,12 @@
+Mathematics > Statistics Theory
+Title:Leveraging tails for adaptation
+View PDF HTML (experimental)Abstract:We consider contraction of Bayesian posterior distributions in nonparametric settings where coefficients of a function over a basis or dictionary are given priors with $p$--exponential tails, including Laplace tails $(p=1)$ and heavier tails $(p<1)$. It is shown that contraction rates improve as $p$ decreases and that full adaptation to smoothness, up to logarithmic factors, is obtained in an appropriate $p\to 0$ regime. As applications, we consider both series priors in white noise regression and shallow ReLU neural networks in random design regression. In particular, we show that overparametrised shallow ReLU networks can adapt to any regularity $0\le \beta\le 2$. Through a simulation study, we show strong empirical agreement with the behavior predicted by our theory.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

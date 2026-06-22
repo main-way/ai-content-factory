@@ -1,0 +1,23 @@
+{
+  "date": "2024-02-24",
+  "count": 1,
+  "posts": [
+    {
+      "id": "4864d13604b8",
+      "title": "Why Doesn’t My Model Work?",
+      "url": "https://thegradient.pub/why-doesnt-my-model-work/",
+      "source": "The Gradient",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-02-24T18:41:54+00:00",
+      "summary": "Have you ever trained a model you thought was good, but then it failed miserably when applied to real world data? If so, you’re in good company.",
+      "author": "Michael Lones",
+      "tags": [
+        "Machine Learning",
+        "Overviews"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

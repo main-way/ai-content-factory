@@ -1,0 +1,17 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Cyst-X: A Multi-Center MRI Benchmark and Federated Learning Framework for Malignancy-Risk Stratification of Pancreatic Cystic Neoplasm
+View PDF HTML (experimental)Abstract:Pancreatic cancer is projected to be the second-deadliest cancer by 2030, making early detection critical. Intraductal papillary mucinous neoplasms (IPMNs), key cancer precursors, present a clinical dilemma, as current guidelines struggle to stratify malignancy risk, leading to unnecessary surgeries or missed diagnoses. Here, we introduce Cyst-X, a multi-center MRI benchmark and a federated learning framework for IPMN malignancy-risk stratification. The dataset comprises 1,461 abdominal MRI scans from 764 patients at seven international centers, with three-tier malignancy labels anchored in histopathology or three-year imaging follow-up and expert pancreas segmentations. The pipeline couples the PanSegNet pancreas segmenter with a 3D DenseNet-121 classifier and a parallel radiomics predictor. On internal cross-validation, the deep learning classifier reached a mean area under the receiver operating characteristic curve (AUC) of 0.85 (95% confidence interval 0.84-0.86) on T2-weighted MRI for high-risk versus low- or no-risk discrimination, with the average precision rising from a prevalence baseline of 0.23 to 0.64. This performance was preserved (AUC 0.85, FedProx) when training was distributed across institutions without exchange of raw patient images. Benchmarked against three blinded radiologists on a 629-case reader subset evaluated under imaging-only conditions, the classifier matched or exceeded sensitivity at comparable specificity. To accelerate research in early pancreatic cancer detection, we publicly release the Cyst-X dataset, segmentation masks, and trained models as the first large-scale, multi-centre MRI resource for pancreatic cystic neoplasm analysis.
+Submission history
+From: Hongyi Pan Dr. [view email][v1] Tue, 29 Jul 2025 17:06:22 UTC (11,474 KB)
+[v2] Tue, 28 Oct 2025 20:48:51 UTC (11,475 KB)
+[v3] Fri, 7 Nov 2025 14:59:24 UTC (11,466 KB)
+[v4] Mon, 8 Jun 2026 20:52:49 UTC (11,678 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

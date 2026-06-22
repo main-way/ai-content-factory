@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:A tensor network approach for chaotic time series prediction
+View PDF HTML (experimental)Abstract:Making accurate predictions of chaotic time series is a complex challenge. Reservoir computing, a neuromorphic-inspired approach, has emerged as a powerful tool for this task. It exploits the memory and nonlinearity of dynamical systems without requiring extensive parameter tuning. However, selecting and optimizing reservoir architectures remains an open problem. Next-generation reservoir computing simplifies this problem by employing nonlinear vector autoregression based on truncated Volterra series, thereby reducing hyperparameter complexity. Nevertheless, the latter suffers from exponential parameter growth in terms of the maximum monomial degree. Tensor networks offer a promising solution to this issue by decomposing multidimensional arrays into low-dimensional structures, thus mitigating the curse of dimensionality. This paper explores the application of a previously proposed tensor network model for predicting chaotic time series, demonstrating its advantages in terms of accuracy and computational efficiency compared to conventional echo state networks. Using a state-of-the-art tensor network approach enables us to bridge the gap between the tensor network and reservoir computing communities, fostering advances in both fields.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

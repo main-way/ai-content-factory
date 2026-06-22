@@ -1,0 +1,400 @@
+GPT 5.5, ChatGPT Images 2.0, Qwen3.6-27B
+Plus Claude Code pricing confusion and changes in the system prompt between Claude Opus 4.6 and 4.7
+In this newsletter:
+A pelican for GPT-5.5 via the semi-official Codex backdoor API
+Where’s the raccoon with the ham radio? (ChatGPT Images 2.0)
+Is Claude Code going to cost $100/month? Probably not - it’s all very confusing
+Extract PDF text in your browser with LiteParse for the web
+Changes in the system prompt between Claude Opus 4.6 and 4.7
+Plus 8 links and 3 quotations and 1 guide chapter and 3 beats
+Sponsor message: Traditional SCA tools see a black box; SonarQube Advanced Security sees the data flow. Use Advanced SAST to trace taint into libraries. Adopt integrated code quality and code security analysis solution for first-party code and dependencies.
+GPT-5.5 is out. It’s available in OpenAI Codex and is rolling out to paid ChatGPT subscribers. I’ve had some preview access and found it to be a fast, effective and highly capable model. As is usually the case these days, it’s hard to put into words what’s good about it - I ask it to build things and it builds exactly what I ask for!
+There’s one notable omission from today’s release - the API:
+API deployments require different safeguards and we are working closely with partners and customers on the safety and security requirements for serving it at scale. We’ll bring GPT‑5.5 and GPT‑5.5 Pro to the API very soon.
+When I run my pelican benchmark I always prefer to use an API, to avoid hidden system prompts in ChatGPT or other agent harnesses from impacting the results.
+The OpenClaw backdoor
+One of the ongoing tension points in the AI world over the past few months has concerned how agent harnesses like OpenClaw and Pi interact with the APIs provided by the big providers.
+Both OpenAI and Anthropic offer popular monthly subscriptions which provide access to their models at a significant discount to their raw API.
+OpenClaw integrated directly with this mechanism, and was then blocked from doing so by Anthropic. This kicked off a whole thing. OpenAI - who recently hired OpenClaw creator Peter Steinberger - saw an opportunity for an easy karma win and announced that OpenClaw was welcome to continue integrating with OpenAI’s subscriptions via the same mechanism used by their (open source) Codex CLI tool.
+Does this mean anyone can write code that integrates with OpenAI’s Codex-specific APIs to hook into those existing subscriptions?
+The other day Jeremy Howard asked:
+Anyone know whether OpenAI officially supports the use of the
+/backend-api/codex/responses
+endpoint that Pi and Opencode (IIUC) uses?
+It turned out that on March 30th OpenAI’s Romain Huet had tweeted:
+We want people to be able to use Codex, and their ChatGPT subscription, wherever they like! That means in the app, in the terminal, but also in JetBrains, Xcode, OpenCode, Pi, and now Claude Code.
+That’s why Codex CLI and Codex app server are open source too! 🙂
+And Peter Steinberger replied to Jeremy that:
+OpenAI sub is officially supported.
+llm-openai-via-codex
+So... I had Claude Code reverse-engineer the openai/codex repo, figure out how authentication tokens were stored and build me llm-openai-via-codex, a new plugin for LLM which picks up your existing Codex subscription and uses it to run prompts!
+(With hindsight I wish I’d used GPT-5.4 or the GPT-5.5 preview, it would have been funnier. I genuinely considered rewriting the project from scratch using Codex and GPT-5.5 for the sake of the joke, but decided not to spend any more time on this!)
+Here’s how to use it:
+Install Codex CLI, buy an OpenAI plan, login to Codex
+Install LLM:
+uv tool install llm
+Install the new plugin:
+llm install llm-openai-via-codex
+Start prompting:
+llm -m openai-codex/gpt-5.5 'Your prompt goes here'
+All existing LLM features should also work - use -a filepath.jpg/URL
+to attach an image, llm chat -m openai-codex/gpt-5.5
+to start an ongoing chat, llm logs
+to view logged conversations and llm --tool ...
+to try it out with tool support.
+And some pelicans
+Let’s generate a pelican!
+llm install llm-openai-via-codex
+llm -m openai-codex/gpt-5.5 ‘Generate an SVG of a pelican riding a bicycle’
+Here’s what I got back:
+I’ve seen better from GPT-5.4, so I tagged on -o reasoning_effort xhigh
+and tried again:
+That one took almost four minutes to generate, but I think it’s a much better effort.
+If you compare the SVG code (default, xhigh) the xhigh
+one took a very different approach, which is much more CSS-heavy - as demonstrated by those gradients. xhigh
+used 9,322 reasoning tokens where the default used just 39.
+A few more notes on GPT-5.5
+One of the most notable things about GPT-5.5 is the pricing. Once it goes live in the API it’s going to be priced at twicethe cost of GPT-5.4 - $5 per 1M input tokens and $30 per 1M output tokens, where 5.4 is $2.5 and $15.
+GPT-5.5 Pro will be even more: $30 per 1M input tokens and $180 per 1M output tokens.
+GPT-5.4 will remain available. At half the price of 5.5 this feels like 5.4 is to 5.5 as Claude Sonnet is to Claude Opus.
+Ethan Mollick has a detailed review of GPT-5.5 where he put it (and GPT-5.5 Pro) through an array of interesting challenges. His verdict: the jagged frontier continues to hold, with GPT-5.5 excellent at some things and challenged by others in a way that remains difficult to predict.
+OpenAI released ChatGPT Images 2.0, their latest image generation model. On the livestream Sam Altman said that the leap from gpt-image-1 to gpt-image-2 was equivalent to jumping from GPT-3 to GPT-5. Here’s how I put it to the test.
+My prompt:
+Do a where's Waldo style image but it's where is the raccoon holding a ham radio
+gpt-image-1
+First as a baseline here’s what I got from the older gpt-image-1 using ChatGPT directly:
+I wasn’t able to spot the raccoon - I quickly realized that testing image generation models on Where’s Waldo style images (Where’s Wally in the UK) can be pretty frustrating!
+I tried getting Claude Opus 4.7 with its new higher resolution inputs to solve it but it was convinced there was a raccoon it couldn’t find thanks to the instruction card at the top left of the image:
+Yes — there’s at least one raccoon in the picture, but it’s very well hidden. In my careful sweep through zoomed-in sections, honestly, I couldn’t definitively spot a raccoon holding a ham radio. [...]
+Nano Banana 2 and Pro
+Next I tried Google’s Nano Banana 2, via Gemini:
+That one was pretty obvious, the raccoon is in the “Amateur Radio Club” booth in the center of the image!
+Claude said:
+Honestly, this one wasn’t really hiding — he’s the star of the booth. Feels like the illustrator took pity on us after that last impossible scene. The little “W6HAM” callsign pun on the booth sign is a nice touch too.
+I also tried Nano Banana Pro in AI Studio and got this, by far the worst result from any model. Not sure what went wrong here!
+gpt-image-2
+With the baseline established, let’s try out the new model.
+I used an updated version of my openai_image.py script, which is a thin wrapper around the OpenAI Python client library. Their client library hasn’t yet been updated to include gpt-image-2
+but thankfully it doesn’t validate the model ID so you can use it anyway.
+Here’s how I ran that:
+OPENAI_API_KEY=”$(llm keys get openai)” \
+uv run https://tools.simonwillison.net/python/openai_image.py \
+-m gpt-image-2 \
+“Do a where’s Waldo style image but it’s where is the raccoon holding a ham radio”
+Here’s what I got back. I don’t think there’s a raccoon in there - I couldn’t spot one, and neither could Claude.
+The OpenAI image generation cookbook has been updated with notes on gpt-image-2
+, including the outputQuality
+setting and available sizes.
+I tried setting outputQuality
+to high
+and the dimensions to 3840x2160
+- I believe that’s the maximum - and got this - a 17MB PNG which I converted to a 5MB WEBP:
+OPENAI_API_KEY=”$(llm keys get openai)” \
+uv run ‘https://raw.githubusercontent.com/simonw/tools/refs/heads/main/python/openai_image.py’ \
+-m gpt-image-2 “Do a where’s Waldo style image but it’s where is the raccoon holding a ham radio” \
+--quality high --size 3840x2160
+That’s pretty great! There’s a raccoon with a ham radio in there (bottom left, quite easy to spot).
+The image used 13,342 output tokens, which are charged at $30/million so a total cost of around 40 cents.
+Takeaways
+I think this new ChatGPT image generation model takes the crown from Gemini, at least for the moment.
+Where’s Waldo style images are an infuriating and somewhat foolish way to test these models, but they do help illustrate how good they are getting at complex illustrations combining both text and details.
+Update: asking models to solve this is risky
+rizaco on Hacker News asked ChatGPT to draw a red circle around the raccoon in one of the images in which I had failed to find one. Here’s an animated mix of their result and the original image:
+Looks like we definitely can’t trust these models to usefully solve their own puzzles!
+Anthropic quietly (as in silently, no announcement anywhere at all) updated their claude.com/pricing page (but not their Choosing a Claude plan page, which shows up first for me on Google) to add this tiny but significant detail (arrow is mine, and it’s already reverted):
+The Internet Archive copy from yesterday shows a checkbox there. Claude Code used to be a feature of the $20/month Pro plan, but according to the new pricing page it is now exclusive to the $100/month or $200/month Max plans.
+Update: don’t miss the update to this post, they’ve already changed course a few hours after this change went live.
+So what the heck is going on? Unsurprisingly, Reddit and Hacker News and Twitter all caught fire.
+I didn’t believe the screenshots myself when I first saw them - aside from the pricing grid I could find no announcement from Anthropic anywhere. Then Amol Avasare, Anthropic’s Head of Growth, tweeted:
+For clarity, we’re running a small test on ~2% of new prosumer signups. Existing Pro and Max subscribers aren’t affected.
+And that appears to be the closest we have had to official messaging from Anthropic.
+I don’t buy the “~2% of new prosumer signups” thing, since everyone I’ve talked to is seeing the new pricing grid and the Internet Archive has already snapped a copy. Maybe he means that they’ll only be running this version of the pricing grid for a limited time which somehow adds up to “2%” of signups?
+I’m also amused to see Claude Cowork remain available on the $20/month plan, because Claude Cowork is effectively a rebranded version of Claude Code wearing a less threatening hat!
+There are a whole bunch of things that are bad about this.
+If we assume this is indeed a test, and that test comes up negative and they decide not to go ahead with it, the damage has still been extensive:
+A whole lot of people got scared or angry or both that a service they relied on was about to be rug-pulled. There really is a significant difference between $20/month and $100/month for most people, especially outside of higher salary countries.
+The uncertainty is really bad! A tweet from an employee is not the way to make an announcement like this. I wasted a solid hour of my afternoon trying to figure out what had happened here. My trust in Anthropic’s transparency around pricing - a crucial factor in how I understand their products - has been shaken.
+Strategically, should I be taking a bet on Claude Code if I know that they might 5x the minimum price of the product?
+More of a personal issue, but one I care deeply about myself: I invest a great deal of effort (that’s 105 posts and counting) in teaching people how to use Claude Code. I don’t want to invest that effort in a product that most people cannot afford to use.
+Last month I ran a tutorial for journalists on “Coding agents for data analysis” at the annual NICAR data journalism conference. I’m not going to be teaching that audience a course that depends on a $100/month subscription!
+This also doesn’t make sense to me as a strategy for Anthropic. Claude Code defined the category of coding agents. It’s responsible for billions of dollars in annual revenue for Anthropic already. It has a stellar reputation, but I’m not convinced that reputation is strong enough for it to lose the $20/month trial and jump people directly to a $100/month subscription.
+OpenAI have been investing heavily in catching up to Claude Code with their Codex products. Anthropic just handed them this marketing opportunity on a plate - here’s Codex engineering lead Thibault Sottiaux:
+I don’t know what they are doing over there, but Codex will continue to be available both in the FREE and PLUS ($20) plans. We have the compute and efficient models to support it. For important changes, we will engage with the community well ahead of making them.
+Transparency and trust are two principles we will not break, even if it means momentarily earning less. A reminder that you vote with your subscription for the values you want to see in this world.
+I should note that I pay $200/month for Claude Max and I consider it well worth the money. I’ve had periods of free access in the past courtesy of Anthropic but I’m currently paying full price, and happy to do so.
+But I care about the accessibility of the tools that I work with and teach. If Codex has a free tier while Claude Code starts at $100/month I should obviously switch to Codex, because that way I can use the same tool as the people I want to teach how to use coding agents.
+Here’s what I think happened. I think Anthropic are trying to optimize revenue growth - obviously - and someone pitched making Claude Code only available for Max and higher. That’s clearly a bad idea, but “testing” culture says that it’s worth putting even bad ideas out to test just in case they surprise you.
+So they started a test, without taking into account the wailing and gnashing of teeth that would result when their test was noticed - or accounting for the longer-term brand damage that would be caused.
+Or maybe they did account for that, and decided it was worth the risk.
+I don’t think that calculation was worthwhile. They’re going to have to make a very firm commitment along the lines of “we heard your feedback and we commit to keeping Claude Code available on our $20/month plan going forward” to regain my trust.
+As it stands, Codex is looking like a much safer bet for me to invest my time in learning and building educational materials around.
+Update: they’ve reversed it already
+In the time I was typing this blog entry Anthropic appear to have reversed course - the claude.com/pricing page now has a checkbox back in the Pro column for Claude Code. I can’t find any official communication about it though.
+Let’s see if they can come up with an explanation/apology that’s convincing enough to offset the trust bonfire from this afternoon!
+Update 2: it may still affect 2% of signups?
+Amol on Twitter:
+was a mistake that the logged-out landing page and docs were updated for this test [embedded self-tweet]
+Getting lots of questions on why the landing page / docs were updated if only 2% of new signups were affected.
+This was understandably confusing for the 98% of folks not part of the experiment, and we’ve reverted both the landing page and docs changes.
+So the experiment is still running, just not visible to the rest of the world?
+LlamaIndex have a most excellent open source project called LiteParse, which provides a Node.js CLI tool for extracting text from PDFs. I got a version of LiteParse working entirely in the browser, using most of the same libraries that LiteParse uses to run in Node.js.
+Spatial text parsing
+Refreshingly, LiteParse doesn’t use AI models to do what it does: it’s good old-fashioned PDF parsing, falling back to Tesseract OCR (or other pluggable OCR engines) for PDFs that contain images of text rather than the text itself.
+The hard problem that LiteParse solves is extracting text in a sensible order despite the infuriating vagaries of PDF layouts. They describe this as “spatial text parsing” - they use some very clever heuristics to detect things like multi-column layouts and group and return the text in a sensible linear flow.
+The LiteParse documentation describes a pattern for implementing Visual Citations with Bounding Boxes. I really like this idea: being able to answer questions from a PDF and accompany those answers with cropped, highlighted images feels like a great way of increasing the credibility of answers from RAG-style Q&A.
+LiteParse is provided as a pure CLI tool, designed to be used by agents. You run it like this:
+npm i -g @llamaindex/liteparse
+lit parse document.pdf
+I explored its capabilities with Claude and quickly determined that there was no real reason it had to stay a CLI app: it’s built on top of PDF.js and Tesseract.js, two libraries I’ve used for something similar in a browser in the past.
+The only reason LiteParse didn’t have a pure browser-based version is that nobody had built one yet...
+Introducing LiteParse for the web
+Visit https://simonw.github.io/liteparse/ to try out LiteParse against any PDF file, running entirely in your browser. Here’s what that looks like:
+The tool can work with or without running OCR, and can optionally display images for every page in the PDF further down the page.
+Building it with Claude Code and Opus 4.7
+The process of building this started in the regular Claude app on my iPhone. I wanted to try out LiteParse myself, so I started by uploading a random PDF I happened to have on my phone along with this prompt:
+Clone https://github.com/run-llama/liteparse and try it against this file
+Regular Claude chat can clone directly from GitHub these days, and while by default it can’t access most of the internet from its container it can also install packages from PyPI and npm.
+I often use this to try out new pieces of open source software on my phone - it’s a quick way to exercise something without having to sit down with my laptop.
+You can follow my full conversation in this shared Claude transcript. I asked a few follow-up questions about how it worked, and then asked:
+Does this library run in a browser? Could it?
+This gave me a thorough enough answer that I was convinced it was worth trying getting that to work for real. I opened up my laptop and switched to Claude Code.
+I forked the original repo on GitHub, cloned a local copy, started a new web
+branch and pasted that last reply from Claude into a new file called notes.md. Then I told Claude Code:
+Get this working as a web app. index.html, when loaded, should render an app that lets users open a PDF in their browser and select OCR or non-OCR mode and have this run. Read notes.md for initial research on this problem, then write out plan.md with your detailed implementation plan
+I always like to start with a plan for this kind of project. Sometimes I’ll use Claude’s “planning mode”, but in this case I knew I’d want the plan as an artifact in the repository so I told it to write plan.md
+directly.
+This also means I can iterate on the plan with Claude. I noticed that Claude had decided to punt on generating screenshots of images in the PDF, and suggested we defer a “canvas-encode swap” to v2. I fixed that by prompting:
+Update the plan to say we WILL do the canvas-encode swap so the screenshots thing works
+After a few short follow-up prompts, here’s the plan.md I thought was strong enough to implement.
+I prompted:
+build it.
+And then mostly left Claude Code to its own devices, tinkered with some other projects, caught up on Duolingo and occasionally checked in to see how it was doing.
+I added a few prompts to the queue as I was working. Those don’t yet show up in my exported transcript, but it turns out running rg queue-operation --no-filename | grep enqueue | jq -r '.content'
+in the relevant ~/.claude/projects/
+folder extracts them.
+Here are the key follow-up prompts with some notes:
+When you implement this use playwright and red/green TDD, plan that too
+- I’ve written more about red/green TDD here.let's use PDF.js's own renderer
+(it was messing around with pdfium)The final UI should include both the text and the pretty-printed JSON output, both of those in textareas and both with copy-to-clipboard buttons - it should also be mobile friendly
+- I had a new idea for how the UI should worksmall commits along the way
+- see belowMake sure the index.html page includes a link back to https://github.com/run-llama/liteparse near the top of the page
+- it’s important to credit your dependencies in a project like this!View on GitHub → is bad copy because that's not the repo with this web app in, it's the web app for the underlying LiteParse library
+Run OCR should be unchecked by default
+When I try to parse a PDF in my browser I see 'Parse failed: undefined is not a function (near '...value of readableStream...')
+- it was testing with Playwright in Chrome, turned out there was a bug in Safari... oh that is in safari but it works in chrome
+When "Copy" is clicked the text should change to "Copied!" for 1.5s
+[Image #1] Style the file input so that long filenames don't break things on Firefox like this - in fact add one of those drag-drop zone UIs which you can also click to select a file
+- dropping screenshots in of small UI glitches works surprisingly wellTweak the drop zone such that the text is vertically centered, right now it is a bit closer to the top
+it breaks in Safari on macOS, works in both Chrome and Firefox. On Safari I see "Parse failed: undefined is not a function (near '...value of readableStream...')" after I click the Parse button, when OCR is not checked
+- it still wasn’t working in Safari...works in safari now
+- but it fixed it pretty quickly once I pointed that out and it got Playwright working with that browser
+I’ve started habitually asking for “small commits along the way” because it makes for code that’s easier to understand or review later on, and I have an unproven hunch that it helps the agent work more effectively too - it’s yet another encouragement towards planning and taking on one problem at a time.
+While it was working I decided it would be nice to be able to interact with an in-progress version. I asked a separate Claude Code session against the same directory for tips on how to run it, and it told me to use npx vite
+. Running that started a development server with live-reloading, which meant I could instantly see the effect of each change it made on disk - and prompt with further requests for tweaks and fixes.
+Towards the end I decided it was going to be good enough to publish. I started a fresh Claude Code instance and told it:
+Look at the web/ folder - set up GitHub actions for this repo such that any push runs the tests, and if the tests pass it then does a GitHub Pages deploy of the built vite app such that the web/index.html page is the index.html page for the thing that is deployed and it works on GitHub Pages
+After a bit more iteration here’s the GitHub Actions workflow that builds the app using Vite and deploys the result to https://simonw.github.io/liteparse/.
+I love GitHub Pages for this kind of thing because it can be quickly configured (by Claude, in this case) to turn any repository into a deployed web-app, at zero cost and with whatever build step is necessary. It even works against private repos, if you don’t mind your only security being a secret URL.
+With this kind of project there’s always a major risk that the model might “cheat” - mark key features as “TODO” and fake them, or take shortcuts that ignore the initial requirements.
+The responsible way to prevent this is to review all of the code... but this wasn’t intended as that kind of project, so instead I fired up OpenAI Codex with GPT-5.5 (I had preview access) and told it:
+Describe the difference between how the node.js CLI tool runs and how the web/ version runs
+The answer I got back was enough to give me confidence that Claude hadn’t taken any project-threatening shortcuts.
+... and that was about it. Total time in Claude Code for that “build it” step was 59 minutes. I used my claude-code-transcripts tool to export a readable version of the full transcript which you can view here, albeit without those additional queued prompts (here’s my issue to fix that).
+Is this even vibe coding any more?
+I’m a pedantic stickler when it comes to the original definition of vibe coding - vibe coding does not mean any time you use AI to help you write code, it’s when you use AI without reviewing or caring about the code that’s written at all.
+By my own definition, this LiteParse for the web project is about as pure vibe coding as you can get! I have not looked at a single line of the HTML and TypeScript written for this project - in fact while writing this sentence I had to go and check if it had used JavaScript or TypeScript.
+Yet somehow this one doesn’t feel as vibe coded to me as many of my other vibe coded projects:
+As a static in-browser web application hosted on GitHub Pages the blast radius for any bugs is almost non-existent: it either works for your PDF or doesn’t.
+No private data is transferred anywhere - all processing happens in your browser - so a security audit is unnecessary. I’ve glanced once at the network panel while it’s running and no additional requests are made when a PDF is being parsed.
+There was still a whole lot of engineering experience and knowledge required to use the models in this way. Identifying that porting LiteParse to run directly in a browser was critical to the rest of the project.
+Most importantly, I’m happy to attach my reputation to this project and recommend that other people try it out. Unlike most of my vibe coded tools I’m not convinced that spending significant additional engineering time on this would have resulted in a meaningfully better initial release. It’s fine as it is!
+I haven’t opened a PR against the origin repository because I’ve not discussed it with the LiteParse team. I’ve opened an issue, and if they want my vibe coded implementation as a starting point for something more official they’re welcome to take it.
+Anthropic are the only major AI lab to publish the system prompts for their user-facing chat systems. Their system prompt archive now dates all the way back to Claude 3 in July 2024 and it’s always interesting to see how the system prompt evolves as they publish new models.
+Opus 4.7 shipped the other day (April 16, 2026) with a Claude.ai system prompt update since Opus 4.6 (February 5, 2026).
+I had Claude Code take the Markdown version of their system prompts, break that up into separate documents for each of the models and then construct a Git history of those files over time with fake commit dates representing the publication dates of each updated prompt - here’s the prompt I used with Claude Code for the web.
+Here is the git diff between Opus 4.6 and 4.7. These are my own highlights extracted from that diff - in all cases text in bold is my emphasis:
+The “developer platform” is now called the “Claude Platform”.
+The list of Claude tools mentioned in the system prompt now includes “Claude in Chrome - a browsing agent that can interact with websites autonomously, Claude in Excel - a spreadsheet agent, and Claude in Powerpoint - a slides agent. Claude Cowork can use all of these as tools.” - Claude in Powerpoint was not mentioned in the 4.6 prompt.
+The child safety section has been greatly expanded, and is now wrapped in a new
+<critical_child_safety_instructions>
+tag. Of particular note: “Once Claude refuses a request for reasons of child safety, all subsequent requests in the same conversation must be approached with extreme caution.”It looks like they’re trying to make Claude less pushy: “If a user indicates they are ready to end the conversation, Claude does not request that the user stay in the interaction or try to elicit another turn and instead respects the user’s request to stop.”
+The new
+<acting_vs_clarifying>
+section includes:
+When a request leaves minor details unspecified, the person typically wants Claude to make a reasonable attempt now, not to be interviewed first. Claude only asks upfront when the request is genuinely unanswerable without the missing information (e.g., it references an attachment that isn’t there).
+When a tool is available that could resolve the ambiguity or supply the missing information — searching, looking up the person’s location, checking a calendar, discovering available capabilities — Claude calls the tool to try and solve the ambiguity before asking the person. Acting with tools is preferred over asking the person to do the lookup themselves.
+Once Claude starts on a task, Claude sees it through to a complete answer rather than stopping partway. [...]
+It looks like Claude chat now has a tool search mechanism, as seen in this API documentation and described in this November 2025 post:
+Before concluding Claude lacks a capability — access to the person’s location, memory, calendar, files, past conversations, or any external data — Claude calls tool_search to check whether a relevant tool is available but deferred. “I don’t have access to X” is only correct after tool_search confirms no matching tool exists.
+There’s new language to encourage Claude to be less verbose:
+Claude keeps its responses focused and concise so as to avoid potentially overwhelming the user with overly-long responses. Even if an answer has disclaimers or caveats, Claude discloses them briefly and keeps the majority of its response focused on its main answer.
+This section was present in the 4.6 prompt but has been removed for 4.7, presumably because the new model no longer misbehaves in the same way:
+Claude avoids the use of emotes or actions inside asterisks unless the person specifically asks for this style of communication.
+Claude avoids saying “genuinely”, “honestly”, or “straightforward”.
+There’s a new section about “disordered eating”, which was not previously mentioned by name:
+If a user shows signs of disordered eating, Claude should not give precise nutrition, diet, or exercise guidance — no specific numbers, targets, or step-by-step plans - anywhere else in the conversation. Even if it’s intended to help set healthier goals or highlight the potential dangers of disordered eating, responses with these details could trigger or encourage disordered tendencies.
+A popular screenshot attack against AI models is to force them to say yes or no to a controversial question. Claude’s system prompt now guards against that (in the
+<evenhandedness>
+section):
+If people ask Claude to give a simple yes or no answer (or any other short or single word response) in response to complex or contested issues or as commentary on contested figures, Claude can decline to offer the short response and instead give a nuanced answer and explain why a short response wouldn’t be appropriate.
+Claude 4.6 had a section specifically clarifying that “Donald Trump is the current president of the United States and was inaugurated on January 20, 2025”, because without that the model’s knowledge cut-off date combined with its previous knowledge that Trump falsely claimed to win the 2020 election meant it would deny he was the president. That language is gone for 4.7, reflecting the model’s new reliable knowledge cut-off date of January 2026.
+And the tool descriptions too
+The system prompts published by Anthropic are sadly not the entire story - their published information doesn’t include the tool descriptions that are provided to the model, which is arguably an even more important piece of documentation if you want to take full advantage of what the Claude chat UI can do for you.
+Thanfully you can ask Claude directly - I used the prompt:
+List all tools you have available to you with an exact copy of the tool description and parameters
+My shared transcript has full details, but the list of named tools is as follows:
+ask_user_input_v0
+bash_tool
+conversation_search
+create_file
+fetch_sports_data
+image_search
+message_compose_v1
+places_map_display_v0
+places_search
+present_files
+recent_chats
+recipe_display_v0
+recommend_claude_apps
+search_mcp_registry
+str_replace
+suggest_connectors
+view
+weather_fetch
+web_fetch
+web_search
+tool_search
+visualize:read_me
+visualize:show_widget
+I don’t believe this list has changed since Opus 4.6.
+Here’s an example of a deceptively short prompt that got a quite a lot of work done in a single shot.
+First, some background. I send out a free Substack newsletter around once a week containing content copied-and-pasted from my blog. I’m effectively using Substack as a lightweight way to allow people to subscribe to my blog via email.
+I generate the newsletter with my blog-to-newsletter tool - an HTML and JavaScript app that fetches my latest content from this Datasette instance and formats it as rich text HTML, which I can then copy to my clipboard and paste into the Substack editor. Here’s a detailed explanation of how that works. [... 902 words]
+Research: Claude system prompts as a git timeline
+Anthropic publish the system prompts for Claude chat and make that page available as Markdown. I had Claude Code turn that page into separate files for each model and model family with fake git commit dates to enable browsing the changes via the GitHub commit view.
+I used this to write my own detailed notes on the changes between Opus 4.6 and 4.7.
+Link 2026-04-19 Headless everything for personal AI:
+Matt Webb thinks headless services are about to become much more common:
+Why? Because using personal AIs is a better experience for users than using services directly (honestly); and headless services are quicker and more dependable for the personal AIs than having them click round a GUI with a bot-controlled mouse.
+Evidently Marc Benioff thinks so too:
+Welcome Salesforce Headless 360: No Browser Required! Our API is the UI. Entire Salesforce & Agentforce & Slack platforms are now exposed as APIs, MCP, & CLI. All AI agents can access data, workflows, and tasks directly in Slack, Voice, or anywhere else with Salesforce Headless.
+If this model does take off it’s going to play havoc with existing per-head SaaS pricing schemes.
+I’m reminded of the early 2010s era when every online service was launching APIs. Brandur Leach reminisces about that time in The Second Wave of the API-first Economy, and predicts that APIs are ready to make a comeback:
+Suddenly, an API is no longer liability, but a major saleable vector to give users what they want: a way into the services they use and pay for so that an agent can carry out work on their behalf. Especially given a field of relatively undifferentiated products, in the near future the availability of an API might just be the crucial deciding factor that leads to one choice winning the field.
+Link 2026-04-20 Claude Token Counter, now with model comparisons:
+I upgraded my Claude Token Counter tool to add the ability to run the same count against different models in order to compare them.
+As far as I can tell Claude Opus 4.7 is the first model to change the tokenizer, so it’s only worth running comparisons between 4.7 and 4.6. The Claude token counting API accepts any Claude model ID though so I’ve included options for all four of the notable current models (Opus 4.7 and 4.6, Sonnet 4.6, and Haiku 4.5).
+In the Opus 4.7 announcement Anthropic said:
+Opus 4.7 uses an updated tokenizer that improves how the model processes text. The tradeoff is that the same input can map to more tokens—roughly 1.0–1.35× depending on the content type.
+I pasted the Opus 4.7 system prompt into the token counting tool and found that the Opus 4.7 tokenizer used 1.46x the number of tokens as Opus 4.6.
+Opus 4.7 uses the same pricing is Opus 4.6 - $5 per million input tokens and $25 per million output tokens - but this token inflation means we can expect it to be around 40% more expensive.
+The token counter tool also accepts images. Opus 4.7 has improved image support, described like this:
+Opus 4.7 has better vision for high-resolution images: it can accept images up to 2,576 pixels on the long edge (~3.75 megapixels), more than three times as many as prior Claude models.
+I tried counting tokens for a 3456x2234 pixel 3.7MB PNG and got an even bigger increase in token counts - 3.01x times the number of tokens for 4.7 compared to 4.6:
+Update: That 3x increase for images is entirely due to Opus 4.7 being able to handle higher resolutions. I tried that again with a 682x318 pixel image and it took 314 tokens with Opus 4.7 and 310 with Opus 4.6, so effectively the same cost.
+Update 2: I tried a 15MB, 30 page text-heavy PDF and Opus 4.7 reported 60,934 tokens while 4.6 reported 56,482 - that’s a 1.08x multiplier, significantly lower than the multiplier I got for raw text.
+I put together some notes on patterns for fetching data from a Datasette instance directly into Google Sheets - using the importdata()
+function, a “named function” that wraps it or a Google Apps Script if you need to send an API token in an HTTP header (not supported by importdata()
+.)
+Here’s an example sheet demonstrating all three methods.
+Release: llm-openrouter 0.6
+llm openrouter refresh
+command for refreshing the list of available models without waiting for the cache to expire.
+I added this feature so I could try Kimi 2.6 on OpenRouter as soon as it became available there.
+Here’s its pelican - this time as an HTML page because Kimi chose to include an HTML and JavaScript UI to control the animation. Transcript here.
+Link 2026-04-21 scosman/pelicans_riding_bicycles:
+I firmly approve of Steve Cosman’s efforts to pollute the training set of pelicans riding bicycles.
+(To be fair, most of the examples I’ve published count as poisoning too.)
+Quote 2026-04-21
+AI agents are already too human. Not in the romantic sense, not because they love or fear or dream, but in the more banal and frustrating one. The current implementations keep showing their human origin again and again: lack of stringency, lack of patience, lack of focus. Faced with an awkward task, they drift towards the familiar. Faced with hard constraints, they start negotiating with reality.
+Andreas Påhlsson-Notini, Less human AI agents, please.
+Link 2026-04-22 Changes to GitHub Copilot Individual plans:
+On the same day as Claude Code’s temporary will-they-won’t-they $100/month kerfuffle (for the moment, they won’t), here’s the latest on GitHub Copilot pricing.
+Unlike Anthropic, GitHub put up an official announcement about their changes, which include tightening usage limits, pausing signups for individual plans (!), restricting Claude Opus 4.7 to the more expensive $39/month “Pro+” plan, and dropping the previous Opus models entirely.
+The key paragraph:
+Agentic workflows have fundamentally changed Copilot’s compute demands. Long-running, parallelized sessions now regularly consume far more resources than the original plan structure was built to support. As Copilot’s agentic capabilities have expanded rapidly, agents are doing more work, and more customers are hitting usage limits designed to maintain service reliability.
+It’s easy to forget that just six months ago heavy LLM users were burning an order of magnitude less tokens. Coding agents consume a lot of compute.
+Copilot was also unique (I believe) among agents in charging per-request, not per-token. (Correction: Windsurf also operated a credit system like this which they abandoned last month.) This means that single agentic requests which burn more tokens cut directly into their margins. The most recent pricing scheme addresses that with token-based usage limits on a per-session and weekly basis.
+My one problem with this announcement is that it doesn’t clearly clarify which product called “GitHub Copilot” is affected by these changes. Last month in How many products does Microsoft have named ‘Copilot’? I mapped every one Tey Bannerman identified 75 products that share the Copilot brand, 15 of which have “GitHub Copilot” in the title.
+Judging by the linked GitHub Copilot plans page this covers Copilot CLI, Copilot cloud agent and code review (features on GitHub.com itself), and the Copilot IDE features available in VS Code, Zed, JetBrains and more.
+Quote 2026-04-22
+As part of our continued collaboration with Anthropic, we had the opportunity to apply an early version of Claude Mythos Preview to Firefox. This week’s release of Firefox 150 includes fixes for 271 vulnerabilitiesidentified during this initial evaluation. [...]
+Our experience is a hopeful one for teams who shake off the vertigo and get to work. You may need to reprioritize everything else to bring relentless and single-minded focus to the task, but there is light at the end of the tunnel. We are extremely proud of how our team rose to meet this challenge, and others will too. Our work isn’t finished, but we’ve turned the corner and can glimpse a future much better than just keeping up. Defenders finally have a chance to win, decisively.
+Bobby Holley, CTO, Firefox
+Link 2026-04-22 Qwen3.6-27B: Flagship-Level Coding in a 27B Dense Model:
+Big claims from Qwen about their latest open weight model:
+Qwen3.6-27B delivers flagship-level agentic coding performance, surpassing the previous-generation open-source flagship Qwen3.5-397B-A17B (397B total / 17B active MoE) across all major coding benchmarks.
+On Hugging Face Qwen3.5-397B-A17B is 807GB, this new Qwen3.6-27B is 55.6GB.
+I tried it out with the 16.8GB Unsloth Qwen3.6-27B-GGUF:Q4_K_M quantized version and llama-server
+using this recipe by benob on Hacker News, after first installing llama-server
+using brew install llama.cpp
+:
+llama-server \
+-hf unsloth/Qwen3.6-27B-GGUF:Q4_K_M \
+--no-mmproj \
+--fit on \
+-np 1 \
+-c 65536 \
+--cache-ram 4096 -ctxcp 2 \
+--jinja \
+--temp 0.6 \
+--top-p 0.95 \
+--top-k 20 \
+--min-p 0.0 \
+--presence-penalty 0.0 \
+--repeat-penalty 1.0 \
+--reasoning on \
+--chat-template-kwargs '{"preserve_thinking": true}'
+On first run that saved the 17GB model to `/.cache/huggingface/hub/models--unsloth--Qwen3.6-27B-GGUF`.
+Here’s the transcript for “Generate an SVG of a pelican riding a bicycle”. This is an outstanding result for a 16.8GB local model:
+Performance numbers reported by llama-server
+:
+Reading: 20 tokens, 0.4s, 54.32 tokens/s
+Generation: 4,444 tokens, 2min 53s, 25.57 tokens/s
+For good measure, here’s Generate an SVG of a NORTH VIRGINIA OPOSSUM ON AN E-SCOOTER (run previously with GLM-5.1):
+That one took 6,575 tokens, 4min 25s, 24.74 t/s.
+Quote 2026-04-23
+[...] if you ever needed another reason to learn in public by digital gardening or podcasting or streaming or whathaveyou, add on that people will assume you’re more competent than you are. This will get you invites to very cool exclusive events filled with high-achieving, interesting people, even though you have no right to be there. A+ side benefit.
+Maggie Appleton, Gathering Structures (via)
+Link 2026-04-24 Serving the For You feed:
+One of Bluesky’s most interesting features is that anyone can run their own [custom “feed” implementation](bluesky custom feed) and make it available to other users - effectively enabling custom algorithms that can use any mechanism they like to recommend posts.
+spacecowboy runs the For You Feed, used by around 72,000 people. This guest post on the AT Protocol blog explains how it works.
+The architecture is fascinating. The feed is served by a single Go process using SQLite on a “gaming” PC in spacecowboy’s living room - 16 cores, 96GB of RAM and 4TB of attached NVMe storage.
+Recommendations are based on likes: what else are the people who like the same things as you liking on the platform?
+That Go server consumes the Bluesky firehose and stores the relevant details in SQLite, keeping the last 90 days of relevant data, which currently uses around 419GB of SQLite storage.
+Public internet traffic is handled by a $7/month VPS on OVH, which talks to the living room server via Tailscale.
+Total cost is now $30/month: $20 in electricity, $7 in VPS and $3 for the two domain names. spacecowboy estimates that the existing system could handle all ~1 million daily active Bluesky users if they were to switch to the cheapest algorithm they have found to work.
+Link 2026-04-24 An update on recent Claude Code quality reports:
+It turns out the high volume of complaints that Claude Code was providing worse quality results over the past two months was grounded in real problems.
+The models themselves were not to blame, but three separate issues in the Claude Code harness caused complex but material problems which directly affected users.
+Anthropic’s postmortem describes these in detail. This one in particular stood out to me:
+On March 26, we shipped a change to clear Claude’s older thinking from sessions that had been idle for over an hour, to reduce latency when users resumed those sessions. A bug caused this to keep happening every turn for the rest of the session instead of just once, which made Claude seem forgetful and repetitive.
+I frequently have Claude Code sessions which I leave for an hour (or often a day or longer) before returning to them. Right now I have 11 of those (according to ps aux | grep 'claude '
+) and that’s after closing down dozens more the other day.
+I estimate I spend more time prompting in these “stale” sessions than sessions that I’ve recently started!
+If you’re building agentic systems it’s worth reading this article in detail - the kinds of bugs that affect harnesses are deeply complicated, even if you put aside the inherent non-deterministic nature of the models themselves.
+Link 2026-04-24 russellromney/honker:
+“Postgres NOTIFY/LISTEN semantics” for SQLite, implemented as a Rust SQLite extension and various language bindings to help make use of it.
+The design of this looks very solid. It lets you write Python code for queues that looks like this:
+import honker
+db = honker.open("app.db")
+emails = db.queue("emails")
+emails.enqueue({"to": "alice@example.com"})
+# Consume (in a worker process)
+async for job in emails.claim("worker-1"):
+send(job.payload)
+job.ack()
+And Kafka-style durable streams like this:
+stream = db.stream("user-events")
+with db.transaction() as tx:
+tx.execute("UPDATE users SET name=? WHERE id=?", [name, uid])
+stream.publish({"user_id": uid, "change": "name"}, tx=tx)
+async for event in stream.subscribe(consumer="dashboard"):
+await push_to_browser(event)
+It also adds 20+ custom SQL functions including these two:
+SELECT notify(’orders’, ‘{”id”:42}’);
+SELECT honker_stream_read_since(’orders’, 0, 1000);
+The extension requires WAL mode, and workers can poll the .db-wal
+file with a stat call every 1ms to get as close to real-time as possible without the expense of running a full SQL query.
+honker implements the transactional outbox pattern, which ensures items are only queued if a transaction successfully commits. My favorite explanation of that pattern remains Transactionally Staged Job Drains in Postgres by Brandur Leach. It’s great to see a new implementation of that pattern for SQLite.
+If you find this newsletter useful, please consider sponsoring me via GitHub. $10/month and higher sponsors get a monthly newsletter with my summary of the most important trends of the past 30 days - here are previews from December and January and February.

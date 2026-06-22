@@ -1,0 +1,20 @@
+{
+  "date": "2022-06-09",
+  "count": 1,
+  "posts": [
+    {
+      "id": "2cce1820a898",
+      "title": "Generalized Visual Language Models",
+      "url": "https://lilianweng.github.io/posts/2022-06-09-vlm/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2022-06-09T22:10:30+00:00",
+      "summary": "Processing images to generate text, such as image captioning and visual question-answering, has been studied for years. Traditionally such systems rely on an object detection network as a vision encoder to capture visual features and then produce text via a text decoder. Given a large amount of existing literature, in this post, I would like to only focus on one approach for solving vision language tasks, which is to extend pre-trained generalized language models to be capable of consuming visual signals .",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

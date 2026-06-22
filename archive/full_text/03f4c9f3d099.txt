@@ -1,0 +1,47 @@
+Visa just wired ChatGPT to shop and pay on your behalf — an AI agent can now buy at any Visa merchant without you clicking "buy." It capped a week where the labs pushed autonomy and capital to new highs: Anthropic put Claude Fable 5, its most powerful public model, into everyone's hands; Jeff Bezos came out of stealth with Prometheus, a $41B startup building an "artificial general engineer." A self-replicating worm hit 73 of Microsoft's own GitHub repositories through AI coding tools. Anthropic broke with the White House over preempting state AI laws; a German court ruled Google is liable for what its AI Overviews say. The agents got more capable this week — and a lot more autonomous.
+Get more from AI Weekly
+More signal, less noise — pick your channels.
+You're reading the weekly brief. Below are the other ways to follow the story — every channel free, easy to leave.
+-
+→ Explore 16 deep divesWeekly topic-specific newsletters: Generative AI, Machine Learning, AI in Business, Robotics, Frontier Research, Geopolitics, Healthcare, and more.Browse all 16 deep dives →
+-
+→ Breaking AI alertsWhen something major breaks (a $60B acquisition, a regulator's emergency meeting, a frontier model leak), alert subscribers know within hours. Typically 0-2 emails per day.Get breaking alerts →
+-
+→ AI News Today (live)Live dashboard updated as the scanner finds news: scored stories from the last 48 hours, weekly entity movers, and quarterly trend lines across 113 AI companies, people, and topics.Open AI News Today →
+Quick Hits
+The Lab Gladiator Era
+- Anthropic ships Claude Fable 5 — its most powerful public model ever, with a kill-switch — On June 9 Anthropic made Fable 5, a Mythos-class model, generally available — state-of-the-art on nearly every benchmark, especially software engineering. It ships with safeguards that block cybersecurity, bio and chem queries and silently fall back to Claude Opus 4.8, triggering in under 5% of sessions; early users say the guardrails over-refuse innocuous prompts. The unrestricted twin, Mythos 5, went only to vetted cyberdefenders and the US government via Project Glasswing. [Anthropic]
+- Jeff Bezos comes out of stealth with Prometheus, a $41B AI startup — Bezos emerged from stealth on June 11 with Prometheus, valued at $41B on a $12B raise backed by JPMorgan, BlackRock, Goldman Sachs, DST Global and Arch. Co-led with former Google X executive Vik Bajaj, it's building an "artificial general engineer" — ingesting physical-world data to speed the manufacturing of everything from jet engines to smartphones. [Semafor]
+AI Supply Chain Under Siege
+- The Miasma worm hijacked AI coding tools to compromise 73 of Microsoft's own repos — A self-replicating supply-chain worm compromised 73 repositories across four Microsoft GitHub organizations by planting config files that auto-run a malicious payload the moment a developer opens the repo in Claude Code, Gemini CLI, Cursor or VS Code. The AI coding agent itself becomes the delivery vector. [The Hacker News]
+- GitHub will disable npm's auto-run install scripts by default — The direct structural response: npm v12 (est. July) will no longer execute preinstall/install/postinstall scripts from dependencies unless a project explicitly allows them, and won't resolve Git or remote-URL dependencies without opt-in flags. The changes are available behind warnings in npm 11.16+ today. The default that let supply-chain worms jump package-to-package is being switched off. [The Hacker News]
+The Year Governments Got Serious
+- Anthropic breaks with the White House on overriding state AI laws — As the Trump White House and Sen. Marsha Blackburn push federal preemption of state AI rules (bundled with kids-safety and No Fakes Act deepfake bills), Anthropic told Congress on June 10 not to block state laws unless it first passes a "rigorous" federal law addressing catastrophic AI risk — and to require independent safety tests for the most capable models. It wants preemption "surgical," leaving states room on child safety and consumer protection. [The Hill]
+- A German court rules Google is liable for what its AI Overviews say — The Regional Court of Munich held Google directly liable because an AI Overview is its own content — independent statements Google generates, not just a list of links — after overviews falsely tied two Munich publishers to scams. The shield that has long protected search results doesn't extend to AI answers. [The Next Web]
+Auto Mode Everything
+- Visa wired ChatGPT to shop and pay on your behalf — Visa embedded its payment network inside ChatGPT, letting an agent not just recommend a product but buy it at potentially any Visa merchant. OpenAI supplies the agent; Visa supplies authorization and fraud monitoring. It replaces OpenAI's error-prone Instant Checkout, retired in March — and, as Fortune notes, can complete purchases without a human clicking "buy." [Fortune]
+- Neura Robotics closes the largest humanoid round ever — $1.4B at a $7B valuation — The German company's $1.4B Series C, backed by NVIDIA, Amazon and the European Investment Bank, is the biggest humanoid-robotics raise on record. Neura says it wants to scale to millions of physical-AI robots by 2030. Europe finally has a humanoid contender funded at US scale. [CNBC]
+The knife fight behind the IPOs
+This week the product race and the capital race became the same race — and the labs started fighting over how to even keep score.
+Anthropic shipped Fable 5, its most powerful public model, days after both it and OpenAI filed confidentially for IPOs. Then OpenAI's revenue chief accused Anthropic of inflating its run-rate by about $8 billion through the generous way it counts revenue shared with its cloud partners. On the eve of two IPOs, neither side can even agree whose revenue number is the benchmark.
+Underneath the squabble is a wall of money. Bezos raised $12B for Prometheus at $41B. OpenAI is in talks for a 10-gigawatt Ohio data center; Amazon took a $17.5B loan and Oracle is adding $40B in debt for the build-out. Morgan Stanley says AI-linked debt will nearly double to $570B this year.
+The capability everyone is buying is real. The revenue that's supposed to pay for it is the thing nobody can agree how to count.
+Key Takeaways
+- Capability and capital spiked together. Anthropic put its most powerful model in everyone's hands while telling investors OpenAI's rival overstates revenue by ~$8B; Bezos raised $12B at $41B for a physical-world AI. Ahead of dueling IPOs, the labs can't even agree how to count the revenue that justifies the spend.
+- AI coding agents are now a first-class supply-chain target — and the ecosystem is changing defaults because of it. Miasma rode the config files Claude Code, Cursor and Copilot execute on open to reach 73 Microsoft repos; days later GitHub moved to switch off npm's auto-run install scripts entirely. Treat agent configs as untrusted code.
+- Two fights opened over who controls AI. Anthropic broke with the White House, telling Congress not to preempt state AI laws without a rigorous federal safety law; a German court ruled Google is directly liable for its AI Overviews because they're "its own words." The questions: who writes the rules, and who's liable for the output.
+- Autonomy crossed two lines. Visa wired ChatGPT to shop and pay at any Visa merchant — agents can now spend your money — and Neura pulled the largest humanoid round ever ($1.4B at $7B). The leash on AI agents got materially longer this week.
+Worth Reading
+- ChatGPT becomes the fastest app ever to reach 1 billion monthly users — Per Sensor Tower, ChatGPT's app crossed 1 billion global monthly active users in May, about three years after launch — a milestone that took Google Maps, YouTube, Messenger and TikTok five to eight years. It's still growing 62% year over year. [PYMNTS]
+- AI is now the leading reason companies give for cutting jobs — Employers blamed AI for nearly 40% of May's announced job cuts, up from 7% in January and 26% in April — the highest May layoff total since 2020, per Challenger, Gray & Christmas. AI-attributed cuts have risen three straight months, bringing the 2026 total to 87,714, already above all of 2025. [CNBC]
+Worth Watching
+The videos AI practitioners are passing around right now — curated on AI TV.
+| Is the AI Boom About to COLLAPSE? MS NOW | |
+| AI Billionaires Want to Control EVERY Aspect of Your Life | Aaron Bastani Meets Karen Hao Novara Media | |
+| Google Employees Meme About How Bad Their AI Is 404 Media |
+This week's poll
+Visa just wired ChatGPT to shop and pay on your behalf — at any Visa merchant, potentially without you clicking "buy." How much spending authority should an AI agent have?
+Last week, 182 of you voted:
+**Two opposite bets landed this week. Whose ages better?**
+Visa just wired ChatGPT to shop and pay on your behalf — at any Visa merchant, potentially without you clicking "buy." How much spending authority should an AI agent have?
+— Alexis

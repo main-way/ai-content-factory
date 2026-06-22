@@ -1,0 +1,9 @@
+TL;DR
+Windows 11 can now search with two characters instead of three. Local files also rank higher than web results and Copilot suggestions. June Patch Tuesday.
+Windows 11 can now search with two characters instead of three. Local files also rank higher than web results and Copilot suggestions. June Patch Tuesday.
+Microsoft’s June 2026 Patch Tuesday update quietly fixes one of Windows Search’s longest-standing irritations. The search box now finds files with as few as two characters, down from the previous three-character minimum. Files named Q3, V2, or any other short label are no longer invisible.
+The update also changes how results are ranked. Local files now surface near the top instead of getting buried beneath web results, app suggestions, and Copilot prompts. For anyone who names files with short, practical labels, the improvement removes a small friction that compounded every time they searched.
+Windows Latest called the June release the biggest Patch Tuesday of the year. Beyond the search fix, it includes the record 200 security patches that addressed 33 critical vulnerabilities and three publicly disclosed zero-days.
+Dropping one character from the search minimum sounds trivial. It is not. Most people who work with dozens of files daily use two-character naming conventions without thinking about it. The old three-character floor meant those files required a third keystroke before Windows would even start looking, and when it did, the actual file often appeared below web links and AI suggestions that nobody asked for.
+The fix is the kind of usability improvement that feels obvious only after it ships. Microsoft’s AI-first restructuring has dominated the company’s public messaging this year. But the most useful change it shipped in June was not an AI feature. It was letting you find a file called Q3.
+Get the most important tech news in your inbox each week.

@@ -1,0 +1,12 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Adaptive Speech-to-Spike Encoding for Spiking Neural Networks
+View PDF HTML (experimental)Abstract:The mismatch between continuous acoustic signals and discrete event-driven processing remains a fundamental bottleneck for neuromorphic speech processing. Current systems typically rely on fixed spike encoders, forcing downstream Spiking Neural Networks (SNNs) to compensate for non-adaptive input representations. To address this, we present a learnable residual speech-to-spike encoder jointly trained end-to-end with a Recurrent Leaky Integrate-and-Fire (R-LIF) backbone. We validate this approach on the Google Speech Commands v2 (GSC-v2) benchmark, achieving up to 94.97% accuracy. Notably, the learned encoder remains highly parameter-efficient with a compact 35k-parameter variant that reaches 89.8%, matching or exceeding prior baselines that require an order of magnitude more parameters. Our encoder-focused analysis, including linear probing and gradient-residual inspection, indicates that the encoder does not target faithful signal reconstruction but instead learns task-aligned spike representations that enhance class separability. Finally, we benchmark bio-inspired, hardware-friendly credit assignment by comparing Direct Feedback Alignment (DFA) with surrogate-gradient BPTT under identical architectures and training conditions. We find that DFA reaches 91.5% accuracy, quantifying the performance trade-off of bio-inspired learning rules for modern neuromorphic audio.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

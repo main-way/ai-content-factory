@@ -1,0 +1,34 @@
+{
+  "date": "2026-02-27",
+  "count": 2,
+  "posts": [
+    {
+      "id": "dd74ffdf4d77",
+      "title": "Agentic Engineering Patterns",
+      "url": "https://simonw.substack.com/p/agentic-engineering-patterns",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-02-27T06:05:13+00:00",
+      "summary": "Plus vibe coding my dream macOS presentation app, Gemini 3.1 Pro and lots more",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "4316a04f2ed5",
+      "title": "Issue #33",
+      "url": "http://augmentedcoding.dev/issue-33/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-02-27T00:00:00+00:00",
+      "summary": "Ladybird adopts Rust, with help from AI LADYBIRD.ORG Ladybird is a new web browser, that is currently under active development. The team behind this goal have been considering alternatives to C++ for a while, but having considered Rust and Swift in the past, they decided to stick with C++. However, Rust has gradually become a more compelling option. So what to do with their current JavaScript engine (25,000 lines of code), written in C++? Erm, that’s easy. Get Claude Code / Codex to port it. Armed with a suite of 52,898 tests, this human-directed migration took just one week. This is a…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:ZiMPedance: Impedance-Aware ZMP Modeling and Control for Payload Carrying with Quadruped Robots
+View PDF HTML (experimental)Abstract:Load transportation with quadruped robots is strongly affected by the dynamics of the physical interface between the robot and the load. Passive spring-based arms reduce weight and complexity compared to active manipulators, but their spring-damper dynamics can introduce oscillatory forces that degrade locomotion stability. This paper derives an extended Zero Moment Point (ZMP) formulation that includes passive payload-interface dynamics, relating stiffness, damping, and payload mass to the stability margin. The analysis shows that underdamped configurations can resonate with locomotion harmonics. Based on this insight, we augment a Single Rigid Body Dynamics model with passive subsystem dynamics and integrate it into a Model Predictive Control framework. In simulation, the proposed controller reduces stability violations by up to $10\times$, from $7.0\%$ to $0.7\%$, and increase locomotion efficiency by lowering horizontal ground reaction force effort by up to $15\%$ compared to a nominal baseline. Hardware experiments with a $2\,\mathrm{kg}$ payload show stable locomotion under pull-release disturbances where the nominal controller fails. The same model also enables end-effector tracking through passive arm dynamics without direct arm actuation.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

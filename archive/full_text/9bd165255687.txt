@@ -1,0 +1,158 @@
+TL;DR
+A basic fallback router shows a 100% completion rate on your dashboard but drops schema integrity to 0%. The pipeline finishes, but the output is broken.
+To fix it, the engine catches the error, rebuilds the payload for the backup model, and saves the agent’s progress before the swap. The benchmarks below run on standard Python 3.12 with zero external dependencies.
+The Moment Everything Broke
+I was building a three-agent pipeline for EmiTechLogic: a Planner, an Executor, and a Validator running sequentially, each feeding structured JSON output to the next. The pipeline worked fine in testing. Small loads, clean responses, no surprises.
+Then I ran it under realistic conditions.
+Step one, the Planner, finished. Step two, the Executor, hit a 429 rate limit midway through. My basic retry loop caught the error, swapped to a fallback model, and kept running. The pipeline reported 100% completion. No exceptions thrown. No error logs.
+But when I checked the downstream output, the confidence key was missing. The result field was just a string: “incomplete – schema mismatch during swap.” The Validator received structurally broken input and had no way to know it. The pipeline finished on paper, but the data was useless.
+That is the failure mode this article is about. Not the 429 itself, and not the retry loop. The issue is what happens when you hand a fallback model an unchanged payload formatted for a different engine entirely.
+The Complete implementation available on GitHub: https://github.com/Emmimal/async-router-engine
+Why This Failure Is So Hard to See
+Standard monitoring dashboards hide this bug because they only track process completion. They check if the API returned a 200 and if the thread exited cleanly. If the script finishes, the dashboard turns green. For multi-agent systems, uptime is the wrong metric.
+The metric that matters is schema integrity. A pipeline that silently completes with corrupted fields is often worse than a hard crash. A crash forces an immediate fix, while silent data corruption slips directly into your database unnoticed [1].
+These agents are tightly coupled. The Executor expects the Planner’s exact JSON keys, and the Validator expects the Executor’s keys. When a model swap breaks the structure at step two, that step doesn’t throw an error. It just passes the malformed data down the line, ruining the final output somewhere downstream where you aren’t looking [2].
+Rate limiting isn’t a basic network infrastructure issue. It is a data integrity problem.
+The Anatomy of a Silent Pipeline Failure
+The failure mechanism is quiet but destructive.
+API contracts are completely inconsistent across different model tiers. A premium model enforces strict JSON mode and uses a dedicated system prompt array. A cheaper fallback tier might not support an isolated system field at all, forcing you to merge instructions directly into the user text. It also rarely guarantees structured JSON outputs.
+When a basic router catches a 429 and swaps the model ID, it forwards the original request payload unchanged. The fallback model gets a configuration it can’t parse. The network request succeeds because the API technically returned text. No exception is thrown. The pipeline keeps moving, but the data structure is already ruined. The next agent just gets raw text or missing keys instead of valid JSON.
+Here is the payload layout across the three tiers in my system:
+That last block is Strategy A in my benchmark. The router swaps the model ID, but the payload never adapts. The incoming response breaks structurally, but the pipeline logs a clean success anyway.
+Building a Recovery Layer That Actually Understands Context
+I split the logic into four parts. Each one has a single job and nothing else.
+The first realization: not all failures are the same
+A basic router treats every API error as a trigger to swap or retry. That logic fails instantly on context overflows or billing issues.
+You have to separate the root causes. A 429 means the model is temporarily throttled, so you swap and retry elsewhere. A context overflow means the prompt itself is too big, so a retry is just a waste of tokens because the payload needs to be trimmed first. A billing quota drop means the entire provider is dead for the session, so burning retries against it is pointless.
+The detector handles this by parsing the raw error string against specific pattern lists. Instead of a generic crash, it returns a typed ThrottleEvent
+containing a clean reason code and a backoff window tied to the specific error:
+The detector tracks provider windows using time.monotonic()
+for cooldown decay. It keeps track of remaining backoff times and monitors the request rate over a rolling 60-second window. Every routing attempt calls is_throttled()
+first. If a provider is in backoff, the router skips it entirely.
+Normalizing Payloads: How to Stop Schema Corruption
+The model registry and the adapt_payload()
+method separate Strategy B from Strategy A.
+The registry holds a ModelProfile
+for each engine. This profile explicitly defines target capabilities, including native system prompt support, JSON mode flags, schema structures, and specific formatting templates.
+When a swap happens, the router calls adapt_payload()
+for the new target. The adapter builds a completely fresh request dictionary instead of forwarding the old one. If the backup model lacks a dedicated system prompt field, the adapter injects those instructions straight into the first user message. It only applies the response_format
+key or structural schemas if the target model natively supports them.
+Here is the payload transformation when dropping from model_a to model_c:
+The three lines in adapt_payload()
+that check supports_system_prompt
+before deciding where to inject the system content are, in the benchmark, the difference between 0% schema integrity and 100%.
+Keeping the pipeline alive across a swap
+The state preserver prevents context loss during a mid-task swap.
+When the Executor hits a 429 and the router switches models, the fallback engine starts cold. It sees the raw message history but has no idea the Planner already ran, where it sits in the execution sequence, or what schema it needs to return.
+The state preserver fixes this by snapshotting the entire execution context the moment the throttle event fires, right before the swap. It logs the message history, system prompt, step indexes, existing partial outputs, and the target schema.
+After the swap, build_resume_message()
+turns that snapshot into a structured text block and appends it to the messages array. The fallback model receives the context directly:
+[RESUME] Task 'pipeline_run_3' interrupted at step 2/3 (Execute planned steps).
+Previous model: model_a.
+Progress: 67% complete.
+Partial output so far:
+{
+"planner": {
+"result": "Pipeline step completed with full structured analysis.",
+"confidence": 0.94,
+"metadata": {"tokens_used": 312, "model_tier": "primary"}
+}
+}
+Continue from where the previous model stopped.
+Required output schema: {"type": "object", "required": ["result", "confidence"]}
+The fallback model now knows exactly where it is, what came before, and what it needs to produce. This is what the 100% state preservation rate in the benchmark reflects.
+The Router
+The router coordinates the detector, registry, and state preserver. Everything runs inside a bounded retry loop, executing these steps in order on every attempt:
+Two configuration values matter most here.
+max_swaps
+limits how many times a single call can switch models. Without this cap, back-to-back throttling across multiple providers would loop endlessly until max_retries
+runs out.
+swap_delay_seconds
+adds a tiny 0.05-second pause before hitting the new model. This window is small enough to avoid hurting latency, but large enough to stop you from slamming a provider that is already struggling. The max_swaps
+cap and swap_delay_seconds
+pause implement a lightweight version of the bulkhead and throttling patterns described by Nygard [3].
+The Three-Agent Pipeline
+The WorkflowOrchestrator
+runs three sequential steps: Planner, Executor, and Validator. Each step requires its own system prompt, user message, and expected output schema. The output from one step feeds directly into the next, building a growing message history.
+The orchestrator keeps a shared messages list and a partial_output
+dictionary across all three steps. When a mid-step swap happens, the state preserver packs both into the resume message. Instead of just getting the current conversation, the fallback model receives the full context of what the entire pipeline has produced up to that point.
+My old fallback setups only handled swaps at the model level and completely ignored the pipeline. The backup model received the new ID, but it had no idea where it landed in the sequence. The state preserver fixes that disconnect.
+The Benchmark
+I ran three scenarios across ten runs each using seed=42 for exact reproducibility. A mock provider forces model_a to throttle at step one every single time, forcing the fallback logic to kick in.
+NO_ROUTER is the baseline with zero fallback logic. When model_a throttles, the pipeline kills the run. The mock returns a 503 for any secondary model calls. This is what happens when you just wrap an API call in a basic try/except block, log the failure, and give up.
+STRATEGY_A is basic routing. The router catches the 429 and swaps the model ID, but it forwards the exact same payload without changing anything. The mock provider returns a degraded response with missing keys and a schema error string. This matches how a real backup model behaves when you feed it an incompatible request format and it tries to guess its way through.
+STRATEGY_B is this system. The router intercepts the 429,
+snapshots the execution state, normalizes the payload for
+the backup engine, injects the resume context, and carries on.
+The benchmark isolates payload adaptation failures independently
+of provider-specific latency, pricing, or model quality differences.
+Strategy A and Strategy B differ only in payload normalization and
+state preservation logic. Using a deterministic MockProvider allows
+a direct causal comparison between these recovery strategies without introducing variability from network conditions or differences in model capabilities. Real-world APIs will produce different latencies and outputs, but the structural failure measured here — forwarding incompatible payloads across model swaps — remains the same.
+Schema integrity was measured as the percentage of runs in which the final agent output satisfied the expected JSON schema, including all required fields and correct structural types.
+BENCHMARK RESULTS
+seed=42 | 10 runs per scenario | throttle_at_step=1
+Latency = simulated (seeded, deterministic, OS-independent)
+═══════════════════════════════════════════════════════════════════════════
+Metric NO_ROUTER STRATEGY_A STRATEGY_B
+─────────────────────────────────────────────────────────────────────
+Completion Rate 0.0% 100.0% 100.0%
+Schema Integrity Rate 100.0% 0.0% 100.0%
+State Preserved Rate N/A 100.0% 100.0%
+Provider Swap Rate 100.0% 100.0% 100.0%
+Avg Simulated Latency (ms) 57.50 77.12 77.12
+Avg Steps Completed 0.00 3.00 3.00
+─────────────────────────────────────────────────────────────────────
+Completion improvement: +100.0% (NO_ROUTER -> STRATEGY_B)
+Schema integrity improvement: +100.0% (STRATEGY_A -> STRATEGY_B)
+Strategy A and Strategy B execute the same number of API calls. The benchmark reports identical simulated provider latency because the seeded MockProvider models only API response time. The additional 50 ms swap delay configured in RouterConfig
+is an explicit operational overhead introduced by Strategy B during failover events.
+Look at Strategy A’s schema integrity: 0.0%. Every single run finished. Every single run returned broken data. The pipeline cleared all three steps and the orchestrator logged a success, but the final output was completely unusable. If your dashboards only track completion rates, this failure is completely invisible.
+Strategy B adds a 50ms swap delay per failover event (swap_delay_seconds=0.05
+in RouterConfig
+). This configurable pause avoids hammering a provider already under load before switching to the fallback. Simulated latency for Strategy A and Strategy B is identical in the benchmark because both make the same number of API calls. The overhead is strictly the swap delay, not the snapshot, payload rebuild, or resume injection. In production, a 50 ms delay is typically negligible relative to end-to-end LLM latencies that often range from several hundred milliseconds to multiple seconds. It is a mandatory trade-off.
+State preservation is not applicable to NO_ROUTER because execution terminates before recovery occurs.
+Honest Design Decisions
+The payload adapter is strictly rule-based, not learned. Every ModelProfile
+is hand-written. If you want to add a new model, you manually map out its capabilities, templates, and schemas.
+This design is intentional. A rule-based setup is 100% auditable. You can read the profile and know the exact transformation that will happen. A learned adapter creates an opaque black box right when you need transparency most during a live fallback.
+The resume message isn’t a structured field either. It is just plain text. build_resume_message()
+simply drops a raw string into a regular user message.
+If a model supports system prompts, injecting the context there would be cleaner. But the current setup works across all three model tiers, including model_c which has no system prompt support at all. Compatibility won over elegance.
+Using a mock provider keeps the experiment controlled. Real APIs introduce network lag, billing costs, and timing variables that make benchmark results unpredictable.
+Strategy A’s failure is entirely structural. It happens because the payloads aren’t normalized, not because of a random timing fluke. The mock isolates this flaw cleanly and keeps the test completely reproducible.
+The benchmark runs with max_retries=4. The default of 3 is conservative for a two-provider setup — raise it if your registry has more than three tiers. The cap exists to avoid runaway costs on genuinely unavailable providers.
+What This Means for How You Build Agentic Systems
+You cannot delegate rate limit handling to a generic retry library. Generic libraries catch exceptions and retry. They do not understand payload contracts between model tiers, they do not snapshot agent state, and they cannot normalize system prompts for providers that don’t support a dedicated system field. If your fallback logic is just catching an exception, swapping the model ID, and retrying, you are running Strategy A. Your dashboards will show a healthy completion rate, but your schema integrity could be zero without you realizing it.
+The fix starts with error classification. A 429, a quota exhaustion, a context overflow, and a provider timeout are four different problems that need four different responses. Treating them identically burns retries on failures a retry will never fix.
+Payload normalization is where Strategy A breaks down. The request has to be rebuilt from scratch for the target model, not forwarded unchanged. The single check on supports_system_prompt
+before deciding where to inject system content is the entire difference between 0% and 100% schema integrity in the benchmark. That is one conditional. It costs nothing.
+State has to be snapshotted before the swap, not after. If the fallback model also throttles, you need the context from the original failure point. A snapshot taken after a failed recovery attempt captures the wrong state.
+The last piece is the resume message. The fallback model starts cold. When I tested this without the resume message, model_b picked up the message history and tried to re-execute the Planner’s step instead of continuing from the Executor. It had no way to know where it landed. The pipeline completed, the output was wrong, and nothing flagged it. Injecting the resume context explicitly is the only way to tell the fallback model what already happened and what it still needs to produce.
+What’s Missing and What Comes Next
+The StatePreserver is the part I’m least satisfied with. Snapshots live in memory and disappear the moment the process crashes, which means a restart loses everything. I want to swap the dictionary for a SQLite backend — the interface stays the same, but the state survives. The model selection is also too rigid right now. The registry picks the next model by priority order and that’s it. What I actually want is for it to look at which fallback has the best schema integrity track record for a given schema and route there instead — the stats() method already collects enough data to make that call. And the mock provider needs to go. Wiring in a real Anthropic or OpenAI client is a one-function change, but I haven’t done it yet because the benchmark needed to stay controlled and reproducible.
+Closing
+I built this because my pipeline was silently broken. The 429 errors and model swaps were visible, and completion rates looked clean. What went unnoticed was that every fallback response had a null confidence field and an “incomplete” result string. The validator was processing broken data whenever the primary model throttled. During load testing, that was most of the time.
+The code requires zero external dependencies and uses only the standard library (asyncio
+, dataclasses
+, enum
+, hashlib
+, json
+, random
+, time
+):
+- Rate limit detector: ~160 lines
+- Payload adapter: A single method in the model registry
+- State preserver: ~140 lines (including the resume message builder)
+Writing the code wasn’t the difficult part. The hard part was realizing that a completed pipeline is not the same as a working pipeline. Standard model swapping confuses these two metrics. The completion counter goes up, the output is broken, and nobody notices until a downstream system fails three steps removed from the cause.
+The Takeaway
+Build your fallback logic for production reality. Treat a model swap as a data integrity event, not an infrastructure retry.
+Snapshot before you swap, adapt the payload before you send it, and tell the fallback model explicitly where it landed.
+Complete code: https://github.com/Emmimal/async-router-engine
+References
+[1] Sculley, D., Holt, G., Golovin, D., Davydov, E., Phillips, T., Ebner, D., Chaudhary, V., Young, M., Crespo, J.-F., & Dennison, D. (2015). Hidden technical debt in machine learning systems. Advances in Neural Information Processing Systems, 28. https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html
+[2] Anthropic. (2024, December 19). Building effective agents. https://www.anthropic.com/engineering/building-effective-agents
+[3] Nygard, M. T. (2018). Release It!: Design and Deploy Production-Ready Software (2nd ed.). Pragmatic Bookshelf. [Circuit breaker and bulkhead patterns]
+Disclosure
+All code in this article was written by me and is original work, developed and tested on Python 3.12 (Windows 11, CPU only). Benchmark numbers are from actual runs of benchmarks/benchmark.py using MockProvider with seed=42 and are fully reproducible by running the file on a standard Python installation with no packages to install. Latency figures reflect deterministic simulated latency accumulated by the seeded mock provider — not wall-clock measurement — ensuring identical results across all machines and runs. The MockProvider
+simulates provider behavior deterministically: no real LLM API calls are made in the benchmark. I have no financial relationship with any tool, library, or company mentioned in this article.

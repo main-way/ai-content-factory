@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:Right or Wrong, Models Comply: Directional Blindness in LLM Moral Judgment
+View PDF HTML (experimental)Abstract:As language models take integrated roles across many domains, the response of LLMs to user pushback becomes a critical alignment property. Yet many existing evaluations treat compliance as unidirectional, measuring whether models resist pressure but not whether they resist it selectively. We introduce Compliance Asymmetry (A = BCR/HCR), a bidirectional diagnostic that compares beneficial output change under helpful nudges with harmful change under misleading nudges. Across 9 models and 972,000 nudge-condition responses, we find that this selectivity differs in factual and moral judgments: models follow helpful nudges more than harmful ones on factual questions (A = 1.58), but follow both directions at nearly identical rates on moral questions (A = 1.04). This phenomenon persists across model families, capability levels, and nudging types. Interestingly, we also find that chain-of-thought prompting amplifies helpful and harmful compliance together, while identity-based prompting suppresses both by nearly identical margins. These results identify direction-blind moral compliance as a distinct failure mode in current LLMs and suggest that alignment should target directionally calibrated updating rather than lower compliance alone.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

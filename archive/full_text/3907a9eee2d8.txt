@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:Efficient Multinomial Logistic Bandit via Frequent Directions
+View PDF HTML (experimental)Abstract:This paper studies efficient online algorithms for multinomial logistic bandits (MLogB), where the feedback distribution over $K+1$ outcomes follows a multinomial logistic model of $d$-dimensional action vectors. A representative UCB-type algorithm, OFUL-MLogB, achieves a regret bound of $\tilde{\mathcal{O}}(Kd\sqrt{T})$, but still requires $\mathcal{O}(K^3d^3)$ time and $\mathcal{O}(K^2d^2)$ space per round due to parameter estimation and optimistic reward construction, which is prohibitive in high-dimensional settings. To address this limitation, we propose EOFD-MLogB, which integrates frequent directions matrix sketching into OFUL-MLogB. By maintaining a low-rank SVD sketch of the accumulated Hessian, constrained online Newton updates in parameter estimation and $Kd \times K$ spectral-norm computations in the reward bonus are reduced to one-dimensional root-finding tasks and $K \times K$ eigenvalue computations, respectively. This yields dominant per-round time complexity $\mathcal{O}(Kd(m+K)^2)$ and space complexity $\mathcal{O}(Kd(m+K))$, where $m \ll d$ is the sketch size. We further prove a regret bound of $\tilde{\mathcal{O}}(\Delta_T(Kd\ln\Delta_T+m)\sqrt{T})$, where the sketching error factor $\Delta_T$ is controlled by the $m$-truncated spectral tail of the Hessian. Thus, when the Hessian is approximately low-rank, the regret is close to that of OFUL-MLogB. Experiments validate the computational efficiency and competitive performance.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

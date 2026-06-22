@@ -1,0 +1,23 @@
+{
+  "date": "2023-12-16",
+  "count": 1,
+  "posts": [
+    {
+      "id": "78cb7372fc32",
+      "title": "Salmon in the Loop",
+      "url": "https://thegradient.pub/salmon-in-the-loop/",
+      "source": "The Gradient",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2023-12-16T17:00:36+00:00",
+      "summary": "On fish counting – a complex sociotechnical problem in a field that is going through the process of digital transformation.",
+      "author": "Kevin McCraney",
+      "tags": [
+        "Machine Learning",
+        "Overviews"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

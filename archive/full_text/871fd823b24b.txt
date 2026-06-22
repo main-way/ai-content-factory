@@ -1,0 +1,11 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Adaptive-Frequency Resonate-and-Fire Neurons for Spectral Estimation of Streaming Radar Signals
+View PDF HTML (experimental)Abstract:Frequency Modulated Continuous Wave (FMCW) radar systems traditionally rely on Fourier-based methods, such as the Fast Fourier Transform (FFT), to estimate target range and velocity. While computationally efficient, these approaches require storing and processing large blocks of data, which can become a bottleneck in memory-constrained or low-latency applications. In this work, we propose a neuromorphic-inspired signal processing method based on adaptive resonate-and-fire (ARF) neurons formulated as a discrete-time dynamical system. Each neuron dynamically adjusts its internal frequency to match dominant frequency components of the input radar signal, enabling direct estimation of target ranges and velocities without computing the full frequency spectrum. The proposed model operates in a sample-by-sample fashion, resulting in memory requirements that scale with the number of tracked targets rather than the signal length. A feedback mechanism is also introduced to enable multiple neurons to lock on distinct frequency components in multi-target cases. Results on simulated and experimental data demonstrate that the method can successfully track multiple targets. Compared to conventional FFT-based approaches, the proposed method offers reduced memory usage proportional only to the number of tracked targets, making it suitable for resource-constrained and edge-based radar applications.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

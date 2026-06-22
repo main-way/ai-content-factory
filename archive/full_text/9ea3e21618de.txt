@@ -1,0 +1,122 @@
+We recently released Part 1 results of our private SaaS company survey in partnership with KBCM Technology Group (formerly Pacific Crest Securities). This is the sixth annual survey we’ve produced together, which provides data to help SaaS companies benchmark their performance against their competition.
+In Part 1, we covered growth rates, go-to-market trends, and CAC Rations and CAC Payback.
+We’re excited to share Part 2 of the survey results, which covers:
+- Operations
+- Cost Structure
+- Contracting and Pricing
+- Retention and Churn
+- Capital Requirements and Use of Debt Financing
+- Top Quartile Benchmarks
+Operations
+Subscription Gross Margin
+157 respondents
+(1)Respondents asked to back out stock-based comp. expenses and include customer support expenses
+How is your SAAS Application Delivered?
+(1)Reported “predominant” mode of delivery
+245 and 233 respondents, respectivel
+87% of participants use third parties predominantly (almost 3/4 of which use AWS); expectations for the future show a continuing shift to third-party application delivery with AWS maintaining share.
+SAAS Application Delivery Trends since 2014
+(1)Reported “predominant” mode of delivery
+Respondents: 2014: 297; 2015: 282; 2016: 289; 2017: 384; 2018: 245
+SAAS Application Delivery Mode as a Function of Size of Company
+Respondents: Total: 152, $5MM-$10MM: 39, $10MM-$15MM: 24, $15MM-$25MM: 29, $25MM-$40MM: 24, >$40MM: 36
+Only the largest (and oldest) vendors have any significant reliance on self-managed servers. Though, even for them, use of AWS increased significantly from last year’s survey.
+Subscription Gross Margin as a Function of Application Delivery
+Respondents: Total: 157, Amazon Web Services (AWS): 107, Google Cloud: 10, Salesforce: 2, Microsoft Azure: 5, Other Third-Party: 10, Others: 4, Self Managed Servers: 1
+Median subscription gross margins do not vary significantly when filtered by SaaS application delivery method, though Azure and Google Cloud (for which data is sparse) had broader distributions
+than AWS.
+Professional Services (% of 1st year ARR) as a Function of Target Customer
+(1)Target Customer – More than 50% of revenues come from designated customer base; “Mixed” defined as respondents who didn’t select at least ~67% for any designated customer base
+Respondents: Total: 119, Enterprise: 57, Enterprise & Middle Market: 26, Middle Market / SMB / VSB: 23, Mixed: 13, excludes respondents indicating no professional services
+As expected, companies which are focused mainly on selling to large enterprises have higher levels of professional services.
+Analysis of Sales Commission Levels
+Respondents: Total: 180, Field Sales: 96, Inside Sales: 84
+The survey results do
+not point to a significant difference in sales commission rates between companies which predominantly use a field go-to market versus inside sales.
+Sales Commissions as a Function of Median Contract Size
+Respondents: Total: 221 and 207, <$1K: 8 and 7, $1K-$5K: 37 and 36, $6K-$15K: 50 and 43, $16K-$25K: 27 and 23, $26K-$50K: 40 and 40, $51K-$100K: 28 and 27,
+$101K-$250K: 23 and 23, >$250M: 8 and 8, respective
+Median direct sales and fully-loaded commission rates do not vary significantly across median contract sizes.
+Direct Commissions for Renewals, Upsells, and Multi-year Deals
+(1)Among companies paying a commission
+(2)Same rate (or higher) than new sales commissions
+Respondents: Renewals: 129, Upsells: 147, Extra Years on Initial Contract: 165
+Cost Structure
+(1)All margins based on 2017 GAAP, adjusted for stock-based compensation add-back
+(2)Gross margin determined based on including customer support in COGS
+Note: Margins may differ from margins on other pages due to the fact that the $5MM size threshold is based on companies’ 2017 GAAP Revenue instead of 2017 ARR (consistent with previous years’ surveys).
+Respondents reporting: Subscription Gross Margin: 149, Gross Margin: 133, Sales & Marketing: 133, Research & Development: 133, General & Administrative: 133, EBITDA Margin: 139, FCF Margin: 138, YoY Organic ARR Growth Rate: 164
+Median Cost Structure by Size
+Note: Margins may differ from margins on other pages because here companies are excluded based on their 2017
+GAAP Revenue instead of 2017 ARR, which is consistent with previous years’ surveys
+Note: Numbers do not add due to the fact that medians were calculated for each metric separately and independently
+Average Number of Respondents: $5MM-$10MM: 35, $10MM-$15MM: 19, $15MM-$25MM: 31, $25MM-$40MM: 20, $40MM-$60MM: 18, >$60MM: 16
+For Comparison: Historical Results of Selected Public SAAS Companies
+(1)YoY Revenue Growth compares against previous year’s revenue of the companies at the time
+Note: Excludes stock-based compensation (SBC)
+Median includes ALRM, AMBR, APPF, APPN, APTI, ATHN, AYX, BCOV, BL, BNFT, BOX, BV, CARB, CLDR, CNVO, COUP, COVS, CRM, CSOD, CTCT, CVT, DMAN, DOMO, DWRE, ECOM, ELLI, EOPN, ET, FLTX, HUBS, KXS, LOGM, MB, MDB, MKTG, MKTO, MRIN, N, NEWR, NOW, OKTA, OPWR, PAYC, PCTY, PFPT, QLYS, RNG, RNOW, RP, RPD, SEND, SFSF, SHOP, SMAR, SPSC, SQI, TLEO, TWLO, TXTR, VEEV, VOCS, WDAY, WK, XTLY, YDLE, ZS and ZUO
+~$25MM median excludes ALRM, AMBR, APPN, APTI, ATHN, BCOV, BL, BNFT, CARB, CBLK, COUP, COVS, CSLT, CVT, DOMO, ECOM, ELLI, EOPN, FIVN, FLTX, KXS, MB, MDB, MKTG, MKTO, MRIN, MULE, N, NOW, OKTA, PAYC, PCTY, PFPT, QLYS, RNG, RP, SEND, SFSF, SMAR, TWLO, TWLO, ULTI, WK, YDLE, ZS and ZUO
+~$50MM median excludes ALRM, APPN, APTI, BNFT, BV, CARB, CBLK, CVT, DOMO, FLTX, MDB, N, NEWR, RNOW, RP, SFSF, VEEV, WDAY and ZUO
+~$100MM median excludes AMBR, BOX, CNVO, EOPN, EVBG, NOW and VEEV
+Measuring Survey Participants against “The Rule of 40%”
+Respondents: Total: 106, {G+P} > 40%: 21, {G+P} < 40%: 8
+Just ~20% (21 of 106) of the participants with >$10MM ARR meet or exceed “The Rule of 40%”. The median {Growth + Profitability} for the group is +8%.
+Comparison of “The Rule of 40%” Qualifiers vs. Others
+(1)G+P equals 2017 organic ARR growth rate plus 2017 FCF margin
+Respondents: Total: 106, {G+P} > 40%: 21, {G+P} < 40%: 85
+The median results of those respondents meeting or exceeding “The Rule of 40%” shows that while the best G+P performers are of similar size and age vs. those under “Rule of 40”, they have significantly lower CAC and capital consumption ratios. Also, the stronger group is more likely to be vertically-focused, and far less likely to be enterprise-focused.
+For Comparison: “The Rule of 40%” for Public SAAS Companies
+Source: Capital IQ; market data as of 10/19/1
+For comparison, public SaaS companies’ median growth + profitability is 33%. Notably, 70% of the market cap of public SaaS is above the 40% threshold, as of the date of this report.
+Contracting and Pricing
+Median/Typical Contract terms for the Group
+Respondents: Average Contract Length: 260, Average Billing Frequency: 260
+Contract Length as a Function of Contract Size
+Respondents: Total: 238, <$1K: 10, $1K-$5K: 40, $5K-$15K: 57, $15K-$25K: 25, $25K-$50K: 45, $50K-100K: 32, $100K-$250K: 21, $250K-$1MM:
+The phenomenon of longer contract terms for larger contracts is pretty clear with the exception of a few outliers.
+What is your Primary Pricing Metric
+“Other” includes various size-based pricing metrics (shareholders, host count, brand portfolio size and other financial metrics)
+260 respondents
+Retention and Churn
+Annual Gross Dollar Churn
+Respondents: Total: 158, Month to month: 17, Less than 1 year: 13, 1 year: 73, 1.5 year: 25, 2 years: 11, 2.5 years: 5, 3+ years: 1
+This year, we changed the methodology for collecting respondents’ gross dollar churn rates. What used to be a self-reported number (last year’s survey median was 8%) is now a median calculated gross dollar churn rate of 13.2% for the prior calendar year (2017).
+Gross Dollar Churn and Capital Efficiency
+(1)Capital consumed defined as total primary cumulative equity raised plus debt drawn minus cash on the balance sheet (adjusted for dividends / distributions)
+109 respondents
+Annual Net Dollar Retention from Existing Customers
+(1)Chart reflects calculated 2017 net dollar retention data.
+161 respondent
+Despite the higher gross dollar churn results this year, our calculated results for net dollar retention continued to show the median company with neutral to slightly better annual net dollar retention (~102%), consistent with previous years’ results.
+Annual Logo Churn
+162 respondent
+This year, companies reported direct responses for logo churn, instead of a multiple choice selection of ranges of annual unit churn, which led to a higher median annual logo churn in the survey. Last year, “unit” churn median was 11%.
+Annual Gross Dollar Churn as a Function of Contract Length
+Note: Churn rates may differ from churn rates on other pages because here companies with no stated contract lengths are excluded
+Respondents: Total: 158, Month to month: 17, Less than 1 year: 13, 1 year: 73, 1.5 year: 25, 2 years: 11, 2.5 years: 5, 3+ years: 1
+Unsurprisingly, companies with longer contracts generally experience lower annual gross dollar churn.
+Annual Gross Dollar Churn as a Function of Upfront Professional Services
+Respondents: Total: 158, 0%: 46, 1-10%: 32, 11-25%: 52, 26-50%: 18, >50%: 1
+Respondents with higher levels of professional services reported lower churn.
+Annual Gross Dollar Churn as a Function of Median Contract Size
+Respondents: Total: 148, <$5K: 27, $5K-$15K: 29, $16K-$25K: 14, $26K-$50K: 32, $51K-$100K: 25, >$100K: 2
+As contract sizes increase, gross dollar churn trends downward, though the benefits are muted for the median company in each group above $5K ACV. A close-up view of the distribution shows clearly that the distribution among those selling smaller contracts suffers much more significantly from higher churn.
+Annual Gross Dollar Churn as a Function of Primary Distribution Mode
+Respondents: Total: 167, Field Sales: 75, Inside Sales: 50, Internet Sales: 7, Channel Sales: 6, Mixed / Other: 2
+Those companies employing primarily field sales have lower median annual gross dollar churn rates than those employing primarily inside sales, internet sales or mixed go-to-market.
+Capital Requirements and Use of Debt Financing
+Capital Efficiency
+(1)Capital consumed defined as total cumulative primary equity raised plus debt drawn minus cash on the balance sheet (adjusted for dividends / distributions)
+Respondents: Total: 283, $5MM ARR Threshold: 94, $10MM ARR Threshold: 111, $25MM ARR Threshold: 55, $50MM ARR Threshold: 23
+Capital Consumptions Ratio
+(1)Capital consumed defined as total primary cumulative equity raised plus debt drawn minus cash on the balance sheet (adjusted for dividends / distributions)
+Respondents: 153, $5MM to $10MM: 36, $10MM to $20MM: 45, $20MM to $30MM: 16, $30MM to $50MM: 29, $50MM to $75MM: 17, >$75MM: 1
+Capital consumption median is 1.5x (for companies over $5M ARR) and doesn’t show meaningful declines until companies reach scale above $75M ARR.
+Use of Debt Capital
+We requested true dollars consumed, rather than primary equity capital raised. The results should make it easier for “apples-to-apples’ comparisons.
+(1)Of at least $1MM in debt
+(2)Median among companies with at least $1MM of debt; includes debt outstanding plus availability under existing lines
+Respondents: Total: 129, Less than $5MM: 34, $5MM to $10MM: 21, $10MM to $15MM: 16, $15MM to $25MM: 20, $25MM to $40MM: 14, Greater than $40MM: 24
+Top Quartile Benchmarks
+Benchmarks for Companies in the Top Quartile Growth Tier
+Benchmarks for Companies in the Top Quartile {Growth + FCF} Tier

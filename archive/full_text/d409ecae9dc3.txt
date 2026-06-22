@@ -1,0 +1,17 @@
+Statistics > Machine Learning
+Title:Conditional Local Importance by Quantile Expectations
+View PDF HTML (experimental)Abstract:Global variable importance measures are commonly used to interpret the results of machine learning models. Local variable importance techniques assess how variables contribute to individual observations. Current, popular methods, including LIME and SHAP, provide useful measures of feature contribution in the prediction space, while leaving opportunities for improved characterization of local structure in the model loss space. Additionally, they are not natively adapted for multi-class classification problems. We propose a new model-agnostic method for calculating local variable importance, CLIQUE, that highlights locally dependent relationships, provides improved stability over permutation-based methods, and can be directly applied to multi-class classification problems. Simulated and real-world examples show that CLIQUE emphasizes locally dependent information, captures interaction behavior beyond what can be evaluated by correlations, and assigns zero importance in regions where the response is invariant to changes in variables.
+Submission history
+From: Kelvyn Bladen [view email][v1] Wed, 13 Nov 2024 17:59:44 UTC (1,118 KB)
+[v2] Thu, 20 Feb 2025 01:05:21 UTC (1,917 KB)
+[v3] Tue, 10 Mar 2026 23:53:48 UTC (1,892 KB)
+[v4] Mon, 15 Jun 2026 18:20:16 UTC (2,576 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

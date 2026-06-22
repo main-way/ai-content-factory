@@ -1,0 +1,12 @@
+Quantum Physics
+Title:Zero-shot Quantum Neural Architecture Search
+View PDF HTML (experimental)Abstract:Variational Quantum Algorithms (VQAs) are a leading approach to exploiting near-term quantum hardware, leveraging parameterized quantum circuits and classical optimization to achieve advantage. Despite their promise, the practical deployment of VQAs is challenged by the difficulty of designing quantum circuit architectures that balance expressivity, trainability, and hardware constraints. Existing evolutionary-based quantum neural architecture search methods address these challenges but suffer from high computational costs due to repeated training of candidate circuits. In this work, we identify a setting in which the Gram matrix of the Quantum Neural Tangent Kernel converges. Building on this observation, we design a zero-shot surrogate model to estimate candidate performance without full training, significantly accelerating the architecture search process. Using this surrogate, we propose MZeQAS, a Monte Carlo Tree Search (MCTS)-based Zero-Shot Quantum Neural Architecture Search framework for VQAs. By integrating proxy-based performance estimation with MCTS exploration, MZeQAS efficiently discovers high-performing architectures. Experimental results demonstrate that MZeQAS outperforms existing approaches in terms of both search efficiency and solution quality, providing a scalable and effective framework for advancing VQA deployment on noisy intermediate-scale quantum devices.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

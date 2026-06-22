@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:ParaScale: Scale-Calibrated Camera-Motion Transfer via a Gauge-Invariant Parallax Number
+View PDF HTML (experimental)Abstract:Transferring the camera motion of a reference video to a freshly generated one lets creators reuse cinematic moves. Yet reference and target often live at incompatible scales -- a sweep across a galaxy versus a nudge across a desk -- and naively reusing the recovered trajectory yields either imperceptible or violently exaggerated motion. We trace this to a geometric fact: translation-induced image motion scales as ||T||/Z, so a monocular trajectory is meaningful only up to a depth-scale gauge. We distill this into the Parallax Number Pi = ||Delta T|| / Zbar, a dimensionless, gauge-invariant descriptor of how strongly a camera move is felt, and prove that it -- not the raw trajectory -- is the quantity that scale-faithful transfer must preserve. ParaScale is a plug-and-play module that reads Pi off any reference video and re-realizes it against the target scene's own depth, per frame, leaving rotation untouched. Sitting between pose extraction and pose injection, it requires no retraining and drops into any pose-conditioned generator. We further introduce the Parallax Consistency Error (PCE), a scale-symmetric metric that -- unlike the similarity-aligned TransErr -- exposes scene-scale mismatch. Across scale regimes spanning four orders of magnitude and multiple backbones, ParaScale keeps the realized parallax on the identity line and cuts PCE by more than 3x over uncalibrated transfer with no loss of visual fidelity.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

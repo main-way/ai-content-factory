@@ -1,0 +1,12 @@
+Computer Science > Computation and Language
+Title:Independent-Component-Based Encoding Models of Brain Activity During Story Comprehension
+View PDF HTML (experimental)Abstract:Encoding models provide a powerful framework for linking continuous stimulus features to neural activity; however, traditional voxelwise approaches are limited by measurement noise, inter-subject variability, and redundancy arising from spatially correlated voxels encoding overlapping neural signals. Here, we propose an independent component (IC)-based encoding framework that dissociates stimulus-driven and noise-driven signals in fMRI data. We decompose continuous fMRI data from naturalistic story listening into ICs using one subset of the data, and train encoding models on independent data to predict IC time series from large language model representations of linguistic input. Across subjects, a subset of ICs exhibited consistently high predictivity. These ICs were spatially and temporally consistent across subjects and included cognitive networks known to respond during story listening (auditory and language). Auditory component time series were strongly correlated with acoustic stimulus features, highlighting the interpretability of identified component time series. Components identified as noise or motion-related artifacts by ICA-AROMA showed uniformly poor predictive performance, confirming that highly predicted components reflect genuine stimulus-related neural signals rather than confounds. Overall, IC-based encoding models enable analyses at the level of functional networks, accommodating the variability in network locations across individuals and providing interpretable results that are easy to compare across subjects. Code provided at: this https URL
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

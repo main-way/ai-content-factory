@@ -1,0 +1,43 @@
+{
+  "date": "2025-03-25",
+  "count": 2,
+  "posts": [
+    {
+      "id": "bcf0aab7eb04",
+      "title": "Startups for Good Choose Words on Purpose",
+      "url": "https://venturefounders.com/startups-for-good-choose-words-on-purpose/",
+      "source": "Venture Founders",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "low",
+      "published": "2025-03-25T17:51:12+00:00",
+      "summary": "Startups for Good Chose Words on Purpose: Entrepreneurs on a mission use a glossary of words that are strongly oriented towards positive action to change the world for the better. For example, Patagonia boldly states, &#8220;We aim to use the resources we have—our voice, our business and our community—to do something about our climate crisis.&#8221; [&#8230;] The post Startups for Good Choose Words on Purpose appeared first on Venture Founders .",
+      "author": "Will Keyser",
+      "tags": [
+        "Remaking Capitalism—Future Economy",
+        "startup",
+        "sustainability",
+        "entrepreneur",
+        "entrepreneurship",
+        "purpose-driven",
+        "equity and inclusion for all startups",
+        "strategy"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "eb8040157c80",
+      "title": "Scaling Up Reinforcement Learning for Traffic Smoothing: A 100-AV Highway Deployment",
+      "url": "http://bair.berkeley.edu/blog/2025/03/25/rl-av-smoothing/",
+      "source": "BAIR Blog (Berkeley)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2025-03-25T09:00:00+00:00",
+      "summary": "Training Diffusion Models with Reinforcement Learning We deployed 100 reinforcement learning (RL)-controlled cars into rush-hour highway traffic to smooth congestion and reduce fuel consumption for everyone. Our goal is to tackle \"stop-and-go\" waves , those frustrating slowdowns and speedups that usually have no clear cause but lead to congestion and significant energy waste. To train efficient flow-smoothing controllers, we built fast, data-driven simulations that RL agents interact with, learning to maximize energy efficiency while maintaining throughput and operating safely around human…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+ANTHROPIC.COM
+Just two months since Anthropic’s last release (Opus 4.5, late Nov 25), they have announced another upgrade. Only a minor version ‘bump’, but an impressive improvement in capability. Despite the fact that this is a general purpose AI model the second sentence in this blog post mentioned that:
+The new Claude Opus 4.6 improves on its predecessor’s coding skills.
+Coding capability has become the primary battle ground for OpenAI and Anthropic.
+This release follows the usual patterns, benchmark scores are up and context windows getting longer. Notably the narrative is predominantly about the agentic ability of the model, where AI uses tools to undertake complex tasks over ever-greater durations.
+Standard stuff.
+From my perspective, the more interesting details appeared later in the blog post in the “product updates” section. A year ago the capability of the models themselves was the biggest obstacle to adoption. Now the models are all quite phenomenal, and the bigger issues has shifted to product and process. How do we incorporate these models into our workflow?
+A notable addition to Claude’s product offering is agentic teams, a pattern we’ve seen emerge in the open source world (Gas Town, BMAD), where a team of agents work in close collaboration to develop complex software.
+OPENAI.COM
+And just hours later, OpenAI released the latest version of their coding model. Knocking Claude off the Terminal Bench (an agentic benchmark evaluating terminal skill) top spot - a very short-lived lead!
+I found less of note within the GPT 5.3 release, the performance is certainly improving, but not much here that I feel helps tackle the adoption gap.
+YOUTUBE.COM
+Peter is a genuine rock-star developer, who, as the creator of Clawdbot (recently renamed to OpenClaw) is enjoying quite a bit of the limelight at the moment. In this recent conversation between Gergely (of The Pragmatic Engineer fame) they do of course discuss Peter’s latest project, which is a runaway success. But more interestingly (to me at least) they spend a lot of time talking about the impact of AI on software development.
+They discuss the changing role of the software engineer, steering architecture rather than writing code, and whether you should review every single line of code. Peter is an exceptional engineer, but also has a product-first mindset - much of his thinking is shaped around the desire to ship product and delight users.
+Peter has an interesting workflow for agentic coding, rather than investing time in writing detailed specifications (as advocated by spec-driven development, SDD), he has a conversation with the Codex agent, collaboratively fleshing out the implementation. He also intentionally under-prompts to help discover unexpected solutions. I much prefer this approach over SDD. He’s not keen on BMAD, Gas Town or SpecKit either.
+One of the key concepts we repeatedly cites is that of ‘closing the loop’, giving the AI model the ability to evaluate its own work, via the compiler, unit tests, automation tests (or any other means possible). This significantly improves its ability to iterate on a problem and take on much more sizeable and challenging tasks.
+The way Peter approaches software development, and collaborating with others, has fundamentally changed. There is a lot to learn from this conversation.
+JERNESTO.COM
+And while Peter is clearly thriving in this new world, others are struggling - and not through a lack of competency. Some people are struggling with how AI makes them feel.
+In this post Ernesto outlines the two aspect of his personality, the Builder and the Thinker. The Builder simply enjoys shipping code, while the Thinker enjoys the challenge of solving problems. For many of us, what we love about software engineering is that it feeds both desires.
+However, add AI into the mix, and we hve an imbalance. The Builder races ahead, while the Thinker gets starved. How we respond to this is very much based on our individual motivations.
+Are you a Builder or a Thinker?

@@ -1,0 +1,88 @@
+{
+  "date": "2026-05-13",
+  "count": 5,
+  "posts": [
+    {
+      "id": "6baee2da6392",
+      "title": "A playbook to run an agent Build Club",
+      "url": "https://www.datarobot.com/blog/agent-build-club/",
+      "source": "DataRobot Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-13T19:54:29+00:00",
+      "summary": "This is Build Club. We&#8217;ve been running it for two months. It is the single highest-signal hour of our week, and it is genuinely easy to copy. Every Friday afternoon, twenty-something DataRobot employees pile into a Google Meet. Someone shares their screen. They start typing. There are no slides, no demo script, no agenda beyond... The post A playbook to run an agent Build Club appeared first on DataRobot .",
+      "author": "Amber Bennoui",
+      "tags": [
+        "AI Agent Development"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "acd360206c0f",
+      "title": "mimalloc: A new, high-performance, scalable memory allocator for the modern era",
+      "url": "https://www.microsoft.com/en-us/research/blog/mimalloc-a-high-performance-scalable-memory-allocator-for-the-modern-era/",
+      "source": "Microsoft Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-13T17:19:59+00:00",
+      "summary": "mimalloc is an open-source, modern, scalable memory allocator that is a drop-in replacement for malloc and free. It is relatively small (~12K lines), with clear internal data structures, and is easy to build and integrate into other projects. It provides bounded worst-case allocation times (up to OS primitives), bounded space overhead, low internal fragmentation, and minimal contention by relying almost exclusively on atomic operations. The post mimalloc: A new, high-performance, scalable memory allocator for the modern era appeared first on Microsoft Research .",
+      "author": "Daan Leijen",
+      "tags": [
+        "Research Blog"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "2ddd2570e3d4",
+      "title": "GridSFM: A new, small foundation model for the electric grid",
+      "url": "https://www.microsoft.com/en-us/research/blog/gridsfm-a-new-small-foundation-model-for-the-electric-grid/",
+      "source": "Microsoft Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-13T16:00:20+00:00",
+      "summary": "Introducing GridSFM, a small foundation model that can predict AC optimal power flow in milliseconds, boosting efficiency and unlocking cost savings. Learn how GridSFM gives grid operators direct visibility into congestion, stability, and system health. The post GridSFM: A new, small foundation model for the electric grid appeared first on Microsoft Research .",
+      "author": "Weiwei Yang, Andrea Britto Mattos Lima, Thiago Vallin Spina, Spencer Fowers, Baosen   Zhang",
+      "tags": [
+        "Research Blog"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "7c51094def4d",
+      "title": "AI Bias in Hiring Tools: Real Disasters and How Teams Fixed Them",
+      "url": "https://becominghuman.ai/ai-bias-in-hiring-tools-real-disasters-and-how-teams-fixed-them-422de2746bf0?source=rss----5e5bef33608a---4",
+      "source": "Becoming Human: AI Magazine",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-13T04:25:45+00:00",
+      "summary": "Tame Your Algo Continue reading on Becoming Human: Artificial Intelligence Magazine »",
+      "author": "Shantun Parmar",
+      "tags": [
+        "data-science",
+        "machine-learning",
+        "artificial-intelligence",
+        "software-engineering",
+        "illumination"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "56dca08f75a4",
+      "title": "AI Weekly Issue #492: AI slop : A $725B bet on what no one wanted",
+      "url": "https://aiweekly.co/issues/ai-slop-a-725b-bet-on-what-no-one-wanted",
+      "source": "AI Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-13T00:00:00+00:00",
+      "summary": "Hyperscalers will spend $725 billion on AI infrastructure this year. The users they are spending it on are now actively rejecting the output. Gartner finds 50% of US consumers prefer brands that don't use generative AI. Wikipedia just banned AI-generated content 44-2. Stack Overflow's new-question volume has fallen 78% year over year. Google AI Overviews have collapsed top-page CTR by 58%. This is the structural tension running through every story below: capacity is being added fastest in exactly the parts of the market where buyers are most visibly walking away.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

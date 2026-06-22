@@ -1,0 +1,82 @@
+Build with Cursor and deploy production-ready AI agents on DataRobot
+Cursor has changed how developers write code. The agent mode is good: you describe what you want, it reasons through the problem, picks the right tools, and ships working code. For greenfield projects and standard libraries, it works smoothly.
+Where it gets harder is when you’re building agents on a specialized platform with its own deployment patterns, SDK conventions, and infrastructure abstractions. Cursor is a fast learner, but it doesn’t ship knowing your platform’s pyproject.toml
+structure, which endpoints to use for different agent execution patterns, or how to wire up Pulumi for a first production deployment. Without that context, you end up correcting hallucinated API calls and debugging configuration errors that have nothing to do with your actual use case.
+DataRobot solves this with agentic Skills: modular context packages that give Cursor exactly what it needs to build, deploy, and govern production AI agents on the DataRobot platform. Install them once. Cursor handles the rest. You can go from empty repo to a governed, production AI agent without leaving Cursor.
+This post walks through what Skills are, how to get them into Cursor in under two minutes, and how to build and deploy a production-ready agent with them.
+How DataRobot Skills complement Cursor
+A DataRobot Skill is a self-contained folder containing a SKILL.md
+file with YAML frontmatter, plus any helper scripts the agent can run directly. When Cursor loads a Skill, it gains specific, validated guidance for that capability area: model training, deployment, predictions, monitoring, feature engineering, or CI/CD setup for the app framework.
+The design goal is intentional: rather than dumping everything into a monolithic system prompt and overwhelming your agent’s context window, Skills are modular. You load what you need for the task at hand.
+All DataRobot Skills follow the naming convention datarobot-<category>
+. The full set currently available:
+| Skill | What It Covers |
+|---|---|
+datarobot-agent-assist | Unified DataRobot agent workflow — design (agent_spec.md), optional dress-rehearsal simulation via built-in rehearsal engine, template-based coding, and deployment. |
+datarobot-model-training | AutoML project creation, training configuration, model management |
+datarobot-model-deployment | Deploying models, configuring prediction environments |
+datarobot-predictions | Batch scoring, real-time predictions, prediction dataset templates |
+datarobot-feature-engineering | Feature discovery, importance analysis, engineering guidance |
+datarobot-model-monitoring | Data drift tracking, model health, performance monitoring |
+datarobot-model-explainability | SHAP values, prediction explanations, diagnostics |
+datarobot-data-preparation | Data upload, dataset management, validation |
+datarobot-app-framework-cicd | CI/CD pipelines, Pulumi infrastructure-as-code for agent templates |
+datarobot-external-agent-monitoring | OpenTelemetry instrumentation to route traces and metrics to DataRobot |
+Skills are Agent Context Protocol (ACP) definitions, which means they work beyond Cursor too. The same repository is compatible with Claude Code, OpenAI Codex, Gemini CLI, VS Code Copilot, and others.
+Installing DataRobot Skills in Cursor
+DataRobot Skills are available on the Cursor Marketplace at cursor.com/marketplace/datarobot.
+Option 1: One command from the Cursor command palette
+Open Cursor’s command palette and run:
+/add-plugin datarobot-agent-skills
+This registers the full DataRobot Skills repository against your Cursor install. No configuration required. Cursor reads the AGENTS.md
+file automatically and makes all skills available on demand.
+Option 2: Universal installer via npx
+If you prefer to install from the terminal and copy Skills directly into your project repo:
+# Install all skills
+npx ai-agent-skills install datarobot-oss/datarobot-agent-skills
+# Install a specific skill only
+npx ai-agent-skills install datarobot-oss/datarobot-agent-skills/datarobot-predictions
+# Install for Cursor specifically
+npx ai-agent-skills install datarobot-oss/datarobot-agent-skills --agent cursor
+Verify installation
+Open the Cursor AI chat panel (Cmd/Ctrl + L
+) and ask:
+What DataRobot Skills are available?
+If Skills are loaded, Cursor will list them. If you get a blank response, check that the repository is open as your workspace and that AGENTS.md
+is at the root.
+Building with DataRobot Skills in Cursor
+Here’s a concrete example to show how Skills change the experience in practice. We’ll build and deploy a customer-facing support agent that uses the DataRobot LLM gateway, connects to an existing model deployment as a tool, and ships as a production application via the DataRobot app framework.
+Step 1: Scaffold the agent
+Start from an empty project repo. Open Cursor Agent mode and give it a clear task prompt that references the Skills you want it to use:
+Use the DataRobot app framework CICD Skill to scaffold a new agent project. The agent should answer customer support questions by querying a DataRobot deployment for churn risk score and returning a recommended next action. Use the DataRobot LLM gateway for all LLM calls. Deploy via Pulumi.
+With the datarobot-app-framework-cicd
+Skill loaded, Cursor generates a project that follows the correct DataRobot template structure: the right pyproject.toml
+layout, a properly configured agent bundle, LLM gateway enabled by default, and Pulumi infrastructure-as-code for deployment. Without the Skills this is where agents typically go sideways — wrong dependency declarations, missing runtime parameter injections, or a template structure that silently breaks on first deploy.
+Step 2: Wire in your DataRobot deployment as a tool
+Now add the prediction tool that gives the agent something to reason over:
+Use the DataRobot predictions Skill to add a tool to this agent that calls deployment ID, passes customer_id and account_tenure as features, and returns the churn_probability score.
+The datarobot-predictions
+Skill gives Cursor the validated SDK patterns for real-time prediction calls, including how to structure the feature payload, handle the response schema, and surface prediction explanations if you want the agent to justify its recommendation. Cursor pulls in the relevant helper scripts from the Skill’s scripts/ directory rather than writing its own endpoint logic from scratch.
+Step 3: Test locally with task dev
+Before deploying, run the agent locally using DataRobot task dev
+tooling:
+Run this agent locally using DR task dev and confirm the prediction tool returns a valid response for a test customer_id.
+The Skills include guidance on the dr task
+CLI commands and common local testing patterns. If you hit authentication issues, answer Cursor’s follow-up:
+Use DATAROBOT_API_TOKEN and DATAROBOT_ENDPOINT from environment variables.
+Step 4: Deploy to production
+Once local testing passes, deploy:
+Use the DataRobot app framework CICD Skill to deploy this agent to production using Pulumi. Create a new stack named customer-support-agent.
+Cursor generates the correct pulumi up
+sequence, configures the deployment with the right server type and credential handling, and wires the application to your DataRobot use case. First deploys typically take 10 to 20 minutes as Pulumi provisions the full stack. Subsequent updates are faster. When it completes, you’ll have a registered model, an agent deployment, and a live application endpoint in your DataRobot workbench.
+What Skills don’t do (yet)
+Skills provide context. They don’t handle OAuth flows for third-party integrations, auto-configure your Pulumi stack on first deploy, or guarantee that a complex multi-integration agent will work end-to-end without iteration. First deployments via Pulumi can take 10 to 20 minutes, and the OAuth wiring for Google Workspace or Salesforce data sources still requires manual setup in DataRobot.
+Where Skills are invaluable is in eliminating the class of errors that come from Cursor not knowing platform specifics: wrong API endpoints, missing runtime parameter injections, incorrect dependency declarations in pyproject.toml, mixing task dev and task deploy patterns incorrectly. That class of error is where most developer time is lost when building on a new platform.
+Getting started
+Install the plugin in one command:
+/add-plugin datarobot-agent-skills
+Browse the full skill set and source at github.com/datarobot-oss/datarobot-agent-skills.
+If your team builds custom workflows that don’t map cleanly to the existing Skills, the repository accepts contributions. A custom skill is just a SKILL.md
+file with YAML frontmatter, a clear description, and whatever helper scripts your workflow needs. Point Cursor at it and the convention handles the rest.
+The gap between “agent prototype” and “agent in production” is mostly operational context. Skills are how DataRobot answers that gap.
+Get Started Today.

@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Towards Deep Contextual Reasoning from Broad Descriptions for ASR with Speech-LLM via Metadata-Driven Reasoning Chains
+View PDF HTML (experimental)Abstract:Speech recognition often fails on rare, domain-specific terms and context-related named entities. Existing contextualization techniques typically bias decoding with keywords or phrase lists, which does not scale well or exploit deeper knowledge. We propose a training method that teaches a speech-LLM to use broad descriptions (e.g. from videos) as weak semantic priors to perform contextual reasoning grounded in the audio. We build 400 hours of reasoning-augmented speech data by pairing erroneous hypotheses with video metadata and LLM-generated reasoning explanations that justify context-driven corrections. We finetune the speech-LLM to perform chain-of-thought reasoning: generate an initial transcript, then reason over the context, and finally return a corrected transcript. On held-out YouTube-derived test sets, our approach reduces errors, with specific improvements on rare words and named entities, and lays groundwork for deeper contextual reasoning in speech recognition.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

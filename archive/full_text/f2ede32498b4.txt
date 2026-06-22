@@ -1,0 +1,12 @@
+Computer Science > Neural and Evolutionary Computing
+Title:MSC-CMA-ES: Structure-Aware Restarts for CMA-ES via Cyclic Nearest-Better Basin Discovery
+View PDF HTML (experimental)Abstract:CMA-ES is, per run, a local optimizer; multimodal search relies on restart strategies such as IPOP and BIPOP, which draw every restart uniformly and reuse no information from previous evaluations. Multi-Start Clustering CMA-ES (MSC-CMA-ES) makes restarts structure-aware: in alternating cycles, a Sobol pre-sample is partitioned into approximate basins of attraction by nearest-better clustering, restarts are seeded basin by basin with locally scaled step sizes and population sizes, redundant basin visits are detected and excluded, and the remaining budget is spent on an unbounded local refinement of the best-so-far solution. We evaluate the method on four CEC suites (CEC2014, CEC2017, CEC2020, CEC2022) at their official budgets, across ten (suite, dimension) cells with dimensions 5-30, 51 runs per function, against BIPOP-CMA-ES and five differential-evolution algorithms (ARRDE, jSO, j2020, NL-SHADE-RSP, LSRTDE). Read per function class, MSC-CMA-ES leads on one class, is mixed on a second, and trails on the third. On composition functions, MSC-CMA-ES attains the best value on all four aggregate measures, with 2.7x the fixed-budget target coverage of BIPOP-CMA-ES - the highest composition coverage of any algorithm evaluated. On basic functions, it achieves the best (lowest) median error but exhibits a lower deep-target coverage - the measured price of spending budget on landscape discovery. On hybrid functions both CMA variants trail the leading DE algorithms; the deficit belongs to the CMA family, not to the restart mechanism. All results and scripts are publicly available.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,159 @@
+Building powerful AI agents is only half the story, running them safely in production is the real challenge. As customers adopt Microsoft Agent Framework for agent orchestration, a clear need has emerged for robust, built-in governance. In this post, Imran Siddique from the AGT team walks through how Agent Governance Toolkit pairs with Agent Framework to enforce policy at runtime, govern agent actions, and provide end-to-end auditability. Turning agentic systems into production-ready platforms.
+The Complete Stack for Production AI Agents
+Microsoft Agent Framework 1.0 provides everything teams need to build, orchestrate, and deploy AI agents: multi-agent workflows, A2A protocol interoperability, middleware hooks, memory, and managed hosting via Foundry Agent Service. It is the foundation for enterprise-grade agentic applications.
+Agent Governance Toolkit (AGT) extends that foundation with runtime governance: deterministic policy enforcement, zero-trust identity, execution sandboxing, and SRE for autonomous agents. Together, the two open-source projects form a complete production stack: Agent Framework handles ‘build and orchestrate,’ AGT handles ‘govern and audit.’
+This post shows how the two projects complement each other; with real code you can run today.
+Why Governance Belongs at the Action Layer
+Agent Framework provides a powerful middleware pipeline where teams can intercept, transform, and extend agent behavior at every stage of execution. Content safety filters, logging, compliance policies, and custom logic all plug in without modifying agent prompts.
+AGT takes advantage of this architecture by plugging deterministic governance directly into that pipeline. The result: every tool call, resource access, and inter-agent message is evaluated against policy before execution. Sub-millisecond overhead, no sidecars, no proxies.
+Agent Action --> Policy Check --> Allow / Deny --> Audit Log (< 0.1 ms)
+Agent Framework handles model input/output safety (content filters, prompt shields). AGT governs agent actions and tool execution. Different layers, complete coverage, one middleware pipeline.
+Native Integration: Middleware That Speaks Both Languages
+Python
+AGT middleware plugs into Agent Framework’s middleware parameter, the same extensibility point used for logging, content safety, and custom interceptors:
+from agent_framework import Agent, tool
+from agent_framework.openai import OpenAIChatClient
+from agent_os.integrations.maf_adapter import (
+GovernancePolicyMiddleware,
+CapabilityGuardMiddleware,
+RogueDetectionMiddleware,
+AuditTrailMiddleware,
+)
+agent = Agent(
+client=OpenAIChatClient(model="gpt-5.3"),
+name="Contoso Loan Officer",
+instructions="You are a governed loan assistant.",
+tools=[check_credit_score, get_loan_rates, approve_small_loan],
+middleware=[
+AuditTrailMiddleware(audit_log=audit_log, agent_did="loan-agent"),
+GovernancePolicyMiddleware(evaluator=evaluator, audit_log=audit_log),
+CapabilityGuardMiddleware(allowed_tools=["check_credit_score", "get_loan_rates"]),
+RogueDetectionMiddleware(detector=detector, agent_id="loan-agent"),
+],
+)
+.NET
+The .NET extension uses Agent Framework’s native .Use() middleware surface:
+var agent = builder.BuildAIAgent(model: "gpt-5.3")
+.Use(new GovernancePolicyMiddleware(evaluator))
+.Use(new CapabilityGuardMiddleware(allowedTools))
+.Use(new AuditTrailMiddleware(auditLog));
+Same agent, same orchestration patterns, same tools. AGT adds governance, capability sandboxing, rogue detection, and Merkle-chained audit in the same process.
+Five Scenarios Across Five Industries
+The AGT repository ships five complete end-to-end scenarios that pair real Agent Framework agents with real AGT governance middleware. Each scenario demonstrates a different industry use case:
+| # | Scenario | Industry | What Governance Demonstrates |
+| 01 | Loan Processing | Banking | PII blocking, approval gating, tool sandboxing, rogue transfer detection |
+| 02 | Customer Service | Retail | Refund fraud prevention, payment-data protection, escalation rules |
+| 03 | Healthcare | Healthcare | HIPAA PHI blocking, prescription safety, cross-department isolation |
+| 04 | IT Helpdesk | Enterprise IT | Privilege escalation prevention, credential isolation, infrastructure protection |
+| 05 | DevOps Deploy | DevOps | Production deployment gates, destructive-operation blocking, deployment-storm detection |
+Each demo runs deterministically without a live model credential (exercising the full governance pipeline in a terminal walkthrough) and also supports live Agent Framework agents with any configured backend (Azure OpenAI, OpenAI, GitHub Models).
+Intent-Based Authorization for Multi-Agent Workflows
+Agent Framework’s multi-agent orchestration (sequential, concurrent, handoff, group chat) enables powerful compositions. AGT’s intent-based authorization adds a governance layer purpose-built for these patterns. The lifecycle:
+- Declare: Agent states what actions it plans to take
+- Approve: System or human approves the declared plan
+- Execute: Agent runs under the approved scope; each action is checked at execution time
+- Verify: System confirms all executed actions matched the declared intent
+When an agent drifts from its declared intent (attempts an unplanned action), the governance layer can soft-block (action proceeds but trust score drops and an alert fires), hard-block (action is denied), or log-only, depending on the configured policy.
+For orchestrated workflows, the orchestrator declares top-level intent and child agents inherit narrowed scope. Sub-agents cannot exceed the permissions of their parent:
+from agent_os.intent import IntentManager, IntentAction, DriftPolicy
+manager = IntentManager(backend=backend)
+# Orchestrator declares top-level intent
+intent = await manager.declare_intent(
+agent_id="orchestrator",
+planned_actions=[
+IntentAction(action="read_balance"),
+IntentAction(action="transfer_funds", params_schema={"max_amount": 1000}),
+],
+drift_policy=DriftPolicy.SOFT_BLOCK,
+ttl_seconds=300,
+)
+# Sub-agent gets narrowed scope (cannot exceed parent)
+child = await manager.declare_child_intent(
+parent_intent_id=intent.intent_id,
+agent_id="notification-agent",
+planned_actions=[IntentAction(action="send_notification")],
+)
+Multi-Agent Collective Policies
+Individual agent policies are necessary but not sufficient for multi-agent systems. A customer-service workflow with 10 agents might have each agent within its own budget, but collectively they could exceed what any single workflow should cost.
+AGT’s collective policy engine evaluates constraints across all agents in an Agent Framework orchestration:
+from agentmesh.governance.multi_agent_policy import (
+MultiAgentPolicyEngine,
+CollectiveConstraint,
+AggregateType,
+)
+engine = MultiAgentPolicyEngine()
+engine.add_constraint(CollectiveConstraint(
+name="global_api_calls",
+metric="api_call_count",
+aggregate=AggregateType.SUM,
+threshold=100,
+window_seconds=60,
+action="throttle",
+))
+# All agents in the workflow report their metrics
+engine.record("agent-a", "api_call_count", 40)
+engine.record("agent-b", "api_call_count", 35)
+engine.record("agent-c", "api_call_count", 30)
+# Collective evaluation: 105 > 100, throttle triggered
+result = engine.evaluate()
+This works seamlessly with Agent Framework’s orchestration patterns. Whether you use SequentialBuilder, concurrent fan-out, or group chat, the collective policy engine observes all participants and enforces system-wide constraints.
+Cost Governance: Budgets with Enforcement
+Agents with access to paid APIs, compute resources, or external services can accumulate costs rapidly. AGT provides tiered budget enforcement that integrates with Agent Framework’s middleware pipeline:
+- Per-task limits: reject expensive operations before they execute
+- Per-agent daily budgets: prevent any single agent from overspending
+- Organization-wide monthly caps: global financial controls
+- Auto-throttle: reduce throughput as budgets approach limits
+- Kill switch: suspend all agent operations when thresholds are breached
+- Anomaly detection: alert when spending patterns deviate from baselines
+The cost governance module is designed to help protect against both gradual budget drift and sudden cost spikes, giving operators confidence to run agents autonomously.
+Decision Bill of Materials: Complete Audit Lineage
+Agent Framework’s observability integration (OpenTelemetry, Foundry dashboards) provides visibility into agent execution. AGT’s Decision BOM builds on that observability to reconstruct the complete decision lineage for any agent action:
+- Trust snapshot: what trust score did the agent have at decision time?
+- Policy evaluations: which policies were checked and what was the outcome?
+- Execution trace: what sequence of actions led to this decision?
+- Audit chain: tamper-evident Merkle-chained record of all governance events
+- Completeness score: how much evidence was available for reconstruction?
+The Decision BOM is designed to help satisfy regulatory audit requirements by providing reconstructible evidence of governance decisions. It is resilient by design: if one data source is temporarily unavailable, it returns a partial BOM with reduced completeness rather than failing.
+A2A Protocol and Cross-Boundary Trust
+Agent Framework’s A2A v1 support enables cross-platform agent communication using an open, production-ready standard backed by a technical steering committee with representatives from AWS, Cisco, Google, IBM Research, Microsoft, Salesforce, SAP, and ServiceNow.
+When agents communicate across organizational boundaries, AGT extends A2A with governance-aware trust:
+- Trust bridges that translate between A2A, MCP, and IATP protocols
+- Per-agent trust scores that decay or grow based on observed behavior
+- Scope chains that enforce capability boundaries across delegation hops
+- Merkle-chained audit logs that help make tampering detectable
+- Agent identity verification using W3C DID documents
+A2A agents discovered via well-known URIs go through the same AGT governance pipeline as local agents. The combination of Agent Framework’s protocol support and AGT’s governance layer means you can collaborate with external agents without compromising your security posture.
+Getting Started
+Install both projects and run a governed scenario in under two minutes:
+# Install Agent Governance Toolkit
+pip install agent-governance-toolkit[full]
+# Run a governed MAF scenario
+cd examples/maf-integration/01-loan-processing/python
+pip install -r requirements.txt
+python main.py
+# Try intent-based authorization
+python examples/intent-auth/intent_auth_demo.py
+# Try cost governance
+python examples/cost-governance/cost_governance_demo.py
+# .NET
+cd examples/maf-integration/06-dotnet-extension-validation/dotnet
+dotnet run
+Better Together
+Microsoft Agent Framework and Agent Governance Toolkit represent two complementary layers of the same vision: making AI agents production-ready for the enterprise.
+| Capability | Agent Framework | Agent Governance Toolkit |
+| Agent creation and orchestration | Core capability (single + multi-agent) | Leverages via native middleware |
+| Model provider support | 10+ providers (Foundry, OpenAI, Anthropic, Bedrock, Gemini) | Provider-agnostic governance |
+| A2A/MCP interop | Protocol implementation and hosting | Trust bridges and policy enforcement |
+| Runtime policy enforcement | Middleware hooks extensibility | Deterministic policy evaluator (< 0.1 ms) |
+| Cost and budget controls | Foundry managed hosting integration | Tiered enforcement with kill switches |
+| Audit and compliance | OpenTelemetry observability + Foundry dashboards | Merkle-chained Decision BOM |
+Together, they give teams the confidence to move AI agents from prototype to production: Agent Framework for building, orchestrating, and deploying; AGT for governing, auditing, and proving compliance.
+Resources
+- Microsoft Agent Framework GitHub
+- Agent Governance Toolkit GitHub
+- PyPI (Agent Framework): pip install agent-framework
+- PyPI (AGT): pip install agent-governance-toolkit[full]
+- NuGet (Agent Framework): Agents.AI
+- NuGet (AGT): AgentGovernance.Extensions.Microsoft.Agents
+- OWASP Agentic Top 10 Coverage: 10/10 risks covered
+Legal Disclaimer: The policy files, workflow configurations, and code samples in this post are illustrative examples designed to demonstrate governance patterns. They are not intended as production-ready security configurations. Agent Governance Toolkit is designed to help implement governance controls but does not guarantee compliance with any specific regulatory framework, including but not limited to GDPR, HIPAA, EU AI Act, or Colorado AI Act. Consult legal counsel for your specific regulatory obligations. Microsoft, Microsoft Agent Framework, Azure, and other Microsoft product names are trademarks of Microsoft Corporation. All third-party trademarks referenced are the property of their respective owners and are used descriptively. No forward-looking statements or promises about future features are made in this post.

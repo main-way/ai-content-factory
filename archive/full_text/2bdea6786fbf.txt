@@ -1,0 +1,214 @@
+- 79%,
+- 82%,
+- 84%.
+Nothing appears catastrophically wrong. Autoscaling kicks in. More nodes are added. The cloud bill climbs. Latency barely improves.
+An hour later, the real problem turns out to be surprisingly mundane: three nodes quietly entered degraded RAID rebuild states, reducing storage throughput to the point of starving nearby inference workloads. The scheduler still treated those nodes as “healthy enough” because GPU and memory metrics looked acceptable. In simple words, one of the storage drives on those machines had failed or become unreliable, and the server was busy rebuilding the lost data across the remaining drives. The machines were technically still online. They were not “dead” enough to be removed from service. But their disk performance had slowed down badly
+This kind of failure is becoming increasingly common in modern AI infrastructure. And it exposes a deeper illusion hiding underneath many GenAI systems:
+GPUs can be busy without being productive.
+That distinction sounds subtle. Financially, it can mean millions of dollars.
+Modern AI systems look smooth from the outside. A user sends a prompt to OpenAI’s ChatGPT, Anthropic’s Claude, or Google’s Gemini and gets a polished answer seconds later. Underneath that experience is an enormous coordination problem.
+GPUs execute tensor operations. CPUs feed requests and move data. HBM stores activations and KV cache. SSDs stream embeddings and retrieval context. Networks shuffle gradients and inference traffic across nodes. Storage systems absorb rebuilds, retries, and background work.
+Somewhere in the middle of all this, a scheduler decides where workloads should run. That scheduler quietly determines whether the cluster behaves like a coherent computing system or an expensive traffic jam.
+This article builds on residual-aware geometric packing (RAGP), introduced in Kaarat et al., and explores why modern AI schedulers increasingly need to reason about storage bandwidth, I/O pressure, and dynamic resource behavior, rather than treating GPUs as isolated compute devices.
+The deeper lesson is broader than one scheduling algorithm. It is a systems problem. And increasingly, it is an economic problem too.
+The Utilization Illusion
+GPU utilization is one of the most over-trusted metrics in AI infrastructure. High utilization feels efficient. If GPUs are mostly busy, the cluster appears healthy.
+But utilization averages hide the structure of what remains. A cluster can report high GPU occupancy, active workloads, and heavy memory usage while still having poor effective capacity. The problem is often not that resources are exhausted, but that the leftover resources survive only in unusable combinations.
+Imagine a large city during rush hour. Some roads are empty. Others are completely jammed. The city technically still has road capacity. But if the wrong intersections are congested, traffic across the entire system slows down anyway.
+Distributed AI systems behave similarly. A cluster may still contain spare GPUs, HBM, storage, and CPUs, yet remain unable to efficiently accommodate the next realistic workload. Not because capacity disappeared, but because the remaining capacity exists in the wrong shapes.
+Fragmentation: The Invisible Failure Mode
+Consider three nodes after a burst of mixed GenAI workloads:
+| Node | GPU Compute | HBM | Storage Bandwidth | I/O CPU |
+| A | Available | Nearly Full | Available | Available |
+| B | Available | Available | Saturated | Available |
+| C | Limited | Available | Available | Saturated |
+Now suppose a new inference workload arrives requiring:
+- moderate GPU,
+- moderate HBM,
+- healthy storage bandwidth,
+- and healthy I/O capacity.
+Across the cluster, enough total resources still exist.
+But no individual node has the right combination of remaining resources. The workload fits nowhere cleanly.
+This is resource fragmentation. The cluster is not empty. It is fragmented into leftovers that are difficult to use productively.
+This becomes especially dangerous in GenAI systems because modern AI workloads depend heavily on retrieval pipelines, KV cache growth, storage throughput, and overall data-path efficiency. A cluster can look healthy from 10,000 feet while quietly degrading beneath the surface.
+A Cluster Can Have Spare GPUs and Rising Queues
+This is the most counterintuitive part of the entire problem. A cluster can simultaneously have:
+- spare GPUs,
+- rising queue times,
+- worsening latency,
+- and declining throughput.
+At first glance, that sounds contradictory. It is not.
+If the only “free” GPUs sit on nodes whose storage bandwidth is already overloaded, SSD queue depth is exploding, or I/O CPU is consumed by background work, then those GPUs are not meaningfully available for the next useful workload.
+A greedy scheduler may still place jobs there. Those jobs then
+- run slower,
+- increase contention,
+- stretch queue times,
+- and leave behind even worse fragmentation.
+This creates a vicious loop: more fragmentation → more stall → longer runtimes → more fragmentation. From the dashboard, the cluster still appears busy. Operationally, the system is slowly choking itself.
+Why GenAI Changed the Bottleneck Landscape
+Traditional schedulers were designed for environments where CPU, memory, GPU, and network dominated placement decisions. Modern GenAI systems changed the shape of infrastructure pressure:
+- Retrieval-heavy pipelines can saturate SSD bandwidth.
+- Inference jobs accumulate KV cache over time.
+- Checkpoint loading can hammer object storage.
+- Multi-modal workloads create bursty data movement.
+- Background maintenance tasks quietly steal CPU cycles that would otherwise feed GPUs.
+- Node-level storage degradation can reduce effective throughput long before a node technically fails.
+This creates a new category of infrastructure pathology: The GPU is no longer the only bottleneck. The path feeding the GPU matters just as much. That changes what “healthy utilization” actually means.
+A Starved GPU Is Still an Expensive GPU
+This is where the economics become serious. Modern AI infrastructure is expensive. Public 2026 pricing for NVIDIA H100 access typically ranges from low-single-digit dollars per GPU-hour to well above $10/hour, depending on the provider and commitment model.
+Now scale that across a large fleet.
+A 1,000-GPU H100 cluster operating at a blended cost of roughly $3/GPU-hour costs approximately:
+- $3,000/hour,
+- $72,000/day,
+- and about $26 million/year,
+before networking, storage, orchestration, and engineering overhead.
+Now imagine fragmentation and I/O stall quietly waste just 10% of productive GPU time.
+That becomes roughly:
+- $300/hour,
+- $7,200/day,
+- and about $2.6 million/year
+of ineffective infrastructure spend. Not because the GPUs disappeared, but because the system failed to use them efficiently.
+This is the key shift many infrastructure teams are beginning to realize: The real metric is not GPU allocation. It is productive GPU-hours.
+Residual-Aware Scheduling
+Most schedulers ask a deceptively simple question:
+“Can this workload fit on this node?”
+Residual-aware scheduling asks a more important one:
+“What kind of leftover cluster does this placement create?”
+That idea sits at the center of Residual-Aware Geometric Packing (RAGP), proposed in Kaarat et al. Instead of reducing a node into a few scalar counters, RAGP treats residual capacity as a multi-dimensional shape.
+At a high level:
+- infeasible nodes are eliminated,
+- the scheduler simulates the remaining resources after placement,
+- It prefers placements whose leftover resource vectors remain useful for future workloads.
+That last step matters enormously.
+Two placement decisions can both appear correct immediately while creating completely different future cluster states. One preserves healthy residual capacity. The other strands resources into unusable fragments. Traditional utilization metrics often cannot distinguish between those outcomes.
+One Concrete Example
+Suppose an incoming workload requires:
+- balanced GPU,
+- balanced HBM,
+- moderate storage bandwidth,
+- and healthy CPU availability.
+After tentatively placing the workload:
+| Residual Resource | Node A | Node B |
+| CPU | 0.20 | 0.10 |
+| GPU | 0.35 | 0.40 |
+| HBM | 0.30 | 0.30 |
+| Storage Bandwidth | 0.25 | 0.02 |
+A scalar scheduler may treat both placements as acceptable because:
+- GPU remains available,
+- memory remains available,
+- and the workload technically fits.
+Residual-aware scheduling prefers Node A.
+Why?
+Because Node B leaves behind almost unusable storage capacity.
+That becomes dangerous once the next retrieval-heavy or cache-growing workload arrives. This is the subtle failure hidden inside many modern GenAI clusters: a placement can be locally feasible while globally harmful.
+Extending RAGP Into RAGP-I/O
+The original RAGP formulation primarily reasoned about:
+- CPU,
+- RAM,
+- GPU compute,
+- HBM,
+- and networking.
+That worked reasonably well in compute-dominated environments.
+GenAI workloads changed the bottleneck landscape.
+In real systems:
+- SSD contention,
+- storage queue depth,
+- degraded RAID states,
+- retrieval pressure,
+- and I/O CPU saturation
+can influence throughput just as heavily as GPU utilization itself.
+A node may look healthy in compute, memory, and networking while quietly starving workloads through storage bottlenecks.
+RAGP-I/O extends the scheduling space by explicitly incorporating:
+- storage bandwidth,
+- and I/O CPU
+into both feasibility and placement logic. Instead of reasoning across five dimensions, the scheduler reasons across seven: CPU, RAM, GPU SM, HBM, network, storage bandwidth, and I/O CPU.
+Conceptually, this sounds like a small extension. Operationally, it changes scheduler behavior significantly once storage becomes an active constraint.
+The Simulator, Made Concrete
+Production AI clusters are difficult environments in which to safely test experimental schedulers. To evaluate scheduler behavior under controlled conditions, the work uses a synthetic discrete-event simulator.
+The simulator includes:
+| Component | Example |
+| Node Families | Heterogeneous nodes with different CPU, RAM, GPU SM, HBM, storage bandwidth, and I/O budgets |
+| Workload Types | Training, inference, retrieval-heavy RAG jobs, and utility/background jobs |
+| Stressors | Bursty arrivals, RAID rebuild periods, KV-cache growth, dynamic storage pressure |
+| Schedulers | Scalar balancing, Tetris-style packing, RAGP-5D, and RAGP-I/O |
+The most revealing scenarios are storage-stressed ones.
+- Scenario C : roughly 10%–20% of nodes remain in RAID rebuild states at any given time, reducing effective storage throughput.
+- Scenario D : adds “breathing” inference jobs whose HBM usage and storage demand grow gradually over time to mimic KV-cache expansion, so a placement that appears safe at admission can become problematic later.
+That reflects real GenAI systems surprisingly well.
+The Most Important Result
+The most important result is not simply “RAGP‑I/O produced lower fragmentation.” The deeper result is this:
+Once storage and I/O become dominant constraints, otherwise sensible schedulers become systematically misled if those dimensions are omitted
+That is a broader systems insight.
+Because modern GenAI workloads are increasingly retrieval-heavy, storage-sensitive, and dynamically evolving, the scheduler can no longer treat the GPU as an isolated compute device. The entire data path matters.
+What the Experiments Show
+Across balanced, bursty, and storage-stressed scenarios, RAGP-I/O consistently produced:
+- lower fragmentation,
+- lower modeled GPU stall,
+- healthier residual capacity,
+- and more stable throughput behavior
+compared to scalar balancing, Tetris-style packing, and the I/O-blind RAGP-5D variant.
+The largest gains appeared under storage stress. In storage-stressed experiments, mean fragmentation for RAGP‑I/O stayed roughly in the 0.04–0.06 range, while the baselines stayed closer to 0.09–0.12. Modeled GPU stall dropped sharply, in some cases approaching zero for RAGP‑I/O while remaining significant for the other schedulers.
+Scenario D shows the same pattern under harsher conditions: RAGP‑I/O keeps fragmentation low, cuts total GPU stall dramatically, and maintains throughput in the same general range as the simpler schedulers
+The cautionary result is equally important. RAGP-5D still performs better than simpler baselines, but once storage becomes the dominant constraint, omitting I/O awareness leaves the scheduler partially blind. The geometric intuition is good. The visibility is incomplete.
+Stall: The Expensive Invisible Tax
+Fragmentation alone is not the operational problem. The more painful symptom is stall.
+Jobs appear “running,” but meaningful progress slows because the node cannot feed the GPU efficiently. An inference workload may show high GPU occupancy and healthy memory utilization while kernels spend meaningful wall-clock time waiting on storage movement, retrieval, or overloaded CPU-side data pipelines
+An inference workload may show:
+- high GPU occupancy,
+- and healthy memory utilization,
+while kernels spend meaningful wall-clock time waiting on:
+- storage movement,
+- retrieval,
+- or overloaded CPU-side data pipelines.
+In practice, infrastructure teams often notice the problem behaviorally before they identify it metrically.
+Certain nodes simply:
+- “feel cursed,”
+- produce noisier latency,
+- or degrade neighboring workloads unexpectedly.
+Teams sometimes begin manually draining those nodes long before dashboards clearly explain why.
+That is usually a sign of hidden contention somewhere in the data path.
+The Tradeoffs Are Real
+An I/O-aware scheduler is not free. Adding more dimensions introduces:
+- additional telemetry requirements,
+- more scheduler complexity,
+- greater sensitivity to stale node-state information,
+- and potential placement instability if resource measurements fluctuate rapidly.
+Schedulers themselves can become unstable control systems under noisy telemetry. A scheduler reacting aggressively to fluctuating storage metrics can overcorrect—preferring certain nodes too heavily, oscillating placement behavior, or amplifying imbalance elsewhere.
+Fairness and multi-tenant policy enforcement also become harder as placement logic grows more sophisticated. These are real engineering tradeoffs. The point is not that I/O-aware scheduling magically solves infrastructure inefficiency. The point is that ignoring storage and I/O entirely is becoming increasingly expensive.
+The Bigger Systems Lesson
+This article is ultimately about more than schedulers. It is about systems behavior. Healthy systems are not defined purely by utilization. They are defined by coordinated flow. That pattern appears everywhere:
+- traffic systems,
+- supply chains,
+- distributed databases,
+- cloud infrastructure,
+- and financial markets.
+Healthy systems are not defined purely by utilization. They are defined by coordinated flow. Local optimization is not the same as global optimization. A scheduler optimized only for immediate placement may quietly damage long-horizon throughput. A cluster that looks busy may still be economically inefficient. And a GPU that appears active may still spend meaningful time waiting for the system around it
+What Infrastructure Teams Should Monitor More Carefully
+GPU utilization alone is no longer enough. Serious GenAI infrastructure monitoring increasingly requires visibility into:
+- HBM pressure,
+- storage bandwidth consumption,
+- SSD queue depth,
+- runtime inflation vs. expected duration,
+- I/O CPU utilization,
+- degraded storage states,
+- and node-level slowdown relative to expected completion time.
+If workloads consistently finish 20%, 30%, or 40% slower on specific nodes despite apparently healthy utilization metrics, the scheduler should treat those nodes differently. That is often where hidden inefficiency lives.
+Serious GenAI infrastructure monitoring increasingly requires visibility into:
+- HBM pressure,
+- storage bandwidth consumption,
+- SSD queue depth,
+- runtime inflation,
+- I/O CPU utilization,
+- degraded storage states,
+- and node-level slowdown relative to expected completion time.
+Closing Thought
+Modern AI infrastructure hides an enormous supply chain of compute, storage, memory, networking, and coordination underneath a deceptively smooth user experience. Users see prompts and responses. Dashboards show GPU percentages. Somewhere in between, a scheduler quietly decides whether the cluster is genuinely healthy or merely looks busy.
+That distinction matters more than ever. Because in modern GenAI systems, the real question is no longer:
+“Are the GPUs busy?”
+It is:
+“Are they productively busy?”
+Disclaimer
+The views and opinions expressed in this article are those of the authors and do not necessarily reflect the official policy or position of any employer, institution, or publisher. All experiments and simulations are for research and illustration purposes only and should not be treated as guidance for production deployment without independent validation.
+References
+Kaarat, A., Batthula, V. J. R., & Segall, R. “Fitting the Void: Residual‑Aware Geometric Packing for GenAI Workloads.” IEEE, 2025
+If you are interested in the residual‑aware geometric packing concept, the simulation model, or the code used in this article, feel free to reach out at [email protected].

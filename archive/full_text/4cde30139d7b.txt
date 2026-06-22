@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:DiffVQE: Hybrid Diffusion Voice Quality Enhancement Under Acoustic Echo and Noise
+View PDF HTML (experimental)Abstract:Acoustic echo and background noise pose challenges on speech enhancement in hands-free systems and speakerphones. Discriminatively trained end-to-end methods represent a powerful solution for joint acoustic echo control (AEC) and denoising. However, with the advent of generative methods, diffusion-based approaches have seen remarkable performance in speech enhancement tasks. In this work, to the best of our knowledge, we provide the first (still non-causal) diffusion-based AEC model (DiffVQE) that is reproducible in terms of topology, training data, and training framework. So far, without employing diffusion, Microsoft's discriminative DeepVQE model has been shown to excel any of the ICASSP 2023 AEC Challenge entries achieving remarkable performance. Using data from the Interspeech 2025 URGENT Challenge for a diverse, high-quality training dataset, our DiffVQE excels DeepVQE both in echo and noise control performance, as well as in computational complexity and model size.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

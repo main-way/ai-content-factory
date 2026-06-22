@@ -1,0 +1,11 @@
+Quantitative Biology > Neurons and Cognition
+Title:OpTI-Mouse: Optimization for Targeted Temporal Interference Stimulation in the Mouse Brain
+View PDF HTML (experimental)Abstract:Temporal Interference (TI) stimulation enables deep brain targeting, yet precise optimization tools for mouse models remain limited. We developed a computational optimization tool integrating mouse head modeling with the optimization algorithm to optimize stimulation strategies for predefined target regions. By balancing target intensity and spatial focality, the optimized strategy significantly outperformed empirical baselines. For the CA3-CA1 target, it achieved a 7-fold intensity increase (10.29 vs. 2.89 V/m) under iso-focality conditions. Conversely, for the Dentate Gyrus, it improved spatial confinement ($r_{0.5}$ reduced from 3.99 to 3.54 mm) while maintaining comparable intensity. Cross-model validation on a standardized Sim4Life phantom further confirmed the framework's robustness. This approach offers a powerful tool for enhancing the precision and reproducibility of preclinical TI stimulation studies.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

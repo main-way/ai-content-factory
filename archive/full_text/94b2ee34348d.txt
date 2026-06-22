@@ -1,0 +1,41 @@
+Note from Andrey: this ep came out a week ago on RSS, but I was delayed posting it to youtube and therefore also Substack. My bad!
+Our 238th episode with a summary and discussion of last week’s big AI news!
+Recorded on 03/18/2026
+Hosted by Andrey Kurenkov and Jeremie Harris
+Feel free to email us your questions and feedback at andreyvkurenkov@gmail.com and/or hello@gladstone.ai
+In this episode:
+* OpenAI released GPT-5.4 mini and nano with 400k-token context windows, higher per-token prices but claimed token-efficiency gains in Codex; nano is API-only and pitched for high-volume classification/data extraction despite a major price increase.
+* Mistral open-sourced the Small 4 model family (MoE, 119B total/6B active) combining reasoning, multimodal, and coding-agent capabilities, and announced Forge to help businesses train or post-train custom models.
+* Agent “operating system” competition intensified with Meta’s acquired Manus launching a local Mac agent, Nvidia announcing NeMo/“Open Shell” sandboxed agent runtime, and Nvidia also unveiling DLSS 5 plus major hardware forecasts including Groq LPU integration.
+* Business and safety updates included OpenAI shifting focus toward productivity/enterprise amid competition, Microsoft reorganizing Copilot and frontier-model efforts, Meta delaying its next model, China-linked ByteDance deploying large Nvidia clusters abroad, and new safety work on steganography, chain-of-thought faithfulness, fine-tuning defenses, cyber-attack evals, and constitution/spec compliance.
+A thank you to our current sponsors:
+Box - visit Box.com/AI to learn more
+ODSC AI - go to odsc.ai/east and use promo code LWAI for an additional 15% off your pass to ODSC AI East 2026.
+Factor - head to factormeals.com/lwai50off and use code lwai50off to get 50 percent off and free breakfast for a year
+Timestamps:
+(00:00:10) Intro / Banter
+(00:01:56) News Preview
+Tools & Apps
+(00:02:39) OpenAI ships GPT-5.4 mini and nano, faster and more capable but up to 4x pricier
+(00:08:04) Mistral’s new Small 4 model punches above its weight with 128 expert modules
+(00:14:03) Meta’s Manus launches ‘My Computer’ to turn your Mac into an AI agent - 9to5Mac
+(00:17:57) NVIDIA Announces NemoClaw for the OpenClaw Community | NVIDIA Newsroom + Nvidia boosts knowledge work with Open Agent Development Platform
+(00:24:09) DLSS 5 looks like a real-time generative AI filter for video games | The Verge
+(00:26:36) OpenAI to Launch ChatGPT ‘Adult Mode’ Despite Warnings From Its Own Advisers - CNET
+Applications & Business
+(00:33:46) OpenAI Reportedly Pivoting to a Focus on Business and Productivity Only
+(00:45:44) Mistral launches Forge to help enterprises build their own AI models
+(00:54:17) China’s ByteDance gets access to top Nvidia AI chips, WSJ reports
+(00:57:57) Meta Delays Rollout of New A.I. Model After Performance Concerns
+(01:02:50) Microsoft Shakes Up AI Division As Copilot Falls Behind Google and OpenAI
+Policy & Safety
+(01:07:26) A Decision-Theoretic Formalisation of Steganography With Applications to LLM Monitoring
+(01:13:09) Reasoning Theater: Disentangling Model Beliefs from Chain-of-Thought
+(01:18:29) In-Training Defenses against Emergent Misalignment in Language Models
+(01:23:07) How do frontier AI agents perform in multi-step cyber-attack scenarios?
+(01:25:20) Eval awareness in Claude Opus 4.6’s BrowseComp performance
+(01:29:49) Introducing Bloom: an open source tool for automated behavioral evaluations
+(01:37:11) Nvidia’s H200 License Stirs Security Concern Among Top Democrats
+Research & Advancements
+(01:40:050) [2603.15031] Attention Residuals
+(01:47:11) Mamba-3: Improved Sequence Modeling using State Space Principles

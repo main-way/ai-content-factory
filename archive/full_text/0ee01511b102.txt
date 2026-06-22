@@ -1,0 +1,11 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Effects of Objective Normalization on Regions of Interest in Preference-Based Evolutionary Multi-Objective Optimization
+View PDF HTML (experimental)Abstract:Preference-based evolutionary multi-objective optimization (PBEMO) aims to approximate a region of interest (ROI) defined by the preference information from a decision maker (DM). Although objective functions in real-world applications typically have different scales, the issue of how to define the ROI in such problems has been overlooked in the literature. In fact, it has not been standardized in the EMO community whether the ROI should be defined in the unnormalized objective space or in the normalized objective space. In this context, this paper investigates the effects of objective normalization on ROIs. First, this paper shows that two ROIs defined in the unnormalized and normalized objective spaces can differ significantly for problems with differently scaled objectives. Then, we demonstrate that ROIs defined in the normalized objective space are highly difficult to approximate even on problems with equally scaled objectives because of poor approximations of the ideal and nadir points. In contrast, we show that ROIs defined in the unnormalized objective space are much easier to approximate than those defined in the normalized objective space.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

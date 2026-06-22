@@ -1,0 +1,13 @@
+Statistics > Machine Learning
+Title:Phase Transition for Stochastic Block Model with more than $\sqrt{n}$ Communities
+View PDF HTML (experimental)Abstract:Predictions from statistical physics postulate that recovery of the communities in the Stochastic Block Model (SBM) with a fixed number $K$ of communities is possible in polynomial time above, and only above, the Kesten-Stigum (KS) threshold. This conjecture has given rise to a rich literature, proving that non-trivial community recovery is indeed possible in SBM above the KS threshold. Failure of low-degree polynomials (LDP) below the KS threshold was also proven, as long as $K\ll \sqrt{n}$, where $n$ is the number of nodes in the observed graph.
+When $K\geq \sqrt{n}$, Chin et al.(2025) recently proved that, in a \emph{sparse regime}, community recovery in polynomial time is possible below the KS threshold by counting non-backtracking paths. This breakthrough led them to postulate a new threshold for the many-communities regime $K\geq \sqrt{n}$. In this work, we provide evidence supporting their conjecture:\\ 1- We prove that, for \emph{any graph density}, LDP fail to recover communities below the threshold postulated by Chin et al.(2025) ;\\ 2- We prove that community recovery is possible in polynomial time above the postulated threshold, not only in the \emph{sparse regime} considered in Chin et al.~(2025), but also in \emph{moderately sparse regimes}, by counting occurrences of some specific motifs inspired by the LDP analysis.\\ In particular, counting self-avoiding paths of length $\log(n)$, which is closely related to spectral algorithms based on the Non-Backtracking operator, is optimal only in the sparse regime. More complex motifs based on the blow-up of a cycle must be considered in denser regimes.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

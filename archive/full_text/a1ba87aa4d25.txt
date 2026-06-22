@@ -1,0 +1,17 @@
+Statistics > Machine Learning
+Title:Leave-One-Out-, Bootstrap- and Cross-Conformal Anomaly Detectors
+View PDF HTML (experimental)Abstract:The need for uncertainty quantification in anomaly detection systems has become increasingly important. In this context, effectively controlling Type I error rates without inflating Type II error rates in these systems can build trust and reduce costs associated with false discoveries. The field of conformal anomaly detection emerges as a promising approach for providing respective statistical and finite-sample validity guarantees through model calibration. However, reliance on calibration data imposes practical limitations, especially in low-data regimes. In this work, we formally define and evaluate leave-one-out-, bootstrap-, and cross-conformal methods for conformal anomaly detection, building on methods from the field of conformal prediction. Looking beyond the classical split-conformal approach, we show that derived methods for calculating resampling-conformal $p$-values offer a practical compromise between the data efficiency of full-conformal (transductive) approaches and the computational efficiency of split-conformal (inductive) methods. We validate derived methods and quantify their improvements for a range of one-class classifiers and datasets.
+Submission history
+From: Oliver Hennhöfer [view email][v1] Mon, 26 Feb 2024 08:22:40 UTC (396 KB)
+[v2] Sat, 2 Mar 2024 13:40:04 UTC (396 KB)
+[v3] Thu, 20 Feb 2025 13:28:41 UTC (157 KB)
+[v4] Fri, 12 Jun 2026 13:31:03 UTC (92 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

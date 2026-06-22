@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:Data-Driven Runway and Taxiway Exits Prediction of Landing Aircraft: A Case Study at Hartsfield-Jackson Atlanta International Airport
+View PDF HTML (experimental)Abstract:Airport surface operations increasingly constrain performance at high-throughput hubs. This study examines arrival taxi-in decisions at Hartsfield-Jackson Atlanta International Airport (KATL) and proposes a two-stage, data-driven decision aid that mirrors controller workflow. Stage I predicts the runway exit selected by an arriving aircraft. Stage II predicts whether, given that exit, the aircraft will cross the active departure runway at a designated point or use the end-around taxiway. Models are trained using ASDE-X surface trajectories, aircraft characteristics, ramp destinations, short-horizon traffic rates, and weather across multiple look-back windows. We benchmark nine classifiers, including Random Forest, XGBoost, LightGBM, and CatBoost, and evaluate accuracy, macro-F1, precision-recall behavior, confusion matrices, Brier score, and Expected Calibration Error. Across east and west flows, XGBoost and LightGBM outperform Random Forest. Stage I achieves 0.86-0.89 accuracy with macro-F1 scores of 0.40-0.50, while Stage II achieves 0.70-0.74 accuracy with macro-F1 scores of 0.28-0.55. Feature-importance analysis shows that approach speed is the main driver of exit choice. Departure rate, crossing rate, ramp destination, and, for west flow, the selected exit are the strongest predictors of crossing versus end-around routing. Minority classes remain harder to predict because of feature-space overlap, as shown by t-SNE and UMAP analyses. The proposed framework supports controller situational awareness through calibrated, explainable predictions while preserving human responsibility for final routing decisions.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

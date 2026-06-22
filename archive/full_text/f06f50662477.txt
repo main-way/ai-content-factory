@@ -1,0 +1,309 @@
+At some point I counted. Six files. Eleven pastes. Twenty minutes of switching before I wrote a single new line.
+The obvious fix was to give the AI tool direct access to my project folder. That’s when I ran into MCP — the Model Context Protocol — which is exactly built for this. A server runs locally, exposes tools, and the AI client calls those tools directly instead of waiting for me to paste things.
+So I looked at existing implementations. Most required FastAPI, uvicorn, LangChain, or the official MCP SDK. Before writing a single line of business logic I had five packages in my requirements file and a server I wasn’t confident would run on Windows without a fight.
+I stepped back and read the actual MCP spec [1]. The protocol is JSON-RPC 2.0 [2] over a transport layer. One JSON object per line. Client sends, server responds. The spec defines exactly two transports: stdio for local single-client connections, and HTTP with Server-Sent Events for concurrent clients.
+That’s the whole protocol.
+I asked a different question: what does this actually need that Python’s standard library doesn’t already provide? sys.stdin
+, sys.stdout
+, http.server
+, threading
+, queue
+, pathlib
+, json
+. That’s it. Not a single pip install
+.
+This article is that implementation — both transports, a production security model, 50 tests, and the numbers from running it.
+TL;DR
+Most MCP implementations feel heavier than they should. The spec only defines two transports, stdio and HTTP/SSE, but in practice they are usually wrapped in frameworks and extra dependencies.
+I built both transports from scratch using only the Python standard library.
+It runs as a single file with one runtime flag. No installs, no setup.
+For local work, it uses stdio with a single client. When you need concurrency, it switches to HTTP/SSE and handles multiple clients without changing anything else.
+Under the hood, everything stays consistent. Same dispatcher, same tools, same security model.
+Because it touches the filesystem, I added strict path checks early on. Common escape patterns like ../../, symlink tricks, and Windows UNC paths are blocked.
+5 concurrent clients. Under 50ms total wall time. Verified on Windows 11, Python 3.12.6, CPU only.
+Full code: https://github.com/Emmimal/local-mcp-server/
+The Mistake That Shaped the Whole Design
+Before the architecture, I want to tell you about the thing that nearly made me give up on the whole thing.
+Early in development I was testing the search tool. I pointed the server at C:\Users\Admin
+and ran it looking for Python files. The server started. The demo started running. Then it just kept running.
+Thirty seconds. A minute. Five minutes. I thought there was an infinite loop somewhere. I went back through the code three times. Everything looked correct. I killed the process and restarted. Same result.
+Ten minutes in I finally understood what was happening. The search tool was using rglob()
+by default. I had pointed it at my entire user directory and it was scanning everything — virtual environments, AppData, every cached file on the machine. Tens of thousands of files, one at a time.
+I killed the process and changed one line:
+# Before — recursive by default, scans everything
+for match in target.rglob(pattern):
+# After — shallow by default, opt-in for recursion
+for match in target.glob(pattern):
+And made recursive=False
+the default parameter. The client has to pass recursive=True
+explicitly. The server will never scan recursively on its own.
+That single change is why search completes in under 30ms on a real project folder today instead of running forever. And it became the rule I applied everywhere: no behavior that destroys performance should ever be the default.
+What MCP Actually Is
+The Model Context Protocol [1] is a standardised way for AI clients to call tools on external servers. It uses JSON-RPC 2.0 [2] as its message format.
+In practice, this means AI clients like Claude or ChatGPT can directly access and reason over local files instead of relying on copy-paste.
+The handshake has three phases. First the client initializes, then it asks what tools are available, then it starts calling them:
+Everything after that is the transport carrying messages back and forth.
+The spec defines two transports. stdio runs over standard input and output — one JSON object per line, flushed immediately. HTTP/SSE runs requests over HTTP POST, with responses streamed back over a persistent Server-Sent Events connection [3].
+Most implementations pick one. This one implements both, with the same dispatcher and the same four tools sitting behind each.
+Here is what the demo shows at startup — both transports register the same tools:
+[2] Available tools
+[list_directory ] List files and directories. Returns name, type, size...
+[read_file ] Read a file's contents. Max 1 MB. Binary files returned...
+[search_files ] Search files by glob pattern. Use recursive=true for...
+[get_file_info ] Get metadata for a file or directory: size, type, ext...
+Architecture: Four Layers
+The system has four layers.
+Security layer — validates every path before any filesystem operation. It runs before anything else, on every single call.
+Tools layer — four tools for the actual file system work: list_directory
+, read_file
+, search_files
+, get_file_info
+.
+Dispatcher — a stateless JSON-RPC router. Parses the method, calls the right handler, returns the response. It has no idea which transport is running and it doesn’t need to.
+Transport layer — two implementations. StdioTransport
+for local AI clients. HTTPSSETransport
+for concurrent connections. The dispatcher has no idea which one is running.
+The entry point selects the transport at startup:
+dispatcher = MCPDispatcher(root)
+if args.http:
+HTTPSSETransport(dispatcher, host=args.host, port=args.port).run()
+else:
+StdioTransport(dispatcher).run()
+One flag. That’s it.
+The Security Model
+The first thing I had to think about when building a server that reads local files was what stops a client from reading files it shouldn’t. The obvious attack is path traversal — instead of sending README.md
+, a client sends ../../etc/passwd
+and a server that doesn’t check follows it straight out of the sandbox.
+The fix was to resolve both paths fully before comparing them. The key line:
+target.resolve().relative_to(base.resolve())
+Path.resolve() expands all symlinks and collapses all .. segments. relative_to() raises ValueError if the result lands outside the base. [6] No string parsing, no counting ..
+manually. The OS resolves the path; Python checks the result.
+MCP_ROOT
+sets the sandbox root via environment variable. I set it to my project folder specifically, not my home directory. Every tool runs this check before touching the filesystem. If it fails, the error goes back to the client immediately.
+The security tests verify this on every build:
+| Attack | Result |
+|---|---|
+../../etc/passwd | Access denied |
+| Symlink pointing outside root | Access denied |
+Windows UNC path \\server\share | Access denied |
+src/main.py inside root | Allowed |
+The Four Tools
+list_directory
+Lists everything in a directory — name, type, size, modified timestamp, relative path. Directories before files, hidden entries excluded by default.
+Pointing it at the project folder:
+[3] list_directory
+8 entries:
+[F] concurrent_demo.py 4,711B
+[F] demo.py 10,451B
+[F] http_client.py 5,140B
+[F] local_desktop_config.json 228B
+[F] README.md 7,542B
+[F] server.py 29,222B
+[F] test_server.py 17,500B
+Eight entries, sizes, all inside the sandbox. The sort order puts directories first because the sort key uses p.is_file()
+— False < True
+in Python, so directories naturally float up.
+One thing that bit me on Windows: a file can appear in a directory listing while being locked by another process. item.stat()
+raises PermissionError
+on that entry. The tool wraps each stat call in its own try/except and skips locked entries silently instead of crashing the entire listing.
+read_file
+Reads file contents with a hard 1 MB cap. Text files returned as plain UTF-8. Binary files returned as base64.
+read_file
+concurrent_demo.py:
+#!/usr/bin/env python3
+"""
+concurrent_demo.py
+============================
+Proves the HTTP/SSE transport handles multiple concurrent clients.
+Spins up 5 clients simultaneously, each running
+... (4509 more chars)
+I added the binary fallback after pointing the server at a real project folder for the first time. Python project folders contain .pyc
+files, compiled extensions, SQLite databases. The first version refused all of them with UnicodeDecodeError
+. The fix: if read_text()
+fails on decode, fall back to read_bytes()
+and return base64. The client gets a structured response with a binary: true
+flag instead of a crash.
+The 1 MB cap exists because one early test accidentally read a 200 MB SQLite database and froze the process for thirty seconds. MAX_FILE_BYTES
+is a constant at the top of server.py
+— change it if your workflow needs larger files.
+search_files
+After the rglob()
+incident, this tool works like this:
+[6] search_files — *.py (shallow)
+Found 5 file(s):
+-> concurrent_demo.py 4,711B
+-> demo.py 10,451B
+-> http_client.py 5,140B
+-> server.py 29,222B
+-> test_server.py 17,500B
+Five files, under 30ms. The same call on C:\Users\Admin
+with recursive=True
+would still scan everything — but now that is a deliberate choice the client has to make, not something the server does automatically.
+The truncated
+flag tells the client when results were cut off at max_results
+. The first version silently dropped results with no signal — I added truncated
+after realising the client had no way to know it wasn’t getting everything.
+get_file_info
+Returns metadata without reading file contents — useful when the client needs to check permissions before deciding whether to read.
+[4] get_file_info
+name local-mcp-server
+path .
+type directory
+size 4096
+modified 1780246573
+created 1780227648
+extension None
+readable True
+writable True
+os.access()
+checks real permissions, not just existence. On Windows a file can be visible in a listing while being locked. Knowing it is unreadable before trying to read it saves a round trip.
+The Dispatcher
+I didn’t want to reinvent the wheel or rewrite my core logic just to handle different network setups, so I built a central dispatcher to handle everything instead. It functions as a basic, stateless engine. A raw JSON string comes in, the dispatcher parses it to see exactly what the client needs, and then it drops a response back.
+I explicitly kept all network and file I/O out of this component. It doesn’t know anything about stdin, stdout, or HTTP. All of that messy communication is left entirely to the transport layers. The transports do the heavy lifting with the actual sockets or streams and simply pass the clean data along to the dispatch()
+function.
+To keep the system lean, the engine only listens for four spec methods: initialize
+, tools/list
+, tools/call
+, and ping
+. If anything else hits the dispatcher, it shuts the request down immediately with a standard JSON-RPC error.
+The only exception is handling notifications. When a message comes through without an id
+field, the MCP specification dictates that no response is required. The dispatcher processes the event internally and just returns None
+. Because the core engine is completely independent of how data travels, moving from local stdio to an HTTP server requires zero internal code changes. The transport layer changes on the outside, but the main dispatcher stays exactly the same.
+Transport 1: stdio
+For the local setup, the stdio transport is just a raw for line in self._stdin
+loop. I completely skipped async, threads, and event loops to keep it as simple as possible.
+The Windows fix actually took me longer than writing the transport itself. By default, Python opens stdin and stdout in text mode on Windows, which automatically changes every \n
+to \r\n
+whenever you write data. That little change completely corrupts the JSON stream. The moment a client reads }\r\n{
+, it hits a parse error on the very next message, breaking the entire connection.
+if platform.system() == "Windows":
+import msvcrt
+msvcrt.setmode(sys.stdin.fileno(), os.O_BINARY)
+msvcrt.setmode(sys.stdout.fileno(), os.O_BINARY)
+Setting O_BINARY
+disables the translation. [8] Without this the server works on macOS and Linux and silently breaks on Windows.
+write_through=True
+on the stdout wrapper ensures every write flushes immediately. The AI client is blocking synchronously waiting for the response — any buffering stalls the interaction.
+Here is the full stdio demo output from my machine:
+============================================================
+local-mcp-server demo [stdio transport]
+Root: C:\Users\Admin\PycharmProjects\pythonProject\local-mcp-server
+============================================================
+[1] Initialize
+Server : local-mcp-server v1.0.0
+Protocol: 2024-11-05
+[2] Available tools
+[list_directory ] List files and directories...
+[read_file ] Read a file's contents. Max 1 MB...
+[search_files ] Search files by glob pattern...
+[get_file_info ] Get metadata for a file or directory...
+[3] list_directory 8 entries
+[4] get_file_info readable: True writable: True
+[5] read_file first small file read successfully
+[6] search_files Found 5 .py files
+============================================================
+All checks passed. Ready to connect Local Desktop.
+============================================================
+Transport 2: HTTP/SSE
+Each client opens a GET /sse connection (built on Python’s http.server
+[4]) that stays open for the entire duration of the session, allowing the server to push responses down that pipeline as server-sent events. Each connection receives a unique client_id [9] on connect. When a client needs to talk back or send a request, it fires off a separate POST /message.
+The flow per client looks like this:
+To handle concurrency cleanly, each client gets its own independent message queue. [7] The POST handler dispatches the call, drops the result directly onto that client’s queue, and immediately returns a 202 status. It doesn’t wait for the SSE delivery to finish. The client just picks up the response from its own open stream. That’s what makes the concurrency work.
+I set up 16 daemon worker threads to manage incoming requests. Since each active SSE connection holds onto one thread, having 5 active SSE clients leaves 11 threads completely free to handle incoming POST
+requests at any moment. There is no async/await syntax and no event loop—just standard library threading. [5]
+The Concurrent Demo
+This is the output that answers whether the HTTP/SSE transport actually works:
+============================================================
+Concurrent Client Demo — 5 clients, 5 simultaneous calls
+============================================================
+Launching 5 concurrent clients...
+Client Tool Result Time
+---------- -------------------- ---------- --------
+1 list_directory OK ~0.034s
+2 get_file_info OK ~0.021s
+3 list_directory OK ~0.038s
+4 search_files OK ~0.023s
+5 search_files OK ~0.021s
+Total wall time: ~0.04s for 5 concurrent clients
+Result: ALL PASSED
+============================================================
+Five clients. Five different tool calls. Under 50ms total wall time across all runs. None blocked each other. Measured on Windows 11, Python 3.12.6, CPU only.
+What Broke During Development
+The ten-minute hang I already described. Three other things broke before the server was stable.
+The Windows \r\n
+problem. The first time I connected an actual AI client it got a parse error on the second message. Everything looked fine in testing. The issue was the stdout translation — \n
+becoming \r\n
+on Windows. I spent an hour looking at the dispatcher before I found it. Two lines fixed it.
+The binary file crash. First version of read_file
+called read_text()
+on everything. First real project folder it hit a .pyc
+file and raised UnicodeDecodeError
+. Added the base64 fallback after that.
+The 200 MB database freeze. Before the 1 MB cap, a test accidentally read a SQLite database. The process froze for thirty seconds. The cap went in immediately after.
+Each of these only appeared when the server ran against a real machine, not a test directory.
+The Test Suite
+50 tests across seven classes. Security runs first.
+| Class | What it covers |
+|---|---|
+| TestSecurity | Traversal attacks, symlink escapes, empty paths |
+| TestListDirectory | Hidden files, sort order, locked entries, errors |
+| TestReadFile | Text, binary/base64, 1 MB cap, permission errors |
+| TestSearchFiles | Shallow vs recursive, max_results, truncation flag |
+| TestGetFileInfo | File vs directory, permissions, timestamps |
+| TestDispatcher | All methods, notifications, parse errors, unknown methods |
+| TestHTTPTransport | Health endpoint, SSE connection, 400/404 error codes |
+Run the test suite with pytest in verbose mode. To skip integration tests, pass the not integration
+marker flag.
+Connecting to a Local AI Client
+macOS: ~/Library/Application Support/Claude/local_desktop_config.json
+Windows: %APPDATA%\Claude\local_desktop_config.json
+{
+"mcpServers": {
+"local-desktop": {
+"command": "python",
+"args": ["C:/absolute/path/to/local-mcp-server/server.py"],
+"env": {
+"MCP_ROOT": "C:/absolute/path/to/your/workspace"
+}
+}
+}
+}
+For HTTP/SSE:
+# Terminal 1 — start the server
+python server.py --http --port 8765
+# Terminal 2 — run the example client
+python examples/http_client.py
+Honest Design Decisions
+A pool of 16 worker threads is plenty for local development, but I didn’t design this to scale into a shared server handling hundreds of simultaneous connections. If you need that kind of scale, you should probably swap this out for asyncio
+and a dedicated async framework. For local AI tooling running a handful of clients on your own machine, 16 threads is more than enough.
+The security model trusts the sandbox boundary itself, completely ignoring file types. I didn’t write an allowlist of safe extensions or a blocklist of dangerous ones. If a path resolves inside MCP_ROOT
+, it is readable. One rule is harder to get around than ten.
+I also intentionally left out token counting. This server simply returns raw file contents. Managing your token budget belongs in the execution layer between the server and the model. Adding a counter here would force a tokenizer dependency—breaking the zero-dependency goal—or force an approximation with its own messy edge cases.
+Finally, search is shallow by default. A ten-minute hang during testing made this decision for me. Any behavior that silently destroys performance like that should never be the default option.
+What This Actually Teaches
+I expected building an MCP server to be complicated. The tutorials made it look complicated. Every implementation I found had FastAPI, uvicorn, and three other packages before a single tool was registered. So I assumed that complexity was necessary.
+It wasn’t. When I finally read the actual spec, the protocol was a loop. Read a line. Parse JSON. Call a function. Write a line. That’s it. The frameworks weren’t solving MCP problems — they were solving HTTP problems that MCP over stdio doesn’t have.
+The standard library was enough because the problem was small. I didn’t need a framework. I needed http.server
+for TCP connections, threading
+for parallel requests, queue
+to decouple SSE from POST handling, and pathlib
+for path resolution. One module per problem. Nothing left over.
+The thing that surprised me most was how much the defaults mattered. Every real failure in this codebase — the ten-minute hang, the 200 MB freeze, the Windows JSON corruption — came from a default that worked fine in testing and broke on a real machine. rglob()
+was fine on a small test folder. Text mode stdout was fine on Linux. The default that feels convenient in development is often the one that silently destroys things in production.
+Full code: https://github.com/Emmimal/local-mcp-server/
+References
+[1] Model Context Protocol. (n.d.). Model Context Protocol Specification. https://modelcontextprotocol.io
+[2] JSON-RPC Working Group. (2010). JSON-RPC 2.0 Specification. https://www.jsonrpc.org/specification
+[3] WHATWG. (n.d.). Server-sent events. HTML Living Standard. https://html.spec.whatwg.org/multipage/server-sent-events.html
+[4] Python Software Foundation. http.server — HTTP servers. Python 3 Documentation. https://docs.python.org/3/library/http.server.html
+[5] Python Software Foundation. threading — Thread-based parallelism. Python 3 Documentation. https://docs.python.org/3/library/threading.html
+[6] Python Software Foundation. pathlib — Object-oriented filesystem paths. Python 3 Documentation. https://docs.python.org/3/library/pathlib.html
+[7] Python Software Foundation. queue — A synchronized queue class. Python 3 Documentation. https://docs.python.org/3/library/queue.html
+[8] Python Software Foundation. msvcrt — Useful routines from the MS VC++ runtime. Python 3 Documentation. https://docs.python.org/3/library/msvcrt.html
+[9] Python Software Foundation. (n.d.). uuid — UUID objects according to RFC 4122. Python 3 Documentation. https://docs.python.org/3/library/uuid.html
+[10] Python Software Foundation. subprocess — Subprocess management. Python 3 Documentation. https://docs.python.org/3/library/subprocess.html
+Disclosure
+All code in this article was written by me and is original work, developed and tested on Python 3.12.6, Windows 11, CPU only. No GPU was used at any stage. All benchmark numbers — response times, concurrent client results, test counts — are from actual runs on my local machine and are fully reproducible by cloning the repository and running demo.py
+and concurrent_demo.py
+as described above. The entire implementation uses only the Python standard library. No third-party packages are required or used at any point. All architecture decisions, implementation choices, design tradeoffs, debugging experiences, and the failures described in “What Broke During Development” are my own. I have no financial relationship with any tool, library, framework, or company mentioned in this article. The MCP protocol is an open specification published by Anthropic [1]; this implementation is independent and is not affiliated with or endorsed by Anthropic.
+If you build production AI systems and want to go deeper — tutorials, learning tracks, and hands-on projects at EmiTechLogic, my AI and Python learning platform.

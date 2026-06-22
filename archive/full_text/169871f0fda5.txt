@@ -1,0 +1,19 @@
+Pokémon Go data helped train AI now linked to military drones
+Key Points
+- Pokémon Go players voluntarily created millions of 3D scans that trained Niantic Spatial's AI models for camera-based navigation without GPS.
+- Niantic Spatial is now partnering with US defense contractor Vantor. Together, their technologies aim to keep drones and autonomous systems on course when satellite signals are jammed or spoofed.
+- Vantor also recently landed a US Army contract worth up to $217 million for 3D terrain data.
+Volunteer AR scans from Pokémon Go players fed into Niantic's spatial AI models. That technology is now being combined with a US defense contractor's software for GPS-free navigation.
+Data collected by Pokémon Go players went into training an AI model that could support military drones, according to a report by the Telegraph (based on reporting by the Dutch newspaper Trouw).
+It goes back to a 2021 update. Developer Niantic added in-game incentives for players to scan real-world locations with their smartphones. Millions of users then scanned streets, buildings, parks, and trees, generating billions of visual mapping data points, according to the website DroneXL. Participation was opt-in, and permissions were collected.
+Niantic's spin-off, Niantic Spatial, turned those scans into a large-scale 3D map that works when satellite signals aren't available. Machines can use cameras to locate themselves and navigate, no GPS needed.
+From mobile game to defense partnership
+In December 2025, Niantic Spatial announced a partnership with Vantor, a US defense intelligence firm that builds spatial detection software for drones, including military UAVs. The partnership addresses GPS denial, spoofing, interference, and jamming, the announcement said. When satellite signals are compromised, autonomous systems and field teams lose their bearings.
+On the technical side, the two companies are combining Niantic's ground-level Visual Positioning System with Vantor's Raptor software and its 3D terrain data built from over two decades of satellite imagery. The result is a shared coordinate system for drones, vehicles, and AR headsets. Early tests showed error reduction of up to 70 percent and accuracy of about 1.5 meters, according to a Niantic Spatial blog post. The visual system is immune to standard signal jammers.
+No direct data handoff, but the scans trained the foundation models
+Both companies told Guardian Australia that the ground-level scans from the game were not handed directly to Vantor. Instead, they were used to train Niantic's foundation models. A Niantic Spatial spokesperson stressed that the AR scans were submitted voluntarily by players who opted into the feature and were covered by the privacy and terms-of-service policies in place at the time.
+In February 2026, Vantor also landed a US Army contract worth up to $217 million for the One World Terrain program. That effort focuses on high-precision 3D terrain data for the Army's Synthetic Training Environment - realistic simulation and mission rehearsal. There's no public evidence that Pokémon Go scans will be part of that specific contract. GPS jamming and spoofing are already being used in the wars in Ukraine and Iran to throw off kamikaze drones, reconnaissance drones, and GPS-guided missiles.
+Niantic recently split its gaming division from its geospatial AI business. In March 2025, Saudi-backed Scopely acquired the games side for $3.5 billion, while Niantic Spatial continues as a standalone company focused on spatial AI models.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Vector Space of Cycles
+View PDF HTML (experimental)Abstract:Most statistical and machine learning methods for directed interactions focus on pairwise effects among variables. Even existing cyclic models represent feedback primarily through node-level dependencies, making large-scale recurrent organization difficult to estimate and compare. This limitation is particularly acute in biological and neural systems, where interactions are highly recurrent and involve many overlapping cycles. We introduce a variational framework for statistical inference on cyclic interactions. Directed interactions are represented as edge flows on a simplicial complex and evolved under an energy-minimizing dynamical system. The resulting dynamics separate transient interaction components from persistent harmonic flows, yielding a low-dimensional cycle space that captures stable recurrent organization. Rather than enumerating individual cycles, the proposed framework represents cyclic interactions as elements of a Hilbert space, enabling projection, averaging, comparison, and population-level statistical inference. We establish theoretical properties of the harmonic projection, including characterization of the cycle space, variance reduction, and population inference. Simulations demonstrate substantially improved recovery of cyclic structure in dense recurrent systems compared with existing directed-interaction methods. Applied to resting-state fMRI from 400 human subjects, the framework reveals reproducible large-scale cyclic organization that is not detectable through edgewise averaging. These results provide a scalable statistical framework for studying recurrent interactions in high-dimensional dynamical systems.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

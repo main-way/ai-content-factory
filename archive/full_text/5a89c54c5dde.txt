@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Simultaneous Latent Budget Trees for Stratified Classification
+View PDF HTML (experimental)Abstract:In the era of Explainable Artificial Intelligence, there is a renewed focus on single trees for their ease of interpretation. This paper introduces Simultaneous Latent Budget Trees, a probabilistic machine learning framework for classification trees in the presence of a stratification factor such as a temporal, spatial, or demographic variable, acting as a control variable or potential confounder. Standard tree growth procedures are not designed to optimize a conditional split rule. A model-based split rule is proposed in which child nodes are interpreted as latent components of a simultaneous mixture model, such as the Simultaneous Latent Budget Model and its constrained versions, fitted to the parent node. Mixing parameters drive the observations, differently for each group, to the child nodes whereas latent budgets parameters update the response classes profile of each level of the control variable. Parameters are estimated by least squares considering a neural network perspective of the model. An informative tree structure can be interactively visualized with interpretation aids on the node and the paths, including visual pruning and decision tree selection procedure. Suitable measures are proposed to handle an unbalanced response class distribution. The proposed methodology is applied to investigate gender-related differences in disease progression of Amyotrophic Lateral Sclerosis. The SLBT library with the various tree-based algorithms is available in the linked GitHub repository.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

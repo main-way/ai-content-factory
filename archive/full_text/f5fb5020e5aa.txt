@@ -1,0 +1,44 @@
+But today, I want to shed light on how modern AI is only possible because of the advances in hardware.
+Training a large language model involves performing trillions of mathematical operations across large datasets. Generating an image from a text prompt requires billions of calculations in just a few seconds. Running AI on a smartphone requires computations to be completed quickly and with minimal power.
+Traditional computer hardware was not designed for that. But as AI models grew larger and more computationally demanding, new hardware architectures were needed to run these models. Today, CPUs, GPUs, TPUs, and NPUs each play important roles in the AI world.
+In this article, we will explore the hardware that powers modern AI and explain why different processors are needed for different tasks.
+Why AI Needs Specialized Hardware
+To understand why AI needs special hardware, let’s take a step back and think about what happens during machine learning. At its core, training a neural network involves repeatedly performing mathematical operations on a collection of numbers. Most of these operations involve matrix multiplications and tensor products that must be executed millions or billions of times.
+This differs significantly from other software applications. For example, a web browser spends much of its time responding to user inputs and loading resources. AI applications, on the other hand, often involve applying the same operation to large amounts of data.
+So, for AI to perform well, it needs to perform many calculations at the same time. This need for parallel computation led to the development of specialized hardware optimized for AI.
+So, let’s talk about hardware!
+CPUs: The General-Purpose OG!
+If we are going to talk about hardware, we need to start with the OG: the Central Processing Unit (CPU). CPUs are the foundation of modern computing. Every laptop, smartphone, workstation, and server relies on a CPU to run its system operations.
+Because CPUs are general, they are designed for flexibility. They can efficiently execute a wide variety of instructions and quickly switch between tasks. One way to think about a CPU is as a highly skilled generalist. It can perform many different jobs and adapt to changing requirements.
+To support this, CPUs often contain a small number of powerful cores. Making them the choice to run operating systems,managing memory, handling user interactions, coordinating software applications, and executing decision-making processes.
+Although CPUs are quite powerful, they are not optimized to perform the same operation on thousands or millions of data points at the same time. Which means, for AI workloads, this becomes a limitation.
+Although CPUs remain essential components of AI systems, they typically coordinate and support AI computations rather than perform the bulk of the heavy mathematical work.
+In modern AI pipelines, CPUs are used to load and preprocess data, coordinate communication between hardware devices, manage training workflows, and schedule computational tasks.
+GPUs: The Engine Behind the Deep Learning Revolution
+If there is one piece of hardware most closely associated with modern AI, it is the Graphics Processing Unit (GPU).
+GPUs were originally developed for rendering graphics in video games and visualization applications. Rendering an image involves performing similar calculations across millions of pixels, making it inherently a parallel process. To do that, GPUs were designed with thousands of smaller processing cores that can execute many operations simultaneously.
+Researchers soon recognized that neural networks use similar computational patterns. Training a neural network involves repeatedly performing matrix multiplications across large datasets. Because these operations can be distributed across many cores, GPUs are very good for deep learning.
+So, CPUs prioritize flexibility while GPUs prioritize throughput. This difference transformed the way we used to think about AI research. Tasks that once took weeks or months to finish are now completed in days or hours.
+Many of today’s most advanced AI models are trained using clusters containing hundreds or thousands of GPUs working together. The deep learning revolution was not driven only by better algorithms. It was enabled by hardware capable of efficiently executing those algorithms at scale.
+TPUs: Hardware Designed Specifically for AI
+So, GPUs were adapted for AI, and a new player entered the picture! Tensor Processing Units (TPUs). TPUs were developed by Google to accelerate tensor operations that are common in neural networks.
+Instead of supporting a broad range of computational tasks, TPUs specialize in a smaller set of operations commonly used during machine learning training. Because of this specialization, TPUs offer many advantages, like high throughput, improved energy efficiency, reduced overhead, and optimization for machine learning applications.
+As AI workloads become more important, hardware designers are moving away from purely general-purpose architectures and toward processors optimized for specific applications. Today, TPUs are widely used within Google’s cloud ecosystem and have contributed to training some of the world’s largest AI models.
+NPUs: Bringing AI to reality
+Not all AI workloads happen inside data centers. In fact, many AI applications now run directly on personal devices. Running AI locally is beneficial because it reduces latency, improves privacy, and reduces dependence on cloud connectivity.
+To support this, manufacturers introduced Neural Processing Units (NPUs). NPUs are specialized processors designed primarily for AI inference. Unlike GPUs, which often focus on large-scale training, NPUs prioritize energy-efficient execution of trained models.
+This makes them particularly valuable for modern computing applications. For example, when a smartphone enhances a photo, performs speech recognition, or translates text in real time, the computation may be executed directly on an NPU.
+As AI becomes increasingly integrated into consumer devices, NPUs are likely to become as common as CPUs and GPUs.
+Putting It All Together
+Modern AI systems rarely rely on a single hardware component. Instead, they combine multiple specialized technologies, each designed for a particular role.
+| Hardware | Strength | Role |
+| CPU | Flexibility | System management and orchestration |
+| GPU | Parallel computation | Training and large-scale inference |
+| TPU | AI specialization | Large-scale machine learning |
+| NPU | Power efficiency | On-device inference |
+The choice of hardware depends heavily on the task being performed! Which means there is no single “best” AI processor.
+Different AI tasks have different computational requirements, and modern systems are designed by combining multiple hardware components that complement one another.
+Final Thoughts
+The rapid progress of AI is often attributed to advances in algorithms, but hardware has played an equally important role, and it has played it behind the scenes!
+CPUs laid the foundation for modern computing. GPUs enabled large-scale deep learning. TPUs showed us the advantages of hardware designed specifically for machine learning. And NPUs are bringing AI directly to personal devices.
+Understanding these hardware components provides great insights into how modern AI systems operate and why they have advanced so rapidly over the past decade. And as AI continues to evolve, future breakthroughs may depend as much on innovations in hardware and memory as they do on improvements in algorithms themselves.

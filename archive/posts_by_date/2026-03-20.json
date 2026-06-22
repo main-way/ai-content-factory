@@ -1,0 +1,34 @@
+{
+  "date": "2026-03-20",
+  "count": 2,
+  "posts": [
+    {
+      "id": "88ffc9ca1833",
+      "title": "Thoughts on OpenAI acquiring Astral and uv/ruff",
+      "url": "https://simonw.substack.com/p/thoughts-on-openai-acquiring-astral",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-20T23:32:54+00:00",
+      "summary": "Plus GPT-5.4 mini and GPT-5.4 nano, which can describe 76,000 photos for $52",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "86ed50a005ea",
+      "title": "Issue #36",
+      "url": "http://augmentedcoding.dev/issue-36/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-03-20T00:00:00+00:00",
+      "summary": "If AI Writes the Code, Who Builds the Next Open Source Project? SCOTTLOGIC.COM As a long-time open source advocate, maintainer and contributor I’m getting increasingly concerned about the long-term impact that AI has on this valuable and oftentimes fragile resource. Open source has long been driven by human frustration, curiosity and craftsmanship, creating better tools because existing ones didn’t quite feel right. But as AI agents increasingly write code for us, that dynamic may be changing. In this post I look at the more immediate impact that AI has had on on open source; from the legal…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

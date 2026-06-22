@@ -1,0 +1,36 @@
+ANTHROPIC.COM
+A couple of months ago Anthropic announced Mythos, a model so effective at finding exploits in code, that they decided not to take it to general release. Fable 5 is a “Mythos class” model that they have “made safe” and released for general use.
+As you’d expect, Fable demonstrates some pretty significant leaps forward in capability across various benchmarks. Beating GPT 5.5, it’s nearest rival, across the board - with a significant gap in security capability (Fable has a 44% higher score on ExploitBench). They also share more tangible success stories:
+“In a 50-million-line Ruby codebase, the model performed a codebase-wide migration in a day that would otherwise have taken a whole team over two months by hand”
+The safety features, that keep the Mythos-level cyber capabilities at bay, are a based on a classifier system, routing malicious intend to the weaker Opus model. Given that AI-based safeguards are not 100% failsafe, I do wonder how long it will be until someone finds a creative prompting technique to subvert these safeguards.
+Early feedback from community members who had early access has been very positive. To quote Simon Willison “it’s a beast”. The rise in AI capability is showing no signs of slowing down.
+However, there is one thing that is …
+Anthropic are including Fable 5 in various plans at no extra cost, for just three weeks. After that, it will require extra credits. The free / heavily-subsidised token economy is almost over.
+ONEUSEFULTHING.ORG
+This blog post is from Ethan Mollick, who had early access to Fable 5. Ethan a Professor (studying AI in work and Education) and is generally seen as a pragmatist, considering LLMs to be incredibly powerful, but acknowledging their shortcomings - their “jagged” behaviour.
+Getting to the point:
+“First, how good is Fable? In experiment after experiment I conducted, it outperformed basically every other public model I have used by a considerable margin.”
+That’s a 5-star review right there!
+Ethan shares the results of some of his experiments, which are very impressive, complex and rather novel applications. For example this Isochronic Passage Chart.
+However, I want to make one observation - his examples are all cases where the requirements have a lot of ‘flex’. As demonstrated by the ability to create these apps with a prompt of just a few sentences. For most of us, the applications we are building require much more detailed requirements and specification, which can only be gleaned from talking to real users (not just internet searches).
+I do wonder whether Fable offers the professional engineer any more than Opus?
+The difference in velocity between those who care about the details (or just need to), and those that don’t, feels like it is getting bigger.
+SIMONWILLISON.NET
+A few days after release Simon Willison shared some more detail on his recent Fable 5 experiences. As mentioned previously, he considers this model to be a “beast”, but it has a specific ‘personality trait’ that he found quite notable - it is relentless.
+What this means is that when given a task, if it hits a wall, it will not stop. Instead it will try all manner of creative work-arounds and hacks in pursuit of success. This is no doubt what makes Mythos rather effective at hacking.
+It allows Fable to perform some amazing feats, but I am not entirely sure this is a trait I would like in my day-to-day AI model.
+POD.LINK
+This an interview with Geoffrey Hinton, one of the pioneers of deep learning (the foundation of all Large Language Models), about his thoughts on AI, its current capabilities and risks.
+Firstly, he rejects the notion that they are “stochastic parrots”, or next-token-predictors, arguing that if they can understand jokes, reason about language, resolve ambiguity, then we can meaningfully describe them as having understanding. I very much agree on this point. We might not understand how they have gained this capabilities, but our shared personal experience points to something far deeper than just statistics and averages.
+For much of this interview Geoff shares his concerns about AI safety, which he believes is being overlooked in favour of short-term gain. There have been frequent calls to ‘put the brakes’ on AI development, however, he considers this approach to be flawed. Given the exponential increase in capability, it is unreasonable to believe we can slow down (tapping the brakes), instead, regulation should be seen as a steering wheel.
+A really interesting listen, Geoff is both knowledgeable and wise.
+CODINGWITHJESSE.COM
+I think we’ve all probably worked with a “rockstar” developer in the past, these are engineers who are incredibly smart and productive, and are often a great addition to the team.
+However, there are some negatives to working with a rockstar. They tend to move at their own pace, leaving others behind. Worse still, they are often uncompromising, seeking perfection when compromise is needed. On reflection, I’ve been a bit of a rockstar in the past - and I don’t say that in order to brag, I’ve over-embellished, created intricate designs and beautiful systems that are simply not needed!
+So what has all of this got to do with AI?
+In this post Jesse compares cleaning up after a Rockstar developer (trying to decode their labyrinthine code) to working with an AI Agent, stating that:
+“In the past years, most teams have been overwhelmed by an army of rockstars.”
+There are certainly some common themes, AI, like your rockstar, doesn’t really care about the mess it might leave you with.
+I really love the parting advice:
+“It’s okay to move slower, to ensure the software you’re generating is high quality.”
+I’ll echo that, it is okay to move slower.

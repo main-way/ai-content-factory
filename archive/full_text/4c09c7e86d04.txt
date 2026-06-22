@@ -1,0 +1,90 @@
+Recovering Eric Graham's 1987 Juggler raytracer source code
+AlphaPixel often gets involved with modernizing and updating old performance and graphics code. Sometimes that means client work under NDA. But sometimes it means a fun side quest in the mystical realms of curiosity, preservation, and the practical problem of getting old data into a form that can be read and used on a current machine.
+Today let's talk about Amiga Juggler ( https://en.wikipedia.org/wiki/Sculpt_3D ).
+The Juggler animation was ground-breaking and Earth-shattering. Even the Amiga's creators (Commodore) didn't believe it had been made on an Amiga. They thought the actual computation work had been done on a mainframe, and the result simply converted to and displayed on an Amiga.
+Juggler made a strong impression on me. It is one part of why I bought an Amiga, and the Amiga is part of why I ended up in computer graphics. I recently realized that the source of Juggler is not redily available to most people on the web, due to it being inside an Amiga ADF file which most archivers don't parse. Additionally, some of the canonical references (dottyflowers.com) have already decayed into inaccessibility. So I wanted a first-class permanent code archive for posterity.
+Finding the files
+There were known references to the Juggler raytracer source. Ernie Wright's pages at:
+and:
+pointed to a copy of the ADF of Eric's "send me $15" disk at a dottyflowers.com URL. That link is no longer live and is not mirrored at archive.org.
+The same disk image data was found available on archive.org as a compressed ADF:
+The 7z archive contained an Amiga disk image, not a simple directory of files. That is normal for old Amiga material, but it means there is one more step before the contents are readable on a modern system. (This also roadblocks most AI tools from training or examining the data as they don't understand ADF extraction).
+Extracting the ADF
+The original extraction tool I used as a reference was extract-adf by Michael Steil, hosted here:
+Extract-ADF is written in C, which was an excellent choice for the time. It extracts files from Amiga OFS ADF images, including damaged or partially recoverable disk images. It also tries to preserve directory structure and timestamps.
+For this archive I wanted a Python version that could be kept with the recovered files and run without compiling the original C program. Most developers have easy access to Python, and it's quicker to run a one-off Python script than it is to spin up a dev environment, configure and compile and run a compiled native executable. Plus, the Python interpreter is easy and more harmless to modify and debug. I had OpenAI Codex create a Python port for this task:
+The port keeps the same basic functionality as the C version, at least as far as I needed for this exercise. It supports raw ADF files, gzip/ADZ files, and ZIP files containing an ADF. It extracts OFS-family AmigaDOS filesystems. It does not implement the original C version's DMS decompressor, and it does not support FFS images. If you need DMS packaging, FFS (or other filesystem) support or anything else, I'm sure you or another AI tool can extend the Python implementation and contribute PRs back to me.
+ADF is a raw disk image container. The filesystem inside it is a second layer of encoding. The original extract-adf targets only OFS, not FFS (as FFS wasn't often used on floppies anyway), and this Python port maintains that limitation.
+The Juggler source ADF extracted cleanly.
+Checking the extractor
+After extracting the Juggler ADF, I did not want to assume the Python port was correct just because it worked once. At my direction, Codex devised and ran some further validation tests.
+It created compressed test variants of the same image:
+- gzip/ADZ.
+- ZIP containing the ADF.
+Both extracted correctly.
+For outside test data, it used freely available test images from ADFlib:
+Those artifacts include several ADF images used for filesystem tests. The Python extractor successfully extracted OFS-family images including arccsh.adf
+, blank.adf
+, cache_crash.adf
+, ffdisk0049.adf.gz
+, g1a30c.adf
+, and testofs.adf
+.
+The ADFlib set also includes FFS-family images. The extractor detects those from the bootblock and rejects them clearly instead of producing empty or misleading output.
+Two ADFlib reference files were compared byte-for-byte:
+arccsh.adf
+toCSH
+.testofs.adf
+toMOON.GIF
+.
+Both matched.
+I'm not claiming this will decode every possible Amiga disk/filesystem image, but it was enough validation for this task and any immediately adjacent: recover the Juggler ADF, make the extraction repeatable, and avoid silent failure on obvious unsupported filesystems.
+Recovered Eric Graham Data and code
+The recovered folder contains the original C source, a BASIC version (which is fundamentally pretty similar to the C version), Amiga executables (which I have not tried to test under emulation), .dat scene description files, Workbench metadata, and compressed animation data. The main C source files are:
+rt1.c
+, the core raytracer.rt2.c
+, scene setup and HAM pixel conversion.rt3.c
+, Amiga screen/window and graphics support.
+There is also raytrace.a
+, an Amiga BASIC version of the raytracer, and raytrace.BAK
+, a backup copy of that BASIC source. Scene description files include dragon.dat
+, ele.dat
+, and robot.dat
+. The disk also includes movie
+, movie2
+, and their corresponding .data
+files, which are Amiga executables and compressed frame data for the raytraced movie displays.
+Interestingly, the actual rt?.c code only implements tracing a single "DULL" sphere of radius 3.0 units. The world geometry looks like:
+w->sp[0].pos[0]=0.0;
+w->sp[0].pos[1]=0.0;
+w->sp[0].pos[2]=2.0;
+w->sp[0].radius=3.0;
+w->sp[0].type=DULL;
+w->sp[0].color[0]=1.0;
+w->sp[0].color[1]=0.7;
+w->sp[0].color[2]=0.7;
+There are scene files included for 'robot', 'dragon' and 'ele'(phant), corresponding to the scenes shown in the AmigaWorld article, but the source to the actual tool that parses and traces those scene (called "SSG: Scene Simulation Generator") is not included.
+I added a manifest to the repository README so the recovered files are not just a pile of names. The source files, scene files, movie players, and library map files can be described from their contents and embedded strings.
+Permission
+Finding and extracting the files was the tech part of the task.
+The source code was old (and almost forgotten), but age does not make code public domain (well, technically life of the author plus 70 yers, but Eric is still kickin' it alive, so that's moot). The recovered files included copyright notices.
+Copyright 1987 Eric Graham
+Permission is granted to copy and modify this file, provided
+that this notice is retained.
+These notices granted limited copying and modification rights, but that is not the same as clear permission to redistribute/publish the source on GitHub.
+So, I contacted Eric Graham on February 10, 2026 and asked directly:
+I was hoping to put the code onto GitHub for posterity, and I realized there is no explicit license, or copyright release on the code. I'm wondering if you'd be willing to specifically declare a license or a release of copyright so it would be legitimate on GitHub.
+Eric replied the same day:
+Yes, I'd be happy to! It is ironic to be most known for something that I did in a day! As far as I am concerned anyone can do what they want with the code, so long as I get a mention!
+That clarifies things sufficiently. This code should be treated as public domain with an attribution request. The attribution is not hard to honor.
+Publishing the repository
+The repository contains the compressed original ADF and the extracted files:
+https://github.com/AlphaPixel/Eric-Graham-1987-Juggler-Raytracer-1.0
+The README records where the ADF came from, the permission from Eric Graham, links to related Juggler resources, and a manifest of the files recovered from the disk image.
+Debrief
+The textual C source to Eric Graham's original raytracer has been hard to find online. The ADF existed, but some canonical links to it were decayed, and an ADF is not as useful as a readable source tree for people who want to study the code and don't have an Amiga emulator handy. This also keeps the original disk archive material visible and redundantly available. The .7z
+ADF is in the repository so the extraction can be repeated or checked later but the extracted files are there for convenience and readability (and the extraction tool is published separately as it has additional utility).
+In the future I will update it so it can run on a modern system and try to re-create some of the lost assets, such as an implementation of the SSG tool that can actually parse and re-create the Juggler (robot), dragon and ele(phant), scenes themselves.
+AlphaPixel solves difficult problems every day for clients around the world. In the past we’ve done extraordinary things, like recovering deleted forensic video evidence from SD cards, having old failed hard drives refurbished to rescue critical data, reverse-engineering proprietary data formats to liberate valuable siloed information, even desoldering surface mount chips and sucking their brains out with hardware exploitation devices. We’ve worked on common and exotic architectures and operating systems and environments from the 8-bit to the 64-bit, Motorola, Intel, ARM, RISC-V, PA-RISC, DEC Alpha, Power, and microcontrollers.
+The path to rescuing old code and data and making it useful again is a journey, often akin to building a rope suspension bridge one plank at a time, while suspended in mid-air. Sometimes while being attacked by natives, a la Indiana Jones. Often there are interlocking chicken and egg problems, where the obvious solution won’t work because of one minor issue, which then cascades and snowballs into bigger problems. It’s not ucommon to find a bug or omission in some old tool you need to use, and when you go to fix it, you find the tool can no longer be compiled by modern toolchains, necessitating reconstruction of a side environment just to fix the problem that’s blocking you on the main endeavor. We’ve jokingly used the term “Software Archaeologist” in some contexts like these.
+If you have a difficult problem you’re facing and you’re not confident about solving it yourself, give us a call. We Solve Your Difficult Problems.

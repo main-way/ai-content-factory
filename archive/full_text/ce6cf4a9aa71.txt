@@ -1,0 +1,18 @@
+Quantitative Biology > Neurons and Cognition
+Title:Accurate identification of communication between multiple interacting neural populations
+View PDF HTML (experimental)Abstract:Neural recording technologies now enable simultaneous recording of population activity across many brain regions, motivating the development of data-driven models of inter-regional communication. However, existing models can struggle to disentangle the influences that drive recorded population activity, leading to inaccurate portraits of communication. Here, we introduce Multi-Region Latent Factor Analysis via Dynamical Systems (MR-LFADS), a sequential variational autoencoder designed to disentangle inter-regional communication, inputs from unobserved regions, and local neural population dynamics. We show that MR-LFADS outperforms existing approaches at identifying communication across dozens of simulations of task-trained multi-region networks. When applied to large-scale electrophysiology, MR-LFADS predicts brain-wide effects of circuit perturbations that were held out during model fitting. These validations on synthetic and real neural data position MR-LFADS as a promising tool for discovering principles of brain-wide information processing.
+Submission history
+From: Matthew Golub [view email][v1] Mon, 23 Jun 2025 20:15:29 UTC (2,912 KB)
+[v2] Mon, 18 Aug 2025 23:20:35 UTC (2,817 KB)
+[v3] Fri, 12 Sep 2025 21:34:37 UTC (2,817 KB)
+[v4] Fri, 3 Oct 2025 00:01:49 UTC (2,817 KB)
+[v5] Sat, 6 Jun 2026 00:11:40 UTC (2,813 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

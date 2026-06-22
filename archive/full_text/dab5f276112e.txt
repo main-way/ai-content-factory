@@ -1,0 +1,54 @@
+PDF is a visual format. It stores instructions for where to draw glyphs on a page. The spec does support Tagged PDF, a structure tree that marks headings, paragraphs, lists. Some domains use it like government accessibility mandates, enterprise publishing pipelines. But most PDFs you actually encounter are untagged. LaTeX, Chrome's print-to-PDF, most export tools don't produce tags. So what you get is coordinates and font sizes. Text extractors read the draw commands left to right, top to bottom, and hope for the best.
+This didn't matter when humans were the only readers. But now most PDFs end up in an LLM. We upload them to ChatGPT, ask Claude to summarize them, pipe them through parsers. And every single one of these tools is fighting the same problem: reconstructing structure from a format that never carried it. An LLM sees Project Alpha\nLed a team of 5 engineers\nto deliver the and has to guess where the heading ends and the sentence continues. Sometimes it gets it right. Often it doesn't.
+I wanted to make a PDF where humans see the formatted document but machines extract clean markdown. Same file with no new extension. Just a .pdf.
+How It Works
+There is a property in the PDF spec (since PDF 1.4, 2001) that lets you define replacement text for marked content. Renderers ignore it, they draw whatever the content stream says. But text extractors that support it return the replacement instead of the visual text. In my testing, PyMuPDF and Poppler both honored it. Support varies across tools and versions, but the major open source extractors handle it.
+It was designed for things like ligatures and characters that don't naturally map to Unicode. A visual glyph "fi" should extract as two characters "f" and "i" It never got adopted for anything larger.
+We use it at the document level. We attach replacement text to the content stream via marked-content sequences, so extractors that support the property return structured markdown instead of raw visual text. The PDF renders identically one file, two completely different outputs depending on who's reading it.
+What Extractors Actually See
+Same PDF, same visual appearance. Here's what PyMuPDF extracts from each.
+Normal PDF:
+Quarterly Infrastructure Report
+Overview
+Cloud migration completed ahead of sch
+edule. Three critical services were
+moved to the new cluster.
+Key Metrics
+Uptime: 99.97%
+Latency: 42ms avg (down from 68ms)
+Cost: $12,400/mo (down 34%)
+Action Items
+Migrate remaining batch jobs by Q3
+Set up automated failover for db-west
+Review cost allocation per team
+Smart PDF:
+# Quarterly Infrastructure Report
+## Overview
+Cloud migration completed ahead of schedule. Three critical services were moved to the new cluster.
+## Key Metrics
+| Metric | Value |
+|---------|---------------------------|
+| Uptime | 99.97% |
+| Latency | 42ms avg (down from 68ms) |
+| Cost | $12,400/mo (down 34%) |
+## Action Items
+- Migrate remaining batch jobs by Q3
+- Set up automated failover for db-west
+- Review cost allocation per team
+Both files look identical in Preview, Adobe, any PDF viewer. But the normal extraction has no hierarchy, broken line wraps mid-sentence, bullet points indistinguishable from paragraphs, and a table flattened into lines. The smart extraction has # headings, markdown tables, - bullets, and sentences that don't break mid-word. An LLM doesn't have to guess that "Key Metrics" is a section header or that those three lines are a list. It's explicit.
+Benchmarks
+Converted several PDFs to smart PDFs using our tool, then extracted text from both versions using PyMuPDF's get_text() and https://www.pdf2go.com/ seaparately, both returned markdown. Token counts via tiktoken (cl100k_base). Benchmark script is in the repo.
+| Document | Pages | Size Δ | Normal Token | Smart Token |
+|---|
+| Resume | 1 | +15.7% | 650 | 668 |
+| Textbook | 417 | -8.5% | 193,064 | 195,858 |
+| Novel Chapter | 38 | +4.7% | 16,472 | 15,958 |
+| Research paper | 18 | +2.5% | 8,082 | 7,897 |
+Token counts are roughly the same. The advantage isn't fewer tokens. It's that the same tokens now carry structure. ## Overview and Overview cost the same, but one tells the machine what it's looking at. The information density per token goes up without the token count going up.
+Size overhead is single digit percent for most files. The textbook shrunk because PyMuPDF's save with garbage=3 removes unused PDF objects, that's a general optimization, not specific to the technique.
+Uploaded smart PDFs to both ChatGPT and Claude. Asked them to copy-paste the exact raw text they see, character for character. Both returned markdown : #, ##, - bullets. This isn't fully conclusive on its own since LLMs do structural inference and tools like Docling can produce markdown from normal PDFs via layout analysis. But the output matched our embedded layer exactly, including formatting choices no layout heuristic would reproduce identically.
+An Adaptive Document
+What you end up with is a document that adapts to its reader. A human opens it and sees the formatted PDF they're used to. Fonts, layout, spacing, everything normal. A machine reads it and gets clean markdown. Headings, lists, structure. One file, no separate versions, no conversion step. It just works depending on who's looking.
+You don't manage this. You don't maintain two copies. The document itself decides what to present based on how it's being consumed.
+I'm actively exploring more about this and looking towards developing an extension for google doc to streamline this. This was my very first iteration on this idea.
+Find code at: github.com/iminoaru/adaptivepdf

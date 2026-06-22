@@ -1,0 +1,11 @@
+Computer Science > Machine Learning
+Title:Muon$^p$: Muon with Fractional Spectral Powers
+View PDF HTML (experimental)Abstract:Muon is an increasingly widely used optimizer that replaces a gradient $G=USV^\top$ with its polar factor $UV^\top$, thereby flattening the singular spectrum. However, full flattening discards singular-value information that may matter for adaptation. We introduce Muon$^p$, a Muon-style optimizer that instead uses fractional spectral-power updates $US^pV^\top$ for rational $p\in(0,1)$, interpolating between Muon and gradient descent. To make it practical, we prove that fractional spectral powers cannot be computed by any fixed univariate polynomial iteration, and furthermore derive low-degree odd bivariate recurrences that approximate $US^pV^\top$ using only matrix multiplications, preserving Muon's matrix-multiplication-only structure and compute complexity. We show that Muon$^p$ maximizes the linear improvement in loss under the Schatten $q$-norm for $q=1+\frac{1}{p}$. Empirically, Muon$^p$ is especially effective for finetuning: on billion-scale models, Muon$^p$ improves validation perplexity and downstream task performance. We further analyze when Muon$^p$ is less suitable, through the lens of spectral geometry. Our results reveal important insights on when preserving the singular spectrum can bring significant gains, and introduce a principled way to achieve them.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

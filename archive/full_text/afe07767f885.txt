@@ -1,0 +1,85 @@
+Хорошего тренера узнают в лицо, вот оно:
+Прочитал «Атомные привычки» Джеймса Клира и загорелся его идеями. Начал вести табличку в Google Sheets: что сделал, когда сделал, сколько дней серия. Через какое-то время понял, что неудобно и хочу чего-то большего более быстрого и сподручного.
+Подумал: «А почему бы не сделать бота в Telegram? Нажал – отметил, удобно». Написал несложного бота за пару недель вечерами. Выложил друзьям – вроде зашло.
+Прошло время, я вернулся к своему pet project, и вот он уже оброс десятками фич, а я решил показать его людям. Встречайте – «Тренер привычек». Работает прямо в Telegram и (внезапно) через веб-интерфейс.
+Статья состоит из двух блоков:
+Техническая часть. О том, как сделано внутри. Будет интересно, если ты - разработчик или любой другой IT-шник.
+Функциональная часть. О том, как работает внешне. Будет интересно, если ты хочешь заниматься своими привычками и вообще становиться лучше и тебе нужен классный инструмент для этого.
+TL;DR Сам бот тут
+Техническая часть
+Так сложилось, что писать свой pet project я начал лет 5 назад, но потом забросил это дело и вернулся к нему лишь недавно. Тогда я только начинал погружаться в Python-разработку да и вообще в самостоятельную разработку и наделал немало ошибок, которые “взрослому” мне пришлось исправлять. Но обо всем по порядку.
+Как работает с Telegram
+Тогда мне повезло, и я сразу подсел на Telethon, еще не до конца осознавая своё счастье. Telethon работает напрямую с MTProto API, что лишает его ограничений, имеющихся у аналогов типа aiogram, python-telegram-bot и пр., а Pyrogram больше не развивается. Этих ребят я в итоге даже не касался, т.к. функциональности Telethon всегда хватало за глаза.
+В подобных своих проектах как и в этом использую универсальный базовый класс бота, немножко про него:
+from telethon import TelegramClient, events class BotBase: def __init__(self, session_file=None, memory_session=False): # чтение параметров из конфига и прочие стартовые вещи self.tg_bot = None self.init_tg_bot() def init_tg_bot(self): # поднятие самого TelegramClient self.tg_bot = TelegramClient(session=self.session...) def work(self): # Процессинг основных событий (а реализация уже в классах-наследниках) @self.tg_bot.on(events.NewMessage) async def handler(event): await self.process_event(tg_bot=self.tg_bot, event=event) @self.tg_bot.on(events.ChatAction) async def handler(event): await self.process_chat_action(tg_bot=self.tg_bot, event=event) @self.tg_bot.on(events.CallbackQuery) async def callback_handler(event): data = event.data.decode() await self.process_data(tg_bot=self.tg_bot, event=event, data=data) self.tg_bot.start() self.tg_bot.run_until_disconnected()
+Хранение данных
+Тогда же, на заре, я начал изучать Django и решил сразу внедрить его в этот проект. Зачем? Прежде всего ради админки, тогда это казалось мне плюсом, стоящим всех накладных расходов. Правда, до Django ORM я дошел не сразу, потому данные из БД читал прямыми SQL-запросами >_<
+Спустя годы испытал много смешанных чувств, переписывая их на ORM-ные. Эта часть рефакторинга не прошла гладко, хоть и сократила объем кода раз в 10: синхронная Django не захотела работать в асинхронном контексте Telethon, но на помощь пришел sync_to_async:
+from asgiref.sync import sync_to_async def find_user_gaps(external_user_id): user = get_user(external_user_id=external_user_id) user_habits = UserHabits.objects.filter(user_id=user.id) ... async def process_gaps(bot, user_id, lang): gaps = await sync_to_async(find_user_gaps)(user_id) ...
+Кеш
+Кроме ORM и миграций, Django сильно упрощает жизнь благодаря Django cache.
+Храню в нем все тексты во всех локализациях (об этом ниже) и другие сущности, за которыми лень каждый раз лезть в базу:
+from trainer.models import Messages from django.utils.translation import activate def preheat_messages_cache(): # Прогрев кеша на старте ... messages = Messages.objects.all() for lang in languages: activate(lang) for msg in messages: cache_key = f"msg:{msg.item}:{lang}" cache.set(cache_key, msg.text, timeout=None) def get_message(item: str, lang: str) -> Union[str, None]: # Возвращает сообщение на нужном языке из кеша cache_key = f"msg:{item}:{lang}" return cache.get(cache_key, None)
+Интернационализация
+Нашел классный пакет django-modeltranslation.
+Просто перечисляешь в Django settings нужные локали, а потом говоришь, какие поля каких моделей нужно хранить во всех локалях:
+# settings.py LANGUAGES = [ ('ru', 'Russian'), ('en', 'English'), ] # models.py class Messages(models.Model): text = models.CharField(max_length=1024, verbose_name='Текст сообщения') # translation.py from modeltranslation.translator import TranslationOptions, register from .models import Messages @register(Messages) class MessagesTranslationOptions(TranslationOptions): fields = ('text',)
+После применения миграции имеем в БД новые столбцы для каждого языка, а Django сама вернет значение из нужного в зависимости от языка.
+Меню и кнопки
+Поначалу я складывал важные и нужные кнопки в основное меню (под полем ввода), а все прочие в боковое меню (гамбургер, где список команд).
+Для меня стал откровением тот факт, что часть юзеров Telegram не знает про боковое меню, а другая часть - про основное меню (у многих оно просто скрыто за кнопкой с 4-мя квадратиками; более того, я встречал случаи, когда этой кнопки в Telegram просто нет и меню не отобразить никак, кроме как еще раз отправив команду /start).
+Потому теперь я практически дублирую состав этих двух меню, т.к. удобство чуть менее важно, чем возможность в принципе воспользоваться той или иной функцией.
+Обрабатывать callback Telegram умеет только на inline-кнопках, а кнопки меню лишь приводят к отправке текста, написанного на них. В связи с этим есть ряд нюансов, когда пользователь находится в диалоге и должен написать вразумительный ответ, а нажимает кнопку меню, и ее текст становится этим ответом. Пришлось прикрутить обработку таких случаев и игнорировать тексты, если они равны командам кнопок.
+Куда как проще работать с inline-кнопками (теми, которые вылезают вместе с сообщением). У них есть callback, на который достаточно лишь повесить обработчик:
+async def process_data(self, tg_bot, event, data): ... elif data.startswith('rate_'): params = data.split("_") feature_id = int(params[1]) rating = int(params[2]) await sync_to_async(rate_feature)(feature_id, user_id, rating)
+Но и тут есть нюанс: много данных в callback не передашь (например, текст, до этого введенный пользователем), потому в части случаев приходится обрабатывать такой callback не глобально, а по месту:
+from telethon import events def press_event(user_id): return events.CallbackQuery(func=lambda e: e.sender_id == user_id) async def process_raw_message(tg_bot, user_id, lang, message): clarification = get_message('clarification', lang) buttons = [ [Button.inline(get_message('raw_text_is_comment', lang), b'0')], [Button.inline(get_message('raw_text_is_goal', lang), b'1')], [Button.inline(get_message('raw_text_is_habit', lang), b'2')], [Button.inline(get_message('raw_text_is_feedback', lang), b'3')], [Button.inline(get_message('cancel', lang), b'cancel')], ] # Список коллбеков для кнопок callbacks = [ process_text_as_comment, process_text_as_goal, process_text_as_habit, process_text_as_feedback ] async with tg_bot.conversation(user_id) as conv: await conv.send_message(clarification, buttons=buttons) press = await conv.wait_event(press_event(user_id)) if press.data != b'cancel': # вызываем нужный коллбэк из списка await callbacks[int(press.data)](message=message)
+Еще про коллбэки
+Есть ряд кейсов, где я задаю пользователю вопрос, ожидая текстового ответа, но также даю ему кнопку “Закрыть”, если он передумает. В итоге мне нужно понять, ввел он текст или нажал кнопку.
+Поначалу разруливал это таймаутами, рассчитывая на то, что передумает он быстро, а текст будет вводить дольше. Но в итоге нашлось более красивое решение:
+async def message_or_cancel(conv, user_id) -> Union[str, None]: tasks = [ asyncio.create_task(conv.get_response()), # для текстовых сообщений asyncio.create_task(conv.wait_event(press_event(user_id))) # для кнопок ] done, pending = await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED, timeout=60) # завершаем оставшийся: for task in pending: task.cancel() # работаем с первым: first_result = done.pop().result() if isinstance(first_result, events.CallbackQuery): if first_result.data == b"cancel": await first_result.delete() return None elif isinstance(first_result, Message): return first_result.text async def process_some_action(...): async with bot.conversation(user_id) as conv: ... await conv.send_message(start_message, buttons=buttons) result = await message_or_cancel(conv, user_id) if result is None: return else: ...
+Асинхронные задачи
+Из тяжелых задач пока только 2:
+рендеринг PDF‑сертификата (который внезапно идет по 10 минут на CPU сервера, тогда как на локальном M1 — всего 30 секунд)
+отправка запросов в LLM, которая может протупить до минуты.
+Пока не стал заморачиваться с Celery и реализовал просто на asyncio.to_thread:
+import asyncio import svglue import cairosvg async def render_and_send_certificate(bot, user_id): def sync_render(): # загрузка шаблона tpl = svglue.load(file=os.path.join('templates', tpl_filename)) ... # рендеринг итога cairosvg.svg2pdf(bytestring=tpl.__str__(), write_to=pdf_path) return pdf_path pdf_path = await asyncio.to_thread(sync_render) await bot.send_file(user_id, pdf_path) async def process_certificate_request(bot, user_id): ... asyncio.create_task(render_and_send_certificate(bot, user_id))
+Про деплой
+Развернуто всё на европейском сервере, чтобы иметь стабильную связь с Telegram. Стоит не дорого, особенно учитывая, что кроме бэкенда бота там ряд других ништяков.
+Проект на docker-compose, 4 контейнера:
+bot - взаимодействие с пользователями через Telegram
+scheduler - сервис для отправки нотификаций по расписанию
+web - gunicorn с web-интерфейсом для трекинга, конечно, спрятанный за nginx, стоящем на хосте
+db - postgres
+В целом про разработку
+Открыл для себя, что очень сложно быть одновременно продактом, разработчиком, тестировщиком, девопсом и маркетологом на одном проекте. Не потому, что задач много, а потому, что приходится всё время смотреть под разными углами. Я‑продакт начинаю придумывать фичу, и тут же я‑разработчик старается ее упростить, чтобы было проще пилить. А потом старается пилить красиво без тех. долга, а я‑продакт уже генерит новые идеи и торопит, так как время не резиновое.
+Способность отключать в себе лишние «я», чтобы не мешали другим — непростая штука, но кмк я развил ее достаточно, чтобы я‑разработчик сидел и помалкивал, пока я‑продакт думает о ценностях пользователей. Но я‑тестировщику всё равно очень сложно, порой приходится реально закрывать среду, отходить минут на 10 и лишь после этого садиться и тестить проект, прикинувшись юзером.
+Планы
+Планов тьма. Тех. долг нет-нет да копится.
+Надо оптимизировать запросы в БД — где‑то забыто про select_related и prefetch_related, но пока юзеров не миллионы, это незаметно. Надо перейти на свежую Django, внимательно не читал, но вроде как там асинхронность и можно будет уйти от sync_to_async. Надо внедрить Celery, redis к ней и по‑человечески рулить отложенными задачами. Надо закрыть несколько десятков TODO, которые я‑продакт, я‑тестировщик и все остальные ребята не дали закончить я‑разработчику.
+В общем, скучать не придется:)
+Функциональная часть
+Ну а теперь про сам продукт.
+Продумывая новые фичи, я перелопатил немало аналогичных сервисов и постарался реализовать как можно больше вещей, отличающих мой продукт от подобных. Что‑то уже готово, что‑то только планируется. Ниже о том, что уже есть.
+Чем он отличается ото всех этих трекеров?
+1. Подбор привычек под твою цель
+Знаешь чего хочешь достичь, но не знаешь, как именно? Напиши «хочу похудеть» или «хочу больше успевать» — бот сам предложит 5–10 привычек: что развивать, от чего отказаться. Классический ручной выбор и ввод своих привычек тоже есть.
+2. ИИ‑анализ твоей истории
+Просто графики и цифры — скучно. ИИ внутри бота оценивает все твои треки и выдаёт персональный разбор: где ты молодец, где есть проблемы, что и как можно улучшить. (И да, просто скачать таблицу Excel тоже можно).
+3. «Хранитель привычки» — без обмана
+Хочешь чёткого контроля? Добавь друга как Хранителя привычки. Теперь каждый твой трек он должен подтвердить (фото, видео — на ваше усмотрение). Только после этого привычка засчитывается. Только факты, только хардкор! Обычный режим без контроля тоже есть, если хочется по лайту.
+4. Сертификаты за длинные серии
+Не просто «серия 100 дней», а настоящий PDF‑сертификат печатного качества. Можно распечатать и повесить на стену. Друзья будут в шоке. За короткие серии тоже есть похвала — но серьёзные достижения отмечаются по‑особенному.
+5. Работает в Telegram + веб
+Telegram всегда под рукой: на смартфоне и на компе. Но если вдруг не зайти, есть web‑версия для трекинга. Так что пропуска «по технической причине» точно не будет;)
+6. «Заплатки» вместо накрутки
+Пропустил день? Обычно трекеры позволяют проставить задним числом — легко обмануть. У меня можно трекнуть только день в день. Но если реально забыл или пропустил — есть система заплаток. Заплатка дается при регистрации и за приглашения друзей. Одна заплатка закрывает один пропуск и может спасти серию!
+7. Умные напоминания
+Напоминания приходят только если ты ещё не отметил привычку за текущий период (день, неделю, месяц). Время каждого напоминания настраиваешь под себя, с учётом твоего часового пояса. В самом напоминании – кнопка для трека.
+Ну и кроме того
+Можно оставлять текстовые комментарии к трекам.
+Предустановлено около сотни привычек (полезных и вредных).
+Работает на iOS, Android, Windows, macOS – везде, где есть Telegram.
+Немного скриншотов
+Не будет скриншотов. Идите и сами всё увидите ;)
+Буду рад фидбеку, багрепортам и пожеланиям. Всем удачи!

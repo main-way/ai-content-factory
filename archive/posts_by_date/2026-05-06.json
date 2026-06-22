@@ -1,0 +1,65 @@
+{
+  "date": "2026-05-06",
+  "count": 4,
+  "posts": [
+    {
+      "id": "f2ec42e75fc0",
+      "title": "From Local to Production: Deploy Your Microsoft Agent Framework Agent with Foundry Hosted Agents",
+      "url": "https://devblogs.microsoft.com/agent-framework/from-local-to-production-deploy-your-microsoft-agent-framework-agent-with-foundry-hosted-agents/",
+      "source": "Semantic Kernel Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-06T19:30:33+00:00",
+      "summary": "Once you have your Microsoft Agent Framework (MAF) agent or workflow happily running locally on your dev machine, it&#8217;s time to decide how to deploy your agent to production, monitor it, evaluate it and version it. These decisions are just as important as getting the agent running. Hosted Agents in Foundry Agent Service is the [&#8230;] The post From Local to Production: Deploy Your Microsoft Agent Framework Agent with Foundry Hosted Agents appeared first on Microsoft Agent Framework .",
+      "author": "Tao Chen, Shawn Henry",
+      "tags": [
+        "Agent Framework",
+        "Announcement"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "11e756df6b84",
+      "title": "vLLM V0 to V1: Correctness Before Corrections in RL",
+      "url": "https://huggingface.co/blog/ServiceNow-AI/correctness-before-corrections",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-06T19:06:55+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "c122dcde12a0",
+      "title": "AlphaEvolve: How our Gemini-powered coding agent is scaling impact across fields",
+      "url": "https://deepmind.google/blog/alphaevolve-impact/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-06T10:43:49+00:00",
+      "summary": "Explore how AlphaEvolve's Gemini-powered algorithms are driving impact across business, infrastructure, and science.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "6491f8c1211c",
+      "title": "Adding Benchmaxxer Repellant to the Open ASR Leaderboard",
+      "url": "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-06T00:00:00+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

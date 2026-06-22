@@ -1,0 +1,57 @@
+{
+  "date": "2026-02-02",
+  "count": 3,
+  "posts": [
+    {
+      "id": "5502bfb97f1c",
+      "title": "How Sakana AI’s new technique solves the problems of long-context LLM tasks",
+      "url": "https://bdtechtalks.com/2026/02/02/sakana-ai-repo-llm-token-positions/?utm_source=rss&utm_medium=rss&utm_campaign=sakana-ai-repo-llm-token-positions",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-02-02T18:09:59+00:00",
+      "summary": "RePo, Sakana AI’s new technique, solves the \"needle in a haystack\" problem by allowing LLMs to organize their own memory. The post How Sakana AI’s new technique solves the problems of long-context LLM tasks first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI research papers",
+        "Artificial intelligence (AI)",
+        "large language models",
+        "Sakana AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "12f40143f5b2",
+      "title": "Advancing AI benchmarking with Game Arena",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/kaggle-game-arena-updates/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-02-02T17:00:00+00:00",
+      "summary": "An illustration of a King and Ace playing card, a wolf's head, two chess pieces, a poker chip, and other abstract shapes on a white background.1",
+      "author": "Oran Kelly",
+      "tags": [
+        "Google DeepMind",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "5f225fba38fd",
+      "title": "Import AI 443: Into the mist: Moltbook, agent ecologies, and the internet in transition",
+      "url": "https://importai.substack.com/p/import-ai-443-into-the-mist-moltbook",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-02-02T13:31:18+00:00",
+      "summary": "Plus, a story about agents corrupting other agents",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

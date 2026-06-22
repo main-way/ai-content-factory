@@ -1,0 +1,18 @@
+We knew Apple's Worldwide Developers Conference would be full of AI, but I didn't expect to see a photo feature that would make me think: "This is wild."
+During the WWDC keynote on Monday, Apple showed off a few new editing features in its Photos app that I think will be genuinely useful. In addition to the existing Clean Up tool, which can remove unwanted distractions from a photo, we'll also be able to extend a photo's edges.
+But it was Spatial Reframing, a feature that lets you adjust a photo's composition to reflect where you wish you had been standing to take it, that really caught my eye.
+All these features use generative AI, and will be included in a new Tools category in the Edit environment in the Photos app. The first developer beta of iOS 27 is available now to registered developers.
+More AI, less slop
+Generative AI is a technology that photographers are distancing themselves from (or should be), thanks to all the AI slop being produced everywhere. And yes, that includes creations from Apple's Image Playground app, the image generator that the company also showed off during the WWDC keynote.
+But generative AI doesn't need to mean full images created from text prompts. When applied to selective areas, like erasing a piece of trash next to a subject's feet, generative AI can do some of the menial work of replacing pixels that photographers would otherwise spend time retouching in an app like Photoshop. Google's Pixel phones include a similar Magic Eraser tool.
+Spatial Reframing is a great example of how the technology can be used to enhance real photos you capture.
+How Spatial Reframing will work
+Apple's Spatial Photos technology uses AI to determine depth in a flat photo, giving it a 3D effect that responds when you tilt your phone or view it in a Vision Pro headset, even if it wasn't shot as a spatial photo. It can give depth to iPhone lock screen photos, too.
+Honestly, the effect's quality is pretty good. The separation between the subject of a photo and the background is usually not jarring, nor does it have a "cut-out" look. But it's mostly a neat gimmick on the iPhone (I don't have a Vision Pro to experience it in that environment).
+Spatial Reframing takes that technology and makes it useful. As shown in the keynote demo, you'll be able to drag the image to adjust the shot's perspective. The background will adjust as if you had taken a physical step to the side or repositioned your camera for a better angle.
+Photo editing software like Adobe Lightroom lets you adjust the plane of the entire photo, rotating it around a central axis to do limited reframing, but at the cost of distorting the image.
+After you've reframed the shot, the Photos app uses generative AI to fill in any areas around the edges.
+Apple says it uses on-device spatial modeling to determine the depth, and its private cloud compute architecture to process the image generation.
+"It only generates new content to fill in the gaps where the perspective has shifted," said Alok Deshpande, Apple's director of Camera and Photos Software. "This ensures that the reframed photo stays consistent with the original scene."
+The result is a photo from the location you wished you'd moved to when you took the picture.
+Whether the edited photos are really as clean as they were demoed remains to be discovered. I sometimes use the existing Clean Up feature in Photos, but it can be very hit-or-miss in terms of the quality of the generated pixels. With promised new imaging models in iOS 27, I'm hoping the edited images are ones that any photographer would be proud to share -- maybe not in a gallery or competition, but informally with friends or on social media.

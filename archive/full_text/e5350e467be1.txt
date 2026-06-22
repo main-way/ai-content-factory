@@ -1,0 +1,12 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Runtime Analysis of the $(μ+ 1)$-ES in a Homogenous Progress Model
+View PDF HTML (experimental)Abstract:We introduce a new simple model to study the fitness progress of Evolution Strategies (ES) in generic problems. In this model, we bypass the underlying fitness landscape and assume that the mutation of any individual produces an offspring whose fitness relative to the parent is given by an invariant distribution $Z$, such as a mean-shifted Gaussian. This serves as a prototypical model for the optimisation landscape when an evolution algorithm operates far from the global optimum. This simple model can be used to approximate the optimisation process for problems where it is intractable to model the exact fitness function, including tasks such as hyperparameter tuning in machine learning models.
+We rigorously analyse the expected growth rate $\mathcal{R}_{\mu}$ of the continuous steady-state $(\mu+1)$-ES in this model. Unlike comma-selection strategies, the steady-state $(\mu+1)$-ES maintains overlapping generations, introducing complex mathematical dependencies among surviving parents that make it harder to analyse. We give a general technique to analyse the the $(\mu + 1)$-ES by constructing modified processes whose growth rates provably sandwich that of the original process. These modified processes are then easier to analyse but still close enough to the true process to give a tight bound on the expected growth rate. When $Z = \mathcal{N}(-\delta, 1)$ and $\mu \le e^{\delta}$, we show that $\mathcal{R}_{\mu} = \frac{\log^{1 + o(1)} \mu}{\mu} \mathcal{R}_1$.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

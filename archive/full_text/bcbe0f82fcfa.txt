@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:On Aligning Hierarchical Standardized Embedding for Audio-visual Generalized Zero-shot Learning
+View PDF HTML (experimental)Abstract:Audio-visual Generalized Zero-shot Learning (AV-GZSL) is a challenging task that aims to classify both seen and unseen objects or scenes by integrating data from audio and visual modalities. Recent studies primarily focus on fusing or aligning audio and visual features to generate more informative audio-visual embeddings. Also, aligning the audio-visual and textual features of most existing methods relies solely on the optimization objectives. However, those methods neglect the inherent distributional and structural differences between audio-visual and textual modalities. To address this limitation, we propose a method termed Aligning Hierarchical Standardized Embedding (AHSE), which enables hierarchical alignment of standardized audio-visual and textual embeddings within a shared embedding space. Specifically, we first apply Z-score standardization to the fused audio-visual and textual embeddings to reduce distributional mismatches. We then introduce a hierarchical alignment strategy that minimizes discrepancies at the semantic, class, and batch levels, thereby constructing a more robust and well-structured embedding space. This strategy not only preserves semantic and inter-class relationships but also maintains spatial consistency within each batch. Extensive experiments on three benchmark datasets: VGGSound-GZSL, UCF-GZSL, and ActivityNet-GZSL, demonstrate that AHSE achieves competitive performance in zero-shot learning.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

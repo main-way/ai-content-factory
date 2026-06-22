@@ -1,0 +1,13 @@
+Computer Science > Neural and Evolutionary Computing
+Title:The $(1 + 1)$-EA in Dynamic Environments
+View PDF HTML (experimental)Abstract:We study the $(1 + 1)$-EA in dynamic linear environments, where in every generation selection is performed with respect to a freshly sampled linear function with positive weights. We consider the Dynamic Binary Value problem, where each generation uses a uniformly random permutation of $1,2,4,\dots,2^{n-1}$, and a Uniform weight variant, where the weights are drawn independently from $\mathrm{Unif}(0,1)$. Both of them have recently been integrated into the IOHprofiler platform and empirically studied.
+For both models we prove a sharp threshold in the mutation parameter $\chi$ for mutation rate $\chi/n$. Below the threshold, the expected optimisation time is $\mathcal{O}(n\log n)$, whereas above it the runtime becomes $2^{\Omega(n)}$.
+For the Dynamic Binary Value problem in the exponential regime, we also quantify at what distance from the optimum the optimisation process stagnates. We show that there is a second threshold: a distance that is efficiently reached, but reaching any smaller distance takes exponential time. This quantifies and proves previous empirical findings.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

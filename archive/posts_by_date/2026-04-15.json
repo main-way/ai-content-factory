@@ -1,0 +1,37 @@
+{
+  "date": "2026-04-15",
+  "count": 2,
+  "posts": [
+    {
+      "id": "1bce4c3eeade",
+      "title": "Gemini 3.1 Flash TTS: the next generation of expressive AI speech",
+      "url": "https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-15T16:03:19+00:00",
+      "summary": "Our newest audio model introduces granular audio tags that give you precise control to direct AI speech for expressive audio generation.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "7d5299a21017",
+      "title": "Partnering with Auctor",
+      "url": "https://sequoiacap.com/article/partnering-with-auctor/",
+      "source": "Sequoia Capital",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-15T16:00:05+00:00",
+      "summary": "The post Partnering with Auctor appeared first on Sequoia Capital .",
+      "author": "sbarry",
+      "tags": [
+        "AI",
+        "Funding announcement"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

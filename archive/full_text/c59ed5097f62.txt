@@ -1,0 +1,37 @@
+Introduction
+Concepts of correlation and regression may be applied not only to ordinary one-dimensional variates but also to variates of two or more dimensions.
+This is the first sentence from the paper “Relations Between Two Sets of Variates” [1] by statistician and economist Harold Hotelling. This paper introduced Canonical Correlation Analysis (CCA). In modern terminology, “CCA is used to find a common signal among two large matrices” [2].
+In JEPA, the objective is the same except the second data matrix happens to be simply a different view of the same data in the first dataset (e.g. via data augmentation or spatial or temporal proximity). One of the recent papers to acknowledge a connection states, “JEPA-based models implicitly perform a non-linear generalization of Canonical Correlation Analysis”. [3]
+CCA’s connection to JEPA is relevant to Schmidhuber’s debate on who invented JEPA, which is directed at Yann LeCun. Personally, I think Hotelling deserves the credit for the idea of maximizing correlation in embedding space.
+Of course, the CCA model has many differences from JEPA.
+For one, CCA does not enforce a shared encoder. But the biggest difference is that CCA is linear. Non-linear neural variants of CCA have been researched with the earliest usage of the term “Deep CCA” being [4].
+Connecting JEPA models back to its CCA roots is genuinely useful. Another Deep CCA paper [5] relaxed the assumption of two sets of variables to an arbitrary number based on a generalization of CCA proposed in 1961 [6]. Conceivably, JEPAs could be expanded to handle more than two views as well.
+CCA vs. JEPA Overview
+CCA
+Suppose we have zero-mean matrices \(X=(x_1,...,x_n)^T\in \mathbb R^{n\times d_x}\) and \(Y=(y_1,...,y_n)^T\in\mathbb R^{n\times d_y}\).
+Let \(k\leq \min(d_x,d_y, n)\) and \(A\in \mathbb R^{d_x\times k}\) and \(B\in \mathbb R^{d_y\times k}\) so that \(XA=z_x\in\mathbb R^{n \times k}\) and \(YB=z_y\in\mathbb R^{n \times k}\).
+CCA solves the following maximization problem,
+\[\max_{A,B} \text{tr}\left(\frac{1}{n}z_x^Tz_y\right) \] \[\text{s.t}\] \[\frac{1}{n}z_x^Tz_x=\frac{1}{n}z_y^Tz_y=I\]
+This maximizes the trace of the cross-correlation matrix, while constraining embedding vectors to unit variance and zero covariance.
+Similar to the equivalence between maximizing variance and minimizing prediction error in solving PCA, we have a relationship between the trace of the cross-correlation matrix and embedding prediction error,
+\[\frac{1}{n}\sum_{i=1}^n ||z_x^{(i)}-z_y^{(i)}||^2=\frac{1}{n}||z_x-z_y||_F^2= \frac{1}{n}\text{tr}(z_x^Tz_x) + \frac{1}{n}\text{tr}(z_y^Tz_y) - \frac{2}{n}\text{tr}(z_x^Tz_y)\] And due to the whitening constraints, \[=2k- \frac{2}{n}\text{tr}(z_x^Tz_y)\]
+So maximizing the trace of the cross-correlation under the whitening constraints is equivalent to minimizing the MSE of the embedding representations. Therefore we can write CCA as,
+\[\min_{A,B} \frac{1}{n}\sum_{i=1}^n ||z_x^{(i)}-z_y^{(i)}||^2\] \[\text{s.t}\] \[\frac{1}{n}z_x^Tz_x=\frac{1}{n}z_y^Tz_y=I\]
+JEPA
+Adopting the previous notation, JEPA is constrained to \(d_x=d_y=d\) as a result of the joint-embedding. In JEPA, we have the encoder \(f_\theta:\mathbb R^{d}\rightarrow \mathbb R^k\), and predictor \(g_\varphi:\mathbb R^{k}\rightarrow \mathbb R^k\).
+Let \(z_x^{(i)}=g_\varphi(f_\theta(x_i))\), \(z_y^{(i)}=f_\theta(y_i)\).
+Then we solve,
+\[\min_{\theta,\varphi}\frac{1}{n} \sum_{i=1}^n ||z_x^{(i)}-z_y^{(i)}||^2\]
+Note the similarity in the objective function but the lack of whitening constraints. The lack of whitening constraints results in representational and dimensional collapse. For example, a trivial solution to the above problem is \(z_x^{(i)}=z_y^{(i)}=c\).
+As discussed in my previous blog post SIGReg [7] fixes this problem. What does it do? It encourages the embeddings \(z_x\) and \(z_y\) to have an isotropic (i.e. unit variance, uncorrelated) Gaussian distribution. As a result it encourages,
+\[\frac{1}{n}z_x^Tz_x=\frac{1}{n}z_y^Tz_y=I\]
+Conclusion
+As I mentioned in the introduction, Schmidhuber has debated who invented JEPA and said this about LeCun,
+Dr. LeCun’s heavily promoted Joint Embedding Predictive Architecture (JEPA) is the heart of his new company. However, the core ideas are not original to LeCun. Instead, JEPA is essentially identical to our 1992 Predictability Maximization system.
+Schmidhuber references Yann LeCun’s response,
+JEPA is merely a name for a general concept. The question is, and has always been, how do you make it work (particularly how do you prevent it from collapsing), and how do you make it work at scale with SOTA results on non-toy problems. That’s the hard part. Ideas are a dime a dozen. Making them work is what the community will give you credit for.
+Do I agree with LeCun? Yes and no.
+Yes, because of course you will get credit for making things work, and ideas are indeed arguably “a dime a dozen”.
+No, because the thread of citations is important for progress. If important citations are missed, whether intentionally or not, the correct thing to do is just add them. We’re all only the better for doing so. The connection that JEPA models have to CCA is informative.
+My opinion is that JEPA/Predictability Maximization models are architectural enhancements layered on top of CCA. Non-linearity is an enhancement.
+Ultimately, these models all have the same objective function introduced by CCA: find the transformations that result in maximal correlation between sets of multidimensional data.

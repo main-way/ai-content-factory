@@ -1,0 +1,4 @@
+import { streamText } from 'ai';
+const result = streamText({ model: 'deepseek/deepseek-v4-pro', prompt: 'Refactor this function to use async/await.', providerOptions: { gateway: { order: ['azure'], }, },});
+import { streamText } from 'ai';
+const result = streamText({ model: 'deepseek/deepseek-v4-pro', prompt: 'Refactor this function to use async/await.', providerOptions: { gateway: { order: ['azure'], }, },});

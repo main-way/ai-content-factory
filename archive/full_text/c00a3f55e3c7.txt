@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:EverydayGPT: Confidence-Gated Routing for Efficient and Safe Hybrid GPT-RAG Conversational QA
+View PDF HTML (experimental)Abstract:Standard Retrieval-Augmented Generation (RAG) pipelines route every query through retrieval and generation unconditionally, incurring unnecessary computation and propagating low-quality context to the generator. We introduce EverydayGPT, a lightweight conversational QA system built around a Confidence-Gated Routing (CGR) mechanism that formalises the routing decision as a joint policy over retrieval distance and extraction adequacy. The backbone is a 205M-parameter GPT trained from scratch on 10B tokens of FineWeb-Edu. CGR avoids invoking the costly GPT pathway (~5.9s) for 85 percent of queries by resolving them via fast RAG extraction (~45 ms), yielding over 120x latency reduction on the majority of queries while maintaining answer quality. On a 500-question in-domain benchmark, the system achieves F1 = 0.226 +/- 0.004 compared to 0.171 for GPT-only and 0.210 for unconditional RAG. Gains over strong baselines are modest but consistent, while efficiency improvements are substantial (6.3x mean latency reduction). A structured grounding audit finds no unsupported claims in the sampled set, with explicit scope limitations. We position this work as a study of routing strategies under resource constraints rather than a claim of state-of-the-art performance.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

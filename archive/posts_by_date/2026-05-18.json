@@ -1,0 +1,126 @@
+{
+  "date": "2026-05-18",
+  "count": 7,
+  "posts": [
+    {
+      "id": "0c2850c01e44",
+      "title": "Fast-tracking genetic leads to reverse cellular aging",
+      "url": "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-18T18:21:39+00:00",
+      "summary": "Biologists use Co-Scientist to find novel factors that successfully rejuvenate human cells.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "210dad3ca6f9",
+      "title": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+      "url": "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-18T15:12:46+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "d8e8eb026813",
+      "title": "Our AI Wearables Are “Changing the Game” for Disabled People",
+      "url": "https://about.fb.com/news/2026/05/meta-ai-wearables-changing-the-game-for-disabled-people/",
+      "source": "Meta Newsroom",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "low",
+      "published": "2026-05-18T14:35:42+00:00",
+      "summary": "We're rolling out new features on our AI glasses that make the technology more accessible to people with disabilities. The post Our AI Wearables Are “Changing the Game” for Disabled People appeared first on Meta Newsroom .",
+      "author": "Facebook",
+      "tags": [
+        "Meta",
+        "Recent News",
+        "Sidebar - Featured",
+        "Technology and Innovation",
+        "Accessibility",
+        "AI",
+        "AI Glasses"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "1c021b3b89f4",
+      "title": "Import AI 457: AI stuxnet; cursed Muon optimizer; and positive alignment",
+      "url": "https://importai.substack.com/p/import-ai-457-ai-stuxnet-cursed-muon",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-18T13:31:17+00:00",
+      "summary": "Welcome to Import AI, a newsletter about AI research.",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "421028a9f1c3",
+      "title": "Better Experiments with LLM Evals — A funnel, not a fork",
+      "url": "https://engineering.atspotify.com/2026/5/better-experiments-with-llm-evals-a-funnel-not-a-fork/",
+      "source": "Spotify Engineering",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-18T13:27:23+00:00",
+      "summary": "TL;DR LLM evals, automated judges that assess relevance, coherence, and quality at scale, are a powerful new... The post Better Experiments with LLM Evals — A funnel, not a fork appeared first on Spotify Engineering .",
+      "author": "Spotify Engineering",
+      "tags": [
+        "Platform",
+        "Data Science",
+        "Data"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "94cadebaf45d",
+      "title": "Why sandboxing OpenClaw doesn’t stop data exfiltration",
+      "url": "https://bdtechtalks.com/2026/05/18/openclaw-sandbox-vulnerability/?utm_source=rss&utm_medium=rss&utm_campaign=openclaw-sandbox-vulnerability",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-18T13:00:00+00:00",
+      "summary": "Research into Nvidia’s NemoClaw reveals that sandboxes don't stop AI agents like OpenClaw from leaking data. We need to rethink security from first principles. The post Why sandboxing OpenClaw doesn’t stop data exfiltration first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI agents",
+        "AI security",
+        "Artificial intelligence (AI)",
+        "OpenClaw",
+        "Prompt injection attacks"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "79a8e72243ca",
+      "title": "Building the enterprise agentic AI factory with DataRobot and Dell",
+      "url": "https://www.datarobot.com/blog/agentic-ai-factory-problems/",
+      "source": "DataRobot Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-18T12:50:16+00:00",
+      "summary": "The race to production-ready agentic AI is on &#8212; but for most enterprises, the finish line keeps moving. Models get built, pilots get run, and then teams hit a wall: the infrastructure, security, governance, and operational requirements for running AI agents at enterprise scale are far more complex than any single tool or vendor anticipated.... The post Building the enterprise agentic AI factory with DataRobot and Dell appeared first on DataRobot .",
+      "author": "Dr. Ramyanshu (Romi) Datta, Nikki Rouda",
+      "tags": [
+        "ai factory",
+        "dell"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

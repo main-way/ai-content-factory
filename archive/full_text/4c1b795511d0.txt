@@ -1,0 +1,11 @@
+Computer Science > Artificial Intelligence
+Title:Grounded Inference: Principles for Deterministically Encapsulated Generative Models
+View PDF HTML (experimental)Abstract:The incorporation of generative models into traditional computational systems presents both enormous opportunity and tremendous peril. Although many early adopters have realized these perils at great expense, the field still requires foundational frameworks to de-risk incorporation of AI into traditional systems. This manuscript establishes this foundation through the definition of four specific primitives of AI blended architecture, designed to enable deterministic encapsulation of probabilistic models. It further establishes two overarching anti-patterns broadly represented across industry to serve as warnings for engineers in this field. This framework was designed to enable successful integration of AI into traditional systems while providing a foundation upon which generative model providers could build the next generation of generative model interfaces.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

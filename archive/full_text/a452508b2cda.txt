@@ -1,0 +1,184 @@
+Python Dictionary Tips and Tricks You Should Always Remember
+Master these tips, and your dictionary code will become shorter, safer, and easier to read.
+# Introduction
+Dictionaries in Python are useful for everything from configs, JSON data, to API responses. Most beginners only learn the basics, like creating a dictionary, accessing a key, and updating a value. That's it. However, there's a lot more to dictionaries than that. In this article, we'll go through 7 tips that will make your code cleaner and more Pythonic. So, let's get started.
+# Using .get()
+Instead of [] for Lookups
+Let's say that you are working with a dictionary and you need to access a value. But what if the key is not there? Let's say we have a config dictionary and you try to print the "timeout"
+key like this:
+config = {"debug": True, "verbose": False}
+print(config["timeout"])
+Output:
+---------------------------------------------------------------------------
+KeyError Traceback (most recent call last)
+----> 2 print(config["timeout"])
+KeyError: 'timeout'
+This will fail. You will get a KeyError
+because "timeout"
+isn't in the dictionary. Instead, you should use the .get()
+method. It's safer and you can set a default value if the key is missing.
+config = {"debug": True, "verbose": False}
+print(config.get("timeout", 30))
+Output:
+30
+This will print 30
+, which is the default value we set. However, if a missing key is a bug, use square brackets. You want the error to show up right away in that case.
+# Using defaultdict
+for Grouping Data
+If you're working with a list of words and you want to count how many times each word appears, you might code it like this:
+words = ["apple", "banana", "apple", "cherry", "banana", "banana"]
+counts = {}
+for word in words:
+if word not in counts:
+counts[word] = 0
+counts[word] += 1
+print(counts)
+Output:
+{'apple': 2, 'banana': 3, 'cherry': 1}
+This works, but it's a bit verbose. Python's defaultdict makes it cleaner:
+from collections import defaultdict
+words = ["apple", "banana", "apple", "cherry", "banana", "banana"]
+counts = defaultdict(int)
+for word in words:
+counts[word] += 1
+print(counts)
+Output:
+defaultdict(, {'apple': 2, 'banana': 3, 'cherry': 1})
+Because we used defaultdict(int)
+, Python automatically creates a default value of 0
+whenever a missing key is accessed.
+# Merging Dictionaries With the |
+Operator
+In modern Python, the cleanest way to merge dictionaries is with the |
+operator.
+defaults = {"color": "blue", "size": "medium"}
+overrides = {"size": "large", "weight": "heavy"}
+merged = defaults | overrides
+print(merged)
+Output:
+{'color': 'blue', 'size': 'large', 'weight': 'heavy'}
+When keys overlap, the dictionary on the right side wins. If you want to do in-place merging, you can use the |=
+operator:
+defaults |= overrides
+print(defaults)
+Output:
+{'color': 'blue', 'size': 'large', 'weight': 'heavy'}
+# Unpacking Dictionaries into Function Arguments
+Let's say you have a function and a dictionary, and their fields or keys match. Instead of passing the keys one by one, like name=data["name"], age=data["age"]
+, you can pass everything using the **
+double-asterisk operator. Let's create a user function and some dummy user data to understand it:
+def create_user(name, age, role="viewer"):
+return {"name": name, "age": age, "role": role}
+user_data = {
+"name": "David",
+"age": 33
+}
+# Normal Way
+user = create_user(
+name=user_data["name"],
+age=user_data["age"],
+role=user_data["role"]
+)
+print(user)
+Output:
+{'name': 'David', 'age': 33, 'role': 'viewer'}
+# Using **
+print(create_user(**user_data))
+Output:
+{'name': 'David', 'age': 33, 'role': 'viewer'}
+Note that the "Normal Way" example above will raise a >KeyError
+because user_data
+does not contain a "role"
+key. The **
+unpacking approach correctly falls back to the function's default value for role
+, making it both cleaner and more robust.
+# Using the Walrus Operator With Dicts
+Python 3.8 introduced the walrus operator (:=
+), which lets you assign a value as part of an expression. This is really useful with dictionaries.
+Let's say you have a dictionary and you want to get the user data and their name if they exist. This is typically how you would normally code it:
+data = {
+"user": {
+"name": "Bryan",
+"email": "bryan@gmail.com"
+}
+}
+if data.get("user") is not None:
+user = data.get("user")
+name = user.get("name")
+print(name)
+Output:
+Bryan
+This works, but it repeats the same dictionary lookup multiple times. You can replace it with the walrus operator (:=
+), which looks up and assigns the value in a single step:
+if (user := data.get("user")) is not None:
+name = user.get("name")
+print(name)
+Output:
+Bryan
+This is especially helpful when working with nested dictionary structures.
+# Using TypedDict
+for Structured Data
+Dictionaries are flexible, but that flexibility can sometimes become a problem. For example:
+def greet(user):
+return f"Hello, {user['name']}!"
+user = {
+"name": "Clair",
+"age": "thirty"
+}
+print(greet(user))
+Output:
+Hello, Clair!
+This works at runtime, but there is a hidden problem: "age"
+is supposed to be a number, not a string. Python itself will not complain, which can lead to bugs later in larger projects. TypedDict makes the expected dictionary structure explicit:
+from typing import TypedDict
+class UserProfile(TypedDict):
+name: str
+age: int
+def greet(user: UserProfile) -> str:
+return f"Hello, {user['name']}!"
+Now tools like mypy can catch mistakes before the code runs:
+user: UserProfile = {
+"name": "Clair",
+"age": "thirty",
+}
+print(greet(user))
+Output:
+test.py:15: error: Incompatible types (expression has type "str", TypedDict item "age" has type "int") [typeddict-item]
+Found 1 error in 1 file (checked 1 source file)
+For more complex validation, tools like dataclasses
+or Pydantic are often better choices.
+# Iterating Easily: .items()
+, .keys()
+, .values()
+Python dictionaries have many built-in methods for iteration: .items()
+, .keys()
+, and .values()
+. Most developers know about them, but don't use them as often as they should. They might loop over a dictionary like this:
+scores = {
+"David": 92,
+"Bryan": 87,
+"Clair": 95
+}
+for name in scores:
+print(name, scores[name])
+Output:
+David 92
+Bryan 87
+Clair 95
+That works. But it's not the best way — it does an extra dictionary lookup every time through the loop. Python's .items()
+method is cleaner:
+for name, score in scores.items():
+print(name, score)
+Output:
+David 92
+Bryan 87
+Clair 95
+It returns both the key and value together, which avoids repeated lookups and makes the code more readable. If you only need the keys, use .keys()
+instead. Similarly, if you only need the values, use .values()
+.
+# Wrapping Up
+Python dictionaries look simple at first, but learning a few key patterns can make your code much cleaner. You can use this link to learn more about the functions associated with Python dictionaries. Features like .get()
+, defaultdict
+, unpacking, and TypedDict
+help reduce repetitive code and make your programs more reliable.
+Kanwal Mehreen is a machine learning engineer and a technical writer with a profound passion for data science and the intersection of AI with medicine. She co-authored the ebook "Maximizing Productivity with ChatGPT". As a Google Generation Scholar 2022 for APAC, she champions diversity and academic excellence. She's also recognized as a Teradata Diversity in Tech Scholar, Mitacs Globalink Research Scholar, and Harvard WeCode Scholar. Kanwal is an ardent advocate for change, having founded FEMCodes to empower women in STEM fields.

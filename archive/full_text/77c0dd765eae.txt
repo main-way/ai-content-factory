@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Evaluating Synthetic Data Generation for Domain Generalization in Fetal Brain MRI Segmentation
+View PDFAbstract:Fetal brain tissue segmentation from magnetic resonance imaging (MRI) is crucial for studying neurodevelopment, but remains challenging due to data heterogeneity and limited annotations. Domain randomization (DR) has recently emerged as a promising strategy for single-source domain generalization by synthesizing training images with randomized artifacts, contrast, and resolution. In this work, we investigate how to maximize the out-of-domain (OOD) generalization of DR-based methods. We evaluate several synthetic data generation strategies for DR, with a particular focus on our recently proposed framework, FetalSynthSeg. We show that simple Gaussian mixture-based intensity modeling outperforms more complex physics-based simulations, and that intensity clustering (subdividing tissue classes based on intensity) improves OOD robustness. Evaluated on 348 fetal subjects from four sites spanning 0.55-3T and both T1w and T2w contrasts, FetalSynthSeg reaches state-of-the-art performance on several FeTA 2024 testing datasets (80-85 Dice score) and, for the first time, offers robust segmentation on modalities other than T2w for fetal brain segmentation (80 Dice on dHCP-T1w dataset). Compared with state-of-the-art methods such as BOUNTI, nnU-Net ensemble, and the FeTA 2024 winner, FetalSynthSeg delivers comparable or superior accuracy while maintaining strong robustness across domain shifts. Our code, model weights, and Docker image ready for easy inference are available at this https URL.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

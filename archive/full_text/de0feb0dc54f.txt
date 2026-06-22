@@ -1,0 +1,104 @@
+This article builds that forecast from scratch. It is deliberately simple: rate every team, convert each matchup into a goal distribution, and simulate the whole tournament tens of thousands of times.
+This may sound very football-specific, but pretty much everything in this article, from the methodology to the way we interpret results, are universal to data science. Swap “teams” for sales reps, delivery dates, server loads, or churn cohorts and the same three steps give you a defensible forecast instead of a point estimate.
+The real transferable skill here is building a pipeline where every number traces back to an assumption you can argue about, rather than one a black box machine learning model hides from you.
+In our soccer case, this means: No tracking data, no deep learning, nothing you couldn’t rebuild in an afternoon. But don’t stop reading here! The point isn’t sophistication. It’s about having a transparent pipeline that forces you to confront the very modeling choices that black boxes hide. We’ll build our model in three steps and interrogate the assumptions at each one.
+Step 1: Rate every team with Elo
+You can’t forecast a match without a number for how good each side is. The cleanest off-the-shelf option for national teams is the World Football Elo rating, an adaptation of Arpad Elo’s chess system.
+Elo is a single self-correcting equation. Each team carries a rating R
+. Before a match, the expected score of team A against team B (on a 0–1 scale, where 1 is a win) is a logistic function of the rating difference:
+E_A = 1 / (1 + 10^(-(R_A - R_B) / 400))
+After the match, you nudge the rating toward what actually happened:
+R_A' = R_A + K * (S_A - E_A),
+where S_A
+is the realized result (1 win, 0.5 draw, 0 loss) and K
+controls how fast ratings move. The football variant adds two wrinkles that matter: K
+scales with the margin of victory (a 4–0 moves ratings more than a 1–0), and it weights competitive matches above friendlies. The constant 400
+is a scale choice — it’s what makes a 400-point gap correspond to roughly a 10:1 favorite (E ≈ 0.91
+).
+For the model, we only need the current ratings, stored as a dictionary. I’m using the pre-tournament snapshot from early June 2026, taken from a freely reusable Kaggle dataset that compiles these ratings:
+# World Football Elo Ratings, pre-tournament snapshot (early June 2026).
+# Source: "2026 FIFA World Cup — Historical Elo Ratings" (Kaggle, CC BY-SA 4.0),
+# compiling data from World Football Elo Ratings (eloratings.net).
+ELO = {
+"Spain": 2155, "Argentina": 2113, "France": 2062,
+"England": 2020, "Brazil": 1988, "Portugal": 1984,
+"Colombia": 1977, "Netherlands": 1944, "Germany": 1925,
+# ... all 48 qualified teams
+}
+Assumption check: Elo compresses everything — form, squad quality, fatigue — into one number and assumes a team’s strength is roughly stationary in the short run. That’s a strong simplification, but it’s an honest, auditable one, and Elo is hard to beat as a single feature.
+Step 2: Turn a rating gap into a goal distribution
+A rating difference gives us a win probability, but to simulate a tournament we want scorelines — they drive goal difference, group tiebreakers, and the texture of the thing. The standard move in soccer analytics is to model each team’s goals as a Poisson process.
+The Poisson distribution gives the probability of observing k
+events when events occur independently at a constant average rate λ
+:
+P(k goals) = λ^k * e^(-λ) / k!
+Goals fit this well empirically: they’re discrete, relatively rare, and roughly memoryless within a match. If we treat the two teams’ goal counts as independent Poisson variables with means λ_home
+and λ_away
+, the full scoreline distribution is just the outer product of their two pmfs, and we can read off win/draw/loss probabilities by summing the appropriate cells:
+from scipy.stats import poisson
+import numpy as np
+def match_probs(lam_home, lam_away, max_goals=10):
+h = poisson.pmf(np.arange(max_goals + 1), lam_home)
+a = poisson.pmf(np.arange(max_goals + 1), lam_away)
+grid = np.outer(h, a) # grid[i, j] = P(home i, away j)
+p_home = np.tril(grid, -1).sum() # home goals > away goals
+p_draw = np.trace(grid)
+p_away = np.triu(grid, 1).sum()
+return p_home, p_draw, p_away
+Assumption check: the independence assumption is convenient but imperfect — real scorelines show correlation and an excess of low-scoring draws (0–0, 1–1). The standard fix is the Dixon–Coles adjustment, which adds a low-score correction term and a time-decay weighting on historical matches. We’re skipping it here for clarity; it’s a natural upgrade and exactly the kind of refinement my upcoming book‘s Poisson chapter walks through.
+Step 3: Connect ratings to goals
+We need λ_home
+and λ_away
+as a function of the Elo gap. A robust piece of soccer-modeling folklore is that a ~400-point Elo edge is worth roughly one goal of supremacy. So we split a baseline of ~2.7 total goals (a typical international average) between the teams according to their rating difference:
+GOALS_BASE = 2.7
+GOALS_PER_400_ELO = 1.0
+def lambdas(elo_a, elo_b):
+diff = (elo_a - elo_b) / 400.0 * GOALS_PER_400_ELO
+la = max(0.15, GOALS_BASE / 2 + diff / 2)
+lb = max(0.15, GOALS_BASE / 2 - diff / 2)
+return la, lb
+The floor at 0.15 keeps even a massive underdog from being assigned a non-physical negative scoring rate. A more principled version fits log(λ) = β₀ + β₁·Δrating
+as a Poisson GLM on real match data; the linear-supremacy heuristic above is the back-of-envelope version and lands in the same place for the favorites.
+Step 4: Simulate the tournament 10,000 times
+A single simulation isn’t a forecast, it’s just one possible 2026. The forecast is the distribution over thousands of them. So we run the entire bracket and tally how often each team wins.
+The 2026 format is new and worth stating precisely: 48 teams in 12 groups of four, where the top two from each group plus the eight best third-placed teams advance to a 32-team single-elimination knockout.
+That third-place rule is quite a combinatorial wrinkle because you can’t decide who advances until every group is done. Thus, the simulation tracks points and goal difference for all four teams in each group, ranks the third-placed teams across groups, and takes the best eight. In the knockout rounds a draw goes to penalties, which we model as a near-coin-flip nudged slightly toward the stronger side.
+N = 10_000
+title = {t: 0 for t in ELO}
+for _ in range(N):
+champion = simulate_one_tournament() # groups -> R32 -> ... -> final
+title[champion] += 1
+probs = {t: title[t] / N for t in ELO}
+Why 10,000? Because a simulated probability is itself an estimate with sampling error. A title probability p
+estimated from N
+independent tournaments has a standard error of sqrt(p(1-p)/N)
+. For a 15% favorite at N = 10,000
+, that’s about 0.36 percentage points — tight enough that the ranking is stable and the top numbers won’t wobble between runs. Drop to N = 500
+and the standard error quadruples-and-then-some to ~1.6 points, enough to reshuffle the midfield. Vectorizing the simulation (drawing all N
+tournaments as array operations rather than a Python loop) makes 20,000+ runs essentially free.
+What the model says
+| Team | Win probability |
+|---|---|
+| Spain | 16.0% |
+| Argentina | 11.9% |
+| France | 7.9% |
+| England | 7.0% |
+| Brazil | 5.4% |
+| Netherlands | 4.7% |
+| Portugal | 4.3% |
+| Germany | 3.7% |
+Table 1: Possible World Cup Outcomes, according to model. Source: author.
+Two things stand out. First, the favorite sits around 15%, not 50%. Even the best team in the world is far more likely not to win a 48-team knockout than to win it — a direct consequence of Poisson variance in a low-scoring sport compounded over seven win-or-go-home matches.
+Second, these numbers land remarkably close to the forecasts published by far more elaborate statistical models, the kind built on years of match data and dozens of features. That’s reassuring: a transparent Elo-plus-Poisson pipeline recovers most of what a heavyweight forecasting system produces, because both are ultimately doing the same thing: mapping team strength onto outcome probabilities.
+What it gets right, and what it leaves out
+The model is honest about being simple, and each simplification is a labeled dial you can turn:
+- Neutral venue. Every match is treated as neutral; the hosts (USA, Mexico, Canada) get no boost. Adding a home-advantage term (~+50–100 Elo, historically worth a third of a goal) is a one-line change.
+- Static ratings. Elo is frozen at kickoff; the model doesn’t update as the tournament unfolds. Re-rating after each round would sharpen the later-round forecasts.
+- Independent Poisson goals. No Dixon–Coles low-score correction, no explicit draw inflation.
+- Seeded bracket. I use a seeded knockout rather than FIFA’s exact Round-of-32 map. For title odds of the top teams this barely moves the needle, but it matters for specific paths.
+Each of those is the topic of a chapter in the book I coauthored, Soccer Analytics with Machine Learning (O’Reilly, 2026): the Poisson goal model and its extensions in Chapter 6, team ratings in Chapter 8, and turning probabilities into betting decisions in Chapter 9. This article is the toy version of that pipeline — and a toy you can actually run in an afternoon.
+Try it yourself
+Many more examples can be found in the book’s GitHub repository — clone it, drop in today’s Elo ratings, and you have your own World Cup forecast faster than you can prompt Claude.
+In another article, you’ll see how I rebuild this structure with eleven different models, fit it on real match data, and watch FIFA crown four different champions.
+For now, my model says Spain. The tournament starts June 11. We’ll find out together.
+Ari Joury is a co-author of Soccer Analytics with Machine Learning (O’Reilly, 2026).

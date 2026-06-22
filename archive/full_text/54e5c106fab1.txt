@@ -1,0 +1,104 @@
+The road does not have to fail. There does not need to be an accident, a construction delay, or a bad design. The road can work exactly as intended, and the system can still get worse.
+The reason is uncomfortable. Each driver chooses the route that looks best for them. That choice is individually rational. But when enough drivers make the same rational choice, the network can settle into a worse overall pattern. No single driver can easily improve their commute by changing routes alone, yet everyone is stuck in a poorer outcome than the one the system could have produced.
+In game theory, this is the useful distinction between equilibrium and optimality. A Nash equilibrium can be stable without being good. It only means that each actor is making the best move available given what others are doing. It does not mean the system has reached the best possible outcome.
+That distinction matters far beyond traffic.
+It shows up inside companies whenever teams optimize their own part of the business without seeing what their decisions do downstream. The cost dashboard improves. The service dashboard weakens. One function can show savings, while another function absorbs complaints. Everyone can be acting rationally according to their own metric, and the total system can still become worse.
+This is the optimization trap.
+It is especially visible in last-mile logistics, where one of the most tempting goals is to increase batching density.
+The Metric That Looks Like Progress
+Last-mile delivery has a simple cost structure at the trip level. A driver, a vehicle, fuel, dispatching, routing, and operational coordination all cost money whether the trip serves one customer or five.
+That makes the basic logic of batching very intuitive. If a delivery trip costs roughly $60 and serves one customer, the cost of that trip sits on one order. If the same trip serves three customers, the trip cost is spread across three orders. If it serves six customers, it is spread across six.
+This is why operations teams care about Cost per Delivery, or CPD. It is not an abstract metric. It is the operating math of the route translated into a number leadership can manage.
+At first, improving CPD is not only rational. It is often genuinely good. A route with one delivery is usually underutilized. A route with two or three deliveries can use the driver and vehicle more efficiently while still staying within the promised delivery windows. The operation gets more productive without necessarily making the customer experience worse.
+This is the part of optimization that feels clean. The model recommends higher batching. The routes carry more orders. Cost per delivery falls. The dashboard moves in the right direction.
+The problem starts when the organization forgets that CPD is only seeing one part of the operating system.
+The customer does not experience cost per delivery. The customer experiences whether the order arrives when it was promised. That is usually captured through On-Time Delivery, or OTD.
+And OTD does not always improve when CPD improves.
+Sometimes it moves the other way.
+Where the Curves Separate
+Imagine a grocery delivery route with several stops.
+At one stop, the trip is simple but expensive. At two or three stops, the system often improves. The driver is better utilized, the vehicle is better utilized, and there is still enough slack in the route to absorb normal friction.
+This is the useful zone. Cost improves, service holds, and the operation becomes more efficient without becoming fragile.
+But as more stops are added, the route begins to carry something besides orders. It starts carrying accumulated delay.
+A slow elevator at the third stop. A missing gate code at the fourth. A parking problem at the fifth. A customer who takes longer than expected at the sixth. None of these issues looks dramatic in isolation. Each one may only add a few minutes.
+But the last customer on the route inherits all of them.
+That customer did not cause the slow elevator, the gate issue, the parking problem, or the longer handoff. But their delivery window absorbs the combined effect. From the dashboard, the route may still look efficient. From the customer’s side, the order is late.
+This is the point where the cost curve and the service curve begin to separate. CPD may continue to improve because more deliveries are being completed per trip. OTD may begin to degrade because later stops are exposed to more accumulated delay.
+The metric improves inside its boundary. The system absorbs the cost outside that boundary.
+That is the optimization trap in its simplest form.
+A More Realistic View of the Tradeoff
+In practice, the shape of this tradeoff will vary by market. A dense urban zone with short travel distances behaves differently from a low-density suburban route. A two-hour delivery window behaves differently from a thirty-minute promise. Grocery behaves differently from parcel delivery. Driver experience, parking friction, apartment access, weather, and time of day all matter.
+But the pattern is common enough to be worth watching carefully.
+At very low batching levels, the operation is often too expensive. There is not enough density to make the route efficient. At moderate batching levels, cost improves and service can remain stable. This is usually the zone leaders are hoping to find.
+The danger appears when the organization keeps pushing the same lever after the balance has changed. More stops still reduce cost per delivery, at least on the delivery dashboard. But the side effects start showing up elsewhere. Later stops miss windows more often. Customer contacts increase. Refunds or appeasements rise. Reattempts become more common. Driver stress increases. Customer trust weakens in certain zones.
+The original CPD model may still show a win. The business may not actually be winning.
+It may simply have moved cost from delivery into customer care, refunds, failed-delivery recovery, driver escalations, or future demand.
+That is why this problem is so easy to miss. The savings are visible in one place. The damage is distributed across several others.
+Why the Trap Survives
+The optimization trap is not usually caused by careless teams. It survives because organizations are often designed around local accountability.
+One team owns delivery cost. Another team owns routing logic. Another team owns customer experience. Another team handles support contacts. Another team explains changes in repeat behavior. Each group may be doing exactly what it was asked to do.
+The cost team pushes CPD down. The routing team increases density. The customer experience team monitors OTD. The support team absorbs the complaints. None of these teams has to be irrational for the total system to become worse.
+This is the game theory problem inside the operating model. Once teams are measured locally, the organization can settle into a stable but inefficient pattern. Each team keeps making the best move available from its own dashboard. But the business inherits the combined result.
+The problem is not that people are ignoring the system on purpose. The problem is that the system is not visible from any one seat.
+That shows up in three recurring ways.
+First, the metric boundary becomes the thinking boundary. If a team is measured on CPD, it will naturally focus on CPD. That is not a flaw in the team. It is the behavior the organization has asked for. But a batching model that asks, “How do we reduce cost per delivery?” is not asking the same question as an operating leader who asks, “At what point does reducing cost per delivery begin to damage on-time performance, customer experience, and future demand?”
+The first question optimizes a metric. The second manages a system.
+Second, the damage appears somewhere else. The delivery team may be able to show lower CPD, while another team sees more “where is my order?” contacts, more refunds, more driver escalations, or lower customer satisfaction. The cause-and-effect relationship is rarely clean by the time it appears in reporting. Weather may have changed. Promotions may have shifted demand. Driver mix may be different. Routing logic may have been updated. By the time the service problem becomes visible, the original batching decision is only one of several possible explanations.
+That is how bad tradeoffs survive. The metric win is clear. The system cost is debatable.
+Third, the easier model gets funded first. A CPD optimization model is relatively straightforward. The objective is clear: reduce cost per completed delivery. The inputs are measurable: distance, labor, number of stops, route duration, fuel, vehicle cost, and delivery density. The output is easy to explain in a leadership meeting.
+A system model is harder. It has to connect cost, delivery windows, route sequence, stop-level delay, customer promise, driver behavior, reattempts, support contacts, refunds, and possibly reorder behavior. It is harder to build and harder to explain. But it is closer to how the business actually works.
+This is where many analytics organizations need to mature. They are often very good at building models that improve isolated metrics. They are less mature at building models that explain how those metrics interact.
+The result is not bad analytics. It is incomplete analytics.
+And incomplete analytics can be dangerous when it gives the organization confidence to move faster in the wrong direction.
+The Practical Fix Is Not More Dashboards
+The answer is not to stop optimizing CPD. Cost matters. A last-mile network that ignores cost will eventually lose to one that does not.
+The answer is to stop treating CPD as if it lives alone.
+Before increasing batching density, the operating question should not be limited to whether cost per delivery improves. It should also ask what happens to on-time delivery, which stop positions are most affected, which zones are most sensitive, which customers absorb the delay, and whether the savings still hold after support contacts, refunds, reattempts, and churn are included.
+The most important thing to find is the divergence point.
+That is the point where the local metric continues to improve, but the broader system begins to degrade. In batching, it may be the point where adding one more stop still lowers CPD but increases late deliveries for later-stop customers enough to erase the value of the savings.
+This point should not be discovered after customers complain. It should be modeled before the policy changes.
+That is where simulation becomes useful.
+What a Lightweight Digital Twin Can Actually Do
+In this context, a digital twin has a narrow and practical job. The goal is not to build a perfect replica of the entire delivery network. The goal is to create a decision environment where leaders can test operating changes before pushing them into the real world.
+For a batching decision, a lightweight simulation might include order density by zone, average service time per stop, promised delivery windows, route distance, historical parking or building-access delays, time-of-day traffic, driver capacity, route sequence, and delay probability by stop position.
+With those inputs, the team can simulate different batching thresholds and ask a more useful question:
+If we increase average batch size from 3.2 stops to 4.8 stops, what happens to cost, on-time delivery, and delay risk by stop position?
+The output should not be a single “yes” or “no.” It should show the shape of the tradeoff. Perhaps higher batching reduces CPD by 7% overall, but after five stops, OTD drops sharply for later-stop customers in low-density zones. Maybe the change works well in dense urban areas, is neutral in suburban zones, and becomes destructive in rural or low-density routes.
+That is a much better decision.
+The organization is no longer saying, “Higher batching reduces cost.” It is saying, “Higher batching reduces cost under these conditions, creates service risk under these conditions, and should be constrained differently by zone.”
+That is not anti-optimization. It is better optimization.
+The Difference Between Improving a Metric and Improving the Business
+At one level, analytics is about improving metrics. At a higher level, it is about understanding the consequences of improving them.
+That difference matters.
+A model can reduce cost and still weaken the business. A staffing model can reduce labor hours and still increase abandonment. A contact-center model can reduce average handle time and still damage first-contact resolution. A fraud model can reduce losses and still block too many good customers. A recommendation model can increase clicks and still erode long-term trust.
+In each case, the model may have done exactly what it was asked to do. The problem is what it was allowed to ignore.
+This is why metric design is not a reporting detail. It is a leadership decision.
+When a company chooses a metric, it is also choosing a boundary around what matters. Anything outside that boundary becomes easier to damage by accident.
+The next level of analytics leadership is not only about building more accurate models. It is about building a better view of the system those models operate inside.
+That requires a different kind of operating question.
+Instead of only asking, “How do we improve this metric?” leaders need to ask, “What might get worse if this metric gets better?”
+That one question changes the quality of the discussion.
+If batch density increases, what happens to the last customer on the route? If delivery windows tighten, what happens to driver utilization and acceptance rates? If labor hours are reduced, what happens to backlog and recovery time? If inventory turns improve, what happens to substitution rate and customer trust?
+The goal is not to avoid tradeoffs. Tradeoffs are unavoidable.
+The goal is to make the tradeoff visible before the organization mistakes it for progress.
+The Real Advantage
+The companies that handle this well will not be the ones that stop optimizing. They will be the ones that optimize with a wider field of view.
+They will still reduce cost per delivery, but they will know where cost reduction starts damaging on-time delivery. They will still improve utilization, but they will know when utilization starts creating fragility. They will still automate decisions, but they will understand where automation needs system-level guardrails.
+That is the practical value of digital twins, simulation layers, and system-aware analytics. Not better dashboards for their own sake. Better decisions.
+Most organizations already have enough metrics. Many have too many.
+The harder problem is understanding how the metrics interact.
+A business does not operate as a collection of dashboards. It operates as a system. And in a system, the most dangerous optimization is often the one that looks successful in isolation.
+Braess’s Paradox showed that a road can work correctly and still make the network worse. The same is true in operations. A model can improve the metric it was built to improve and still make the business worse.
+In last-mile logistics, batching density makes this visible. As more stops are added to a trip, cost per delivery may continue to improve. But after a certain point, on-time delivery can begin to degrade, especially for later-stop customers who inherit every delay before them.
+Neither curve is wrong.
+The mistake is looking at only one.
+The next level of operations analytics is not just building better models for individual metrics. It is building a better view of the system those metrics live inside.
+That is where better leadership decisions come from.
+Not from asking only:
+“Did the metric improve?”
+But from asking:
+“What happened to the system when it did?”
+References
+Braess, D. (1968). Über ein Paradoxon aus der Verkehrsplanung. Unternehmensforschung, 12(1), 258–268. Translated as: Braess, D., Nagurney, A., & Wakolbinger, T. (2005). On a paradox of traffic planning. Transportation Science, 39(4), 446–450.
+Meadows, D. H. (2008). Thinking in Systems: A Primer. Chelsea Green Publishing
+Arjun Kaarat works in data science and AI, with experience across last-mile delivery, supply chain analytics, enterprise AI systems, and AI monitoring. His work focuses on how complex systems behave in practice. He has published research on federated learning, edge computing, and responsible AI monitoring, and writes about the decisions that sit at the intersection of data, infrastructure, and real-world outcomes.

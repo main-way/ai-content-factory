@@ -1,0 +1,49 @@
+Всем привет! Частенько ли у вас возникает желание пойти в одну очень популярную песочницу (Minecraft) ? Я думаю раз в пол года - год у многих возникает такое желание. И также часто возникает желание поставить парочку… сотен модов.
+Этот пост написан для себя-любимого и для тех людей кого тоже очень бесит настраивать моды , пытаться их синхронизировать между друзьями. Я не претендую на какой то Clean код и тд и тп. Сразу признаюсь. Код писали ИИ агенты. Я просто как обычный обыватель и разработчик описываю свою боль и как я сделал инструмент в первую очередь для своих нужд.
+Итак… Начнем
+Что мы хотим:
+Поиграть с друзьями на fabric/forge сборке
+Не поссориться из-за того что друзьями приходится постоянно обновлять моды
+Не лазить по сторонним ресурсам чтобы найти эти самые моды
+Быстро запустить
+Введение
+Сразу уточню. Я говорю про Self-hosted варианты, а не покупка готового майнкрафт сервера на каком-нибудь Aternos
+Какие вообще варианты у нас есть:
+1) Просто развернуть сервер на хостовой машине (Без контейнеров)
+2) Docker / Docker Compose
+Удобный запуск, можно легко поменять версию Java и не создавать лишних зависимостей (Только если скачанный Docker Image). Но как в первом варианте. Придется все моды закидывать в папку сервера, запускать , смотреть логи , и еще желательно где-то рядом собирать клиентскую сборку, а потом ее архивировать и отправлять друзьям. И повезет если они не ленивые.
+Я соглашусь, что никто не мешает написать парочку скриптов и это уже будет удобнее. Но чаще хочется просто зайти в удобную панельку, понажимать на несколько кнопок и точно быть уверенным что все друзья получат актуальную сборку и сервер живет как нужно
+3) Pterodactyl
+Первое что приходит на ум из более универсального и удобного, но я если честно считаю что он слишком огромный для такой простенькой задачи. Он больше предназначен для большой серверной инфраструктуры, а не для развертывания пары сборок.
+Возможно я не знаю каких то вариантов, возможно более нишевых. Но по итогу было предпринято решение писать подобный инструмент самостоятельно !
+Что использовал
+Как и в начале любого проекта, нужно определиться со стэком и технологиями:
+VueJS/Nuxt для интерфейс
+GoLang - Я бы мог взять и Python для более быстрого прототипирования, но все таки решил пойти таким образом, просто потому что хотелось получить один маленький бинарь и попрактиковаться в языке + есть нативная поддержка Docker API, что мне в целом и нужно.
+Docker - Да, все сервера мы будем держать в контейнерах. Возможно ударит по производительности, которой и так нет, но зато отслеживать и устанавливать сборки становится очень просто засчет одного проекта, я говорю про itzg/minecraft-server. Этот образ послужит основой для управления серверами.
+Wails - Позволяет писать десктопные приложения с использованием системного WebView на Go. Можно было взять Electron, но очень уж не хотелось тащить зависимость в виде Chromium движка.
+Пишем свой велосипед
+Как уже и говорилось ИИ агенты позволили ускорить разработку в пару десятков раз (С тем учетом что я был не знаком с Wails, уж точно). Я использовал в разработке Devin IDE (бывш. Windsurf) с Kimi K2.6 в качестве модели
+Для начала решил задать правила проекта:
+# Go Coding Rules — WebUI Backend ## File Size - **Maximum 300 lines per file.** Split by domain (handlers, service, repository) or by feature when the limit is reached. ## Style & Formatting - `gofmt` / `goimports` are mandatory. - Import order: stdlib → third-party → project internal (`github.com/.../webui/backend/internal/...`). ## Error Handling - Explicitly handle every error. Use `http.Error` or structured JSON errors for HTTP handlers. - Log errors with context before returning them to the client. ## Architecture - Keep `cmd/main.go` minimal: only wiring (DI, config, server start). - Business logic lives in `internal/` packages, never in handlers directly. - Handlers depend on interfaces, not concrete types. ## Naming - Exported names need godoc comments. - Handler functions use HTTP-method style where appropriate: `GetUser`, `PostServer`. - DTO structs for requests/responses end in `Request` / `Response`. ## Testing - Use `httptest.Server` for handler tests. - Mock DB / external calls; do not hit real databases in unit tests. - Run `go test ./...` in `backend/` before committing.
+# Vue Coding Rules — WebUI Frontend ## File Size - **Maximum 600 lines per file, including `<template>`, `<script>`, and `<style>`.** - If a component exceeds this limit, decompose it: - Extract child components. - Move composables / utilities to `composables/` or `utils/`. - Move large `<style>` blocks to scoped CSS modules or Tailwind utilities. ## Component Structure Use this order inside `.vue` files: 1. `<script setup lang="ts">` 2. `<template>` 3. `<style scoped>` (only if Tailwind classes are insufficient) ## TypeScript - Strict mode is on. No `any` without a documented reason. - Define props with `defineProps<{}>()` and emits with `defineEmits<{}>()`. - Prefer interfaces over types for object shapes. ## Composition API - Use `<script setup>` and Composition API exclusively. No Options API. - Extract reusable logic into `composables/` (e.g., `useServer()`, `useConsole()`). - Keep components focused: one primary responsibility per component. ## Templates - Use `kebab-case` for custom components in templates. - Always provide `key` attributes in `v-for`. - Avoid complex expressions in templates; use computed properties. ## Styling - TailwindCSS is the default. Use utility classes first. - Custom scoped styles only for complex overrides or third-party component theming. - Never use element selectors (e.g., `div { ... }`) in scoped styles. ## State & Fetching - Server state: use Nuxt composables (`useFetch`, `$fetch`) or a lightweight Pinia store if caching / cross-component sharing is needed. - Client-only state: Pinia or `ref`/`reactive` inside composables. - Always handle loading and error states in async operations. ## Performance - Lazy-load heavy components with `defineAsyncComponent`. - Debounce rapid user input (search, resize handlers). - Prefer `v-show` over `v-if` for toggling visibility when the DOM cost is high. ## Linting - Run `pnpm lint` (or the project's lint command) before pushing. - Fix all TypeScript and Vue compiler warnings.
+Примерная схема
+Сначала был написан Оркестратор контейнеров-серверов через Docker API.
+Он использует хостовый /var/run/docker.sock для управления хостовыми контейнерами (Это крайне небезопасно, но и мы не делаем пока что SaaS).
+Сами сервера сразу прокидывают Volume в хост систему. Чтобы к файлам было легко попасть
+Что можно делать
+Просмотр логов
+Управление состоянием сервера
+Изменение параметров контейнера / сервера
+Работа с файлами
+Просмотр краш-репортов
+RCON консоль
+Управление игроками
+Управление клиентскими и серверными модами
+Помимо этого еще сделана интеграция с Modrinth.
+Создание клиентской сборки
+Эта ссылка используется для синхронизации с клиентом.
+Sync-утилита
+Она была написана на Go + Wails + Vue. И служит простеньким интерфейсом для синхронизации сборок. Также клиенту рекомендуется использовать MultiMC или Prism Launcher (или его форки).
+Если кому-то будет интересно, то я открыт к диалогу. Репозитории к вашим услугам.
+Всем хорошего дня/вечера/ночи (Или когда вы там вообще это читаете). Не факт что вообще кто-то дочитал до конца :)

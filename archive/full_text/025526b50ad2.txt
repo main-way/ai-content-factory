@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Your U-Net Dereverberation Model is Secretly an RIR Encoder
+View PDF HTML (experimental)Abstract:In this work, we analyze the ability of NCSN++ U-Net based audio dereverberation models to capture global room characteristics in their intermediate representations. Through an empirical study of both a state-of-the-art diffusion-based model and a discriminative counterpart, we show that deeper layers encode structured room impulse response (RIR)-dependent embeddings. Moreover, the discriminative ability of this implicit room representation correlates with dereverberation performance across objective metrics. Motivated by this observation, we propose a training strategy that explicitly conditions the network on pre-trained RIR embeddings, obtained via self-supervised contrastive learning. Incorporating RIR conditioning improves representation quality, accelerates convergence, and enhances dereverberation performance, while significantly reducing the number of reverse diffusion steps required by the diffusion-based model during inference.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

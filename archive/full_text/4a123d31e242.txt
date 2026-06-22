@@ -1,0 +1,139 @@
+Advanced Join Techniques: LATERAL Joins, Semi Joins, Anti Joins
+LATERAL joins let a subquery in the FROM clause reference columns from earlier in the same FROM clause. Semi joins return rows where a match exists in another table, without duplicating those rows. Anti joins return rows where no match exists.
+# Introduction
+INNER JOIN and LEFT JOIN handle most SQL queries. A smaller class of problems needs other join types: counting set-returning function results row by row, filtering rows by existence in another table, and returning rows that have no match in another table.
+Three less-common joins handle these cleanly. LATERAL joins let a subquery in the FROM clause reference columns from earlier in the same FROM clause. Semi joins return rows where a match exists in another table, without duplicating those rows. Anti joins return rows where no match exists.
+Let's explore how to apply these patterns in practice.
+# LATERAL Joins
+A LATERAL subquery in the FROM clause can reference columns from preceding tables in the same FROM clause. Without LATERAL, a subquery in FROM is evaluated independently and cannot see those columns.
+This matters most when calling a set-returning function (one that returns multiple rows per input). Set-returning functions can be called in the SELECT list, but to apply them row-by-row to a column from an outer table inside the FROM clause, LATERAL is required.
+Common cases:
+- Calling
+unnest()
+on an array column to get one row per array element - Calling
+regexp_matches()
+with the'g'
+flag to extract every match per row - Computing a top-N-per-group result with a correlated subquery in FROM
+- Splitting JSON arrays per row
+// Example: Counting Word Occurrences
+This Google question asks us to count how many times the words "bull" and "bear" appear in a contents
+column. Matches must be case-insensitive, and substrings like bullish or bearing should be excluded.
+Data: the google_file_store
+table is:
+| filename | contents |
+|---|---|
+| draft1.txt | The stock exchange predicts a bull market which would make many investors happy. |
+| draft2.txt | The stock exchange predicts a bull market... but analysts warn... we are awaiting a bear market. |
+| final.txt | The stock exchange predicts a bull market... a bear market. As always predicting the future market is uncertain... |
+Code: regexp_matches()
+returns one row per match. To run it once per row of google_file_store
+and count all matches across the table, we put it in the FROM clause with LATERAL. The \m
+and \M
+anchors are PostgreSQL word boundaries, which is what excludes "bullish" and "bearing".
+SELECT 'bull' AS word,
+COUNT(*) AS nentry
+FROM google_file_store,
+LATERAL regexp_matches(LOWER(contents), '\m(bull)\M', 'g')
+UNION ALL
+SELECT 'bear' AS word,
+COUNT(*) AS nentry
+FROM google_file_store,
+LATERAL regexp_matches(LOWER(contents), '\m(bear)\M', 'g');
+// Output
+| word | nentry |
+|---|---|
+| bull | 3 |
+| bear | 2 |
+# Semi Joins
+A semi join returns rows from the left table where at least one match exists in the right table, with each left-table row appearing at most once. INNER JOIN duplicates left-table rows when the right side has multiple matches. Semi joins do not.
+Two SQL implementations:
+WHERE EXISTS (SELECT 1 FROM ...)
+WHERE col IN (SELECT col FROM ...)
+EXISTS is the more general form because it handles multi-column join conditions and correlated subqueries without rewriting the query.
+// Example: Finding High-Value Customers
+This question asks us to find customers who have placed at least one order over $100 and return their customer ID and name.
+Data: Previews of online_store_customers
+and online_store_orders
+:
+| customer_id | customer_name |
+|---|---|
+| 1 | Alice Johnson |
+| 2 | Bob Smith |
+| 3 | Carol Williams |
+| … | … |
+| 10 | Jack Anderson |
+| order_id | customer_id | amount | status |
+|---|---|---|---|
+| 101 | 1 | 150 | paid |
+| 102 | 1 | 200 | paid |
+| 103 | 1 | 75 | paid |
+| ... | ... | ... | ... |
+| 115 | 9 | 450 | paid |
+Code: The EXISTS subquery checks, per customer, whether any order over $100 exists. SELECT 1
+is the convention because EXISTS only cares whether any row comes back, not what is in it.
+SELECT
+c.customer_id,
+c.customer_name
+FROM online_store_customers c
+WHERE EXISTS (
+SELECT 1
+FROM online_store_orders o
+WHERE o.customer_id = c.customer_id
+AND o.amount > 100
+);
+If we used INNER JOIN instead, customer 1 would appear twice in the result because two orders match. EXISTS returns customer 1 once.
+// Output
+| customer_id | customer_name |
+|---|---|
+| 1 | Alice Johnson |
+| 2 | Bob Smith |
+| 3 | Carol Williams |
+| … | … |
+| 9 | Ivy Taylor |
+# Anti Joins
+An anti join returns rows from the left table where no match exists in the right table. It is the inverse of a semi join.
+Two SQL implementations:
+LEFT JOIN ... WHERE right_table.col IS NULL
+WHERE NOT EXISTS (SELECT 1 FROM ...)
+Both produce the same result. NOT EXISTS often produces a better query plan in modern PostgreSQL versions and reads more directly. The LEFT JOIN + IS NULL pattern is older and useful when you also need columns from the right side for non-matching rows.
+// Example: Free Users With No April Calls
+This question asks us to return free users who did not make any calls in April 2020.
+Data: Previews of rc_calls
+and rc_users
+:
+| user_id | call_id | call_date |
+|---|---|---|
+| 1218 | 0 | 2020-04-19 01:06:00 |
+| 1554 | 1 | 2020-03-01 16:51:00 |
+| 1857 | 2 | 2020-03-29 07:06:00 |
+| 1525 | 3 | 2020-03-07 02:01:00 |
+| … | … | … |
+| 1910 | 39 | 2020-03-11 08:33:00 |
+| user_id | status | company_id |
+|---|---|---|
+| 1218 | free | 1 |
+| 1554 | inactive | 1 |
+| 1857 | free | 2 |
+| … | … | … |
+| 1884 | free | 1 |
+Code: The date filter sits in the ON clause, not WHERE. That distinction is what makes this an anti join. Putting the date filter in WHERE would drop rows where the LEFT JOIN produced NULLs, collapsing it back to an INNER JOIN. With the filter in ON, free users with no qualifying April call still produce a row, with NULLs on the right side, and the IS NULL check keeps only those rows.
+SELECT DISTINCT u.user_id
+FROM rc_users u
+LEFT JOIN rc_calls c
+ON u.user_id = c.user_id
+AND c.call_date BETWEEN '2020-04-01' AND '2020-04-30'
+WHERE u.status = 'free'
+AND c.user_id IS NULL;
+// Output
+| user_id |
+|---|
+| 1575 |
+| 1910 |
+# Conclusion
+These three joins solve cases where INNER JOIN and LEFT JOIN are awkward or wrong:
+- LATERAL is the way to call set-returning functions row by row inside FROM.
+- EXISTS gives you "rows with a match" without the duplication that INNER JOIN causes.
+- NOT EXISTS or LEFT JOIN + IS NULL gives you "rows with no match" cleanly.
+The pattern to remember is short. When INNER JOIN duplicates rows you don't want, use EXISTS. When you need rows that have no match, use NOT EXISTS or LEFT JOIN + IS NULL. When a subquery in FROM needs to reference columns from an outer table, add LATERAL.
+Practice these on real SQL interview questions, and the syntax becomes automatic.
+Nate Rosidi is a data scientist and in product strategy. He's also an adjunct professor teaching analytics, and is the founder of StrataScratch, a platform helping data scientists prepare for their interviews with real interview questions from top companies. Nate writes on the latest trends in the career market, gives interview advice, shares data science projects, and covers everything SQL.

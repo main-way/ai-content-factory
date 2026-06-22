@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Central Limit Theorems for Stochastic Gradient Descent Quantile Estimators
+View PDF HTML (experimental)Abstract:This paper develops asymptotic theory for quantile estimation via stochastic gradient descent (SGD) with a constant learning rate. The quantile loss function is neither smooth nor strongly convex. Beyond conventional perspectives and techniques, we view quantile SGD iteration as an irreducible, periodic, and positive recurrent Markov chain, which cyclically converges to its unique stationary distribution regardless of the arbitrarily fixed initialization. To derive the exact form of the stationary distribution, we analyze the structure of its characteristic function by exploiting the stationary equation. We also derive tight bounds for its moment generating function (MGF) and tail probabilities. Synthesizing the aforementioned approaches, we prove that the centered and standardized stationary distribution converges to a Gaussian distribution as the learning rate $\eta\rightarrow0$. This finding provides the first central limit theorem (CLT)-type theoretical guarantees for the quantile SGD estimator with constant learning rates. We further propose a recursive algorithm to construct confidence intervals of the estimators with statistical guarantees. Numerical studies demonstrate the effective finite-sample performance of the online estimator and inference procedure. The theoretical tools developed in this study are of independent interest for investigating general SGD algorithms formulated as Markov chains, particularly in non-strongly convex and non-smooth settings.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

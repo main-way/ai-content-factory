@@ -1,0 +1,186 @@
+Looking Forward to Postgres 19: Query Hints
+Well, the world has officially ended. Peter Venkman from Ghostbusters was right all along, and we'll soon be experiencing "human sacrifice, dogs and cats living together, mass hysteria!" Pack it in everybody; we had a great run. The feature freeze of Postgres 19 includes the one feature many claimed would never see the light of day: query hints. I guess "never say never" is pretty good advice.
+OK, so they're not technically called hints. The Postgres community would never be so pedestrian. Instead, Postgres 19 introduces two new contrib modules: pg_plan_advice
+and pg_stash_advice
+. It's "plan advice" you see. Totally different thing.
+An occasion this monumental deserves a bit more fanfare than simply describing the feature. So let's begin with a walk through one of the longest-running arguments in Postgres history.
+A Brief History of "Never"
+The Postgres community's position on query hints has been, shall we say, firm. The official wiki page on the subject states it plainly:
+"We are not interested in implementing hints in the exact ways they are commonly implemented on other databases. Proposals based on "because they've got them" will not be welcomed."
+Fair enough. The wiki goes on to list six solid reasons hints are problematic:
+They create maintenance nightmares.
+They break on upgrades.
+They discourage root-cause analysis.
+They scale poorly.
+The optimizer is usually smarter than you think.
+They actually impede planner improvements because users stop reporting bugs.
+Yeah, that sounds about right. And for years, that was the end of the discussion. Postgres doesn't do hints. Go fix your statistics. Next topic, please.
+But behind the scenes, the debate was never quite so settled. Back in late 2010, a legendary thread erupted on the pgsql-performance mailing list that raged on for several months and captured nearly every available sentiment. It started innocuously enough as a complaint about slow COUNT(*)
+queries, veered through Oracle comparisons, and somehow spiraled into a full-blown existential crisis about whether Postgres needed hints.
+Robert Haas, threw the first real punch:
+"I think it's just dumb to say we don't want hints. We want hints, or at least many of us do. We just want them to actually work, and to not suck."
+He went further, arguing that Postgres needed to give DBAs an escape hatch for the edge cases:
+"We should be willing to provide a way for those people to not get fired when they hit the 0.1% of queries that can't be fixed using existing methods."
+It's hard to argue with "please don't let people get fired."
+The legendary Tom Lane chimed in with similar sentiments:
+"I haven't seen a hinting scheme that didn't suck... I don't say that there can't be one."
+In doing so, he effectively left the door open just a crack.
+Kevin Grittner later observed a rather obvious paradox in the anti-hint argument:
+"Even those most ostensibly opposed to hints have been known to post that they would rather not have the optimizer recognize two logically equivalent constructs and optimize them the same because they find the current difference ‘useful to coerce the optimizer’ to choose a certain plan. That's implementing hints but refusing to document them."
+Was he wrong? How many of us have toggled enable_seqscan
+to off
+to force an index scan? Or thrown an OFFSET 0
+into a subquery to prevent the planner from flattening it? Or wrapped a materialized CTE around something just to create an optimization fence? These are hints in all but name, with coarse knobs available only to seasoned experts. We were only pretending to eschew hints.
+Josh Berkus, one of the more vocal anti-hint advocates, drew a clear line in the sand:
+"Any hint which gets coded into the actual queries becomes a massive maintenance and upgrade headache thereafter."
+But even he wasn't against all forms of planner override. His position was against the Oracle model of embedding them in SQL comments. His preferred hierarchy was GUC cost parameters first, then cost parameters on database objects, then new statistical metadata, and query hints only as a desperate last resort. That's actually a reasonable action plan, but Postgres has always lacked that final option.
+The third-party pg_hint_plan extension eventually filled the gap for many users, borrowing Oracle's comment-based hint syntax. It worked, more or less, and the urgency to add hints to the core quietly dissipated. Or so we thought.
+By Any Other Name
+So what changed? Well, for one thing, the person who built these modules is none other than Robert Haas. Fifteen years later after that epic thread, he's the author of both pg_plan_advice
+and pg_stash_advice
+. Say what you will, but the man plays the long game.
+Haas didn't just slap Oracle-style hints onto Postgres and call it a day. He was deeply embroiled in the controversy from the very beginning, and knew all of the pain points. As a result, he'd been considering how to actually address every objection the community raised over the past two decades.
+Berkus insisted hints should never live inside query text. So pg_plan_advice
+keeps advice completely outside the SQL. Advice is set via a GUC (pg_plan_advice.advice
+) or stored in a separate stash keyed by query ID. Queries themselves remain unencumbered by extra slop.
+The community worried that hints would replace the planner's judgment entirely, producing plans that looked "correct" but were secretly catastrophic. So pg_plan_advice
+works by constraining the planner's search space rather than replacing it. The documentation is explicit: advice "can only produce plans the core planner considers viable." Advice only nudges the planner toward one it already considered.
+What about when advice is wrong or outdated? Instead of silently producing garbage or throwing an error, the planner marks affected nodes as Disabled
+and falls back to whatever it considers best within the remaining constraints. Bad advice degrades gracefully.
+And perhaps best of all, the system generates its own advice. It's not necessary to memorize a syntax reference and hand-craft advice strings from scratch. It is possible to ask the planner what it's doing, and it responds in a format that doubles as syntax:
+CREATE TABLE my_fact (
+id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+dim_id BIGINT NOT NULL
+);
+CREATE TABLE my_dim (
+id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+stuff TEXT
+);
+CREATE INDEX idx_fact_dim_id ON my_fact (dim_id);
+EXPLAIN (COSTS OFF, PLAN_ADVICE)
+SELECT * FROM my_fact f
+JOIN my_dim d ON f.dim_id = d.id;
+QUERY PLAN
+----------------------------------
+Hash Join
+Hash Cond: (f.dim_id = d.id)
+-> Seq Scan on my_fact f
+-> Hash
+-> Seq Scan on my_dim d
+Generated Plan Advice:
+JOIN_ORDER(f d)
+HASH_JOIN(d)
+SEQ_SCAN(f d)
+NO_GATHER(f d)
+The planner literally hands over the advice string that reproduces its current plan. From there, it's just a matter of salting to taste. And we get all that just by adding pg_plan_advice
+to shared_preload_libraries
+.
+Whispering Sweet Nothings
+The advice language is surprisingly expressive for something the community resisted for decades. There are several categories, each targeting a different aspect of query planning.
+Scan methods control how individual tables are accessed:
+SET pg_plan_advice.advice = 'INDEX_SCAN(f idx_fact_dim_id)';
+This tells the planner to use a specific index for the f
+alias. The documentation lists several other handy scan types. Want to exclude a table from the final plan entirely? There's even DO_NOT_SCAN
+for that.
+Join order is where things get interesting. The JOIN_ORDER
+tag supports a nested syntax with parentheses for strict ordering and braces for flexible grouping:
+-- Strict: join b to c first, then join a to that result, then to d
+SET pg_plan_advice.advice = 'JOIN_ORDER(a (b c) d)';
+-- Flexible: join b and c in any order, but they go between a and d
+SET pg_plan_advice.advice = 'JOIN_ORDER(a {b c} d)';
+The syntax here is great, offering a convenient distinction between required and optional ordering. That makes it possible to lock down critical parts of the join order while leaving the planner room to optimize the rest. The argument that a DBA may know better than the planner in certain cases is definitely possible with join ordering, and now it's tunable.
+Join methods control which algorithm the planner uses for each join, with a bevy of options. There's a subtle but important detail here: specifying a method implies that the target should appear on the inner side of that join type. So HASH_JOIN(d)
+means "build the hash table from d." The documentation helps disambiguate here, and this is all still very new so is subject to further clarification.
+Want to specify that multiple relations should be on the inner side of a single join? Wrap them in parentheses:
+-- d1 and d2 each on inner side of separate hash joins
+SET pg_plan_advice.advice = 'HASH_JOIN(d1 d2)';
+-- d1 and d2 together on inner side of one hash join
+SET pg_plan_advice.advice = 'HASH_JOIN((d1 d2))';
+Parallel query control rounds things out with GATHER
+, GATHER_MERGE
+, and NO_GATHER
+for controlling where and whether parallel execution happens.
+Can we combine all of these? Of course:
+SET pg_plan_advice.advice =
+'JOIN_ORDER(f d1 d2) HASH_JOIN(d1 d2) SEQ_SCAN(f) INDEX_SCAN(d1 idx_d1_pk)';
+That's a single string controlling join order, join methods, and scan strategies all at once. And remember, if any part of this advice can't be honored, the planner degrades gracefully rather than catching fire, burning down, and then falling into a swamp.
+Stashing it for Later
+Using pg_plan_advice.advice
+directly is great for ad-hoc tuning and experimentation, but what about production? It's pretty inconvenient to set a GUC before every query. That's where pg_stash_advice comes in.
+Once we've added it to shared_preload_libraries
+, it must also be installed:
+CREATE EXTENSION pg_stash_advice;
+The system works by establishing an "advice stash" as a named collection of query-to-advice mappings stored in shared memory. Create a stash, populate it with advice strings keyed by query ID, and tell sessions to consult it during planning:
+-- Create a stash
+SELECT pg_create_advice_stash('production_tuning');
+-- Get the query ID from EXPLAIN VERBOSE or pg_stat_statements
+EXPLAIN (VERBOSE, PLAN_ADVICE)
+SELECT * FROM my_fact f
+JOIN my_dim d ON f.dim_id = d.id;
+-- Stash the advice for that query
+SELECT pg_set_stashed_advice(
+'production_tuning',
+5424487836266966148,
+'INDEX_SCAN(f idx_fact_dim_id) NESTED_LOOP_PLAIN(f)'
+);
+-- Activate the stash for this session
+SET pg_stash_advice.stash_name = 'production_tuning';
+From this point on, every time the planner encounters this specific query pattern, it automatically applies the stashed advice. And since it's not embedded in the query itself, we can change it at any time. And don't worry about the query ID changing, that's essentially a hash of the query minus any dynamic parameters; the advice should apply universally.
+The stash can be scoped per-session, per-role, or per-database:
+-- Every session in this database uses the stash
+ALTER DATABASE mydb SET pg_stash_advice.stash_name = 'production_tuning';
+-- Only this role uses the stash
+ALTER ROLE reporting_user SET pg_stash_advice.stash_name = 'reporting_tuning';
+Stashes persist to disk by default via pg_stash_advice.persist = on
+, with a configurable write interval. This means they survive restarts, allowing DBAs to inspect their contents, update individual entries, or drop entire stashes when they're no longer needed.
+This is the part that addresses the production DBA's actual needs. In a scenario where there's a problematic query and it's not possible to change the application code, sometimes the ability to redirect the planner is critical. So create a stash, drop in the right advice, and the problem goes away without touching a single line of SQL. When statistics, the application, or the planner itself improves, just remove the plan advice on the database side. The application or end user never has to know.
+The advice stash is the last resort, and it's designed to be temporary.
+Trust but Verify
+One of the more thoughtful design decisions is the feedback mechanism. EXPLAIN
+thoroughly clarifies the result of each piece of advice. Consider this setup using fact and dimension tables from earlier:
+SET pg_plan_advice.advice = $$
+INDEX_SCAN(f idx_fact_dim_id)
+NESTED_LOOP_PLAIN(f)
+INDEX_SCAN(d no_such_index)
+SEQ_SCAN(z)
+SEQ_SCAN(f)
+$$;
+EXPLAIN (COSTS OFF, VERBOSE, PLAN_ADVICE)
+SELECT * FROM my_fact f
+JOIN my_dim d ON f.dim_id = d.id;
+The EXPLAIN
+output provides impeccable feedback about our advice:
+Supplied Plan Advice:
+INDEX_SCAN(f idx_fact_dim_id) /* matched */
+INDEX_SCAN(d no_such_index) /* matched, inapplicable, failed */
+SEQ_SCAN(z) /* not matched */
+SEQ_SCAN(f) /* matched, conflicting, failed */
+NESTED_LOOP_PLAIN(f) /* matched */
+We can see a few things from this:
+matched
+means the targets were found and the advice applied.not matched
+means the targets weren't found in the query at all.inapplicable
+means the advice can't be honored (like referencing a nonexistent index).failed
+means the final plan doesn't comply.conflicting
+means two pieces of advice contradict each other.Advice honors dollar
+$$
+quoting syntax, making it more convenient and human-readable.
+It's also possible to set pg_plan_advice.feedback_warnings = true
+to get these as WARNING
+messages during query execution. That's handy for catching stale advice in production logs before it becomes a problem.
+So what can't it do? For now, it's not possible to control whether aggregates use sorting or hashing. Nor can we supply the strategy for UNION
+or INTERSECT
+operations. The planner is also free to reject advice on correctness grounds. There's also a small performance penalty to applying advice since it necessarily interrupts the planner loop even when it doesn't change the resulting plan. The documentation explicitly warns to use this judiciously for a reason.
+It's a scalpel, so use it like one.
+The Long Game
+There's something deeply satisfying about this saga. Somehow hints went from an accepted feature we would probably never have, to what looks like one of the better implementations available. The devs also did so in a way that reasonably addresses every one of the major complaints about hints:
+Advice lives outside the SQL to avoid embedding them permanently.
+Advice guides the planner rather than replacing it.
+Advice degrades gracefully with detailed feedback to avoid worst case plans.
+The planner generates its own advice strings for self-documentation purposes, enabling easier tweaks.
+The community said they'd consider hints if someone could avoid the problems observed in other systems. It took a decade and a half, but someone finally did. Whether it's stubbornness or incredibly high standards, that's just the Postgres Way™.
+Will this end the debate? Perhaps not. There will always be folks who insist the planner should handle everything autonomously, and they're not wrong most of the time. The right approach is still to fix statistics, tune cost parameters, and leverage features like CREATE STATISTICS to give the planner better information. Plan advice is for when the planner still insists on a bad plan despite doing all of that.
+For those cases, we'll finally have a first-class, core-supported, well-designed escape hatch. No more toggling enable_seqscan
+like savages. No more jamming OFFSET 0
+into subqueries and praying. No more relying on third-party extensions crudely bolting on questionable syntax from a completely different engine.
+The Postgres community spent two decades saying they'd never add query hints and ended up adding advice instead. And as we all know, technically correct is the best kind of correct. Now go enjoy your hints, you certainly waited long enough!

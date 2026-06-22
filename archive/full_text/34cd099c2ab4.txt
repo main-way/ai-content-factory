@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:ANCHOR: Autoregressive Non-intrusive Chunk-Ordered Refinement for Joint Multi-Resolution Speech Quality Modeling
+View PDF HTML (experimental)Abstract:While speech quality is typically assessed on complete utterances, streaming and generative systems require incremental estimation from partial audio. Existing predictors assume full context, degrading on prefix-constrained inputs. Extending ARECHO, we propose ANCHOR, reformulating incremental assessment as a multi-resolution autoregressive task. It models chunk- and utterance-level quality within a single decoder using dual-resolution tokens and a resolution-aware hierarchy for coarse-to-fine refinement. Experiments show substantial robustness under partial input, including a 48% PLCMOS error reduction on 2-second prefixes. Convergence analysis reveals a 4-6 s effective perceptual context horizon. A stress test further isolates structured extrapolation biases under localized corruption. Results demonstrate that hierarchical supervision improves incremental prediction and elucidates how perceptual quality accumulates over time.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

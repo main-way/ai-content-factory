@@ -1,0 +1,57 @@
+Apple-Intel is on, says Trump; Amkor’s big win; Intel 18A-P; Amazon to sell its AI chips; Rambus’ automotive RoT; Brewer’s buy; VLSI Symposium tech; CHIPS Act funding; MIT sensor; RISC-V CPU fuzzing.
+Amkor inked a 10-year agreement with TSMC to provide advanced packaging and test services in Arizona, tying TSMC’s U.S. fab expansion to domestic OSAT capacity.
+Trump said in a post that Applewill partner withIntel on chip design and production in the U.S., marking a second reported win for the chipmaker this month. Intel Foundry will also reportedly manufacture 3 million TPUs for Google. Intel has not confirmed either deal.
+Brewer Science will acquireHeraeus Epurio‘s ultrapure chemical business.
+IEEE /JSAP Symposium on VLSI Technology & Circuits
+Intel Foundry said its 18A-P process has entered risk production, with performance, power, thermal, and via-resistance improvements over 18A. The foundry also highlighted longer-term work in CFETs, GaN-on-silicon power integration, and ruthenium interconnects (Fig.1 below).
+Fraunhofer IPMS and GF researchers integrated hafnium oxide-based ultra-fast ferroelectric FRAM memory into GF’s 22FDX technology node, enabling fast, energy-efficient data storage.
+NOR flash and SLC NAND contract prices more than doubled in the first half of 2026, reported TrendForce.
+Global
+The US government signed a letter of intent to provide Coherent with up to $50M to expand InP wafer manufacturing in Texas and finalized a $500M award for SandboxAQ to accelerate AI-driven semiconductor materials discovery.
+Nokia is expanding its advanced test and packaging operations in Pennsylvania to boost U.S. production of photonic chips and optical modules used in AI and telecom infrastructure by 10 times its current level.
+The S. Korean government launched a ~US$520M program to develop on-device AI chips, reports Chosun Biz.
+Rapidussigned an MoU with the UK Semiconductor Centre to explore semiconductor manufacturing cooperation.
+Major funding
+HyperLight raised $80M for its TFLN chiplet platform for AI infrastructure.
+Synopsys said its Multiphysics Fusion is now available, fusing Synopsys’ EDA tools with Ansys’ multi-physics analysis.
+ChipAgents introduced Renoir, an LLM for chip design tasks such as RTL generation, bug localization, debugging, and specification-to-code work.
+MLCommons released MLPerf Training v6.0 results, with CoreWeave setting a new record, training DeepSeek-V3 in about two minutes on 8,192 Nvidia GB300 NVL72 GPUs.
+People
+Intel appointed Seok-Hee Lee as EVP of Intel Foundry to lead advanced packaging, system integration, and back-end manufacturing. Lee is the former president and CEO of SK hynix, and a former Intel veteran.
+Seoul National University signed an MoU with Silicon Catalyst to give Korea’s early-stage system-semiconductor and deep-tech startups access to an incubation and investment network in the US and Japan.
+Sony Semiconductor was approved as the MIPI Alliance’s newest promoter member.
+More fundings
+Hydra Host raised $100M to expand its GPU-as-a-Service capacity.
+KAIST and Georgia Tech engineers demonstrated a manifold microchannel cooler embedded in silicon that dissipated more than 2,000 W/cm² while keeping junction temperature below 100°C, showing a more energy-efficient path for cooling high-power advanced packages.
+UCSD and Google researchers are exploring “phone cluster computing,” in which motherboards of retired smartphones are extracted, collected into clusters, and redeployed as a general-purpose computing platform, creating a data center for researchers and students.
+Harvard University researchers “set a new benchmark for enzymatic DNA synthesis by writing 64 distinct sequences in parallel on a semiconductor chip.”
+MIT engineers have developed a blueberry-sized sensor device capable of providing real-time measurements of a human body’s core temperature from inside the GI-tract. At 6 mm in diameter and 4 mm in height, the device is much smaller than existing ingestible temperature sensors.
+U. of Birmingham researchers highlighted vulnerabilities affecting baseband processors and SIM cards in smartphones. A lack of robust adversarial testing in baseband development has put user data at risk, and SIM cards can trigger phone actions, exposing risks from hostile SIMs, remote SIM management, and SIM software flaws.
+An ISSA study found that 83% of organizations are currently using or planning to use AI for cybersecurity tasks like predictive risk analysis and threat detection, and a quarter of the security organizations increased spending on AI before having “a defined strategy” for the technology in place.
+Imagination Technologiescontributed its GPU IP to the European CHASSIS collaboration’s new Automotive Base Die project, which is developing a standardized chiplet ecosystem for Europe’s auto industry.
+Rambus rolled out its CryptoManager RT-648, an automotive-grade HW root of trust solution that was built around Arm-based CSS ecosystems. The telechip provides isolation across mixed-criticality workloads and supports scalable security across product families.
+Neura Defense Systems announced the launch of a new AI drone detection defense system this week. The system is capable of identifying small drones that emit no radio signal, detecting threats using thermal, acoustic, and visual cues.
+EVs and batteries
+Bloomberg projects an 11% year-over-year growth in global EV sales in 2026. While the report still forecasts that EVs will account for more than half of all passenger vehicles by 2035, it decreased its long-term estimate from last year’s outlook amid slowdowns in sales in the U.S. and China.
+Policy
+Auto association CLEPAurged European Union leaders to mandate that a vehicle contain at least 75% European-manufactured parts in order for it to be considered a “European vehicle.”
+If one AI agent can solve a problem in a certain amount of time, can multiple agents solve it faster? The answer is yes, but only if the agents have well-defined roles and targets. This is where orchestrators fit in, and why they are so critical to agentic AI. Kexun Zhang, head of research at ChipAgents, talks about what exactly AI agents are, how they can be used to solve big problems that would require many experienced engineers, and how to parse a problem to maximize the effectiveness of those agents.
+Quantum
+Government
+SEEQC was awarded participation in a four-year Microelectronics Commons Northeast Regional Defense Technology Hub (NORDTECH) program aimed at advancing scalable fabrication of superconducting qubits using next-gen materials on 300mm industrial-grade Si wafers.
+Barcelona Supercomputing Center and Spain’s government launched the National Supercomputing Laboratory for Dual Technologies, aimed at supercomputing, AI, and quantum technologies.
+Deployments
+IQM deployed Pathfinder, a 20-qubit IQM Radiance system, at Oak Ridge National Lab.
+Cornelis Networksdeployed a 952-node Lynx cluster, featuring Intel Xeon processors, at LLNL.
+Quantum Computing inked a deal with Planck Dynamicsto deploy up to 100 NeuraWave photonic reservoir computers.
+China reached mass production of a key isotope in quantum computing, per SCMP.
+Workforce, Education
+US legislators reintroduced the CHIPS Training in America Act to advance community-college, technical-training, credential, and employer partnership programs for the US chip manufacturing workforce.
+Northern Arizona University now offers a three-year engineering technology degree to prepare students for semiconductor, microelectronics, and advanced manufacturing jobs.
+Danfoss Power Solutions plans to establish manufacturing operations at NY CREATES’ Computer Chip Commercialization Center in New York, creating up to 300 jobs supporting data-center liquid-cooling components.
+InP and SiPho join CMOS as critical technologies. Lasers, CPO and OCS will be everywhere (indium phosphide, silicon photonics, co-packaged optics, optical circuit switch).
+Reducing variation in manufacturing, monitoring behavior over time, and targeting specific workloads can have a big impact on power, performance, and area/cost.
+This website uses cookies to improve your experience while you navigate through the website. The cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities of the website. We also use third-party cookies that help us analyze and understand how you use this website. We do not sell any personal information.
+By continuing to use our website, you consent to our Privacy Policy. If you access other websites using the links provided, please be aware they may have their own privacy policies, and we do not accept any responsibility or liability for these policies or for any personal data which may be collected through these sites. Please check these policies before you submit any personal information to these sites.
+Necessary cookies are absolutely essential for the website to function properly. This category only includes cookies that ensures basic functionalities and security features of the website. These cookies do not store any personal information.
+Any cookies that may not be particularly necessary for the website to function and is used specifically to collect user personal data via analytics, ads, other embedded contents are termed as non-necessary cookies. It is mandatory to procure user consent prior to running these cookies on your website.

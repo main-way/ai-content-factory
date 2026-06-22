@@ -1,0 +1,12 @@
+Mathematics > Numerical Analysis
+Title:Stable and Scalable Probabilistic Numerical Solvers for Stiff and High-Dimensional ODEs
+View PDFAbstract:Filtering-based probabilistic numerical solvers for ordinary differential equations (ODEs) have been established as a flexible and efficient simulation framework with built-in numerical uncertainty quantification. However, problems that are both stiff and high-dimensional remain a challenge, as current methods are either stable and have cubic cost in the ODE dimension, or scale linearly at the expense of stability. In this paper, we close this gap and develop probabilistic ODE solvers that are both stable and scalable. We propose two complementary strategies. First, we develop a matrix-free update step that uses Jacobian-vector products, iterative linear solvers, and stochastic covariance estimation to enable linear scaling, all while retaining stability. Second, we propose iterative re-linearization to further improve stability without sacrificing scalability, turning probabilistic ODE solvers into fully implicit methods. We evaluate the proposed approaches on a range of stiff and high-dimensional problems and demonstrate improved stability and scalability over established probabilistic solvers.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

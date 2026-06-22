@@ -1,0 +1,31 @@
+GITHUB.COM
+There’s a lot going on here, beyond the disruption caused by AI coding tools. It touches on the economic ramifications caused by a reduction of organic traffic and the entitlement expressed by open source consumers.
+This pull request looks simple on the surface, the addition of an llms.txt
+endpoint to a popular open source project (Tailwind, a UI component library) that makes it easier for AI tools and agents to read the technical documentation.
+The project maintainer decided against merging for economic reasons. Despite growing popularity, overall traffic to the documentation site has dropped by 40%. Their website is the primary way their users find out about their commercial products, and as a results, sales have been significantly impacted.
+This drop in traffic is very likely due to people turning to AI chat to answer questions about the framework, rather than heading to the docs directly. This is the very same reason why StackOverflow traffic has collapsed in the last year. AI is unfortunately destroying Tailwind’s primary sales channel and I can totally understand why the maintainer doesn’t want to make it even easier for AI to do this in future.
+It is also likely that the growing capabilities of AI coding agents means that fewer developers are directly working with the Tailwind APIs, rather, they ar directing their agent to do the work for them. AI agents have no need for the commercial support offered by Tailwind.
+The discussion around this pull request also revealed another very worrying theme, that of entitled open source consumers. Numerous commenters considering the maintainers decision to be “OSS-unfriendly”, implying that the community were entitled to some level of influence over this matter. It is very disappointing to see such a lack of understanding of what open source is, how it works, and the challenges faced by people building businesses on open source projects.
+CHRISLOY.DEV
+AI agents can write code far faster than any human being and as a result the cost of code production has dropped significantly (yes, I know, AI generated code still has quality issues). This blog post asks the question “What happens to software when its production undergoes an industrial revolution?”
+When processes become automated and industrialised it significantly reduces the barrier to entry, we have seen that already with the rise of vibe coding. A second order effect of industrialisation is often high-volume production of low-quality goods, in other words, we’ll see a lot of vibe coded disposable software.
+“the feedback loops of novelty and reward will drive an explosion of software output that makes the past half-century of development look quaint by comparison”
+So what does this mean for traditional, hand-crafted software? There is still a place for human creativity, Research and Development and high-value innovation, but we should expect this to more rapidly become industrialised in future, creating a faster flywheel.
+A fascinating post.
+As an aside, I do think there are some notable flaws in the logic. Industrial processes reduce the marginal costs of undertaking repeatable units of work (i.e. each car that exits the assembly line is the same as the last). While each software product is somewhat unique, there are a lot of repeatable processes and common components ‘under the hood’.
+MEDIUM.COM
+Speaking of industrialisation, welcome to the world of Gas Town!
+In this epic (35 min read), Steve Yegge (ex- Amazon, Google, Sourcegraph) unveils his latest creation, a AI-powered software factory. This post starts with numerous reasons why you shouldn’t use Gas Town, taunting us to give it a try.
+When I first read this article I couldn’t work out whether it was the work of a genius, or parody. I think it is a bit of both.
+So what actually is Gas Town? the code is on GitHub if you’d like a look. it is an AI agent orchestration framework designed to manage and scale multiple autonomous coding agents in a coordinated workflow. It acts like a workspace manager that persists work state and provides structured roles and coordination patterns so many agents can work concurrently without losing context. Sounds wonderful, but it is clearly a proof of concept:
+“Work in Gas Town can be chaotic and sloppy, which is how it got its name.”
+Is it worth adopting Gas Town? Almost certainly not.
+It it worth reading this article? Sure, it’s a lot of fun! (and Steve published a 17 min read-time follow up just days after)
+Even if you don’t read this article, you owe it to yourself to spend a bit of time thinking about what the future of software development might look like.
+Personally I think of Gas Town as a work of modern art, it is a provocation rather than a solution.
+The discomfort is intentional. Like a white canvas with a single line, the reaction (“this is absurd / overengineered”) is part of the piece. If you dismiss it outright, you’ve still engaged with its core claim: AI breaks the lone-programmer myth, and our tooling language has not caught up.
+GRANDA.ORG
+The smartphone is an amazing productivity device, supporting small tasks such as checking emails, but also those that are more involved, such as drafting documents. However, despite its ever-growing power, very few people use smartphones for programming. They lack the screen real-estate, the runtime environment and don’t have a terribly good input device (on-screen keyboards are terrible for programming).
+With AI agents, this could be about to change. I’ve seen a growing number of people describing how they have conversations with their AI chatbot or agent of choice, giving it problems to solve, or project briefs, then leaving it to work away on the problem while the do something else instead.
+This blog post describes how to run multiple agents in parallel from a phone. The post itself is pretty technical, so unless you’re looking to create this setup you might want to gloss over the details.
+Technical detail aside, it is interesting to see how AI agents are reshaping not just how we build software but where we are when we’re building it!

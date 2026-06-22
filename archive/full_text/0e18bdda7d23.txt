@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:MMLongEmbed: Benchmarking Multimodal Embedding Models in Long-Context Scenarios
+View PDF HTML (experimental)Abstract:Recent advancements have significantly expanded the theoretical context windows of Multimodal Embedding Models (MEMs). However, larger context windows do not necessarily translate into effective comprehension and representation of long-context multimodal inputs, which remains a critical bottleneck for real-world deployment. To address the lack of systematic evaluation in this setting, we introduce MMLongEmbed, the first comprehensive benchmark for evaluating MEMs in long-context scenarios. MMLongEmbed comprises four retrieval tasks spanning multiple context-length ranges, covering text, document, and video modalities. Through extensive evaluation of state-of-the-art models, we find that current architectures rely heavily on superficial feature matching and struggle to capture deep semantic and structural dependencies. We further observe that performance degradation varies systematically with context length and key information placement. Moreover, models exhibit substantially different robustness to redundant contextual information across modalities. For reproducibility, the benchmark and code are publicly available.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

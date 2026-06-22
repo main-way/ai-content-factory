@@ -1,0 +1,135 @@
+Привет, Хабр! Меня зовут Владимир и это продолжение статьи про разработку локального кодер-агента на LangGraph с доступом к MCP-инструментам.
+В первой части мы создали инфраструктуру, написали простейшего агента и дали ему доступ к MCP-серверам для работы с файлами, кодом Git и документацией. В этой половинке мы добавим агенту немного мозгов. Но для начала немного истории, которая появилась при написании этой статьи.
+Немного истории о том, как глючил GigaChat
+Я не сторонник нагнетания интриги. По-этому, к моменту публикации первой части, вторая часть была почти готова. Выбирая примеры работы агента для скринов я заметил, что иногда не сохраняется файл, хотя агент пишет, что файл сохранён. Проанализировав трейс я понял, что используемый мной для чата ai-sage/GigaChat3-10B-A1.8B поместил сообщение вызова инструмента в поле content
+. Так и не поняв, проблема это модели, SGLang, парсера ответа или всего вместе, я принял судьбоносное решение - а скажу-ка я модели, что она ошиблась. Для этого я сделал простую вещь - если в метаданных ответа указано, что завершение произошло по причине вызова инструментов (tool_calls), но при этом в самом сообщении отсутствует список этих вызовов инструментов, то я добавлял в историю сообщение вида “Ты попытался вызвать инструмент, но сгенерировал невалидный JSON в текстовом поле”. Выглядело это как-то так:
+if message.response_metadata.get('finish_reason') == 'tool_calls' and not message.tool_calls: return {'messages': [HumanMessage(load_prompt_from_langfuse('mcp_agent_error_tool_call_prompt'))]}
+С этого и начались мои проблемы. GigaChat3-10B на это сообщение реагировал вообще неадекватно. Обычно вызову инструмента write_file
+предшествовал вызов генератора кода. Так вот - на моё сообщение узел-агент начинал бесконечно вызывать инструмент генерации кода с одним и тем-же запросом. Продолжал он до тех пор, пока не кончался контекст. Для решения этой проблемы я ввёл счётчик в узел-агент, который прерывал бесконечный цикл. Проблему появления зацикливания это не решило, но хоть ждать теперь было не надо. Следующим шагом стало изменение архитектуры. Тут модель вообще перестала вести себя адекватно, поэтому пришлось переехать на другую, отказавшись от двух моделей. Так как 32 ГБ памяти - это не так много для LLM, что-то стильное, модное, молодёжное и квантованное. Изначально это была cyankiwi/Qwen3.6-35B-A3B-AWQ-4bit. Но в SGLang она мне не генерировала ответы - либо пустое поле, либо просто строчки из восклицательных знаков. Далее была модель nvidia/Qwen3.6-35B-A3B-NVFP4 и переезд на vLLM.
+А теперь вернёмся к разработке агента.
+Архитектура
+Начнём с небольшого философствования - как человек подходит к решению поставленой задачи? Для начала необходимо составить план решения поставленой задачи. После этого необходимо выполнять план по пунктам (ведь мы для этого его и делали), желательно оценивая результат своей деятельности. После выполнения всех пунктов, было бы не плохо взглянуть на целиком проделанную работу и оценить её результат.
+Исходя из этого рассуждения и нарисуем структуру нашего агента. Как писал выше, архитектур у меня было две. Первый вариант - полностью автономный. Получает запрос, планирует план, выполняет шаги с оценкой выполнения:
+Наверное такая архитектура подойдёт для большой модели. С моей же (GigaChat на то время) началась магия - простейшее задание “Напиши функцию…” модель разбивала на 4-5 шагов, сама же потом путалась в плане. Иногда генерила код, а следующим шагом писала в файл заново нагенерированный код. Плюс вскрывшиеся вышеописанные проблемы с зацикливанием. В итоге было решено перейти на “полуавтономный” вариант - результат каждого шага требует вмешательства пользователя. Выглядеть это стало как-то так:
+На основании этой архитектуры и будем строить агент.
+Реализация агента
+Для реализации нашей архитектуры нам понадобится некоторое количество новых узлов и рёбер:
+узел планировщик
+узлы оценщики
+узел инъекции шага плана
+узел сжатия контекста
+узел финализации
+Ну и Стейт также надо доработать. С него и начнём
+AgentState
+class AgentState(MessagesState): user_request: str user_input: str plan: list[dict] current_step: int step_iteration: int history: list[str] phase: Literal['planning', 'executing', 'done'] is_approved: bool trace_id: str
+В стейт мы добавили:
+Запрос пользователя - чтобы всегда был под рукой
+Поле для ввода пользователя - поле для промежуточного общения
+Место для плана от планировщика
+Индекс текущего шага плана
+Счетчик неудачных попыток для защиты от зацикливания
+История выполнения (сжатая)
+Фаза работы агента - планирует, выполняет, закончил
+Подтверждение, что шаг принят пользователем.
+Идентификатор сессии (для организации памяти)
+Для счетчика попыток в настройки агента также надо добавить поле - порог попыток
+class ServiceConfig(BaseModel): # старый код max_step_iterations: int = 30
+Перейдём к узлам
+Узел Планировщик
+Узел старого агента был простой функцией. Раз мы модернизируем архитектуру агента, то и архитектуру узлов углубим и расширим - сделаем узлы классами:
+from langchain.chat_models import BaseChatModel from langchain_core.output_parsers import PydanticOutputParser class PlanerNode: def __init__( self, llm: BaseChatModel, prompt_name: str = 'mcp_agent_planer_prompt', prompt_label: str = 'production' ): self.parser = PydanticOutputParser(pydantic_object=Workflow) self.llm = llm self.prompt = load_prompt_from_langfuse( prompt_name=prompt_name, prompt_label=prompt_label ).format(format_instructions=self.parser.get_format_instructions())
+На выходе узла мы хотим получить список пунктов. Для достижения результата ма используем PydanticOutputParser
+- данный класс позволяет на основе Pydantic модели сформировать дополнение к промпту, которое подскажет модели, что мы хотим на выходе. А метод PydanticOutputParser.parse
+вернёт нам заданный Pydantic-объект. В итоге вместо ответа вида “Хорошо, вот что я могу предложить в качестве плана на твой запрос…” мы получим просто список пунктов. Для этого опишем простую модель:
+from typing import Annotated from pydantic import BaseModel, Field class Workflow(BaseModel): plan: Annotated[list[str], Field(description='Список шагов для выполнения задачи')]
+Для загрузки промптов из LangFuse используется следующая функция:
+def load_prompt_from_langfuse(prompt_name: str, prompt_label: str = 'production') -> str: try: return ( settings.langfuse.client .get_prompt(prompt_name, label=prompt_label) .get_langchain_prompt()) except Exception as e: logger.error(f'Не удалось загрузить промпт "{prompt_name}" из Langfuse: {e}') raise RuntimeError(f'Не удалось загрузить промпт "{prompt_name}" из Langfuse')
+Промпт получаем по имени и тегу (на случай проверки разных вариантов) и следующим шагом преобразуем его в строку, совместимую с Langchain.PromptTemplate
+.
+Дальше код самого узла:
+class PlanerNode: # предыдущий код async def node(self, state: AgentState) -> dict: user_input = state.get('user_input', '') messages = [SystemMessage(content=self.prompt)] + state['messages'] if user_input: messages += [HumanMessage(content=user_input)] response = await self.llm.ainvoke(messages) plan = self.parser.parse(response.content).plan message = 'Проверьте план действий. Подтвердите план словом **"Продолжить"** либо внесите корректировки' for i, item in enumerate(plan, start=1): message += f'\n* Шаг {i}: {item}' return { 'messages': [ HumanMessage(content=user_input), AIMessage(content=message) ] if user_input else [AIMessage(content=message)], 'plan': plan, 'current_step': 0, 'phase': 'planning', 'is_approved': False, }
+Основа - в промпте. В нём надо добиться, чтобы LLM разбила запрос пользователя на отдельные операции (типа написать код, сохранить файл, добавить докстринг и т.п.) и выдать их в виде списка. Конкретные промпты приводить тут не буду, но к репозиторию приложу свой дамп с LangFuse.
+Дальше, с помощью PydanticOutputParser
+, парсим ответ модели и формируем ответ для пользователя - просто перечисляем шаги сформированного плана.
+Поясню за user_input
+- это поле специально отведено под уточняющие сообщения пользователя (как - в разделе про интерфейс). Если в поле что-то есть, значит пользователь просит что-то уточнить, и мы добавляем это в историю сообщений.
+На выходе из узла возвращаем план, обнуляем счётчик шагов, устанавливаем фазу работы агента, сбрасываем флаг подтверждения.
+Инъектор
+Данный узел - способ сообщить текущий шаг агенту. Одно время в узле чистил поле state['messages']
+и заполнял суммаризацией. Но на модели Qwen3.6 от Nvidia суммаризация только всё портила, поэтому оставил только добавление шага плана:
+class StepInjectorNode: def node(self, state: AgentState) -> dict: step_text = state['plan'][state['current_step']] return {'messages': HumanMessage(f'ТЕКУЩИЙ ШАГ, КОТОРЫЙ НУЖНО ВЫПОЛНИТЬ: {step_text}'),}
+Узел-агент
+Конструктор узла стандартный (для моих узлов):
+class AgentNode: def __init__( self, llm: BaseChatModel, prompt_name: str = 'mcp_agent_prompt', prompt_label: str = 'production'): self.llm = llm self.prompt = load_prompt_from_langfuse(prompt_name=prompt_name, prompt_label=prompt_label)
+Дальше сам узел. И начинается он с проверки зацикливания модели:
+from langchain_core.messages import AIMessage, RemoveMessage from langgraph.graph.message import REMOVE_ALL_MESSAGES class AgentNode: # предыдущий код async def node(self, state: AgentState) -> dict: if state.get('step_iteration', 0) > settings.service.max_step_iterations: msg = 'КРИТИЧЕСКАЯ ОШИБКА! Агент зациклился и был сброшен в начальное состояние!' logger.error(msg) return { 'messages': [RemoveMessage(id=REMOVE_ALL_MESSAGES), AIMessage(msg)], 'history': [], 'step_iteration': 0, 'current_step': 0,}
+В случае превышения порога повторов чистим историю сообщений и оставляем одно единственное сообщение об ошибке.
+Очистить историю нельзя просто передав []
+- она объявлена как messages: Annotated[list[AnyMessage], add_messages]
+, и пустой список просто добавится к истории. Для очистки надо использовать специальный тип сообщения RemoveMessage
+. В поле id
+можно передать идентификатор конкретного сообщения либо специальную константу langgraph.graph.message.REMOVE_ALL_MESSAGES
+для очистки всей истории.
+Исполнительный код узла чем-то напоминает планер - формируем системный промпт, добавляем историю, сообщение пользователя (при наличии):
+class AgentNode: # предыдущий код async def node(self, state: AgentState) -> dict: # предыдущий код messages = [SystemMessage(self.prompt)] + state['messages'] if state['user_input']: messages += [HumanMessage(state['user_input'])] response = await self.llm.ainvoke(messages) return { 'messages': [HumanMessage(state['user_request']), response] if state['user_input'] else [response], 'step_iteration': state.get('step_iteration', 0) + 1, 'phase': 'executing', 'is_approved': False, }
+Ответ никак не форматирую - квену оказалось достаточно фразы в промпте “После выполнения текущего шага сообщи, что шаг выполнен, и укажи результат”. В случае чего - можно попросить уточнить ответ и он это сделает. Возвращает узел, кроме сообщений, инкремент шага, фазу “Исполнение” и сброшенный флаг подтверждения.
+Узлы Оценщики
+Тут я решил не перегружать агента, поэтому данные узлы работают по простому принципу - ожидают слово продолжить
+. А два их только из-за того, что маршрутизации графа проще было сделать
+class BaseSolver: @staticmethod async def node(state: AgentState) -> dict: if 'продолжить' in state['user_input'].lower(): return {'is_approved': True, 'user_input': ''} return {'is_approved': False} class PlanSolverNode(BaseSolver): pass class AgentSolverNode(BaseSolver): pass
+Узел Суммаризатор
+Данный узел изначально использовался для уменьшения длины контекста. Но, как говорится, “Что русскому хорошо - немцу смерть”. В нашем случае с Qwen, читая суммаризованные сообщения модель начала давать ответ в таком-же формате. По-этому узел есть, но толку от него в данный момент нет - используется только при подготовке финального ответа.
+Много букв с кодом не очень нужного узла
+Основная идея узла была следующая - теоретически, узел-агент может совершить несколько циклов вызовов инструментов и за один цикл узел-агент может вызвать несколько инструментов. Каждый вызов инструмента маркируется собственным id
+. Таким образом мы можем сгруппировать ToolMessage для отчета.
+Код узла начнем со своеобразной защиты - узлу предстоит работать с сообщениями AIMessage
+и ToolMessage
+, поэтому надо предусмотреть универсальный метод извлечения контента из них:
+class ContextCompressorNode: @staticmethod def _extract_text(content) -> str: if isinstance(content, str): return content.strip() if isinstance(content, list): parts = [] for block in content: if isinstance(block, dict) and block.get('type') == 'text': parts.append(block.get('text', '')) elif isinstance(block, str): parts.append(block) return '\n'.join(p for p in parts if p).strip() return str(content).strip()
+Дальше метод суммаризации. В текущей реализации он просто формирует отчет в одно сообщение:
+class ContextCompressorNode: def _build_steps_summary(self, messages: list) -> str: tool_index = { m.tool_call_id: m for m in messages if getattr(m, 'type', None) == 'tool' and getattr(m, 'tool_call_id', None) } lines = [] for msg in messages: if getattr(msg, 'type', None) != 'ai': continue text = self._extract_text(msg.content) if text: lines.append(f'[ОТВЕТ АГЕНТА]: {text}') continue tool_calls = getattr(msg, 'tool_calls', None) or [] for tc in tool_calls: tool_msg = tool_index.get(tc.get('id')) if tool_msg is not None: result = self._extract_text(tool_msg.content) lines.append(f'[ИНСТРУМЕНТ] "{tc.get("name", "unknown")}". Результат: {result}') return '\n\n'.join(lines) if lines else '(история выполнения пуста)'
+Код использует описанный ранее механизм LangGraph: ToolMessage
+и вызовы инструментов связаны через уникальный tool_call_id
+.
+Первым делом мы проходим по всем сообщениям и собираем все результаты работы инструментов (ToolMessage
+) в словарь. В дальнейшем, конкретный вызов инструмента будем искать в этом словаре, вместо того чтобы заново сканировать весь список.
+Далее начинаем перебирать сообщения, обращяя внимание только на сообщения агента. Если сообщение агента содержит обычный текст (ответ модели), мы добавляем это в итоговую строку. Если текста у сообщения ИИ нет, значит, в нем содержатся запросы на вызов инструментов (поле tool_calls
+). Для каждого id
+из списка вызовов мы получаем результат инструмента и добавляем его в итоговую строку.
+В узле формируем из извлеченного богатства AI сообщение:
+class ContextCompressorNode: def node(self, state: AgentState) -> dict: steps_summary = self._build_steps_summary(state['messages']) step = state['current_step'] history = state.get('history', []) + [ f"[РЕЗУЛЬТАТ ВЫПОЛНЕНИЯ ШАГА {step + 1}] {state['plan'][step]}.\n\n{steps_summary}"] return {'history': history, 'current_step': step + 1}
+Узел Финализатор
+Данный узел подводит итоги проделанной работы. В промпте мы показываем ему план, суммаризованные шаги из истории и просим подвести итог:
+class FinalizerNode: def __init__( self, llm: BaseChatModel, prompt_name: str = 'mcp_agent_finalize_prompt', prompt_label: str = 'production'): self.llm = llm self.prompt = load_prompt_from_langfuse(prompt_name=prompt_name, prompt_label=prompt_label) async def node(self, state: AgentState) -> dict: plan = '\n'.join(f"{i}. {s}" for i, s in enumerate(state.get('plan', []), start=1)) steps_summary = '\n\n'.join(state.get('history', [])) msg = ( f'План: \n{plan}\n\n' f'Результаты выполнения:\n{steps_summary}\n\n' f'Сформируй итоговый ответ для пользователя.') response = await self.llm.ainvoke([SystemMessage(content=self.prompt), HumanMessage(content=msg),]) message = f'Выполнение задачи завершено:\n\n{response.content}' return {'messages': [message], 'phase': 'done', 'is_approved': False}
+С узлами закончили. Но перед тем как перейти к сборке графа, рассмотрим две сущности LangGraph, которые позволят реализовать общение с пользователем: чекпоинтер и прерывания.
+Чекпоинтер
+Чекпоинтер нужен для реализации у графа кратковременной памяти, позволяя приостанавливать, возобновлять и воспроизводить состояние графа из любой точки. Для работы чекпоинтера нужно обязательно передавать в граф идентификатор сессии:
+config = {'configurable': {'thread_id': 'my-thread'}} graph.invoke(inputs, config)
+Чекпоинтер можно сделать локально, а можно на базе Postgres (нужна библиотека langgraph-checkpoint-postgres). Для прода LangGraph рекомендует именно Postgres вариант, но нам хватит и langgraph.checkpoint.memory.InMemorySaver
+Использовать чекпоинтер достаточно просто - создаём экземпляр и подключаем его к графу на этапе компиляции.
+checkpointer = InMemorySaver() graph = workflow.compile(checkpointer=checkpointer)
+Прерывания
+Прерывания нужны для прерывания работы графа
+Могут быть до, внутри и после узла. Первый и третий тип задаются на этапе компиляции графа, а второй реализуется в теле узла с помощью оператора langgraph.types.interrupt
+.
+Для первого и третьего варианта передаём списки имён узлов в компилятор:
+graph = workflow.compile( checkpointer=checkpointer, interrupt_before=['before_node'], interrupt_after=['after_node'],)
+Для второго типа реализуем что-то подобное:
+def ask_user(state: State): answer = interrupt('Как вас зовут?') # Граф останавливается здесь и ждет ответа return {'user_answer': answer} # Когда пользователь ответит, выполнение продолжится
+В любом случае, для возобновления работы графа надо передать в граф специальное сообщение типа langgraph.types.Command
+с параметром update
+для обновления стейта или resume
+для возврата значения. Без этого граф начнет своё выполнение заново.
+Важное уточнение: не понял, баг это или фича, но если после узла идёт условное ребро, то сначала выполнится оно, а уже потом будет останов. Таким образом можно намертво зациклить свой граф, если ребро решает задачу “Повтор/Продолжить”
+Разрыв лонгрида
+У нас готовы все компоненты агента:
+Планировщик - разбивает задачу на шаги
+Инжектор - сообщает агенту текущий шаг
+Исполнитель - выполняет шаги
+Оценщики - проверяют подтверждение пользователя
+Суммаризатор - сжимает историю выполнения
+Финализатор - подводит итоги
+Каждый узел — это изолированная функция, которая принимает состояние и возвращает обновленное. Но пока это просто набор функций. Они не знают друг о друге, не умеют передавать управление и не могут остановиться, чтобы дождаться ответа пользователя.
+В следующей части мы превратим этот набор узлов в работающий граф.
+Код проекта доступен тут
+Первая часть с базой и простым ReAct агентом с MCP инструментами тут

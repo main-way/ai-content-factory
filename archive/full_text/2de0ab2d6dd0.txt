@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:PromptShift-CRC: Drift-Aware Conformal Risk Control for Foundation Models Under Prompt and Domain Shift
+View PDF HTML (experimental)Abstract:Foundation models are now used in settings where the prompts they receive can change quickly. Users change, topics change, policies change, and the model may suddenly face a kind of request that was rare in the calibration data. This makes fixed calibration risky. Conformal prediction and conformal risk control give model-agnostic ways to control error, but they work best when the calibration data still look like the future data. This paper develops PromptShift CRC, a drift-aware conformal risk control method for foundation-model outputs under prompt and domain shift. The method embeds prompts and responses, measures how far the current prompt stream has moved from the calibration pool, gives more weight to relevant or recent calibration examples, and updates the risk level online after observed violations. It reports three practical diagnostics: realized risk error, prompt drift, and effective calibration size. We give conditions under which the method controls risk up to terms for distribution mismatch and weighted quantile uncertainty. In a synthetic prompt-shift benchmark, static conformal risk control fails sharply after drift, while PromptShift-CRC gives the best coverage among the adaptive baselines considered. We then evaluate the same calibration layer on public benchmark derived streams for question answering, toxicity, summarization factuality, and long-context hallucination risk
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

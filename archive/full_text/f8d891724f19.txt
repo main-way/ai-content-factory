@@ -1,0 +1,19 @@
+Anthropic backs off unpopular billing overhaul as price war with OpenAI looms
+Key Points
+- Anthropic is pulling back its planned billing change for the Claude Agent SDK. For now, usage stays within regular subscription limits.
+- The original plan called for fixed credits with usage-based API pricing after that. The move had already angered open-source tool developers.
+- The reversal likely comes down to a brewing price war with OpenAI, an upcoming IPO, and growing pressure from the US government.
+Anthropic planned to separate Agent SDK and third-party app usage from subscription limits. Just before the change was set to go live, the company reversed course.
+Anthropic has paused the billing overhaul it had announced for June 15, 2026. "Nothing changes for now," the company told by email. It's working to better align the plan with actual usage patterns.
+The original plan would have stopped the Agent SDK, the claude -p
+command, and third-party apps from drawing on regular subscription limits starting June 15. Instead, subscribers would have gotten a separate monthly credit, tiered by plan: $20 for Pro users, up to $200 for Enterprise customers. Anyone who exceeded that credit would have switched to usage-based API pricing.
+For now, nothing changes. The Agent SDK, claude -p
+, and third-party apps still draw from regular subscription limits, Anthropic says.
+The reversal is notable because Anthropic had already banned third-party tools like OpenClaw from subscription limits back in April, angering developers. OpenClaw developer Peter Steinberger accused Anthropic of absorbing popular features into its own system and then locking out open-source alternatives. Since then, users could still run their OpenClaw setup through Claude Code/claude -p under their subscription. The planned changes would have killed that workaround too.
+A possible price war and an IPO likely drove the decision
+Several factors probably played into the reversal. According to the Wall Street Journal, OpenAI is considering steep price cuts for its API. Shifting to more expensive usage-based billing in the middle of a price war would be counterproductive. The billing change may only come once Anthropic can offer tokens at lower prices.
+Anthropic has also filed IPO paperwork and wants to go public soon. Losing customers over an unpopular billing change right before a listing would hurt its valuation. More and more enterprise customers are already cutting their AI spending as costs jump from $200 flat rates to several thousand dollars a month under usage-based billing.
+The US government is adding pressure too. It just ordered Anthropic to shut off global access to Fable 5 and Mythos 5 for non-US citizens. More billing restrictions in that tense environment could have driven away even more customers.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

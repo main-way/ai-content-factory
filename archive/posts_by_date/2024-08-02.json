@@ -1,0 +1,42 @@
+{
+  "date": "2024-08-02",
+  "count": 2,
+  "posts": [
+    {
+      "id": "5fa5fb85c424",
+      "title": "SAM 2: Meta's Next-Gen Model for Video and Image Segmentation",
+      "url": "https://blog.paperspace.com/sam-2-metas-next-gen-model-for-video-and-image-segmentation/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-02T23:14:12+00:00",
+      "summary": "In this article, we will explore SAM 2, which expands the capabilities of the original SAM to handle both images and videos. It excels in real-time object segmentation, enabling dynamic interaction through prompts and memory attention.",
+      "author": "Shaoni Mukherjee",
+      "tags": [
+        "Object Detection",
+        "Computer Vision"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "eca4038b3dae",
+      "title": "Два обменянных русских хакера известны суперкардерством и суперинсайдерством",
+      "url": "https://roem.ru/02-08-2024/302220/dva-obmenyannyh-russkih-hackera/?from=roem_rss",
+      "source": "Roem.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2024-08-02T10:15:07+00:00",
+      "summary": "Обменянные первого августа 2024-го года русские хакеры несколько выделялись из общей массы шпионов, разведчиков и диверсантов, которые сменили своё место пребывания в стамбульском аэропорту, о чём напоминает американское издание «Арстекника». Роман Селезнёв понятный и можно даже сказать, типичный представитель андеграундного мира, занимавшийся, судя по приговору, добычей и продажей данных банковских карт, — непривычен разве что размах его деятельности, и необычно выглядит его отец Валерий Селезнёв, действующий депутат Госдумы. Владислав Клюшин занимался куда более необычными вещами.",
+      "author": "Roem.ru",
+      "tags": [
+        "Госвеб",
+        "Текучка",
+        "русские хакеры",
+        "хакеры"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

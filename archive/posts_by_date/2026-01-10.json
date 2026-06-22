@@ -1,0 +1,20 @@
+{
+  "date": "2026-01-10",
+  "count": 1,
+  "posts": [
+    {
+      "id": "61f2be7f43b0",
+      "title": "Information-Driven Design of Imaging Systems",
+      "url": "http://bair.berkeley.edu/blog/2026/01/10/information-driven-imaging/",
+      "source": "BAIR Blog (Berkeley)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-01-10T09:00:00+00:00",
+      "summary": "An encoder (optical system) maps objects to noiseless images, which noise corrupts into measurements. Our information estimator uses only these noisy measurements and a noise model to quantify how well measurements distinguish objects. Many imaging systems produce measurements that humans never see or cannot interpret directly. Your smartphone processes raw sensor data through algorithms before producing the final photo. MRI scanners collect frequency-space measurements that require reconstruction before doctors can view them. Self-driving cars process camera and LiDAR data directly with…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

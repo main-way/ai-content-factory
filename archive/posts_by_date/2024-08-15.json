@@ -1,0 +1,42 @@
+{
+  "date": "2024-08-15",
+  "count": 2,
+  "posts": [
+    {
+      "id": "372328cd68fb",
+      "title": "Divide and Conquer: The Role of Warps in Parallel Processing",
+      "url": "https://blog.paperspace.com/divide-and-conquer-the-role-of-warps-in-parallel-processing/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-15T23:12:08+00:00",
+      "summary": "In this review, we look at the role of warps in parallel processing in GPUs to try and understand what our machines are doing under the hood when training AI models.",
+      "author": "Melani Maheswaran",
+      "tags": [
+        "GPU"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "f66bbec18559",
+      "title": "Save up to $400 on Your Conference Tickets!",
+      "url": "https://becominghuman.ai/save-up-to-400-on-your-conference-tickets-3b65ddbefe8a?source=rss----5e5bef33608a---4",
+      "source": "Becoming Human: AI Magazine",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-15T11:27:24+00:00",
+      "summary": "For the next two weeks, you can save up to $400 on Tickets to the Chatbot Conference 2024. Whether you’re a returning attendee or new to our community, this is the perfect chance to experience the future of AI and chatbot technology at a discounted rate. Here’s What You Can Expect: Insightful Keynotes: Hear from pioneers and innovators who are shaping the world of conversational AI. Interactive Workshops: Dive into hands-on sessions where you’ll learn to design and build AI-Agent in 48hrs and earn a Certification. Networking Opportunities : Connect with top industry leaders and peers in the…",
+      "author": "Stefan Kojouharov",
+      "tags": [
+        "conference",
+        "ai",
+        "ai-workshop",
+        "ai-education",
+        "san-francisco"
+      ],
+      "has_full_text": false
+    }
+  ]
+}

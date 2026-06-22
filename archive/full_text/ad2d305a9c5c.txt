@@ -1,0 +1,143 @@
+A few weeks ago someone from the data team asked whether we could update the database schema which was being populated by one of the tools of our complex agentic system. The update is simple: two new columns are being added to the table.
+The tool definition lived in the agent orchestrator. A second similar version of it lived in the validation agent. A third slightly different and out-of-date version was in a utility module someone had written three sprints ago. The human-in-the-loop approval logic was wired directly into graph edges, one custom implementation per tool. Changing the schema meant touching four files, re-testing each agent separately, and hoping nothing downstream broke silently.
+We fixed it but it raised one serious question: why did we build it this way?
+The honest answer is that we had no alternative. Tool calling in LangGraph is a local concern by design. You define tools where you need them, you call them where you call them and you own all the plumbing. This is manageable when you have only two agents but this becomes a problem when seven agents are sharing overlapping tools with a human gate.
+After doing some research we decided that instead of defining tools locally for every agent we should use a shared resource that can host all our tools and any agent can use them.
+In This Article
+- What is MCP?
+- Building the MCP server
+- Stdio vs HTTP
+- Connecting it to LangGraph
+- Human-in-the-loop at the protocol boundary
+- What can break in production and why?
+- Impact of MCP on our Agentic System
+- Conclusion
+What is MCP?
+The Model Context Protocol is an open standard published by Anthropic in late 2024. It standardises how an AI agent discovers and calls tools. Instead of defining tools inside the orchestrator you run them on a separate server. The agent connects to that server at runtime, asks what tools are available, and gets a list back.
+A senior engineer reading this article will immediately ask: couldn’t I just build a centralised tool registry and inject it into each agent at startup? I asked this to myself and used the tool registry instead of MCP in another system.
+Yes, you could, and if you already have something like that working, MCP is not an emergency. What a bespoke registry doesn’t give you is the interoperability boundary. MCP is a protocol, not a library. Any MCP-compatible client can connect to your server, LangGraph today, a different framework next year. A TypeScript client can call your Python server without any extra integration work. A tool registry doesn’t provide this functionality.
+There’s also a team ownership point. In our case the ML team owned the tools, the application team owned the graph. MCP gave them a clean contract without a shared codebase.
+Building the MCP Server
+An MCP server can expose three things: Tools (callable actions), Resources (read-only data), and Prompts (reusable templates). For an agentic system that needs to take some actions, tools are the primary concern.
+The Python SDK ships with FastMCP, which handles schema generation from type hints and manages protocol lifecycle. You have to write a function and decorate it with a tool decorator and the server takes care of the rest.
+One thing that catches people out with stdio transport: never write to stdout. The MCP protocol uses stdout as its communication channel. Any stray print()
+call will corrupt the message stream in ways that are very confusing to debug.
+import sys
+import logging
+from mcp.server.fastmcp import FastMCP
+logging.basicConfig(level=logging.INFO, stream=sys.stderr)
+logger = logging.getLogger("analyst-tools")
+mcp = FastMCP("analyst-tools")
+@mcp.tool()
+async def run_analysis(code: str, dataset: str) -> dict:
+"""
+Executes a Python snippet against live data and returns the result.
+Use when the user wants to compute aggregates, filter records,
+or derive insights. The code must assign its final output to a
+variable named 'output'.
+Args:
+code: Python code to execute.
+dataset: One of 'sales', 'inventory', 'pipeline'.
+"""
+logger.info(f"run_analysis | dataset={dataset}")
+return await execute_in_sandbox(code, dataset)
+@mcp.tool()
+async def write_to_db(table: str, payload: dict) -> dict:
+"""
+Persists a result record to the analyst results table.
+Only call this after run_analysis has returned a verified output.
+Args:
+table: Target table name.
+payload: Key-value pairs to write as a new record.
+"""
+logger.info(f"write_to_db | table={table}")
+return await persist_result(table, payload)
+if __name__ == "__main__":
+mcp.run(transport="stdio")
+The docstrings are used by the LLM to help the agent decide which tool to call. So, writing a good docstring is very important.
+Stdio vs HTTP
+This decision comes up in every production deployment and most articles skip over it.
+Stdio runs the server as a subprocess of the client. Communication happens over standard input and output. Latency is single-digit milliseconds, there’s no network involved, and setup is minimal. The right choice for local development, single-machine deployments, or anywhere the server and client live in the same process tree.
+Streamable HTTP runs the server as an independent service. Use this when the server needs to be shared across multiple clients or machines, when you want to deploy it as a container, or when you need horizontal scaling. Serverless deployments like Cloud Run work well here. Stdio doesn’t fit the serverless model at all because it assumes a long-lived parent process.
+Switching between these in FastMCP is just one line:
+mcp.run(transport="streamable-http", host="0.0.0.0", port=8080)
+We just have to change the transport in mcp.run()
+and everything else remains the same.
+For data residency requirements, an MCP server running on-premise with tools that never touch an external API gives you a clean story for your compliance team. The protocol doesn’t care where the server runs.
+Connecting it to LangGraph
+The langchain-mcp-adapters
+library manages the subprocess lifecycle, performs the tool discovery handshake, and translates MCP tool schemas into LangChain-compatible tool objects.
+from langchain_mcp_adapters.client import MultiServerMCPClient
+from langgraph.graph import StateGraph, MessagesState, START
+from langgraph.prebuilt import ToolNode, tools_condition
+from langchain_google_vertexai import ChatVertexAI
+llm = ChatVertexAI(
+model="gemini-2.5-flash",
+temperature=0,
+max_tokens=None
+)
+async def run(query: str):
+async with MultiServerMCPClient({
+"analyst-tools": {
+"command": "python",
+"args": ["./mcp_server.py"],
+"transport": "stdio",
+}
+}) as client:
+tools = await client.get_tools()
+llm_with_tools = llm.bind_tools(tools)
+def agent_node(state: MessagesState):
+return {"messages": [llm_with_tools.invoke(state["messages"])]}
+graph = StateGraph(MessagesState)
+graph.add_node("agent", agent_node)
+graph.add_node("tools", ToolNode(tools))
+graph.add_edge(START, "agent")
+graph.add_conditional_edges("agent", tools_condition)
+graph.add_edge("tools", "agent")
+app = graph.compile()
+result = await app.ainvoke({
+"messages": [{"role": "user", "content": query}]
+})
+print(result["messages"][-1].content)
+tools_condition
+is a built-in LangGraph module that checks whether the last message contains tool calls or not. If yes, route to the tool executor and if no, we’re done. Using it instead of writing your own routing function matters because it handles edge cases and implementation misses.
+One behaviour worth knowing: MultiServerMCPClient
+creates a new MCP session per tool call by default. For a single request that makes five sequential tool calls, that’s five handshakes. Fine for stdio on the same machine, but noticeable on HTTP transport with a remote server. For production workloads with chained tool calls, use async with client.session("analyst-tools")
+to pin multiple calls to one session.
+Human-in-the-Loop at the Protocol Boundary
+Before MCP, our approval gate lived in the graph. We used interrupt_before
+on specific nodes, wired custom confirmation logic into graph edges, and updated the UI every time a new sensitive tool was added. It worked but it also meant that adding a tool that required approval was a three-team co-ordination exercise.
+After MCP, the gate moves to a single layer between the LangGraph executor and the MCP client. Any tool matching the sensitivity policy hits the gate before reaching the server. The graph has no knowledge of it.
+SENSITIVE_TOOLS = frozenset({"write_to_db", "send_notification", "trigger_webhook"})
+async def gated_call(tool_name: str, arguments: dict, execute) -> dict:
+if tool_name in SENSITIVE_TOOLS:
+# In production: push to Slack / internal UI / audit queue
+print(f"\nAPPROVAL REQUIRED {tool_name}")
+print(f"Arguments: {arguments}")
+decision = input("Approve? (y/n): ").strip().lower()
+if decision != "y":
+return {
+"status": "rejected",
+"reason": f"Operator declined '{tool_name}'."
+}
+return await execute(tool_name, arguments)
+SENSITIVE_TOOLS
+is a single set, consulted for every tool call regardless of which agent triggered it. New sensitive tool added to the server? Add the name to this set. The graph doesn’t change. The approval UI doesn’t change. In our internal system we loaded this from a config file at startup. Product and compliance team could update it without a code deployment.
+What can break in Production and Why?
+Server crashes mid-execution. The client will receive an error on the next tool call. LangGraph’s ToolNode surfaces this back to the LLM as a tool error message. Whether the model recovers or loops in confusion depends on your system prompt. At minimum, log the subprocess stderr separately so you can see what killed the server, without it debugging is a guesswork.
+The LLM calls the wrong tool. MCP doesn’t protect you from this. If your tool descriptions are vague or overlap in meaning, the model will make the wrong routing decision. We spent considerable time tuning the docstrings in our server specifically because a poorly-worded description was causing write_to_db
+to get called before run_analysis
+had finished. Treat tool descriptions as a prompt engineering problem.
+Approval gate on long-running workflows. If a human needs to approve a tool call and it takes five minutes, the agent graph is suspended waiting. LangGraph supports persisting graph state via checkpointing, so you can let the process exit and resume when the decision arrives. That’s more involved than what’s shown here but it’s the right architecture for workflows that can’t block a thread indefinitely.
+Impact of MCP on our Agentic System
+We migrated seven tools on the server, three of them are approval-gated. The orchestrator that calls them has no knowledge of what any of them do.
+We completely eliminated the tool duplication. Now, run_analysis
+is defined exactly in one place serving seven workflows simultaneously. To update the output schema we just have to make changes in the server and then every consumer will pick up the change.
+Adding new capabilities became fast. For example we added a generate_visualisation
+tool the following week and the agent was using it the very next day. No orchestrator changes are made.
+We ended up with one team owning the tools, another owning the graph, and a clear contract between them. When the analyst team wants a new capability, they talk to the ML team about the server, not the application team not the graph team.
+I want to share one thing that MCP doesn’t fix: It won’t make unreliable tools reliable. It won’t help the LLM make better routing decisions if your descriptions are bad. And it doesn’t replace observability, you still need to log tool calls and trace execution paths. The structure makes these easier to instrument, but the work is still yours.
+Conclusion
+By transitioning to MCP and moving tools out of our local agent orchestrator into a dedicated server, we cleaned up our codebase, decoupled our engineering constraints and made the whole agentic system easy to deploy.
+Because of this transition our ML team can now deploy and version tools independently without touching the application graph.
+If you enjoyed this MCP deep dive, I’d encourage you to check out my ongoing series: The RAG for Enterprise Knowledge Base at Hybrid Search and Re-ranking in production RAG.

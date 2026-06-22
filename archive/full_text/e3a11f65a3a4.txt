@@ -1,0 +1,134 @@
+Введение
+Разговоров про беспарольный вход сейчас очень много, но я по-прежнему часто сталкиваюсь с тем, что люди не до конца понимают, как это работает на практике и какие данные реально хранятся в системе. Последней каплей к написанию этой статьи стала фраза знакомого: «Я пользуюсь паролем, потому что я не хочу, чтобы мои пальчики хранились в каком-то сервисе»... Вдох, выдох и погнали от простого понимания к реализации в коде.
+Что такое беспарольный вход
+Сперва определимся, что такое беспарольный вход и какие варианты существуют. Из самого названия понятно, что во время входа не участвует пароль, но нужно понимать, что именно в данном случае подразумевается под паролем. А именно в этом контексте подразумевается статичный пароль, который не меняется на протяжении какого-то времени. В современном мире какой бы сложности ни был пароль, он остается уязвимым. Мы не будем разбирать механики его угона, но поверьте: в интернете на эту тему тонны информации, и вывод всегда один — пароль и безопасность теперь по разные стороны баррикад.
+Так какие же методы беспарольной авторизации существуют? Если отвечать техническим языком, то это способы входа, основанные на OTP, WebAuthn и mTLS. В корпоративной среде еще используется протокол Kerberos, но он немного для другого предназначен, и по нему я, пожалуй, потом напишу отдельную статью. А с точки зрения обычного пользователя это вход через Яндекс Ключ и аналоги, почту, звонок, СМС, пуш, а также при помощи различных девайсов или сертификатов.
+OTP — это идея, концепция входа по одноразовым паролям. Она так и переводится: one time password — одноразовый пароль. Такой способ считается достаточно безопасным и широко распространен, но не всегда удобен, так как под рукой должен быть девайс с установленным приложением. По личным наблюдениям, социальные гиганты уже увели этот способ входа на второй план.
+WebAuthn — это стандарт (часть экосистемы FIDO2) для входа через девайс, который мы и рассмотрим более подробно, так как именно он используется для входа по пальчикам и Face ID. В последнее время этот подход приобретает наибольшую популярность, так как его активно продвигают смартфоны и различные мобильные приложения, он достаточно удобен в использовании и действительно надежен. Более того, в свете обилия фишинговых ресурсов этот способ входа хорошо защищает пользователя от попадания на них.
+FIDO2 — это набор технологий (включающий WebAuthn как компонент и протокол CTAP для связи с внешними аутентификаторами), который позволяет провести аналогичную авторизацию, в том числе через внешний USB-ключ. В этой статье мы рассматриваем его в рамках работы WebAuthn, так как с точки зрения кода эти компоненты интегрируются через одну и ту же библиотеку.
+mTLS — это вход по сертификатам. Пожалуй, особая каста беспарольных способов входа, так как она требует определенных заморочек, но при этом является чуть ли не лучшим вариантом для корпоративной среды.
+Как работает WebAuthn
+Попробую описать этот стандарт сперва простым языком. Он подразумевает, что ваше устройство с вашего разрешения создает некое секретное рукопожатие с определенным ресурсом, что позволяет в дальнейшем этому устройству с вашего же разрешения заходить на данный ресурс. Именно тут две основные идеи: секретное рукопожатие и рукопожатие с конкретным ресурсом. Первая идея обеспечивает беспарольность и стойкость к взлому, а вторая отвечает за то, чтобы вы случайно не зашли на фишинговую страницу, так как с подставным ресурсом у вас такого рукопожатия нет.
+Если же обращаться к более техническому языку, то WebAuthn подразумевает создание для определенного ресурса пары ключей — закрытого и открытого. Закрытый ключ хранится на вашем устройстве и не покидает его, а открытый отправляется на ресурс в момент регистрации для хранения и последующей проверки подлинности входа. Когда вы входите в сервис, инициализируется challenge (криптографический вызов), который ваше устройство подписывает своим секретным ключом и отправляет обратно на проверку, где сервис при помощи открытого ключа проверяет, вы ли это.
+Где хранится биометрия
+А вот теперь самое интересное. В сервисе, который поддерживает Passkey/WebAuthn, ваши реальные пальчики и ваше лицо не хранятся. Более того, сам сервис их даже не видит. Face ID, Touch ID, Windows Hello и прочие похожие механизмы работают как локальный способ разблокировать секретный ключ на устройстве. То есть биометрия в этой схеме нужна не для того чтобы отправить ее куда-то на сервис, а для того чтобы само устройство убедилось, что это действительно вы и разрешили использовать закрытый ключ.
+Если говорить совсем по-простому, то сайт получает не отпечаток пальца и не фотографию лица, а секретное рукопожатие. Поэтому на фразу «Не хочу, чтобы мои пальчики лежали в сервисе» можно ответить так: «Ваши пальчики дальше вашего устройства не уходят».
+Стойте! Я прям представляю, как всезнайки полезли в комменты, чтобы накидать злобные комменты, что девайсы ваши не девайсы, а дырки с экраном, всё утекает, всё взламывается. Мы в этой статье обсуждаем про взаимодействие между пользователем девайсом и сервисом по WebAuthn, а не про то, что круче: Android или iOS и тому подобное.
+Практическая реализация WebAuthn
+Чтобы это не выглядело как теория ради теории, добавлю немного основных принципов подключения WebAuthn.
+Формируем подход
+Для реализации мы используем несколько библиотек, которые берут на себя львиную долю работы самого WebAuthn:
+на backend нам потребуется @simplewebauthn/server;
+на frontend @simplewebauthn/browser.
+WebAuthn предполагает два сценария: регистрация и авторизация. В одном случае это передача и сохранение открытого ключа на сервисе для пользователя. А во втором это проверка рукопожатия и определение пользователя.
+Fronted инициализирует начало одного из сценариев, а backend сопровождает, контролируя уже этот процесс.
+Совет: На практике столкнулся, что не все девайсы поддерживают универсальные настройки, поэтому рекомендую заводить разделение на platform и cross-platform аутентификаторы. Проще говоря, встроенная биометрия устройства или внешний ключ безопасности. Более того, такое разделение позволяет настроить систему более гибко: можно разрешать Face ID и Windows Hello или требовать только внешний токен.
+Совет: Также из удобства рекомендую добавить логику проверки, есть ли у пользователя такой способ входа или нет, чтобы вывести пользователю форму добавления недостающего идентификатора. Это своего рода правило хорошего тона реализации комфортного MFA (многофакторная аутентификация).
+Основные моменты
+Если описать последовательность работы WebAuthn для обычного сервиса, то почти всегда есть две ветки: у пользователя уже есть связка с сервисом, либо этой связки еще нет и ее нужно создать.
+Если связка уже есть
+Frontend, то есть страница входа или виджет, инициирует вход через WebAuthn.
+Frontend отправляет на backend запрос с просьбой начать аутентификацию.
+Backend возвращает challenge и параметры WebAuthn.
+Frontend вызывает браузерный WebAuthn API.
+Устройство пользователя локально подтверждает личность и подписывает challenge закрытым ключом.
+Frontend отправляет
+authenticationResponse
+обратно на backend.Backend проверяет ответ по открытому ключу, находит пользователя и завершает авторизацию.
+Если связки еще нет
+Frontend инициирует регистрацию нового WebAuthn credential.
+Frontend отправляет на backend запрос с просьбой начать регистрацию.
+Backend возвращает challenge и параметры WebAuthn для регистрации.
+Frontend вызывает браузерный WebAuthn API уже в режиме регистрации.
+Устройство пользователя создает новую пару ключей для конкретного сервиса.
+Закрытый ключ остается на устройстве.
+Frontend отправляет
+registrationResponse
+обратно на backend.Backend проверяет ответ и сохраняет открытый ключ,
+credential id
+и технические метаданные новой связки.
+Если говорить совсем коротко, то разница между этими двумя ветками всего одна: при аутентификации устройство доказывает владение уже существующим закрытым ключом, а при регистрации устройство создает новую пару ключей и отдает сервису только открытый ключ.
+Как это выглядит на backend
+Для сервиса это обычно выглядит как четыре базовые точки (контроллера):
+GET /webauthn/register/options
+POST /webauthn/register/verify
+GET /webauthn/authenticate/options
+POST /webauthn/authenticate/verify
+Для примеров возьму типовой стек на Node.js
+и @simplewebauthn/server
+.
+Backend готовит registration options
+На шаге регистрации backend должен вернуть frontend challenge и параметры, с которыми браузер сможет создать новый credential.
+import { generateRegistrationOptions } from '@simplewebauthn/server'; app.get('/webauthn/register/options', async (req, res) => { const user = await getCurrentUser(req); const options = await generateRegistrationOptions({ rpName: 'My Service', rpID: 'example.com', userID: new Uint8Array(Buffer.from(user.id)), userName: user.email, userDisplayName: user.name, attestationType: 'none', authenticatorSelection: { residentKey: 'preferred', userVerification: 'preferred', }, }); await saveChallenge(`reg:${user.id}`, options.challenge); res.json(options); });
+Смысл этого шага очень простой:
+backend создает challenge
+привязывает его к конкретному пользователю
+отдает frontend параметры для создания credential
+Backend проверяет registration response
+Когда frontend вернет registrationResponse
+, backend должен проверить его и сохранить новую связку.
+import { verifyRegistrationResponse } from '@simplewebauthn/server'; app.post('/webauthn/register/verify', async (req, res) => { const user = await getCurrentUser(req); const expectedChallenge = await getChallenge(`reg:${user.id}`); const verification = await verifyRegistrationResponse({ response: req.body, expectedChallenge, expectedOrigin: 'https://example.com', expectedRPID: 'example.com', requireUserVerification: true, }); if (!verification.verified || !verification.registrationInfo) { return res.status(400).json({ ok: false }); } await saveCredentialForUser(user.id, { credentialID: verification.registrationInfo.credential.id, publicKey: Array.from(verification.registrationInfo.credential.publicKey), counter: verification.registrationInfo.credential.counter, aaguid: verification.registrationInfo.aaguid, }); res.json({ ok: true }); });
+Вот здесь и находится главный ответ на вопрос про «пальчики в базе». После регистрации сервис обычно сохраняет:
+publicKey
+. Публичный ключ (Открытый ключ).counter
+. Счетчик попыток авторизаций.и другую техническую метаинформацию, необходимую для работы.
+Но не биометрию пользователя.
+Backend готовит authentication options
+Если связка уже существует, backend должен начать не регистрацию, а аутентификацию.
+import { generateAuthenticationOptions } from '@simplewebauthn/server'; app.get('/webauthn/authenticate/options', async (req, res) => { const user = await findUserByLogin(req.query.login as string); const credentials = await getUserCredentials(user.id); const options = await generateAuthenticationOptions({ rpID: 'example.com', userVerification: 'preferred', allowCredentials: credentials.map((item) => ({ id: item.credentialID, type: 'public-key', })), }); await saveChallenge(`auth:${user.id}`, options.challenge); res.json(options); });
+Тут есть несколько важных идей.
+Во-первых, challenge живет короткое время и является одноразовым.
+Во-вторых, rpID
+привязывает весь поток к конкретному домену сервиса.
+В-третьих, backend может ограничить allowCredentials
+только теми устройствами, которые действительно принадлежат пользователю.
+Backend проверяет authentication response
+На последнем шаге backend принимает ответ устройства и делает уже настоящую криптографическую проверку.
+import { verifyAuthenticationResponse } from '@simplewebauthn/server'; app.post('/webauthn/authenticate/verify', async (req, res) => { const user = await findUserByLogin(req.body.login); const credential = await getCredentialByID(req.body.id); const expectedChallenge = await getChallenge(`auth:${user.id}`); const verification = await verifyAuthenticationResponse({ response: req.body, expectedChallenge, expectedOrigin: 'https://example.com', expectedRPID: 'example.com', credential: { id: credential.credentialID, publicKey: new Uint8Array(credential.publicKey), counter: credential.counter, }, requireUserVerification: true, }); if (!verification.verified) { return res.status(401).json({ ok: false }); } await updateCredentialCounter( credential.credentialID, verification.authenticationInfo.newCounter, ); await createSessionForUser(user.id); res.json({ ok: true }); });
+На этом шаге backend:
+Достает ранее сохраненный challenge.
+Находит нужный
+credentialID
+.Берет связанный с ним открытый ключ.
+Проверяет
+expectedChallenge
+.Проверяет
+expectedOrigin
+.Проверяет
+expectedRPID
+.Проверяет
+counter
+.
+Именно проверки expectedOrigin
+и expectedRPID
+формируют антифишинговую защиту в WebAuthn. Сервис проверяет не только подпись, но и то, что она была сделана именно в контексте нужного домена.
+Как это подключить на frontend
+На frontend несколько главных задач: получить options от backend, вызвать браузерный WebAuthn API и отправить результат обратно.
+Для примеров возьму @simplewebauthn/browser
+.
+Регистрация нового credential:
+import { startRegistration } from '@simplewebauthn/browser'; async function registerPasskey() { const optionsResponse = await fetch('/webauthn/register/options'); const options = await optionsResponse.json(); const registrationResponse = await startRegistration(options); const verifyResponse = await fetch('/webauthn/register/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(registrationResponse), }); return verifyResponse.json(); }
+Аутентификация по уже существующей связке:
+import { startAuthentication } from '@simplewebauthn/browser'; async function loginWithPasskey(login: string) { const optionsResponse = await fetch( `/webauthn/authenticate/options?login=${encodeURIComponent(login)}`, ); const options = await optionsResponse.json(); const authenticationResponse = await startAuthentication(options); const verifyResponse = await fetch('/webauthn/authenticate/verify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ login, ...authenticationResponse, }), }); return verifyResponse.json(); }
+Этот кусок очень показателен. Frontend:
+не собирает биометрию;
+не анализирует отпечаток или лицо;
+не хранит закрытые ключи.
+Он просто получает challenge, вызывает startRegistration(...)
+или startAuthentication(...)
+и отправляет на backend результат криптографической операции.
+Запросить привязку можно прямо в момент авторизации
+Это еще одна очень полезная идея. WebAuthn не обязательно подключать только заранее в профиле. Сервис может предложить пользователю зарегистрировать passkey прямо в момент входа.
+Упрощенно это выглядит так:
+Пользователь пытается войти в сервис.
+Сервис понимает, что у него еще нет WebAuthn-связки.
+Вместо обычной ошибки сервис предлагает сразу зарегистрировать passkey.
+Frontend проходит стандартный registration flow.
+После успешной регистрации пользователь может сразу же использовать новую связку для следующих входов.
+На практике многие сервисы реализуют именно эту идею.
+Общая диаграмма
+Можно весь процесс обрисовать в одной sequence диаграмме где в типовой реализации backend выдает challenge, frontend запускает браузерный WebAuthn API, устройство локально подтверждает пользователя, а backend проверяет подпись по открытому ключу. На стороне сервиса при этом остаются только открытый ключ и технические метаданные credential. А сама биометрия как была внутри устройства пользователя, так там и остается.
+Подведем черту
+Если подводить итог совсем коротко, то Passkey/WebAuthn — это история не про хранение ваших пальчиков в каком-то облаке, а про то, что устройство пользователя хранит у себя закрытый ключ и по локальному подтверждению личности подписывает challenge для конкретного сервиса.
+А если вы столкнетесь с теми кто вам скажет: «Хочу использовать пароль, пальчики не хочу светить», то поделитесь этой статьей. Надеюсь, она пролила свет на некоторые технические аспекты, связанные с WebAuthn.
+PS: Если вас заинтересовала кодовая составляющая, то вы можете ее более подробно рассмотреть в публичном репозитории нашего продукта.

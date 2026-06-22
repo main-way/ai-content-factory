@@ -1,0 +1,13 @@
+Statistics > Machine Learning
+Title:Toward Simultaneously Optimal Regret in U-Calibration
+View PDF HTML (experimental)Abstract:U-calibration studies online forecasting algorithms whose predictions can be consumed by any unknown downstream agent, guaranteeing sublinear regret simultaneously for all proper loss functions. Existing U-calibration algorithms achieve worst-case optimal $O(\sqrt{T})$ regret for every bounded proper loss, but they fail to adapt to easier losses: as we show, even for smooth losses such as squared loss, they incur $\Omega(\sqrt{T})$ regret instead of the optimal $O(\log T)$ regret.
+In this work, we show that this limitation is not inherent. Specifically, we design a single forecast algorithm that simultaneously achieves $\tilde O(\sqrt{T})$ regret for every bounded proper loss and $O(\log T)$ regret for every bounded smooth proper loss. More generally, our algorithm also attains logarithmic regret for losses that are smooth relative to the log-barrier, which include several non-Lipschitz examples. Our approach is based on a novel variant of Follow-the-Perturbed-Leader (FTPL) in which perturbations are applied directly in the prediction space using self-concordant noise. The resulting analysis also departs substantially from prior FTPL analyses due to the complex nature of this noise and may be of independent interest.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

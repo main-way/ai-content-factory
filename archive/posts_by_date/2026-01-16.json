@@ -1,0 +1,37 @@
+{
+  "date": "2026-01-16",
+  "count": 2,
+  "posts": [
+    {
+      "id": "ca731494b194",
+      "title": "Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews",
+      "url": "https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai",
+      "source": "VentureBeat AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-01-16T14:01:00+00:00",
+      "summary": "Alfred Wahlforss was running out of options. His startup, Listen Labs , needed to hire over 100 engineers, but competing against Mark Zuckerberg&#x27;s $100 million offers seemed impossible. So he spent $5,000 — a fifth of his marketing budget — on a billboard in San Francisco displaying what looked like gibberish: five strings of random numbers. The numbers were actually AI tokens. Decoded, they led to a coding challenge: build an algorithm to act as a digital bouncer at Berghain, the Berlin nightclub famous for rejecting nearly everyone at the door. Within days, thousands attempted the…",
+      "author": "michael.nunez@venturebeat.com (Michael Nuñez)",
+      "tags": [
+        "Technology",
+        "AI"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "c8180f9d1506",
+      "title": "Issue #27",
+      "url": "http://augmentedcoding.dev/issue-27/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-01-16T00:00:00+00:00",
+      "summary": "A better way to limit Claude Code (and other coding agents!) access to Secrets PATRICKMCCANNA.NET Coding agents are truly powerful tools, able to bash out large quantities of code which hopefully does what you want it to. Towards the end of last year many people were sharing just how successful these agents can be if you just let them run unchecked. Terms like Yolo Mode , where you allow the agent to run any command it wants unchecked; and Ralph Wiggum loop , where you don’t send too much time questioning a agents approach, you just let it keep bashing away at a problem until it is done, were…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

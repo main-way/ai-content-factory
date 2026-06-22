@@ -1,0 +1,12 @@
+Computer Science > Artificial Intelligence
+Title:Exit-and-Join Dynamics for Decentralized Coalition Formation
+View PDF HTML (experimental)Abstract:This paper studies coalition formation as a decentralized dynamical process driven by unilateral exit-and-join decisions. Agents evaluate local moves using the Aumann-Dreze value, so payoffs are computed within the agent's current coalition rather than through a globally negotiated coalition structure. The resulting model links cooperative payoff allocation with noncooperative best-response behavior: a terminal partition is precisely a coalition structure with no admissible, individually profitable exit-and-join deviation. We establish equilibrium characterizations, identify conditions under which the dynamics admit scalar Lyapunov or exact-potential representations, and analyze how switching and acceptance costs shape local stability. Numerical experiments test finite-time stabilization, cost sensitivity, and a special convex-game benchmark.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

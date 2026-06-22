@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:FineGen: A VLM-based Multi-Agent Framework for Fine-Grained Image-Text Dataset Construction
+View PDF HTML (experimental)Abstract:The scarcity of hard negative samples in current vision-language datasets significantly hinders fine-grained perception. To address this, we propose FineGen, a VLM-based Multi-Agent framework for automated dataset construction. By employing a collaborative Generation-Verification-Correction pipeline with a closed-loop feedback mechanism, FineGen ensures synthesized hard negatives are semantically valid yet strictly contradictory to visual content. Applying this to ImageNet, we construct FineGen-100K, a hierarchical dataset containing over 147,000 attribute-specific hard negatives with a rigorous 1:10 positive-to-negative ratio. Extensive evaluations confirm a 96.7% attribute validity rate. Crucially, downstream validation on the FG-OVD benchmark shows that fine-tuning on FineGen-100K yields a substantial +14.4% accuracy improvement on hard samples, significantly outperforming state-of-the-art methods.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

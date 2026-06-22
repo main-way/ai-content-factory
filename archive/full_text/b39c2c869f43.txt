@@ -1,0 +1,12 @@
+Statistics > Methodology
+Title:Deterministic Denominator Design for Localized Tamed Stochastic-Gradient Langevin Dynamics
+View PDF HTML (experimental)Abstract:Tamed stochastic-gradient Langevin dynamics (SGLD) stabilizes large drifts by adding a denominator to the update. If this denominator uses the same stochastic-gradient sample as the update step, it can also change the conditional mean drift. We study deterministic denominators: the state-dependent envelope is fixed before the current oracle sample is drawn. The main question is how to design this envelope in practice. The design starts from an oracle score, builds a low-cost proxy score on pilot states, chooses activation thresholds by empirical quantiles, and then applies a small calibration layer. The analysis tracks three steps: proxy and threshold errors become envelope errors; envelope errors perturb one SGLD step; and the local residuals give stationary errors through a conditional perturbation bridge. Experiments show that the proxy-quantile denominators are close to oracle-score behavior, avoid the random-denominator mean-shift channel, and improve simple deterministic taming choices.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

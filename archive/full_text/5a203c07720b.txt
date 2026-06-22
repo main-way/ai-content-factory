@@ -1,0 +1,17 @@
+Computer Science > Sound
+Title:Benchmarking Cross-Domain Audio-Visual Deception Detection
+View PDF HTML (experimental)Abstract:Automated deception detection is crucial for assisting humans in accurately assessing truthfulness and identifying deceptive behavior. Conventional contact-based techniques, like polygraph devices, rely on physiological signals to determine the authenticity of an individual's statements. Nevertheless, recent developments in automated deception detection have demonstrated that multimodal features derived from both audio and video modalities may outperform human observers on publicly available datasets. Despite these positive findings, the generalizability of existing audio-visual deception detection approaches across different scenarios remains largely unexplored. To close this gap, we present the first cross-domain audio-visual deception detection benchmark, that enables us to assess how well these methods generalize for use in real-world scenarios. We used widely adopted audio and visual features and different architectures for benchmarking, comparing single-to-single and multi-to-single domain generalization performance. To further exploit the impacts using data from multiple source domains for training, we investigate three types of domain sampling strategies, including domain-simultaneous, domain-alternating, and domain-by-domain for multi-to-single domain generalization evaluation. We also propose an algorithm to enhance the generalization performance by maximizing the gradient inner products between modality encoders, named ``MM-IDGM". Furthermore, we proposed the Attention-Mixer fusion method to improve performance, and we believe that this new cross-domain benchmark will facilitate future research in audio-visual deception detection.
+Submission history
+From: Xiaobao Guo [view email][v1] Sat, 11 May 2024 12:06:31 UTC (4,247 KB)
+[v2] Sat, 5 Oct 2024 07:32:03 UTC (5,348 KB)
+[v3] Thu, 24 Jul 2025 03:00:38 UTC (2,907 KB)
+[v4] Wed, 10 Jun 2026 05:04:18 UTC (2,910 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

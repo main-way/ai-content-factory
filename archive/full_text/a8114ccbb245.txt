@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Selective Unit-Cell Actuation in Lattice Structures for Distributed Morphology in Soft Robots
+View PDF HTML (experimental)Abstract:Soft lattice structures are increasingly used in robotics to tailor compliance and guide deformation; however, actuation is typically introduced at the device or module level, with actuators inserted into otherwise passive architectures. In this work, we move actuator-lattice co-design to the unit-cell scale. We present an embedded pneumatic unit cell that integrates curved-strut lattice geometry with a bidirectional bellow actuator within a single monolithic element. When tessellated, the lattice functions as a distributed actuation field in which global morphology is governed by spatial actuation patterns rather than uniform pressurization. Experimental characterization of 1x1, 2x2, and 3x3 tessellations demonstrates scalable displacement and force generation with repeatable cyclic performance. Selective actuation of unit cells in a 3x3x3 array produces distinct global deformation modes, including bending and directional grasping, without altering hardware configuration. Additionally, coupling active and passive unit cells enables bending-driven crawling locomotion, demonstrating that heterogeneous tessellations can translate through asymmetric deformation. These results establish unit-cell-level actuation as a strategy for distributed morphing in lattice-based soft robots and provide a foundation for scalable, monolithic robotic architectures.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

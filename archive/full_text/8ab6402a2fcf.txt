@@ -1,0 +1,16 @@
+AI’s next bottleneck is not the chips. It is the wiring between them.
+As clusters grow to hundreds of thousands of GPUs, the copper links that shuttle data between them are running out of road. So the industry is racing to move that traffic onto light instead.
+HyperLight, a startup spun out of Harvard, has just raised $80mn to push its own version of that fix.
+A bet on a different material
+The Cambridge, Massachusetts company works on thin-film lithium niobate, or TFLN. It is a material prized for converting electrical signals into optical ones at very high speed, with low power and low loss. That is exactly what crowded AI networks need.
+Most rivals build their optics on silicon. HyperLight is betting that TFLN can do the job better, especially as link speeds climb. Its “Chiplet” platform is meant to cover everything from short data-centre hops to longer telecom links in one manufacturable design. Products at 200G per lane are shipping, and 400G-per-lane parts are sampling.
+The wider race is the same one that pushed Nvidia to spend billions fixing AI’s copper bottleneck.
+The cap table is the real signal
+The money matters less than who wrote the cheques. The round was led by MediaTek, the chip designer. But look at the rest: contract manufacturers Foxconn and Jabil, foundry group UMC, Singapore’s EDBI, Taiwan’s CDIB-TEN Capital, and the Qatar Investment Authority.
+That is not a typical venture syndicate. It is a slice of the AI-hardware supply chain, from silicon to assembly to global capital. “This financing is about more than capital,” said chief executive Mian Zhang. “It is about ecosystem alignment.” In plain terms, the firms that would actually build and buy this technology are now invested in it.
+Why it matters
+Optics is one of the hottest corners of the AI build-out. Copper simply cannot keep feeding data to ever-larger GPU clusters without burning too much power. Light can. That is why Nvidia tied up with Marvell on silicon photonics, and why startups keep claiming big efficiency gains from photonic networks.
+HyperLight’s pitch is that its material, and its single platform, can scale into volume production where others stall. The new cash will fund factory capacity, customer qualification, and deeper ties with its foundry partners. Still, a caveat is worth keeping. The technical claims are the company’s own, and many of its backers stand to gain if TFLN wins.
+The market, not the press release, will decide whether lithium niobate becomes AI’s optical workhorse.
+Get the TNW newsletter
+Get the most important tech news in your inbox each week.

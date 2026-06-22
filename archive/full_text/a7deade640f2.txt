@@ -1,0 +1,11 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Efficiently Training Time-to-First-Spike Spiking Neural Networks from Scratch
+View PDF HTML (experimental)Abstract:Spiking Neural Networks (SNNs), with their event-driven and biologically inspired mechanisms, are well-suited for energy-efficient neuromorphic hardware. Neural coding, which is critical to SNNs, determines how information is represented via spikes. While Time-to-First-Spike (TTFS) coding uses a single spike per neuron to offer extreme sparsity and energy efficiency, it often suffers from unstable training and low accuracy due to its sparse firing. To address these challenges, we propose a training framework that incorporates parameter initialization, training normalization, a temporal output decoder, and a re-evaluation of the pooling layer. The proposed parameter initialization and training normalization mitigate signal diminishing and gradient vanishing, which helps stabilize training. Our output decoder aggregates temporal spikes to encourage earlier firing, thereby reducing latency. The re-evaluation of the pooling layer demonstrates that max-pooling violates single-spike constraints, which should be avoided, whereas average-pooling preserves them. Experiments show that our framework stabilizes and accelerates training, reduces latency, and achieves state-of-the-art accuracy for step-by-step TTFS SNNs on MNIST (99.48%), Fashion-MNIST (92.90%), CIFAR10 (90.56%), CIFAR100 (70.27%) and DVS Gesture (95.83%).
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

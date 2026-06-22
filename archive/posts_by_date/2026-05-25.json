@@ -1,0 +1,71 @@
+{
+  "date": "2026-05-25",
+  "count": 4,
+  "posts": [
+    {
+      "id": "ee59e13db839",
+      "title": "How Cursor’s Composer 2.5 uses self-distillation to beat the frontier LLMs at coding",
+      "url": "https://bdtechtalks.com/2026/05/25/composer-25-llm-self-distillation/?utm_source=rss&utm_medium=rss&utm_campaign=composer-25-llm-self-distillation",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-25T19:42:31+00:00",
+      "summary": "A deep look at the self-distillation techniques that make Composer 2.5 such a great coding model (and the hidden tradeoffs they introduce to AI reasoning). The post How Cursor’s Composer 2.5 uses self-distillation to beat the frontier LLMs at coding first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI Coding",
+        "Artificial intelligence (AI)",
+        "Coding Agents",
+        "Cursor",
+        "large language models"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "37be5f050c29",
+      "title": "Harness, Scaffold, and the AI Agent Terms Worth Getting Right",
+      "url": "https://huggingface.co/blog/agent-glossary",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-25T00:00:00+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "86df175a446d",
+      "title": "OpenAI, Grupo Folha and Grupo UOL announce strategic content partnership",
+      "url": "https://openai.com/index/grupo-folha-grupo-uol-partnership",
+      "source": "OpenAI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-25T00:00:00+00:00",
+      "summary": "OpenAI partners with Grupo Folha and Grupo UOL to bring trusted Brazilian journalism to ChatGPT, expanding access to news with attribution and transparency.",
+      "author": "",
+      "tags": [
+        "Global Affairs"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "4dddeb36d0d4",
+      "title": "AI Weekly Issue #495: Musk, Zuckerberg killed Trump's AI safety order in three phone calls",
+      "url": "https://aiweekly.co/issues/musk-zuckerberg-killed-trumps-ai-safety-order-in-three",
+      "source": "AI Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-25T00:00:00+00:00",
+      "summary": "Over the weekend: Musk, Zuckerberg, and Sacks killed Trump's draft AI safety executive order in three Wednesday-night phone calls. Anthropic closed a $30B+ round the same Saturday — while Microsoft quietly cancelled its internal Claude Code pilot after token billing ate the entire annual AI budget, redirecting developers to Copilot. CISA logged 15,000 attacks on a same-week Drupal SQL flaw. The first cross-registry supply chain attack — TrapDoor — hit npm, PyPI, and Crates.io at once, using .cursorrules and CLAUDE.md config files as the carrier. And the White House personally overrode the…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

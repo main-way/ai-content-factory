@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Congestion-Aware Robot Tour Planning in Crowded Environments
+View PDF HTML (experimental)Abstract:Autonomous mobile service robots are often required to complete tours that require navigating through a set of locations in an environment. Example domains include guiding people through a shopping mall, delivering packages in a fulfilment centre, or giving guided tours in a museum. However, in crowded environments, the presence of people may negatively impact robot performance. For example, humans will activate robot collision avoidance manoeuvres that slow the robot down. Crowds move stochastically and vary throughout the day. In this paper we present a probabilistic tour planner for crowded environments which explicitly reasons over human congestion. We learn circular linear flow field (CLiFF) maps which predict human trajectories given an initial observation. We then use these predictions to build and solve a Markov decision process online which efficiently routes the robot through the environment. Our approach is scalable enough to re-plan as new people are observed. We evaluate our approach on a real-world crowd dataset in a shopping mall.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,59 @@
+The era has arrived where your phone or computer can understand the objects of an image, thanks to technologies like YOLO and SAM.
+Meta’s Segment Anything Model (SAM) can instantly identify objects in images and separate them without needing to be trained on specific images. It’s like a digital magician, able to understand each object in an image with just a wave of its virtual wand. After the successful release of llama 3.1, Meta announced SAM 2 on July 29th, a unified model for real-time object segmentation in images and videos, which has achieved state-of-the-art performance.
+SAM 2 offers numerous real-world applications. For instance, its outputs can be integrated with generative video models to create innovative video effects and unlock new creative possibilities. Additionally, SAM 2 can enhance visual data annotation tools, speeding up the development of more advanced computer vision systems.
+SAM 2 involves a task, a model, and data (Image Source)
+Segment Anything (SAM) introduces an image segmentation task where a segmentation mask is generated from an input prompt, such as a bounding box or point indicating the object of interest. Trained on the SA-1B dataset, SAM supports zero-shot segmentation with flexible prompting, making it suitable for various applications. Recent advancements have improved SAM’s quality and efficiency. HQ-SAM enhances output quality using a High-Quality output token and training on fine-grained masks. Efforts to increase efficiency for broader real-world use include EfficientSAM, MobileSAM, and FastSAM. SAM’s success has led to its application in fields like medical imaging, remote sensing, motion segmentation, and camouflaged object detection.
+Many datasets have been developed to support the video object segmentation (VOS) task. Early datasets feature high-quality annotations but are too small for training deep learning models. YouTube-VOS, the first large-scale VOS dataset, covers 94 object categories across 4,000 videos. As algorithms improved and benchmark performance plateaued, researchers increased the VOS task difficulty by focusing on occlusions, long videos, extreme transformations, and both object and scene diversity. Current video segmentation datasets lack the breadth needed to " segment anything in videos," as their annotations typically cover entire objects within specific classes like people, vehicles, and animals. In contrast, the recently introduced SA-V dataset focuses not only on whole objects but also extensively on object parts, containing over an order of magnitude more masks. The SA-V dataset collected comprises of 50.9K videos with 642.6K masklets.
+Example videos from the SA-V dataset with masklets (Image Source)
+The model extends SAM to work with both videos and images. SAM 2 can use point, box, and mask prompts on individual frames to define the spatial extent of the object to be segmented throughout the video. When processing images, the model operates similarly to SAM. A lightweight, promptable mask decoder takes a frame’s embedding and any prompts to generate a segmentation mask. Prompts can be added iteratively to refine the masks.
+Unlike SAM, the frame embedding used by the SAM 2 decoder isn’t taken directly from the image encoder. Instead, it’s conditioned on memories of past predictions and prompts from previous frames, including those from “future” frames relative to the current one. The memory encoder creates these memories based on the current prediction and stores them in a memory bank for future use. The memory attention operation uses the per-frame embedding from the image encoder and conditions it on the memory bank to produce an embedding that is passed to the mask decoder.
+SAM 2 Architecture. In each frame, the segmentation prediction is based on the current prompt and any previously observed memories. Videos are processed in a streaming manner, with frames being analyzed one at a time by the image encoder, which cross-references memories of the target object from earlier frames. The mask decoder, which can also use input prompts, predicts the segmentation mask for the frame. Finally, a memory encoder transforms the prediction and image encoder embeddings (not shown in the figure) for use in future frames. (Image Source)
+Here’s a simplified explanation of the different components and processes present in the image:
+Overall, the model is designed to efficiently handle long videos, remember information from past frames, and accurately segment objects based on interactive prompts.
+SAM 2 Object segmentation
+SAM Comparison with SAM 2
+SAM 2 significantly outperforms previous methods in interactive video segmentation, achieving superior results across 17 zero-shot video datasets and requiring about three times fewer human interactions. It surpasses SAM in its zero-shot benchmark suite by being six times faster and excels in established video object segmentation benchmarks like DAVIS, MOSE, LVOS, and YouTube-VOS. With real-time inference at approximately 44 frames per second, SAM 2 is 8.4 times faster than manual per-frame annotation with SAM.
+# Clone the repo
+!git clone https://github.com/facebookresearch/segment-anything-2.git
+# Move to the folder
+cd segment-anything-2
+# Install the necessary requirements
+!pip install -e .
+To use the SAM 2 predictor and run the example notebooks, jupyter
+and matplotlib
+are required and can be installed by:
+pip install -e ".[demo]"
+Download the checkpoints
+cd checkpoints
+./download_ckpts.sh
+SAM 2 can be used for static images to segment objects. SAM 2 offers image prediction APIs similar to SAM for these use cases. The SAM2ImagePredictor class provides a user-friendly interface for image prompting.
+import torch
+from sam2.build_sam import build_sam2
+from sam2.sam2_image_predictor import SAM2ImagePredictor
+checkpoint = "./checkpoints/sam2_hiera_large.pt"
+model_cfg = "sam2_hiera_l.yaml"
+predictor = SAM2ImagePredictor(build_sam2(model_cfg, checkpoint))
+with torch.inference_mode(), torch.autocast("cuda", dtype=torch.bfloat16):
+predictor.set_image(<your_image>)
+masks, _, _ = predictor.predict(<input_prompts>)
+SAM 2 supports video predictor as well on multiple objects and also uses an inference state to keep track of the interactions in each video.
+import torch
+from sam2.build_sam import build_sam2_video_predictor
+checkpoint = "./checkpoints/sam2_hiera_large.pt"
+model_cfg = "sam2_hiera_l.yaml"
+predictor = build_sam2_video_predictor(model_cfg, checkpoint)
+with torch.inference_mode(), torch.autocast("cuda", dtype=torch.bfloat16):
+state = predictor.init_state(<your_video>)
+# add new prompts and instantly get the output on the same frame
+frame_idx, object_ids, masks = predictor.add_new_points(state, <your prompts>):
+# propagate the prompts to get masklets throughout the video
+for frame_idx, object_ids, masks in predictor.propagate_in_video(state):
+...
+0:00
+/0:07
+1×
+In the video we have used SAM 2 to segment the coffee mug
+With a strong background in data science and over six years of experience, I am passionate about creating in-depth content on technologies. Currently focused on AI, machine learning, and GPU computing, working on topics ranging from deep learning frameworks to optimizing GPU-based workloads.
+This textbox defaults to using Markdown to format your answer.
+You can type !ref in this text area to quickly search our full set of tutorials, documentation & marketplace offerings and insert the link!
+Join the many businesses that use DigitalOcean’s Gradient AI Agentic Cloud to accelerate growth. Reach out to our team for assistance with GPU Droplets, 1-click LLM models, AI agents, and bare metal GPUs.

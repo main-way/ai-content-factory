@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Conformal Candidate Certification for Offline Model-Based Optimization
+View PDF HTML (experimental)Abstract:Offline model-based optimization (MBO) proposes candidates by optimizing a surrogate trained on a fixed historical dataset. Because candidates are deliberately out-of-distribution, surrogate rankings are least reliable exactly where the optimizer is most aggressive, yet existing methods provide no per-candidate statistical certificate that a design meets a target threshold. We propose \emph{Conformal Candidate Certification} (CCC), a post-hoc wrapper that attaches a calibrated one-sided lower bound to each candidate and advances only those whose bound exceeds the target. We show that entropy-regularized surrogate maximization induces a Gibbs-tilted proposal, so the same surrogate supplies importance weights for weighted conformal prediction without a separate density-ratio estimation step. In a controlled synthetic study, CCC certifies $16.7\%$ of an aggressive proposal pool with empirical coverage 0.990 at nominal 0.90, while standard conformal prediction ignoring the covariate shift collapses to 0.416 coverage.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

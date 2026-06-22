@@ -1,0 +1,34 @@
+{
+  "date": "2018-10-03",
+  "count": 2,
+  "posts": [
+    {
+      "id": "cf3d3e8d4405",
+      "title": "Deep Learning Without Labels",
+      "url": "https://docs.microsoft.com/archive/blogs/machinelearning/deep-learning-without-labels",
+      "source": "Microsoft ML Blog (archive)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2018-10-03T06:05:26+00:00",
+      "summary": "Announcing new open source contributions to the Apache Spark community for creating deep,...",
+      "author": "ML Blog Team",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "b95df2a3e254",
+      "title": "“Snip Insights” – An Open Source Cross-Platform AI Tool for Intelligent Screen Capture",
+      "url": "https://docs.microsoft.com/archive/blogs/machinelearning/snip-insights-an-open-source-cross-platform-ai-tool-for-intelligent-screen-capture",
+      "source": "Microsoft ML Blog (archive)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2018-10-03T06:00:24+00:00",
+      "summary": "This post is authored by Tara Shankar Jana, Senior Technical Product Marketing Manager at...",
+      "author": "ML Blog Team",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

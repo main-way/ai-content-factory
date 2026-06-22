@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Bridging the sim2real gap in the table tennis robot with a transformer-based ball states predictor
+View PDF HTML (experimental)Abstract:Robotic table tennis is a representative benchmark for high-speed, closed-loop robotic control in dynamic environments, where accurate and fast prediction of ball states is critical for reliable planning and control. Physics-based approaches rely heavily on accurate parameter identification and precise initial state, while learning-based methods often struggle to capture long-range temporal dependencies and are typically trained on limited or simulated data. We propose a transformer-based framework for table tennis ball state prediction that leverages attention mechanisms to model long-range temporal correlations directly from historical observations, without relying on explicit flight or bounce models. To support robust learning and generalization, we collected a large-scale real-world dataset from players of varying skill levels and diverse ball cannon configurations. The combination of a high-capacity transformer architecture and extensive real-world data enables accurate long-horizon forecasting. Building on this capability, we introduce a plug-and-play sim-to-real transfer strategy, Swap Predictor at Deployment (SPAD), which replaces the physics-based simulator used during training with the proposed real-world-trained predictor at deployment, improving the sim-to-real transferability of the policy without requiring retraining. We demonstrate that this simple substitution effectively narrows the sim-to-real gap while preserving the efficiency and scalability of simulation-based training.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

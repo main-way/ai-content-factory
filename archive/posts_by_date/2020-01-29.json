@@ -1,0 +1,20 @@
+{
+  "date": "2020-01-29",
+  "count": 1,
+  "posts": [
+    {
+      "id": "294fd31c2ac7",
+      "title": "Curriculum for Reinforcement Learning",
+      "url": "https://lilianweng.github.io/posts/2020-01-29-curriculum-rl/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2020-01-29T00:00:00+00:00",
+      "summary": "[Updated on 2020-02-03: mentioning PCG in the &ldquo;Task-Specific Curriculum&rdquo; section. [Updated on 2020-02-04: Add a new &ldquo;curriculum through distillation&rdquo; section.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

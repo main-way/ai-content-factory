@@ -1,0 +1,39 @@
+{
+  "date": "2024-08-08",
+  "count": 2,
+  "posts": [
+    {
+      "id": "9f7418bb800c",
+      "title": "CODEGEN: A Transformative Open-Source Language Model for Versatile Program Synthesis",
+      "url": "https://blog.paperspace.com/codegen-a-transformative-open-source-language-model-for-versatile-program-synthesis/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-08T00:04:46+00:00",
+      "summary": "In this tutorial, we discuss CODEGEN, one of the hottest Language Modeling projects tackling code generation.",
+      "author": "Adrien Payong",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "8fca8741b07a",
+      "title": "FLUX Image Generation with DigitalOcean",
+      "url": "https://blog.paperspace.com/flux/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-08T00:03:20+00:00",
+      "summary": "In this article, we show how to use FLUX image generation models with Paperspace H100s.",
+      "author": "James Skelton",
+      "tags": [
+        "Stable Diffusion",
+        "Computer Vision",
+        "Generative Models",
+        "Tutorial"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

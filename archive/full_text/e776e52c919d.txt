@@ -1,0 +1,12 @@
+Computer Science > Artificial Intelligence
+Title:A complementary study on PlanGPT: Evaluation with defined Performance Metrics and comparison with a planner
+View PDF HTML (experimental)Abstract:Automated Planning is a subfield of Artificial Intelligence (AI) where the main objective is generating a sequence of actions, known as a plan, that helps us reach a goal state from an initial state. A planning problem is defined by a set of objects, an initial state and a desired goal state. The objective is to compute a plan that'll lead us from the inital state to the goal state. Programs that generate plans are called planners.
+In this paper, we did a complementary study to the state-of-the-art LLM called PlanGPT which was released last year. We redid some experiments to verify whether planning with LLMs is \textbf{pertinent} and \textbf{worthwhile}. We also check whether the results obtained in the official PlanGPT paper for plan coverage were correct, and we also performed a more comprehensive study on PlanGPT's performance: in our paper PlanGPT's performance was evaluated using two metrics: Plan Cost and Plan Generation Time. The results of planGPT were compared to those produced by a traditional planner for the same plans and same metrics. We discovered that PlanGPT is no better than a Greedy search strategy.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,18 @@
+The proliferation of agentic workflows means developers now regularly grant AI tools direct access to their infrastructure, use services that act autonomously, and build on platforms that themselves use AI to operate. We’ve updated our Terms of Service and Marketplace terms to clarify shared responsibility when actions on your account may be taken by AI, whether Vercel's own or a third-party tool you've connected, as well as other important updates detailed below.
+Vercel's platform increasingly includes AI-powered services, including v0, Vercel Agent, WAF natural language rules, and AI Gateway. These services may take actions on your behalf. We've introduced two new concepts to make the responsibilities around this explicit:
+AI Functionality refers to Vercel services that are AI-powered, that help you build AI products (like AI SDK), or that connect to AI providers (like AI Gateway).
+Third-Party Tools refers to any non-Vercel tool, script, service, or automation (AI-powered or not) that you grant access to your Vercel account. This includes CI/CD pipelines, third-party agents, and integration scripts.
+The key responsibilities:
+You control how AI Functionality behaves through your settings. Those settings define the scope of what AI Functionality can do on your behalf.
+You are responsible for reviewing and authorizing the actions AI Functionality takes, and for evaluating its outputs against your own requirements.
+If you grant a Third-Party Tool access to your Vercel account (e.g., giving it your API key), you are responsible for what it does, including any costs it incurs.
+You are responsible for actions taken by AI Functionality or Third-Party Tools on your behalf.
+We are updating our billing terms to reflect the expansion of our product surface area beyond subscription plans.
+Fees are no longer exclusively tied to a subscription plan. Services like AI Gateway credits can be purchased and charged independently.
+For non-subscription services, charges may occur at the time of purchase or top-up.
+If your account shows unusually high or suspicious usage, Vercel may charge accrued fees ahead of your regular billing cycle. Learn more about Partial Invoices.
+Enterprise customers who have verified ownership of an email domain can now claim email addresses on that domain that are associated with existing Vercel accounts. If your account email falls within a claimed domain, Vercel will notify you and you'll have the option to update your email address. If the account was used for work with that organization, it may instead be added to their Team. In either case, the Enterprise customer does not gain access to your account or your content without your consent.
+You confirm you have the rights to provide any third-party credentials or API keys to Vercel (for example, through Vercel Connect or other integrations).
+You confirm you are not subject to applicable OFAC sanctions.
+The Marketplace terms now introduce the concept of Authorized Users, which includes Third-Party Tools. Actions taken by Authorized Users are bound to you as the customer, and you are responsible for reporting any unauthorized Authorized User activity.
+We have updated the Data Privacy Framework section. Previously, unresolved EU/UK/Swiss privacy complaints were directed to data protection authorities. We've now designated VeraSafe as our private complaint handler. Complaints can be submitted directly to VeraSafe before escalation to a regulator.

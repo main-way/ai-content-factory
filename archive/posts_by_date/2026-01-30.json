@@ -1,0 +1,42 @@
+{
+  "date": "2026-01-30",
+  "count": 2,
+  "posts": [
+    {
+      "id": "4f4ad76918fb",
+      "title": "Эпоха ChatGPT закончилась",
+      "url": "https://roem.ru/30-01-2026/307297/epoha-chatgpt-zakonchilas/?from=roem_rss",
+      "source": "Roem.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-01-30T14:18:57+00:00",
+      "summary": "Почему бизнесу больше недостаточно «просто ИИ-текста» — объясняет Ольга Шкряба, создательница российской нейросети ReText.AI Сегодня рынок столкнулся с беспрецедентным избытком AI-контента — это изображения, видео, аудио. Но сильнее всего этот тренд затронул тексты — из-за доступности их создания. Генеративные модели обучаются на данных из публичных платформ вроде соцсетей и форумов, поэтому их тексты изначально хорошо «подогнаны» под распространение, кликабельность и форматирование.",
+      "author": "Ольга Шкряба",
+      "tags": [
+        "Авторское",
+        "ИИ/AI",
+        "Нам пишут",
+        "Текучка",
+        "Генеративные модели",
+        "ИИ",
+        "Искусственный интеллект"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "e357cdab8755",
+      "title": "Issue #29",
+      "url": "http://augmentedcoding.dev/issue-29/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-01-30T00:00:00+00:00",
+      "summary": "Porting 100k lines from TypeScript to Rust using Claude Code in a month VJEUX.COM This is an amazing story of how Chris Chedeau (AKA Vjeux) ported a 100k line TypeScript library to Rust, in just 4 weeks, without writing a single line of code himself. Oh yes … and he has never written Rust code either! And the final Rust port is 3.5x faster than the JavaScript equivalent. (as an aside, this is the same Chedeau / Vjeux who inspired me to use an agentic loop to implement flexbox a few weeks back, repeating a task he did 10 years ago in implementing React Native) The first part of his post…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

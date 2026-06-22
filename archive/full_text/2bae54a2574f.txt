@@ -1,0 +1,76 @@
+Voice agent failures are often highly domain-specific. A system that flawlessly processes alphanumeric confirmation codes in flight re-booking transactions might stumble when handling complex policies in HR systems. Different domains test an agent's ability to adapt to different vocabulary, workflow complexities and user expectations. So with this release, EVA-Bench expands from one enterprise domain to three: Airline Customer Service Management (CSM), Enterprise IT Service Management (ITSM), and Healthcare HR Service Delivery (HRSD). Together they span 213 evaluation scenarios across 121 tools, a roughly 4x increase in scenario coverage from our original release. Every scenario was validated for solvability against three frontier models (OpenAI GPT-5.4, Google Gemini 3.1 Pro, and Anthropic Claude Opus 4.6) ensuring the benchmark is both challenging and fair. All three datasets are open-source and available for download:
+from datasets import load_dataset
+# Airline Customer Service Management (CSM) — 50 scenarios
+airline = load_dataset("ServiceNow-AI/eva-bench", "airline", split="test")
+# Enterprise IT Service Management (ITSM) — 80 scenarios
+itsm = load_dataset("ServiceNow-AI/eva-bench", "itsm", split="test")
+# Healthcare HR Service Delivery (HRSD) — 83 scenarios
+hrsd = load_dataset("ServiceNow-AI/eva-bench", "medical", split="test")
+EVA-Bench is built for multiple audiences. If you're evaluating a voice agent, you can run it against a diverse set of realistic enterprise scenarios spanning 35+ distinct workflows. If you're building your own evaluation dataset, this post describes our end-to-end generation and validation process in enough detail to serve as a practical reference. We walk through how each domain was designed and generated and take a deep dive into the two new additions. We also preview our upcoming multilingual extension, which widens the benchmark's reach beyond English-only enterprise deployments.
+Five principles guided the design of the EVA-Bench datasets across all three domains.
+Voice-first scope. Not every enterprise workflow belongs in a voice benchmark. We started by identifying which tasks within each domain are handled over the phone in practice, then selected the most common flows from that subset. This kept the scenarios grounded in realistic call patterns.
+Realism. Tool schemas were modeled after the kinds of APIs a production platform uses. Scenario policies were drawn from actual enterprise constraints. For the Healthcare HRSD domain, this meant grounding scenarios in actual US healthcare policy and administration systems, including NPI numbers, FMLA, and insurance coverage, so that the benchmark reflects the domain as practitioners encounter it in real life.
+Variety. Scaling a dataset by simply repeating identical tasks offers limited evaluation signal. To avoid this, we defined specific workflows for each domain and sampled across three scenario types: single-intent calls, multi-intent calls with up to four intents in a single conversation, and adversarial calls where callers attempt to bypass troubleshooting steps, misclassify urgency, or access records they are not authorized to view. Within single and multi-intent scenarios, we also included cases where the user's goal is not satisfiable, because real call volume is not all happy-path, and in our experience models tend to struggle more with unsatisfiable goals than with successful interactions.
+Authentication. Prior work, (EVA-Bench and τ-Voice), has identified authentication as one of the most consistent failure points for voice agents. Every domain in EVA-Bench includes authentication flows, and the specific mechanisms are calibrated to the task. For example, OTP-based elevation appears where a production system would actually require it, not uniformly across all scenarios.
+Reproducibility. Without reproducible scenarios, it is difficult to know whether a score difference reflects a genuine capability gap or an artifact of how the scenario played out. We designed the dataset so that every scenario has exactly one correct resolution path. User goal construction ensures the simulator always has the information and instructions it needs to behave consistently, and scenario generation explicitly checks for and eliminates any cases where multiple valid action sequences could achieve the same outcome.
+Joint generation. Scenarios are generated using SyGra, a graph-based synthetic data generation pipeline, with GPT-5.4 as the backbone. Each scenario requires three jointly consistent components which are generated together to prevent inconsistencies that arise when components are produced independently:
+User goal. Reproducibility requires that the user simulator behaves the same way every time a scenario is run. A vague statement of intent does not achieve this: the simulator will make different judgment calls across runs, producing inconsistent evaluation signals. To eliminate this, the user goal is structured as a decision tree that covers every situation the simulator is likely to encounter. The user goal specifies exactly which things the user should ask for along with a negotiation sequence that specifies exactly when to push back, when to ask for alternatives, and when to accept. Common edge cases, such as whether to accept a standby flight or an alternate airport, are handled with explicit instructions rather than left to the simulator to interpret. The resolution condition requires evidence of a completed action, such as a confirmation number or case ID, rather than a verbal commitment, so the simulator stays on the call until the action is actually confirmed. The result is a user that behaves like a consistent, realistic caller rather than one that improvises.
+Initial scenario database. The backend state the agent's tools will query and modify during the scenario. Generated jointly with the user goal to ensure that every entity referenced in the user goal, such as booking IDs, account details, and authentication credentials, exists and is consistent in the database.
+Expected final database state (ground truth). We derive the expected outcome by running the generation LLM on the agent instructions, user goal, and initial scenario database, producing a full action trace. As the LLM executes write tool calls, the database is updated incrementally, and the resulting terminal state becomes the ground truth that verifiers check against during evaluation.
+Joint generation is essential because these three components are deeply interdependent. Independent generation would introduce silent inconsistencies, such as a case ID referenced in the user goal that does not exist in the scenario database, which would corrupt the evaluation signal entirely. To enforce consistency, we run a multi-stage validation loop after each generation attempt and feed any failures back to the generation step, which retries until all checks pass. Validation proceeds in three steps.
+- A structural check validates the scenario database against a Pydantic schema, catching type errors and missing fields.
+- LLM-based validator checks consistency across the scenario more holistically: whether user-facing details in the goal match the database records, whether cross-references are internally valid, and whether authentication data is correctly configured.
+- LLM-based trace verification pass checks the full conversation trace against policy compliance, correct action sequencing, completion of all required terminal actions, and the absence of alternative write paths that would introduce non-determinism.
+Following SyGra generation, all scenarios went through multiple rounds of manual review. Reviewers verified that: (1) policies were applied consistently across scenarios within a domain; (2) user goals were specific enough to admit exactly one correct resolution; (3) expected final states were internally consistent with both the user goal and the initial database; and (4) adversarial scenarios were correctly specified, with a clearly identifiable policy violation. Ambiguous or inconsistent records were corrected or discarded.
+As a final pass, we ran three frontier models, OpenAI GPT-5.4, Google Gemini 3.1 Pro, and Anthropic Claude Opus 4.6, on a text-only version of each scenario, bypassing the audio pipeline and providing conversation transcripts directly. For every scenario on which any model scored zero on task completion, we manually investigated whether the failure reflected genuine model error or a dataset issue: an ambiguous policy, an under-specified user goal, a bug in the tool executor, or an inconsistency between the initial and expected database states. Records with identified dataset issues were corrected or removed. All selected samples were solvable by at least one of the frontier models.
+We created three datasets on different enterprise domains, each selected to target a distinct axis of difficulty for voice agents. All three require accurate transcription of structured named entities over voice (e.g., confirmation codes and employee identifiers) but differ in their primary challenge and number of tools.
+Below, we deep dive into our two new datasets: Enterprise ITSM & Healthcare HRSD.
+English-only evaluation provides limited insight into how a voice agent will actually perform in another language. Speech recognition accuracy, transcription fidelity, and conversational fluency may each degrade in language-specific ways meaning a high-performing voice agent in English can fail completely when deployed in other language contexts. To give practitioners real insight into multilingual deployments, we are adding support for more languages, adapting not just the conversation language but the evaluation pipeline to each target language and culture:
+- Names of locations referenced in scenarios
+- User's names and email addresses
+- Localized phone numbers
+| English Scenario | French Scenario |
+|---|---|
+| Utterance: "Hi, I'm locked out and need help getting back into my account." | Utterance "Bonjour, mon compte est bloqué et j’ai besoin d’aide pour y accéder à nouveau." |
+| Locations: [ "downtown", "engineering center" ] | locations: [ "centre-ville", "centre d’ingénierie" ] |
+| Names: {"first_name": "Marcus", "last_name": "Chen"} | Names: {"first_name": "Éric", "last_name": "Nicolas"} |
+| Email: "marcus.chen@example.com" | Email: "eric.nicolas@example.com" |
+| Phone: +1-512-555-0148 | Phone: +33 6 19 41 27 70 |
+This enables the user simulator to provide an authentic experience in the language of choice. Beyond the dataset, we are also updating our metrics and judges to build a trustworthy evaluation across languages.
+EVA-Bench is fully open-source under the MIT license. The dataset, evaluation framework, and leaderboard are all publicly available. Download the dataset and explore individual records on the HuggingFace dataset page. Load any of them directly with the Hugging Face datasets
+library:
+from datasets import load_dataset
+# Airline Customer Service Management (CSM) — 50 scenarios
+airline = load_dataset("ServiceNow-AI/eva-bench", "airline", split="test")
+# Enterprise IT Service Management (ITSM) — 80 scenarios
+itsm = load_dataset("ServiceNow-AI/eva-bench", "itsm", split="test")
+# Healthcare HR Service Delivery (HRSD) — 83 scenarios
+hrsd = load_dataset("ServiceNow-AI/eva-bench", "medical", split="test")
+Each record contains a structured user goal, initial scenario database, and ground truth expected final database state — everything needed to run a full bot-to-bot evaluation. For setup instructions, code, and contributing guidelines, see the GitHub repo.
+@misc{bogavelli2026evabenchnewendtoendframework,
+title={EVA-Bench: A New End-to-end Framework for Evaluating Voice Agents},
+author={Tara Bogavelli and Gabrielle Gauthier Melançon and Katrina Stankiewicz and Oluwanifemi Bamgbose and Fanny Riols and Hoang H. Nguyen and Raghav Mehndiratta and Lindsay Devon Brin and Joseph Marinier and Hari Subramani and Anil Madamala and Sridhar Krishna Nemala and Srinivas Sunkara},
+year={2026},
+eprint={2605.13841},
+archivePrefix={arXiv},
+primaryClass={cs.SD},
+url={https://arxiv.org/abs/2605.13841},
+}
+@misc{ray2026tauvoicebenchmarkingfullduplexvoice,
+title={$\tau$-Voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains},
+author={Soham Ray and Keshav Dhandhania and Victor Barres and Karthik Narasimhan},
+year={2026},
+eprint={2603.13686},
+archivePrefix={arXiv},
+primaryClass={cs.SD},
+url={https://arxiv.org/abs/2603.13686},
+}
+@misc{pradhan2025sygraunifiedgraphbasedframework,
+title={SyGra: A Unified Graph-Based Framework for Scalable Generation, Quality Tagging, and Management of Synthetic Data},
+author={Bidyapati Pradhan and Surajit Dasgupta and Amit Kumar Saha and Omkar Anustoop and Sriram Puttagunta and Vipul Mittal and Gopal Sarda},
+year={2025},
+eprint={2508.15432},
+archivePrefix={arXiv},
+primaryClass={cs.AI},
+url={https://arxiv.org/abs/2508.15432},
+}

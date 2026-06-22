@@ -1,0 +1,12 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Directing Open-Ended Evolution in Artificial Life via Multi-Scale Path Divergence
+View PDF HTML (experimental)Abstract:Open-ended evolution (OEE) in artificial life is typically driven by uninterpretable, black-box neural-network complexity metrics, leaving life-like systems disconnected from physical theories of complexity. We introduce MSPD (Multi-Scale Path Divergence, denoted DP ), a renormalization-group-inspired scalar that quantifies the temporal multiscale organization of heterogeneity in local transition laws. MSPD is defined at the population level as a functional of the realised trajectory and is computed as a windowed finite-resolution estimator, with consistency between the two stated as a proposition. The metric is an explicit formula and plays a dual role: as a gradient-free fitness function and as a post-hoc analytical lens on any simulation that exposes local transition laws. Empirically, MSPD-optimized parameters produce higher held-out complexity scores than matched random parameters from the same substrate. High-$H_{Delta_t}$ states correspond to states with higher instability to external interventions, so the metric tracks the biology of the underlying dynamics rather than noise. Higher MSPD corresponds to stronger scale-dependent frustration: high-complexity systems exhibit larger differences between the dynamics expressed at different spatial extents, linking MSPD directly to the frustration criterion of biological complexity in the sense of Vanchurin et al. [ 23 ]. The same protocol transfers beyond the primary Flow-Lenia substrate to Life-like cellular automata and Particle Life++, where C1, C2 and C5 all hold. A single explicit formula thus both directs open-ended evolution and provides a principled bridge to the physics of complexity that black-box drivers do not.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

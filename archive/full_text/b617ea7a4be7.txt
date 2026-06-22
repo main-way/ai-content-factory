@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Seam-to-Graph Reconstruction for Garment Configuration Alignment
+View PDF HTML (experimental)Abstract:Seams encode rich structural information about garments but are frequently partially observable in robotic manipulation scenarios. To robustly leverage seam information, we propose a Seam-to-Graph network based on graph neural networks and attention mechanisms. This network maps unstructured seam observations to a topology-encoded structural skeleton graph for real-time garment state estimation. Using this skeleton-graph-based state estimation, we design a deformation-aware, hierarchical visual servoing controller for garment configuration alignment. We implement this controller on a bimanual robot system to load a garment onto a screen printing platen and to align it to the desired configuration precisely. Real-robot experiments demonstrate that the robot using the proposed method not only achieves human-level alignment accuracy with reduced variance in alignment error but is also robust to different garments. These results demonstrate that the use of seam information is effective for garment manipulation.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

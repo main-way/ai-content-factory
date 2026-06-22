@@ -1,0 +1,36 @@
+Hey, N00b, We Didn't Hire You to Complete Tasks
+Welcome! I am going to pass on to you the secret to a successful and brief noobitude, and I won’t even keep you in suspense: nobody cares how many tasks you complete. Why not, and what we care about instead are the subject of the rest of this essay.
+Look at your situation from our perspective (by “our” I mean “older engineers”). We hired a bunch of people like you. Some of y’all (we’ll call them A’s) will be amazing game-changers, making everyone around them wildly more productive. Many of you (B’s) will be solid performers. Some of you (the C’s) won’t be here in a year.
+We seniors have our regular work to do, but we also have to figure out which category you fit into. We support the superior performers as much as we possibly can. We support the solid performers enough to help them mature. Brutal as it seems, we’d like to expend as little effort as possible on people who aren’t going to make it.
+It’s your job to get in the category you want to be in and send us the signals that tell us that’s where you belong.
+That stack of tasks you have to do? Your manager or your tech lead could finish those in much less time and with much less hassle than it takes to help you through them. If all we cared about was today’s productivity, we wouldn’t have hired you at all. Instead, we (the seniors) are focused on the future: we know there’s going to be far more work here than we could possibly accomplish. We are paying your salary now as the option premium on the engineer you are going to become. If we play this game right, we’ll have a kick-ass next generation of engineers. If not, we’ll have to be doing the same engineering jobs ten years from now, and we really don’t want to be doing that.
+This quarter’s newsletter is brought to you in partnership with WorkOS.
+WorkOS is the infrastructure B2B and AI-native companies use to sell to enterprise. It covers everything enterprise security requires: SSO, SCIM, RBAC, Audit Logs, AI governance, and more. Engineering teams ship it in days. Trusted by 2,000+ fast-growing companies, including OpenAI, Anthropic, Cursor, and Vercel.
+The Sorting Hat
+Noob A accomplishes 40 tasks this quarter. Noob B accomplishes 20. Which is better?
+Not enough information. What if all the tasks were the same difficulty? Then which is better? Still not enough information. Remember, we’re trying to figure out if you’re an A, a B, or a C. What is the information we require to figure that out?
+B or C?
+The first level of sorting is figuring out if you’re a B or a C. Here are goals that are more important than closing your task in the absolute minimum time:
+Your code works.
+You told other people what you were doing.
+You got done in a reasonable amount of time (be good if it was within a factor of three of the initial estimate).
+You did not cause other people unreasonable amounts of work. Work for people you asked for help—okay; reviewers who had to spend extra time—bad; on-calls who had to respond to errors—very bad; devops who had to respond to incidents you caused—double plus bad.
+Any attempt to game the system by claiming to have done work you haven’t done marks you immediately as a C. Assume you can’t game this system.
+You will send out some C signals. That’s inevitable. We all did. Never, never send out the same C signal twice. And make sure the balance of the signals are that you are a B.
+A or B?
+The second level of sorting is, given you’re at least a B, are you an A? What distinguishes A’s is not how many tasks they close, but how much they learn from each task. Remember, your productivity sucks by our standards. We expect that. It’s the first derivative of your productivity that we’re looking for. Here are some signals that you’re an A:
+You make a convincing case that the task needn’t be done at all.
+You mine data and discover the 10% of the task that creates 90% of the benefit.
+You implement the task several ways.
+You uncover a better design and submit a string of diffs not only implementing the task but simplifying other parts of the code too. Bonus points for doing this before you implement (make the hard change easy then make the easy change).
+You submit a string of diffs instead of one big one. Bonus points if you push the diffs daily.
+You write an internal tool that simplifies similar tasks. (You lose points if there are no similar tasks.)
+You submit useful diffs in areas that having nothing to do with your team, but not at the cost of finishing your official tasks.
+You write up what you learned in an interesting, useful and persuasive way.
+You are an insightful and responsive reviewer.
+You include solid unit tests. (I wish this was a B signal, but baby steps...)
+Isn’t it nice that the “kick ass” list is so much longer than the “don’t mess up” list? You have many ways to shine.
+All the A signals share one trait—they take longer than just doing the work necessary to close the task. This isn’t permission to spend forever on shiny side-bars. Always get the task done in a reasonable amount of time, just not the absolute minimum time.
+But You’re Already Busy
+You may be wondering where this “extra” time is going to come from. You’re already committed up to your eyeballs. That’s where Everything You Need To Know About Programming But Didn’t Know To Ask [ed: to be written] comes in. We’ll talk about time management, task queue management, diff queue management, and other topics that will accelerate your progress.
+Take the time you save and invest it in yourself in ways that benefit others. That’s what we’re looking for.

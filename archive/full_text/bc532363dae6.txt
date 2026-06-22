@@ -1,0 +1,11 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Local Search on Vertex Coloring for Bipartite Graphs
+View PDFAbstract:Local search is a well-known heuristic method used in optimization. In this thesis, we explore its capabilities on the vertex coloring problem, an $NP$-hard problem with relevance in both theoretical analysis and practical application. To recognize limitations in the applicability of local search of the vertex coloring problem, we analyze local search landscapes on differently-structured bipartite graphs. We identify structures that ensure only global optima can exist as well as ones that enable the existence of non-global local optima, showing that on general bipartite graphs, it is possible for local search to return arbitrarily bad results. Further, we analyze the capabilities of local search on graphs where a local optimum can be found. To do so, we introduce a gray-box local search mutation operator that removes less frequent colors with higher probability and prove that it finds an optimal coloring on complete bipartite graphs in an expected run time of $\Theta(n \log n)$. This is a drastic improvement to the exponential tun time of the black-box Random Local Search, showing that gray-box mutation operators can improve the run time of local search.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

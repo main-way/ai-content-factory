@@ -1,0 +1,13 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Visualising the Attractor Landscape of Neural Cellular Automata
+View PDF HTML (experimental)Abstract:As Neural Cellular Automata (NCAs) are increasingly applied outside of the toy models in Artificial Life, there is a pressing need to understand how they behave and to build appropriate routes to interpret what they have learnt. By their very nature, the benefits of training NCAs are balanced with a lack of interpretability: we can engineer emergent behaviour, but have limited ability to understand what has been learnt.
+In this paper, we apply a variety of techniques to pry open the NCA black box and glean some understanding of what it has learnt to do. We apply techniques from manifold learning (principal components analysis and both dense and sparse autoencoders) along with techniques from topological data analysis (persistent homology) to capture the NCA's underlying behavioural manifold, with varying success.
+Results show that when analysis is performed at a macroscopic level (i.e. taking the entire NCA state as a single data point), the underlying manifold is often quite simple and can be captured and analysed quite well. When analysis is performed at a microscopic level (i.e. taking the state of individual cells as a single data point), the manifold is highly complex and more complicated techniques are required in order to make sense of it.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

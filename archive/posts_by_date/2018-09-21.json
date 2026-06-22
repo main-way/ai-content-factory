@@ -1,0 +1,48 @@
+{
+  "date": "2018-09-21",
+  "count": 3,
+  "posts": [
+    {
+      "id": "8aaf515ac8b5",
+      "title": "This New [AI] Software Constantly Improves – and that Makes all the Difference",
+      "url": "https://docs.microsoft.com/archive/blogs/machinelearning/the-key-differentiator-of-the-ai-platform-of-today",
+      "source": "Microsoft ML Blog (archive)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2018-09-21T14:28:23+00:00",
+      "summary": "Based on a recent conversation between Joseph Sirosh, CTO for AI at Microsoft, and Roger Magoulas,...",
+      "author": "ML Blog Team",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "34cb9d953991",
+      "title": "AI-Based Virtual Tutors – The Future of Education?",
+      "url": "https://docs.microsoft.com/archive/blogs/machinelearning/ai-based-virtual-tutors-the-future-of-education",
+      "source": "Microsoft ML Blog (archive)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2018-09-21T10:00:45+00:00",
+      "summary": "This post is co-authored by Chun Ming Chin, Technical Program Manager, and Max Kaznady, Senior Data...",
+      "author": "ML Blog Team",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "642ba34d6c41",
+      "title": "How to Implement AI-First Business Models at Scale",
+      "url": "https://docs.microsoft.com/archive/blogs/machinelearning/ai-adoption-in-industry-new-report-from-mit-sloan-and-bcg",
+      "source": "Microsoft ML Blog (archive)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2018-09-21T09:35:13+00:00",
+      "summary": "Earlier this week, MIT, in collaboration with Boston Consulting Group, released their second global...",
+      "author": "ML Blog Team",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

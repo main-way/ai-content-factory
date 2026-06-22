@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:A Survey of Methods for the Discretization of Phonograph Record Playback Filters
+View PDFAbstract:Since the inception of electrical recording for phonograph records in 1924, records have been intentionally cut with a non-uniform frequency response to maximize the information density on a disc and to improve the signal-to-noise ratio. To reproduce a nominally flat signal within the available bandwidth, the effects of this cutting curve must be undone by applying an inverse curve on playback. Until 1953, with the introduction of what has become known as the RIAA curve, the playback curve required for any particular disc could vary by record company and over time. As a consequence, anyone seeking to hear or restore the information on a disc must have access to equipment that is capable of implementing multiple playback equalizations. This correction may be accomplished with either analog hardware or digital processing. The digital approach has the advantages of reduced cost and expanded versatility, but requires a transformation from continuous time, where the original curves are defined, to discrete time. This transformation inevitably comes with some deviations from the continuous-time response near the Nyquist frequency. There are many established methods for discretizing continuous-time filters, and these vary in performance, computational cost, and inherent latency. In this work, several methods for performing this transformation are explored in the context of phonograph playback equalization, and the performance of each approach is quantified. This work is intended as a resource for anyone developing systems for digital playback equalization or similar applications that require approximating the response of a continuous-time filter digitally.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

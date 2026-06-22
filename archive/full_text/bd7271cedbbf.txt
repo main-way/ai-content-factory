@@ -1,0 +1,4 @@
+import { Sandbox } from "@vercel/sandbox";
+const sandbox = await Sandbox.create();await sandbox.runCommand({ sudo: true, cmd: "dnf", args: ["install", "-y", "docker"]});
+// Start docker daemon and wait for it to be readyawait sandbox.runCommand({ sudo: true, cmd: "dockerd", detached: true });await sandbox.runCommand({ cmd: "sh", args: [ "-lc", "until sudo docker info >/dev/null 2>&1; do sleep 1; done"] });
+await sandbox.runCommand({ cmd: "docker", args: [ "run", "--rm", "-d", "--name", "redis", "redis:alpine" ]});await sandbox.runCommand({ cmd: "docker", args: ["exec", "redis", "redis-cli", "PING" ]});

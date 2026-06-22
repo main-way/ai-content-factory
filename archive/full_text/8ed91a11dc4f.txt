@@ -1,0 +1,16 @@
+BUILD 2026 begins on Tuesday, June 2, and there will be tons of exciting announcements from the Microsoft Agent Framework team, Microsoft Foundry, and all things Microsoft AI. If you’re traveling to San Francisco for BUILD, be sure to stop by the Microsoft Foundry booths to chat with folks from the Agent Framework team – there’ll be stickers!
+If you can’t make it to SF, you can still register online and check out the great sessions: Register for Microsoft Build
+Looking for sessions with Microsoft Agent Framework to watch online? Start with these breakout sessions. Times are shown in Pacific time; check the session page for the latest schedule.
+| Session | Date/time | Speaker(s) | Description |
+|---|---|---|---|
+| Claw and agent harness in Microsoft Foundry (BRK243) | Wed, June 3, 11:30 AM–12:15 PM PT | Glenn Condron, Amanda Foster, Shawn Henry | Go deep on multi-agent systems, Claw agent patterns, hosted agents architecture, triggers, state management, and file access. |
+| From prototype to production: build and run agents at scale (BRK241) | Tue, June 2, 3:45–4:30 PM PT | Tina Schuchman, Jeff Hollan | Walk through the lifecycle for production-grade agents with Foundry Agent Service and Microsoft Agent Framework. |
+| Govern open-source AI agents, any framework, any scale (BRK250) | Tue, June 2, 2:30–3:15 PM PT | Sarah Bird, Mehrnoosh Sameki | Learn governance patterns for Microsoft Agent Framework and open-source agent stacks, including evaluations and risk controls. |
+| Understand and fix Agent Framework apps with observability and evals | Jim Bennett | Visualize the decisions your LLMs make inside complex Microsoft Agent Framework apps using open standards and open-source instrumentation, then use an LLM as a judge to evaluate how well your app is working. | |
+| How Foundry integrates with open-source frameworks and tools | Nagkumar Arkalgud, Facundo Santiago | Build an OpenClaw-like agent with open-source tools — MCP, skills, Playwright CLI, and OpenTelemetry — then operationalize it in Microsoft Foundry using open protocols like the Responses API and A2A. | |
+| Multi-agents in action with 3 AI agents, 3 frameworks, tools & models |
+Jan Kalis, Vini Soto
+|
+Build an autonomous “Agentic Startup Content Factory” across three frameworks — LangGraph, .NET Microsoft Agent Framework, and GitHub Copilot SDK — deployed to Azure Container Apps and connected to Microsoft Foundry for observability and evals. |
+Want the full online breakout catalogs? Browse Agents & apps, Responsible AI, and Working with models.
+Download the SDK on GitHub, read the documentation, visit the developer blog, or join the Discord.

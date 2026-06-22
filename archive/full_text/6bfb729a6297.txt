@@ -1,0 +1,381 @@
+In 1994 I got my first computer: an Intel i486 DX2-66 with 4 MB RAM and a 512MB harddisk. The software was IBMs OS/2 and Microsofts Windows 3.11. In the next four years I was upgrading this machine every few months with more RAM (up to 16MB), a CD-ROM-drive and a soundblaster card. So I learned upgrading this machine, installing new software and finally learned how to program new software using BASIC. But I never got in touch with the boot-process or the details of MS-DOS.
+In 2026, 32 years later, I learned from some screenshots of the DDX3216, that Behringer used a real 386 processor within this machine. Immediately, some of my neurons fired in my head and I pondered if I could boot software and even a full operating system on this device. My goal was to learn how an x86-system is booting, how DOS takes over and what is necessary to get into the shell.
+Table of Contents
+- Technical Details of the Behringer DDX3216
+- First steps developing own software for bare-metal x86
+- Getting the LCD up and running – and struggling with Segments
+- Implementing a full-featured x86 BIOS for the SC300
+- Interrupt-functions and trying to boot MS-DOS 6.22
+- Successfully booting FreeDOS v1.4
+- More internal hardware and next steps
+Technical Details of the Behringer DDX3216
+The DDX3216 uses the following hardware-components:
+- Main-Processor: AMD Elan SC300 386 SoC (386SX with integrated UART, PCMCIA, GPIO, etc.)
+- 27C512 64k x 8bit ROM IC (for BIOS)
+- 8x HYB5117400BJ60 4M x 4bit RAM for total of 16MB DRAM
+- 1x UM61256 SRAM (as Video-RAM)
+- 4x 29C040-120 Flash-ICs for the main-software
+- 4-bit LCD on SC300-internal LCD-interface (with 3x Toshiba T6A39 Col- and 1x T6A40 Row-Controller)
+- Toshiba TLC16C552 external UART (2 Serial-ports and 1x parallel port)
+- PCMCIA-Connector for external CF-card-connection (with adapter)
+- unassembled Intel 82078 FDC (Floppy Disk Controller) connected to a spare 34-pin connector
+So in summary the hardware around the AMD Elan SC300 is pretty nice and should be compatible to a regular x86-system. Lets deep dive into the x86-system in detail.
+First steps developing own software for bare-metal x86
+For most computers you can download a ready-to-use BIOS from the internet. So I searched for a BIOS for the AMD ELAN SC and found a promising device in Switzerland: the company “PC Engines” developed BIOS-programs for the AMD ELAN SC400 and 520 as well as some more SoC-devices. So I got in contact with the main-developer and first he gave a promising answer that he still has the sourcecode for the SC300. But a couple of days later he had to admit, that he only has sources from the SC400 upwards. My next try was to get in contact with the company “General Software” that offered the “Embedded BIOS” with support for the SC300. But General Software, founded in 1989, has been acquired by Phoenix in 2008. So I got in contact with one of the responsible persons of Phoenix in Germany. He tried to get some information about an SC300-compatible BIOS-package, but after a couple of weeks he had to tell me that its not possible anymore – 32 years are a long time.
+So, I rolled up my sleeves and started reading some documentations about the x86-system and made some notes on programming my own BIOS for the SC300. Even the most-modern x86-compatible CPUs like Intels Core i9 or the AMDs Threadripper have an 8086-compatible boot-process. Directly after the reset, the CPU jumps to the end of the memory-space at the position 0xFFF0 and expects some executable x86 code here – the so called reset-vector. From this reset-vector we have to jump to the desired code that should be executed next – somewhere in the ROM of the BIOS.
+Here is my attempt of implementing a valid x86-reset-vector:
+reset_vector:
+nop // no-operation
+cli // disable interrupts
+jmp start // jump to beginning of current segment
+// Padding to the end and add date
+.zero (0x10 - (. - reset_vector) - 8)
+.ascii "06/04/26" // MM/DD/YY
+This code disables the hardware-interrupts and then jumps to more code in the start-function. By executing this jump-command, the CPU leaves the startup-state and enters the so called “real-mode”, the original 16-bit mode of the 8086. The code of the reset vector is placed by the linker-script to the position 0xFFF0 of the final ROM. As you can see in the list above, the DDX3216 uses a 64k x 8bit ROM-Chip, so code and data can be stored somewhere between 0x0000 and 0xFFFF, while the reset-vector has to be placed at 0xFFF0 to be compatible to the x86-cpecifications. Here is the linker-script to tell GCC how to place the code in the final binary-file:
+OUTPUT_FORMAT("elf32-i386")
+OUTPUT_ARCH(i386)
+ENTRY(reset_vector)
+MEMORY {
+ROM (rx) : ORIGIN = 0x0000, LENGTH = 64K
+}
+SECTIONS {
+.text : {
+__text_start = .;
+KEEP(*(.text))
+*(.text.*)
+. = ALIGN(2);
+__text_end = .;
+} > ROM
+.reset 0xFFF0 : {
+KEEP(*(.reset))
+} > ROM
+}
+Finally, the compiled binary looks like this:
+0000ffa0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ................
+0000ffb0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ................
+0000ffc0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ................
+0000ffd0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ................
+0000ffe0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ................
+0000fff0 90 fa e9 0b 00 00 00 00 30 36 2f 30 34 2f 32 36 .úé.....06/04/26
+So we see a 0x90 at 0xFFF0 which is a “nop” (No Operation), an 0xFA, which is the “cli” to disable all interrupts followed by an 0xE9 which is the jump-instruction. 0x0B is the near-address the jump-command has to jump to. “Near” means, this address is within the current segment. Well, segments are a special thing in the x86-system: as we have only 16-bits, we could address only 65535 bytes. To address more addresses, the x86 uses 64k-Segments to address more data. The problem: to stay backwards-compatible, the segment-address-pointers overlap each other by 16 bytes. This allows addressing of 0xFFFF segments every 16 bytes, resulting in an address-room of 0x00000 to 0xFFFF0, hence 1 MB. The physical address is calculated by the following equation:
+Physical Address = (SEGMENT << 4) + OFFSET
+// maximum physical address
+Physical Address = (0xFFFF << 4) + 0x000F = 0xFFFFF = 1048575 = 1 MB
+Well, finally I learned the reason why DOS and its games had a problem with the conventional memory, which has to be within the 1MB-range. Even more limiting: only the first 640kB can be used as conventional memory, the higher addresses are reserved for the video-memory, the expansion-ROMs and the BIOS itself. This results in the following memory-map for a regular x86 system in real-mode:
++--------------------------------------------------+ 0x100000 (1 MB)
+| |
+| SYSTEM-BIOS | 64 KB ROM
+| |
++--------------------------------------------------+ 0xF0000 (960 KB)
+| |
+| Option-ROMs or free high-memory | 160 KB
+| |
++--------------------------------------------------+ 0xC8000 (800 KB)
+| Video-BIOS (Graphiccard-ROM) | 32 KB ROM
++--------------------------------------------------+ 0xC0000 (768 KB)
+| Video-RAM (VRAM for Textmode & VGA-Graphic) | 128 KB RAM
++==================================================+ 0xA0000 (640 KB)
+| |
+| |
+| |
+| |
+| CONVENTIONAL MEMORY (RAM) |
+| Free space for DOS, Programs, Drivers, etc. | ca. 605 KB
+| |
+| |
+| |
++--------------------------------------------------+ 0x07E00
+| Bootsector (loaded from boot-drive) | 512 Bytes
++--------------------------------------------------+ 0x07C00
+| Free DOS-Memory / DOS-Kernel | ~29 KB
++--------------------------------------------------+ 0x00500
+| BDA (BIOS Data Area) | 256 Bytes
++--------------------------------------------------+ 0x00400
+| IVT (Interrupt-Vector-Tables) | 1 KB
++--------------------------------------------------+ 0x00000
+So instead of 640kB we can only use 605kB of free RAM for our code as the IVT, BDA and the bootsector takes some memory. Between 0x0500 and 0x7C00 we have some space for the kernel and in the upper memory between 0xC8000 and 0xF0000 we have 160kB of high-memory that can be used if no option ROMs are available.
+But enough about memory-maps for now, first I was unsure how to test my compiled code. Sure, the most common way is to use an EEPROM-programmer to burn the BIOS-image onto a EEPROM-IC. But this would prevent a fast development-cycle. So I searched for a better solution and found the PicoROM-project as well as the OneROM-project. Both projects use a RaspberryPi Pico-Controller that has enough memory available to emulate a ROM-IC. I ordered both devices from the USA and Great Britain, but after a while I was ready to test the code. First I uploaded the original ROM of the DDX3216 to see if the audio-mixing-console is booting without problems.
+And the original software booted successfully:
+So I was sure that the ROM-Emulator was working well as the original software booted up. To see if my code is working or not I wanted to get the external UART up and running. As you can see in the picture below, the DDX3216 has a RS232 9-pin-connector:
+The problem: Behringer did not use the internal UART of the SC300 for this connector, but an external Toshiba TLC16C552 IC. The external UART is connected to address-lines SA0 to SA2 (blue circle) and the data-lines D0 to D7. The TLC16C552 consists of two serial-ports and a single parallel-port, while each function can be enabled using one of the three chip-select-signals CS0# to CS2# (green circle). These chip-select-signals are connected to some logic-ICs and here connected to SA3, SA4, SA12, SA13, SA14 and SA15:
+Looking into the datasheets of the connected address-lines release that the CS0# is asserted when IO-address 0x1000 to 0x1007 is used, CS1# is asserted when IO-address 0x1008 to 0x100F is used and the final CS#2 is asserted with IO-addresses 0x1010 to 0x1017. Before we can use the 9-pin UART-connector at the back, we have to make sure, that the logic-IC “IC110” is enabled to pass the TxD signals. This IC is an 74HCT125 and the RS232# signal has to be asserted to enable the output of this IC. RS232# is connected to SLIN# of the TLC16C552 which is connected to the parallel output. So first we have to program the parallel-port, assert SLIN#, than initialize the serial-output for the debugging:
+; enable clock for external UART
+out 0x0022, 0xBA ; set config-address
+out 0x0023, 0b00001000 ; set config-data
+; now program the external UART via IO-writes
+; first the parallel-port interface at BASE-Address 0x1010
+out 0x1012, 0x00001000 ; enable SLIN# = RS232# via parallel port
+; now the serial-port interface at BASE-Address 0x1000
+out 0x1003, 0x80 ; enable access to div-latches
+out 0x1000, 0x5D ; set baud-divider (LSB)
+out 0x1001, 0x00 ; set baud-divider (MSB)
+out 0x1003, 0x03 ; reset DLAB-bit and set 8N1 mode
+out 0x1001, 0x00 ; disable all interrupts
+out 0x1002, 0x00 ; disable FIFO
+out 0x1004, 0x03 ; set DTR and RTS
+This should be enough to enable the external UART and let the TxD-signals pass to the 9-pin-connector at the back. From the Programmers Reference Manual I learned the most important registers that have to be set after the boot-reset to bring the SoC in an operational state. So I programmed around 20 more configuration-registers of the ELAN SC300 to bring the SoC to 33MHz and up and running.
+To output some debug-message via the terminal I sent some characters to the serial-transceiver:
+out 0x1000, 'A' ; output character via RS232
+Well, after a couple of hours reading the manual and more datasheets of the integrated devices, I was able to upload my ROM-image and successfully received characters at 9600 baud on my connected computer:
+Getting the LCD up and running – and struggling with Segments
+After a while I managed to initialize the stack and jump into my main-C-function. From then on it was quite easy to initialize the other components like the display as it is connected directly to the 4-bit LCD-interface of the AMD Elan SC300. This interface implements an CGA/HGA compatible video-card. For this the SC300 uses the memory-segment 0xB800 to store the characters when using the text-mode. In the text-mode the SC300 expects two bytes per displayed character: the first byte is the displayed character, while the second byte contains an attribute-byte. This attribute-byte contains the contrast and color of this specific character. So far so good, but… we cannot write directly into the segment 0xB800. Looking at the above memory-map, the BIOS is working in the segment 0xF000. Together with the offset we can access the full 16-bit range of the ROM. – so all 64kB. But when trying to write into the segment 0xB800, the memory-access fails.
+The x86-system uses several registers to access data or code. In real-mode we have the register CS (CodeSegment) and DS (DataSegment) to access code and variables in a specific segment. Currently both segments are set to 0xF000. But there are more registers, like the register ES. We can set this register to the desired destination-segment and copy the data. I’m using inline-assembler to realize this: “value” is written to ES, the “offset” is set to register BX and the “value” is written to the desired destination:
+static inline void writeFarByte(uint16_t segment, uint16_t offset, uint8_t value) {
+__asm__ __volatile__(
+"pushw %%es\n\t"
+"movw %w0, %%es\n\t"
+"movb %b2, %%es:(%%bx)\n\t"
+"popw %%es\n\t"
+:
+: "r"(segment), "b"(offset), "q"(value)
+: "memory"
+);
+}
+We can read variables as well:
+static inline uint8_t readFarByte(uint16_t segment, uint16_t offset) {
+uint8_t value;
+__asm__ __volatile__(
+"pushw %%es\n\t"
+"movw %w1, %%es\n\t"
+"movb %%es:(%%bx), %b0\n\t"
+"popw %%es\n\t"
+: "=q"(value)
+: "r"(segment), "b"(offset)
+: "memory"
+);
+return value;
+}
+With these two inline-functions I should be able to write characters to the display – well. No, not yet. It turns out, that the SC300 has support for one ore more fonts for the LCD, but no ROM with stored fonts. So I had to implement the full ASCII-table byte by byte as the SC300 takes 8×8 pixel-characters. So 8 bytes form a single character. In total my final font-header-file is about 22kB but it was a great relief to use AI for this dumb task. Google Gemini produced a nice font for my BIOS. On individual characters I had to fix some pixel-errors, but in general the font was very usable from the beginning. Here is an example of parts of the font:
+static const uint8_t bios_font_8x8[256][8] = {
+// ...
+['a'] = {0x00, 0x00, 0x78, 0x0C, 0x7C, 0xCC, 0x76, 0x00},
+['b'] = {0xE0, 0x60, 0x7C, 0x66, 0x66, 0x66, 0xDC, 0x00},
+['c'] = {0x00, 0x00, 0x78, 0xCC, 0xC0, 0xCC, 0x78, 0x00},
+['d'] = {0x1C, 0x0C, 0x7C, 0xCC, 0xCC, 0xCC, 0x76, 0x00},
+['e'] = {0x00, 0x00, 0x78, 0xCC, 0xFC, 0xC0, 0x78, 0x00},
+['f'] = {0x38, 0x6C, 0x60, 0xF0, 0x60, 0x60, 0xF0, 0x00},
+['g'] = {0x00, 0x00, 0x76, 0xCC, 0xCC, 0x7C, 0x0C, 0xF8},
+['h'] = {0xE0, 0x60, 0x6C, 0x76, 0x66, 0x66, 0xE6, 0x00},
+['i'] = {0x18, 0x00, 0x38, 0x18, 0x18, 0x18, 0x3C, 0x00},
+['j'] = {0x06, 0x00, 0x16, 0x06, 0x06, 0x06, 0x66, 0x3C},
+['k'] = {0xE0, 0x60, 0x6C, 0x78, 0x70, 0x78, 0x6C, 0xC6},
+['l'] = {0x38, 0x18, 0x18, 0x18, 0x18, 0x18, 0x3C, 0x00},
+['m'] = {0x00, 0x00, 0xEC, 0xFE, 0xD6, 0xD6, 0xC6, 0x00},
+// ....
+}
+Implementing a full-featured x86 BIOS for the SC300
+I spent a bit more time on initializing more components of the SC300 like the Interrupt Vector Table (IVT), the BIOS Data Area (BDA), the internal keyboard-controller, the timer and the CF-Card-interface. The first two things are just an area within the conventional memory. Looking again at part of the memory-map, you can find both sections at the bottom of the memory:
++--------------------------------------------------+ 0x07E00
+| Bootsector (loaded from boot-drive) | 512 Bytes
++--------------------------------------------------+ 0x07C00
+| Free DOS-Memory / DOS-Kernel | ~29 KB
++--------------------------------------------------+ 0x00500
+| BDA (BIOS Data Area) | 256 Bytes
++--------------------------------------------------+ 0x00400
+| IVT (Interrupt-Vector-Tables) | 1 KB
++--------------------------------------------------+ 0x00000
+The IVT-Area is read by the x86-CPU to get the pointer of the responsible Interrupt Service Function when an Interrupt Request has been set either by hardware or by software. So its simply a list of 16-bit pointers followed by another 16-bit value containing the segment-address where the 16-bit pointer is directing. So in short, we are storing up to 256 32-bit-“ish” addresses for each interrupt.
+The BDA is comparable to a configuration-space. Here the BIOS contains things like the base-addresses of the COM-ports, LPT-ports, total conventional memory-size, cursor-positions, video-modes, timer-ticks, keyboard-data and so on. DOS is using some of the 16-bit values to interact with the BIOS next to the interrupt-functions.
+From the Programmers Reference Manual I learned, that the internal timer-IC of the type 8254, the reference x86-timer-IC. The only difference is, that this timer-IC is clocked by a 1.1892 MHz clock instead of the more common AT-standard 1.19318 MHz. To achieve the common 18.207 Hz clock-interrupt, I had to configure the timer-counter to 0xFF23, resulting in 18,20715 Hz counter, close enough.
+The SC300-keyboard-controller is a standard XT-controller that receives 8-bit data from an external XT-keyboard. So here I have to create an adapter, that converts my AT/PS2-keyboard-data to XT.
+The CF-Card-interface was another big thing and took more time to get through. The SC300 has two native PCMCIA-card-connectors. So in theory, two CF-cards or other PCMCIA-cards could be connected, but only port A is routed to the external card-slot. Luckily eBay still has lot of different PCMCIA-adapters and so I bought a PCMCIA-2-CF-Card-Adapter. CF-Cards are basically IDE-drives with the common ATA-command-interface and the PCMCIA directly routes to the CF-card without any electronics. Pretty neat. But my CF-card had more than 500MB. From the story with the segments I learned that I can only address up to 1MB in real-mode. So how on earth can I read data from my CF-card with those limits? It turns out, that the SC300 has a powerful memory-mapping-unit – or two of them. On the SC300 they are called “MMS” for MemoryMappingSystem A and B.
+The MMSA is capable of mapping 8 pages of 64kB to an address between 0xD0000 and 0xEFFFF, the MMSB only capable of mapping 4 pages of 64kB between 0xA0000 and 0xAFFFF. From the next picture you can see a possible mapping of different parts of the system. So DRAM, PCMCIA CardA or B, the ROM-BIOS or the ROM-DOS can be mapped to the mentioned 64kB-areas. ROM-DOS means one of the 4 flash-ICs listed in the first table. Here the original firmware is placed and I’m not using these ICs at the moment. But the MMS could be used to perform a memory-check of the upper 15MB DRAM-modules using this mapping.
+I wasn’t entirely honest. The CF card can be written and read without the MMS as the ATA-commands support LBA access or at least the access using CHS, to address cylinders, heads and sectors with each 512 bytes per sector. So in total we could access around 8GB:
+C * H * S * 512 Byte = x
+1024 * 255 * 63 * 512 Bytes = 8422686720 Bytes = 8032,50 MB
+But the problem is that my CF-card is not starting in the TrueIDE-mode and cannot be accessed via ATA-commands at the moment. This is related to the hardware-configuration of the CF-card-slot where the important pin is set for PCMCIA-memory-mode first. So we have to initialize the CF-card, use the MMS to access the so called CIS, the Card Information Structure and switch the CF-card from PCMCIA-memory-mode to the TrueIDE-mode:
+// set REGA# to LOW to access Attribute Memory
+outb(REGA_BASE, 0x01);
+// set COR to switch from memory-mapped-mode into I/O-mapped mode
+// we are using Polling-Mode (0x1F0...0x1F7 / 0x3F6...0x3F7)
+// b7=SoftReset, b6=Interrupt-Mode, b5=CardReset, b4..0=ConfigIndex
+writeFarByte(PCMCIA_BASE, 0x0200, 0b00000010);
+// set REGA# to HIGH to access Common Memory
+outb(REGA_BASE, 0x00);
+// do a CF-card reset via IDE-register
+outb(IDE_DEV_CTRL, 0x06); // CF-Card software-reset via IDE-Register
+for (volatile uint16_t i = 0; i < 10000; i++);
+outb(IDE_DEV_CTRL, 0x02); // SRST=0, nIEN=1 (IRQ stays disabled)
+for (volatile uint16_t i = 0; i < 10000; i++);
+// select drive 0 (master)
+outb(IDE_DRIVE_HEAD, 0xA0);
+for (volatile uint32_t i = 0; i < 10000; i++);
+From now on we can use regular ATA-commands to IO-addresses 0x1F0 to 0x1F7 or 0x3F6 and 0x3F7. Here is an example for my read-function for a whole sector (512 bytes) into the RAM. I’m not using the CHS-addressing but converting CHS into LBA for simplicity and calling this read-function. Sure, this is not the fastest way, but I’d like to have fun and not optimizing my code to the optimum:
+uint8_t ide_read_sector(uint32_t lba, uint16_t dest_seg, uint16_t offset) {
+// wait until drive is ready
+if (!ide_wait_ready()) {
+return 0xAA; // ERROR: Drive not ready
+}
+// set LBA-Address and send command
+outb(IDE_SECT_COUNT, 1); // 0x1F2
+outb(IDE_LBA_LOW, (uint8_t)( lba & 0xFF)); // 0x1F3
+outb(IDE_LBA_MID, (uint8_t)((lba >> 8) & 0xFF)); // 0x1F4
+outb(IDE_LBA_HIGH, (uint8_t)((lba >> 16) & 0xFF)); // 0x1F5
+outb(IDE_DRIVE_HEAD, 0xE0 | ((lba >> 24) & 0x0F)); // 0x1F6
+outb(IDE_COMMAND, IDE_CMD_READ); // 0x1F7
+// wait until data is ready (DRQ set)
+if (!ide_wait_drq()) {
+return 0xBB; // ERROR: DRQ timeout
+}
+// read 512 bytes data (one full sector)
+// is delivered at IO-address 0x1F0 (IDE_DATA-register)
+for (uint16_t i = 0; i < 512; i++) {
+uint8_t data = inb(IDE_DATA);
+writeFarByte(dest_seg, offset + i, data);
+}
+return 0x00; // no error
+}
+With this function we have most functions together to interact with most components. Finally, one of my attempts of booting the machine ends up in this screen:
+Up to now it took me around 2.5 weeks to get here, but not alone by reading the technical documentation of the x86-system but partly supported by AI. Maybe its a good time to tell you how I’m using AI: I never used AI-agents to manage my code. I feel unsafe when loosing control of my code. So I’m using a mix of Googles Gemini and the ChatAI-system of my university (most of the time using Claude Sonnet 4.6). The AI is not writing or altering my code, but I’m asking for specific questions. For instance: I’ve uploaded the Programmers Reference Manuel of the AMD Elan SC300 to ChatAI and asked for the initialization for the DRAM using my specific DRAM-Chips. Finally I checked the set registers against the manual, but 95% of the set registers were fine. Then I’m implementing this checked code in my project. With this method even complex ideas can be solved quite fast.
+Interrupt-functions and trying to boot MS-DOS 6.22
+My goal was to start DOS at the end. But before trying this I had a lot of work. DOS is interacting with the BIOS in a very special way: DOS partly interacts with the BIOS Data Area, but most of the time the interaction with the BIOS is done using interrupts. The most important interrupts are:
+INT 0x08: Timer-Interrupt
+INT 0x09: external Keyboard-Interrupt
+INT 0x0C: external UART-Interrupt
+INT 0x10: Video-Interrupt
+INT 0x11: Equipment-List
+INT 0x12: Memory Size
+INT 0x13: Disk-Interrupt
+INT 0x14: UART-Interrupt
+INT 0x15: Multi-Purpose Interrupt
+INT 0x16: Keyboard-Interrupt
+INT 0x17: Parallel-Port-Interrupt
+INT 0x19: Boot-Interrupt
+INT 0x1A: RTC-Interrupt
+So if DOS wants to display data on the LCD, it does not call specific LCD-functions, but simply sets register AX with 0x0Ecc with cc containing the character to be displayed. The BIOS has to deal with the LCD-specific-interface, but DOS simply interacts with interrupt 0x10. The same is for data from the disk: if DOS wants to read a specific sector from the disk, it calls interrupt 0x13 with some data on the registers AX, BX and more. For reading AX must be 0x02ss with ss the number of sectors to be read. Register BX contains the offset with the destination-segment and register ES contains the destination-segment. CX and DX contain the specific cylinder, head and sector of the disk. My BIOS is converting this CHS-address to an 48-bit-LBA-address and reads the specific sector.
+Some of the interrupt-functions took a while to implement, but finally I was ready to try a boot of MS-DOS 6.22: since I know that DOS is quite picky when it comes to bootsectors and data in the first sector, I booted up my old 486 computer with a DOS 6.22 bootdisk. I used fdisk to partition my CF-card and format c: to format it with FAT16. Then I transferred the system files to the CF-card. This means it copies IO.SYS to the very beginning of the CF-card as well as MSDOS.SYS and COMMAND.COM.
+To boot DOS some steps have to be done before:
+Phase 1:
+BIOS loads Master Boot Record (MBR) of selected disk into RAM at 0x7C00 (total of 512 Bytes)
+Phase 2:
+MBR reads partitiontable, selects the active partition and load first sector into RAM at 0x7C00
+For MS-DOS the file IO.SYS must be the first(!) file in root-directory
+Phase 3:
+First three sectors of IO.SYS are loaded to RAM and system jumps to IO.SYS
+Phase 4:
+IO.SYS requests conventional memory via INT12h and loads more sectors to Segment 0x0000:0x0500 and later last segment at end of conv. memory
+Phase 5:
+IO.SYS loads MSDOS.SYS (60 - 80 sectors)
+Phase 6:
+MSDOS.SYS loads COMMAND.COM and starts the shell
+So I had to copy the bootsector (MBR) into the segment 0x7C00, which is dedicated for the bootsector and had to far-jump to this address:
+void boot_dos() {
+uint8_t status = 0xFF;
+uint8_t retries = 3;
+// reading bootsector
+while (retries-- > 0) {
+if (ide_read_bootsector() == 0x00) {
+status = 0; // success
+break;
+}
+// error reading -> retry
+}
+if (status != 0) {
+// ERROR: read after 3 retrys
+return;
+}
+// check boot-signature at the end of the MBR
+uint16_t signature = readFarWord(BASE_SEG, 0x7C00 + 510);
+if (signature != 0xAA55) {
+// ERROR: no valid magic word
+return;
+}
+// bootsector seems to be fine -> jump to bootsector
+launch_bootsector();
+}
+The function launch_bootsector() is an assembler-function and looks like this – it simply resets the segment-registers, sets an initial stack right below the bootsector, selects the bootdrive using register DX and performs a far-jump to the begin of the bootsector:
+launch_bootsector:
+cli ; disable interrupts
+; clear all segments to 0x0000
+xor ax, ax ; set ax to 0x0000
+mov ds, ax
+mov es, ax
+; set stack-pointer for initial DOS
+; right below bootsector at 0x0000:0x7C00
+mov ss, ax ; set Stack-Segment to 0x0000
+mov sp, 0x7C00
+; write the boot-drive to DL
+mov dl, 0x80
+sti ; enable interrupts again
+; far-jump to bootsector
+jmp 0x0000:0x7C00
+After compiling and uploading everything, I plugged in the CF card and booted the system.. but nothing happened. I debugged the interrupt-calls using the UART-interface and found that some of my interrupt-functions had some troubles with wrong function-codes and responses back to DOS. I fixed the specific interrupts and then booted up again. Still the LCD did not show any information from DOS, but much more INT 0x13 get called. But suddenly the system crashed again.
+On the UART-interface I printed the stackpointer and found out, that the stack went very low – even though I started the stack right below 0x7C00. The reason is that the stack is growing from top to bottom, but when the stackpointer is getting too low this means the stack has some trouble. Obviously DOS is either rearranging the stack or is using huge amount of the stack (turns out DOS is moving the stack to a lower part in memory to get more free RAM). So I spent some hours reorganizing my memory-model and spent a separate BIOS-stack at the top of the conventional memory just for the BIOS-interrupt-calls. This did the trick and DOS went much further. As you can see in the next picture “Starting MS-DOS…” is showing up, followed by some more interrupt-calls:
+After the “Starting MS-DOS…” text, interrupt 0x15 is called, following by some INT 0x1A (RTC-clock). The dots indicates calls to INT 0x13 (disk-reading) but the system hangs after calling INT 0x15 a last time with AX = 0x4101, which is not a regular function-call. So DOS seems to give up after trying to read some sectors. I tried several days to get this under control, but at some point I gave up… I was so close to the DOS-shell. Looking into the MS-DOS 4.0 sourcecode, IO.SYS and MSDOS.SYS seems to be loaded successfully as the RTC-interrupt already get called. So somewhere between MSDOS.SYS and COMMAND.COM the system get stuck. Even by looking at the sourcecode of MS-DOS 4.0 which has been published by Microsoft, I couldn’t find the culprit up to now. So I gave up on MS-DOS 6.22 for now.
+Successfully booting FreeDOS v1.4
+As MS-DOS 6.22 was not starting I downloaded the most recent version of FreeDOS which was version 1.4. I fired up QEMU and created a small virtual environment to install FreeDOS:
+rem Create new virtual image for FreeDOS
+qemu-img create -f raw freedos.img 100M
+rem Start the system with FreeDOS LiveCD
+rem virtual disk with 203 cylinders, 16 heads and 63 sectors
+qemu-system-i386 -machine isapc -cpu 486 -m 8 -device isa-vga,vgamem_mb=1 -rtc base=localtime -drive file=freedos.img,format=raw,if=none,id=d1 -device ide-hd,drive=d1,cyls=203,heads=16,secs=63 -cdrom FD14LIVE.iso -boot d
+rem Alternative:
+rem Start the system with MS-DOS 6.22 Boot-Floppy
+rem virtual disk with 203 cylinders, 16 heads and 63 sectors
+qemu-system-i386 -machine isapc -cpu 486 -m 8 -device isa-vga,vgamem_mb=1 -rtc base=localtime -drive file=freedos.img,format=raw,if=none,id=d1 -device ide-hd,drive=d1,cyls=203,heads=16,secs=63 -fda dos622.img -boot a
+After the install-process I used Rufus to copy the virtual image sector by sector to the real CF-card. I then moved to the Behringer DDX3216 audiomixing console and booted the system:
+Wow – FreeDOS did finally the trick. After a total of three weeks I managed to create a DIY BIOS compatible enough with real x86-software that I was able to boot a real operating system. I still have to implement some more code for interrupt 0x16 (keyboard-access) as well as some minor stuff, but in general the system is up and running.
+More internal hardware and next steps
+Lot of components in the DDX3216 are strictly based on logic ICs. For instance all LEDs are controlled using a basic shift-register connected to the IO-interface of the SC300. First the control-signals are fed into IC5A and IC6A while IC5A controls signals VULTCH, LSSELR, UCSELR and SPTESR and IC6A controls signals VUSELW, LSSELW, UCSELW, LSLTCH, FLSET1, FLSET0. The Addressbits SA12..15 of the SC300 are used on the IO-bus, resulting in an address-space between 0x1000 and 0xF000. 0x3000 will enable VUSELW on writing and VULTCH on reading the IO bus. So LEDs 1 and 9 of Audio-Channel 1-4 are controlled at address 0x3000 bit 0, LEDs 8 and 16 of Channel 1-4 at address 0x3000 bit 7. Four more shift-registers are connected to the 9th bit of the previous shift-register so that the bits are shifted through multiple logic ICs as well.
+Furthermore to limit the maximum current of the VCC or GND pins of the LED-drivers, the even and odd LEDs are connected to GND and VCC alternately:
+So, we have to send 0 and 1 depending on the selected LED in the shift-register. The following code sets all VU-meter-LEDs of all channels to HIGH:
+bool even = false;
+for (uint8_t i = 0; i < (8 * 5); i++) {
+if (even) {
+outb(0x3000, 0b11111111);
+}else{
+outb(0x3000, 0b00000000);
+}
+inb(0x3000);
+even = !even;
+}
+The code works because we have five concatenated 8-bit-shift-registers with alternating LEDs on each output. Each bit of the above byte is connected to a specific LED. Here is a full list of the VU-meter LEDs:
+// DL30..37
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, Left led 2, Left led 3, Left
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, Left led 10, Left led 11, Left
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, Right led 2, Right led 3, Right
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, Right led 10, Right led 11, Right
+outb(0x3000, 0b00000000); inb(0x3000); // LED-segment
+outb(0x3000, 0b00000000); inb(0x3000); // LED-segment
+outb(0x3000, 0b00000000); inb(0x3000); // LED-segment
+outb(0x3000, 0b00000000); inb(0x3000); // free
+// DL20..27
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 13 led 2, ch 13 led 3, ch 13
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 13 led 10, ch 13 led 11, ch 13
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 14 led 2, ch 14 led 3, ch 14
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 14 led 10, ch 14 led 11, ch 14
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 15 led 2, ch 15 led 3, ch 15
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 15 led 10, ch 15 led 11, ch 15
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 16 led 2, ch 16 led 3, ch 16
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 16 led 10, ch 16 led 11, ch 16
+// DL10..17
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 9 led 2, ch 9 led 3, ch 9
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 9 led 10, ch 9 led 11, ch 9
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 10 led 2, ch 10 led 3, ch 10
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 10 led 10, ch 10 led 11, ch 10
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 11 led 2, ch 11 led 3, ch 11
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 11 led 10, ch 11 led 11, ch 11
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 12 led 2, ch 12 led 3, ch 12
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 12 led 10, ch 12 led 11, ch 12
+// DL00..07
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 5 led 2, ch 5 led 3, ch 5
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 5 led 10, ch 5 led 11, ch 5
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 6 led 2, ch 6 led 3, ch 6
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 6 led 10, ch 6 led 11, ch 6
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 7 led 2, ch 7 led 3, ch 7
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 7 led 10, ch 7 led 11, ch 7
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 8 led 2, ch 8 led 3, ch 8
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 8 led 10, ch 8 led 11, ch 8
+// DL0..7
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 1 led 2, ch 1 led 3, ch 1
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 1 led 10, ch 1 led 11, ch 1
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 2 led 2, ch 2 led 3, ch 2
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 2 led 10, ch 2 led 11, ch 2
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 3 led 2, ch 3 led 3, ch 3
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 3 led 10, ch 3 led 11, ch 3
+outb(0x3000, 0b00000000); inb(0x3000); // led 1, ch 4 led 2, ch 4 led 3, ch 4
+outb(0x3000, 0b11111111); inb(0x3000); // led 9, ch 4 led 10, ch 4 led 11, ch 4
+So, the next steps could be to program a function that updates the LEDs depending on a part of the RAM that contains the state of the LEDs, like a pixel-buffer. The faders and the rotary-knobs could be than be programmed as well.
+As the DDX3216 has several PIC16-microcontrollers with proprietary firmwares, we probably will not be able to get all parts up and running. I thought about bringing the AnalogDevices SHARC DSPs under my control as I gained some experiences on the Behringer X32 with the 21379 DSPs, but the four SHARC DSPs are connected to proprietary logic-device, comparable to an FPGA, but only on-time-programmable. Without specific information about this device, the connection to the DSPs will be quite hard.
+So, I think I will play with FreeDOS a bit more, connect the AT-XT-keyboard-converter and maybe implement the graphic-video-mode to test Windows 2.0 or 3.0 with this device, but only when I have lot of time. Some higher-“levelish” graphics-functions are already available for the CGA-graphics mode:
+The full sourcecode can be found here on GitHub: https://github.com/xn--nding-jua/DDX3216. There I prepared some DIY bootsector-programs that are able to switch to the protected mode as well to use flat 32-bit-pointers to address the full memory much easier. But with these bootsectors you could not boot DOS as it requires the real-mode of the x86 CPU.

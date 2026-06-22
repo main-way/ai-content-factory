@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Who Spoke When in Multi-Conversation: Target Speaker Tagging Task and Benchmark
+View PDF HTML (experimental)Abstract:We present target speaker tagging (TST), a task that integrates speaker diarization, verification, and identification into a unified workflow for multi-speaker conversations. Given long recordings and pre-enrolled speakers, TST detects and labels speech segments of known speakers while rejecting unknown ones. Despite its practical importance, research has been limited by the absence of suitable evaluation resources. To address this, we introduce TST-Bench, a large-scale synthetic benchmark with over 150 enrolled speakers, 300 sessions of 20-60 minutes, and reference annotations with global speaker labels. We define an evaluation protocol encompassing diarization and full-pipeline scenarios. Experiments on both real and synthetic data show that TST poses challenges not captured by conventional benchmarks, and that dedicated system design yields significant gains over naive integration of existing solutions. The benchmark dataset and evaluation protocols are publicly released.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

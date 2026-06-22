@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:Federated Learning for Feature Generalization with Convex Constraints
+View PDF HTML (experimental)Abstract:Federated learning (FL) often struggles with generalization due to heterogeneous client data. Local models are prone to overfitting their local data distributions, and even transferable features can be distorted during aggregation. To address these challenges, we propose FedCONST, an approach that adaptively modulates update magnitudes based on the parameter strength of the global model. This prevents over-emphasizing well-learned parameters while reinforcing underdeveloped ones. Specifically, FedCONST employs linear convex constraints to ensure training stability and preserve locally learned generalization capabilities during aggregation. A Gradient Signal to Noise Ratio (GSNR) analysis further validates the effectiveness of FedCONST in enhancing feature transferability and robustness. As a result, FedCONST effectively aligns local and global objectives, mitigating overfitting and promoting stronger generalization across diverse FL environments, achieving state-of-the-art performance.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

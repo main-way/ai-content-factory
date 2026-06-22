@@ -1,0 +1,93 @@
+{
+  "date": "2026-04-27",
+  "count": 5,
+  "posts": [
+    {
+      "id": "8af849db36d4",
+      "title": "Partnering with Ineffable Intelligence: A Superlearner for the Era of Experience",
+      "url": "https://sequoiacap.com/article/partnering-with-ineffable-intelligence-a-superlearner-for-the-era-of-experience/",
+      "source": "Sequoia Capital",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-27T14:15:11+00:00",
+      "summary": "The post Partnering with Ineffable Intelligence: A Superlearner for the Era of Experience appeared first on Sequoia Capital .",
+      "author": "amoore",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "29488e13238b",
+      "title": "Join the new AI Agents Vibe Coding Course from Google and Kaggle",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/kaggle-genai-intensive-course-vibe-coding-june-2026/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-27T13:00:00+00:00",
+      "summary": "A web next to a laptop",
+      "author": "Frank Guan",
+      "tags": [
+        "Google DeepMind",
+        "Developer tools",
+        "Google Cloud",
+        "AI",
+        "Gemini models"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "2eb43756616e",
+      "title": "Claude Code is leaking API keys into public package registries",
+      "url": "https://bdtechtalks.com/2026/04/27/claude-code-api-token-leak/?utm_source=rss&utm_medium=rss&utm_campaign=claude-code-api-token-leak",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-27T13:00:00+00:00",
+      "summary": "A new study reveals how AI coding assistants like Claude Code are quietly hoarding and publishing sensitive API keys to code repositories. The post Claude Code is leaking API keys into public package registries first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI agents",
+        "AI Coding",
+        "AI security",
+        "Anthropic",
+        "Artificial intelligence (AI)",
+        "Claude Code",
+        "Coding Agents",
+        "cybersecurity",
+        "large language models"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "86d148703bef",
+      "title": "Announcing our partnership with the Republic of Korea",
+      "url": "https://deepmind.google/blog/announcing-our-partnership-with-the-republic-of-korea/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-27T07:00:06+00:00",
+      "summary": "Google DeepMind and Korea partner to accelerate scientific breakthroughs using frontier AI models",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "100e89029424",
+      "title": "How to build scalable web apps with OpenAI's Privacy Filter",
+      "url": "https://huggingface.co/blog/openai-privacy-filter-web-apps",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-27T00:00:00+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

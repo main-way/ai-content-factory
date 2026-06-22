@@ -1,0 +1,3 @@
+import { Drive, Sandbox } from "@vercel/sandbox";
+const drive = await Drive.getOrCreate({ name: "agent-workspace",});
+const sandbox = await Sandbox.create({ mounts: { "/workspace": { drive: drive.name, mode: "read-write", }, },});

@@ -1,0 +1,14 @@
+Computer Science > Machine Learning
+Title:A Two-Parameter Weibull Framework for Diagnosing Transformer Weight Distributions
+View PDF HTML (experimental)Abstract:We apply the Weibull distribution -- a two-parameter family from extreme-value theory -- as a diagnostic framework for element-wise weight magnitude distributions in transformers. At initialization, i.i.d. Gaussian weights give |w| ~ HalfNormal, yielding k ~ 1.20 via middle-80% probability-plot fit (the protocol used throughout this work). This anchor makes k a principled, architecture-independent measuring stick for training dynamics; fitting each weight matrix independently at every layer at every checkpoint enables per-component, per-layer, and per-step diagnostics that aggregate statistics cannot resolve.
+Applying this framework to 12 model entries spanning 7 architectural families (Pythia, OLMo-1/2, LLaMA-3, Mistral, Qwen2.5/3) reveals three findings. First, FFN modules and the attention output projection W_o -- the Transmission Class -- fall in a narrow k band: median terminal k in [1.186, 1.204] across 12 entries (cross-family CV = 0.51%), shared across SwiGLU/GeLU activations, Pre-LN/QK-Norm placements, and 70M-14B sizes. Second, the attention input projections W_q, W_k -- the Selection Class -- depart from the Weibull family, with severity shaped by storage: separately-stored Q/K (OLMo-1, OLMo-2) yields k in [0.76, 0.99] (deep); GQA models yield k in [1.10, 1.16] (mild); Pythia's merged W_qkv occupies a transitional zone tracking training budget T/tau monotonically. Third, lambda grows substantially during training and scales with sqrt(eta/lambda_wd) within the Pythia family (Pearson r = 0.94, three Transmission kinds), directionally consistent with Fan et al. (2025). The two parameters carry independent information: k labels the functional class, lambda labels training progress.
+We release npm-weibull-py v0.4 (Python library) and DATABASE_v9_1 at this https URL .
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

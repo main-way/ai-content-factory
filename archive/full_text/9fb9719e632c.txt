@@ -1,0 +1,12 @@
+Computer Science > Computation and Language
+Title:Entity Binding Failures in Speech LLM Reasoning: Diagnosis and Chain-of-Thought Intervention
+View PDF HTML (experimental)Abstract:Speech Large Language Models (SLLMs) underperform their text counterparts on complex reasoning. We reveal that this gap is not a uniform cognitive deficit. Evaluating two architecturally diverse SLLMs, we show speech-to-text (S2T) matches or exceeds text-to-text (T2T) on spatial, syntactic, and factual tasks. Yet on logical tasks requiring entity tracking, S2T accuracy collapses to chance. We diagnose this as an entity binding failure: continuous speech features blur precise entity-property associations during implicit reasoning. To validate this diagnosis, we introduce Entity-Aware Chain-of-Thought (EA-CoT), a lightweight inference-time intervention forcing SLLMs to enumerate entities and bind them to claims before reasoning. EA-CoT bridges the gap, even when spoken names are misrecognized, yielding up to a 24.4 percentage-point accuracy gain. Ablations confirm the gains stem from explicit semantic binding, reframing the gap as an elicitation failure rather than a missing capability.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

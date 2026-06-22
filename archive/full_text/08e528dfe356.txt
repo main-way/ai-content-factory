@@ -1,0 +1,17 @@
+Computer Science > Sound
+Title:Leveraging Local and Global Knowledge Integration with Time-Frequency Calibrated Distillation for Speech Enhancement
+View PDF HTML (experimental)Abstract:In this paper, we propose an intra-set and inter-set recursive fusion framework with time-frequency calibrated knowledge distillation (I$^2$SRF-TFCKD) for SE. Different from previous distillation strategies for SE, the proposed framework fully exploits the time-frequency differential information of speech while facilitating both local information focusing and global knowledge circulation. Firstly, we construct a collaborative distillation paradigm for intra-set and inter-set correlations. Within a correlated set, multi-layer teacher-student features are pairwise matched for calibrated distillation. Subsequently, we generate representative features from each correlated set through recursive fusion to form the fused feature set that enables inter-set knowledge interaction. Secondly, we propose a multi-layer interactive distillation based on dual-stream time-frequency cross-calibration, which calculates the teacher-student similarity calibration weights in the time and frequency domains respectively and performs cross-weighting, thus enabling refined allocation of distillation contributions across different layers according to speech characteristics. The proposed distillation strategy is applied to the dual-path dilated convolutional recurrent network (DPDCRN) that ranked first in the SE track of the L3DAS23 challenge. To evaluate the effectiveness of I$^2$SRF-TFCKD, we conduct experiments on both single-channel and multi-channel SE datasets. Objective evaluations demonstrate that the proposed KD strategy consistently and effectively improves the performance of the low-complexity student model and outperforms other distillation schemes.
+Submission history
+From: Jiaming Cheng [view email][v1] Mon, 16 Jun 2025 06:20:09 UTC (18,932 KB)
+[v2] Thu, 9 Oct 2025 15:51:17 UTC (21,126 KB)
+[v3] Fri, 15 May 2026 06:32:20 UTC (22,512 KB)
+[v4] Tue, 16 Jun 2026 08:55:06 UTC (22,167 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

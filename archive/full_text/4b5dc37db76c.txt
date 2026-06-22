@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:Spokes: Optimizing for Diverse Pretraining Data Selection
+View PDF HTML (experimental)Abstract:Diversity plays a critical role in data selection, improving performance under fixed data budgets by reducing redundancy and repetition. However, optimizing for diversity is inherently challenging, as it is a set-level property that depends on interactions between data points rather than individual examples. As a result, existing approaches typically rely on proxies or approximations, which often fail to ensure sufficiently diverse subsets. In this work, we directly optimize diversity by introducing a probabilistic diversification framework based on the G-Vendi score, optimized via exponentiated gradient descent. Our method produces subsets that are substantially more diverse than those obtained via random sampling, achieving a +489 increase in G-Vendi score on a 500k-sample subset. We evaluate our approach on FineWeb and DCLM, where it consistently outperforms existing methods. Notably, SPOKES (diversity-only) improves average downstream performance by +0.4 and +0.5 points over random sampling on DCLM and FineWeb, respectively. More importantly, jointly optimizing for both quality and diversity yields the strongest results: SPOKES achieves gains of +1.5 and +1.4 points on DCLM and FineWeb, outperforming all baselines, including semantic deduplication and quality filtering.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

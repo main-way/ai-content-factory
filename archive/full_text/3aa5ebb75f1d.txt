@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Space Is Intelligence: Neural Semigroup Superposition for Riemannian Metric Generation
+View PDF HTML (experimental)Abstract:Traditional approaches place intelligence in the agent, whether as a learned policy or a search procedure. We instead place intelligence in the space itself: a scene induces a Riemannian metric on the configuration manifold, and action reduces to following the geodesics of that metric rather than invoking a separate planner or collision checker. A single Encoder-Router network realizes this idea through three complementary parameter groups -- frame parameters that orient the generators, modulation parameters that govern their spatial propagation, and basic coefficients that determine their strength. These groups combine through a shared semigroup-superposition mechanism to produce a single Riemannian metric field, yielding a compact architecture whose geometry scales naturally with scene complexity. Trained on a single two-obstacle scene, the model demonstrates robust zero-shot generalization across unseen obstacle configurations, with orders-of-magnitude separation between collision-free and obstacle-penetrating path costs.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

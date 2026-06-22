@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:3D Vessel Reconstruction from Sparse-View Dynamic DSA Images via Vessel Probability Guided Attenuation Learning
+View PDF HTML (experimental)Abstract:Digital Subtraction Angiography (DSA) is one of the gold standards for vascular disease diagnosis. With the help of a contrast agent, time-resolved 2D DSA images deliver comprehensive blood flow information and can be utilized to reconstruct 3D vessel structures for medical assessment. Current commercial DSA systems typically require hundreds of scanning views to perform reconstruction, resulting in substantial radiation exposure. In this study, we propose a neural rendering-based optimization framework tailored for high-quality sparse-view DSA reconstruction to reduce radiation dosage. Our approach, termed vessel probability guided attenuation learning, represents DSA imaging as a complementary weighted combination of static and dynamic attenuation fields, with the weights derived from the time-independent vessel probability field. Functioning as a foreground mask, vessel probability provides proper gradients for both static and dynamic fields adaptive to different scene types. This mechanism enables self-supervised decomposition between static backgrounds and dynamic contrast agent flow, and significantly improves reconstruction quality. Our model is trained by minimizing the discrepancy between synthesized projections and real captured DSA images. We further employ two training strategies to improve reconstruction quality: (1) coarse-to-fine progressive training for better geometry and (2) temporal perturbed rendering loss for temporal consistency. Experimental results have demonstrated high-quality 3D vessel reconstruction and 2D DSA image synthesis.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,11 @@
+Computer Science > Machine Learning
+Title:STARIXNet: Multivariate and Multi-attribute Deep Learning Approach to Real-Time Resource Allocation in Cloud Platforms
+View PDF HTML (experimental)Abstract:Intelligent scaling of microservices in cloud platforms is crucial for mitigating escalating compute costs while avoiding service disruptions. Current solutions are limited to the univariate space, typically focusing on CPU usage alone to drive scaling decisions. Moreover, they address the problem as a purely forecasting task, focusing on prediction precision while neglecting the greater risks of underestimation and delays in system responsiveness. Alternative solutions are computationally complex, making them impractical for large-scale, real-time deployments. To address these challenges, we present STARIXNet, a lightweight neural network that guides resource allocation decisions in the multivariate space by capturing spatio-temporal relationships among multiple system metrics. STARIXNet models multiple quasi-dependent attributes, in particular the (S)easonal, (T)emporal, (A)uto-(R)egressive (I)ntegrated, and e(X)ogenous patterns, then implements an aggregation policy to finalize scaling decisions, prioritizing service stability, followed by cost-efficiency, over raw forecast accuracy. We empirically demonstrate the performance of STARIXNet by benchmarking against existing solutions in real-world settings. STARIXNet is deployed for critical production microservices at Walmart achieving tangible savings ranging from 10\% to 50\%, in addition to intangible benefits through improved service stability and customer experience.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

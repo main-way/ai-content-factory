@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:MiqraBERT: Regression-Based Sentence-BERT Finetuning for Biblical Hebrew Parallel Detection
+View PDFAbstract:Textual reuse pervades the Hebrew Bible, yet the computational methods used to detect it still rest largely on lexical overlap, and they falter once a parallel involves paraphrase, lexical substitution, or syntactic reworking. This paper introduces MiqraBERT, a Sentence-BERT model finetuned from AlephBERT (a Modern Hebrew encoder) for verse-level semantic similarity in Biblical Hebrew. The training set comprises 1,650 labeled verse and half-verse pairs: 825 true parallels drawn from the Chronicles synoptic material and from foundational studies of poetic parallelism, balanced against 825 randomly sampled negatives. Through cosine-similarity regression, the model learns an embedding space in which parallel verses cluster together and unrelated verses move apart. We evaluate separation with distribution-based metrics, Wasserstein distance and the overlap coefficient, across ten random seeds. MiqraBERT improves distributional separation 2.7-fold over the pre-trained baseline and reduces the ambiguous overlap region from roughly 24% to about 6%. Narrative synoptic parallels reach a recall@10 of 87.1%; poetic parallels remain difficult, below 9%. This genre-dependent asymmetry confines the model's reliable scope to narrative textual reuse. MiqraBERT is publicly available at this https URL
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

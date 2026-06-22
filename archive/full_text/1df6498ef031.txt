@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:A BART-based approach with hierarchical strategy for Vietnamese abstractive multi-document summarization
+View PDF HTML (experimental)Abstract:In this technical report, we focus on solving the challenge of Vietnamese multi-document abstractive summarization, introduced in the International Workshop on Vietnamese Language and Speech Processing (VLSP) 2022. We choose to follow the popular hierarchical approach, i.e. condensing each document followed by aggregation and summarization. We propose a novel yet simple strategy to shorten documents that is driven by the golden summary, thus ensuring high correlation between stages of the hierarchical approach. Our method achieves a ROUGE2-F1 score of 0.2468 on the VLSP's public test set, and can produce fluent and concise summaries. Additionally, we utilize external sources for extra data, which greatly enhances the quantity of data for Vietnamese multi-document summarization. The additional data is made available for the community.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

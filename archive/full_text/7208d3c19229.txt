@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:Detecting Speculative Language in Biomedical Texts using Recurrent Neural Tensor Networks
+View PDF HTML (experimental)Abstract:In this investigation, we delve into the automated detection of speculative language within biomedical articles by utilizing distributed sentence representations and advanced deep learning techniques. The implications of such identification extend to information retrieval, multi-document summarization, and the exploration of new knowledge. Our exploration encompasses two distinct approaches for acquiring distributed sentence representations: the Paragraph Vector model and the Recursive Neural Tensor Network. These methodologies are then rigorously compared against three foundational baseline algorithms: Support Vector Machines, Naive Bayes, and pattern matching. Our findings reveal that the Recursive Neural Tensor Network (RNTN) demonstrates a slight performance edge (F1 = 0.885) over the top-performing baseline, the linear bigram SVM (F1 = 0.881). Meanwhile, the Paragraph Vector model proves less effective (F1 = 0.368), even after extensive training using an expansive, unlabeled dataset. We engage in a comprehensive discourse on the factors influencing these performance disparities and provide insightful recommendations for future research directions.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

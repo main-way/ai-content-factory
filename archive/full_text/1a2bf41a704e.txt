@@ -1,0 +1,5 @@
+app/upload.ts
+import { put } from '@vercel/blob';const { url } = await put('hello.txt', 'Hello, world!', { access: 'public',});
+Uploads a file to Blob using OIDC authentication, no long-lived token required.
+vercel linkvercel env pullvercel blob put hello.txt --from-file ./hello.txtvercel blob listvercel blob del hello.txt
+Links the project, pulls environment variables, then reads and writes to Blob from the terminal.

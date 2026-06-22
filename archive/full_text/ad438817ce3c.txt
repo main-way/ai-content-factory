@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Epistemic Uncertainty Is Not the Reducible Kind
+View PDF HTML (experimental)Abstract:The standard taxonomy of predictive uncertainty defines epistemic uncertainty as the part removable by collecting more data, while the standard measure identifies it with a mutual-information term. We prove the definition and the measure are extensionally inconsistent. On an explicit construction, the measure assigns all uncertainty to the epistemic class, yet no quantity of training data reduces it. Reducibility is instead a property of the pair (uncertainty, acquisition class), and the dichotomy resolves into three parts: aleatoric, sample-reducible epistemic, and mechanism-reducible epistemic uncertainty. An exact identity for the value of an observation shows that in-distribution data never reduces mechanism-irreducible uncertainty and generically increases it. Ensemble disagreement, the deployed epistemic estimate, tracks the training procedure rather than the epistemic term. It collapses to zero beneath a positive truth under consistent training, and equals hyperparameter-scaled initialization noise under interpolation. A finite-sample falsification test and seed-swept experiments confirm the theory.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,38 @@
+A car pulls up to the curb. The app says, “Your ride is here.” No one’s in the driver’s seat. For people who live in one of the dozens of cities now hosting robotaxi services, this is already a reality.
+The robotaxi industry has moved from prototype milestones to commercial operations, with an expanding ecosystem accelerating the pace of deployment. New collaborations announced at NVIDIA GTC Taipei reflect robotaxi programs spinning up around the world:
+- Uber and Autobrains are launching a robotaxi program in Munich on the NVIDIA DRIVE Hyperion platform, using Autobrains’ agentic AI to support scalable operations.
+- Foxconn is expanding its collaboration with NVIDIA to deploy robotaxi fleets, combining its services with NVIDIA DRIVE Hyperion for rapid integration and scaling in Taiwan.
+- VinFast is working with Autobrains to bring level 4 vehicles built on DRIVE Hyperion to the Southeast Asia market.
+- HUMAIN is working to bring DRIVE Hyperion-powered robotaxis to Saudi Arabia, expanding the platform’s global footprint into the Middle East.
+Building a Safe Software Foundation
+As the robotaxi industry scales, safety is paramount.
+Regulators, certification bodies and developers are scrutinizing what safe deployment at scale requires.
+Industry discussion on level 4 autonomy often centers on what the vehicle can perceive and decide.
+That discussion is well-founded. Accurate perception, sound decision-making and handling the unexpected are difficult problems, and real progress toward solving them is being made.
+But perception and decisions alone are not the whole story. Regulators require something more: proof that the overall system behaves reliably, isolates faults before they escalate and never operates outside the boundaries it was designed for.
+Robotaxi safety requires solving four distinct challenges simultaneously:
+- A safety-certifiable operating system
+- Safe, standardized hardware and software interfaces
+- AI that operates within verifiable guardrails
+- Validation at scale before vehicles touch public roads
+To help solve these challenges, the recently introduced Halos Operating System (OS) — a component of the NVIDIA Halos full-stack, comprehensive safety system — offers a unified, production-ready safety foundation for AI-driven vehicles, built on NVIDIA DRIVE Hyperion. It comprises:
+Halos Core: A Certified OS Foundation
+At the foundation of NVIDIA Halos OS is Halos Core, which is the next generation of NVIDIA DriveOS and certified to automotive safety standards. It’s audited, documented and proven to behave predictably under fault conditions, with a hypervisor — a specialized software layer — that isolates safety-critical functions so failures can’t reach vehicle controls.
+Halos Core is compliant with ISO 26262 ASIL D, includes safety-certified support for NVIDIA CUDA and TensorRT, and provides the TensorRT Edge-LLM open source framework for high-performance large language model inference.
+Halos SDK: Standardized and Safe Interfaces
+A robotaxi integrates cameras, radar, lidar and other sensors, each streaming data in a different format at a different rate. Without a standardized middleware layer, every hardware change forces teams to manually rebuild those integrations.
+Halos SDK removes that burden. Its sensor abstraction layer decouples the autonomous driving stack from individual sensor drivers, so adding or swapping a sensor no longer causes ripples through application code, while a vehicle abstraction layer connects the autonomous driving stack to the rest of the vehicle through a single, consistent interface.
+On top, Halos SDK provides the runtime building blocks that safety-critical software demands: a deterministic application-level scheduler for predictable timing, zero-copy inter-process communication that moves data without added latency, a comprehensive system error-handling framework and a robust scenario data recorder — delivering the foundation for highly reliable and low-latency automotive applications.
+Halos Applications: Safety Guardrails for AI
+AI models can match human driving behavior, but regulators require more than performance.
+The Halos Applications layer provides safety guardrails for AI through deterministic, rule-based functions, analyzed and designed to behave within defined bounds. It includes world model perception and the top-rated NVIDIA DRIVE active safety stack featuring automatic emergency braking, lane departure warning, blind spot monitoring, collision warning and more.
+In addition, in Halos Applications, Halos OS can be combined with end-to-end AI models for which explainability and transparency are essential. This includes the NVIDIA Alpamayo family of open models for autonomous vehicle development, which enables chain-of-thought reasoning, continuously evaluating the road, planning next steps and adapting to changing conditions.
+The Halos Safety Evaluation Framework
+Halos Infra is the cloud-side development infrastructure that enables autonomous vehicle training, simulation and validation at scale. It’s the foundation for the recently released NVIDIA Halos Safety Evaluation Framework (SEF).
+SEF provides the tools and guidelines needed to build a credible safety case, from L2 driver assistance to L4 robotaxis. It draws on more than 330 research papers and 1,000 patents developed within NVIDIA Halos OS.
+Halos Infra runs on NVIDIA’s three-computer autonomous driving solution:
+- NVIDIA DGX systems for training the AI stack in the data center
+- NVIDIA Omniverse on NVIDIA OVX systems for simulation and synthetic data generation
+- The NVIDIA AGX in-vehicle computer for real-time sensor processing and safety
+Halos OS spans the full development lifecycle — from training and simulation in Halos Infra to inference in the vehicle itself.
+Learn more about NVIDIA Halos.

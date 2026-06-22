@@ -1,0 +1,41 @@
+{
+  "date": "2025-06-16",
+  "count": 2,
+  "posts": [
+    {
+      "id": "4b4ab96ce277",
+      "title": "MIT Researchers Unveil “SEAL”: A New Step Towards Self-Improving AI",
+      "url": "https://syncedreview.com/2025/06/16/mit-researchers-unveil-seal-a-new-step-towards-self-improving-ai/",
+      "source": "Synced Review",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2025-06-16T12:58:37+00:00",
+      "summary": "MIT introduces SEAL, a framework enabling large language models to self-edit and update their weights via reinforcement learning. The post MIT Researchers Unveil “SEAL”: A New Step Towards Self-Improving AI first appeared on Synced .",
+      "author": "Synced",
+      "tags": [
+        "Research"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "5050dce97019",
+      "title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
+      "url": "https://syncedreview.com/2025/06/16/researchers-from-psu-and-duke-introduce-multi-agent-systems-automated-failure-attribution/",
+      "source": "Synced Review",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2025-06-16T07:39:46+00:00",
+      "summary": "\"Automated failure attribution\" is a crucial component in the development lifecycle of Multi-Agent systems. It has the potential to transform the challenge of identifying \"what went wrong and who is to blame\" from a perplexing mystery into a quantifiable and analyzable problem The post Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution first appeared on Synced .",
+      "author": "Synced",
+      "tags": [
+        "AI",
+        "Nature Language Tech",
+        "Research",
+        "Share My Research"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

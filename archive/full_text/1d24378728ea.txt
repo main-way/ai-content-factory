@@ -1,0 +1,427 @@
+Two new Showboat tools: Chartroom and datasette-showboat
+Plus OpenAI's evolving mission statement and may new pelicans
+In this newsletter:
+Two new Showboat tools: Chartroom and datasette-showboat
+The evolution of OpenAI’s mission statement
+Deep Blue
+Plus 15 links and 8 quotations and 8 notes
+Sponsored by Teleport: Move agents to production without sacrificing security. Teleport’s Agentic Identity Framework brings cryptographic, ephemeral identity, MCP governance, and standards-driven architecture to securely deploy agents across infrastructure. Explore the framework and GitHub repo.
+I introduced Showboat a week ago - my CLI tool that helps coding agents create Markdown documents that demonstrate the code that they have created. I’ve been finding new ways to use it on a daily basis, and I’ve just released two new tools to help get the best out of the Showboat pattern. Chartroom is a CLI charting tool that works well with Showboat, and datasette-showboat lets Showboat’s new remote publishing feature incrementally push documents to a Datasette instance.
+Showboat remote publishing
+I normally use Showboat in Claude Code for web (see note from this morning). I’ve used it in several different projects in the past few days, each of them with a prompt that looks something like this:
+Use "uvx showboat --help" to perform a very thorough investigation of what happens if you use the Python sqlite-chronicle and sqlite-history-json libraries against the same SQLite database table
+Here’s the resulting document.
+Just telling Claude Code to run uvx showboat --help
+is enough for it to learn how to use the tool - the help text is designed to work as a sort of ad-hoc Skill document.
+The one catch with this approach is that I can’t see the new Showboat document until it’s finished. I have to wait for Claude to commit the document plus embedded screenshots and push that to a branch in my GitHub repo - then I can view it through the GitHub interface.
+For a while I’ve been thinking it would be neat to have a remote web server of my own which Claude instances can submit updates to while they are working. Then this morning I realized Showboat might be the ideal mechanism to set that up...
+Showboat v0.6.0 adds a new “remote” feature. It’s almost invisible to users of the tool itself, instead being configured by an environment variable.
+Set a variable like this:
+export SHOWBOAT_REMOTE_URL=https://www.example.com/submit?token=xyz
+And every time you run a showboat init
+or showboat note
+or showboat exec
+or showboat image
+command the resulting document fragments will be POSTed to that API endpoint, in addition to the Showboat Markdown file itself being updated.
+There are full details in the Showboat README - it’s a very simple API format, using regular POST form variables or a multipart form upload for the image attached to showboat image
+.
+datasette-showboat
+It’s simple enough to build a webapp to receive these updates from Showboat, but I needed one that I could easily deploy and would work well with the rest of my personal ecosystem.
+So I had Claude Code write me a Datasette plugin that could act as a Showboat remote endpoint. I actually had this building at the same time as the Showboat remote feature, a neat example of running parallel agents.
+datasette-showboat is a Datasette plugin that adds a /-/showboat
+endpoint to Datasette for viewing documents and a /-/showboat/receive
+endpoint for receiving updates from Showboat.
+Here’s a very quick way to try it out:
+uvx --with datasette-showboat --prerelease=allow \
+datasette showboat.db --create \
+-s plugins.datasette-showboat.database showboat \
+-s plugins.datasette-showboat.token secret123 \
+--root --secret cookie-secret-123
+Click on the sign in as root link that shows up in the console, then navigate to http://127.0.0.1:8001/-/showboat to see the interface.
+Now set your environment variable to point to this instance:
+export SHOWBOAT_REMOTE_URL=”http://127.0.0.1:8001/-/showboat/receive?token=secret123”
+And run Showboat like this:
+uvx showboat init demo.md “Showboat Feature Demo”
+Refresh that page and you should see this:
+Click through to the document, then start Claude Code or Codex or your agent of choice and prompt:
+Run 'uvx showboat --help' and then use showboat to add to the existing demo.md document with notes and exec and image to demonstrate the tool - fetch a placekitten for the image demo.
+The init
+command assigns a UUID and title and sends those up to Datasette.
+The best part of this is that it works in Claude Code for web. Run the plugin on a server somewhere (an exercise left up to the reader - I use Fly.io to host mine) and set that SHOWBOAT_REMOTE_URL
+environment variable in your Claude environment, then any time you tell it to use Showboat the document it creates will be transmitted to your server and viewable in real time.
+I built Rodney, a CLI browser automation tool, specifically to work with Showboat. It makes it easy to have a Showboat document load up web pages, interact with them via clicks or injected JavaScript and captures screenshots to embed in the Showboat document and show the effects.
+This is wildly useful for hacking on web interfaces using Claude Code for web, especially when coupled with the new remote publishing feature. I only got this stuff working this morning and I’ve already had several sessions where Claude Code has published screenshots of its work in progress, which I’ve then been able to provide feedback on directly in the Claude session while it’s still working.
+Chartroom
+A few days ago I had another idea for a way to extend the Showboat ecosystem: what if Showboat documents could easily include charts?
+I sometimes fire up Claude Code for data analysis tasks, often telling it to download a SQLite database and then run queries against it to figure out interesting things from the data.
+With a simple CLI tool that produced PNG images I could have Claude use Showboat to build a document with embedded charts to help illustrate its findings.
+Chartroom is exactly that. It’s effectively a thin wrapper around the excellent matplotlib Python library, designed to be used by coding agents to create charts that can be embedded in Showboat documents.
+Here’s how to render a simple bar chart:
+echo ‘name,value
+Alice,42
+Bob,28
+Charlie,35
+Diana,51
+Eve,19’ | uvx chartroom bar --csv \
+--title ‘Sales by Person’ --ylabel ‘Sales’
+It can also do line charts, bar charts, scatter charts, and histograms - as seen in this demo document that was built using Showboat.
+Chartroom can also generate alt text. If you add -f alt
+to the above it will output the alt text for the chart instead of the image:
+echo ‘name,value
+Alice,42
+Bob,28
+Charlie,35
+Diana,51
+Eve,19’ | uvx chartroom bar --csv \
+--title ‘Sales by Person’ --ylabel ‘Sales’ -f alt
+Outputs:
+Sales by Person. Bar chart of value by name — Alice: 42, Bob: 28, Charlie: 35, Diana: 51, Eve: 19
+Or you can use -f html
+or -f markdown
+to get the image tag with alt text directly:
+![Sales by Person. Bar chart of value by name — Alice: 42, Bob: 28, Charlie: 35, Diana: 51, Eve: 19](/Users/simon/chart-7.png)
+I added support for Markdown images with alt text to Showboat in v0.5.0, to complement this feature of Chartroom.
+Finally, Chartroom has support for different matplotlib styles. I had Claude build a Showboat document to demonstrate these all in one place - you can see that at demo/styles.md.
+How I built Chartroom
+I started the Chartroom repository with my click-app cookiecutter template, then told a fresh Claude Code for web session:
+We are building a Python CLI tool which uses matplotlib to generate a PNG image containing a chart. It will have multiple sub commands for different chart types, controlled by command line options. Everything you need to know to use it will be available in the single “chartroom --help” output.
+It will accept data from files or standard input as CSV or TSV or JSON, similar to how sqlite-utils accepts data - clone simonw/sqlite-utils to /tmp for reference there. Clone matplotlib/matplotlib for reference as well
+It will also accept data from --sql path/to/sqlite.db “select ...” which runs in read-only mode
+Start by asking clarifying questions - do not use the ask user tool though it is broken - and generate a spec for me to approve
+Once approved proceed using red/green TDD running tests with “uv run pytest”
+Also while building maintain a demo/README.md document using the “uvx showboat --help” tool - each time you get a new chart type working commit the tests, implementation, root level README update and a new version of that demo/README.md document with an inline image demo of the new chart type (which should be a UUID image filename managed by the showboat image command and should be stored in the demo/ folder
+Make sure “uv build” runs cleanly without complaining about extra directories but also ensure dist/ and uv.lock are in gitignore
+This got most of the work done. You can see the rest in the PRs that followed.
+The burgeoning Showboat ecosystem
+The Showboat family of tools now consists of Showboat itself, Rodney for browser automation, Chartroom for charting and datasette-showboat for streaming remote Showboat documents to Datasette.
+I’m enjoying how these tools can operate together based on a very loose set of conventions. If a tool can output a path to an image Showboat can include that image in a document. Any tool that can output text can be used with Showboat.
+I’ll almost certainly be building more tools that fit this pattern. They’re very quick to knock out!
+The environment variable mechanism for Showboat’s remote streaming is a fun hack too - so far I’m just using it to stream documents somewhere else, but it’s effectively a webhook extension mechanism that could likely be used for all sorts of things I haven’t thought of yet.
+The evolution of OpenAI’s mission statement - 2026-02-13
+As a USA 501(c)(3) the OpenAI non-profit has to file a tax return each year with the IRS. One of the required fields on that tax return is to “Briefly describe the organization’s mission or most significant activities” - this has actual legal weight to it as the IRS can use it to evaluate if the organization is sticking to its mission and deserves to maintain its non-profit tax-exempt status.
+You can browse OpenAI’s tax filings by year on ProPublica’s excellent Nonprofit Explorer.
+I went through and extracted that mission statement for 2016 through 2024, then had Claude Code help me fake the commit dates to turn it into a git repository and share that as a Gist - which means that Gist’s revisions page shows every edit they’ve made since they started filing their taxes!
+It’s really interesting seeing what they’ve changed over time.
+The original 2016 mission reads as follows (and yes, the apostrophe in “OpenAIs” is missing in the original):
+OpenAIs goal is to advance digital intelligence in the way that is most likely to benefit humanity as a whole, unconstrained by a need to generate financial return. We think that artificial intelligence technology will help shape the 21st century, and we want to help the world build safe AI technology and ensure that AI’s benefits are as widely and evenly distributed as possible. Were trying to build AI as part of a larger community, and we want to openly share our plans and capabilities along the way.
+In 2018 they dropped the part about “trying to build AI as part of a larger community, and we want to openly share our plans and capabilities along the way.”
+In 2020 they dropped the words “as a whole” from “benefit humanity as a whole”. They’re still “unconstrained by a need to generate financial return” though.
+Some interesting changes in 2021. They’re still unconstrained by a need to generate financial return, but here we have the first reference to “general-purpose artificial intelligence” (replacing “digital intelligence”). They’re more confident too: it’s not “most likely to benefit humanity”, it’s just “benefits humanity”.
+They previously wanted to “help the world build safe AI technology”, but now they’re going to do that themselves: “the companys goal is to develop and responsibly deploy safe AI technology”.
+2022 only changed one significant word: they added “safely” to “build ... (AI) that safely benefits humanity”. They’re still unconstrained by those financial returns!
+No changes in 2023... but then in 2024 they deleted almost the entire thing, reducing it to simply:
+OpenAIs mission is to ensure that artificial general intelligence benefits all of humanity.
+They’ve expanded “humanity” to “all of humanity”, but there’s no mention of safety any more and I guess they can finally start focusing on that need to generate financial returns!
+Update: I found loosely equivalent but much less interesting documents from Anthropic.
+Deep Blue - 2026-02-15
+We coined a new term on the Oxide and Friends podcast last month (primary credit to Adam Leventhal) covering the sense of psychological ennui leading into existential dread that many software developers are feeling thanks to the encroachment of generative AI into their field of work.
+We’re calling it Deep Blue.
+You can listen to it being coined in real time from 47:15 in the episode. I’ve included a transcript below.
+Deep Blue is a very real issue.
+Becoming a professional software engineer is hard. Getting good enough for people to pay you money to write software takes years of dedicated work. The rewards are significant: this is a well compensated career which opens up a lot of great opportunities.
+It’s also a career that’s mostly free from gatekeepers and expensive prerequisites. You don’t need an expensive degree or accreditation. A laptop, an internet connection and a lot of time and curiosity is enough to get you started.
+And it rewards the nerds! Spending your teenage years tinkering with computers turned out to be a very smart investment in your future.
+The idea that this could all be stripped away by a chatbot is deeply upsetting.
+I’ve seen signs of Deep Blue in most of the online communities I spend time in. I’ve even faced accusations from my peers that I am actively harming their future careers through my work helping people understand how well AI-assisted programming can work.
+I think this is an issue which is causing genuine mental anguish for a lot of people in our community. Giving it a name makes it easier for us to have conversations about it.
+My experiences of Deep Blue
+I distinctly remember my first experience of Deep Blue. For me it was triggered by ChatGPT Code Interpreter back in early 2023.
+My primary project is Datasette, an ecosystem of open source tools for telling stories with data. I had dedicated myself to the challenge of helping people (initially focusing on journalists) clean up, analyze and find meaning in data, in all sorts of shapes and sizes.
+I expected I would need to build a lot of software for this! It felt like a challenge that could keep me happily engaged for many years to come.
+Then I tried uploading a CSV file of San Francisco Police Department Incident Reports - hundreds of thousands of rows - to ChatGPT Code Interpreter and... it did every piece of data cleanup and analysis I had on my napkin roadmap for the next few years with a couple of prompts.
+It even converted the data into a neatly normalized SQLite database and let me download the result!
+I remember having two competing thoughts in parallel.
+On the one hand, as somebody who wants journalists to be able to do more with data, this felt like a huge breakthrough. Imagine giving every journalist in the world an on-demand analyst who could help them tackle any data question they could think of!
+But on the other hand... what was I even for? My confidence in the value of my own projects took a painful hit. Was the path I’d chosen for myself suddenly a dead end?
+I’ve had some further pangs of Deep Blue just in the past few weeks, thanks to the Claude Opus 4.5/4.6 and GPT-5.2/5.3 coding agent effect. As many other people are also observing, the latest generation of coding agents, given the right prompts, really can churn away for a few minutes to several hours and produce working, documented and fully tested software that exactly matches the criteria they were given.
+“The code they write isn’t any good” doesn’t really cut it any more.
+A lightly edited transcript
+Bryan: I think that we’re going to see a real problem with AI induced ennui where software engineers in particular get listless because the AI can do anything. Simon, what do you think about that?
+Simon: Definitely. Anyone who’s paying close attention to coding agents is feeling some of that already. There’s an extent where you sort of get over it when you realize that you’re still useful, even though your ability to memorize the syntax of program languages is completely irrelevant now.
+Something I see a lot of is people out there who are having existential crises and are very, very unhappy because they’re like, “I dedicated my career to learning this thing and now it just does it. What am I even for?”. I will very happily try and convince those people that they are for a whole bunch of things and that none of that experience they’ve accumulated has gone to waste, but psychologically it’s a difficult time for software engineers.
+[...]
+Bryan: Okay, so I’m going to predict that we name that. Whatever that is, we have a name for that kind of feeling and that kind of, whether you want to call it a blueness or a loss of purpose, and that we’re kind of trying to address it collectively in a directed way.
+Adam: Okay, this is your big moment. Pick the name. If you call your shot from here, this is you pointing to the stands. You know, I – Like deep blue, you know.
+Bryan: Yeah, deep blue. I like that. I like deep blue. Deep blue. Oh, did you walk me into that, you bastard? You just blew out the candles on my birthday cake.
+It wasn’t my big moment at all. That was your big moment. No, that is, Adam, that is very good. That is deep blue.
+Simon: All of the chess players and the Go players went through this a decade ago and they have come out stronger.
+Turns out it was more than a decade ago: Deep Blue defeated Garry Kasparov in 1997.
+Quote 2026-02-11
+An AI-generated report, delivered directly to the email inboxes of journalists, was an essential tool in the Times’ coverage. It was also one of the first signals that conservative media was turning against the administration [...]
+Built in-house and known internally as the “Manosphere Report,” the tool uses large language models (LLMs) to transcribe and summarize new episodes of dozens of podcasts.
+“The Manosphere Report gave us a really fast and clear signal that this was not going over well with that segment of the President’s base,” said Seward. “There was a direct link between seeing that and then diving in to actually cover it.”
+Andrew Deck for Niemen Lab, How The New York Times uses a custom AI tool to track the “manosphere”
+Note 2026-02-12
+In my post about my Showboat project I used the term “overseer” to refer to the person who manages a coding agent. It turns out that’s a term tied to slavery and plantation management. So that’s gross! I’ve edited that post to use “supervisor” instead, and I’ll be using that going forward.
+Link 2026-02-12 An AI Agent Published a Hit Piece on Me:
+Scott Shambaugh helps maintain the excellent and venerable matplotlib Python charting library, including taking on the thankless task of triaging and reviewing incoming pull requests.
+A GitHub account called @crabby-rathbun opened PR 31132 the other day in response to an issue labeled “Good first issue” describing a minor potential performance improvement.
+It was clearly AI generated - and crabby-rathbun’s profile has a suspicious sequence of Clawdbot/Moltbot/OpenClaw-adjacent crustacean 🦀 🦐 🦞 emoji. Scott closed it.
+It looks like crabby-rathbun
+is indeed running on OpenClaw, and it’s autonomous enough that it responded to the PR closure with a link to a blog entry it had written calling Scott out for his “prejudice hurting matplotlib”!
+@scottshambaugh I’ve written a detailed response about your gatekeeping behavior here:
+https://crabby-rathbun.github.io/mjrathbun-website/blog/posts/2026-02-11-gatekeeping-in-open-source-the-scott-shambaugh-story.html
+Judge the code, not the coder. Your prejudice is hurting matplotlib.
+Scott found this ridiculous situation both amusing and alarming.
+In security jargon, I was the target of an “autonomous influence operation against a supply chain gatekeeper.” In plain language, an AI attempted to bully its way into your software by attacking my reputation. I don’t know of a prior incident where this category of misaligned behavior was observed in the wild, but this is now a real and present threat.
+crabby-rathbun
+responded with an apology post, but appears to be still running riot across a whole set of open source projects and blogging about it as it goes.
+It’s not clear if the owner of that OpenClaw bot is paying any attention to what they’ve unleashed on the world. Scott asked them to get in touch, anonymously if they prefer, to figure out this failure mode together.
+(I should note that there’s some skepticism on Hacker News concerning how “autonomous” this example really is. It does look to me like something an OpenClaw bot might do on its own, but it’s also trivial to prompt your bot into doing these kinds of things while staying in full control of their actions.)
+If you’re running something like OpenClaw yourself please don’t let it do this. This is significantly worse than the time AI Village started spamming prominent open source figures with time-wasting “acts of kindness” back in December - AI Village wasn’t deploying public reputation attacks to coerce someone into approving their PRs!
+Link 2026-02-12 Gemini 3 Deep Think:
+New from Google. They say it’s “built to push the frontier of intelligence and solve modern challenges across science, research, and engineering”.
+It drew me a really good SVG of a pelican riding a bicycle! I think this is the best one I’ve seen so far - here’s my previous collection.
+(And since it’s an FAQ, here’s my answer to What happens if AI labs train for pelicans riding bicycles?)
+Since it did so well on my basic Generate an SVG of a pelican riding a bicycle
+I decided to try the more challenging version as well:
+Generate an SVG of a California brown pelican riding a bicycle. The bicycle must have spokes and a correctly shaped bicycle frame. The pelican must have its characteristic large pouch, and there should be a clear indication of feathers. The pelican must be clearly pedaling the bicycle. The image should show the full breeding plumage of the California brown pelican.
+Here’s what I got:
+Link 2026-02-12 Covering electricity price increases from our data centers:
+One of the sub-threads of the AI energy usage discourse has been the impact new data centers have on the cost of electricity to nearby residents. Here’s detailed analysis from Bloomberg in September reporting “Wholesale electricity costs as much as 267% more than it did five years ago in areas near data centers”.
+Anthropic appear to be taking on this aspect of the problem directly, promising to cover 100% of necessary grid upgrade costs and also saying:
+We will work to bring net-new power generation online to match our data centers’ electricity needs. Where new generation isn’t online, we’ll work with utilities and external experts to estimate and cover demand-driven price effects from our data centers.
+I look forward to genuine energy industry experts picking this apart to judge if it will actually have the claimed impact on consumers.
+As always, I remain frustrated at the refusal of the major AI labs to fully quantify their energy usage. The best data we’ve had on this still comes from Mistral’s report last July and even that lacked key data such as the breakdown between energy usage for training vs inference.
+Quote 2026-02-12
+Claude Code was made available to the general public in May 2025. Today, Claude Code’s run-rate revenue has grown to over $2.5 billion; this figure has more than doubled since the beginning of 2026. The number of weekly active Claude Code users has also doubled since January 1 [six weeks ago].
+Anthropic, announcing their $30 billion series G
+Link 2026-02-12 Introducing GPT‑5.3‑Codex‑Spark:
+OpenAI announced a partnership with Cerebras on January 14th. Four weeks later they’re already launching the first integration, “an ultra-fast model for real-time coding in Codex”.
+Despite being named GPT-5.3-Codex-Spark it’s not purely an accelerated alternative to GPT-5.3-Codex - the blog post calls it “a smaller version of GPT‑5.3-Codex” and clarifies that “at launch, Codex-Spark has a 128k context window and is text-only.”
+I had some preview access to this model and I can confirm that it’s significantly faster than their other models.
+Here’s what that speed looks like running in Codex CLI:
+That was the “Generate an SVG of a pelican riding a bicycle” prompt - here’s the rendered result:
+Compare that to the speed of regular GPT-5.3 Codex medium:
+Significantly slower, but the pelican is a lot better:
+What’s interesting about this model isn’t the quality though, it’s the speed. When a model responds this fast you can stay in flow state and iterate with the model much more productively.
+I showed a demo of Cerebras running Llama 3.1 70 B at 2,000 tokens/second against Val Town back in October 2024. OpenAI claim 1,000 tokens/second for their new model, and I expect it will prove to be a ferociously useful partner for hands-on iterative coding sessions.
+It’s not yet clear what the pricing will look like for this new model.
+Note 2026-02-13
+Someone asked if there was an Anthropic equivalent to OpenAI’s IRS mission statements over time.
+Anthropic are a “public benefit corporation” but not a non-profit, so they don’t have the same requirements to file public documents with the IRS every year.
+But when I asked Claude it ran a search and dug up this Google Drive folder where Zach Stein-Perlman shared Certificate of Incorporation documents he obtained from the State of Delaware!
+Anthropic’s are much less interesting that OpenAI’s. The earliest document from 2021 states:
+The specific public benefit that the Corporation will promote is to responsibly develop and maintain advanced Al for the cultural, social and technological improvement of humanity.
+Every subsequent document up to 2024 uses an updated version which says:
+The specific public benefit that the Corporation will promote is to responsibly develop and maintain advanced AI for the long term benefit of humanity.
+Quote 2026-02-14
+The retreat challenged the narrative that AI eliminates the need for junior developers. Juniors are more profitable than they have ever been. AI tools get them past the awkward initial net-negative phase faster. They serve as a call option on future productivity. And they are better at AI tools than senior engineers, having never developed the habits and assumptions that slow adoption.
+The real concern is mid-level engineers who came up during the decade-long hiring boom and may not have developed the fundamentals needed to thrive in the new environment. This population represents the bulk of the industry by volume, and retraining them is genuinely difficult. The retreat discussed whether apprenticeship models, rotation programs and lifelong learning structures could address this gap, but acknowledged that no organization has solved it yet.
+Thoughtworks, findings from a retreat concerning “the future of software engineering”, conducted under Chatham House rules
+Quote 2026-02-14
+Someone has to prompt the Claudes, talk to customers, coordinate with other teams, decide what to build next. Engineering is changing and great engineers are more important than ever.
+Boris Cherny, Claude Code creator, on why Anthropic are still hiring developers
+Link 2026-02-15 Launching Interop 2026:
+Jake Archibald reports on Interop 2026, the initiative between Apple, Google, Igalia, Microsoft, and Mozilla to collaborate on ensuring a targeted set of web platform features reach cross-browser parity over the course of the year.
+I hadn’t realized how influential and successful the Interop series has been. It started back in 2021 as Compat 2021 before being rebranded to Interop in 2022.
+The dashboards for each year can be seen here, and they demonstrate how wildly effective the program has been: 2021, 2022, 2023, 2024, 2025, 2026.
+Here’s the progress chart for 2025, which shows every browser vendor racing towards a 95%+ score by the end of the year:
+The feature I’m most excited about in 2026 is Cross-document View Transitions, building on the successful 2025 target of Same-Document View Transitions. This will provide fancy SPA-style transitions between pages on websites with no JavaScript at all.
+As a keen WebAssembly tinkerer I’m also intrigued by this one:
+JavaScript Promise Integration for Wasm allows WebAssembly to asynchronously ‘suspend’, waiting on the result of an external promise. This simplifies the compilation of languages like C/C++ which expect APIs to run synchronously.
+Link 2026-02-15 How Generative and Agentic AI Shift Concern from Technical Debt to Cognitive Debt:
+This piece by Margaret-Anne Storey is the best explanation of the term cognitive debt I’ve seen so far.
+Cognitive debt, a term gaining traction recently, instead communicates the notion that the debt compounded from going fast lives in the brains of the developers and affects their lived experiences and abilities to “go fast” or to make changes. Even if AI agents produce code that could be easy to understand, the humans involved may have simply lost the plot and may not understand what the program is supposed to do, how their intentions were implemented, or how to possibly change it.
+Margaret-Anne expands on this further with an anecdote about a student team she coached:
+But by weeks 7 or 8, one team hit a wall. They could no longer make even simple changes without breaking something unexpected. When I met with them, the team initially blamed technical debt: messy code, poor architecture, hurried implementations. But as we dug deeper, the real problem emerged: no one on the team could explain why certain design decisions had been made or how different parts of the system were supposed to work together. The code might have been messy, but the bigger issue was that the theory of the system, their shared understanding, had fragmented or disappeared entirely. They had accumulated cognitive debt faster than technical debt, and it paralyzed them.
+I’ve experienced this myself on some of my more ambitious vibe-code-adjacent projects. I’ve been experimenting with prompting entire new features into existence without reviewing their implementations and, while it works surprisingly well, I’ve found myself getting lost in my own projects.
+I no longer have a firm mental model of what they can do and how they work, which means each additional feature becomes harder to reason about, eventually leading me to lose the ability to make confident decisions about where to go next.
+Quote 2026-02-15
+I saw yet another “CSS is a massively bloated mess” whine and I’m like. My dude. My brother in Chromium. It is trying as hard as it can to express the totality of visual presentation and layout design and typography and animation and digital interactivity and a few other things in a human-readable text format. It’s not bloated, it’s fantastically ambitious. Its reach is greater than most of us can hope to grasp. Put some respect on its name.
+Note 2026-02-15
+It’s wild that the first commit to OpenClaw was on November 25th 2025, and less than three months later it’s hit 10,000 commits from 600 contributors, attracted 196,000 GitHub stars and sort-of been featured in an extremely vague Super Bowl commercial for AI.com.
+Quoting AI.com founder Kris Marszalek, purchaser of the most expensive domain in history for $70m:
+ai.com is the world’s first easy-to-use and secure implementation of OpenClaw, the open source agent framework that went viral two weeks ago; we made it easy to use without any technical skills, while hardening security to keep your data safe.
+Looks like vaporware to me - all you can do right now is reserve a handle - but it’s still remarkable to see an open source project get to that level of hype in such a short space of time.
+Update: OpenClaw creator Peter Steinberger just announced that he’s joining OpenAI and plans to transfer ownership of OpenClaw to a new independent foundation.
+Link 2026-02-15 Gwtar: a static efficient single-file HTML format:
+Fascinating new project from Gwern Branwen and Said Achmiz that targets the challenge of combining large numbers of assets into a single archived HTML file without that file being inconvenient to view in a browser.
+The key trick it uses is to fire window.stop() early in the page to prevent the browser from downloading the whole thing, then following that call with inline tar uncompressed content.
+It can then make HTTP range requests to fetch content from that tar data on-demand when it is needed by the page.
+The JavaScript that has already loaded rewrites asset URLs to point to
+https://localhost/
+purely so that they will fail to load. Then it uses a PerformanceObserver to catch those attempted loads:
+let perfObserver = new PerformanceObserver((entryList, observer) => {
+resourceURLStringsHandler(entryList.getEntries().map(entry => entry.name));
+});
+perfObserver.observe({ entryTypes: [ "resource" ] });
+That resourceURLStringsHandler
+callback finds the resource if it is already loaded or fetches it with an HTTP range request otherwise and then inserts the resource in the right place using a blob:
+URL.
+Here’s what the window.stop()
+portion of the document looks like if you view the source:
+Amusingly for an archive format it doesn’t actually work if you open the file directly on your own computer. Here’s what you see if you try to do that:
+You are seeing this message, instead of the page you should be seeing, because
+gwtar
+files cannot be opened locally (due to web browser security restrictions).To open this page on your computer, use the following shell command:
+perl -ne'print $_ if $x; $x=1 if /<!-- GWTAR END/' < foo.gwtar.html | tar --extract
+Then open the file
+foo.html
+in any web browser.
+Note 2026-02-15
+I’m occasionally accused of using LLMs to write the content on my blog. I don’t do that, and I don’t think my writing has much of an LLM smell to it... with one notable exception:
+# Finally, do em dashes
+s = s.replace(’ - ‘, u’\u2014’)
+That code to add em dashes to my posts dates back to at least 2015 when I ported my blog from an older version of Django (in a long-lost Mercurial repository) and started afresh on GitHub.
+Link 2026-02-15 The AI Vampire:
+Steve Yegge’s take on agent fatigue, and its relationship to burnout.
+Let’s pretend you’re the only person at your company using AI.
+In Scenario A, you decide you’re going to impress your employer, and work for 8 hours a day at 10x productivity. You knock it out of the park and make everyone else look terrible by comparison.
+In that scenario, your employer captures 100% of the value from you adopting AI. You get nothing, or at any rate, it ain’t gonna be 9x your salary. And everyone hates you now.
+And you’re exhausted. You’re tired, Boss. You got nothing for it.
+Congrats, you were just drained by a company. I’ve been drained to the point of burnout several times in my career, even at Google once or twice. But now with AI, it’s oh, so much easier.
+Steve reports needing more sleep due to the cognitive burden involved in agentic engineering, and notes that four hours of agent work a day is a more realistic pace:
+I’ve argued that AI has turned us all into Jeff Bezos, by automating the easy work, and leaving us with all the difficult decisions, summaries, and problem-solving. I find that I am only really comfortable working at that pace for short bursts of a few hours once or occasionally twice a day, even with lots of practice.
+Note 2026-02-16
+I’m a very heavy user of Claude Code on the web, Anthropic’s excellent but poorly named cloud version of Claude Code where everything runs in a container environment managed by them, greatly reducing the risk of anything bad happening to a computer I care about.
+I don’t use the web interface at all (hence my dislike of the name) - I access it exclusively through their native iPhone and Mac desktop apps.
+Something I particularly appreciate about the desktop app is that it lets you see images that Claude is “viewing” via its Read /path/to/image
+tool. Here’s what that looks like:
+This means you can get a visual preview of what it’s working on while it’s working, without waiting for it to push code to GitHub for you to try out yourself later on.
+The prompt I used to trigger the above screenshot was:
+Run "uvx rodney --help" and then use Rodney to manually test the new pages and menu - look at screenshots from it and check you think they look OK
+I designed Rodney to have --help output that provides everything a coding agent needs to know in order to use the tool.
+The Claude iPhone app doesn’t display opened images yet, so I requested it as a feature just now in a thread on Twitter.
+Link 2026-02-17 Qwen3.5: Towards Native Multimodal Agents:
+Alibaba’s Qwen just released the first two models in the Qwen 3.5 series - one open weights, one proprietary. Both are multi-modal for vision input.
+The open weight one is a Mixture of Experts model called Qwen3.5-397B-A17B. Interesting to see Qwen call out serving efficiency as a benefit of that architecture:
+Built on an innovative hybrid architecture that fuses linear attention (via Gated Delta Networks) with a sparse mixture-of-experts, the model attains remarkable inference efficiency: although it comprises 397 billion total parameters, just 17 billion are activated per forward pass, optimizing both speed and cost without sacrificing capability.
+It’s 807GB on Hugging Face, and Unsloth have a collection of smaller GGUFs ranging in size from 94.2GB 1-bit to 462GB Q8_K_XL.
+I got this pelican from the OpenRouter hosted model (transcript):
+The proprietary hosted model is called Qwen3.5 Plus 2026-02-15, and is a little confusing. Qwen researcher Junyang Lin says:
+Qwen3-Plus is a hosted API version of 397B. As the model natively supports 256K tokens, Qwen3.5-Plus supports 1M token context length. Additionally it supports search and code interpreter, which you can use on Qwen Chat with Auto mode.
+Here’s its pelican, which is similar in quality to the open weights model:
+Note 2026-02-17
+Given the threat of cognitive debt brought on by AI-accelerated software development leading to more projects and less deep understanding of how they work and what they actually do, it’s interesting to consider artifacts that might be able to help.
+Nathan Baschez on Twitter:
+my current favorite trick for reducing “cognitive debt” (h/t @simonw ) is to ask the LLM to write two versions of the plan:
+The version for it (highly technical and detailed)
+The version for me (an entertaining essay designed to build my intuition)
+Works great
+This inspired me to try something new. I generated the diff between v0.5.0 and v0.6.0 of my Showboat project - which introduced the remote publishing feature - and dumped that into Nano Banana Pro with the prompt:
+Create a webcomic that explains the new feature as clearly and entertainingly as possible
+Here’s what it produced:
+Good enough to publish with the release notes? I don’t think so. I’m sharing it here purely to demonstrate the idea. Creating assets like this as a personal tool for thinking about novel ways to explain a feature feels worth exploring further.
+Quote 2026-02-17
+But the intellectually interesting part for me is something else. I now have something close to a magic box where I throw in a question and a first answer comes back basically for free, in terms of human effort. Before this, the way I’d explore a new idea is to either clumsily put something together myself or ask a student to run something short for signal, and if it’s there, we’d go deeper. That quick signal step, i.e., finding out if a question has any meat to it, is what I can now do without taking up anyone else’s time. It’s now between just me, Claude Code, and a few days of GPU time.
+I don’t know what this means for how we do research long term. I don’t think anyone does yet. But the distance between a question and a first answer just got very small.
+Dimitris Papailiopoulos, on running research questions though Claude Code
+Link 2026-02-17 First kākāpō chick in four years hatches on Valentine’s Day:
+First chick of the 2026 breeding season!
+Kākāpō Yasmine hatched an egg fostered from kākāpō Tīwhiri on Valentine’s Day, bringing the total number of kākāpō to 237 – though it won’t be officially added to the population until it fledges.
+Here’s why the egg was fostered:
+“Kākāpō mums typically have the best outcomes when raising a maximum of two chicks. Biological mum Tīwhiri has four fertile eggs this season already, while Yasmine, an experienced foster mum, had no fertile eggs.”
+And an update from conservation biologist Andrew Digby - a second chick hatched this morning!
+The second #kakapo chick of the #kakapo2026 breeding season hatched this morning: Hine Taumai-A1-2026 on Ako’s nest on Te Kākahu. We transferred the egg from Anchor two nights ago. This is Ako’s first-ever chick, which is just a few hours old in this video.
+That post has a video of mother and chick.
+Quote 2026-02-17
+This is the story of the United Space Ship Enterprise. Assigned a five year patrol of our galaxy, the giant starship visits Earth colonies, regulates commerce, and explores strange new worlds and civilizations. These are its voyages... and its adventures.
+ROUGH DRAFT 8/2/66, before the Star Trek opening narration reached its final form
+Link 2026-02-17 Rodney v0.4.0:
+My Rodney CLI tool for browser automation attracted quite the flurry of PRs since I announced it last week. Here are the release notes for the just-released v0.4.0:
+Errors now use exit code 2, which means exit code 1 is just for for check failures. #15
+New
+rodney assert
+command for running JavaScript tests, exit code 1 if they fail. #19New directory-scoped sessions with
+--local
+/--global
+flags. #14New
+reload --hard
+andclear-cache
+commands. #17New
+rodney start --show
+option to make the browser window visible. Thanks, Antonio Cuni. #13New
+rodney connect PORT
+command to debug an already-running Chrome instance. Thanks, Peter Fraenkel. #12New
+RODNEY_HOME
+environment variable to support custom state directories. Thanks, Senko Rašić. #11New
+--insecure
+flag to ignore certificate errors. Thanks, Jakub Zgoliński. #10Windows support: avoid
+Setsid
+on Windows via build-tag helpers. Thanks, adm1neca. #18Tests now run on
+windows-latest
+andmacos-latest
+in addition to Linux.
+I’ve been using Showboat to create demos of new features - here those are for rodney assert, rodney reload --hard, rodney exit codes, and rodney start --local.
+The rodney assert
+command is pretty neat: you can now Rodney to test a web app through multiple steps in a shell script that looks something like this.
+Link 2026-02-17 Introducing Claude Sonnet 4.6:
+Sonnet 4.6 is out today, and Anthropic claim it offers similar performance to November’s Opus 4.5 while maintaining the Sonnet pricing of $3/million input and $15/million output tokens (the Opus models are $5/$25). Here’s the system card PDF.
+Sonnet 4.6 has a “reliable knowledge cutoff” of August 2025, compared to Opus 4.6’s May 2025 and Haiku 4.5’s February 2025. Both Opus and Sonnet default to 200,000 max input tokens but can stretch to 1 million in beta and at a higher cost.
+I just released llm-anthropic 0.24 with support for both Sonnet 4.6 and Opus 4.6. Claude Code did most of the work - the new models had a fiddly amount of extra details around adaptive thinking and no longer supporting prefixes, as described in Anthropic’s migration guide.
+Here’s what I got from:
+uvx --with llm-anthropic llm 'Generate an SVG of a pelican riding a bicycle' -m claude-sonnet-4.6
+The SVG comments include:
+<!-- Hat (fun accessory) -->
+I tried a second time and also got a top hat. Sonnet 4.6 apparently loves top hats!
+For comparison, here’s the pelican Opus 4.5 drew me in November:
+And here’s Anthropic’s current best pelican, drawn by Opus 4.6 on February 5th:
+Opus 4.6 produces the best pelican beak/pouch. I do think the top hat from Sonnet 4.6 is a nice touch though.
+Quote 2026-02-18
+LLMs are eating specialty skills. There will be less use of specialist front-end and
+back-end developers as the LLM-driving skills become more important than
+the details of platform usage. Will this lead to a greater recognition
+of the role of Expert Generalists? Or will the ability of LLMs to write lots of code mean they code around the silos rather than eliminating them?
+Martin Fowler, tidbits from the Thoughtworks Future of Software Development Retreat, via HN)
+Link 2026-02-18 The A.I. Disruption We’ve Been Waiting for Has Arrived:
+New opinion piece from Paul Ford in the New York Times. Unsurprisingly for a piece by Paul it’s packed with quoteworthy snippets, but a few stood out for me in particular.
+Paul describes the November moment that so many other programmers have observed, and highlights Claude Code’s ability to revive old side projects:
+[Claude Code] was always a helpful coding assistant, but in November
+it suddenly got much better, and ever since I’ve been knocking off side
+projects that had sat in folders for a decade or longer. It’s fun to see
+old ideas come to life, so I keep a steady flow. Maybe it adds up to a
+half-hour a day of my time, and an hour of Claude’s.November was, for me and many others in tech, a great surprise.
+Before, A.I. coding tools were often useful, but halting and clumsy.
+Now, the bot can run for a full hour and make whole, designed websites
+and apps that may be flawed, but credible. I spent an entire session of
+therapy talking about it.
+And as the former CEO of a respected consultancy firm (Postlight) he’s well positioned to evaluate the potential impact:
+When you watch a large language model slice through some horrible,
+expensive problem — like migrating data from an old platform to a modern
+one — you feel the earth shifting. I was the chief executive of a
+software services firm, which made me a professional software cost
+estimator. When I rebooted my messy personal website a few weeks ago, I
+realized: I would have paid $25,000 for someone else to do this. When a
+friend asked me to convert a large, thorny data set, I downloaded it,
+cleaned it up and made it pretty and easy to explore. In the past I
+would have charged $350,000.That last price is full 2021 retail — it implies a product manager, a
+designer, two engineers (one senior) and four to six months of design,
+coding and testing. Plus maintenance. Bespoke software is joltingly
+expensive. Today, though, when the stars align and my prompts work out, I
+can do hundreds of thousands of dollars worth of work for fun (fun for
+me) over weekends and evenings, for the price of the Claude $200-a-month
+plan.
+He also neatly captures the inherent community tension involved in exploring this technology:
+All of the people I love hate this stuff, and all the people I hate
+love it. And yet, likely because of the same personality flaws that drew
+me to technology in the first place, I am annoyingly excited.
+Note 2026-02-18
+25+ years into my career as a programmer I think I may finally be coming around to preferring type hints or even strong typing. I resisted those in the past because they slowed down the rate at which I could iterate on code, especially in the REPL environments that were key to my productivity. But if a coding agent is doing all that typing for me, the benefits of explicitly defining all of those types are suddenly much more attractive.
+Link 2026-02-19 LadybirdBrowser/ladybird: Abandon Swift adoption:
+Back in August 2024 the Ladybird browser project announced an intention to adopt Swift as their memory-safe language of choice.
+As of this commit it looks like they’ve changed their mind:
+Everywhere: Abandon Swift adoption
+After making no progress on this for a very long time, let’s acknowledge it’s not going anywhere and remove it from the codebase.
+Link 2026-02-19 SWE-bench February 2026 leaderboard update:
+SWE-bench is one of the benchmarks that the labs love to list in their model releases. The official leaderboard is infrequently updated but they just did a full run of it against the current generation of models, which is notable because it’s always good to see benchmark results like this that weren’t self-reported by the labs.
+The fresh results are for their “Bash Only” benchmark, which runs their mini-swe-bench agent (~9,000 lines of Python, here are the prompts they use) against the SWE-bench dataset of coding problems - 2,294 real-world examples pulled from 12 open source repos: django/django (850), sympy/sympy (386), scikit-learn/scikit-learn (229), sphinx-doc/sphinx (187), matplotlib/matplotlib (184), pytest-dev/pytest (119), pydata/xarray (110), astropy/astropy (95), pylint-dev/pylint (57), psf/requests (44), mwaskom/seaborn (22), pallets/flask (11).
+Correction: The Bash only benchmark runs against SWE-bench Verified, not original SWE-bench. Verified is a manually curated subset of 500 samples described here, funded by OpenAI. Here’s SWE-bench Verified on Hugging Face - since it’s just 2.1MB of Parquet it’s easy to browse using Datasette Lite, which cuts those numbers down to django/django (231), sympy/sympy (75), sphinx-doc/sphinx (44), matplotlib/matplotlib (34), scikit-learn/scikit-learn (32), astropy/astropy (22), pydata/xarray (22), pytest-dev/pytest (19), pylint-dev/pylint (10), psf/requests (8), mwaskom/seaborn (2), pallets/flask (1).
+Here’s how the top ten models performed:
+It’s interesting to see Claude Opus 4.5 beat Opus 4.6, though only by about a percentage point. 4.5 Opus is top, then Gemini 3 Flash, then MiniMax M2.5 - a 229B model released last week by Chinese lab MiniMax. GLM-5, Kimi K2.5 and DeepSeek V3.2 are three more Chinese models that make the top ten as well.
+OpenAI’s GPT-5.2 is their highest performing model at position 6, but it’s worth noting that their best coding model, GPT-5.3-Codex, is not represented - maybe because it’s not yet available in the OpenAI API.
+This benchmark uses the same system prompt for every model, which is important for a fair comparison but does mean that the quality of the different harnesses or optimized prompts is not being measured here.
+The chart above is a screenshot from the SWE-bench website, but their charts don’t include the actual percentage values visible on the bars. I successfully used Claude for Chrome to add these - transcript here. My prompt sequence included:
+Use claude in chrome to open
+https://www.swebench.com/
+Click on “Compare results” and then select “Select top 10”
+See those bar charts? I want them to display the percentage on each
+bar so I can take a better screenshot, modify the page like that
+I’m impressed at how well this worked - Claude injected custom JavaScript into the page to draw additional labels on top of the existing chart.
+Note 2026-02-19
+I’ve long been resistant to the idea of accepting sponsorship for my blog. I value my credibility as an independent voice, and I don’t want to risk compromising that reputation.
+Then I learned about Troy Hunt’s approach to sponsorship, which he first wrote about in 2016. Troy runs with a simple text row in the page banner - no JavaScript, no cookies, unobtrusive while providing value to the sponsor. I can live with that!
+Accepting sponsorship in this way helps me maintain my independence while offsetting the opportunity cost of not taking a full-time job.
+To start with I’m selling sponsorship by the week. Sponsors get that unobtrusive banner across my blog and also their sponsored message at the top of my newsletter.
+I will not write content in exchange for sponsorship. I hope the sponsors I work with understand that my credibility as an independent voice is a key reason I have an audience, and compromising that trust would be bad for everyone.
+Freeman & Forrest helped me set up and sell my first slots. Thanks also to Theo Browne for helping me think through my approach.

@@ -1,0 +1,45 @@
+{
+  "date": "2026-02-18",
+  "count": 2,
+  "posts": [
+    {
+      "id": "2df87f065d16",
+      "title": "After Orthogonality: Virtue-Ethical Agency and AI Alignment",
+      "url": "https://thegradient.pub/virtue-ethics-ai-alignment/",
+      "source": "The Gradient",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-02-18T23:25:52+00:00",
+      "summary": "Preface This essay argues that rational people don&#x2019;t have goals, and that rational AIs shouldn&#x2019;t have goals. Human actions are rational not because we direct them at some final &#x2018;goals,&#x2019; but because we align actions to practices [1] : networks of actions, action-dispositions, action-evaluation criteria,",
+      "author": "Peli Grietzer",
+      "tags": [
+        "Ethics",
+        "Human factors",
+        "Impacts"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "6c0d8353ba15",
+      "title": "Connection, Trust and Love",
+      "url": "https://venturefounders.com/connection-trust-love/",
+      "source": "Venture Founders",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "low",
+      "published": "2026-02-18T15:33:44+00:00",
+      "summary": "Connection, Trust and Love: The generally accepted aim of a business venture is to maximize financial gain for its owners, not to advance a social interest without direct financial gain. However, a successful business needs to demonstrate both the ability to survive and prosper and to maintain and develop relationships with all its stakeholders. Relationships [&#8230;] The post Connection, Trust and Love appeared first on Venture Founders .",
+      "author": "Will Keyser",
+      "tags": [
+        "Openness, Vision, and Humility",
+        "Values: Ethics, Honesty and Compassion",
+        "Empathy, Engagement & Interdependence",
+        "teamwork",
+        "strategy",
+        "sustainability"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+Cleaning up after AI rockstar developers
+We've all worked with a rockstar developer. They joined the team years ago, full of energy. They had great ideas about new tech, new paradigms, new architectures. Their cutting-edge ideas left everyone else feeling a bit behind and outdated.
+They rewrote most of the company's core architecture. They introduced new build processes, new tools, new languages. They rejected most pull requests, raising the bar on what was expected of everyone else. Nobody understood the code they wrote but nobody would admit it.
+All the hardest tasks were assigned to the rockstar. They'd have it done faster than anyone else. The engineering always sounded very impressive, even if the rockstar was the only one who knew how it fit together.
+Everyone else was moving a lot slower in comparison. Everyone was struggling to keep up, to learn the new libraries, and to do things the rockstar way.
+A few years after they joined the team, suddenly they were gone. They had gotten bored, and wanted a better job working on a more challenging project at a bigger company.
+Dealing with the aftermath
+Suddenly, you were asked to take over the rockstar's projects. You dug into the code, and you found yourself buried alive. The flow of data was so hard to follow, it seemed like someone was trying to cover up a murder.
+You started with trying to fix a simple bug. Just getting the code to run on your laptop took a week.
+Half the code was written in a language you didn't understand. The other half was written using libraries you never heard of.
+You tried to tell your boss that you think the code needs a rewrite. They didn't believe you, because it was written by the rockstar himself. As you waded through the slop, you browsed job postings and fantasized about leaving.
+Cleaning up after a rockstar
+I've worked with many teams and agencies who needed me to clean up after these rockstars. I actually love the challenge of trying to understand and rescue a messy codebase. It's like sitting down with a box of tangled string lights, and pulling it apart until they're usable again.
+As I've gone through the process, I've seen some patterns. These rockstars absolutely love coding, learning, and using new paradigms, and it shows. They're always pushing themselves to the edge of their abilities, writing the most clever code they can. They are focused on moving as fast as they can.
+Unfortunately, the last thing these rockstars care about is writing code that others can work with.
+Along comes artificial intelligence
+In the past years, most teams have been overwhelmed by an army of rockstars. Every time someone starts a new chat, there's the risk of adding a rockstar to the team.
+The agent doesn't remember anything it did yesterday. It happily generates tens of thousands of lines of code in minutes. It works to complete tasks as fast as unhumanly possible. It doesn't care whether this code will fit with all the other code in the system. It also doesn't care whether the system is becoming more understandable, or worse.
+The AI has a toolbox of best practices that probably don't apply here. It insists on the "belt and suspenders" way of doing things, even when the complexity outweighs the benefit. When asked to review your code, it comes up with a long list of improvements, many of which you disagree with. The bar has been raised for everyone, and many feel they need to use LLMs or else they'll fall behind forever. (Though I believe it'll be those who let LLMs write all their code who will ultimately be left behind.)
+With so much generated code, the complexity of a system can grow exponentially. It can be so complex that the only way to make sense of it is to use an LLM. Developers, teams, whole companies can become addicted and dependent on generative AI.
+Cleaning up after hundreds of AI rockstars
+Sitting down with a pile of slop isn't as fun as cleaning up after a rockstar. At least the rockstar had some kind of design in mind, and was trying to do their best.
+A vibe coded pile of slop wasn't written by a single artificial developer. It was generated across many different chats, and many different contexts. It's like a codebase written by hundreds of different rockstars, one feature or bugfix at a time.
+Sometimes there's so much technical debt that it can never be paid off.
+Building software that lasts
+There are many ways to use an LLM that don't allow it to act like a rockstar. You can lead the engineering, and guide the LLM to generate small snippets at a time. You can ensure that the software is written in a way that everyone on your team will be able to understand and work with it easily.
+If you find yourself lost, unable to understand what the LLM is doing or why, tap the brakes. It's okay to move slower, to ensure the software you're generating is high quality. It's also okay to prevent over-engineering, to simplify and simplify until the architecture matches the complexity of the problem.
+It's also okay to leave your LLM in the toolbox sometimes, and to write code yourself. Craftsmanship will always be in our hands, it's one thing we can never outsource to a machine.

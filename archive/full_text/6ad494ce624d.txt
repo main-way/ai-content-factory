@@ -1,0 +1,12 @@
+Physics > Medical Physics
+Title:Bayesian Insights into Exchange and Restriction in Gray Matter Diffusion MRI
+View PDF HTML (experimental)Abstract:Biophysical models in diffusion MRI (dMRI) hold promise for characterizing gray matter tissue microstructure. Yet, the reliability of their parameter estimates remains largely under-studied, especially in models that incorporate water exchange. In this study, we investigate the accuracy, precision, and presence of degeneracy of two recently proposed gray matter models, NEXI and SANDIX, using established acquisition protocols, on both simulated and \textit{in vivo} data. We employ $\mu$GUIDE, a Bayesian inference framework based on deep learning, to quantify parameter uncertainty and detect degeneracies, enabling a more interpretable assessment of model fits. Our results show that while some microstructural parameters, such as extra-cellular diffusivity and neurite signal fraction, are robustly estimated, others, including exchange time and soma radius, are often associated with high uncertainty and estimation bias, particularly under realistic noise conditions and reduced acquisition protocols. Comparison with non-linear least squares fitting highlights the critical advantage of uncertainty-aware methods: the ability to flag and filter out unreliable estimates. Together, these findings emphasize the need to report uncertainty and account for model degeneracies when interpreting model-based estimates. Our study advocates for the integration of probabilistic fitting approaches into imaging pipelines to improve reproducibility and biological interpretability.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

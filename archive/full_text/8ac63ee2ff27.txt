@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:A Survey of Full-Duplex Spoken Dialogue Systems: Architectural Hierarchy, Interaction Ontology, and Decision State Machine
+View PDF HTML (experimental)Abstract:More than a dozen spoken dialogue systems have recently claimed to be "full-duplex," yet the term has been used to describe substantially different capabilities. Existing surveys collapse them onto a single axis (cascaded/end-to-end, or engineered/learned) and miss the distinctions that matter most for builders. We argue that much of this ambiguity is taxonomical: current terminology does not specify where duplex decisions are made, which interaction types are supported, or how a system behaves moment by moment. This paper introduces three complementary frameworks: (i) an L0-L3 Architectural Hierarchy that locates where duplex decisions are made; (ii) a $T\times I\times R$ Interaction Ontology that specifies the temporal relation, user intent, and required system response for each interaction; and (iii) a Decision State Machine (IDLE/LISTEN/SPEAK/WAIT/DUAL) that describes how systems move between states. Across published systems and benchmarks, our audit documents a realization gap: although many architectures can in principle operate in full-duplex states, their observed behavior remains constrained by the interaction patterns represented in training and evaluation. We point to the limited public training-data coverage relative to the (largely undisclosed) industrial corpora, together with the still-unrealized goal of L3 representation-level modeling, as the key frontiers for future research on full-duplex dialogue. The related material is available at this https URL.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

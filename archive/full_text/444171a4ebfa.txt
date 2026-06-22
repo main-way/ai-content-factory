@@ -1,0 +1,12 @@
+Computer Science > Robotics
+Title:Improved Representation of Matrix Lie Group Operations through Tensor Notation
+View PDF HTML (experimental)Abstract:Several recent papers have demonstrated the utility of using Lie groups within estimation problems, yielding improved accuracy and consistency. This paper introduces a new tool for describing operations with matrix Lie groups: tensors and the Einstein summation notation. While tensors and Einstein notation are well-known in other research fields, applying this mathematical notation to represent and compute matrix Lie derivatives is novel. More importantly, this new notation greatly clarifies the derivatives and operations necessary to work with matrix Lie Groups in (gradient-based) estimation frameworks. Therefore, the main contribution of this paper is not a new capability, but a more perspicuous mathematical notation for working with matrix Lie groups.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

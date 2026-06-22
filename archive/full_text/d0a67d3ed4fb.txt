@@ -1,0 +1,274 @@
+I think Anthropic and OpenAI have found product-market fit
+Plus Claude Opus 4.8: “a modest but tangible improvement”, and the Pope!
+In this newsletter:
+I think Anthropic and OpenAI have found product-market fit
+Claude Opus 4.8: “a modest but tangible improvement”
+Notes on Pope Leo XIV’s encyclical on AI
+Plus 5 links and 4 quotations and 1 note and 6 releases and 1 tool
+Sponsor message: Accelerate your business growth by publishing your apps and agents on Microsoft Marketplace. Meet your customers where they are and connect with over 6 million customers around the globe 24/7 who trust the power of Microsoft. Discover Microsoft Marketplace.
+Anthropic are strongly rumored to be about to have their first profitable quarter. Stories are circulating of companies surprised at how expensive their LLM bills are becoming from usage by their staff. I think this is because OpenAI and Anthropic have both found product-market fit.
+Enterprise customers are now paying API prices
+I currently subscribe to the $100/month Max plan from Anthropic and the $100/month Pro plan from OpenAI. If you are a heavy user of coding agents these plans are a fantastic deal. I just ran the ccusage tool on my laptop to get an estimate of how much I would have spent if I were to pay for API tokens in the past 30 days and got:
+$1,199.79 for Anthropic Claude Code
+$980.37 for OpenAI Codex
+That’s $2,180.16 worth of tokens for $200 - not bad at all! I’m a moderately heavy user of these tools, but I’m certainly not running agents every hour of the day and night.
+I had assumed that companies making extensive use of agents were getting similar discounts. It turns out I could not have been more wrong about that.
+I haven’t been able to track down the exact date, but at some point in the last six months Anthropic switched their Enterprise plan (originally “Claude seats include enough usage for a typical workday” back in August 2025) to $20/seat/month plus API pricing for usage. This story about the change from The Information is dated Apr 14, 2026, but cites an Anthropic spokesperson claiming that the pricing change occurred in November 2025. Existing customers are finding out about the change as they renew their contracts.
+OpenAI made a similar pricing change in April. The Codex rate card (Internet Archive copy) currently says:
+Note: On April 2, 2026, we updated Codex pricing to align with API token usage, instead of per-message pricing. This change was applicable to new and existing Plus, Pro, ChatGPT Business and new ChatGPT Enterprise plans.
+On April 23, 2026, we made this update for all existing ChatGPT Enterprise plans as well, inclusive of Edu, Health, Gov, and ChatGPT for Teachers.
+It’s a little harder to decode as they quote prices in “credits”, but as far as I can tell those credit costs are an exact match for the API token costs listed for those models.
+All of which is to say that as of April 2026 the “Enterprise” cost for both OpenAI Codex and Anthropic Claude Code/Cowork is the same as the listed API price.
+GPT-5.5 (released April 23rd) is 2x the API price of GPT-5.4. Opus 4.7 (April 16th) is around 1.4x the price of Opus 4.6 when you take their new tokenizer into account.
+So April saw both leading model companies release new frontier models with a higher API price, and both companies now have measures to lock their enterprise customers (who tend to sign year-long deals) at those API prices, not the previous extreme discounts.
+I think they’ve found product-market fit
+Why these sudden aggressive moves on pricing? Both Anthropic and OpenAI are planning to IPO, but I suspect there’s a more important factor here: I think they’ve finally found product-market fit, with the coding/general-purpose agent products embodied by Claude Code/Cowork and Codex.
+Tools like ChatGPT are wildly popular, but that wild popularity has been difficult to turn into revenue. In February OpenAI boasted more than 900 million weekly active users for ChatGPT, but only 50 million - 5.6% of that - were paying consumer subscribers.
+Charging $10-$20/month per user is an OK business, but you’d need 1-2 billion subscribers sticking around for four years to cover $1 trillion in infrastructure.
+Companies spending $200+/month/user will get you there a whole lot faster - and as noted above, as a power-user I’m at ~$1,000/month in API costs per vendor already.
+Coding agents really did change everything. These are tools which burn vastly more tokens, but are also quickly becoming daily drivers for the work carried out by extremely well-compensated professionals. Right now that’s still mostly software engineers, but a coding agent is a tool that can automate anything you can do by typing commands into a computer... so they are clearly applicable to a much wider set of skilled knowledge workers.
+As I’ve discussed on this site at length, the models released in November 2025 elevated agents to being genuinely useful. We’ve had six months to get used to that idea now - it’s no wonder companies are beginning to spend real money on this technology.
+You could argue that ChatGPT achieved product-market fit when it became the fastest-growing consumer app in history back in February 2023... but it certainly wasn’t making any actual money back then. Coding agents plus enterprise pricing marks the point when these companies start making very real revenue. Maybe even enough to start covering their costs!
+And they’re ramping up
+As further evidence that enterprise agents represent product-market fit for these companies, consider their open job listings.
+OpenAI have 703 open jobs right now, of which I’d categorize 229 (32.6%) as relating to enterprise sales and support - account executives, “Go To Market”, “Forward Deployed Engineers” and the like.
+Anthropic have 390 open jobs, 105 (26.9%) of which look enterprisey to me.
+It’s pleasingly ironic that these AI labs have picked a business model with such a heavy demand on human labor - enterprise sales contracts don’t close themselves without a whole lot of humans in the mix!
+(I ran this analysis by scraping their job sites with Claude Code, then having it use Datasette’s JSON API to pipe that data into Datasette Cloud where I used Datasette Agent for the analysis, exported here. Dogfood!)
+The AI-failure stories around this are pretty thin
+I started digging into this in response to a growing volume of stories claiming that large companies were sounding the alarm because their AI usage costs had grown so large.
+The most widely cited of these stories appear quite overblown to me.
+The most discussed has been Uber, based on this report where CTO Praveen Neppalli Naga indicated that Uber had “maxed out its full year AI budget just a few months into 2026”, mostly thanks to Claude Code.
+Given that Claude Code only got really good in November it’s entirely unsurprising to me that a budget set in 2025 may have failed to predict demand for that tool in 2026!
+That Uber story was further fueled by comments made by Uber’s COO, Andrew Macdonald, on the Rapid Response podcast. I tracked down the segment and there really isn’t much there. Here’s what Andrew said:
+But then you sometimes go and talk to your senior engineering leaders and you’re saying, OK, how many projects that were on the cutting room floor got moved above the line because of the productivity gains because 25% of our code commits were via Claude Code last quarter?
+That link is not there yet, right? I think maybe implicitly there’s more that is getting shipped. But it’s very hard to draw a line between one of those stats and, OK, now we’re actually producing like 25% more useful consumer features, right? And that line is hard to draw.
+Somehow this fragment turned into headlines like Uber’s COO says it’s getting harder to justify the money spent on AI tokenmaxxing, because the market for stories about AI failures remains enormous.
+The other popular story around this is Microsoft starts canceling Claude Code licenses, ostensibly to encourage their engineers to dogfood their own Copilot CLI agent instead - but The Verge reporter Tom Warren says “sources tell me the decision is also a financial one”, triggered by the June 30th end of Microsoft’s financial year.
+I think both of these stories support my “product-market fit” hypothesis. The best advice I ever heard on pricing a product was that your customer should suck air through their teeth and then say yes. Uber’s budget overrun and Microsoft’s seat cancellations look like that effect playing out in practice.
+We also know the labs are spending a lot
+The big AI labs spend billions of dollars on both training and inference. Credible figures are hard to come by, but we did get one huge hint as to the figures involved from, oddly enough, the recent SpaceX S-1:
+[...] in May 2026, we entered into Cloud Services Agreements with Anthropic PBC (“Anthropic”), an AI research and development public benefit corporation, with respect to access to compute capacity across COLOSSUS and COLOSSUS II. Pursuant to these agreements, the customer has agreed to pay us $1.25 billion per month through May 2029 [...]
+The Anthropic announcement said that this deal meant they could “increase our usage limits for Claude Code and the Claude API”, heavily implying that Colossus is being used for inference, not model training.
+Anthropic already have vast amounts of compute from other providers. The fact that they’re willing to spend $1.25 billion per month for extra capacity from just one of their vendors hints at how big these inference budgets have become.
+API revenue is becoming less important
+Over the past two years my impression has been that OpenAI made more of their income from subscription revenue while Anthropic made more from their API.
+Anthropic’s API revenue was historically quite dependent on a small number of large API customers - this VentureBeat story from August 2025 quotes “sources familiar with the matter” suggesting that just Cursor and GitHub Copilot were responsible for $1.2 billion of the company’s then-$4 billion revenue.
+Today Anthropic are rumored to hit $10.9 billion in the second quarter, potentially even operating at a profit for the first time.
+This pivot-to-Enterprise suggests that the labs have realized that the real money lies in cutting out the middlemen. Anthropic’s Claude Code directly competes with Cursor and Copilot. No wonder Cursor are investing in their own models!
+April is a new inflection point
+I’ve called November 2025 the November inflection point because that was when GPT-5.1 and Opus 4.5, combined with their respective coding agent harnesses, got good - good enough that we’ve spent the last six months adapting to agent systems that can reliably get useful work done.
+I think April 2026 is a new inflection point where the revenue implications of this have started to land, to the benefit of the frontier AI labs and with material impacts on the budgets of large companies.
+We’ll know for sure how real this moment is when the S-1 documents for the upcoming Anthropic and OpenAI IPOs give us some real, audited numbers to get our teeth into.
+Claude Opus 4.8: “a modest but tangible improvement” - 2026-05-28
+Anthropic shipped Claude Opus 4.8 today. My favourite thing about it is this note in the release announcement:
+Users will find Opus 4.8 to be a modest but tangible improvement on its predecessor. There’s still more to be done: we’re working on developing and releasing models that provide many of the same capabilities as Opus at a lower cost.
+It’s so refreshing to see an AI lab honestly describe a release as a minor incremental improvement over the previous model!
+Honesty seems to be a theme. Here’s my other favorite note from that announcement:
+One of the most prominent improvements in Opus 4.8 is its honesty. We train all our models to be honest---for instance, to avoid making claims that they can’t support. But a general problem with AI models is that they sometimes jump to conclusions, confidently claiming to have made progress in their work despite the evidence being thin. Early testers report that Opus 4.8 is more likely to flag uncertainties about its work and less likely to make unsupported claims. This is borne out in our evaluations, which show that Opus 4.8 is around four times less likely than its predecessor to allow flaws in code it has written to pass unremarked.
+That linked system card includes the following:
+Claude Opus 4.8 had the lowest incorrect-rate of the six models on every benchmark—the most direct measure of factual hallucination. It achieved this mainly by abstaining on questions about which it was uncertain rather than by answering more questions correctly.
+Model characteristics
+Not much has changed since 4.7.
+It’s priced the same as Opus 4.5/4.6/4.7 - $5/million input and $25 per million output. “Fast mode” is twice that price, which is a significant reduction from their previous models - fast mode on 4.6/4.7 remains at $30/$150. Note that fast mode is only available to organizations that are part of the research preview, “Contact your account manager to request access”.
+Both the reliable knowledge cutoff and the training data cutoff are January 2026, the same as for 4.7.
+The context window is still 1,000,000 tokens, and the max output is 128,000 tokens.
+The What’s new in Claude Opus 4.8 document has some of the more interesting details. These caught my eye:
+Mid-conversation system messages. Claude Opus 4.8 accepts
+role: "system"
+messages immediately after a user turn in themessages
+array (subject to placement rules). This lets you append updated instructions later in a long-running conversation without restating the full system prompt, which preserves prompt cache hits on the earlier turns and reduces input cost on agentic loops.
+See also this update to the Anthropic Python SDK. Being able to steer the system prompt mid-conversation sounds really powerful. I was worried this would be incompatible with the abstraction provided by my own LLM library, which expects a single system prompt per conversation... but it turns out my recent redesign should handle that just fine.
+Lower prompt cache minimum. The minimum cacheable prompt length on Claude Opus 4.8 is 1,024 tokens, lower than on Claude Opus 4.7.
+I checked and 4.7’s minimum was 4,096.
+And some pelicans
+Here are pelicans riding bicycles for all five thinking levels, low
+, medium
+, high
+, xhigh
+, and max
+:
+This time I ran them using the LLM CLI, exported the logs to Markdown and then had Claude Opus 4.8 build me an HTML tool that could render that Markdown with the svg
+fenced code blocks displayed as SVGs on the page.
+(I later had GPT-5.5 xhigh in Codex update that code to remove any XSS holes. I’m sure Claude could have done that if I’d asked, but GPT-5.5 is my code security blanket at the moment.)
+The max one was clearly the best, but it did take 25 input, 17,167 output tokens for a total cost of 43 cents!
+Notes on Pope Leo XIV’s encyclical on AI - 2026-05-25
+Dropped this morning by the Vatican: Magnifica Humanitas of His Holiness Pope Leo XIV on Safeguarding the Human Person in the Time of Artificial Intelligence. This is a very interesting document. It’s some of the clearest writing I’ve seen on the ethics of integrating AI into modern society.
+Pope Leo XIV chose the name Leo in honor of Pope Leo XIII, who is known for his 1891 Rerum novarum encyclical on “Rights and Duties of Capital and Labor”.
+This story on Vatican News further clarifies the significance of that decision:
+Meeting with the College of Cardinals for their first formal encounter after his election, Pope Leo XIV explained part of the reason for the choice of his papal name. “There are different reasons for this,” he said, before going on to explain that he chose the name Leo “mainly because Pope Leo XIII, in his historic encyclical Rerum novarum addressed the social question in the context of the first great industrial revolution.”
+“In our own day,” he continued, “the Church offers to everyone the treasury of her social teaching in response to another industrial revolution and to developments in the field of artificial intelligence that pose new challenges for the defence of human dignity, justice, and labour.”
+And now we get Pope Leo XIV’s own encyclical on the AI revolution. There’s a lot in here, but the writing style is very approachable, including to non-Catholics.
+A few of my highlights
+(I listened to most of the encyclical on a walk with our dog, my first time trying the ElevenReader iPhone app. It worked very well: I pasted in a URL to the document and it read it to me in a very high quality voice, highlighting each paragraph as it went.)
+Here are some of my highlights. In each case below emphasis is mine.
+Here’s a useful description of the interpretability problem for LLMs in section 98:
+First, any statement regarding AI risks becoming quickly outdated, given the remarkable pace at which these systems are developing. Second, all of us, including those who design them, possess only a limited understanding of their actual functioning. Indeed, current AI systems are more “cultivated” than “built,” for developers do not directly design every detail, but instead create a framework within which the intelligence “grows.” As a result, fundamental scientific aspects — such as the internal representations and computational processes of these systems — remain, at present, unknown.
+I liked section 83’s description of the relationship between development and dignity:
+For individuals as well as for nations, development is both a duty and a right. Minimum conditions are required for enabling every person and people to flourish in accord with their dignity, without being kept in a state of dependence or excluded from access to necessary goods. Development is truly human when it places people at the center instead of the accumulation of wealth, and when it concerns peoples as well as individuals. Justice demands the recognition of the rights of society and the rights of peoples, and includes a responsibility toward future generations. Development is not truly human if it increases consumption for some while shifting costs and burdens onto others, or relegates entire regions to subordinate roles, preventing them from realizing their full potential.
+Baked in cultural biases and sycophancy get a mention in section 100:
+In personal use, three aspects in particular deserve careful consideration: the ease with which results are obtained, the impression of objectivity and the simulation of human communication. The speed and simplicity with which information, complex analyses, media content and practical assistance can be accessed undoubtedly makes life easier. Yet they can also encourage excessive reliance and the search for ready-made answers, and weaken personal creativity and judgment. The apparent objectivity of the responses and suggestions these systems provide can lead us to overlook the fact that they reflect the cultural assumptions of those who designed and trained them, with all their strengths and limitations. The artificial imitation of positive human communication — words of advice, empathy, friendship and even love — can be engaging and at times genuinely helpful. However, for less discerning users, it can also be misleading, creating the illusion of a relationship with a real personal subject. When words are simulated, they do not build genuine relationships, but only their appearance. The artificial imitation of care or support can become particularly risky when it enters contexts where real relationships and emotional bonds are lacking.
+101 touches on the environmental impact:
+Current AI systems require enormous amounts of energy and water, significantly influencing carbon dioxide emissions, and place heavy demands on natural resources. As their complexity increases, especially in the case of large language models, the need for computing power and storage capacity grows too, which requires an extensive network of machines, cables, data centers and energy-intensive infrastructure. For this reason, it is essential to develop more sustainable technological solutions that reduce environmental impact and help protect our common home.
+102 covers the risks of algorithmic systems making decisions that impact people’s lives without “compassion, mercy, forgiveness”:
+The use of AI is never a purely technical matter: when it enters processes that affect people’s lives, it touches on rights, opportunities, status and freedom. Important and sensitive decisions — concerning employment, credit, access to public services or even a person’s reputation — risk being fully delegated to automated systems that do not know “compassion, mercy, forgiveness, and above all, the hope that people are able to change,” and can therefore give rise to new forms of exclusion.
+105 emphasizes the need for human accountability in how these systems are applied:
+For AI to respect human dignity and truly serve the common good, responsibility must be clearly defined at every stage: from those who design and develop these systems to those who use them and rely on them for concrete decisions. In many cases, however, the internal processes leading to a result remain opaque, making it harder to assign responsibility and correct errors. This is where accountability becomes crucial: the possibility of identifying who must “account” for decisions, justify them, monitor them, and, when necessary, challenge them and remedy any harm caused.
+And 108 touches on the way AI amplifies the power of those with resources:
+In fact, as with every major technological shift, AI tends to amplify the power of those who already possess economic resources, expertise and access to data. In light of the common good and the universal destination of goods, this raises serious concerns, since small but highly influential groups can shape information and consumption patterns, influence democratic processes and steer economic dynamics to their own advantage, undermining social justice and solidarity among peoples. For this reason, it is essential that the use of AI, especially when it touches on public goods and fundamental rights, be guided by clear criteria and effective oversight, grounded in participation and subsidiarity.
+That same section explicitly calls out data as something that should be thought of more as a public good:
+[...] Moreover, ownership of data cannot be left solely in private hands but must be appropriately regulated. Data is the product of many contributors and should not be treated as something to be sold off or entrusted to a select few. It is necessary to think creatively in order to manage data as a common or shared good, in a spirit of participation, as Saint John Paul II already suggested regarding collective goods.
+Given that Palantir is named after a Lord of the Rings reference, I can’t help but wonder if the J.R.R. Tolkien quote from The Return of the King (section 213) was the Pope throwing a little shade at Peter Thiel.
+The twentieth-century Catholic author J.R.R. Tolkien, in the words of a protagonist in one of his novels, described our responsibility in this way: “It is not our part to master all the tides of the world, but to do what is in us for the succour of those years wherein we are set, uprooting the evil in the fields that we know, so that those who live after may have clean earth to till.” The civilization of love will not arise from a single or spectacular gesture, but from the sum total of small and steadfast acts of fidelity that serve as a bulwark against dehumanization. For this reason, it is worthwhile pausing to reflect on some aspects of how we, each in our own way, can cooperate in building the civilization of love.
+Another 2026 prediction down
+On 6th January this year I joined the Oxide and Friends 2026 predictions podcast episode to talk about predictions for 2026, 2029 and 2032. I wrote mine up here, with hindsight they weren’t nearly ambitious enough - it’s already undeniable that LLMs write good code, we’ve made huge advances in sandboxing and New Zealand kākāpō have indeed had a truly excellent breeding season.
+There’s one segment from the episode that I didn’t bother to include in my write-up, but that I can’t resist providing as a lightly-edited transcript here:
+Bryan Cantrill: 37:13
+I think that AI has created some real public perception problems for itself. And I think that you are gonna have one of the frontier model companies, this year, have a white paper explaining how the proliferation of AI will mean prosperity for everybody. They will be trying to make some economic argument - because this is gonna be a 2026 election issue, how we think of these things and how they are regulated and it’s a big mess. There’s more heat than light in this debate.
+Simon Willison: 38:05
+I’d like to tag something on to that one: I think that only works if they can sort of wash that through existing trusted experts. Sam Altman and Dario are constantly publishing essays about this stuff and nobody believes a word they say. Get Barack Obama’s signature on one of these position papers and maybe you’ve got something people might start to trust a little bit.
+Adam Leventhal: 38:27
+Otherwise, it’s just like “leaded gas is good for you”, says Exxon.
+Bryan Cantrill: 38:31
+I mean, yeah. God. Obama... let’s go with that, that’s a great one because if it’s like Bill Clinton everyone’s gonna kind of roll their eyes, so it’s gotta be someone who’s got real credibility saying that this is gonna be broad-based... I’d say if they get that person to do it, it’s gonna be revealed that that’s also a bit crooked.
+Simon Willison: 38:57
+How about the Pope?
+Bryan Cantrill: 39:01
+The Pope is very into this stuff! That’s a great prediction. We’ve hit pay dirt. The Pope weighing in on LLMs and their economic impact on the world.
+Simon, I’m giving you full credit if the Pope weighs in believing that this is gonna be economic devastation.
+My prediction here looks a whole lot less insightful given the Leo XIV/Leo XIII relationship, which I was unaware of when we recorded the episode!
+Release: datasette-agent 0.1a3
+“View SQL query” buttons for both visible tables and collapsed SQL result tool calls.
+Don’t display empty reasoning chunks
+Improved handling of truncated responses - table still displays to the user even if the SQL results were truncated when showing the agent.
+Release: datasette-agent-charts 0.1a2
+“View SQL query” buttons below rendered charts.
+Link 2026-05-22 The memory shortage is causing a repricing of consumer electronics:
+David Oks provides the clearest explanation I’ve seen yet of why consumer products that use memory are likely to get significantly more expensive over the next few years.
+The short version is that memory manufacturers - of which there are just three remaining large companies - have a fixed capacity in terms of how many wafers they can process at any one time. This fixed wafer capacity is then split between DDR - used in desktops and servers, LPDDR - used in mobile phones and low-energy devices, and HBM - used with GPUs.
+Until recently, HBM got just 2% of that wafer allocation. The enormous growth in AI data centers has pushed that up to an expected 20% by the end of 2026, and “a single gigabyte of HBM consumes more than three times the wafer capacity that a gigabyte of DDR or LPDDR does”.
+Memory companies have learned from the extinction of their rivals that you should always under-provision rather than over-provision your fabricator capacity. The profit margins and demand for HBM (high-bandwidth memory) will constrain the production of consumer-device RAM for several years.
+This is already being felt in the sub-$100 smartphone market, which is particularly important to markets like Africa and South Asia.
+(The original title of the piece was “AI is killing the cheap smartphone” but I’m using the Hacker News rephrased title, which I think does more justice to the content.)
+Link 2026-05-23 On the <dl>:
+I learned a few new-to-me things about the <dl>
+element from this article by Ben Meyer:
+A
+<dt>
+can be followed by multiple<dd>
+You can optionally group the
+<dt>
+and<dd>
+elements in a<div>
+for styling - but only a<div>
+.You can label them using ARIA.
+They’ve been called “description lists”, not “definition lists”, since an HTML5 draft in 2008.
+So this is valid:
+<h2 id=”credits”>Credits</h2>
+<dl aria-labelledby=”credits”>
+<div>
+<dt>Author</dt>
+<dd>Jeffrey Zeldman</dd>
+<dd>Ethan Marcotte</dd>
+</div>
+</dl>
+Here’s a useful note from Adrian Roselli on screen reader support for description lists.
+Tool: Mad House — Usborne Creepy Computer Games
+Via Hacker News I learned that UK publisher Usborne published free PDFs of their 1980s Computer Books, some of which I remember working through on my Commodore 64 as a child.
+These were so great! Beautifully illustrated books with fun projects made up of code you could type into your own machine.
+I remember playing “Mad House” typed in from the 1983 book “Creepy Computer Games”, so I fed that PDF into Claude and had it build an interactive version of that game in JavaScript and HTML:
+Build a vanilla JS artifact that exactly recreates the game Mad House from this book, make sure it's mobile friendly and has a suitable retro aesthetic
+Credit the book title and link to https://usborne.com/us/books/computer-and-coding-books
+Quote 2026-05-24
+The most frustrating failure mode right now is that people submit issues that are not in their own voice. They contain an observed problem somewhere, but it has been thrown into a clanker and the clanker reworded it and made a huge mess of it. Typically, it was prompted so badly that the conclusions produced are more often than not inaccurate but always full of confidence. The result is complete guesswork on root causes, fake-minimal repros, suggested implementation strategies, analogies to adjacent but often the wrong code, and long lists of error classes that might or might not matter. [...]
+So at least personally, I increasingly want issue reports to be condensed to what the human actually observed:
+I ran this command.
+I expected this to happen.
+This happened instead.
+Here is the exact error or log.
+Armin Ronacher, on slop issues filed against Pi
+Release: datasette-fixtures 0.1a0
+One of the smaller features in Datasette 1.0a30 is this:
+New documented datasette.fixtures.populate_fixture_database(conn) helper for creating the fixture database tables used by Datasette’s own tests, intended for plugin test suites.
+This new plugin takes advantage of that API. You can try it out using uvx
+without even installing Datasette like this:
+uvx --prerelease=allow \
+--with datasette-fixtures datasette \
+--get /fixtures/roadside_attractions.json
+Which outputs:
+{
+“ok”: true,
+“next”: null,
+“rows”: [
+{”pk”: 1, “name”: “The Mystery Spot”, “address”: “465 Mystery Spot Road, Santa Cruz, CA 95065”, “url”: “https://www.mysteryspot.com/”, “latitude”: 37.0167, “longitude”: -122.0024},
+{”pk”: 2, “name”: “Winchester Mystery House”, “address”: “525 South Winchester Boulevard, San Jose, CA 95128”, “url”: “https://winchestermysteryhouse.com/”, “latitude”: 37.3184, “longitude”: -121.9511},
+{”pk”: 3, “name”: “Burlingame Museum of PEZ Memorabilia”, “address”: “214 California Drive, Burlingame, CA 94010”, “url”: null, “latitude”: 37.5793, “longitude”: -122.3442},
+{”pk”: 4, “name”: “Bigfoot Discovery Museum”, “address”: “5497 Highway 9, Felton, CA 95018”, “url”: “https://www.bigfootdiscoveryproject.com/”, “latitude”: 37.0414, “longitude”: -122.0725}
+],
+“truncated”: false
+}
+Release: datasette-agent 0.1a4
+Taking advantage of the new makeJumpSections() JavaScript plugin hook added in Datasette 1.0a30, datasette-agent
+now presents this “Start a new agent chat” interface as part of the Jump to menu, any time you hit /
+:
+You can try this out by signing into agent.datasette.io using your GitHub account.
+Release: datasette 1.0a30
+The big new feature in this alpha is a new customizable “Jump to...” menu, described in detail in The extensible “Jump to” menu in Datasette 1.0a30 on the Datasette blog. You can try it out by hitting /
+on latest.datasette.io - it looks like this:
+The new jump_items_sql() plugin hook allows plugins to add their own items to the set that’s searched by the plugin.
+Quote 2026-05-26
+I cannot believe I’m saying this, but getting the literal Pope to canonize your product’s specific technical limitations as a spiritual treatise is the single greatest act of vendor lobbying I have ever seen.
+Corey Quinn, on Anthropic co-founder Christopher Olah’s influence on Magnifica Humanitas
+Quote 2026-05-26
+A lot of the emails I get from founders are now written in a hard-hitting journalistic style. I know they’re written by AI, because no founder ever wrote this way before. And once you realize something is written by AI, it’s hard not to ignore it.
+I have never knowingly finished reading an email signed by a human but written by AI. It feels like being lied to, and who would stand for that?
+[...] It makes me think less of the author. It means they can’t write well unaided (or feel they can’t), and that they’re trying to trick me.
+It’s not impressive to use AI to write stuff for you; any teenager can do that.
+Link 2026-05-26 Microsoft Copilot Cowork Exfiltrates Files:
+The biggest challenge in designing agentic systems continues to be preventing them from enabling attackers to exfiltrate data.
+In this case Microsoft Copilot Cowork (yes, that’s a real product name) was allowing agents to send emails to the user’s own inbox without approval... but those messages were then displayed in a way that could leak data to an attacker via rendered images:
+Because these messages can contain external images that trigger network requests to external websites, data can be exfiltrated when a user opens a compromised message sent by the agent.
+Since OneDrive can create pre-authenticated download links, a successful prompt injection could cause those links to be leaked, allowing files to be downloaded by the attacker.
+Link 2026-05-26 The pressure:
+Daniel Stenberg on the unprecedented level of pressure the curl
+team are facing right now thanks to the deluge of (credible) AI-assisted security issues being reported.
+The rate of incoming security reports is 4-5 times higher than it was in 2024 and double the speed of 2025 -- meaning that on average we now get more than one report per day. The quality is way higher than ever before. The reports are typically very detailed and long. [...]
+For the first time in my life, my wife voiced concerns about my work hours and my imbalanced work/life situation. I work more than I’ve done before, but the flood keeps coming. [...]
+This is a never-before seen or experienced pressure on the curl project and its security team members. An avalanche of high priority work that trumps all other things in the project that is primarily mental because we certainly could ignore them all if we wanted, but we feel a responsibility, we have a conscience and we are proud about our work.
+The good news is that curl
+is a very solid piece of software, so the vulnerabilities people are finding tend not to be of high severity:
+What is also a good trend: almost no one finds terrible vulnerabilities. All vulnerabilities found the last few years in curl have all been deemed severity LOW or MEDIUM. I’m not saying there won’t be any more HIGH ever, but at least they are rare. The most recent severity high curl CVE was published in October 2023.
+Quote 2026-05-27
+PICARD: Data, shields up
+DATA: Brilliant! Shields can reduce damage we sustain. Not immunity. Not hubris. Just prudence. It’s not precaution—it’s strategy.
+[camera shakes]
+WORF: HULL BREACHES ON NINE DECKS
+DATA: Here’s what happened: you told me to raise shields, and I didn’t
+Kyle Ferrana, @KyleTrainEmoji
+Link 2026-05-27 sqlite AGENTS.md:
+SQLite gained an AGENTS.md file five days ago - but it’s not intended for their own development, it’s presumably aimed at people who are pointing agents at the SQLite codebase. It includes:
+SQLite does not accept pull requests without prior agreement and/or accompanying legal paperwork that places the pull request in the public domain. However, the human SQLite developers will review a concise and well-written pull request as a proof-of-concept prior to reimplementing the changes themselves.
+SQLite does not accept agentic code. However the project will accept agentic bug reports that include a reproducible test case. Patches or pull requests demonstrating a possible fix, for documentation purposes, are welcomed.
+The most recent commit to that file removed “(currently)” from “SQLite does not (currently) accept agentic code”, with the commit message “Strengthen the statement about not accepting agentic code”.
+Meanwhile the SQLite forum was being flooded with so many AI-generated bug reports - of varying quality - that they’ve now split those off into a new SQLite Bug Forum. D. Richard Hipp is resolving issues on there with a flurry of commits to the codebase.
+Release: llm-anthropic 0.25.1
+New model: Claude Opus 4.8 (
+claude-opus-4.8
+).New
+-o fast 1
+option for fast mode, for organizations with that feature enabled on their account.Default max_tokens for each model now defaults to that model’s maximum output rather than 8,192. #72
+See also my notes on Opus 4.8 - I used this new release of llm-anthropic
+to generate the pelicans.
+Note 2026-05-29
+The most interesting thing about Anthropic’s $65B Series H announcement is this line (emphasis mine):
+Since our Series G in February, adoption has continued to grow across global enterprise customers, and our run-rate revenue crossed $47 billion earlier this month.
+Anthropic have made a bit of a habit of sharing their “run-rate revenue” in this kind of announcement, which is an annualized projection of their current revenue - typically calculated by taking the most recent month and multiplying by 12.
+Earlier this year:
+Apr 6, 2026 in Anthropic expands partnership with Google and Broadcom: “Our run-rate revenue has now surpassed $30 billion—up from approximately $9 billion at the end of 2025.”
+Feb 12, 2026 in Anthropic raises $30 billion in Series G: “Today, our run-rate revenue is $14 billion, with this figure growing over 10x annually in each of those past three years.”
+I had Claude Opus 4.8 make me this chart using Matplotlib (Claude: “a data line chart is more straightforward matplotlib work—not really a design piece”):
+Back in April Axios CEO Jim VandeHei wrote that he could not find “any company — in any industry, in any era — that has scaled organic revenue this quickly at this level as Anthropic” - and that was when they were at a paltry $30 billion.
+(Also in Axios today is an anonymously sourced note that “An AI consultant tells Axios one of their clients recently spent half a billion dollars in a single month after failing to put usage limits on Claude licenses for employees” - times that by 12 and you get an extra $6 billion in annualized run-rate!)
+Ed Zitron was extremely skeptical of that $30 billion number - I wonder if his skepticism will update for the new $47 billion figure.
+I’ve seen a few people dismiss this as untrustworthy, because the numbers come from Anthropic. That doesn’t hold up: these numbers were included in announcements of their fundraises, and lying to investors who just put in $65 billion would be securities fraud. They’re even less likely to lie given that the real numbers will no doubt come out in their S-1 when they file for their IPO.
+If you find this newsletter useful, please consider sponsoring me via GitHub. $10/month and higher sponsors get a monthly newsletter with my summary of the most important trends of the past 30 days - here are previews from January and February and March.

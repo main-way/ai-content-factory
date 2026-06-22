@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:Neuromorphic Wireless Split Computing with Resonate-and-Fire Neurons
+View PDF HTML (experimental)Abstract:Neuromorphic computing offers an energy-efficient alternative to conventional deep learning accelerators, particularly for real-time processing of time-series data. However, many edge applications, such as wireless sensing and audio recognition, generate streaming signals with rich spectral features that are not effectively captured by conventional leaky integrate-and-fire (LIF) spiking neurons. This paper investigates a wireless split computing architecture that employs resonate-and-fire (RF) neurons with oscillatory dynamics to process time-domain signals directly, eliminating the need for costly spectral pre-processing. By resonating at tunable frequencies, RF neurons extract time-localized spectral features while maintaining low spiking activity. This temporal sparsity translates into significant savings in both computation and transmission energy. Assuming an OFDM-based analog wireless interface for spike transmission, we present a complete system design and evaluate its performance on audio classification and modulation classification tasks. Experimental results show that the proposed RF-SNN architecture achieves comparable accuracy to conventional LIF-SNNs and ANNs, while substantially reducing spike rates and total energy consumption during inference and communication.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

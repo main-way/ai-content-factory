@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Intelligent Skin Cancer Detection Using a Multispectral Metasurface and a Hybrid
+View PDFAbstract:Skin cancer is among the most prevalent malignancies worldwiAdbe satnradcitts early detection is essential for improving patient survival and reducing treatment costs Conventional dermoscopic and visual imaging techniques are primarily limited to the visible spectrum and often fail to capture subtle spectral signatures associated with early stage malignancies This study proposes an innovative framework that integrates a multispectral metasurface for imaging with a hybrid deep learning architecture based on Convolutional Neural Networks and Vision Transformers The designed metasurface enables noninvasive acquisition of rich spectral information highly sensitive to tissue alterations while the hybrid CNN ViT model simultaneously extracts local and global features to robustly classify skin lesions Simulation-based evaluations demonstrate that the proposed method achieves approximately 98 accuracy 95 percentages sensitivity and 99 perentage specificity surpassing conventional RGB-based and single-architecture approaches Qualitative analyses using attention maps reveal that the model focuses on clinically relevant lesion regions improving interpretability Overall the results indicate that combining metasurface based multispectral imaging with hybrid deep learning can introduce a new generation of diagnostic tools in dermatology and pave the way for portable fast and highly accurate clinical systems
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Maximum Matching Accuracy: An Instance Segmentation Evaluation Metric Utilizing Globally Optimal Matching
+View PDF HTML (experimental)Abstract:Reliable evaluation of instance segmentation models requires metrics that accurately and consistently reflect segmentation quality. However, the metrics most widely used in biological imaging carry fundamental mathematical weaknesses: hard Intersection-over-Union (IoU) thresholds that produce discontinuous, low sensitivity scoring; per-object normalization that distorts scores under object size variation; and greedy or one-to-many matching procedures that yield non-optimal, order-dependent correspondences. Together, these properties produce unintuitive and unreliable model rankings under common failure modes such as split cells, merged cells, and cell boundary imprecision. We propose Maximum Matching Accuracy (MMA), a threshold-free continuous metric that finds a globally optimal one-to-one matching between predicted and ground truth objects and aggregates total overlap using per-pixel normalization. We evaluate MMA against AP@50, PQ, SEG, and AJI across three experiments: synthetic failure cases, progressive corruption tests, and a model ranking comparison. MMA produces scores that are more stable, more sensitive, and more interpretable than existing alternatives, providing a principled foundation for fair instance segmentation benchmarking in biological cell imaging.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

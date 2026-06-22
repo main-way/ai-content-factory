@@ -1,0 +1,48 @@
+{
+  "date": "2026-03-13",
+  "count": 3,
+  "posts": [
+    {
+      "id": "8a70deff3e62",
+      "title": "Identifying Interactions at Scale for LLMs",
+      "url": "http://bair.berkeley.edu/blog/2026/03/13/spex/",
+      "source": "BAIR Blog (Berkeley)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-03-13T09:00:00+00:00",
+      "summary": "--> Understanding the behavior of complex machine learning systems, particularly Large Language Models (LLMs), is a critical challenge in modern artificial intelligence. Interpretability research aims to make the decision-making process more transparent to model builders and impacted humans, a step toward safer and more trustworthy AI. To gain a comprehensive understanding, we can analyze these systems through different lenses: feature attribution , which isolates the specific input features driving a prediction ( Lundberg &amp; Lee, 2017 ; Ribeiro et al., 2022 ); data attribution , which…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "d005e1ce1065",
+      "title": "LWiAI Podcast #236 - GPT 5.4, Gemini 3.1 Flash Lite, Supply Chain Risk",
+      "url": "https://lastweekin.ai/p/lwiai-podcast-236-gpt-54-gemini-31",
+      "source": "Last Week in AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-03-13T05:38:49+00:00",
+      "summary": "OpenAI launches GPT-5.4 with Pro and Thinking versions, Google releases Gemini 3.1 Flash Lite at 1/8th the cost of Pro, Where things stand with the Department of War Anthropic",
+      "author": "Last Week in AI",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "bfcaf8229529",
+      "title": "Issue #35",
+      "url": "http://augmentedcoding.dev/issue-35/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-03-13T00:00:00+00:00",
+      "summary": "We Should Revisit Literate Programming in the Agent Era SILLY.BUSINESS The ever-growing power, and usage, of AI is causing many of us to re-think how we approach software development. How can we adapt our patterns and practices to fully capitalise on this new technology? This blog post ponders whether Literate Programming will have a surge in adoption as a result of agentic AI. “Literate programming is the idea that code should be intermingled with prose such that an uninformed reader could read a code base as a narrative, and come away with an understanding of how it works and what it does.”…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+Computer Science > Neural and Evolutionary Computing
+Title:SDTrack: A Baseline for Event-based Tracking via Spiking Neural Networks
+View PDF HTML (experimental)Abstract:Event cameras provide superior temporal resolution, dynamic range, energy efficiency, and pixel bandwidth. Spiking Neural Networks (SNNs) naturally complement event data through discrete spike signals, making them ideal for event-based tracking. However, current approaches combining Artificial Neural Networks (ANNs) and SNNs suffer from suboptimal architectures that compromise energy efficiency and limit tracking performance. To address these limitations, we propose the first Transformer-based \textbf{S}pike-\textbf{D}riven \textbf{T}racking (SDTrack) pipeline. It incorporates a novel event frame aggregation method called Global Trajectory Prompt (GTP) and a Transformer-based tracker. The GTP method effectively captures global trajectory information and aggregates it with event streams into event frames to enhance spatiotemporal representation. The Transformer-based tracker comprises a fully spike-driven SNN backbone and a simple tracking head. The SDTrack pipeline operates end-to-end without data augmentation or post-processing. Extensive experiments demonstrate that our SDTrack-Tiny pipeline achieves competitive accuracy with only 19.61$M$ parameters and 8.16$mJ$ energy consumption, while our Base version achieves state-of-the-art accuracy across three datasets. Our work establishes a solid foundation for future neuromorphic vision research.
+Submission history
+From: Yimeng Shan [view email][v1] Sun, 9 Mar 2025 02:01:40 UTC (670 KB)
+[v2] Tue, 17 Jun 2025 06:08:36 UTC (672 KB)
+[v3] Sat, 26 Jul 2025 07:56:08 UTC (856 KB)
+[v4] Sat, 6 Jun 2026 03:17:31 UTC (979 KB)
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

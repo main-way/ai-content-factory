@@ -1,0 +1,39 @@
+{
+  "date": "2026-03-28",
+  "count": 2,
+  "posts": [
+    {
+      "id": "9b5c3550ba4c",
+      "title": "Startup Cash Flow Management",
+      "url": "https://venturefounders.com/startup-cash-flow-management/",
+      "source": "Venture Founders",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "low",
+      "published": "2026-03-28T21:12:53+00:00",
+      "summary": "Startup Cash Flow Management: One of the most frequent bits of advice to new entrepreneurs is, &#8220;Remember, Cash Is King!&#8221; However, if you let those words dominate your startup thinking, chances are high that you will go bust sooner than you think! Many advisers stress the financial aspects of starting a business—and while I agree [&#8230;] The post Startup Cash Flow Management appeared first on Venture Founders .",
+      "author": "Will Keyser",
+      "tags": [
+        "Business Plan and Initial Funding",
+        "Cash and Risk",
+        "finance",
+        "entrepreneurship"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "ff3dd6c1215a",
+      "title": "Vibe coding SwiftUI apps is a lot of fun",
+      "url": "https://simonw.substack.com/p/vibe-coding-swiftui-apps-is-a-lot",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-28T00:38:17+00:00",
+      "summary": "Plus profiling Hacker News users based on their comments and more",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

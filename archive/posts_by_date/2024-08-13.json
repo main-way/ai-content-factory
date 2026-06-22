@@ -1,0 +1,24 @@
+{
+  "date": "2024-08-13",
+  "count": 1,
+  "posts": [
+    {
+      "id": "72d01d883ffe",
+      "title": "Exploring the TextAttack Framework: Components, Features, and Practical Applications",
+      "url": "https://blog.paperspace.com/enhancing-nlp-robustness-with-textattack-2/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-13T21:43:35+00:00",
+      "summary": "In this tutorial, we look at the TextAttack framework for NLP data augmentation, adversarial training, and adversarial attacks.",
+      "author": "Adrien Payong",
+      "tags": [
+        "NLP",
+        "Large Language Models",
+        "Tutorial"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

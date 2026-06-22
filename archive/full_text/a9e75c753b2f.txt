@@ -1,0 +1,45 @@
+blog - git - desktop - contact
+2026-06-20
+(I don't plan on doing lots more of these Windows UI blog posts. I just came across this and found it interesting. Besides, it's super hot where I live and I can't do anything meaningful anyway, so here we go.)
+Let's open the file manager and click on a file that is not a .EXE
+or
+something known to the system like .TXT
+. What happens?
+I don't have access to each and every version of Windows under the sun, only to a few of them. Let's have a look at those.
+I also translated some of the German labels into English, but it's quite possible that these buttons are called a little differently in the original English versions.
+In Windows 386/2.11 (1989), you just get a "nope" (translation of the image: "ABC.OMG is not executable"):
+This version of Windows already had the concept of "open file type
+$foo
+with program $bar
+", but apparently there was no UI to configure
+this. Or I couldn't find it. You could set up the associations in
+WIN.INI
+:
+Windows 3.1 (1992) improved the situation a little bit:
+It still just tells you "no", but it now also tells you that there is a concept of file type associations and where to configure them. This gets you to a basic but functional dialog window:
+The text box at the top lets you enter the filename extension, the list box at the bottom allows you to select one of the installed programs. If it isn't in the list, you can hit the "Durchsuchen..." ("Search...") button to select an arbitrary program.
+Windows NT 3.1 (1993) is basically the same (as is Windows for Workgroups 3.11, by the way):
+Windows 95 (1995) was a big step up, because you now get a dialog window where you can select the desired program right there -- no need anymore to navigate someplace else:
+If the program isn't listed, you can hit the "Andere..." ("Others...") button to select a program directly.
+This behavior remained the same in Windows 98, Windows ME, and Windows 2000:
+And then Windows XP (2001) came along and it now tried to nudge you to use some kind of web service, because The Internet was "finally" everywhereâ¢:
+Sadly, I don't know anymore what kind of web service that was. If you do, please tell me. It was most likely run by Microsoft, but what was its database? Which programs did it list? How did it query this database -- did it upload the entire file or parts of it or just the filename extension? Did it offer to install a program on your PC? (I vaguely remember that this service was used as an attack vector of some kind and that magazines wrote "don't use this!!1!", but I'm not sure anymore.)
+-- edit: Okay, as a reader told me, this did nothing but open a website
+in Internet Explorer, sending the filename extension as a query string.
+The service has been shut down since 2006, they say. And it was pretty
+useless, apparently. The reader speculates that only Microsoft-certified
+partners might have ended up here and notes that even popular filetypes
+like .3GP
+weren't recognized. You can give it a shot yourself by
+asking the Internet Archive:
+Local copy of a screenshot from the Protoweb archive (reduced in size):
+If you didn't want to use that service, you could select the second radio button to get to the old dialog:
+-- edit: I dug up a beta version of Windows Vista that I had on an old DVD (evaluation build 5600 from the year 2006). It looks a little different than XP but does basically the same thing:
+Now there's a big gap. I don't have access to anything between Windows
+XP Vista and Windows 10. So, Windows 10 (2015) is next:
+Ouch, we have clearly entered the "everything is flat" era now and you can't really tell anymore which items on the screen are interactive. Even the window decorations are gone. The text at the top ("Im Store nach einer App suchen" -- "Search Store for App") is actually a button that you can click (the icon is probably supposed to indicate that?). "Weitere Apps" ("Other Apps") is also something that you can click (indicated by the color, like a web link) and it opens a list:
+Again, this shows the installed programs. Sorry, they're called "Apps" now. What you might not be able to tell immediately is that you can scroll this window to reveal the third option:
+If the list doesn't contain the program that you want, you can click the button/text/whatever "Andere App auf diesem PC suchen" ("Look for different App on this PC").
+And that's it. I don't have access to any other versions of Windows.
+(-- edit: I know that I could show more versions because I can most likely get all the installers from The Internet. Sorry, not in the mood at the moment, it's way too hot around here.)
+Enjoy summer. ð¥µ

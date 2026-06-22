@@ -1,0 +1,60 @@
+Musk takes SpaceX public Friday at $1.75 trillion, the largest IPO ever. Look past the rocket and you find the actual wager: an AI arm that lost $6.4 billion last year, a plan to put a million data-center satellites in orbit, and a valuation that has more than doubled since December. Below: how the pieces fit, what Apple's opposite bet tells us, and the launch of AI TV.
+Get more from AI Weekly
+More signal, less noise — pick your channels.
+You're reading the weekly brief. Below are the other ways to follow the story — every channel free, easy to leave.
+-
+→ Explore 16 deep divesWeekly topic-specific newsletters: Generative AI, Machine Learning, AI in Business, Robotics, Frontier Research, Geopolitics, Healthcare, and more.Browse all 16 deep dives →
+-
+→ Breaking AI alertsWhen something major breaks (a $60B acquisition, a regulator's emergency meeting, a frontier model leak), alert subscribers know within hours. Typically 0-2 emails per day.Get breaking alerts →
+-
+→ AI News Today (live)Live dashboard updated as the scanner finds news: scored stories from the last 48 hours, weekly entity movers, and quarterly trend lines across 113 AI companies, people, and topics.Open AI News Today →
+The Operator's Thoughts: SpaceX's AI business lost $6 billion last year. That's the line worth reading.
+The headline number on the SpaceX IPO is $1.75 trillion, the largest debut in stock-market history, priced at $135 a share, trading Friday under the ticker SPCX. That's the number on every screen this week. It isn't the interesting one.
+The interesting one is buried in the prospectus. In 2025, SpaceX's brand-new AI segment brought in $3.2 billion and lost $6.4 billion doing it. The rocket-and-Starlink business is real and profitable. The AI business is a furnace, and the IPO exists, in part, to keep feeding it.
+Once you see that, the rest snaps into focus. In January, SpaceX asked the FCC for permission to launch up to a million satellites, a solar-powered "Orbital Data Center System" built to run AI compute in space. Last Monday it showed off the first one, a 150-kilowatt satellite called AI1. It folded xAI and Grok into the company. Musk's own pitch is that within two or three years the cheapest place to make AI compute won't be on Earth at all. It'll be in orbit.
+So this was never a rocket IPO, and it was never really about Grok beating ChatGPT. Musk is selling the bet that AI's bottleneck is power and compute, not models, and that he owns the only company on the planet that can launch both into space. Starlink is the cash machine that funds it. Grok is the thing that runs on it. The rockets are the delivery truck.
+It's the most ambitious version of the AI story anyone has told, and I'll be honest, it's the one I find hardest to wave off, because the pieces actually connect. It's also the one I can least check. The orbital data centers don't launch until 2028. The AI arm is losing six billion a year right now. And the price keeps climbing: a December tender offer valued SpaceX at $780 billion, and six months later Musk is asking the market for $1.75 trillion, more than double, while the company posts losses.
+That's the real trade in front of you. Not "is SpaceX a good company." It is. The trade is whether you fund a money-losing bet on data centers that don't exist yet, at a price that doubled in six months, because the man making the bet has been right about rockets and satellites before.
+The genius and the danger here are the same fact. Nobody else could even attempt this, which is exactly why nobody else can tell you if it's real.
+Quick Hits
+The trillion-dollar bet
+- SpaceX is about to run the largest IPO in history. It priced at $135 a share for a roughly $75 billion raise at a $1.75 trillion valuation, with pricing after Thursday's close and the first trade Friday on Nasdaq under SPCX.
+- The prospectus is ugly under the hood. Revenue rose, but so did the losses, and the new AI arm is deep in the red. Starlink is the engine; the AI bet is the drag.
+The real play: compute in orbit
+- SpaceX wants up to a million satellites in orbit. It filed plans for a solar-powered "Orbital Data Center System" to run AI compute in space, where there's constant sun, no land to buy, and no cooling water.
+- xAI and Grok now live inside SpaceX. Musk folded his AI company into the rocket company, branding the unit SpaceXAI and valuing the AI business around $250 billion. The model rides on SpaceX's balance sheet.
+The money and the politics
+- Washington may take equity in the AI labs. Trump floated direct federal stakes in xAI, OpenAI, and Anthropic, and Bernie Sanders wants 50%, a rare moment of left-right agreement on partly owning them.
+- Musk's lawsuit against OpenAI collapsed. A jury threw out his case against Sam Altman in under two hours, ruling he sued too late. He vows to appeal, so the rivalry plays out in the market now, not the courtroom.
+How to Make Sense of Musk's AI Play
+Stop thinking about Grok versus ChatGPT. That was never the bet.
+Musk has decided the thing that bottlenecks AI is not cleverer models. It's power and compute, the boring physical layer, and he spent twenty years quietly assembling the only company that owns all of it. Starship is the cheapest heavy-lift rocket ever built. Starlink is a cash machine and a global distribution network. xAI and Grok, now inside SpaceX, are the model. And the piece that makes the rest cohere is that January FCC filing for a million solar-powered satellites running AI compute in orbit, on near-constant sunlight, where there's no land to buy, no water to cool, and no neighbor to file a zoning complaint.
+The claim is that within a few years the cheapest place to make AI compute will be space, and Musk will own it end to end: the rocket, the power, the data center, the data, and the model. The IPO is how he pays for the build.
+That's the play. Whether it works is a 2028 question. Whether you pay $1.75 trillion for it today is a Friday one.
+Key Takeaways
+- The IPO is really an AI-infrastructure fundraise. The rocket and Starlink business is profitable; the AI arm is the part bleeding money ($6.4B lost in 2025). The biggest IPO in history is partly there to fund the part that loses.
+- Musk's wager is physical, not algorithmic. He's betting AI's limit is energy and compute, and that orbit beats Earth on all of it: free solar, no land, no cooling, no zoning fights. First satellites launch in 2028.
+- The price doubled in six months. A December tender offer valued SpaceX at $780 billion; the IPO asks $1.75 trillion, even as the company posts losses.
+- Washington is circling the whole field. Federal equity stakes are suddenly on the table for xAI, OpenAI, and Anthropic, and Musk's courtroom war with OpenAI just collapsed.
+Worth Reading
+- The SpaceX S-1 prospectus, the primary document with every number behind this IPO
+- The orbital data center plan, in technical detail (Data Center Dynamics)
+- What to know about the SpaceX IPO, its AI plans and risks (Bloomberg)
+Worth Watching: Introducing AI TV
+New, and quietly live for a few days now: AI TV, our running pick of the AI videos actually worth your time, refreshed all week so you're not digging through YouTube hoping the algorithm hands you something good. Free, nothing to sign up for. Here's what's topping it right now, all of it on this week's themes:
+- What SpaceX, OpenAI and Anthropic's IPOs mean for investors (The Economist) — a tight 7-minute explainer on the exact IPO wave this issue is about.
+- Why Building AI Data Centres Isn't Working Anymore (ColdFusion) — the on-the-ground limits that make Musk's bet on compute in orbit make sense.
+- Apple WWDC 2026: Introducing Siri AI (Apple) — the full keynote behind today's One More Thing, already past 6 million views.
+- Anthropic, OpenAI Should Not Be Allowed to IPO, Says Ed Zitron (Bloomberg) — the loudest voice on the other side of the IPO party.
+One More Thing: Apple Made the Opposite Bet
+If SpaceX is one man trying to own every layer of AI, the other big story this week is the company doing the reverse on purpose.
+At WWDC on Monday, in Tim Cook's last keynote before he hands off to John Ternus in September, Apple rebuilt Siri on Google's Gemini (reportedly about $1 billion a year for a custom model) and said iOS 27 will let you set ChatGPT or Claude as your default instead.
+The easy read is "Apple can't build AI, so it gave up." That misses the company entirely. Apple rented its most important engine once before: it took Google's search for two decades rather than build its own, and got paid roughly $20 billion a year to make Google the default. One of the most profitable decisions in corporate history. Renting the engine while owning the gateway isn't a retreat for Apple. It's the playbook.
+So here's what it actually tells us. Apple is betting AI is like search, a commodity you rent while you keep what matters: the device, the customer, and the default slot two billion people never change. Musk is betting the opposite, that the engine is the moat and you own it down to the solar panels. The catch is buried in Apple's own history. Renting search also left it dependent, became its biggest antitrust headache, and is part of why it fell behind on AI in the first place. Renting the engine is cheap right up until the engine becomes the product.
+So the real question isn't whether Apple can build AI. It's whether AI turns out to be like search, where the gateway wins, or the one technology you can't afford to rent. Two of the most successful companies in history just bet opposite ways.
+Worth Watching
+The videos AI practitioners are passing around right now — curated on AI TV.
+This week's poll
+Two opposite bets landed this week. Whose ages better?
+**Two opposite bets landed this week. Whose ages better?**
+— Alexis

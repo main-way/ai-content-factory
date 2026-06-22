@@ -1,0 +1,56 @@
+I wore the AirPods Pro 3 for months before I remembered they could even track my heart rate.
+I remember sitting in Apple's September keynote, when the company announced heart-rate tracking through your ears. Measuring the rate of your heartbeats from a pair of earbuds sounded futuristic, and the announcement drew one of the loudest rounds of applause of the keynote.
+Then I got home and went right back to recording every workout with my Apple Watch.
+There wasn't much reason to change. The Apple Watch Series 11 beat out every smartwatch I tested in our CNET Labs heart-rate comparisons against a Polar chest strap (designed explicitly to track heart rate), so I wasn't expecting a pair of earbuds to come anywhere close.
+Spoiler: They did.
+The Apple Watch Series 11 still takes the crown for heart rate accuracy, but if I'd included the AirPods Pro 3 in my previous comparisons, they would've beaten out every other smartwatch on my list.
+Health tracking moves beyond the wrist
+Consumer health tracking started on the wrist, but it isn't staying there. Fitness trackers and smartwatches have made 24/7 heart-rate monitoring mainstream to aid in training and recovery. They've since evolved to almost clinical level of precision to help flag serious heart conditions, sleep issues and even alert emergency services with features like loss of pulse detection (on the Pixel Watch).
+Now we're seeing similar sensors in smartrings, earbuds, smart earrings and soon even smart glasses that can do the same from different parts of your body.
+Where we'll eventually wear our primary health tracker is still an open question. But to answer that, every new location has to prove it can measure those same health signals as accurately as the wrist.
+Why your ear might be a better place to measure heart rate
+While tracking heart rate from earbuds is novel, I wasn't starting this comparison from scratch. A few months earlier, Whoop's now-infamous "thong" accessory (yes, the fitness company really makes performance underwear that lets you wear its sensor on your waist and other locations) sent me down a rabbit hole. I interviewed physicians and wearable experts about whether different parts of the body are better suited for measuring different health signals.
+The answer depends on what you're measuring. Fingertips, for example, work well for blood oxygen because they're packed with small blood vessels, and thinner skin lets more light pass through.
+Heart rate is different. In general, the closer a sensor sits to the heart (and the less that body part moves during exercise), the easier it is for a sensor-equipped device to capture a clean signal.
+That gives the ear a couple of advantages over the wrist. It's slightly closer to the heart and stays relatively stable while you run. But location is only part of the equation.
+Apple has spent more than a decade refining the Apple Watch's heart-rate algorithms. In my previous CNET Labs testing against a Polar H10 chest strap, the Apple Watch Series 11 averaged less than a 1% error rate, making it the most accurate smartwatch I've tested to date.
+The AirPods have different hardware and space constraints. Apple says it built its smallest-ever heart-rate sensor to fit inside the tiny buds and trained it on more than 50 million hours of Apple Health Study data. But this is still new territory. The question isn't whether earbuds can measure heart rate, it's whether they can come close to the Apple Watch.
+How I tested the AirPods Pro 3 against the Apple Watch
+For every wearable I've tested, I use the same benchmark: the Polar H10 chest strap (CNET's gold standard in consumer HR tracking). Unlike an Apple Watch or AirPods, which estimate heart rate by shining light into your skin and measuring changes in blood flow, the Polar measures the heart's electrical signals directly. Think of it as measuring the rock hitting the water instead of the ripples it creates. Optical sensors can match that signal, but paired with enough machine learning, they can surprisingly close.
+To keep the comparisons consistent, I ran every test on the same college track using the same protocol I'd developed for previous CNET Labs smartwatch testing. Each workout covered four laps, or 1 mile.
+The first lap is the ramp up to raise my heart rate from resting. The next two laps are a steady cruising altitude at a medium pace through the middle heart-rate zones. And the final lap is an all-out sprint to push my body as close to my maximum heart rate as possible. Max heart rate is generally estimated as 220 beats per minute minus your age.
+Using the same route, pace and effort each time helps eliminate variables, so the only thing that changes is the device.
+Before testing the AirPods, I reran the Apple Watch Series 11. I already had data from previous CNET Labs testing, but I wanted both devices to compete under the same conditions. Temperature, humidity and even blood vessel constriction can influence optical heart-rate sensors, so I tested both on the same track during the same stretch of summer weather.
+I strapped it on, ran four laps and finished the workout. Plug and play, no drama.
+The AirPods were another story. As of September 2025, Apple lets you start a workout from your fitness app on your phone and use the AirPods to track heart rate if they're paired. But having an Apple Watch confuses the signal, so I took off the Apple Watch and left it on a nearby bench, assuming that would force Apple's Fitness app to use the AirPods for heart-rate tracking. I started a workout from the Fitness app, confirmed the AirPods were connected and took off.
+Once I was done, however, half the heart-rate data had disappeared from the graph. I still don't know whether I accidentally interrupted the recording by switching apps mid-run to check the Polar strap's data or whether the Fitness app tried to reconnect to the Apple Watch, but the fact that I still don't know doesn't speak well for the AirPods convenience. I asked Apple what might have happened and will update this story if I learn more.
+Attempt No. 2 to get AirPods heart rate data ended even more dramatically. Halfway through my third lap, the sprinklers on the track turned on. I was running with my phone in hand to make sure the Fitness app stayed open. Somehow, a drop of water happened to land right on the stop button, and in an instant my run ended and my work had been in vain.
+Back to square one. By that point, the Apple Watch had already won on convenience alone.
+On my third attempt, I turned the Apple Watch completely off, left the Fitness app open for the entire workout and successfully dodged the sprinklers.
+I logged two complete AirPods runs and then dug into the data. At first glance, the workout summaries looked nearly identical. Average heart rate differed by only a few beats per minute, and peak heart rate came in about 5 bpm lower on the AirPods. That's fairly normal because optical sensors tend to lag slightly during rapid spikes in heart rate.
+Workout summaries and averages are just snapshots and miss out on the bigger picture.
+To test accuracy, I needed to compare every single heart-rate reading throughout the run.
+Polar makes that easy by exporting your data as a CSV (spreadsheet) file. Apple requires exporting your entire Health history first (11 years in my case). Fortunately, there is a workaround. Third-party apps like Health Fit parse through the data for you so you can just isolate by workout and neatly export into a spreadsheet.
+Once I had matching datasets, I sent them to CNET data analyst Gianmarco Chiumbe. He lined up each heart-rate sample from the AirPods with the corresponding reading from the Polar chest strap, then calculated the error rate for every point before averaging the results across both runs.
+The AirPods didn't beat the Apple Watch, but they beat my expectations
+I expected the AirPods to be good enough for casual workouts. I didn't expect them to outperform most of the smartwatches I've tested. Across two outdoor runs, the AirPods Pro 3 averaged a 1.67% heart-rate error compared with the Polar H10 chest strap, landing within 2.4 bpm on average.
+| Airpods | Heart-Rate Error (%) | Heart-Rate Error (BPM) |
+|---|---|---|
+Run 1 | 1.84% | 2.65 bpm |
+Run 2 | 1.50% | 2.15 bpm |
+Average | 1.67% | 2.40 bpm |
+For context, CNET Labs has compared top smartwatches -- including Samsung's Galaxy Watch 8, Google's Pixel Watch 4, Garmin's Venu 4 and the Amazfit Bip 4 -- against the same Polar chest strap using this protocol. Most optical heart-rate sensors fall within a 7% error rate.
+Based on my results, the AirPods would have finished second only to the Apple Watch in that lineup.
+| Device | Avg. Heart-Rate Error (BPM) | Avg. Heart-Rate Error (%) |
+|---|---|---|
+Apple Watch Series 11 | 1.40 | 0.98% |
+AirPods Pro 3 | 2.40 | 1.67% |
+Garmin Venu 4 | 5.54 | 3.89% |
+Google Pixel Watch 4 | 8.68 | 5.64% |
+Samsung Galaxy Watch 8 | 10.51 | 6.66% |
+Amazfit Bip 6 | 10.63 | 7.03% |
+In my previous CNET Labs testing (in February 2026), the Apple Watch averaged less 0.98%. When I reran it under the same conditions as the AirPods (much hotter weather), it performed even better at 0.38%.
+But as impressive as that is, the gap isn't large enough to matter for most runners or gym-goers.
+If you're buying the $250 AirPods Pro 3 for music, noise cancellation and calls, heart-rate tracking isn't just a bonus feature. Based on my testing, it's one of the most accurate optical heart-rate sensors I've used -- second only to the $400 Apple Watch Series 11.
+If you care about convenience, and the most accurate second-by-second data (especially at peak effort), then the Series 11 is worth the splurge and still sets the standard.
+The more interesting takeaway is what this says about where wearable health tracking is headed. For years, heart-rate monitoring belonged almost exclusively on the wrist, and the AirPods Pro 3 proves that's no longer the case. And as the data improves and algorithms continue to evolve, it's not hard to imagine a future where earbuds outperform even the best watches.

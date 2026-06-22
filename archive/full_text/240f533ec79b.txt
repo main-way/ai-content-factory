@@ -1,0 +1,9 @@
+In case you missed it, the Command Line blog was launched last week and has a great article (by yours truly) about our SDK design philosophy with Microsoft Agent Framework. Check it out: Inside the Microsoft Agent Framework: How we designed a layered SDK
+Developers are moving quickly from simple chat-based AI experiences to applications that can reason, use tools, coordinate across systems, and complete multi-step and long-running tasks. The first wave of AI apps proved that large language models could understand intent and generate content through patterns like completions, retrieval-augmented generation (RAG) and tool calling. The next wave is about turning those models into reliable, observable, and governable agents that can operate inside real products and enterprise systems. That is the role of Microsoft Agent Framework (MAF).
+Microsoft Agent Framework gives developers the building blocks to create agentic applications that combine models, tools, context, memory, planning, and orchestration. It’s designed for teams that need the flexibility of code, the reliability of production infrastructure, and the ability to integrate deeply with Microsoft, open-source, and third-party ecosystems.
+At its core, Microsoft Agent Framework is organized around three ideas:
+- Agent loops: The core execution pattern that connects models, conversations, tools, and state
+- Workflows: Structured orchestration patterns for multi-step, multi-agent, or business-critical processes
+- Harnesses: Reusable runtime capabilities that give agents access to tools, context, memory, planning, controls, and middleware
+Together, these concepts give developers a practical way to move from a prompt to a production-ready agent.
+Read the rest here: Inside the Microsoft Agent Framework: How we designed a layered SDK

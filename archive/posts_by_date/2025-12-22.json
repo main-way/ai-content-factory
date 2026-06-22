@@ -1,0 +1,26 @@
+{
+  "date": "2025-12-22",
+  "count": 1,
+  "posts": [
+    {
+      "id": "32f176befaac",
+      "title": "URM shows how small, recurrent models can outperform big LLMs in reasoning tasks",
+      "url": "https://bdtechtalks.com/2025/12/22/universal-reasoning-model/?utm_source=rss&utm_medium=rss&utm_campaign=universal-reasoning-model",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2025-12-22T16:13:56+00:00",
+      "summary": "The key to solving complex reasoning isn't stacking more transformer layers, but refining the \"thought process\" through efficient recurrent loops. The post URM shows how small, recurrent models can outperform big LLMs in reasoning tasks first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI research papers",
+        "ARC-AGI",
+        "Artificial intelligence (AI)",
+        "Reasoning models"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

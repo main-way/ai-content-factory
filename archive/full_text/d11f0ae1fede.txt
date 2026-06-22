@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Randomized Midpoint Method for Log-Concave Sampling under Constraints
+View PDF HTML (experimental)Abstract:In this paper, we study the problem of sampling from log-concave distributions supported on convex and compact sets, with a particular focus on the randomized midpoint discretization of both overdamped and kinetic Langevin diffusions in constrained domains. We revisit the proximal framework for handling constraints through projection operators and develop a more general formulation that encompasses Euclidean, Bregman, and Gauge projections. The resulting smooth approximation allows a unified and tractable analysis of Langevin algorithms and their variants under constraints. Within this framework, we establish convergence guarantees in Wasserstein-$q$ $(q\geqslant 1)$ distances between the smooth surrogate and the target distribution. We further derive complementary lower bounds, showing that the results are near-optimal in order. Building upon this tight approximation analysis, we obtain new convergence guarantees for the randomized midpoint Langevin algorithms and refined bounds for both vanilla and kinetic Langevin Monte Carlo methods under constraints, thereby advancing the theoretical understanding of constrained diffusion-based sampling.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

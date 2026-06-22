@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:MinNav: Minimalist Navigation Using Optical Flow For Active Tiny Aerial Robots
+View PDF HTML (experimental)Abstract:Navigation using a monocular camera is pivotal for autonomous operation on tiny aerial robots due to their perfect balance of versatility, cost and accuracy. In this paper, we introduce MinNav, a navigation stack based on optical flow and its uncertainty to fly through a scene with static and dynamic obstacles and unknown-shaped gaps without any prior knowledge of the scene components and/or their locations/ordering. We further improve success rate by using the activeness of the robot to move around in an exploratory way to find obstacles and navigate. We successfully evaluate and demonstrate the proposed approach in many real-world experiments in various environments with static and dynamic obstacles and unknown-shaped gaps with an overall success rate of 70%. To the best of our knowledge, this is the first solution to tackle all the aforementioned navigation cases without prior knowledge using a monocular camera. Our approach is on par in performance with depth based methods with factors of magnitude less computation required and can readily run onboard tiny aerial robots. The accompanying video, supplementary material, code and dataset can be found at this https URL
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

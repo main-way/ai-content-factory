@@ -1,0 +1,28 @@
+TUANANH.NET
+In the last issue I covered how Cloudflare cloned Next.js in order to create a more cloud-native framework, sharing my wonder at how simple this was (due to an extensive test suite), but also sharing concerns about the impact on Next.js as a project, and its maintainers. This blog post uncovers yet another issue with AI re-writes.
+chardet, a popular open source project, has an LGPL licence (copyleft and restrictive), due to its dependency on some Mozilla code. The team used Claude Code to automate a re-write of the problematic dependency, allowing them to move to a more permissive MIT licence. The author of the dependency that was re-written considers this a copyright violation and has asked them to revert to the LGPL licence.
+While the Next.js re-write uncovered moral issues, chardet demonstrates there are legal issues also. Personally I am not comfortable with either of these re-writes.
+This post goes on to indicate that the law is a long way behind, ruling that ‘human authorship’ is required, without which copyright does not apply. Given that almost everyone is using AI for part (if not all) of the authorship of code, copyright has now become meaningless?
+406.FAIL
+Request For Comments (RFCs) are the documents through which the internet community proposers, debates and standardises protocols. This sounds all very serious, but there has been a long tradition of publishing humorous RFCs, for example, the use of homing pigeons to transmit IP packets.
+This RFC outlines a procedure for handing AI slop open source contributions.
+“I see you are slow. Let us simplify this transaction: A machine wrote your submission. A machine is currently rejecting your submission. You are the entirely unnecessary meat-based middleman in this exchange.”
+GITHUB.IO
+As an aside, why do so many articles these days have to include such sensationalised titles? A more meaningful title for this post would be “When does MCP make sense vs CLI?”
+Model Context Protocol (MCP) was released a couple of years ago as a standard mechanism for extending LLMs through the use of tools. In other words, it gives the model the ability to call out to an external service (e.g. execute a Google search or review internal backlog tickets).
+| I must admit, I’ve always had my doubts about MCP, ever since reading this fantastic blog post from the Wolfram team about how they integrated their content and tools with ChatGPT. One of the things I found most notable is how easy it was to integrate with he Wolfram | Alpha API, which has a natural language interface. This allows ChatGPT to ‘talk’ to Wolfram in a highly expressive way, without the need for formal specification. |
+MCP feels like we are applying a model from the past, where computers talk to each other via rigid interfaces, when there is now the opportunity to look at how they might communicate in the future, through more expressive natural language interfaces.
+This blog post makes a similar argument, that LLMs don’t need a special protocol. In this instance, they outline how LLMs are tremendously good at using command line tools (CLIs), as Claude Code has demonstrated.
+SIMONWILLISON.NET
+AI coding agents are incredibly powerful and versatile tools; and many of us are actively researching how to get the most out of these tools. While some are searching for the definitive usage pattern, advocating specific and prescriptive approaches to prompting or the creation of specifications, I don’t think a single effective pattern will emerge. These tools are too versatile for that. They lend themselves to a wide variety of usage patterns.
+This is why I really likely the approach Simon is taking. Rather than try and create a single, sophisticated (and likely complicated) guide for using agents, he is collecting smaller patterns. Little nuggets, brief thoughts. Basically documenting the things that work for him and why.
+This is a fantastic resource that is rapidly growing (he’s already added two more since I last looked). It is a great source of inspiration. I’d encourage you to not only read these patterns, but try them.
+Over time you’ll build your own intuition; you’ll adapt and apply different patterns based on the context.
+PRAGMATICENGINEER.COM
+This post shares the results of a survey of ~900 software developers regarding their usage of AI tools. It is packed full of interesting data. Rather than pull out anything specific, one of my key takeaways from this study is just how fast things are changing … still.
+Just eight months after its release, Claude Code is already the most-used tool!
+Another notable change is the rise in agentic usage, more than half the respondents regularly use AI agents, a technology that has only emerged in the last year.
+MARTINFOWLER.COM
+As AI agents become more capable, and ultimately write more of the code, this leads to an important question - what is the job of the human (in the loop)?
+When talking about agentic loops we focus on the implementation part of the software development lifecycle. An agentic loop involves creating a feedback mechanism, typically through unit tests, that allow the agent to iteratively refine its solution and ultimately tackle larger problems. Keif describes this as the “how loop”. However, this isn’t the only the loop in software development, there is also the “what loop” where we evolve our ideas about what it is we want to build.
+This blog post explores the interplay between these two loops, and where the human and AI both play.

@@ -1,0 +1,240 @@
+Python developers working with Agent Skills can now author skills as files on disk, as inline Python code, or as reusable classes – and mix them freely through composable source classes that handle discovery, filtering, and deduplication. A skill living in your local repository, one installed from your organization’s internal package index, and a quick inline bridge you wrote ten minutes ago all plug into the same provider.
+This is the third post in our Agent Skills series. The first post introduced file-based skills; the second added code-defined skills, script execution, and approval for Python. This post walks through the two additions that complete the picture: class-based skills and multi-source composition.
+If you’ve been following the .NET side, the companion post Agent Skills in .NET: Three Ways to Author, One Provider to Run Them covers the same capabilities for C#. Everything shown here is the Python equivalent – same concepts, idiomatic Python API.
+The scenario
+Imagine you’re responsible for an HR self-service agent at your company. The first version has a single file-based skill that guides new hires through onboarding. Over the next few weeks, the HR systems team publishes a benefits enrollment skill as an installable Python package on your organization’s internal package index, and you want to slot it in next to the onboarding skill without touching existing code. Meanwhile, you learn they’re also building a time-off balance skill – but the packaged version won’t ship for another sprint. The HR data you need is already reachable through an internal client your application uses elsewhere, so you write a quick inline skill that wraps it. Once the official package lands, you swap out your bridge and move on.
+Every step here is independent. Adding one skill never means rewriting another.
+Step 1: Start with a file-based skill
+The onboarding guide is a skill directory with a SKILL.md
+file, a Python script that checks whether IT accounts have been provisioned, and a reference document containing the checklist:
+skills/
+└── onboarding-guide/
+├── SKILL.md
+├── scripts/
+│ └── check-provisioning.py
+└── references/
+└── onboarding-checklist.md
+---
+name: onboarding-guide
+description: >-
+Walk new hires through their first-week setup checklist. Use when a new
+employee asks about system access, required training, or onboarding steps.
+---
+## Instructions
+1. Ask for the employee's name and start date if not already provided.
+2. Run the `scripts/check-provisioning.py` script to verify their IT accounts are active.
+3. Walk through the steps in the `references/onboarding-checklist.md` reference.
+4. Follow up on any incomplete items.
+To let the agent execute that script, provide a script_runner
+when creating the SkillsProvider
+and pass the provider to an agent:
+import os
+from pathlib import Path
+from agent_framework import Agent, SkillsProvider
+from agent_framework.foundry import FoundryChatClient
+from azure.identity import AzureCliCredential
+def my_runner(skill, script, args=None):
+"""Run a file-based script as a subprocess."""
+import subprocess, sys
+script_path = Path(script.full_path)
+cmd = [sys.executable, str(script_path)]
+if isinstance(args, list):
+cmd.extend(args)
+result = subprocess.run(
+cmd, capture_output=True, text=True, timeout=30, cwd=str(script_path.parent)
+)
+return result.stdout.strip()
+# Discover skills from the 'skills' directory
+skills_provider = SkillsProvider.from_paths(
+skill_paths=Path(__file__).parent / "skills",
+script_runner=my_runner,
+)
+endpoint = os.environ["FOUNDRY_PROJECT_ENDPOINT"]
+deployment = os.environ.get("FOUNDRY_MODEL", "gpt-4o-mini")
+client = FoundryChatClient(
+project_endpoint=endpoint,
+model=deployment,
+credential=AzureCliCredential(),
+)
+agent = Agent(
+client=client,
+instructions="You are a helpful HR self-service assistant.",
+context_providers=[skills_provider],
+)
+When a new hire asks about onboarding, the agent matches the request to the skill description, loads the instructions, and calls the provisioning script to verify account status.
+The runner shown here is deliberately simple. In production, wrap it with sandboxing, resource limits, input validation, and logging.
+Step 2: Bring in a class-based skill from a Python package
+A few weeks later, the HR systems team publishes contoso-skills-hr-enrollment
+to your internal Python package index. Class-based skills package everything – metadata, instructions, resources, and scripts – inside a single Python class. They subclass ClassSkill
+and rely on @ClassSkill.resource
+and @ClassSkill.script
+decorators for automatic discovery:
+# Inside the contoso-skills-hr-enrollment package
+import json
+from textwrap import dedent
+from agent_framework import ClassSkill, SkillFrontmatter
+class BenefitsEnrollmentSkill(ClassSkill):
+"""Enroll employees in health, dental, or vision plans."""
+def __init__(self) -> None:
+super().__init__(
+frontmatter=SkillFrontmatter(
+name="benefits-enrollment",
+description=(
+"Enroll an employee in health, dental, or vision plans. "
+"Use when asked about benefits sign-up, plan options, or coverage changes."
+),
+),
+)
+@property
+def instructions(self) -> str:
+return dedent("""\
+Use this skill when an employee asks about enrolling in or changing their benefits.
+1. Read the available-plans resource to review current offerings and pricing.
+2. Confirm the plan the employee wants to enroll in.
+3. Use the enroll script to complete the enrollment.
+""")
+@property
+@ClassSkill.resource(description="Health, dental, and vision plan options with monthly pricing.")
+def available_plans(self) -> str:
+return dedent("""\
+## Available Plans (2026)
+- Health: Basic HMO ($0/month), Premium PPO ($45/month)
+- Dental: Standard ($12/month), Enhanced ($25/month)
+- Vision: Basic ($8/month)
+""")
+@ClassSkill.script(description="Enrolls an employee in the specified benefit plan. Returns a JSON confirmation.")
+def enroll(self, employee_id: str, plan_code: str) -> str:
+success = HrClient.enroll_in_plan(employee_id, plan_code)
+return json.dumps({"success": success, "employee_id": employee_id, "plan_code": plan_code})
+A bare @ClassSkill.resource
+decorator (no arguments) uses the method name as the resource name, converting underscores to hyphens. Pass name="..."
+and description="..."
+explicitly when you want different values. The same applies to @ClassSkill.script
+. Resources work as regular methods or @property
+descriptors – when combining the two, put @property
+first.
+Now wire the class-based skill into the same provider that already serves the file-based onboarding guide. This is where source composition comes in – import BenefitsEnrollmentSkill
+from the installed package and combine the sources:
+from contoso_skills_hr_enrollment import BenefitsEnrollmentSkill
+from agent_framework import (
+AggregatingSkillsSource,
+DeduplicatingSkillsSource,
+FileSkillsSource,
+InMemorySkillsSource,
+SkillsProvider,
+)
+skills_provider = SkillsProvider(
+DeduplicatingSkillsSource(
+AggregatingSkillsSource([
+FileSkillsSource(
+Path(__file__).parent / "skills", # file-based: onboarding guide
+script_runner=my_runner,
+),
+InMemorySkillsSource([BenefitsEnrollmentSkill()]), # class-based: benefits enrollment from internal package
+])
+)
+)
+Here AggregatingSkillsSource
+merges the file-based and in-memory sources into a single stream, and DeduplicatingSkillsSource
+ensures that if two sources happen to supply a skill with the same name, the first one takes priority. The agent sees both skills in its system prompt and picks the right one based on the employee’s question – no routing logic on your side.
+Step 3: Bridge the gap with an inline skill
+The HR systems team is also building a time-off balance skill, but the package won’t be published to the internal index for another sprint. The underlying data is already reachable through the shared HrDatabase
+client your application uses elsewhere – it’s the same source the official skill will read from. Instead of waiting, you wrap it in an inline skill defined in your application code with InlineSkill
+:
+import json
+from textwrap import dedent
+from agent_framework import InlineSkill, SkillFrontmatter
+time_off_skill = InlineSkill(
+frontmatter=SkillFrontmatter(
+name="time-off-balance",
+description="Calculate an employee's remaining vacation and sick days. Use when asked about available time off or leave balances.",
+),
+instructions=dedent("""\
+Use this skill when an employee asks how many vacation or sick days they have left.
+1. Ask for the employee ID if not already provided.
+2. Use the calculate-balance script to get the remaining balance.
+3. Present the result clearly, showing both used and remaining days.
+"""),
+)
+@time_off_skill.script(description="Calculate remaining leave balance for an employee.")
+def calculate_balance(employee_id: str, leave_type: str) -> str:
+# Temporary implementation - replace with the packaged skill when available
+total_days = HrDatabase.get_annual_allowance(employee_id, leave_type)
+days_used = HrDatabase.get_days_used(employee_id, leave_type)
+remaining = total_days - days_used
+return json.dumps({
+"employee_id": employee_id,
+"leave_type": leave_type,
+"total_days": total_days,
+"days_used": days_used,
+"remaining": remaining,
+})
+Fold it into the existing provider alongside the other two skills:
+skills_provider = SkillsProvider(
+DeduplicatingSkillsSource(
+AggregatingSkillsSource([
+FileSkillsSource(
+Path(__file__).parent / "skills", # file-based: onboarding guide
+script_runner=my_runner,
+),
+InMemorySkillsSource([
+BenefitsEnrollmentSkill(), # class-based: benefits enrollment from internal package
+time_off_skill, # code-defined: temporary bridge
+]),
+])
+)
+)
+From the agent’s perspective, this skill looks identical to the file-based and class-based ones. When the official package eventually ships, swap out time_off_skill
+for the class-based version – nothing else changes.
+InlineSkill
+also fits naturally when you need resources that execute logic at read time rather than serving static files, when skill definitions must be constructed at runtime from data (for example, a personalized skill per user session based on role or permissions), or when a skill needs to close over call-site state (local variables, closures) rather than resolve services through **kwargs
+.
+Step 4: Add human approval for script execution
+Some of these scripts carry real weight: check-provisioning
+hits production infrastructure, and enroll
+writes to the HR system. Before going live, you’ll want a human to sign off on each script call. Set require_script_approval=True
+on the provider:
+skills_provider = SkillsProvider(
+DeduplicatingSkillsSource(
+AggregatingSkillsSource([
+FileSkillsSource(
+Path(__file__).parent / "skills", # file-based: onboarding guide
+script_runner=my_runner,
+),
+InMemorySkillsSource([
+BenefitsEnrollmentSkill(), # class-based: benefits enrollment from internal package
+time_off_skill, # code-defined: temporary time-off balance bridge
+]),
+])
+),
+require_script_approval=True,
+)
+With this flag set, the agent pauses whenever it wants to run a script and hands your application an approval request. You present it to a reviewer, collect a decision, and resume. If approved, execution proceeds normally. If rejected, the agent is told the call was declined and can adjust its response accordingly. For the complete approval-handling pattern, see Tool approval in the documentation.
+Why this matters
+Independent skill ownership. Different teams author and publish skills on their own schedule – as directories in a shared repo or as Python packages on your internal index – and source composition stitches them together without cross-team coordination.
+Grow the agent one skill at a time. Each new skill is additive. You don’t refactor existing skills to accommodate new ones; the agent selects the right skill at runtime.
+Prototype quickly, replace cleanly. InlineSkill
+lets you ship behavior the same day you need it. When the official package arrives, the swap is a one-line change – the agent can’t tell the difference.
+Human oversight where it counts. Script approval inserts a review step before any script with side effects executes – a practical safeguard for sensitive environments.
+Selective exposure from shared libraries. When your organization maintains a central skill repository but individual agents should only see a subset, FilteringSkillsSource
+handles it with a predicate:
+from agent_framework import (
+DeduplicatingSkillsSource,
+FileSkillsSource,
+FilteringSkillsSource,
+SkillsProvider,
+)
+approved_skills = {"onboarding-guide", "benefits-enrollment"}
+skills_provider = SkillsProvider(
+DeduplicatingSkillsSource(
+FilteringSkillsSource(
+FileSkillsSource(Path(__file__).parent / "all-skills"),
+predicate=lambda skill: skill.frontmatter.name in approved_skills,
+)
+)
+)
+Wrapping up
+The Python SDK for Agent Skills now gives you three authoring options – file-based, code-defined, and class-based – along with composable source classes to combine, filter, and deduplicate them however you need. Start with a skill directory, pull in a packaged class from your internal index, fill gaps with inline code, and let the provider handle the rest. Add script approval when the stakes call for it.
+- 📖 Agent Skills documentation on Microsoft Learn
+- 💻 Python samples on GitHub
+- 🗣️ GitHub Discussions – share feedback and connect with the community

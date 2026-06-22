@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:A nonparametric two-sample test using a parametric integral probability metric
+View PDFAbstract:Detecting distributional differences between two independent samples is a fundamental problem in statistics and machine learning. Nonparametric two-sample testing provides a principled framework for determining whether two samples are drawn from the same underlying distribution, without assuming any specific parametric form for the distribution. In this study, we propose a new two-sample test statistic based on a newly introduced integral probability metric (IPM), using a specially designed parametric discriminator class with a single node of a neural network. We show that the resulting test statistic, called PReLU-IPM, is nonparametric and establish theoretical guarantees for the associated two-sample testing procedure, PReLU-TST, including its consistency and asymptotical equivalence to nonparametric IPM-based tests under regularity conditions. By analyzing multiple simulated and real benchmark datasets, we demonstrate that PReLU-TST achieves higher power across a range of alternatives or performs comparably to its competitors, for finite samples.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,20 @@
+{
+  "date": "2022-09-08",
+  "count": 1,
+  "posts": [
+    {
+      "id": "9f1dcdedfdea",
+      "title": "Some Math behind Neural Tangent Kernel",
+      "url": "https://lilianweng.github.io/posts/2022-09-08-ntk/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2022-09-08T17:00:00+00:00",
+      "summary": "Neural networks are well known to be over-parameterized and can often easily fit data with near-zero training loss with decent generalization performance on test dataset. Although all these parameters are initialized at random, the optimization process can consistently lead to similarly good outcomes. And this is true even when the number of model parameters exceeds the number of training data points. Neural tangent kernel (NTK) ( Jacot et al. 2018 ) is a kernel to explain the evolution of neural networks during training via gradient descent. It leads to great insights into why neural…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

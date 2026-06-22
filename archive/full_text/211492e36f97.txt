@@ -1,0 +1,7 @@
+Anthropic brings Artifacts to Claude Code, letting teams share live pages from coding sessions
+Claude Code now supports artifacts, a feature already familiar from the Claude chat. It lets you turn the results of a Claude Code session into interactive web pages and share them with your team. The pages are generated from the full session context: code, connected tools, and chat history. When something changes, the page updates automatically at the same URL, complete with version history.
+To create an artifact, just ask for it—or for anything visual—during your session. Claude Code then gives you a link you can open in a browser or the desktop app and share directly via the header.
+Anthropic says use cases range from PR walkthroughs and incident timelines to license audits and architecture overviews. Artifacts are private by default and only visible to authenticated members of your organization. Admins control access through roles and retention policies. The feature is available as a beta for Claude Team and Enterprise customers and works with both the Claude Code CLI and the desktop app.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

@@ -1,0 +1,158 @@
+Introduction
+With FIFA set to kick off on Thursday, June 11, 2026, the opening match at the Mexico City Stadium, I think it would be fun to build the best ML model we can to predict match outcomes. To do this, I have brought together several databases—49,000 matches—with data on Elo ratings, match results, and cup locations. From FIFA to the Baltic Cup, with matches from 1872 to 2026, we will take a probabilistic approach to the sport.
+We will compare the performance of several ML models, including
+- multinomial regression
+- multinomial ridge / elastic-net model
+- LightGBM
+We will also work to understand the strengths and weaknesses of our models to create a well-calibrated model that predicts home wins 86% of the time. By weighing model performance, calibration, and complexity, we will find the best model for our data.
+Soccer by the Numbers
+A lot of people say soccer is sleep-inducing. As a soccer fan, I disagree, but to be fair, this is not without reason. The majority of matches end with fewer than 5 goals, and anything above 20 is an anomaly, if not impossible. In contrast, it’s not uncommon for one player to score more than 50 points in an NBA game. But despite the pace, pubs from England to botecos in Rio remain full.
+What critics don’t understand is that the low score can make a game more interesting, as this makes it harder for teams to gain a substantial lead, keeping fans on the edge until the end. Unfortunately, this also means matches end in a draw close to 22% of the time—which can also be infuriating. Yet the sport remains as popular as ever.
+The fact that so many matches end in a draw actually becomes a modeling problem later, but before we get to that lets go over how we put this data togther.
+Stitching the data together
+Oftentimes the best way to improve a model is to simply get more data. We will be working with international_results.csv
+, international_team_ratings.csv
+and international_goalscorers.csv
+We want to matchinternational_results.csv
+to international_team_ratings.csv
+so we can use Elo ratings. This could be simple, but as you might’ve guessed, the team names don’t match up perfectly, so we need to turn to text processing unless we want to check 336 teams individually. We also need to be incredibly careful of when the Elo rating was updated. We could take the Elo on the same day the match occurs, but that would be a source of data leakage, as Elo scores are updated only after the match. Making use of it as a feature tempting but problematic.
+We must take the most recent Elo score, and as an additional engineered feature we keep track of the time since the latest Elo update, positing that earlier ratings would be more informative than older ones. The code for joining these tables and the entire project is available in the Appendix.
+international_results.csv
+| Field type | Examples |
+|---|---|
+| Match identity | source_match_id , date , season , competition |
+| Teams | home_team , away_team |
+| Final result | home_score , away_score , match_result , result_class |
+| Context | neutral , tournament , city , country |
+international_team_ratings.csv
+| Feature | Meaning |
+|---|---|
+home_rating_pre_match | Home team Elo before kickoff |
+away_rating_pre_match | Away team Elo before kickoff |
+rating_diff | Home Elo minus away Elo |
+rating_age_days_home | How stale the home team rating is |
+rating_age_days_away | How stale the away team rating is |
+international_goalscorers.csv
+| Feature idea | Meaning |
+|---|---|
+| Unique scorers in recent matches | Whether a team depends on one scorer or many |
+| Goals by top scorer | Concentration of scoring |
+| Recent scoring form | Attacking output before this match |
+Because we are doing a time-series prediction, we need to ensure our split respects the time order. We will evaluate our model on all games from 2018 onward, which would be roughly 8,000 matches.
+| Effective split | Approximate date logic |
+|---|---|
+| model train | earlier part of pre-2018 data |
+| validation | latest ~20% of the pre-2018 training pool |
+| test | 2018 onward |
+Engineered Features
+We want to move from basic match-level predictors towards richer pre-match features that capture: team strength, attacking and defensive quality, home/away effects, matchup balance, goalkeeper strength, historical performance trends.
+1. Draw-modeling features
+The most evident failure of our baseline multinomial logistic regression model was its weak performance at classifying draws. While the model could calculate the probability of a draw because we defined the target variable as match_result ∈ {H, D, A} (Home win, Draw, Away win), Draw was simply never the most likely outcome. We can see this by the missing column for Draws in the confusion matrix.
+This poor draw performance is not specific to one model family. When we isolate high-confidence errors — cases where the model’s predicted class was wrong, and its maximum predicted probability was at least 0.60 — the same pattern appears across models: they are systematically overconfident in home wins. Many matches that actually ended in draws were assigned a confident home-win prediction, suggesting that the models capture team-strength direction better than match-level uncertainty or draw likelihood.
+To address this ‘blindness’ to the draw option, we can engineer features such as abs_rating_diff, home_draw_rate_last_5, form_draw_rate_mean_last_5, and binary context features like neutral, flag_is_world_cup, and flag_is_friendly, indicating whether the match is on neutral ground or at the World Cup.
+| Feature group | Meaning | Examples |
+|---|---|---|
+| Elo closeness | Measures how evenly matched the teams are. Smaller rating gaps are especially relevant for draw probability. | abs_rating_diff |
+| Recent draw tendency | Measures how often each team’s prior matches ended in draws. | home_draw_rate_last_5 , away_draw_rate_last_10 |
+| Combined draw tendency | Captures whether both teams have recently been draw-prone. | form_draw_rate_mean_last_5 , form_draw_rate_mean_last_10 |
+| Match context | Tournament and venue indicators that may affect draw frequency. | neutral , flag_is_world_cup , flag_is_friendly |
+With these features, our model can now better discriminate between Home/Away wins and draws, as evidenced by a 3.3% increase in true-positive draw predictions. This is still low, given that ~20% of matches end in draws. So our features help but not by much. This suggests that it could be worth building a model dedicated to draw modeling, with the target variable match_result ∈ {D, ¬D}, but for now we need to engineer more features.
+¬D represents not D meaning our target variable is the match ends in draw (1), or match does not end in draw (0)
+2. Elo features
+The average team has an Elo slightly above 1500; this is near Saudi Arabia, Iceland, and Haiti for FIFA 2026. When we graph the distributions of Home wins, Draws, and away wins, we can see that as the difference decreases, Draws become increasingly likely. Our distributions are also slightly shifted to the left, indicating a small home advantage, as expected.
+We would be leaving LogLoss points on the table if we relied solely on pre-match Elo as our only feature. To get the most from the data, we also
+| Feature | Meaning |
+|---|---|
+home_rating_pre_match | Home team Elo rating before kickoff. |
+away_rating_pre_match | Away team Elo rating before kickoff. |
+rating_diff | Home team Elo minus away team Elo before kickoff. Positive values favor the home team. |
+rating_age_days_home | Days since the home team’s Elo rating was last updated. |
+rating_age_days_away | Days since the away team’s Elo rating was last updated. |
+3. Rolling past-performance features
+A critic could argue that using rolling past performance and Elo is not a good idea, since they both model team strength, which would add redundant or highly correlated features to the model.
+Rolling past performance does capture team strength, but it is specifically there to aid the modeling of team momentum. Winning streaks are a very real thing in sports. In fact, the current top choice by supercomputers is Spain. One reason they are predicted first is their historic 31-match unbeaten streak entering FIFA 2026.
+| Feature group | Meaning | Examples |
+|---|---|---|
+| Recent points per match | Average points earned over each team’s previous 5 or 10 matches. | home_points_per_match_last_5 , away_points_per_match_last_10 |
+| Recent goal difference | Average goals scored minus goals conceded over prior matches. | home_goal_diff_per_match_last_5 , away_goal_diff_per_match_last_10 |
+| Recent draw rate | Share of prior matches that ended in a draw. | home_draw_rate_last_5 , away_draw_rate_last_10 |
+| Home-away form differences | Difference between the home and away teams on the same rolling metric. | form_points_diff_last_5 , form_goal_diff_diff_last_10 |
+| Prior match counts | Number of previous matches available before the fixture. | home_prior_matches , away_prior_matches |
+4. Attack and defense form features
+While our model tried to capture attacking and defending team strength through points, this is where our model falls short of super-computer approaches. Modern approaches often also implement player data, which is invaluable in computing a team’s strengths. Because we are working only with game-level data, our modeling of attacking and defensive features is computed from previous match results like Recent scoring rates, conceding rates, Scoring-rate difference, and Conceding-rate difference.
+| Feature group | Meaning | Examples |
+|---|---|---|
+| Recent scoring rate | Average goals scored per match over the previous 5 or 10 matches. | home_goals_for_per_match_last_5 , away_goals_for_per_match_last_10 |
+| Recent conceding rate | Average goals conceded per match over the previous 5 or 10 matches. | home_goals_against_per_match_last_5 , away_goals_against_per_match_last_10 |
+| Scoring-rate difference | Home team’s recent scoring rate minus away team’s recent scoring rate. | form_goals_for_diff_last_5 , form_goals_for_diff_last_10 |
+| Conceding-rate difference | Home team’s recent conceding rate minus away team’s recent conceding rate. Lower values favor the home team defensively. | form_goals_against_diff_last_5 , form_goals_against_diff_last_10 |
+Grid Search
+Because large search grids can overfit in cross-validation, and grid search scales multiplicatively, parameters are searched logarithmically (1e-5, 1e-4, 1e-3, 1e-2). Except with parameters like alpha, which must exist between zero and one.
+glmnet_alpha
+Controls the elastic-net blend between ridge and lasso regression, where zero is Pure ridge, and one is pure lasso.
+multinomial_decay
+penalizes large coefficients more. That can reduce overfitting, but excessive decay can lead to underfitting.
+Grid Search O(n) = number of configurations tested × time to train one model
+| Model family | Grid/configurations shown | What was tuned |
+|---|---|---|
+| Baselines | majority_baseline , frequency_baseline , rating_diff_multinom | Mostly not tuned; comparison baselines |
+| glmnet | alpha = 0, .25, .5, .75, 1 | Elastic-net mixing parameter |
+| multinom | decay = 0, 1e-5, 1e-4, 1e-3, 1e-2 | L2 weight decay / coefficient shrinkage |
+| LightGBM | less_regular , deeper , more_regular , current_final , l2_regularized , shallower , l1_l2_regularized , compact_robust , faster_small , slower_small | Named bundles of tree-depth, learning-rate, boosting-round, and regularization settings |
+LightGBM was the most complex model family in the comparison. Unlike the baseline models, which used few or no tuning parameters, LightGBM required choices about tree complexity, learning rate, boosting rounds, and regularization. This made it more flexible, but also increased the risk of overfitting if the parameters were not tuned carefully. We also need to take care not to use a model that is more complicated than our data requires, as we could lose out on interpretability.
+The GBM parameters were tuned by comparing a compact grid of LightGBM configurations. These configurations varied tree complexity, learning speed, number of boosting rounds, and regularization strength, keeping the best model scored on log-loss. Below is a list of the LightGBM parameters.
+| Parameter | Meaning |
+|---|---|
+learning_rate | How much each new tree is allowed to change the model. Lower values learn more slowly but can generalize better. |
+num_iterations / nrounds | Number of boosting rounds, meaning how many trees are added. More trees can improve performance but can also overfit. |
+num_leaves | Controls how complex each tree can be. More leaves allow more detailed patterns but increase overfitting risk. |
+max_depth | Maximum depth of each tree. Deeper trees capture more complex interactions. Shallower trees are simpler and safer. |
+min_data_in_leaf | Minimum number of observations required in a leaf. Higher values make the model less sensitive to small noisy patterns. |
+lambda_l1 | L1 regularization. Pushes some effects toward zero, making the model simpler. |
+lambda_l2 | L2 regularization. Shrinks large effects and reduces overconfidence. |
+feature_fraction | Fraction of features used for each tree. Using fewer features can reduce overfitting. |
+bagging_fraction | Fraction of rows used for each tree. Using fewer rows can also reduce overfitting. |
+bagging_freq | How often row subsampling is applied. If set to 0 , bagging is usually off. |
+Final Model
+The official selected model was LightGBM with the safe_plus_form_compact
+feature set, using 20 pre-match features drawn from Elo ratings, tournament context, and lagged team summaries. It was selected based on the lowest validation-set multiclass log loss, with the test set reserved for final reporting.
+The selected LightGBM model achieved a validation log loss of 0.893 and a test log loss of 0.873. Its validation result was the best within the Model comparison, but the margin over regression was small: multinomial regression trailed by only about 0.002 log-loss points on validation. On the held-out test set, multinomial regression slightly outperformed LightGBM on both log loss and macro F1.
+That means the result should be interpreted cautiously. LightGBM is the officially selected predictive model, but the evidence does not show that gradient boosting clearly dominates simpler regression models for the given data. Regression models remain incredibly important because they are easier to interpret and perform nearly as well as, and in some test metrics slightly better than, other methods.
+Feature engineering produced similarly modest gains. Compact lagged features improved validation log loss relative to baseline, but the test improvement was tiny. Goalscorer features did not meaningfully improve log loss in the Model comparison.
+The clearest limitation was draw prediction. The selected model almost never predicted draw as the top class: on the test set, it correctly predicted only 2 draws out of 1,784 actual draws, for draw recall of 0.11%. This suggests that the model’s probability estimates may still contain useful information, but argmax classification remains strongly biased toward home and away wins, making a separate model for draw modeling a reasonable next step. Elo and compact pre-match form provide a useful signal stack, but the gains over strong baselines are incremental.
+The model is much better at predicting home wins than away wins on the test set:
+- It correctly identifies about 87% of actual home wins
+- It correctly identifies about 63% of actual away wins
+The model is also capable of outputting a probability distribution over Home, Draw, and Away wins, which is often more useful than just a single hard prediction.
+Calibration
+The baseline-plus models are broadly well calibrated on the test set. Across confidence bins. This means predicted confidence tracks observed accuracy, meaning when the models are moderately confident, they are correct at roughly the corresponding rate, and when confidence rises, observed accuracy rises with it. The deviations from the ideal calibration line are modest, suggesting that the models’ probability estimates are generally usable rather than just a rank-ordering of outcomes.
+The plot below measures calibration of the top predicted class—the model’s confidence in whichever outcome it chose—not calibration for home wins, draws, and away wins separately. A model can therefore look well calibrated overall while still misestimating one class, especially draws. The aggregate calibration plot supports the claim that the models’ confidence scores are broadly trustworthy, but it does not, by itself, show that the draw probabilities are well calibrated.
+The class-specific calibration plots show where that aggregate picture holds and where it becomes more complicated. Home-win and away-win probabilities follow the ideal calibration line closely across most bins: as the model assigns higher probability to either outcome, the observed frequency rises at roughly the same rate. In practical terms, the model’s home and away probabilities behave like meaningful probabilities, not just scores.
+Draws are different. The model’s draw probabilities are reasonably calibrated within its range, but that range is narrow. It rarely assigns draw probabilities much above the low-to-middle range, even when the match is relatively balanced.
+This is the central distinction: the model does not ignore draws; it usually treats them as risk factors rather than likely outcomes. Draw probabilities may still be useful for measuring draw risk, but draws seldom become the model’s top prediction, which helps explain the persistent weakness in draw recall.
+Rating Difference Analysis
+The rating-difference analysis shows why draws are structurally difficult for the model. Observed draw rates are highest when the teams are closely matched and decline as the absolute Elo rating gap widens. All three model families learn this broad pattern: their predicted draw probabilities also fall as matches become more lopsided.
+The failure is not directional but scalar. In the most evenly matched fixtures, the observed draw rate is roughly one-third, while the models assign draw probabilities closer to one-quarter. They correctly identify balanced matches as more draw-prone, but they do not raise the draw probability enough. As a result, the model can recognize draw risk without often selecting a draw as the most likely outcome. This reconciles the apparent contradiction between reasonable draw calibration and weak draw recall: the probabilities move in the right direction, but usually not far enough to win the argmax decision, that being to pick the class with the highest predicted probability.
+Feature Importance
+As you might expect, the most important feature for our model is the rating difference, followed by whether the match was on neural ground—a distant second. By checking the feature importance, we can see which of our engineered features provided meaningful signal.
+Conclusion
+I think this is a good time to discuss dataset size and model choice. Typically, the larger and more complex the dataset, the more reason we have to choose a more complicated model. As we saw in this example, the gains from switching from regression to LightGBM were very small; this is a good sign that attempting a more complex model on this data will not yield better predictions. Football forecasting is less about finding a magic algorithm and more about building leakage-safe features, comparing interpretable baselines, and asking whether the model’s confidence is deserved.
+For now, one thing is clear: wer’re gonna need more data if we want to get a better prediction. Particularly player-level data—knowing if Neymar is sitting out is very important. The granularity of the data is also important if we want to change our forecast as the game progresses.
+Apendix
+The code for the whole project can be found on my GitHub
+The data source has a Creative Commons CC0-1.0 license
+make_team_clean <- function(team_name) { team_name |>
+as.character() |>
+stringr::str_squish() |> # Removes extra spaces.
+stringi::stri_trans_general("Latin-ASCII") |> # Converts accented Latin characters to plain ASCII characters.
+stringr::str_to_lower() |>
+stringr::str_replace_all("[^a-z0-9]+", "") |> stringr::str_replace_all("^|_$", "")
+}
+- stringr::str_squish()
+- removes extra spaces
+- stringi::stri_trans_general(“Latin-ASCII”)
+- Converts accented Latin characters to plain ASCII characters.
+- str_to_lower()
+- lower cases everything
+- stringr::str_replace_all(“[^a-z0-9]+”, “_”)
+- It replaces anything that is not a lowercase letter or number with an underscore.

@@ -1,0 +1,67 @@
+{
+  "date": "2026-05-04",
+  "count": 4,
+  "posts": [
+    {
+      "id": "d7cb78ef84f0",
+      "title": "How Memory Sparse Attention scales LLM memory to 100 million tokens",
+      "url": "https://bdtechtalks.com/2026/05/04/memory-sparse-attention/?utm_source=rss&utm_medium=rss&utm_campaign=memory-sparse-attention",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-04T20:14:39+00:00",
+      "summary": "Memory Sparse Attention (MSA) scales LLM context windows to an unprecedented 100 million tokens while preserving accuracy. The post How Memory Sparse Attention scales LLM memory to 100 million tokens first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI research papers",
+        "Artificial intelligence (AI)",
+        "large language models"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "767cdb089f7e",
+      "title": "Import AI 455: AI systems are about to start building themselves.",
+      "url": "https://importai.substack.com/p/import-ai-455-automating-ai-research",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-04T12:32:09+00:00",
+      "summary": "The first step towards recursive self improvement",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "c0480881e3b2",
+      "title": "LWiAI Podcast #243 - GPT 5.5, DeepSeek V4, AI safety sabotage",
+      "url": "https://lastweekin.ai/p/lwiai-podcast-243-gpt-55-deepseek",
+      "source": "Last Week in AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-04T07:54:06+00:00",
+      "summary": "Our 243rd episode with a summary and discussion of last week&#8217;s big AI news!",
+      "author": "Last Week in AI",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "195495635b55",
+      "title": "AI Weekly Issue #489: PE built AI's new distribution layer",
+      "url": "https://aiweekly.co/issues/pe-built-ais-new-distribution-layer",
+      "source": "AI Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-04T00:00:00+00:00",
+      "summary": "OpenAI took $10B from a 19-firm Wall Street consortium. Anthropic is closing $1.5B from Blackstone, Goldman, and Hellman &amp; Friedman. Same rooms, different portfolios. The week AI's go-to-market stopped being SaaS and started being private equity.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

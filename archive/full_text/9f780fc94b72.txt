@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:HALO: Half-Frame-Rate Adaptive Learnable Operator for Lightweight STFT-Based Speech Enhancement
+View PDF HTML (experimental)Abstract:STFT-based speech enhancement typically adopts overlapping analysis frames. While overlap is essential for stable STFT processing, it makes adjacent frames highly correlated, causing redundant computation in lightweight models. We propose Half-frame-rate Adaptive Learnable Operator (HALO), a causal plug-in module that halves the internal frame rate without altering the STFT procedure. Broadly applicable to many lightweight models, HALO applies adaptive rate reduction before the backbone and restoration afterward, reconstructing the full-rate spectrum on the original STFT grid. Both reduction and restoration are implemented with lightweight dynamic convolutions. By halving the processed frame rate, HALO reduces backbone compute cost with no added algorithmic latency, freeing budget for channel widening. Experiments on the DNS3 dataset show consistent gains across diverse lightweight models under matched complexity, demonstrating the effectiveness of reducing overlap-induced redundancy.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

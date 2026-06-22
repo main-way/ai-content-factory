@@ -1,0 +1,12 @@
+Statistics > Applications
+Title:A Guide to Estimating Conditional Average Treatment Effects in Competing Risks Settings
+View PDFAbstract:Conditional average treatment effects (CATEs) are central to treatment decision-making in personalized medicine. In competing risks settings, estimating CATEs from survival data allows for patient-specific assessments of treatment effectiveness for a specific event of interest while properly accounting for alternative event types. This distinction is essential in the presence of comorbidities, where competing causes of death may otherwise confound the therapeutic benefit. Focusing on right-censored survival times with binary treatment, we examine CATEs defined as covariate-conditional differences in the absolute risk for the event of interest at a fixed time. To this end, we study meta-learners which adapt machine learning algorithms for CATE estimation in competing risks scenarios. We systematically compare six meta-learners, combining Cox regression or random survival forests for risk modeling with elastic net regression or random forests for direct CATE modeling. To provide practical guidance on model selection, we evaluate their performance in multiple simulation settings, that differ in hazard complexity, treatment heterogeneity, treatment assignment, event type distribution and censoring. To facilitate applied use, we provide the R package, crsurvlearners, which implements all considered approaches.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

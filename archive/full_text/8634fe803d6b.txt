@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Admittance-Based Surface Alignment for Human-in-the-Loop Robotic Visual Inspection
+View PDF HTML (experimental)Abstract:Precision visual inspection underpins quality assurance across aerospace, semiconductor, and medical manufacturing, where undetected surface anomalies on high-value parts translate directly into scrap, rework, and field failures. Robotic visual inspection requires precise alignment between the end-effector and local surface geometry in the presence of perception noise and surface irregularities. In industrial settings, a human operator is often kept in the loop via teleoperation or shared autonomy, introducing real-time adjustments that render purely offline motion planning inadequate. This motivates control architectures capable of reactive, compliant behavior under combined human and perceptual uncertainty. This paper presents a novel real-time, closed-loop robotic orientation control pipeline for precision visual inspection, with an admittance-based framework that unifies operator input and perception-driven surface alignment. We design the end-effector as a virtual sphere moving through a viscous medium, such that the resulting physically interpretable mass--damper system generates synchronized, compliant motion from orientation error and operator commands. We validate the framework on a 6-DOF manipulator demonstrating stable normal-tracking and a final mean orientation error of 0.4°.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

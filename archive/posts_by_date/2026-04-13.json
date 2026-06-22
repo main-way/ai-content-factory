@@ -1,0 +1,68 @@
+{
+  "date": "2026-04-13",
+  "count": 4,
+  "posts": [
+    {
+      "id": "f846584e94ff",
+      "title": "Gemini Robotics-ER 1.6: Powering real-world robotics tasks through enhanced embodied reasoning",
+      "url": "https://deepmind.google/blog/gemini-robotics-er-1-6/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-13T15:52:13+00:00",
+      "summary": "Gemini Robotics ER 1.6: Enhancing spatial reasoning and multi-view understanding for autonomous robotics.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "40bb90aafff6",
+      "title": "The paradox of LLM self-distillation: Faster reasoning, weaker generalization",
+      "url": "https://bdtechtalks.com/2026/04/13/llm-self-distillation-tradeoffs/?utm_source=rss&utm_medium=rss&utm_campaign=llm-self-distillation-tradeoffs",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-13T13:08:59+00:00",
+      "summary": "Optimizing LLMs for concise answers can destroy their ability to explore alternative solutions on difficult problems. New study reveals the hidden cost of self-distillation. The post The paradox of LLM self-distillation: Faster reasoning, weaker generalization first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI research papers",
+        "Artificial intelligence (AI)",
+        "large language models",
+        "LLM reasoning"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "369ff4dca1f3",
+      "title": "Import AI 453: Breaking AI agents; MirrorCode; and ten views on gradual disempowerment",
+      "url": "https://importai.substack.com/p/import-ai-453-breaking-ai-agents",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-13T10:02:22+00:00",
+      "summary": "Was fire equivalent to a singularity for people at the time?",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "e41240389cf1",
+      "title": "AI Weekly Issue #483: 100 years from now : The Ghost in the Contract",
+      "url": "https://aiweekly.co/issues/100-years-from-now-the-ghost-in-the-contract",
+      "source": "AI Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-13T00:00:00+00:00",
+      "summary": "This is 100 Years From Now, a weekly series. Once a week, we skip ahead a century and imagine ordinary life in a world that's had a hundred years to absorb the things we're only beginning to build. No predictions — just honest speculation about where our choices lead. This week: what happens when accountability disappears from the most powerful systems ever built.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

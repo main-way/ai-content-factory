@@ -1,0 +1,80 @@
+Link to headingAn agent is a directory
+agent/ agent.ts # the model it runs on instructions.md # who it is tools/ run_sql.ts # what it can do post_chart.ts skills/ revenue-definitions.md # what it knows subagents/ investigator/ # who it delegates to channels/ slack.ts # where it lives schedules/ monday-summary.ts # when it acts on its own
+A data analyst agent, readable at a glance
+Link to headingCreate an eve agent in minutes
+import { defineAgent } from "eve";
+export default defineAgent({ model: "anthropic/claude-opus-4.8",});
+Configuring the agent and its model in one file
+You are a senior data analyst. You answer questions about the team's data.
+- Prefer exact numbers to hand-waving. If you can compute it, compute it.- State the assumptions behind any number you report (date range, filters, grain).- Use the tools available to you rather than guessing. If you cannot answer from the data, say so plainly.
+The agent's identity and standing rules, prepended to every model call
+Link to headingWhy we built eve
+Link to headingBatteries included
+Link to headingA durable session for every conversation
+Link to headingA sandbox for every agent
+Link to headingHuman-in-the-loop approvals
+Link to headingSecure connections to tools, data, and services
+import { defineMcpClientConnection } from "eve/connections";
+export default defineMcpClientConnection({ url: "https://mcp.linear.app/sse", description: "Linear workspace: issues, projects, cycles, and comments.", auth: { getToken: async () => ({ token: process.env.LINEAR_API_TOKEN! }), },});
+A connection to an MCP server, in one file
+Link to headingThe same agent on every channel
+Link to headingTracing and evals built in
+ai.eve.turn # one span per turn├── ai.streamText # the model call│ └── ai.streamText.doStream└── ai.toolCall # run_sql, with inputs and outputs
+The OpenTelemetry span tree a single turn produces
+Link to headingExtend an agent one file at a time
+import { defineTool } from "eve/tools";import { z } from "zod";import { runReadOnlySql } from "../lib/sample-db";
+export default defineTool({ description: "Run a read-only SQL query against the orders and customers tables.", inputSchema: z.object({ sql: z.string().describe("A single read-only SELECT statement."), }), async execute({ sql }) { const { columns, rows } = await runReadOnlySql(sql); return { columns, rows: rows.slice(0, 500), truncated: rows.length > 500 }; },});
+A typed tool in one file, where the filename becomes the tool name
+---description: How this team defines revenue. Load before answering any revenue question.---
+Revenue is recognized net of refunds, over the subscription term.Weeks are Monday-anchored, in UTC.Exclude trial and internal accounts from every number.
+A skill in one markdown file, loaded only when the topic comes up
+Link to headingAdd human-in-the-loop approval
+export default defineTool({ description: "Run a read-only SQL query against the warehouse.", inputSchema: z.object({ sql: z.string() }), needsApproval: ({ toolInput }) => estimateScanGb(toolInput.sql) > 50, async execute({ sql }) { // unchanged },});
+Requiring approval when a query would scan more than 50GB
+Link to headingLet the agent write its own code
+> Break last week's revenue down by region and chart it
+⦿ write_file analysis/by_region.py⦿ bash python analysis/by_region.py
+Revenue by region for the week of June 1. AMER $2.1M, EMEA $1.6M, APAC$0.5M. Chart saved to analysis/by_region.png.
+The agent writing and running its own code in its own sandbox
+Link to headingDelegate work to a subagent
+import { defineAgent } from "eve";
+export default defineAgent({ description: "Investigates anomalies in the data before the analyst reports them.", model: "anthropic/claude-opus-4.8",});
+A subagent the analyst can hand work to
+Link to headingStart and interact with your agent
+Link to headingRun the agent locally
+eve dev
+Starting the agent locally, with a terminal UI to talk to it
+> What was revenue last week?
+⦿ load_skill revenue-definitions⦿ run_sql SELECT date_trunc('week', created_at) ...
+Revenue for the week of June 1 was $4.2M net of refunds, up 6% from theprior week.
+Every step of the run, visible as it happens
+Link to headingTest the agent with evals
+import { defineEval } from "eve/evals";import { includes } from "eve/evals/expect";
+export default defineEval({ description: "The analyst answers revenue questions by the team's rules.", async test(t) { await t.send("What was revenue last week?"); t.completed(); t.calledTool("run_sql"); t.check(t.reply, includes("net of refunds")); },});
+A suite that checks whether the analyst used its tool and followed the team's definitions
+Link to headingShip it
+vercel deploy
+Deploying the agent
+Link to headingIntroduce the agent to your team
+eve channels add slack
+Scaffolding the Slack channel file
+Link to headingPut the agent on a schedule
+import { defineSchedule } from "eve/schedules";import slack from "../channels/slack.js";
+export default defineSchedule({ cron: "0 9 * * 1", async run({ receive, waitUntil, appAuth }) { waitUntil( receive(slack, { message: "Summarize last week's revenue and post it to the team channel.", target: { channelId: "C0123ABC" }, auth: appAuth, }), ); },});
+Posting the Monday revenue report through the Slack channel, on a cron
+Link to headingRun the agent like the rest of your software
+Link to headingHow we run Vercel on eve
+Link to headingThe data analyst
+Link to headingThe autonomous SDR
+Link to headingThe sales cockpit
+Link to headingThe support engineer
+Link to headingThe content agent
+Link to headingRouting agent
+Link to headingGet started
+npx eve@latest init my-agent
+Your first eve agent
+Set up an Eve agent for the user. Eve is a filesystem-first TypeScript framework for durable agents, published as the npm package eve. Read its docs: once eve is installed they are bundled in the package at node_modules/eve/docs; before eve is installed, read the published Introduction and Getting Started pages. If the project has no Eve app, scaffold one with `npx eve@latest init <name>`; add `--channel-web-nextjs` only when the user wants Web Chat. The init command installs dependencies, initializes Git, and starts the dev server, so run it in a controllable process and stop it before editing. To add Eve to an existing app, run `npm install eve@latest`. Make sure agent/agent.ts and agent/instructions.md exist, then add a first typed tool at agent/tools/get_weather.ts using defineTool from eve/tools with a Zod inputSchema and an inline execute. Start the dev server again, then exercise the HTTP API: create a session with POST /eve/v1/session, attach to GET /eve/v1/session/:id/stream, and send a follow-up with the returned continuationToken. Verify with the project's typecheck, adapt model and provider choices to the project, and do not commit unless the user asks.
+A starting prompt for your coding agent
+Build your first agent
+An agent is a directory of files, and eve runs it with durable execution, a sandbox, approvals, and evals built in. Works with any model, any MCP server, and channels like Slack, Discord, and GitHub.
+Get started

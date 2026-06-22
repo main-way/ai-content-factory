@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Interpreting Content and Speaker Characteristics in Factorised Self-Supervised Subspaces
+View PDF HTML (experimental)Abstract:Self-supervised speech features encode both content and speaker information. Recent work introduced an SVD-based factorisation that decomposes these features into a shared content matrix capturing temporal variation and speaker-specific transformations capturing static speaker characteristics. However, how information is organised within these components remains unclear. In this paper, we investigate how the dimensions of WavLM-factorised content and speaker subspaces correlate with speech characteristics such as pitch, intensity, and voicing. We find that leading dimensions in the content space primarily capture intensity, higher-order formants, and voicing, while pitch is encoded in a later dimension. In contrast, the highest-variance speaker dimension is strongly associated with pitch and gender, with later dimensions capturing high-frequency variation. Intervention experiments show that manipulating these dimensions enables targeted control of speech characteristics for speech synthesis. Furthermore, modifying the content and speaker representations jointly provides fine-grained control over characteristics such as pitch and intensity.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

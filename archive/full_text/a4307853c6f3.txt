@@ -1,0 +1,12 @@
+High Energy Physics - Phenomenology
+Title:Event Generation with Parallel Langevin Sampling and Learned Stein Diagnostics
+View PDF HTML (experimental)Abstract:Efficient event generation is a major computational challenge for precision collider phenomenology, especially for high-multiplicity final states where matrix-element evaluations are expensive and rejection-sampling efficiencies are low. We study an alternative approach based on many parallel underdamped Langevin chains, retaining one terminal state from each chain to obtain unweighted events while avoiding within-chain autocorrelation. A learned Stein discrepancy is used as a convergence diagnostic, providing a data-driven estimate of the relaxation time. We apply the method to tree-level $u\bar u\to Z+n g$ event generation and find that relaxation requires only a modest number of exact-target Langevin steps, with mild growth over the multiplicities studied. Finally, we show that simple neural-network surrogate initialization can substantially reduce the required number of exact matrix-element and gradient evaluations.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

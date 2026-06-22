@@ -1,0 +1,12 @@
+Condensed Matter > Disordered Systems and Neural Networks
+Title:Linear equivalence of nonlinear recurrent neural networks
+View PDF HTML (experimental)Abstract:Large nonlinear recurrent neural networks with random couplings generate rich, potentially chaotic activity and are of interest in neuroscience and other fields. A key object encoding the structure of activity is the $N \times N$ covariance matrix. Recent work proposed an ansatz in which, at large $N$ and for typical quenched couplings, this covariance matrix matches that of a linear network with the same couplings, driven by independent noise. We derive this ansatz using a two-site cavity method that gives access to the joint statistics of activities at a pair of sites without disorder averaging. Specifically, we decompose each unit's activity into a linear response to its local field and a nonlinear residual; using the cavity method, we show that cross covariances of residuals at distinct sites are strongly suppressed, so that the residuals act as independent noise driving a linear network. In an alternative derivation, we construct a self-consistent equation for the covariance matrix in which non-Gaussian contributions supply cross terms that, in a linear network, would correspond to an external drive. Higher-order cross-site moments admit a Wick decomposition into pairwise covariances at leading order, reducing them to the linear-equivalent ansatz. We confirm the results in simulations and discuss their neuroscience implications.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

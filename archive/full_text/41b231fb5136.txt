@@ -1,0 +1,700 @@
+Серия: redb ecosystem / redb.Route deep-dive
+Это продолжение цикла про redb.Route. Предыдущие статьи на Хабре:
+redb.Route — Apache Camel для .NET, который мы написали потому что выхода другого не было — вводная: зачем вообще
+Полный список — в профиле автора на Хабре.
+В redb.Route — нашем ESB в стиле Apache Camel под .NET — маршрут всегда читается одинаково: From(источник) → [процессоры] → To(приёмник)
+. Сегодня берём один простой паттерн интеграции и один коннектор и разбираем оба до самого дна.
+Паттерн: Content-Based Router — «маршрутизация по содержимому». Самый базовый из routing-паттернов Хопе и Вульфа: посмотреть в сообщение и решить, куда оно поедет дальше. В DSL это
+.Choice().When(...).Otherwise()
+.Коннектор:
+redb.Route.Http
+— встроенный HTTP/HTTPS. С одной стороны это продюсер (HTTP-клиент наHttpClient
+), с другой — консьюмер (встроенный сервер на Kestrel). Без контроллеров, без[ApiController]
+, без middleware-конвейера ASP.NET, который вы пишете руками.
+Статья техническая и большая. Если вы ждёте «hello world за 5 строк» — он будет, но дальше мы влезаем в то, как коннектор устроен внутри: как один Kestrel шарится между маршрутами, как заголовки и параметры маршрута попадают в Exchange
+и обратно, как именно работает CORS на общем сервере, что происходит со стримингом и почему в коде нет ни одного app.UseCors()
+.
+Весь код проверен по исходникам redb.Route/src/redb.Route.Http
+, все примеры — из реального redb.Route.Demo
+.
+Часть 0. Сценарий, на котором всё держится
+Возьмём приземлённую задачу: HTTP-шлюз. Снаружи приходит POST /api/demo
+, внутри мы:
+принимаем тело,
+смотрим на заголовок
+mode
+и в зависимости от него выбираем ветку обработки — это и есть Content-Based Router;отвечаем синхронно тем же HTTP-запросом (request/reply).
+Вот скелет (полную версию разберём в конце), redb.Route.Demo/Routes/MainPipelineRoutes.cs
+:
+From("http:0.0.0.0:5088/api/demo?inOut=true") .RouteId("demo-http-entry") .ConvertBody<string>() .Choice() .When(e => GetHeader(e, "mode") == "full") .SetHeader("stamp.dsl", "full-branch") .When(e => GetHeader(e, "mode") == "short") .SetHeader("stamp.dsl", "short-branch") .Otherwise() .SetHeader("mode", "default") .SetHeader("stamp.dsl", "default-branch") .EndChoice() .SetHeader("Content-Type", "application/json") .SetBody(e => BuildResponse(e));
+Один From
+поднимает HTTP-сервер на порту 5088, один .Choice()
+решает судьбу сообщения, один .SetBody(...)
+формирует ответ. Дальше — как это работает.
+Часть 1. Content-Based Router — простой паттерн, честный разбор
+Что это вообще такое
+Content-Based Router отвечает на вопрос: «куда дальше?» — глядя в само сообщение, а не во внешнюю конфигурацию. Классический пример из книги: заказы с region=EU
+едут в один обработчик, region=US
+— в другой, всё остальное — в обработчик по умолчанию.
+В redb.Route это процессор ChoiceProcessor
+(см. redb.Route/src/redb.Route/Processors/ChoiceProcessor.cs
+), а в DSL — блок .Choice()
+:
+.Choice() .When(<предикат>) // ветка 1 ...processors... .When(<предикат>) // ветка 2 ...processors... .Otherwise() // ветка по умолчанию (необязательна) ...processors... .EndChoice()
+Семантика ровно как в switch
+: предикаты проверяются сверху вниз, выполняется первая ветка, чей предикат вернул true
+, остальные пропускаются. Если ни одна не сработала и есть .Otherwise()
+— идёт она; если .Otherwise()
+нет — сообщение проходит блок насквозь без изменений.
+Два способа задать предикат
+1. Лямбда — когда условие удобнее выразить кодом:
+.Choice() .When(e => GetHeader(e, "mode") == "full") ... .When(e => GetHeader(e, "mode") == "short") ... .Otherwise() ... .EndChoice()
+2. Fluent-предикаты поверх expression-движка — когда хочется декларативности. Из redb.Route.Demo/Routes/DataObservabilityRoutes.cs
+:
+.Choice() .When(Header("amount").isGreaterThanOrEqualTo(1000).Matches, w => w .SetHeader("tier", "gold")) .When(Header("amount").isBetween(500, 999).Matches, w => w .SetHeader("tier", "silver")) .When(Header("amount").isLessThan(500).Matches, w => w .SetHeader("tier", "bronze")) .Otherwise(o => o .SetHeader("tier", "unknown"))
+Header("amount").isBetween(500, 999)
+— это не замыкание, а настоящий IPredicate
+, который компилируется один раз и дальше работает как кешированный делегат. Под капотом — тот самый компилируемый expression-движок серии (Tokenizer → Parser → AST → System.Linq.Expressions → IL
+), но это тема отдельной статьи.
+Почему именно с HTTP
+Content-Based Router и HTTP-шлюз — пара, созданная друг для друга. На входе HTTP-консьюмер раскладывает запрос на заголовки Exchange
+(об этом ниже): метод, путь, query-параметры, route-параметры, все HTTP-заголовки. Любой из них — готовый материал для .When(...)
+:
+.Choice() .When(e => GetHeader(e, "redbHttp.Method") == "DELETE") ... // по методу .When(e => GetHeader(e, "X-Tenant") == "acme") ... // по заголовку .When(e => GetHeader(e, "redbHttp.QueryParam.debug") == "1") ... // по query .EndChoice()
+Маршрутизатор не лезет в HTTP сам — он работает с уже разобранным Exchange
+. Это и есть смысл коннектора: превратить транспорт в сообщение, чтобы паттерны интеграции о транспорте ничего не знали.
+Прямо из продакшна
+Вот боевой маршрут из продакшн-системы TsUM (мониторинг доставки), один-в-один. HTTP-вход + Content-Based Router по методу — GET и POST на одном пути разводятся в разные обработчики:
+From("http:0.0.0.0:5090/api/tsum/user-filters?inOut=true&cors=true&corsOrigins=*") .RouteId("tsum-api-user-filters") .Process(Auth.ProcessAsync) // JWT-аутентификация — обычный процессор .ConvertBody<string>() .Choice() .When(e => e.In.Headers.TryGetValue("redbHttp.Method", out var m) && m?.ToString() == "POST") .ProcessWithRedb((redb, exchange, ct) => HandlePost(redb, exchange)) .Otherwise() .ProcessWithRedb((redb, exchange, ct) => HandleGet(redb, exchange)) .EndChoice();
+Здесь видно сразу всё, о чём пойдёт речь дальше: HTTP-консьюмер на порту 5090 (inOut=true
+, cors=true&corsOrigins=*
+), Content-Based Router по redbHttp.Method
+, и аутентификация как обычный процессор в цепочке — никаких [Authorize]
+-атрибутов. Дальше разбираем, как каждый кусок работает внутри.
+Часть 2. HTTP-коннектор: с высоты птичьего полёта
+Один и тот же scheme http
+/https
+даёт две принципиально разные роли в зависимости от того, стоит он в From(...)
+или в To(...)
+:
+Роль | Класс | На чём построен | Что делает |
+|---|---|---|---|
+Консьюмер ( |
+| Kestrel | Поднимает встроенный HTTP-сервер и принимает входящие запросы |
+Продюсер ( |
+|
+| Шлёт исходящие HTTP-запросы на внешний адрес |
+Точка входа в DSL — статические классы Http
+и Https
+(redb.Route.Http/Fluent/HttpDsl.cs
+):
+// Консьюмер — слушаем входящие .From(Http.Listen("/webhook").Port(8080).Cors("https://app.example.com").InOut()) // Продюсер — шлём исходящие .To(Http.Post("api.example.com/orders").BearerAuth().Timeout(5000))
+Либо строкой URI напрямую (билдер ровно в неё и компилируется):
+.From("http:0.0.0.0:8080/webhook?cors=true&corsOrigins=https://app.example.com&inOut=true") .To("http:api.example.com/orders?method=POST&timeout=5000")
+Методы HTTP: консьюмер слушает, продюсер шлёт
+Методы (GET/POST/PUT/…) задаются по-разному для двух ролей — и способов несколько. Сначала продюсер (To
+) — какой метод отправить:
+// fluent — метод выбирается фабричным методом: .To(Http.Get("api.example.com/users")) // GET .To(Http.Post("api.example.com/users")) // POST .To(Http.Put("api.example.com/users/42")) // PUT .To(Http.Delete("api.example.com/users/42")) // DELETE .To(Http.Patch("api.example.com/users/42")) // PATCH .To(Http.Head("api.example.com/users/42")) // HEAD // то же строкой URI (параметр в единственном числе — method): .To("http:api.example.com/users?method=POST") // метод можно переопределить на лету заголовком — он выигрывает у опции: .SetHeader("redbHttp.Method", "PUT") .To(Http.Post("api.example.com/users/42")) // фактически уйдёт PUT
+Теперь консьюмер (From
+) — какие методы принимать:
+// по умолчанию принимаются ВСЕ методы: .From(Http.Listen("/webhook").Port(8080)) // ограничить список разрешённых (остальные → 405 Method Not Allowed): .From(Http.Listen("/webhook").Port(8080).Methods("POST")) .From(Http.Listen("/orders").Port(8080).Methods("POST,PUT")) // то же строкой URI (параметр во множественном числе — methods): .From("http:0.0.0.0:8080/webhook?methods=POST") // шорткат: префикс метода прямо в пути (для консьюмера): .From("http:POST:0.0.0.0:8080/webhook") .From("http:GET:/health")
+Ключевая разница в терминах легко путается:
+Продюсер ( | Консьюмер ( | |
+|---|---|---|
+Параметр URI |
+|
+|
+Смысл | какой метод отправить | какие методы принимать (пусто = все) |
+Дефолт |
+| все методы |
+Override на лету | заголовок | — (фильтр статичен) |
+Префикс-шорткат (http:POST:/...
+) — частный случай: он ставит оба значения сразу (и method
+, и methods
+), потому что одна и та же запись может работать и продюсером, и консьюмером.
+И типичный приём, когда на один путь приходят разные методы: принимаем несколько и разводим Content-Based Router'ом по redbHttp.Method
+(это ровно прод-пример из части 1):
+.From(Http.Listen("/api/tsum/user-filters").Port(5090).Methods("GET,POST").Cors("*").InOut()) .Choice() .When(e => GetHeader(e, "redbHttp.Method") == "POST") .ProcessWithRedb((redb, ex, ct) => HandlePost(redb, ex)) // запись .Otherwise() .ProcessWithRedb((redb, ex, ct) => HandleGet(redb, ex)) // чтение .EndChoice();
+Дальше разбираем обе роли по отдельности — но сначала главный вопрос.
+Часть 3. «А где же ASP.NET?» — его нет, и это сознательно
+Когда .NET-разработчик слышит «встроенный HTTP-сервер», он представляет WebApplication
+, контроллеры, [HttpPost]
+, фильтры, model binding, app.UseRouting()
+, app.UseCors()
+, DI-конвейер middleware. В HTTP-коннекторе redb.Route ничего этого нет. Есть Kestrel — голый, без MVC-надстройки.
+Вот как поднимается сервер (SharedHttpServerManager.StartServer
+, сокращено):
+var builder = WebApplication.CreateSlimBuilder(); // slim — без MVC, без лишних сервисов builder.WebHost.ConfigureKestrel(kestrel => { kestrel.Listen(IPAddress.Parse(entry.Host), entry.Port, listenOptions => { listenOptions.Protocols = protocols; // HTTP/1, /2, /3 — см. ниже if (entry.Ssl) listenOptions.UseHttps(entry.SslCertPath, entry.SslCertPassword); }); kestrel.Limits.MaxRequestBodySize = entry.MaxRequestBodySize > 0 ? entry.MaxRequestBodySize : null; }); builder.Logging.ClearProviders(); var app = builder.Build(); // ОДИН catch-all эндпоинт — дальше маршрутизируем сами app.Map("/{**path}", (HttpContext ctx) => HandleCatchAll(entry, ctx)); app.MapGet("/", (HttpContext ctx) => HandleCatchAll(entry, ctx)); app.MapPost("/", (HttpContext ctx) => HandleCatchAll(entry, ctx)); // ... PUT/DELETE/PATCH/HEAD/OPTIONS на "/" await app.StartAsync(ct);
+Обратите внимание на ключевые решения:
+WebApplication.CreateSlimBuilder()
+, а неCreateBuilder()
+. Slim-билдер не тащит MVC, Razor, аутентификацию ASP.NET и прочую обвязку — только то, что нужно Kestrel.Ровно один catch-all маршрут
+/{**path}
+. ASP.NET-роутинг используется только чтобы перехватить всё и отдать в наш собственный диспетчерHandleCatchAll
+. Никакого сопоставления контроллеров.builder.Logging.ClearProviders()
+— сервер молчит в консоль хоста; логи идут через логгер маршрута.
+Почему так? Потому что redb.Route — это интеграционный движок, и HTTP для него — такой же транспорт, как Kafka или RabbitMQ. Маршрут не должен знать, что за ним Kestrel: он получает Exchange
+. Контроллеры ASP.NET навязали бы свою модель (атрибуты, model binding, ActionResult
+), которая в DSL-маршруте лишняя и чужеродная.
+Один Kestrel на процесс, а не на маршрут — и Tsak это использует
+Частый вопрос: «если приложение уже крутится на ASP.NET/Kestrel (например, в Tsak-воркере), коннектор переиспользует сервер или плодит новые?»
+Сначала то, чего коннектор не делает: он не встраивается в чужой ASP.NET-конвейер. В проекте redb.Route.Http
+нет ни одной точки интеграции с внешним хостом (IApplicationBuilder
+, UseEndpoints
+, IServer
+— ничего этого нет). Свой Kestrel он поднимает сам, через WebApplication.CreateSlimBuilder()
+.
+Но «сам поднимает» ≠ «плодит экземпляры». Ключ — в том, что SharedHttpServerManager
+регистрируется в DI как синглтон (redb.Route.Http/Extensions/ServiceCollectionExtensions.cs
+):
+public static IServiceCollection AddRedbRouteHttp(this IServiceCollection services, ...) { services.AddSingleton<SharedHttpServerManager>(); // ← один менеджер серверов на процесс services.AddSingleton(sp => { var c = new HttpComponent(); c.ServerManager = sp.GetRequiredService<SharedHttpServerManager>(); ... return c; }); services.AddSingleton(sp => { var c = new HttpsComponent(); ... }); ... }
+Один менеджер на процесс — значит один пул Kestrel, общий для всех маршрутных контекстов. И Tsak опирается именно на это. Его воркер — это обычный Host.CreateDefaultBuilder
+(а не WebApplication
+), у него нет своего Kestrel. Даже REST-админка самого Tsak (контекст _system
+, порт 9090 по умолчанию) — это не отдельный веб-сервер, а обычный redb.Route HTTP-маршрут, поднятый через тот же синглтон-менеджер (redb.Tsak.Core/Services/SystemContextBuilder.cs
+):
+// Tsak сам регистрирует HTTP-коннектор... services.AddRedbRouteHttp(); // redb.Tsak.Core/Extensions/ServiceCollectionExtensions.cs // ...и поднимает свою админку как обычный маршрут на общем менеджере: var listenUri = $"http:{host}:{port}/{{**path}}?host={host}&port={port}&inOut=true"; routeContext.AddRoutes(r => r.From(listenUri).Process(/* bridge → auth → dispatch */));
+То есть ничего не «пробрасывается из Kestrel хоста» — наоборот, хост (Tsak) сам поднимает Kestrel через коннектор и переиспользует его. Любой маршрут, нацеленный на тот же (host, port)
+, подключается к уже работающему серверу, а не поднимает второй. Tsak даже вешает свой system-echo
+на порт админки — и они не конфликтуют: специфичность маршрутов из части 4 разводит конкретный /api/echo
+и catch-all {**path}
+(это прямо отмечено комментарием в SystemContextBuilder
+).
+А без Tsak — то же самое, только менеджер заводишь сам
+Tsak тут не магия: Kestrel всегда поднимает SharedHttpServerManager
+, а Tsak — просто хост, который этот менеджер регистрирует и сам через него ходит. В standalone-приложении (без Tsak) вы заводите менеджер руками. Вот голый RouteContext
+из демо Llm.HttpShell
+— ни DI, ни Tsak:
+var ctx = new RouteContext(sp, contextId: "llm-http-shell"); ctx.AddComponent(new HttpComponent { ServerManager = new SharedHttpServerManager() }); // ... ctx.AddRoutes(r => r.From("http:0.0.0.0:5088/api/llm/shell?inOut=true") ... );
+Либо то же самое через DI — AddRedbRouteHttp()
+зарегистрирует тот же синглтон-менеджер за вас. В любом случае первый From("http:host:port/...")
+, который стартует, поднимает свежий Kestrel через CreateSlimBuilder()
+для этой пары (host, port)
+, а остальные маршруты на том же (host, port)
+к нему подключаются.
+Тонкость: пулинг работает в пределах одного экземпляра
+SharedHttpServerManager
+. Заведёте два разных менеджера и нацелите оба на один порт — будет конфликт привязки сокета, а не шаринг. Гарантию «один Kestrel на(host, port)
+» даёт именно общий менеджер: в Tsak это синглтон из коробки, в standalone — на вашей совести.
+Практический вывод: в пределах процесса (и одного менеджера) Kestrel ровно столько, сколько различных пар (host, port)
+. Сесть маршрутом на порт, который уже слушает другой redb-маршрут (включая админку Tsak), — нормально, это и есть «не плодить». Конфликт привязки сокета будет только если порт занял чужой, не-redb сервер.
+Почему у шинных фреймворков вроде MassTransit этого нет
+Полезно сравнить с MassTransit — одним из самых популярных .NET-фреймворков обмена сообщениями. У него нет ни HTTP-консьюмера, ни встроенного сервера, ни «http как транспорта». И это не упущение, а следствие архитектуры.
+MassTransit — это шина сообщений (message bus) поверх брокеров: RabbitMQ, Azure Service Bus, Amazon SQS, плюс Kafka/Event Hubs как «rider». Его модель — асинхронная доставка через брокер с гарантиями, ретраями и сагами; консьюмеры привязаны к типу сообщения (IConsumer<TMessage>
+), а не к URI-эндпоинту. HTTP в эту картину не вписывается: синхронный запрос-ответ противоречит async/durable-модели шины. Поэтому приём HTTP MassTransit отдаёт на откуп ASP.NET — вы поднимаете контроллер или minimal API и уже оттуда делаете Publish
+/Send
+в шину. Граница «HTTP → сообщение» проходит снаружи фреймворка, руками, в коде вашего хоста.
+redb.Route (как и Apache Camel, на который он равняется) устроен иначе: это движок медиации, для которого HTTP — такой же транспорт, как Kafka или Rabbit. HTTP-запрос нормализуется в тот же Exchange
+, что и сообщение из брокера, и едет через те же процессоры EIP. Поэтому From("http:...")
+существует как полноценный источник маршрута, коннектор сам владеет Kestrel'ом, а мост «HTTP → Kafka → SQL → ответ» пишется одной DSL-цепочкой, не выходя из фреймворка.
+Это разные инструменты под разные задачи, а не «лучше/хуже»: MassTransit силён в надёжной брокерной доставке и сагах поверх очередей; Camel-подобные движки — в том, чтобы сшивать разнородные транспорты и маршрутизировать по содержимому. Встроенный HTTP-сервер — естественная часть второго подхода и принципиально чужеродная первому.
+Часть 3½. «Но я люблю контроллеры» — redb.Route.Controllers
+Тут обычно раздаётся возмущённый голос: «Атрибуты, [HttpGet]
+, model binding — мне это нравится, я не хочу писать .Choice()
+на каждый эндпоинт!» Справедливо. Поэтому есть отдельный пакет — redb.Route.Controllers
+. Он возвращает привычную эргономику MVC-контроллеров, но не возвращает хостинг-модель ASP.NET. Разберёмся, в чём фокус.
+Контроллер выглядит как ASP.NET — но это не он
+Вот рабочий контроллер (из тестов redb.Route.Tests.Controllers
+):
+[Route("modules")] public class ModulesController : RedbController { [HttpGet] public string[] GetAll() => ["module1", "module2"]; [HttpGet("{id}")] public string GetById([FromRoute("id")] string id) => $"module-{id}"; [HttpPost] public object Create([FromBody] CreateModuleRequest request) => new { created = request.Name }; [HttpPut("{id}")] public object Update([FromRoute("id")] string id, [FromBody] CreateModuleRequest request) => new { updated = id, name = request.Name }; [HttpDelete("{id}")] public void Delete([FromRoute("id")] string id) { } }
+Знакомо до боли: [Route]
+на классе, [HttpGet]/[HttpPost]/[HttpPut]/[HttpDelete]/[HttpPatch]
+на методах (с необязательным под-шаблоном "{id}"
+), привязка параметров через [FromBody]
+, [FromRoute]
+, [FromQuery]
+, [FromHeader]
+, [FromProperty]
+. Вернул объект — он уедет в JSON.
+Но два отличия принципиальны:
+Базовый класс —
+RedbController
+, а неControllerBase
+. У него нетHttpContext
+,IActionResult
+,[ApiController]
+. Вместо этого — два свойства:Context
+(маршрутный контекст) иExchange
+(текущее сообщение). То есть контроллер видитExchange
+, а не HTTP.Контроллер транспортно-нейтрален. Он ничего не знает про HTTP. Это станет важно через абзац.
+Как контроллер попадает в маршрут
+Контроллер — это не эндпоинт, а процессор внутри маршрута. Вешаете его на HTTP-вход через .RedbHttpController<T>()
+:
+From("http:0.0.0.0:5088/api/{**path}?inOut=true") .RouteId("modules-api") .RedbHttpController<ModulesController>();
+Или через реестр с несколькими контроллерами (или сканом сборки):
+var registry = new ControllerRegistry(); registry.RegisterController(typeof(ModulesController)); registry.RegisterController(typeof(ContextsController)); // либо: registry.RegisterAssembly(typeof(ModulesController).Assembly); From("http:0.0.0.0:5088/api/{**path}?inOut=true") .RedbHttpController(registry);
+Обратите внимание на {**path}
+— HTTP-консьюмер из части 5 ловит всё под /api
+, кладёт в Exchange
+заголовки redbHttp.Method
+, redbHttp.Path
+, redbHttp.RouteParam.*
+, redbHttp.QueryParam.*
+, а уже HttpControllerDispatcher
+сам разбирает их и находит нужный экшен. Никакого ручного перевода заголовков:
+// HttpControllerDispatcher.Process (сокращено) var method = exchange.In.GetHeader<string>("redbHttp.Method"); var path = exchange.In.GetHeader<string>("redbHttp.Path"); var action = _registry.Resolve(method, normalizedPath, out var routeParams); if (action is null) { WriteError(exchange, 404, "NotFound", ...); return; }
+Маршрутизация и привязка — своя, не от ASP.NET
+ControllerRegistry.Resolve
+сопоставляет (метод, путь)
+с экшеном по сегментам, выбирая самый специфичный (литералы бьют {param}
+): GET /me/sessions/current
+выиграет у GET /me/sessions/{id}
+. Это тот же принцип специфичности, что и у общего сервера в части 4, только на уровне контроллеров.
+Привязка параметров (ResolveHttpParameter
+) ровно та, что обещают атрибуты: [FromBody]
+— JSON-десериализация из byte[]
+, [FromRoute]
+— из шаблона, [FromQuery]
+— из redbHttp.QueryParam.*
+, [FromHeader]
+/ [FromProperty]
+— из заголовков/свойств Exchange
+. Без атрибута — пробует route-параметр по имени, иначе сложный тип едет из тела.
+Ответ собирается так: вернули объект → JSON (camelCase, с UnsafeRelaxedJsonEscaping
+, чтобы кириллица и эмодзи не превращались в А
+), статус 200
+; вернули null
+/void
+→ 204
+; кинули исключение → конверт ошибки и 500
+(для несовпадения маршрута — 404
+). Диспетчер выставляет status.code
+и redbHttp.ResponseCode
+, а HTTP-консьюмер из части 5 их подхватывает. Круг замкнулся.
+Зачем так, а не «как в ASP.NET»
+Вот ради чего всё затевалось. Тот же ModulesController
+, ни строчки не меняя, можно вызвать не по HTTP:
+// тот же контроллер — по gRPC From(grpcConsumer).RedbGrpcController<ModulesController>(); // тот же контроллер — по SignalR From(signalRConsumer).RedbSignalRController<ModulesController>();
+RedbController
+транспортно-нейтрален именно потому, что работает с Exchange
+, а не с HttpContext
+. Контроллер ASP.NET так не умеет — он намертво привязан к HTTP-конвейеру. А раз .RedbHttpController<T>()
+— это обычный процессор, он композируется с остальным DSL: до него можно поставить .Throttle()
+, после — .WireTap()
+, обернуть в OnException
+/TryCatch
+, скомбинировать с .Choice()
+из части 1.
+То есть: любите контроллеры — берите контроллеры. Просто знайте, что под ними не ASP.NET MVC, а тот же Exchange
+и тот же конвейер маршрута. Вы получаете эргономику, не получая хостинг-модель.
+И это не теория — на этом работает сам Tsak
+Лучшее доказательство, что подход боевой: вся REST-админка самого Tsak построена ровно так. ContextsController
+, RoutesController
+, ModulesController
+, AuthController
+, UsersController
+, SchedulerController
+, LogsController
+и ещё с десяток (redb.Tsak.Core/Controllers
+) — все наследуют RedbController
+и размечены теми же [Route]
+/ [HttpGet]
+/ [HttpPost]
+/ [FromRoute]
+/ [FromQuery]
+. Вот фрагмент настоящего ContextsController
+:
+[Route("/api/contexts")] public class ContextsController : RedbController { [HttpGet("")] public object? ListContexts() => /* ... */; [HttpGet("/{name}")] public object? GetContext([FromRoute("name")] string name) => /* ... */; [HttpPost("/{name}/stop")] public async Task<object?> StopContext( [FromRoute("name")] string name, [FromQuery("timeoutSeconds")] int? timeoutSeconds = null) => /* ... */; }
+Tsak регистрирует их сборку (ControllerRegistry.RegisterAssembly
+) и диспетчеризует через ControllerDispatcherProcessor
+в контексте _system
+— на том же HTTP-коннекторе, что и всё остальное. То есть контроллеры обкатаны на проде ничуть не меньше, чем сам HTTP-консьюмер: дашборд и CLI Tsak ходят именно в них.
+Подробный разбор
+redb.Route.Controllers
+(реестр, фильтры экшеновIControllerActionFilter
+, gRPC/SignalR-диспетчеры, конверт ошибок) — тема отдельной статьи серии. Здесь — чтобы закрыть вопрос «а где мои контроллеры».
+Часть 4. Один Kestrel на (host, port) — SharedHttpServerManager
+Самая нетривиальная часть консьюмера — то, что несколько маршрутов могут слушать один порт. Если у вас три From(...)
+на 0.0.0.0:5088
+с разными путями (/api/demo
+, /api/echo
+, /api/llm/ask
+), поднимется один Kestrel, а не три.
+Этим заведует SharedHttpServerManager
+. Ключ — пара (host, port)
+:
+private readonly ConcurrentDictionary<string, ServerEntry> _servers = new(...); private static string BuildKey(string host, int port) => $"{host}:{port}";
+Регистрация маршрута
+Когда консьюмер стартует, он не «создаёт сервер», а регистрирует маршрут на сервере для своего (host, port)
+. Сервер создаётся лениво — при первой регистрации:
+// HttpConsumer.Start (сокращено) _registration = _serverManager.RegisterRoute( host, port, path, _options.Methods, HandleRequest, ssl, _options.SslCertPath, _options.SslCertPassword, corsOptions, _options.MaxRequestBodySize, _options.Protocol); await _serverManager.EnsureStarted(host, port, ct); BaseUrl = _serverManager.GetBaseUrl(host, port); // напр. "http://localhost:5088"
+RegisterRoute
+кладёт RouteRegistration
+(шаблон пути + методы + хендлер + CORS) в список маршрутов записи ServerEntry
+. EnsureStarted
+поднимает Kestrel, если он ещё не запущен; если уже запущен — no-op.
+Диспетчеризация: собственная таблица маршрутов
+Все запросы прилетают в один HandleCatchAll
+, который сам ищет подходящий маршрут:
+private static async Task HandleCatchAll(ServerEntry entry, HttpContext ctx) { var match = entry.MatchRoute(ctx.Request.Path, ctx.Request.Method); if (match.Registration is null) { // путь совпал, но метод нет → 405; иначе → 404 ctx.Response.StatusCode = match.PathMatched ? StatusCodes.Status405MethodNotAllowed : StatusCodes.Status404NotFound; return; } if (match.RouteValues is not null) ctx.Items["__redbRouteValues"] = match.RouteValues; // {id} и т.п. — дальше в Exchange await match.Registration.Handler(ctx); }
+Тут две тонкости, которые важно знать:
+1. Различие 404 и 405. Если путь нашёлся, а метод не разрешён — честный 405 Method Not Allowed
+, а не 404
+. Маленькая, но правильная деталь.
+2. Шаблоны путей и порядок специфичности. Пути парсятся через TemplateParser
+/TemplateMatcher
+из ASP.NET-роутинга — поддерживаются параметры {id}
+и catch-all {**rest}
+. Но порядок проверки — не порядок регистрации, а по убыванию специфичности (ServerEntry.GetCompiled
+):
+_compiled = built .OrderBy(x => x.spec.HasCatchAll ? 1 : 0) // конкретные пути — первыми, catch-all — последним .ThenByDescending(x => x.spec.Literals) // больше литеральных сегментов = специфичнее .ThenBy(x => x.spec.Parameters) // меньше параметров = специфичнее .ThenBy(x => x.order) // при равенстве — стабильно по порядку регистрации .Select(...).ToArray();
+Зачем? Чтобы конкретный /api/echo
+всегда выигрывал у catch-all /{**path}
+, зарегистрированного на том же порту, даже если catch-all зарегистрировали раньше. Без этого правила catch-all «съел» бы все последующие маршруты. Поведение совпадает с тем, что интуитивно ждёшь от ASP.NET-роутинга.
+Жизненный цикл: подсчёт ссылок
+Сервер живёт ровно столько, сколько на нём есть хоть один маршрут. При остановке консьюмера:
+// HttpConsumer.Stop _serverManager.UnregisterRoute(_registration); await _serverManager.StopIfEmpty(host, port, ct);
+StopIfEmpty
+останавливает и выгружает Kestrel только если маршрутов не осталось:
+public async Task StopIfEmpty(string host, int port, ...) { if (entry.Routes.Count > 0) return; // ещё кто-то слушает — не трогаем _servers.TryRemove(key, out _); await StopServer(entry, ct); // graceful stop с таймаутом 5 сек }
+То есть остановили один из трёх маршрутов на порту 5088 — сервер продолжает работать для оставшихся двух. Остановили последний — Kestrel гасится. Это позволяет на лету добавлять и убирать маршруты (например, через дашборд: tsak route start demo-http-echo
+/ stop
+), не дёргая весь сервер.
+Защита от несовместимых схем
+Нельзя на одном (host, port)
+повесить и HTTP, и HTTPS — менеджер бросит исключение при регистрации:
+if (entry.Ssl != ssl) throw new InvalidOperationException( $"Server on {host}:{port} is already registered as {(entry.Ssl ? "HTTPS" : "HTTP")}...");
+Часть 5. Консьюмер: как HTTP-запрос становится Exchange
+Это сердце входящей стороны — метод HttpConsumer.BuildExchange
+. Разберём, что именно прилетает в маршрут.
+Тело запроса
+if (request.ContentLength > 0 || request.ContentType is not null) { if (_options.StreamRequest) body = request.Body; // поток как есть (passthrough) else { using var ms = new MemoryStream(); await request.Body.CopyToAsync(ms, ...); body = ms.ToArray(); // буферизуем в byte[] } } var message = new Message(body);
+По умолчанию тело буферизуется в byte[]
+. Поэтому в маршрутах вы почти всегда видите .ConvertBody<string>()
+сразу после From
+— превратить байты в строку. При streamRequest=true
+тело остаётся Stream
+(для больших загрузок), и важная деталь из комментария в коде: этот поток принадлежит Kestrel, Exchange.DisposeAsync
+его не закрывает, но он валиден до конца записи ответа.
+Заголовки: что коннектор кладёт в Exchange
+Это, пожалуй, главная справочная таблица всей статьи. Консьюмер раскладывает запрос на заголовки Exchange
+с префиксом redbHttp.
+(HttpHeaders.cs
+):
+Заголовок Exchange | Что в нём | Пример |
+|---|---|---|
+| HTTP-метод |
+|
+| путь запроса |
+|
+| полный URL | |
+| порт сервера (int) |
+|
+| сырая query-строка |
+|
+| отдельный query-параметр |
+|
+| параметр из шаблона пути |
+|
+| IP клиента |
+|
+| как есть |
+|
+Несколько важных деталей реализации:
+Множественные значения query/заголовков. Если параметр повторяется (?tag=a&tag=b
+), значения склеиваются через запятую:
+message.Headers[$"redbHttp.QueryParam.{qp.Key}"] = qp.Value.Count switch { 0 => string.Empty, 1 => (object)qp.Value[0]!, _ => string.Join(",", qp.Value!) };
+Route-параметры из шаблона. Помните ctx.Items["__redbRouteValues"]
+из диспетчера? Вот где они достаются:
+if (httpContext.Items.TryGetValue("__redbRouteValues", out var rvObj) && rvObj is RouteValueDictionary routeValues) { foreach (var (key, value) in routeValues) if (value is not null) message.Headers[$"redbHttp.RouteParam.{key}"] = value; }
+То есть From("http:0.0.0.0:8080/users/{id}")
+даст вам ${
+header.redbHttp.RouteParam.id
+}
+в маршруте.
+Псевдо-заголовки HTTP/2 отсеиваются. Заголовки вида :method
+, :path
+(HTTP/2) пропускаются — if (header.Key.StartsWith(':')) continue;
+.
+Запоминание имён запросных заголовков. Тонкий, но важный момент. Коннектор складывает имена всех входящих заголовков в множество и кладёт его в свойства Exchange:
+exchange.Properties["redbHttp.RequestHeaderNames"] = requestHeaderNames;
+Зачем — станет ясно на стороне ответа: чтобы не отразить запросные заголовки обратно в ответ. Без этого, скажем, входящий Host
+или User-Agent
+мог бы случайно уехать клиенту в ответе.
+Паттерн обмена: InOnly vs InOut
+exchange.Pattern = _options.InOut ? ExchangePattern.InOut : ExchangePattern.InOnly;
+InOnly (по умолчанию) — fire-and-forget. Сервер сразу отвечает пустым
+200 OK
+, маршрут отрабатывает «в фоне» относительно ответа. Это вебхук-приёмник: «принял, спасибо».InOut (
+?inOut=true
+) — request/reply. Сервер ждёт конец маршрута и отдаёт результат как HTTP-ответ. Это API-эндпоинт.
+Практически: хотите вернуть тело в ответе — нужен inOut=true
+. Иначе тело, которое вы собрали через .SetBody(...)
+, никуда не уедет (см. WriteResponse
+— вся запись тела под if (_options.InOut)
+).
+Ответ: как Exchange снова становится HTTP
+WriteResponse
+собирает HTTP-ответ. Порядок определения статус-кода (по убыванию приоритета):
+var statusCode = _options.ResponseCode; // 3. дефолт из опций (200) if (responseMsg.Headers.TryGetValue("redbHttp.ResponseCode", out var rc)) ... // 1. явный заголовок else if (responseMsg.Headers.TryGetValue("status.code", out var sc)) ... // 2. транспортно-нейтральный fallback
+То есть из маршрута можно вернуть, скажем, 404
+, просто выставив заголовок:
+.SetHeader("redbHttp.ResponseCode", 404)
+Content-Type ответа определяется похожей цепочкой: redbHttp.ResponseContentType
+→ Message.ContentType
+→ дефолт из опций (application/json
+).
+Перенос заголовков в ответ. Вот здесь работает то самое множество RequestHeaderNames
+. Заголовок из сообщения попадёт в HTTP-ответ, только если он прошёл несколько фильтров:
+foreach (var (key, value) in responseMsg.Headers) { if (value is null) continue; if (requestHeaderNames?.Contains(key) == true) continue; // не отражаем запросные if (HttpHeaders.NonBridgedHeaders.Contains(key)) continue; // hop-by-hop и внутренние if (HttpHeaders.IsRedbHeader(key)) continue; // redbHttp.* — внутренние if (IsInternalHeader(key)) continue; // redb*/Camel* — внутренние // ... установка с поддержкой множественных значений }
+И отдельная тонкость для Set-Cookie
+и подобных мульти-значных заголовков — используется StringValues
+, чтобы ASP.NET отдал несколько строк заголовка, а не один склеенный массив:
+StringValues sv = value switch { string s => s, string[] arr => arr, IEnumerable seq when value is not string => seq.Cast<object?>().Select(o => o?.ToString() ?? "").ToArray(), _ => value.ToString() }; if (ContainsInvalidHeaderValueCharacters(sv)) continue; // Kestrel не принимает control-/не-ASCII httpContext.Response.Headers.TryAdd(key, sv);
+Грабли из истории репозитория. Заголовки в ответ копируются всегда, даже когда тело пустое. Иначе безтелесные ответы (302-редирект, 204 No Content, ответ только с
+Set-Cookie
+) молча теряли быLocation
+/Set-Cookie
+. Это прямо отмечено комментарием в коде.
+Часть 6. CORS на общем сервере — без app.UseCors()
+CORS в ASP.NET — это middleware и именованные политики. Здесь middleware ASP.NET-CORS нет вообще. Вместо него — одна диспетчер-прослойка на сервер, которая выбирает политику по совпавшему маршруту. Почему так: на одном (host, port)
+живут разные маршруты, и у каждого может быть своя CORS-политика. Классический UseCors
+с одной политикой на сервер это не даёт.
+Параметры CORS
+На уровне эндпоинта (HttpEndpointOptions
+):
+Параметр URI | Свойство | Смысл |
+|---|---|---|
+|
+| включить CORS для маршрута |
+|
+| белый список origin'ов через запятую, или |
+|
+| разрешить |
+— (только из кода) |
+| делегат |
+В fluent-DSL:
+.From(Http.Listen("/api").Port(8080).Cors("https://app.example.com").CorsCredentials())
+Плюс глобальные дефолты на весь компонент — через DI:
+services.AddRedbRouteHttp(cors => { cors.Enabled = true; cors.Origins = "https://example.com"; });
+Эндпоинтные параметры всегда перекрывают глобальные (HttpComponent.ApplyCorsDefaults
+).
+Никакого неявного *
+Сознательное решение: если cors=true
+, вы обязаны указать либо corsOrigins
+(в т.ч. явное "*"
+для публичных эндпоинтов), либо резолвер. Иначе — исключение на старте (HttpEndpointOptions.Validate
+):
+if (Cors && string.IsNullOrEmpty(CorsOrigins) && CorsOriginsResolver is null) throw new ArgumentException( "Cors=true requires CorsOrigins (use \"*\" for public endpoints) or CorsOriginsResolver to be set.");
+Почему: старый неявный *
+— классический футган. В сочетании с credentials
+браузер его молча отвергает, и разработчик часами ищет, почему «CORS не работает». Лучше упасть на старте с понятным сообщением.
+Как работает диспетчер (CorsDispatchMiddleware)
+Прослойка ставится один раз на сервер, и только если хоть один маршрут объявил CORS (entry.CorsEnabled
+). Для каждого запроса:
+var route = entry.MatchByPath(requestPath); // ВНИМАНИЕ: по пути, без учёта метода var cors = route?.Cors; if (cors is null) { await next(); return; } // маршрут без CORS — прослойка прозрачна
+Поиск по пути, игнорируя метод — специально, чтобы preflight-запрос OPTIONS
+нашёл политику маршрута, даже если OPTIONS
+не входит в список разрешённых методов маршрута.
+Дальше — разрешение origin'а:
+var resolved = ResolveOrigin(cors, ctx.Request, requestOrigin); // футган wildcard+credentials: браузер всё равно отвергнет → fail closed if (resolved == "*" && cors.AllowCredentials) resolved = null; if (resolved is not null) { ctx.Response.Headers["Access-Control-Allow-Origin"] = resolved; AppendVary(ctx.Response.Headers, "Origin"); // обязателен, иначе кеши перепутают политики if (cors.AllowCredentials) ctx.Response.Headers["Access-Control-Allow-Credentials"] = "true"; // ... preflight-рефлексия ниже }
+ResolveOrigin
+работает так:
+есть резолвер → его слово закон (может вернуть конкретный origin,
+"*"
+илиnull
+);статический
+"*"
+→ отдаём*
+как есть;статический белый список → отражаем
+Origin
+запроса, только если он есть в списке (браузеры не понимают CSV вAccess-Control-Allow-Origin
+, поэтому выбираем ровно один);иначе →
+null
+(origin не разрешён, заголовки CORS не ставятся).
+Preflight (OPTIONS). На preflight прослойка отражает запрошенные браузером метод и заголовки:
+if (HttpMethods.IsOptions(ctx.Request.Method)) { var requestedMethod = ctx.Request.Headers["Access-Control-Request-Method"].ToString(); ctx.Response.Headers["Access-Control-Allow-Methods"] = !string.IsNullOrEmpty(requestedMethod) ? requestedMethod : (cors.AllowedMethods ?? route!.Methods ?? "*"); var requestedHeaders = ctx.Request.Headers["Access-Control-Request-Headers"].ToString(); ctx.Response.Headers["Access-Control-Allow-Headers"] = !string.IsNullOrEmpty(requestedHeaders) ? requestedHeaders : (cors.AllowCredentials ? "Content-Type, Authorization" : "*"); ctx.Response.Headers["Access-Control-Max-Age"] = cors.MaxAgeSeconds.ToString(); // дефолт 86400 } // OPTIONS всегда замыкается на 204 — даже если origin отвергнут if (HttpMethods.IsOptions(ctx.Request.Method)) { ctx.Response.StatusCode = StatusCodes.Status204NoContent; return; }
+То есть весь CORS — это аккуратная ручная реализация спецификации поверх Kestrel, с правильным Vary: Origin
+, корректной обработкой preflight и защитой от wildcard+credentials. Никакого app.UseCors()
+.
+Часть 7. Стриминг ответа: SSE и chunked
+InOut-консьюмер умеет отдавать не только готовое тело, но и поток — IAsyncEnumerable<string>
+. Это используется, например, в LLM-коннекторе для стрима токенов. Логика в WriteResponse
+:
+else if (body is IAsyncEnumerable<string> asyncStrings) { var useSse = responseContentType?.Contains("text/event-stream", ...) == true; httpContext.Response.Headers["Cache-Control"] = "no-cache, no-transform"; httpContext.Response.Headers["X-Accel-Buffering"] = "no"; // не буферизировать на nginx/LB httpContext.Features.Get<IHttpResponseBodyFeature>()?.DisableBuffering(); // отключаем буфер ASP.NET if (useSse) await WriteSseStreamAsync(...); // text/event-stream → SSE-фрейминг else await WriteChunkedTextStreamAsync(...); // иначе → chunked plain text }
+Способ фрейминга выбирается по Content-Type ответа (канонический сквозной сигнал Accept ↔ Content-Type
+), а не по приватному заголовку:
+text/event-stream
+→ Server-Sent Events: каждый yield → одинdata:
+-фрейм; в конце —event: done
+с поздними заголовками-итогами (llm.tokens.in/out
+,llm.stop_reason
+и т.п.), которые продюсер выставляет уже после завершения итерации.всё остальное → chunked plain text: каждый yield = один chunk, с
+FlushAsync
+после каждого.
+DisableBuffering()
+критичен: без него ASP.NET накапливал бы чанки и отдавал их пачкой, убивая весь смысл стрима.
+Часть 8. Продюсер: HTTP-клиент со всеми ручками
+Теперь исходящая сторона — HttpProducer
+поверх HttpClient
+. Клиент создаётся один раз в ConnectAsync
+:
+_handler = new HttpClientHandler { AllowAutoRedirect = _options.FollowRedirects, // followRedirects (по умолч. true) MaxAutomaticRedirections = _options.MaxRedirects // maxRedirects (по умолч. 50) }; _httpClient = new HttpClient(_handler) { Timeout = _options.Timeout > 0 ? TimeSpan.FromMilliseconds(_options.Timeout) // timeout (по умолч. 30000) : Timeout.InfiniteTimeSpan }; ConfigureAuthentication(_httpClient);
+Построение URL — четыре слоя
+ResolveUrl
+собирает целевой адрес послойно:
+// 1. Базовый URL из эндпоинта, с резолвом ${...}-выражений var baseUrl = _options.ResolveOption(_endpoint.BuildProducerUrl(), exchange) ?? ...; // 2. Подстановка {name}-параметров из .Param(...) baseUrl = ResolveNamedParams(baseUrl, exchange); // 3. Query-строка из заголовка redbHttp.Query, если есть if (exchange.In.Headers.TryGetValue("redbHttp.Query", out var query) && query is string qs && qs.Length > 0) { var sep = baseUrl.Contains('?') ? "&" : "?"; return $"{baseUrl}{sep}{qs}"; }
+Базовый URL строит HttpEndpoint.BuildProducerUrl()
+— просто scheme + host[:port]/path
+. А {name}
+-параметры подставляются с URL-экранированием:
+// ResolveNamedParams var resolved = valueTemplate.Contains("${") ? (_options.ResolveOption(valueTemplate, exchange) ?? valueTemplate) : valueTemplate; url = url.Replace($"{{{name}}}", Uri.EscapeDataString(resolved), ...);
+То есть:
+.To(Http.Get("api.example.com/users/{id}/orders").Param("id", Header("userId")))
+на лету превратится в http://api.example.com/users/42/orders
+, где 42
+взято из заголовка userId
+и экранировано.
+Метод запроса
+Метод берётся из опций (?method=POST
+), но может быть переопределён заголовком redbHttp.Method
+:
+if (exchange.In.Headers.TryGetValue("redbHttp.Method", out var hm) && hm is string methodStr) return new SysHttpMethod(methodStr.ToUpperInvariant());
+Тело устанавливается только для POST/PUT/PATCH
+(HasBody
+). byte[]
+→ ByteArrayContent
+, Stream
+→ StreamContent
+, остальное → StringContent
+в UTF-8.
+Бриджинг заголовков
+При bridgeHeaders=true
+(по умолчанию) заголовки Exchange
+уезжают в HTTP-запрос — кроме внутренних и hop-by-hop (NonBridgedHeaders
+):
+foreach (var (key, value) in exchange.In.Headers) { if (value is null) continue; if (HttpHeaders.NonBridgedHeaders.Contains(key)) continue; // Connection, TE, redbHttp.*, Content-* и т.п. if (!request.Headers.TryAddWithoutValidation(key, strValue)) request.Content?.Headers.TryAddWithoutValidation(key, strValue); // иначе пробуем как content-заголовок }
+NonBridgedHeaders
+— это объединение внутренних redbHttp.*
+, hop-by-hop (Connection
+, Keep-Alive
+, Transfer-Encoding
+, TE
+, Trailer
+, Upgrade
+, Proxy-*
+) и управляемых HttpClient
+content-заголовков (Content-Type
+, Content-Length
+, Content-Encoding
+…).
+Аутентификация
+Три схемы (HttpAuthScheme
+):
+Basic —
+username
+/password
+, заголовокAuthorization: Basic ...
+ставится один раз на клиент.Bearer статический — токен-константа, тоже один раз на клиент.
+Bearer динамический — токен-выражение (
+DynamicValue<string>.IsDynamic
+), резолвится на каждый запрос изExchange
+:
+// ConfigurePerRequestAuth if (_options.AuthScheme == HttpAuthScheme.Bearer && _options.AuthToken.Value.IsDynamic) { var token = _options.AuthToken.Value.Resolve(exchange); if (!string.IsNullOrEmpty(token)) request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token); }
+То есть .BearerAuth().AuthToken(Header("jwt"))
+подставит свежий JWT из заголовка на каждый исходящий вызов.
+Ответ → Exchange
+MapResponse
+кладёт тело ответа в Out
+и выставляет стандартные заголовки:
+outMessage.Headers["redbHttp.StatusCode"] = (int)response.StatusCode; outMessage.Headers["redbHttp.StatusText"] = response.ReasonPhrase ?? ""; outMessage.Headers["redbHttp.Url"] = response.RequestMessage?.RequestUri?.ToString() ?? "";
+При copyResponseHeaders=true
+(по умолчанию) копируются и заголовки ответа, и Content-Type
+/Content-Length
+. При streamResponse=true
+тело становится Stream
+, а не byte[]
+— и тогда HttpResponseMessage
+намеренно не диспозится сразу: поток закроет Exchange.DisposeAsync
+.
+throwOnError
+По умолчанию throwOnError=true
+— на 4xx/5xx
+продюсер бросает HttpRequestException
+(которое подхватит ваш OnException
+/TryCatch
+). Отключается .NoThrowOnError()
+, если хотите разруливать статусы вручную через ${header.redbHttp.StatusCode}
+.
+Часть 9. Собираем всё вместе — боевой маршрут
+Вернёмся к MainPipelineRoutes.cs
+и посмотрим на полный HTTP-вход с Content-Based Router и request/reply (redb.Route.Demo
+):
+From("http:0.0.0.0:5088/api/demo?inOut=true") .RouteId("demo-http-entry") .ConvertBody<string>() // byte[] → string .Throttle(10) // не больше 10 запросов/сек .Log("[1-HTTP] ▶ body=${body}, contentType=${contentType}") .SetHeader("traceId", e => Guid.NewGuid().ToString("N")[..12]) .Log("[1-HTTP] traceId=${header.traceId}, mode=${header.mode}") .ValidateJsonSchema(MessageSchema) // тело — JSON с полем "message" .IdempotentConsumer(e => GetHeader(e, "traceId") ?? "", IdempotentRepo) // ── Content-Based Router: маршрутизация по заголовку mode ── .Choice() .When(e => GetHeader(e, "mode") == "full") .SetHeader("fastTrack", e => GetHeader(e, "priority") == "high" ? "true" : "false") .SetHeader("stamp.dsl", "full-branch") .When(e => GetHeader(e, "mode") == "short") .SetHeader("fastTrack", "false") .SetHeader("stamp.dsl", "short-branch") .Otherwise() .SetHeader("mode", "default") .SetHeader("stamp.dsl", "default-branch") .EndChoice() // ... тут в демо — кросс-транспортный конвейер, SQL, WireTap'ы ... .SetHeader("Content-Type", "application/json") .SetBody(e => BuildResponse(e)); // inOut=true → это и есть HTTP-ответ
+Дёргаем тремя curl'ами — три разные ветки:
+# full-branch curl -X POST http://localhost:5088/api/demo \ -H "Content-Type: application/json" -H "mode: full" -H "priority: high" \ -d '{"message":"hello"}' # short-branch curl -X POST http://localhost:5088/api/demo \ -H "Content-Type: application/json" -H "mode: short" \ -d '{"message":"hi"}' # default-branch (mode не задан) curl -X POST http://localhost:5088/api/demo \ -H "Content-Type: application/json" \ -d '{"message":"yo"}'
+А рядом, на том же порту 5088, живёт echo-маршрут (EchoRoutes.cs
+) — отдельный From
+, общий Kestrel:
+From("http:0.0.0.0:5088/api/echo?inOut=true") .RouteId("demo-http-echo") .AutoStart(false) // дремлет, пока не запустишь вручную .ConvertBody<string>() .SetHeader("Content-Type", e => /* отражаем Content-Type запроса */ ...) .Log("[ECHO] ◀ Echoing back: ${body}");
+.AutoStart(false)
+— отличная иллюстрация жизненного цикла из части 4: маршрут зарегистрирован, но не стартует с модулем. Запустите его руками (tsak route start demo-http-echo
+) — он зарегистрируется на уже работающем Kestrel порта 5088. Остановите — сервер не погаснет, потому что /api/demo
+всё ещё слушает.
+Шпаргалка по граблям
+Нет тела в ответе? Проверьте
+inOut=true
+. Без него консьюмер отдаёт пустой200 OK
+, что бы вы ни делали с.SetBody(...)
+.CORS «не работает»? При
+cors=true
+обязателенcorsOrigins
+(или резолвер) — иначе падение на старте. Wildcard*
++ credentials браузер отвергает, и коннектор честно отдаёт ответ без CORS-заголовков (fail closed).Порт занят? В пределах процесса Kestrel шарится по
+(host, port)
+через синглтонSharedHttpServerManager
+— маршруты на одном порту делят один сервер (в Tsak можно сесть даже на порт самой админки). Конфликт привязки будет только если порт занял чужой, не-redb сервер.Заголовки запроса протекают в ответ? Не должны — коннектор их трекает (
+RequestHeaderNames
+) и не отражает. Но если вы сами выставили заголовок с тем же именем — он попадёт в ответ.Стрим отдаётся пачкой? Для SSE нужен
+Content-Type: text/event-stream
+на ответе; иначе будет chunked plain text. Буферизация отключается автоматически.{id}
+не подставился у продюсера? Параметр задаётся через.Param("id", ...)
+; без.Param
+плейсхолдер{id}
+останется в URL как есть.405 вместо 404? Это фича: путь нашёлся, метод — нет. Сузьте
+methods=
+или проверьте, каким методом стучитесь.
+Итого
+redb.Route.Http
+— это не «обёртка над контроллером», а самостоятельный транспорт:
+Консьюмер поднимает собственный Kestrel (
+CreateSlimBuilder
+, без MVC), шарит его между маршрутами по(host, port)
+через синглтонSharedHttpServerManager
+, ведёт собственную таблицу маршрутов с правильной специфичностью, считает ссылки для жизненного цикла и реализует CORS вручную — по политике на маршрут.Продюсер — это
+HttpClient
+со всеми ручками: послойное построение URL,{name}
+-параметры, бриджинг заголовков, Basic/Bearer (в т.ч. динамический per-request токен), стриминг ответа и управляемыйthrowOnError
+.HTTP ↔ Exchange — двусторонний мост через заголовки
+redbHttp.*
+, с честной обработкой множественных значений, route-параметров, статус-кодов и безтелесных ответов.
+А Content-Based Router (.Choice().When().Otherwise()
+) показывает, ради чего всё это: маршрут принимает решения по содержимому уже разобранного сообщения и ничего не знает о том, что под ним — Kestrel, Kafka или RabbitMQ.
+В следующей части серии берём следующий коннектор и следующий кластер EIP. Если хотите конкретный — пишите в комментариях.
+Весь код проверен по исходникам
+redb.Route/src/redb.Route.Http
+(HttpConsumer
+,HttpProducer
+,HttpComponent
+,SharedHttpServerManager
+,HttpEndpointOptions
+,HttpHeaders
+,Fluent/HttpDsl
+) иredb.Route.Controllers
+. Примеры — из демо-проектаredb.Route.Demo/Routes
+(MainPipelineRoutes
+,EchoRoutes
+,DataObservabilityRoutes
+) и из боевого кода системы TsUM (tsum.Api/Routes
+,tsum.Api/Auth
+) — те же маршруты крутятся в проде на порту 5090. Раздел про контроллеры подтверждён продом: вся REST-админка Tsak (redb.Tsak.Core/Controllers
+—Contexts
+,Routes
+,Modules
+,Auth
+,Users
+, … — ~14 контроллеров) построена наRedbController
+и работает в проде черезControllerDispatcherProcessor
+. В прикладном TsUM-API предпочли.Process
+/.Choice
+— оба подхода живут рядом и оба боевые.

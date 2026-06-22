@@ -1,0 +1,24 @@
+{
+  "date": "2024-03-28",
+  "count": 1,
+  "posts": [
+    {
+      "id": "b86db9e2233e",
+      "title": "Mamba Explained",
+      "url": "https://thegradient.pub/mamba-explained/",
+      "source": "The Gradient",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-03-28T01:24:43+00:00",
+      "summary": "Is Attention all you need? Mamba, a novel AI model based on State Space Models (SSMs), emerges as a formidable alternative to the widely used Transformer models, addressing their inefficiency in processing long sequences.",
+      "author": "Kola Ayonrinde",
+      "tags": [
+        "Deep Learning",
+        "Reinforcement Learning",
+        "Overviews"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "date": "2026-03-16",
+  "count": 4,
+  "posts": [
+    {
+      "id": "0f90ede03a8d",
+      "title": "Why AI won’t kill SaaS",
+      "url": "https://bdtechtalks.com/2026/03/16/why-ai-wont-kill-saas/?utm_source=rss&utm_medium=rss&utm_campaign=why-ai-wont-kill-saas",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-03-16T14:00:00+00:00",
+      "summary": "The recent tech selloff sparked fears of a SaaSpocalypse. Here is why the death of software subscriptions is a myth, and how AI agents are creating a developer boom. The post Why AI won’t kill SaaS first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI business",
+        "AI Coding",
+        "Artificial intelligence (AI)",
+        "large language models",
+        "SaaS",
+        "Vibe coding"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "58df5fb9906c",
+      "title": "ImportAI 449: LLMs training other LLMs; 72B distributed training run; computer vision is harder than generative text",
+      "url": "https://importai.substack.com/p/importai-449-llms-training-other",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-16T12:30:50+00:00",
+      "summary": "Will AI cause a political interregnum",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "4b4e272cad9f",
+      "title": "LWiAI Podcast #237 - Nemotron 3 Super, xAI reborn, Anthropic Lawsuit, Research!",
+      "url": "https://lastweekin.ai/p/lwiai-podcast-237-nemotron-3-super",
+      "source": "Last Week in AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-03-16T06:06:58+00:00",
+      "summary": "Nemotron 3 Super: An Open Hybrid Mamba-Transformer MoE for Agentic Reasoning, Another XAI Cofounder Has Left, Anthropic Sues Department of Defense",
+      "author": "Last Week in AI",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "132e7ff75e5e",
+      "title": "Last Week in AI #338 - Anthropic sues Trump, xAI starting over, Iran AI Fakes",
+      "url": "https://lastweekin.ai/p/last-week-in-ai-338-anthropic-sues",
+      "source": "Last Week in AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-03-16T04:18:14+00:00",
+      "summary": "Anthropic sues Trump administration in AI dispute with Pentagon, &#8216;Not built right the first time&#8217; &#8212; Musk&#8217;s xAI is starting over again, again, Cascade of A.I. Fakes About War With Iran Causes Chaos Onl",
+      "author": "Last Week in AI",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

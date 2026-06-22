@@ -1,0 +1,187 @@
+The clipping bug. Cloth that doesn’t know it’s solid.
+In late 2024, a company called ZOZO (Japan’s largest fashion e-commerce platform) published a physics solver in ACM Transactions on Graphics, the field’s leading journal, under the dry title A Cubic Barrier with Elasticity-Inclusive Dynamic Stiffness. It barely made the news at the time. Then the community started posting side-by-side comparisons with every other solver they owned, and the ZOZO demos kept winning.
+The demos showed cloth that behaved like cloth. Not rubber, not jelly, not a ghost: fabric. Five layers of mesh draped over a sphere, each layer touching the next without a single triangle invading another’s space. In their large-scale stress tests, the solver handles beyond 184 million simultaneous contact pairs without a single interpenetration.
+To understand why a polynomial swap is such a significant breakthrough, you have to look at the decades of mathematical compromises that came before it, and at how you can replicate ZOZO’s core logic in a few hundred lines of Python.
+The Problem Nobody Could Fully Solve
+Fabric, at the level a physics engineer cares about, is a mesh of vertices connected by triangles. Each vertex gets a mass and a velocity, and at every time step the engine integrates Newton’s second law (F = ma) across all of them simultaneously. Forces come from gravity, from the elastic resistance of the fabric, and from any surfaces the cloth is touching. The elastic part is relatively well-solved: model each triangle as a small patch of elastic material, define how it resists stretching and shearing, derive the forces from the deformation gradient. That’s standard Finite Element Method and it works well enough that it’s not the bottleneck.
+The collision part is where every clever idea eventually breaks.
+The naive approach is penalty forces: when two surfaces overlap, push them apart with a force proportional to how deep the penetration is. Simple and fast, but fundamentally reactive: the repulsion only activates after penetration has already happened. With a large time step, surfaces can travel straight through each other before the force kicks in, and if you make the penalty stiff enough to catch fast-moving surfaces, you get numerical instabilities that blow the simulation apart.
+The other classic approach is constraint projection: at the end of each step, detect intersections and explicitly move vertices apart to resolve them. More stable in practice, but it doesn’t conserve energy properly, introduces drift over long simulations, and in scenes with thousands of contacts it becomes genuinely difficult to make robust, it resolves one intersection, and creates two more.
+For decades, those were the choices: accept clipping, accept rubber-like stretching, or accept that your simulation would occasionally explode, usually some mix of all three.
+Incremental Potential Contact: The Academic Gold Standard
+In 2020, a US academic and industry research team published Incremental Potential Contact (IPC), which reframed the collision problem entirely. The key idea: don’t model contact as a force or a constraint. Model it as an energy.
+Specifically, add a term to the total energy that becomes infinitely large as two surfaces approach zero distance. Since simulation is just energy minimisation, the solver will naturally avoid configurations where surfaces are close — not because you’ve told it to, but because moving into them would cost infinite energy. Penetration becomes mathematically unreachable, not just penalized.
+At each time step, you’re solving:
+\[
+x_{t+1} = \text{argmin}(E_{kinetic}(x) + E_{elastic}(x) + B(x))
+\]
+where B(x)
+is the barrier energy: a function that blows up as any pair of surfaces gets within threshold distance d̂
+. IPC’s barrier is logarithmic:
+$$
+B_{\log}(d)=
+\begin{cases}
+-(d-\hat{d})^{2}\log\!\left(\frac{d}{\hat{d}}\right), & d<\hat{d},\\
+0, & d\ge\hat{d}.
+\end{cases}
+$$
+As d → 0
+, log(d/d̂) → -∞
+, so B_log(d) → +∞
+. The separation between surfaces can asymptotically approach zero but never reach it. It’s a genuinely elegant idea, and the results showed it — thin cloth sheets stacked on each other, each layer resting correctly on the one below, zero interpenetration.
+Why Logarithms Are the Wrong Shape
+Here’s the subtlety ZOZO’s paper exploits.
+The log barrier’s second derivative (its curvature, which directly determines how stiff the Newton system becomes near contact) grows without bound as surfaces approach:
+$$
+\lim_{d\to 0^+} B_{\log}”(d)=\infty
+$$
+That’s mathematically necessary: you need the barrier to get infinitely steep at zero to guarantee infinite energy there. But it creates a serious problem for Newton’s method. Whenever two surfaces get close, the linear system you need to solve at each iteration becomes ill-conditioned: small numerical errors get amplified, the solver requires far more iterations to converge, and in tight configurations it can fail entirely.
+The situation gets worse when you account for what real cloth actually requires. Cotton fabric doesn’t stretch more than a percent or two before resisting hard. In simulation, this means a tight strain limit: triangles can’t expand more than 1–5% from their rest area. To enforce that with a log barrier, you need d̂
+to be very small, which pushes the barrier into a very narrow gap, which forces surfaces to get extremely close before the barrier activates, which leaves the already-explosive curvature with almost no room to work in. The condition number of your Newton system goes through the roof.
+On top of that sits Time of Impact (TOI) locking. IPC uses Additive Continuous Collision Detection (ACCD) to predict when surfaces will collide within a given time step and clips the step size to prevent it. In simple scenes this is fine. In cloth-on-cloth contact (thousands of triangles sliding and rubbing), the detections cascade, the solver gets forced into smaller and smaller time steps, and progress grinds to a halt.
+The Cubic Barrier: What ZOZO Actually Changed
+ZOZO’s paper makes two targeted modifications that address both failure modes.
+First: swap the logarithm for a cubic.
+Instead of the log barrier, they use a cubic polynomial in the normalized distance. A representative form looks like:
+$$
+B_{\mathrm{cubic}}(d)=
+\begin{cases}
+\kappa\left(1-\frac{d}{\hat d}\right)^3, & d<\hat d,\\[6pt]
+0, & d\ge \hat d.
+\end{cases}
+$$
+where κ
+is a stiffness parameter. This is positive throughout [0, d̂]
+, equals κ
+at contact and zero at the threshold. The key property is its second derivative:
+$$
+B_{\mathrm{cubic}}”(d)
+=
+\frac{6\kappa}{\hat d^2}
+\left(1-\frac{d}{\hat d}\right)
+$$
+At the threshold d = d̂
+, the curvature is exactly zero. As d
+decreases toward contact, the curvature ramps up gradually, reaching 6κ/d̂²
+at d = 0
+. Contrast that with the log barrier:
+$$
+\begin{aligned}
+B_{\log}”(d) &\to \infty
+&& \text{as } d\to 0^+
+&& (\text{condition number explodes})\\[4pt]
+B_{\mathrm{cubic}}”(d) &\to \frac{6\kappa}{\hat d^2}
+&& \text{as } d\to 0^+
+&& (\text{bounded, always})
+\end{aligned}
+$$
+This gradual ramp is the insight. Think of it like a well-configured cooling fan: it spins faster as the CPU gets hotter, not at full blast the moment you turn the computer on. The log barrier (and even a quadratic alternative) max out their stiffness the moment two surfaces enter the threshold zone. The cubic wakes up gently and stiffens only as surfaces actually get close. The result is a Newton system that stays well-conditioned throughout, regardless of how tight the strain limit is.
+The cubic never achieves infinite energy at zero, which raises an obvious question: without that infinite spike, what actually prevents penetration? It’s worth being honest about this, because it’s where the paper is sometimes misread.
+A finite barrier cannot, on its own, guarantee zero penetration. If a vertex carries enough kinetic energy, it can clear a finite energy hill in a single discrete time step: tunnelling straight through the barrier before the solver has a chance to react. ZOZO’s solver still relies on ACCD for this: it watches for imminent collisions and clips the time step before tunnelling can occur, exactly as in standard IPC. What the cubic barrier changes is not whether ACCD is needed, but how badly the Newton system degrades when surfaces are close. ACCD handles the hard geometric guarantee; the cubic makes the optimisation numerically stable enough to get there reliably. The two mechanisms are complementary, not competing.
+Second: couple the barrier stiffness to the local elasticity.
+In standard IPC, κ
+is a fixed global constant, tuned once and left alone. ZOZO instead evaluates it dynamically (per element, per Newton step) as a function of the local elastic properties of the material at that point. The intuition is clean: a cloth triangle already near its elastic limit is already resisting deformation hard, the material itself is contributing to the combined stiffness. The barrier doesn’t need to compensate on its own. By computing κ
+as a function of the local elastic Hessian (the formal derivation is in the paper and worth reading in full), the solver ensures the barrier and the elasticity never fight each other over stiffness. The combined system stays well-conditioned even under tight strain limits, and the cubic’s finite peak at contact is sufficient to prevent penetration in practice.
+The result is fewer Newton iterations, stable behavior at strain limits that would previously cause divergence, and the ability to scale to contact counts that would bring a log-barrier solver to its knees.
+Implementing the Core Idea in Python
+The full solver is CUDA, Rust, and Python wrapping C++ (roughly 49%, 13%, and 22% of the codebase respectively). But the core conditioning difference between the two barriers is completely reproducible on a simple 2D cloth mesh in a single notebook, and that also happens to be the clearest way to see why the polynomial choice matters.
+The setup is a drape test: a flat triangulated cloth mesh falling under gravity onto a sphere, with vertices that can come into contact with each other and with the sphere surface. We run it twice under a 2% strain limit, once with the log barrier, once with the cubic, and log the condition number of the Newton system at each step.
+import numpy as np
+def create_cloth_mesh(nx, ny, width, y_bottom):
+"""Triangulated cloth grid"""
+dx = width / (nx - 1)
+xs = np.linspace(-width / 2, width / 2, nx)
+ys = [y_bottom + j * dx for j in range(ny)]
+verts = np.array([[x, y] for y in ys for x in xs], dtype=float)
+faces = []
+for j in range(ny - 1):
+for i in range(nx - 1):
+a = j * nx + i; b = a + 1
+c = (j + 1) * nx + i; d = c + 1
+faces += [[a, b, d], [a, d, c]] # two triangles per quad
+faces = np.array(faces, dtype=int)
+edge_set = set()
+for f in faces:
+for k in range(3):
+edge_set.add(tuple(sorted([f[k], f[(k + 1) % 3]])))
+edges = np.array(sorted(edge_set), dtype=int)
+rest_lengths = np.linalg.norm(verts[edges[:, 0]] - verts[edges[:, 1]], axis=1)
+pinned = np.arange((ny - 1) * nx, ny * nx) # top row fixed in place
+return verts, edges, rest_lengths, faces, pinned
+def sphere_sdf(x, cx, cy, r):
+return np.linalg.norm(x - np.array([cx, cy]), axis=1) - r
+The elastic energy is standard linear corotational strain per triangle. The barrier energy sits on top: for every pair of non-adjacent vertices within d̂
+of each other, evaluate B(d)
+and accumulate its gradient and Hessian into the global system. The two barrier implementations sit side by side so the structural difference is immediately visible in the code — one computes a logarithm and watches its Hessian diverge near contact, the other computes a polynomial and stays calm.
+# ── IPC logarithmic barrier ──────────────────────────────────────────────────
+def log_barrier(d, d_hat, kappa):
+if d >= d_hat: return 0.0
+d = max(d, 1e-10) # clamp: log(0) = -∞, energy = +∞
+return -kappa * (d - d_hat)**2 * np.log(d / d_hat)
+def log_barrier_d2(d, d_hat, kappa):
+"""Curvature grows without bound as d -> 0.
+Drives condition number to inf."""
+if d >= d_hat: return 0.0
+d = max(d, 1e-10); t = d - d_hat
+return -kappa * (2*np.log(d / d_hat) + 4*t / d - t**2 / d**2)
+# ── ZOZO cubic barrier ───────────────────────────────────────────────────────
+def cubic_barrier(d, d_hat, kappa):
+"""B(d) = κ·(1 - d/d̂)³. Finite at contact; zero at threshold."""
+if d >= d_hat: return 0.0
+return kappa * (1.0 - d / d_hat)**3
+def cubic_barrier_d2(d, d_hat, kappa):
+"""Curvature — bounded at 6κ/d̂² regardless of how close d gets to zero."""
+if d >= d_hat or d <= 0.0: return 0.0
+return 6.0 * kappa / d_hat**2 * (1.0 - d / d_hat)
+The time integrator is implicit Euler, deliberately slow, because the goal is transparency. Every matrix assembly, every condition number measurement, every line-search step is exposed rather than hidden inside a library call. When the log barrier’s Newton system starts to buckle near contact, you can watch it happen in the logged condition numbers in real time.
+def run_newton_step(x, x_tilde, mass, dt, edges, rest_lengths,
+k_stretch, sphere_params, d_hat, kappa, barrier_type):
+E0, g, H = assemble(x, x_tilde, mass, dt, edges, rest_lengths,
+k_stretch, sphere_params, d_hat, kappa, barrier_type)
+cond = float(np.linalg.cond(H))
+# Tikhonov regularisation
+eps = max(1e-6 * np.trace(H) / H.shape[0], 1e-8)
+H_reg = H + eps * np.eye(H.shape[0])
+delta = np.linalg.solve(H_reg, -g)
+# Armijo backtracking
+alpha = 1.0
+for _ in range(max_ls):
+x_try = x + alpha * delta.reshape(-1, 2)
+E_try = total_energy(x_try, x_tilde, ...)
+if E_try <= E0 + ls_c * alpha * float(g.dot(delta)):
+break
+alpha *= ls_alpha
+return x + alpha * delta.reshape(-1, 2), cond
+Run both variants and plot the condition number over time. With the 2% strain limit active, the log barrier’s condition number climbs by several orders of magnitude the moment the cloth settles into contact. The cubic’s barely moves. That’s the core conditioning insight of the paper, made visible without leaving the notebook.
+def run_simulation(barrier_type, cfg):
+x = initial_mesh_positions.copy()
+v = np.zeros_like(x)
+cond_per_frame = []
+for frame in range(cfg["n_frames"]):
+# Implicit Euler predictor
+v[free_vertices] += cfg["dt"] * np.array([0, cfg["gravity_y"]])
+x_tilde = x + cfg["dt"] * v
+# Newton iterations
+for _ in range(cfg["max_newton"]):
+x, cond = run_newton_step(x, x_tilde, ..., barrier_type)
+cond_per_frame.append(cond)
+if gradient_norm(x, x_tilde, ...) < cfg["newton_tol"]:
+break
+# Recover velocity
+v = (x - x_tilde) / cfg["dt"] + v
+return x, cond_per_frame
+# run and plot
+log_drape, log_conds = run_simulation("log", CFG)
+cubic_drape, cubic_conds = run_simulation("cubic", CFG)
+fig, ax = plt.subplots(figsize=(10, 4))
+ax.semilogy(log_conds, color="#e63946", lw=2, label="Log barrier (IPC)")
+ax.semilogy(cubic_conds, color="#2a9d8f", lw=2, label="Cubic barrier (ZOZO)")
+ax.set_xlabel("Simulation frame"); ax.set_ylabel("Condition number (log scale)")
+ax.legend(); ax.grid(alpha=0.25)
+Why a Fashion Company Solved This
+ZOZO’s motivation points to a broader shift in where serious graphics research now gets done. ZOZO is not a graphics lab, they sell clothes online. Their interest in penetration-free cloth simulation is commercial: they want customers to see how a garment drapes on a body before buying it. A simulation that clips is a simulation that cannot be trusted in a virtual try-on pipeline, and that’s a direct business problem.
+Worth noting too that the solver is not just for fabric. It handles shells, solids, and rods, that is, cloth, volumetric objects, and yarn-like structures all within the same framework. The fashion motivation drove the work, but the resulting solver is general-purpose.
+That commercial pressure shaped every engineering decision. The solver deploys in Docker (image size roughly 1 GB), runs on cloud GPUs, and includes a cost table in the README breaking down what each demo scenario costs per hour on an AWS L4 instance (roughly one dollar). The Python API is docstringed and lintable. GitHub Actions runs every example ten times in a row with jittered initial positions to verify robustness, treating a single failure out of ten as a failure of the whole suite. Perhaps most telling is the “How We Built This” section: the early codebase was written with GitHub Copilot, and nearly all subsequent coding has been carried out through vibe coding with Claude Code and Codex, all human-reviewed before being made public. A small team, using modern AI-assisted workflows, produced reference-quality simulation software that would previously have required a dedicated academic lab and several years of postdocs.
+It’s worth being precise about what “production-grade” means here, because the developer is honest about the tradeoff. This solver is built for offline rendering and e-commerce visualisation: contexts where a simulation runs for hours, where correctness matters more than frame rate, and where clipping is genuinely unacceptable rather than an acknowledged compromise. That’s a different definition of production than shipping on a PlayStation, and conflating the two would undersell what the solver achieves in its intended domain. (The README includes a clear warning: “built for offline use; not real time.”)
+Community Blender add-ons (AndoSim and ArzteZ-PPF-solver) bring the solver to artists who would never open the ACM paper, though official ZOZO add-ons are not yet released. Whether this displaces existing tools in the short term is a separate question. As a reference implementation of these ideas and a foundation for whatever solver builds on them next, it is about as accessible as serious simulation research gets.
+The cubic barrier is a narrow, precise idea: swap the logarithm for a polynomial whose curvature starts at zero and ramps up gradually, couple the stiffness to the local elasticity so the two work in proportion rather than at odds, and cloth stops clipping. That’s the thing about hard problems in numerical methods. They rarely require more computation. They require a better-conditioned formulation, and someone with a concrete enough reason to go and find one.

@@ -1,0 +1,12 @@
+Statistics > Methodology
+Title:Bayesian Poisson-Randomized Gamma Tensor Factorization with Application to International Trade Flows
+View PDF HTML (experimental)Abstract:We study sparse semi-continuous tensor data with excess zeros, heavy right tails, and slice-specific dispersion. Such features arise naturally in monetary-valued multi-way data, such as international trade, where most exporter--importer--product--year cells are zero while positive values are continuous and highly variable. To model these data, we propose a Bayesian hierarchical tensor factorization model that places a low-rank CP structure on a latent Poisson rate tensor and couples it with a conditional Gamma model for positive outcomes, with rate parameters that can vary across slices within a mode. The model therefore separates the occurrence and magnitude of positive observations while borrowing strength across all tensor dimensions through a shared low-rank latent structure. To scale posterior inference to large arrays, we develop a hybrid variational--Monte Carlo algorithm that combines efficient coordinate ascent updates with a partially collapsed augmented-data sampler. Applied to approximately 60 million trade flows, the method surfaces multiway dependence across exporters, importers, products, and years that is difficult to recover from gravity-type or pairwise network analyses, which do not jointly model the product and temporal dimensions.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

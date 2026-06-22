@@ -1,0 +1,20 @@
+{
+  "date": "2023-01-27",
+  "count": 1,
+  "posts": [
+    {
+      "id": "fd029a1f6579",
+      "title": "The Transformer Family Version 2.0",
+      "url": "https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2023-01-27T00:00:00+00:00",
+      "summary": "Many new Transformer architecture improvements have been proposed since my last post on &ldquo;The Transformer Family&rdquo; about three years ago. Here I did a big refactoring and enrichment of that 2020 post &mdash; restructure the hierarchy of sections and improve many sections with more recent papers. Version 2.0 is a superset of the old version, about twice the length. Notations Symbol Meaning $d$ The model size / hidden state dimension / positional encoding size. $h$ The number of heads in multi-head attention layer. $L$ The segment length of input sequence. $N$ The total number of…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

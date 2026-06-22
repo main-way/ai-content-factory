@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:AQA-TTRL: Self-Adaptation in Audio Question Answering with Test-Time Reinforcement Learning
+View PDF HTML (experimental)Abstract:Large Audio Language Models (LALMs) exhibit strong capabilities in general audio understanding but remain static after deployment, limiting their adaptability to real-world data. Since supervised fine-tuning is costly, we propose AQA-TTRL, a novel framework for audio understanding that enables on-the-fly evolution via test-time reinforcement learning using only unlabeled test data. It generates pseudo-labels via majority voting and optimizes the model through reinforcement learning. To address the noise in self-generated labels, we introduce confidence weighting to adjust training signals. Furthermore, multiple-attempt sampling mitigates advantage collapse and stabilizes training. Across MMAU, MMAR, and MMSU, AQA-TTRL achieves significant average improvements of 4.42% for Qwen2.5-Omni 7B and 11.04% for the 3B model. Notably, the adapted 3B model outperforms direct inference of the unadapted 7B model, highlighting the effectiveness of test-time adaptation in audio understanding.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,69 @@
+{
+  "date": "2026-05-31",
+  "count": 4,
+  "posts": [
+    {
+      "id": "965771006e08",
+      "title": "Chat SDK adds Lark and Feishu support",
+      "url": "https://vercel.com/changelog/chat-sdk-adds-lark-feishu-support",
+      "source": "Vercel AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-31T14:00:00+00:00",
+      "summary": "Chat SDK now supports Lark and Feishu via a new vendor-official adapter . Build bots that post, edit, and delete messages, stream replies via Lark's native cardkit typewriter API, send interactive cards, and react with emojis across both Lark and Feishu conversations. The adapter connects over Lark's WebSocket transport, so bots run from any long-running Node process without exposing an HTTP webhook endpoint. To get started, read the Lark or Feishu documentation. Read more",
+      "author": "Josh Singh",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "c456a12d23d2",
+      "title": "Вышел Wine 11.10 с VKD3D 2.0 и улучшенной совместимостью VBScript",
+      "url": "https://tproger.ru/news/vywel-wine-11-10-s-vkd3d-2-0-i-uluchwennoj-sovmestimostyu-vbscrip",
+      "source": "Tproger",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "low",
+      "published": "2026-05-31T10:23:00+00:00",
+      "summary": "Wine 11.10 получил обновление до VKD3D 2.0 для Direct3D 12 через Vulkan, встроенную поддержку XPath и улучшения VBScript. Разбираем ключевые изменения. — Читать дальше « Вышел Wine 11.10 с VKD3D 2.0 и улучшенной совместимостью VBScript »",
+      "author": "Евгений Стребков",
+      "tags": [
+        "Linux",
+        "Новости"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "97f3012b6ad8",
+      "title": "AI Workflows for Sales Teams: Prospect Research, Lead Qualification, and CRM Updates on Autopilot Using LangGraph",
+      "url": "https://www.analyticsvidhya.com/blog/2026/05/ai-workflows-for-sales-teams-using-langgraph/",
+      "source": "Analytics Vidhya",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-31T08:10:35+00:00",
+      "summary": "Sales teams spend hours every day on tasks that should never see a human. Research a prospect, score them against their fit, and put it all into a CRM. These are repeatable, rule based processes AI workflows driven by multi-agent systems can do all three, with speed and consistency that no human team can match.&#160; [&#8230;] The post AI Workflows for Sales Teams: Prospect Research, Lead Qualification, and CRM Updates on Autopilot Using LangGraph appeared first on Analytics Vidhya .",
+      "author": "Vipin Vashisth",
+      "tags": [
+        "Artificial Intelligence",
+        "Intermediate",
+        "Project-based Article"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "d5e89efc25a5",
+      "title": "MiniMax M3 on AI Gateway",
+      "url": "https://vercel.com/changelog/minimax-m3-on-ai-gateway",
+      "source": "Vercel AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-31T07:00:00+00:00",
+      "summary": "MiniMax M3 is now available on Vercel AI Gateway . M3 is MiniMax's first model with a 1M-token context window and native multimodality, built around MiniMax Sparse Attention (MSA). M3 improves on software engineering, terminal-based tool use, and agentic web browsing, and is tuned for multi-turn collaboration. To use MiniMax M3, set model to minimax/minimax-m3 in the AI SDK . Pass an image alongside a prompt to use M3's multimodal input: AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for…",
+      "author": "Jerilyn Zheng",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

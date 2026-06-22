@@ -1,0 +1,8 @@
+import { readSlackWebhook } from "@chat-adapter/slack/webhook";import { postSlackMessage } from "@chat-adapter/slack/api";
+export async function POST(request: Request) { const payload = await readSlackWebhook(request, { signingSecret: process.env.SLACK_SIGNING_SECRET!, });
+if (payload.kind === "app_mention") { await postSlackMessage({ channel: payload.continuation.channelId, markdownText: `received: ${payload.text}`, token: process.env.SLACK_BOT_TOKEN!, }); }
+return new Response(null, { status: 200 });}
+Verifying a webhook and posting a reply with the low-level subpaths.
+The Complete Guide to Chat SDK
+Learn how Chat SDK works end-to-end: from core concepts to building your first bot to deploying it across Slack, Teams, and more.
+Read the guide

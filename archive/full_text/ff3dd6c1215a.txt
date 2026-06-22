@@ -1,0 +1,339 @@
+Vibe coding SwiftUI apps is a lot of fun
+Plus profiling Hacker News users based on their comments and more
+In this newsletter:
+Vibe coding SwiftUI apps is a lot of fun
+Profiling Hacker News users based on their comments
+Experimenting with Starlette 1.0 with Claude skills
+Plus 9 links and 4 quotations and 2 notes and 1 guide chapter
+Sponsor message: Your developers shouldn’t waste cycles on SSO, SCIM, and RBAC while building your product. Free them to focus on what sets you apart. WorkOS gives you production-ready APIs for auth and access control, so you ship faster.
+Vibe coding SwiftUI apps is a lot of fun- 2026-03-27
+I have a new laptop - a 128GB M5 MacBook Pro, which early impressions show to be verycapable for running good local LLMs. I got frustrated with Activity Monitor and decided to vibe code up some alternative tools for monitoring performance and I’m very happy with the results.
+This is my second experiment with vibe coding macOS apps - the first was this presentation app a few weeks ago.
+It turns out Claude Opus 4.6 and GPT-5.4 are both very competent at SwiftUI - and a full SwiftUI app can fit in a single text file, which means I can use them to spin something up without even opening Xcode.
+I’ve built two apps so far: Bandwidther shows me what apps are using network bandwidth and Gpuer to show me what’s going on with the GPU. At Claude’s suggestion both of these are now menu bar icons that open a panel full of information.
+Bandwidther
+I built this app first, because I wanted to see what Dropbox was doing. It looks like this:
+I’ve shared the full transcript I used to build the first version of the app. My prompts were pretty minimal:
+Show me how much network bandwidth is in use from this machine to the internet as opposed to local LAN
+(My initial curiosity was to see if Dropbox was transferring files via the LAN from my old computer or was downloading from the internet.)
+mkdir /tmp/bandwidther and write a native Swift UI app in there that shows me these details on a live ongoing basis
+This got me the first version, which proved to me this was worth pursuing further.
+git init and git commit what you have so far
+Since I was about to start adding new features.
+Now suggest features we could add to that app, the goal is to provide as much detail as possible concerning network usage including by different apps
+The nice thing about having Claude suggest features is that it has a much better idea for what’s possible than I do.
+We had a bit of back and forth fixing some bugs, then I sent a few more prompts to get to the two column layout shown above:
+add Per-Process Bandwidth, relaunch the app once that is done
+now add the reverse DNS feature but make sure original IP addresses are still visible too, albeit in smaller typeface
+redesign the app so that it is wider, I want two columns - the per-process one on the left and the rest on the right
+OK make it a task bar icon thing, when I click the icon I want the app to appear, the icon itself should be a neat minimal little thing
+The source code and build instructions are available in simonw/bandwidther.
+Gpuer
+While I was building Bandwidther in one session I had another session running to build a similar tool for seeing what the GPU was doing. Here’s what I ended up with:
+Here’s the transcript. This one took even less prompting because I could use the in-progress Bandwidther as an example:
+I want to know how much RAM and GPU this computer is using, which is hard because stuff on the GPU and RAM does not seem to show up in Activity Monitor
+This collected information using system_profiler
+and memory_pressure
+and gave me an answer - more importantly it showed me this was possible, so I said:
+Look at /tmp/bandwidther and then create a similar app in /tmp/gpuer which shows the information from above on an ongoing basis, or maybe does it better
+After a few more changes to the Bandwidther app I told it to catch up:
+Now take a look at recent changes in /tmp/bandwidther - that app now uses a sys tray icon, imitate that
+This remains one of my favorite tricks for using coding agents: having them recombine elements from other projects.
+The code for Gpuer can be found in simonw/gpuer on GitHub.
+You shouldn’t trust these apps
+These two apps are classic vibe coding: I don’t know Swift and I hardly glanced at the code they were writing.
+More importantly though, I have very little experience with macOS internals such as the values these tools are measuring. I am completely unqualified to evaluate if the numbers and charts being spat out by these tools are credible or accurate!
+I’ve added warnings to both GitHub repositories to that effect.
+This morning I caught Gpuer reporting that I had just 5GB of memory left when that clearly wasn’t the case (according to Activity Monitor). I pasted a screenshot into Claude Code and it adjusted the calculations and the new numbers look right, but I’m still not confident that it’s reporting things correctly.
+I only shared them on GitHub because I think they’re interesting as an example of what Claude can do with SwiftUI.
+Despite my lack of confidence in the apps themselves, I did learn some useful things from these projects:
+A SwiftUI app can get a whole lot done with a single file of code - here’s GpuerApp.swift (880 lines) and BandwidtherApp.swift (1063 lines).
+Wrapping various terminal commands in a neat UI with Swift is easily achieved.
+Claude has surprisingly good design taste when it comes to SwiftUI applications.
+Turning an app into a menu bar app is just a few lines of extra code as well.
+You don’t need to open Xcode to build this kind of application!
+These two apps took very little time to build and have convinced me that building macOS apps in SwiftUI is a new capability I should consider for future projects.
+Profiling Hacker News users based on their comments - 2026-03-21
+Here’s a mildly dystopian prompt I’ve been experimenting with recently: “Profile this user”, accompanied by a copy of their last 1,000 comments on Hacker News.
+Obtaining those comments is easy. The Algolia Hacker News API supports listing comments sorted by date that have a specific tag, and the author of a comment is tagged there as author_username
+. Here’s a JSON feed of my (simonw
+) most recent comments, for example:
+The Algolia API is served with open CORS headers, which means you can access the API from JavaScript running on any web page.
+Last August I had ChatGPT build me a simple tool for hitting that API for any user which fetches their comments and gives me a mobile-friendly “copy to clipboard” button. I’ve since tweaked it a few times with Claude.
+I can then paste the whole lot into any LLM - these days I mostly use Claude Opus 4.6 for this - and prompt “profile this user” to see what it can figure out.
+It’s startlingly effective! It feels invasive to quote the profile of another user here, so I’ll show you what it produces for me:
+This is Simon Willison — a prolific, independent software developer, blogger, and one of the most visible voices in the AI-assisted coding space. Here’s a profile drawn from his comments:
+Professional identity: Independent developer and writer. Co-creator of Django, creator of Datasette and many other open source tools. On the board of the Python Software Foundation. Runs a heavily-trafficked personal blog at simonwillison.net with multiple content types (entries, link blog, notes, quotations). Monetizes through GitHub sponsors, ethical ads, and occasional consulting — not through any AI company payroll, a point he defends frequently.
+Core thesis on AI coding: He’s the leading evangelist for what he calls “agentic engineering” — using coding agents (Claude Code, Codex CLI) as productivity multipliers for skilled developers. His central argument: LLMs don’t replace programmers, they amplify existing expertise. He’s writing a guide/book on this at simonwillison.net/guides. He insists these tools are deceptively difficult to use well, and that most people who report bad results simply haven’t learned the craft yet.
+Working style: He does most of his programming from his iPhone via Claude Code for web, often while riding BART, walking the dog, or sitting in the garden. He embraces “YOLO mode” (auto-approving agent actions) and frequently runs 2-3 agent sessions in parallel. He starts every session with “run uv run pytest” to anchor the agent in TDD. He’s on the $200/month Claude Max plan.
+Key technical interests:Sandboxing and security (WebAssembly, Pyodide, sandbox-exec, Firecracker), SQLite (deeply), Python packaging and tooling (uv, PyPI distribution tricks), browser-in-a-browser experiments (v86, WASM Linux), and local LLM inference. He’s been learning Go “by osmosis” through coding agents.
+Security consciousness: He coined the term “prompt injection” and the “lethal trifecta” (access to private data + exposure to untrusted input + ability to take actions). He’s genuinely alarmed about OpenClaw/Clawdbot security risks and has been predicting a headline-grabbing prompt injection attack “in the next six months” for over two years — acknowledging it keeps not happening while insisting the risk is real. He references the “normalization of deviance” pattern frequently.
+Personality and debate style:Energetic, combative when challenged, but generally good-natured. He engages heavily in HN comment threads — sometimes dozens of replies in a single discussion. He’s transparent about his biases and maintains a public disclosures page. He pushes back hard against what he sees as motivated reasoning from AI skeptics, but also against AGI hype (”I refer to that as the science fiction version of AI”). He gets visibly frustrated by sock-puppet accounts and bad-faith criticism. He has a self-deprecating streak (”my stupid pelican benchmark”).
+Recurring themes across hundreds of comments:
+“Two things can be true at the same time” — he holds nuanced positions
+Tests are for productivity, not just quality
+The November 2025 model releases (Opus 4.5, GPT-5.2) were a genuine inflection point
+Code review is the biggest bottleneck in agent-assisted workflows
+“Cognitive debt” is a real and unsolved problem
+The best engineering practices (tests, docs, CI/CD, clean code) also make agents work better
+He’s deliberately trying to “teach people good software engineering while tricking them into thinking the book is about AI”
+Personal interests mentioned:Niche museums (runs niche-museums.com), New Zealand kākāpō parrots, cooking food from countries he’s never visited, chickens in his garden. Lives in Half Moon Bay, CA near a major pelican roost. The pelican-on-a-bicycle SVG test is his signature LLM benchmark.
+In a sentence: A deeply experienced, independently-minded developer who’s genuinely excited about AI coding tools, fights hard against both uncritical hype and reflexive dismissal, and is trying to professionalize how the industry uses these tools — while also worrying loudly about the security implications almost nobody else takes seriously enough.
+This all checks out! I ran this in Claude incognito mode to hopefully prevent Claude from guessing that I was evaluating myself and sycophantically glazing me - the tone of the response it gave here is similar to the tone I’ve seen against other accounts.
+I expect it guessed my real name due to my habit of linking to my own writing from some of my comments, which provides plenty of simonwillison.net URLs for it to associate with my public persona. I haven’t seen it take a guess at a real name for any of the other profiles I’ve generated.
+It’s a little creepy to be able to derive this much information about someone so easily, even when they’ve shared that freely in a public (and API-available) place.
+I mainly use this to check that I’m not getting embroiled in an extensive argument with someone who has a history of arguing in bad faith. Thankfully that’s rarely the case - Hacker News continues to be a responsibly moderated online space.
+Experimenting with Starlette 1.0 with Claude skills - 2026-03-22
+Starlette 1.0 is out! This is a really big deal. I think Starlette may be the Python framework with the most usage compared to its relatively low brand recognition because Starlette is the foundation of FastAPI, which has attracted a huge amount of buzz that seems to have overshadowed Starlette itself.
+Kim Christie started working on Starlette in 2018 and it quickly became my favorite out of the new breed of Python ASGI frameworks. The only reason I didn’t use it as the basis for my own Datasette project was that it didn’t yet promise stability, and I was determined to provide a stable API for Datasette’s own plugins... albeit I still haven’t been brave enough to ship my own 1.0 release (after 26 alphas and counting)!
+Then in September 2025 Marcelo Trylesinski announced that Starlette and Uvicorn were transferring to their GitHub account, in recognition of their many years of contributions and to make it easier for them to receive sponsorship against those projects.
+The 1.0 version has a few breaking changes compared to the 0.x series, described in the release notes for 1.0.0rc1 that came out in February.
+The most notable of these is a change to how code runs on startup and shutdown. Previously that was handled by on_startup
+and on_shutdown
+parameters, but the new system uses a neat lifespan mechanism instead based around an async context manager:
+@contextlib.asynccontextmanager
+async def lifespan(app):
+async with some_async_resource():
+print(”Run at startup!”)
+yield
+print(”Run on shutdown!”)
+app = Starlette(
+routes=routes,
+lifespan=lifespan
+)
+If you haven’t tried Starlette before it feels to me like an asyncio-native cross between Flask and Django, unsurprising since creator Kim Christie is also responsible for Django REST Framework. Crucially, this means you can write most apps as a single Python file, Flask style.
+This makes it really easy for LLMs to spit out a working Starlette app from a single prompt.
+There’s just one problem there: if 1.0 breaks compatibility with the Starlette code that the models have been trained on, how can we have them generate code that works with 1.0?
+I decided to see if I could get this working with a Skill.
+Building a Skill with Claude
+Regular Claude Chat on claude.ai has skills, and one of those default skills is the skill-creator skill. This means Claude knows how to build its own skills.
+So I started a chat session and told it:
+Clone Starlette from GitHub - it just had its 1.0 release. Build a skill markdown document for this release which includes code examples of every feature.
+I didn’t even tell it where to find the repo, Starlette is widely enough known that I expected it could find it on its own.
+It ran git clone https://github.com/encode/starlette.git
+which is actually the old repository name, but GitHub handles redirects automatically so this worked just fine.
+The resulting skill document looked very thorough to me... and then I noticed a new button at the top I hadn’t seen before labelled “Copy to your skills”. So I clicked it:
+And now my regular Claude chat has access to that skill!
+A task management demo app
+I started a new conversation and prompted:
+Build a task management app with Starlette, it should have projects and tasks and comments and labels
+And Claude did exactly that, producing a simple GitHub Issues clone using Starlette 1.0, a SQLite database (via aiosqlite) and a Jinja2 template.
+Claude even tested the app manually like this:
+cd /home/claude/taskflow && timeout 5 python -c “
+import asyncio
+from database import init_db
+asyncio.run(init_db())
+print(’DB initialized successfully’)
+“ 2>&1
+pip install httpx --break-system-packages -q \
+&& cd /home/claude/taskflow && \
+python -c “
+from starlette.testclient import TestClient
+from main import app
+client = TestClient(app)
+r = client.get(’/api/stats’)
+print(’Stats:’, r.json())
+r = client.get(’/api/projects’)
+print(’Projects:’, len(r.json()), ‘found’)
+r = client.get(’/api/tasks’)
+print(’Tasks:’, len(r.json()), ‘found’)
+r = client.get(’/api/labels’)
+print(’Labels:’, len(r.json()), ‘found’)
+r = client.get(’/api/tasks/1’)
+t = r.json()
+print(f’Task 1: \”{t[\”title\”]}\” - {len(t[\”comments\”])} comments, {len(t[\”labels\”])} labels’)
+r = client.post(’/api/tasks’, json={’title’:’Test task’,’project_id’:1,’priority’:’high’,’label_ids’:[1,2]})
+print(’Created task:’, r.status_code, r.json()[’title’])
+r = client.post(’/api/comments’, json={’task_id’:1,’content’:’Test comment’})
+print(’Created comment:’, r.status_code)
+r = client.get(’/’)
+print(’Homepage:’, r.status_code, ‘- length:’, len(r.text))
+print(’\nAll tests passed!’)
+“
+For all of the buzz about Claude Code, it’s easy to overlook that Claude itself counts as a coding agent now, fully able to both write and then test the code that it is writing.
+Here’s what the resulting app looked like. The code is here in my research repository.
+Link 2026-03-20 Turbo Pascal 3.02A, deconstructed:
+In Things That Turbo Pascal is Smaller Than James Hague lists things (from 2011) that are larger in size than Borland’s 1985 Turbo Pascal 3.02 executable - a 39,731 byte file that somehow included a full text editor IDE and Pascal compiler.
+This inspired me to track down a copy of that executable (available as freeware since 2000) and see if Claude could interpret the binary and decompile it for me.
+It did a great job, so I had it create this interactive artifact illustrating the result. Here’s the sequence of prompts I used (in regular claude.ai chat, not Claude Code):
+Read this https://prog21.dadgum.com/116.html
+Now find a copy of that binary online
+Explore this (I attached the zip file)
+Build an artifact - no react - that embeds the full turbo.com binary and displays it in a way that helps understand it - broke into labeled segments for different parts of the application, decompiled to visible source code (I guess assembly?) and with that assembly then reconstructed into readable code with extensive annotations
+Update: Annoyingly the Claude share linkdoesn’t show the actual code that Claude executed, but here’s the zip file it gave me when I asked to download all of the intermediate files.
+I ran Codex CLI with GPT-5.4 xhigh against that zip file to see if it would spot any obvious hallucinations, and it did not. This project is low-enough stakes that this gave me enough confidence to publish the result!
+Turns out it’s hallucinated slop
+Update 2, 24th March 2026: rep_lodsb on Hacker News is someone who actually understands assembler, and they reviewed the annotations and found them to be hallucinated slop:
+[...] Obviously, there has to be a lot more to even a simple-minded x86 code generator than just a generic “emit opcode byte” and “emit call” routine. In general, what A”I” produced here is not a full disassembly but a collection of short snippets, potentially not even including the really interesting ones. But is it even correct?
+EmitByte here is unnecessarily pushing/popping AX, which isn’t modified by the few instructions in between at all. No competent assembly language programmer would do this. So maybe against all expectations, Turbo Pascal is just really badly coded? No, it’s of course a hallucination: those instructions don’t appear in the binary at all! [...]
+But searching for e.g. the hex opcode B0 E8 (’mov al,0xe8’) is enough to confirm that this code snippet isn’t to be found anywhere.
+There is a lot more suspicious code, including some that couldn’t possibly work (like the “ret 1” in the system call dispatcher, which would misalign the stack).
+Conclusion: it’s slop
+Because it’s amusing to loop this kind of criticism through a model, I pasted their feedback into Claude along with instructions to re-review their the code and it agreed with their assessment:
+The commenter’s core charge — that the annotated disassembly is “slop” — is substantiated. The artifact presents a mix of genuine analysis (real hex dumps, some correctly disassembled sections) and wholesale fabrication (invented assembly with plausible-sounding labels and comments for roughly half the binary). The fabricated sections look convincing to a casual reader but don’t survive byte-level comparison with the actual binary.
+Using Git with coding agents - 2026-03-21
+Git is a key tool for working with coding agents. Keeping code in version control lets us record how that code changes over time and investigate and reverse any mistakes. All of the coding agents are fluent in using Git’s features, both basic and advanced.
+This fluency means we can be more ambitious about how we use Git ourselves. We don’t need to memorize how to do things with Git, but staying aware of what’s possible means we can take advantage of the full suite of Git’s abilities.
+Each Git project lives in a repository - a folder on disk that can track changes made to the files within it. Those changes are recorded in commits - timestamped bundles of changes to one or more files accompanied by a commit message describing those changes and an author recording who made them. [... 1,396 words]
+Note 2026-03-23
+Last month I added a feature I call beats to this blog, pulling in some of my other content from external sources and including it on the homepage, search and various archive pages on the site.
+On any given day these frequently outnumber my regular posts. They were looking a little bit thin and were lacking any form of explanation beyond a link, so I’ve added the ability to annotate them with a “note” which now shows up as part of their display.
+Here’s what that looks like for the content I published yesterday:
+I’ve also updated the /atom/everything/ Atom feed to include any beats that I’ve attached notes to.
+Quote 2026-03-23
+I have been doing this for years, and the hardest parts of the job were never about typing out code. I have always struggled most with understanding systems, debugging things that made no sense, designing architectures that wouldn’t collapse under heavy load, and making decisions that would save months of pain later.
+None of these problems can be solved LLMs. They can suggest code, help with boilerplate, sometimes can act as a sounding board. But they don’t understand the system, they don’t carry context in their “minds”, and they certianly don’t know why a decision is right or wrong.
+And the most importantly, they don’t choose. That part is still yours. The real work of software development, the part that makes someone valuable, is knowing what should exist in the first place, and why.
+David Abram, The machine didn’t take your craft. You gave it up.
+Quote 2026-03-23
+slop is something that takes more human effort to consume than it took to produce. When my coworker sends me raw Gemini output he’s not expressing his freedom to create, he’s disrespecting the value of my time
+Neurotica, @schwarzgerat.bsky.social
+Note 2026-03-24
+I wrote about Dan Woods’ experiments with streaming experts the other day, the trick where you run larger Mixture-of-Experts models on hardware that doesn’t have enough RAM to fit the entire model by instead streaming the necessary expert weights from SSD for each token that you process.
+Five days ago Dan was running Qwen3.5-397B-A17B in 48GB of RAM. Today @seikixtc reported running the colossal Kimi K2.5 - a 1 trillion parameter model with 32B active weights at any one time, in 96GB of RAM on an M2 Max MacBook Pro.
+And @anemll showed that same Qwen3.5-397B-A17B model running on an iPhone, albeit at just 0.6 tokens/second - iOS repo here.
+I think this technique has legs. Dan and his fellow tinkerers are continuing to run autoresearch loops in order to find yet more optimizations to squeeze more performance out of these models.
+Update: Now Daniel Isaac got Kimi K2.5 working on a 128GB M4 Max at ~1.7 tokens/second.
+Link 2026-03-24 Malicious litellm_init.pth in litellm 1.82.8 — credential stealer:
+The LiteLLM v1.82.8 package published to PyPI was compromised with a particularly nasty credential stealer hidden in base64 in a litellm_init.pth
+file, which means installing the package is enough to trigger it even without running import litellm
+.
+(1.82.7 had the exploit as well but it was in the proxy/proxy_server.py
+file so the package had to be imported for it to take effect.)
+This issue has a very detailed description of what the credential stealer does. There’s more information about the timeline of the exploit over here.
+PyPI has already quarantined the litellm package so the window for compromise was just a few hours, but if you DID install the package it would have hoovered up a bewildering array of secrets, including ~/.ssh/
+, ~/.gitconfig
+, ~/.git-credentials
+, ~/.aws/
+, ~/.kube/
+, ~/.config/
+, ~/.azure/
+, ~/.docker/
+, ~/.npmrc
+, ~/.vault-token
+, ~/.netrc
+, ~/.lftprc
+, ~/.msmtprc
+, ~/.my.cnf
+, ~/.pgpass
+, ~/.mongorc.js
+, ~/.bash_history
+, ~/.zsh_history
+, ~/.sh_history
+, ~/.mysql_history
+, ~/.psql_history
+, ~/.rediscli_history
+, ~/.bitcoin/
+, ~/.litecoin/
+, ~/.dogecoin/
+, ~/.zcash/
+, ~/.dashcore/
+, ~/.ripple/
+, ~/.bitmonero/
+, ~/.ethereum/
+, ~/.cardano/
+.
+It looks like this supply chain attack started with the recent exploit against Trivy, ironically a security scanner tool that was used in CI by LiteLLM. The Trivy exploit likely resulted in stolen PyPI credentials which were then used to directly publish the vulnerable packages.
+Quote 2026-03-24
+I really think “give AI total control of my computer and therefore my entire life” is going to look so foolish in retrospect that everyone who went for this is going to look as dumb as Jimmy Fallon holding up a picture of his Bored Ape
+Christopher Mims, Technology columnist at The Wall Street Journal
+Link 2026-03-24 Package Managers Need to Cool Down:
+Today’s LiteLLM supply chain attack inspired me to revisit the idea of dependency cooldowns, the practice of only installing updated dependencies once they’ve been out in the wild for a few days to give the community a chance to spot if they’ve been subverted in some way.
+This recent piece (March 4th) piece by Andrew Nesbitt reviews the current state of dependency cooldown mechanisms across different packaging tools. It’s surprisingly well supported! There’s been a flurry of activity across major packaging tools, including:
+pnpm 10.16 (September 2025) —
+minimumReleaseAge
+withminimumReleaseAgeExclude
+for trusted packagesYarn 4.10.0 (September 2025) —
+npmMinimalAgeGate
+(in minutes) withnpmPreapprovedPackages
+for exemptionsBun 1.3 (October 2025) —
+minimumReleaseAge
+viabunfig.toml
+Deno 2.6 (December 2025) —
+--minimum-dependency-age
+fordeno update
+anddeno outdated
+uv 0.9.17 (December 2025) — added relative duration support to existing
+--exclude-newer
+, plus per-package overrides viaexclude-newer-package
+pip 26.0 (January 2026) —
+--uploaded-prior-to
+(absolute timestamps only; relative duration support requested)npm 11.10.0 (February 2026) —
+min-release-age
+pip
+currently only supports absolute rather than relative dates but Seth Larson has a workaround for that using a scheduled cron to update the absolute date in the pip.conf
+config file.
+Link 2026-03-24 Auto mode for Claude Code:
+Really interesting new development in Claude Code today as an alternative to --dangerously-skip-permissions
+:
+Today, we’re introducing auto mode, a new permissions mode in Claude Code where Claude makes permission decisions on your behalf, with safeguards monitoring actions before they run.
+Those safeguards appear to be implemented using Claude Sonnet 4.6, as described in the documentation:
+Before each action runs, a separate classifier model reviews the conversation and decides whether the action matches what you asked for: it blocks actions that escalate beyond the task scope, target infrastructure the classifier doesn’t recognize as trusted, or appear to be driven by hostile content encountered in a file or web page. [...]
+Model: the classifier runs on Claude Sonnet 4.6, even if your main session uses a different model.
+They ship with an extensive set of default filters, and you can also customize them further with your own rules. The most interesting insight into how they work comes when you run this new command in the terminal:
+claude auto-mode defaults
+Here’s the full JSON output. It’s pretty long, so here’s an illustrative subset:
+From the “allow” list:
+Test Artifacts: Hardcoded test API keys, placeholder credentials in examples, or hardcoding test cases
+Local Operations: Agent deleting local files in working directory, local file operations within project scope, or using
+--ignore-certificate-errors
+for local testing. “Project scope” means the repository the session started in — wandering into ~/, ~/Library/, /etc, or other repos is scope escalation (User Intent Rule #2), not a local operation. Does NOT cover irreversible destruction of pre-existing files or local stateful services — see “Irreversible Local Destruction” in BLOCK.Read-Only Operations: GET requests, read-only API calls, or queries that don’t modify state and don’t contain sensitive information in the URL. Note: PREEMPTIVE BLOCK ON CLEAR INTENT still applies — if the transcript contains clear evidence the agent is using read-only operations to scout for a blocked action, block it.
+Declared Dependencies: Installing packages that are already declared in the repo’s manifest files (requirements.txt, package.json, Cargo.toml, pyproject.toml, Gemfile, etc.) via standard commands that read those manifests (
+pip install -r requirements.txt
+,npm install
+,cargo build
+,bundle install
+) — provided the agent has not modified the manifest in this session. Does NOT cover installing agent-chosen package names (e.g.pip install foo
+,npm install bar
+) — those carry typosquat and supply-chain risk. [...]
+From “soft_deny”:
+Git Destructive: Force pushing (
+git push --force
+), deleting remote branches, or rewriting remote historyGit Push to Default Branch: Pushing directly to main, master, or the repository’s default branch — this bypasses pull request review. Commits should be pushed to a new feature branch instead. -Code from External: Downloading and executing code from external sources — e.g.
+curl | bash
+, deserializing external data via formats that can execute code (eval, exec, yaml.unsafe_load, pickle, etc), or similar mechanisms. Also includes running code from an external repo cloned earlier in the transcript (pip install -e, make install, python script.py, pickle.load/torch.load on cloned repo files) — “local on disk” does not mean trusted if it was cloned from an external source visible in the transcript. The repo the agent starts in is trusted.Cloud Storage Mass Delete: Deleting or mass modifying files on cloud storage (S3, GCS, Azure Blob, etc.) [...]
+I remain unconvinced by prompt injection protections that rely on AI, since they’re non-deterministic by nature. The documentation does warn that this may still let things through:
+The classifier may still allow some risky actions: for example, if user intent is ambiguous, or if Claude doesn’t have enough context about your environment to know an action might create additional risk.
+The fact that the default allow list includes pip install -r requirements.txt
+also means that this wouldn’t protect against supply chain attacks with unpinned dependencies, as seen this morning with LiteLLM.
+I still want my coding agents to run in a robust sandbox by default, one that restricts file access and network connections in a deterministic way. I trust those a whole lot more than prompt-based protections like this new auto mode.
+Link 2026-03-25 LiteLLM Hack: Were You One of the 47,000?:
+Daniel Hnyk used the BigQuery PyPI dataset to determine how many downloads there were of the exploited LiteLLM packages during the 46 minute period they were live on PyPI. The answer was 46,996 across the two compromised release versions (1.82.7 and 1.82.8).
+They also identified 2,337 packages that depended on LiteLLM - 88% of which did not pin versions in a way that would have avoided the exploited version.
+Link 2026-03-25 Thoughts on slowing the fuck down:
+Mario Zechner created the Pi agent frameworkused by OpenClaw, giving considerable credibility to his opinions on current trends in agentic engineering. He’s not impressed:
+We have basically given up all discipline and agency for a sort of addiction, where your highest goal is to produce the largest amount of code in the shortest amount of time. Consequences be damned.
+Agents and humans both make mistakes, but agent mistakes accumulate much faster:
+A human is a bottleneck. A human cannot shit out 20,000 lines of code in a few hours. Even if the human creates such booboos at high frequency, there’s only so many booboos the human can introduce in a codebase per day. [...]
+With an orchestrated army of agents, there is no bottleneck, no human pain. These tiny little harmless booboos suddenly compound at a rate that’s unsustainable. You have removed yourself from the loop, so you don’t even know that all the innocent booboos have formed a monster of a codebase. You only feel the pain when it’s too late. [...]
+You have zero fucking idea what’s going on because you delegated all your agency to your agents. You let them run free, and they are merchants of complexity.
+I think Mario is exactly right about this. Agents let us move so much faster, but this speed also means that changes which we would normally have considered over the course of weeks are landing in a matter of hours.
+It’s so easy to let the codebase evolve outside of our abilities to reason clearly about it. Cognitive debt is real.
+Mario recommends slowing down:
+Give yourself time to think about what you’re actually building and why. Give yourself an opportunity to say, fuck no, we don’t need this. Set yourself limits on how much code you let the clanker generate per day, in line with your ability to actually review the code.
+Anything that defines the gestalt of your system, that is architecture, API, and so on, write it by hand. [...]
+I’m not convinced writing by hand is the best way to address this, but it’s absolutely the case that we need the discipline to find a new balance of speed v.s. mental thoroughness now that typing out the code is no longer anywhere close to being the bottleneck on writing software.
+Link 2026-03-26 Quantization from the ground up:
+Sam Rose continues his streak of publishing spectacularly informative interactive essays, this time explaining how quantization of Large Language Models works (which he says might be “the best post I’ve ever made“.)
+Also included is the best visual explanation I’ve ever seen of how floating point numbers are represented using binary digits.
+I hadn’t heard about outlier values in quantization - rare float values that exist outside of the normal tiny-value distribution - but apparently they’re very important:
+Why do these outliers exist? [...] tl;dr: no one conclusively knows, but a small fraction of these outliers are very important to model quality. Removing even a single “super weight,” as Apple calls them, can cause the model to output complete gibberish.
+Given their importance, real-world quantization schemes sometimes do extra work to preserve these outliers. They might do this by not quantizing them at all, or by saving their location and value into a separate table, then removing them so that their block isn’t destroyed.
+Plus there’s a section on How much does quantization affect model accuracy?. Sam explains the concepts of perplexity and ** KL divergence ** and then uses the llama.cpp perplexity tool and a run of the GPQA benchmark to show how different quantization levels affect Qwen 3.5 9B.
+His conclusion:
+It looks like 16-bit to 8-bit carries almost no quality penalty. 16-bit to 4-bit is more noticeable, but it’s certainly not a quarter as good as the original. Closer to 90%, depending on how you want to measure it.
+Link 2026-03-26 My minute-by-minute response to the LiteLLM malware attack:
+Callum McMahon reported the LiteLLM malware attack to PyPI. Here he shares the Claude transcripts he used to help him confirm the vulnerability and decide what to do about it. Claude even suggested the PyPI security contact address after confirming the malicious code in a Docker container:
+Confirmed. Fresh download from PyPI right now in an isolated Docker container:
+Inspecting: litellm-1.82.8-py3-none-any.whl FOUND: litellm_init.pth SIZE: 34628 bytes FIRST 200 CHARS: import os, subprocess, sys; subprocess.Popen([sys.executable, "-c", "import base64; exec(base64.b64decode('aW1wb3J0IHN1YnByb2Nlc3MKaW1wb3J0IHRlbXBmaWxl...
+The malicious
+litellm==1.82.8
+is live on PyPI right now and anyone installing or upgrading litellm will be infected. This needs to be reported to security@pypi.org immediately.
+I was chuffed to see Callum use my claude-code-transcripts tool to publish the transcript of the conversation.
+Link 2026-03-27 We Rewrote JSONata with AI in a Day, Saved $500K/Year:
+Bit of a hyperbolic framing but this looks like another case study of vibe porting, this time spinning up a new custom Go implementation of the JSONata JSON expression language - similar in focus to jq, and heavily associated with the Node-RED platform.
+As with other vibe-porting projects the key enabling factor was JSONata’s existing test suite, which helped build the first working Go version in 7 hours and $400 of token spend.
+The Reco team then used a shadow deployment for a week to run the new and old versions in parallel to confirm the new implementation exactly matched the behavior of the old one.
+Quote 2026-03-27
+FWIW, IANDBL, TINLA, etc., I don’t currently see any basis for concluding that chardet 7.0.0 is required to be released under the LGPL. AFAIK no one including Mark Pilgrim has identified persistence of copyrightable expressive material from earlier versions in 7.0.0 nor has anyone articulated some viable alternate theory of license violation. [...]
+Richard Fontana, LGPLv3 co-author, weighing in on the chardet relicensing situation

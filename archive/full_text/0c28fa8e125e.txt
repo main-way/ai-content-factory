@@ -1,0 +1,46 @@
+Synopsys 3D-IO and the shift to hybrid-bonded 3D integration.
+By Lakshmi Jain and Wei-Yu Ma
+As AI-driven workloads continue to push the boundaries of compute scale, power efficiency, and bandwidth density, conventional die-to-die interconnect technologies—such as SerDes-based links and wide parallel IO—are increasingly becoming limiting factors. These approaches struggle to meet the growing demands for higher bandwidth density and improved energy efficiency. In response, Synopsys developed its 3DIO solution IP, a protocol-agnostic, digitally oriented die-to-die IO architecture specifically designed to enable low-power, low-latency communication in heterogeneous 3D integration environments.
+The rise of hybrid bonding has further reinforced this direction. By enabling extremely short vertical interconnects and supporting ultra-fine pitch connections, hybrid bonding allows for significantly higher bandwidth density and reduced power consumption, while eliminating much of the complexity associated with long-reach analog signaling and clock recovery mechanisms.
+As these advantages became evident, the broader industry began to converge on a similar architectural approach. The introduction of UCIe 2.0 brought system-level manageability enhancements, followed by UCIe 3D, which is purpose-built to optimize fine-pitch hybrid bonding across a wide range of bump pitches. Its focus on vertically integrated connectivity and digitally controlled die-to-die communication closely aligns with the architectural trajectory established earlier by Synopsys 3DIO IP.
+Fig. 1: Evolution of IO connectivity
+Breaking the Bottleneck: 3DIO Redefines Die-to-Die Connectivity
+Building on this architectural foundation, Synopsys 3DIO translates these principles into a practical, manufacturable die-to-die solution. From its inception, 3DIO was designed as a fully digital IO architecture, enabling seamless integration across stacked dies without the overhead of protocol layers, long reach analog signaling, or clock recovery circuitry.
+As hybrid bonding moved to the forefront (Figure 1), 3DIO directly leveraged its strengths: ultra-tight vertical connections, exceptional bandwidth density, and substantial power savings to deliver simpler integration, improved reliability, and superior area efficiency compared to legacy serial IO approaches.
+Critically, the original 3DIO PHY was built to support this model, streamlining timing closure and physical implementation across stacked dies, and establishing a scalable foundation for reliable 3D system design.
+Industry Momentum: Synopsys 3DIO Sets the Pace
+As the benefits of vertically optimized die-to-die connectivity became clear, the industry converged in a similar architectural direction. The industry’s shift toward UCIe 2.0 and UCIe 3D—both optimized for fine‑pitch hybrid bonding and digitally managed vertical links—reinforces the architectural direction pioneered by Synopsys 3DIO.
+Building on this industry momentum, we expanded the 3DIO portfolio to meet the latest performance, flexibility, and integration challenges across AI, HPC, networking, and edge workloads.
+Scalable 3DIO PHY Architecture and System-Level Integration
+Rapid innovation in AI, HPC, networking, and edge computing has pushed multi‑die connectivity requirements further than ever. In response, we significantly enhanced the 3DIO portfolio to meet modern performance, flexibility, and integration demands:
+Our enhanced 3DIO PHY now supports up to ~4-6 Gb/s per link at < 0.05 pJ/bit, operating in SDR or DDR modes. Optimized for hybrid bonding and aligned with UCIe‑3D guidance, it provides exceptional vertical bandwidth density while maintaining very low energy.
+To accommodate varied multi-die topologies, we introduced a cluster-based 3DIO PHY and a digital control layer that scales bandwidth and testability through composition and configuration:
+– Scalable clusters: Modular architecture constructed from 16lane TX/RX clusters (with dedicated clocks) supporting configurations from a single cluster up to larger multi-cluster PHY instances.
+– Configurable redundancy + repair: Embedded digital logic supports repair and configuration at the cluster level, enabling localized fault tolerance without redesign.
+– Pre-/post-bond built-in self-test (BIST): Cluster level BIST capability supports manufacturing test coverage across bonding stages.
+– System level scaling via digital controller/wrapper: A synthesizable integration layer exposes configuration and control through protocols such as the advanced peripheral bus (APB) and joint test action group (JTAG), enabling orchestration across multiple PHY instances and standard SoC integration.
+Two Complementary Offerings: A Unified 3DIO Strategy
+To support different integration philosophies and design requirements, the 3DIO portfolio includes two complementary options.
+Fig. 2: Synopsys 3DIO Platform
+Bottom line: Whether you want ultimate flexibility (3DIO cell) or a fast path to closure at scale (3DIO PHY), both are architected for fine-pitch hybrid bonding and vertical bandwidth density.
+Key Architectural Enablers for Scalable 3D Integration
+As advanced packaging evolves toward hybrid bonded, fine pitch 3D architectures, design teams face increasing constraints in interconnect density, timing closure, and energy efficiency. Synopsys 3DIO provides an end-to-end, tool integrated flow for 3D systems, enabling efficient implementation, predictable timing closure, and flexible test and repair across the full multi-die lifecycle and is engineered specifically to address these challenges (Figure 3).
+Fig. 3: Accelerating Multi-Die Integration
+Hybrid bonded systems require ultracompact IO structures that minimize routing congestion while enabling dense vertical connectivity. The 3DIO cell architecture is dimensioned for fine-pitch environments, supporting high bandwidth density without the overhead of long reach analog signaling.
+Scalability is achieved through a cluster-based PHY architecture incorporating configurable redundancy, pre and post bond BIST, and repair mechanisms. This localized approach enables predictable yield scaling as inter-die link counts increase, making 3DIO well suited for large, densely interconnected 3D stacks.
+The short vertical die-to-die channel eliminates the need for complex clock recovery circuits. With SDR/DDR source-synchronous lanes, FIFO elasticity, and clock delay monitoring, 3DIO maintains robust timing margins across process, voltage, and temperature variations.
+As designs scale to thousands of vertical interconnects, maintaining signal integrity and timing margin becomes increasingly challenging. 3DIO’s source-synchronous operation, combined with built-in redundancy and BIST, directly mitigates these risks and improves bring up predictability in large-scale 3D systems.
+Integrated CDM ESD, VDD/VSS bumps, and TSV‑aware bottom‑die constructs simplify power delivery and IR planning across stacked dies, while pre‑validated physical checks shorten die‑to‑package integration cycles.
+Why Synopsys Is Uniquely Positioned
+As the 3D integration landscape evolves, system designers increasingly require more than isolated IP blocks or point tools. They need a cohesive, scalable ecosystem spanning architecture through signoff.
+Synopsys addresses this need with 3DIO and 3DIO PHY IP, integrated with 3D extraction, analysis, and the Synopsys 3DIC Compiler, forming an end-to-end multi-die design solution.
+In contrast to approaches that rely on standalone IP, disconnected tools, or service centric flows, Synopsys provides a configurable, production ready 3DIO portfolio coupled with a vendor supported design methodology that spans planning, implementation, verification, and signoff. This integrated approach enables predictable convergence for complex 3D systems.
+Customer Proof Point: Socionext
+Socionext’s recent 3DIC achievements provide strong validation of Synopsys 3DIO IP in production‑grade, heterogeneous multi‑die systems. In an accelerated program resulting in two successful 3DIC tape outs within seven months, Socionext used Synopsys 3DIO to:
+Socionext’s experience highlights a broader trend: customers who adopt Synopsys 3DIO early in their partitioning and integration flow can reduce design iterations, improve predictability, and accelerate time‑to‑tapeout for advanced, AI-class multi‑die systems.
+Building on these customer results, we continue to evolve 3DIO to support upcoming process nodes and packaging technologies.
+Looking Ahead: Scaling 3DIO for Next-Generation Nodes
+As foundries transition from FinFET to Gate-All-Around (GAA) architectures and begin exploring complementary FET (CFET) integration, Synopsys continues to evolve its 3DIO IP portfolio in lockstep with leading-edge process technologies—enabling customers to migrate designs with minimal reengineering.
+Ongoing innovation is focused on several key areas:
+For more information visit: Synopsys 3DIO Solution IP.
+Wei-Yu Ma is technical marketing director for IO library IP at Synopsys.

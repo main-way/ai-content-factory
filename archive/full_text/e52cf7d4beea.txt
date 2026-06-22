@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Improving Bayesian Optimization via Training-Aware Conditional Diffusion Models
+View PDF HTML (experimental)Abstract:Bayesian optimization (BO) is a widely used approach for black-box optimization that uses a Gaussian process (GP) as a surrogate and guides sequential evaluations via an acquisition function, with the ultimate goal of locating the global optimum $\mathbf{x}^{\star}$. To align with this goal, information-based acquisition functions such as Predictive Entropy Search (PES) model $\mathbf{x}^{\star}$ as a random variable and reduce the entropy of its distribution, but approximating this distribution via traditional GP posterior sampling is computationally expensive. To address this limitation, we leverage Conditional Diffusion Models (CDMs) to efficiently approximate the distribution of $\mathbf{x}^{\star}$ and develop BO-inherent training strategies for CDMs. Motivated by the structural properties of the CDM-learned distribution, we further develop an acquisition strategy termed Diffusion-based Mode Seeking (DMS) to guide the sequential evaluation. We establish a sub-optimality guarantee for the CDM-learned distribution and demonstrate through extensive experiments that DMS outperforms standard BO baselines.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,49 @@
+{
+  "date": "2026-01-03",
+  "count": 2,
+  "posts": [
+    {
+      "id": "d3f4aa6ff304",
+      "title": "VL-JEPA is a lean, fast vision-language model that rivals the giants",
+      "url": "https://bdtechtalks.com/2026/01/03/meta-vl-jepa-vision-language-model/?utm_source=rss&utm_medium=rss&utm_campaign=meta-vl-jepa-vision-language-model",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-01-03T21:25:17+00:00",
+      "summary": "Meta’s VL-JEPA outperforms massive vision-language models on world modeling tasks by learning to predict \"thought vectors\" instead of text tokens. The post VL-JEPA is a lean, fast vision-language model that rivals the giants first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI research papers",
+        "Artificial intelligence (AI)",
+        "Joint embedding predictive architecture (JEPA)",
+        "Meta",
+        "vision language models (VLM)"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "fb5626f10819",
+      "title": "Три белых коня, эх три белых коня: пиар, свой контент и январь",
+      "url": "https://roem.ru/03-01-2026/307232/tri-belyh-konya/?from=roem_rss",
+      "source": "Roem.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-01-03T16:49:24+00:00",
+      "summary": "В 2006-м году, первого января, я с питерской подругой из Odigo на питерском же Просвете штурмовал кинозалы местного мультиплекса с целью посмотреть «Дневной дозор» — занятие оказалось непростым, прямо сейчас сесть в кинозал было практически невозможно, пришлось брать билеты на сеанс через несколько часов, впрочем оставшееся время мы тоже провели с толком, так что грех жаловаться на очереди. Лишь сейчас можно понять, свидетелем чего мы на самом деле стали — у Эрнста получилось, с большой буквы «П» — первый российский фильм, собравший ярд в принципе. Грех жаловаться на то, что пишу я это в…",
+      "author": "Юрий Синодов, sinodov@roem.ru",
+      "tags": [
+        "Авторское",
+        "Кадры",
+        "Кейсы",
+        "Медиа",
+        "Импортозамещение",
+        "Кино",
+        "Прокат"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

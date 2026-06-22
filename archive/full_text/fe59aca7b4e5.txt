@@ -1,0 +1,63 @@
+On Vinyl Cache and Varnish Cache¶
+2026-04-08
+We received helpful feedback that, as of April 2026, the situation around Vinyl Cache and Varnish Cache might not be easy to understand for users and distribution package maintainers alike.
+This is an attempt to help clarify.
+The backstory is that the former Varnish Cache FOSS project changed its name to Vinyl Cache. Please read 20 years old and it is time to get serious(er) if you have not already.
+This document has three parts. The first two parts are jointly approved by all of the Vinyl Cache Governing Board. The third part is an opinion by two members only.
+What happened since we announced the rename¶
+Since we announced the above together with the Varnish Cache 8.0 release, the former Varnish Cache FOSS team, now Vinyl Cache Team, has been working hard on making the name change and many related changes happen until the 9.0 release on 2026-03-16.
+Here is a summary of events from our perspective:
+The homepage https://vinyl-cache.org continues to serve all content previously available under https://varnish-cache.org, but the project name has been changed to Vinyl Cache and a new project identity (logo, mascot, color scheme) has been established.
+Care has been taken to preserve the name Varnish Cache for content referring to previous releases up to Varnish Cache 8.0.
+The authoritative source repository, issues and pull requests have been migrated from GitHub to a self hosted forgejo instance on https://code.vinyl-cache.org (see Vinyl Cache has left github). All old tickets have been preserved and issue numbering continues where it left off on GitHub.
+The GitHub Varnish Cache Organization and all repositories have been archived. Repositories have a final commit updating the README and build scripts to point to the new repository, see for example The Varnish Cache README.
+All references to Varnish in the Vinyl Cache source code have been replaced. See also information on the rename in the 9.0 release notes.
+As with the homepage, care has been taken to preserve the name Varnish Cache in historic documents as well as not to change valid references to copyright and authorship of Varnish Software.
+Mailing lists have been renamed and moved to the vinyl-cache.org domain, but their historic content has been preserved.
+Varnish Software has created a new repository with the name “Varnish” on GitHub, which continues to use the name “Varnish Cache”.
+The last common commit of this new repository and what is now Vinyl Cache is
+63806461a205a11da12deb21051f654e35acee9e
+(Vinyl Cache, Varnish Cache by Varnish Software), the next commit on the Varnish Software repository does not exist in Vinyl Cache.Note that GitHub fork tracking has not been used.
+Varnish Software has forked the VTest project, which provides the varnishtest program. Likewise, fork tracking has not been used.
+Varnish Software has created a new homepage for the relaunched Varnish Cache.
+For https://www.varnish-cache.org/, the FOSS project had put in place a 301 redirect to https://vinyl-cache.org/ before the 9.0 launch. After the launch, which was agreed upon as the “demarcation point” for the completed rename and split, Varnish Software momentarily put up a simple page with “click here for Varnish Cache, click here for Vinyl Cache”. At some point before 2026-04-02, Varnish Software has replaced it with a 301 redirect to https://www.varnish.org/index.html.
+Telling apart Varnish Cache and Vinyl Cache¶
+So, confusingly, there is now Varnish Cache and Vinyl Cache, so which is which?
+What is Vinyl Cache?¶
+We regard the Vinyl Cache FOSS project as the continuation of the former Varnish Cache FOSS project for the following reasons:
+The maintainer team is unchanged and even continues to have a member employed by Varnish Software, based on a long standing agreement that each of the companies responsible for most of the core code contributions nominate one maintainer seat. The Vinyl Cache maintainer roles are currently taken by:
+Poul Henning Kamp
+Walid Boudebouda
+Nils Goroll
+The day-to-day operation of the Vinyl Cache project continues to function as before, with the same review processes, same bi-weekly bug wash, same main responsibilities etc.
+As explained before, https://vinyl-cache.org/ has the same content as https://www.varnish-cache.org/ used to have, except for the rename. Everything is tracked in git.
+Even the bug fix releases Varnish Cache 8.0.1 and Varnish Cache 6.0.17 were taken from branches 8.0 and 6.0 on the Vinyl Cache repository.
+For all practical purposes, we think it is fair to say that the Vinyl Cache Project is the former Varnish Cache FOSS project continued, just under a new name and with a governance model which we wanted for years.
+We said it would be a rename, and it is a rename
+What is the new Varnish Cache?¶
+To quote https://www.varnish.org/index.html:
+Varnish Cache is a downstream distribution of the Vinyl Cache open source project, delivering a stable supported LTS release with additional tooling and features on top.
+The new Varnish Cache is governed by Varnish Software. The repository is located under the Varnish Software GitHub organization. The maintainers are Varnish Software Employees.
+The code base already contains commits which would be highly contended if proposed for merge into Vinyl Cache. This may be a regarded as a benefit, so this statement is meant to be informational, not qualitative.
+Varnish Software has a trademark policy which applies to Varnish Cache.
+Should you choose Vinyl Cache or Varnish Cache?¶
+It is up to you and we want to be careful not to make a recommendation.
+But we are convinced that it is fair to state that the Vinyl Cache FOSS project is the continuation of the former Varnish Cache FOSS project and that, for all intends and purposes, the new Varnish Cache by Varnish Software is a new downstream project, with different governance, new code and different coding standards.
+Again, this can be seen as an advantage or not, this judgement is up to everyone to make for themselves.
+But the new Varnish Cache by Varnish Software project is by no means the continuation of the former Varnish Cache FOSS project. Vinyl Cache is that continuation.
+Our opinion¶
+Above, we made an effort to only stick to verifiable facts. But we also have an opinion.
+This section only represents the opinion of slink and phk and is not shared by all of the Vinyl Cache Governing Board.
+You should think about Varnish/Vinyl as you do about MySQL/MariaDB¶
+There are three distinct entities:
+Varnish Cache before the corporate takeover
+Repos (archived) at: https://github.com/varnishcache/varnish-cache
+Vinyl Cache
+Repos (live) at: https://code.vinyl-cache.org/vinyl-cache/vinyl-cache
+Varnish Cache after the corporate takeover.
+Repos (live) at: https://github.com/varnish/varnish
+A and B are the same thing: The independent FOSS project you have known and relied on for twenty years, which only exists to create high-quality Free and Open Source Software, forced to change our name.
+C is a brand new fork of A, presenting as a FOSS project, but 100% controlled by a single for-profit corporation, using our old name, covered by a trademark policy.
+In other words: Exactly the same situation, as when Oracle bought MySQL and that FOSS project was forced to rename to MariaDB.
+- History does not repeat, […] it merely rhymes.
+– (probably) Theodor Reik

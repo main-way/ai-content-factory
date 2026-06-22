@@ -1,0 +1,11 @@
+Computer Science > Machine Learning
+Title:Artemis: Anatomy-Resolved inTervention for Eliminating Multimodal NeuroImage confounderS
+View PDF HTML (experimental)Abstract:Multimodal neuroimaging, integrating functional connectivity from fMRI and structural connectivity from DTI, enables non-invasive analysis of brain networks using graph neural networks. However, demographic factors such as age and sex systematically confound the relationship between brain connectivity and clinical outcomes, causing GNNs to exploit spurious shortcuts rather than learning causally invariant representations. While recent causal GNN methods introduce causality at the graph-modeling level, their causal mechanisms remain domain-agnostic without accounting for the real-world confounders inherent in clinical neuroimaging data. Moreover, brain networks are constructed from atlas-based parcellations where each region exhibits distinct sensitivity to demographic factors, necessitating region-aware adjustment. We propose Artemis, a region-level causal framework that bridges this gap with causal intervention at each brain region independently by learning region-specific confounder representations with lightweight parameters. Our adjustment comprehensively utilized the multimodal functional and structural features for graph reasoning as a plug-in module compatible with arbitrary GNN backbones. Experiments on three benchmarks, ADNI for disease diagnosis, OASIS for dementia staging, and HCP for sex classification, demonstrate consistent improvements over representative GNN-based baselines. Multiple supporting experiments further demonstrate statistical significance and neuroscientific interpretability.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

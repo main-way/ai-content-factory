@@ -1,0 +1,4 @@
+fetch-skills.ts
+import { getVercelOidcToken } from '@vercel/oidc';
+const token = await getVercelOidcToken();const res = await fetch('https://skills.sh/api/v1/skills?per_page=10', { headers: { Authorization: `Bearer ${token}` },});
+Fetch skills with your project's Vercel OIDC token

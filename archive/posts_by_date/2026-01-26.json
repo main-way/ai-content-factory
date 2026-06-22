@@ -1,0 +1,40 @@
+{
+  "date": "2026-01-26",
+  "count": 2,
+  "posts": [
+    {
+      "id": "eb1126460017",
+      "title": "Recursive Language Models: A new framework for infinite context in LLMs",
+      "url": "https://bdtechtalks.com/2026/01/26/recursive-language-models/?utm_source=rss&utm_medium=rss&utm_campaign=recursive-language-models",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-01-26T14:00:00+00:00",
+      "summary": "Brute-forcing larger context windows is hitting a mathematical wall. Here is how MIT’s new framework solves \"context rot\" to process 10 million tokens and beyond. The post Recursive Language Models: A new framework for infinite context in LLMs first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI research papers",
+        "Artificial intelligence (AI)",
+        "large language models",
+        "MIT"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "ae36c92a1b7d",
+      "title": "Import AI 442: Winners and losers in the AI economy; math proof automation; and industrialization of cyber espionage",
+      "url": "https://importai.substack.com/p/import-ai-442-winners-and-losers",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-01-26T13:31:29+00:00",
+      "summary": "Is superintelligence a phase change or a gradual shift?",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

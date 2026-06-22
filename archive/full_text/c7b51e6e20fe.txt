@@ -1,0 +1,12 @@
+Mathematics > Statistics Theory
+Title:Assessing model calibration with boosting trees
+View PDF HTML (experimental)Abstract:The main goal in regression modelling consists in approximating the conditional mean of a response given a set of features. A regression function is said to be calibrated if the resulting mean estimates match the true conditional means for almost every set of features. Aiming for calibration seems not achievable in practice as one typically deals with finite samples of noisy observations. A weaker notion of calibration is auto-calibration, and it means that the expectation of responses being given the same mean estimate matches this estimate. This notion is important, e.g., in insurance pricing as it ensures no cross-subsidization between different price cohorts. In this paper, we show that boosting trees can be used to test necessary conditions for calibration and auto-calibration, respectively. The practical relevance of our approach is supported by a numerical example, in which the proposed tests prove to be very powerful on a large insurance dataset.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

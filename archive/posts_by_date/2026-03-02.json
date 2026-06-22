@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-02",
+  "count": 2,
+  "posts": [
+    {
+      "id": "7067e9eaeab8",
+      "title": "How Databricks’ FlashOptim cuts LLM training memory by 50 percent",
+      "url": "https://bdtechtalks.com/2026/03/02/flashoptim-llm-training-optimization/?utm_source=rss&utm_medium=rss&utm_campaign=flashoptim-llm-training-optimization",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-03-02T14:34:44+00:00",
+      "summary": "Training large language models usually requires a cluster of GPUs. FlashOptim changes the math, enabling full-parameter training on fewer accelerators. The post How Databricks’ FlashOptim cuts LLM training memory by 50 percent first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI research papers",
+        "Artificial intelligence (AI)",
+        "Databricks",
+        "deep learning",
+        "large language models",
+        "LLM training"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "27665cddd774",
+      "title": "Import AI 447: The AGI economy; testing AIs with generated games; and agent ecologies",
+      "url": "https://importai.substack.com/p/import-ai-447-the-agi-economy-testing",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-02T13:45:27+00:00",
+      "summary": "What might a superintelligence arcology be like?",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2025-10-17",
+  "count": 2,
+  "posts": [
+    {
+      "id": "3e2a4ab28350",
+      "title": "Halloween costumes by tiny neural net",
+      "url": "https://www.aiweirdness.com/halloween-costumes-by-tiny-neural-net/",
+      "source": "AI Weirdness",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "low",
+      "published": "2025-10-17T16:54:44+00:00",
+      "summary": "I&apos;ve recently been experimenting with one of my favorite old-school neural networks, a tiny program that runs on my laptop and knows only about the data I give it. Without internet training, char-rnn doesn&apos;t have outside references to draw on (for better or for worse) but",
+      "author": "Janelle Shane",
+      "tags": [
+        "neural networks",
+        "char-rnn",
+        "halloween",
+        "halloween costumes",
+        "tiny language models"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "452857946070",
+      "title": "Bonus: more halloween costumes from tiny neural net",
+      "url": "https://www.aiweirdness.com/bonus-more-halloween-costumes-from-tiny-neural-net/",
+      "source": "AI Weirdness",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "low",
+      "published": "2025-10-17T16:52:59+00:00",
+      "summary": "",
+      "author": "Janelle Shane",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

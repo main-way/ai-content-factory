@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Decoding the Alzheimer's Continuum: Interpretable Multi-Gate Routing for Diagnosis and Transition Prediction
+View PDF HTML (experimental)Abstract:Alzheimer's disease (AD) manifests as a continuous progression from normal cognition (NC) through mild cognitive impairment (MCI) to dementia. However, most deep learning approaches reduce this continuum to disjointed classification tasks, largely ignoring dynamic stage transitions. To decode this complex progression, we propose M$^3$AD, a unified framework that jointly addresses three-class diagnosis classification and diagnosis stage transition prediction using only T1-weighted sMRI. M$^3$AD leverages an interpretable multi-gate mixture of experts architecture, employing specialized routing mechanisms to dynamically capture both diagnosis-specific pathological patterns and shared structural features across the continuum. It further integrates clinical priors (age, sex, eTIV) via adaptive attention fusion to enhance generalization. M$^3$AD achieves 95.13% accuracy, compared to 90.44% reported by MCLNC under its original experimental setting, and 94.87% for transition prediction. Crucially, analyzing the multi-gate routing reveals distinct expert activation signatures distinguishing stable from progressive MCI, providing a mechanistic basis for individual-level progression risk stratification. Code is available at this https URL.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

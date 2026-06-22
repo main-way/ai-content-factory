@@ -1,0 +1,67 @@
+{
+  "date": "2026-05-15",
+  "count": 4,
+  "posts": [
+    {
+      "id": "8ec382739a7d",
+      "title": "Gemini 3.5: frontier intelligence with action",
+      "url": "https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-action/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-15T22:50:12+00:00",
+      "summary": "Gemini 3.5 is built to help you execute complex, agentic workflows.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "576166d12472",
+      "title": "Further Notes on Our Recent Research on AI Delegation and Long-Horizon Reliability",
+      "url": "https://www.microsoft.com/en-us/research/blog/further-notes-on-our-recent-research-on-ai-delegation-and-long-horizon-reliability/",
+      "source": "Microsoft Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-15T18:06:57+00:00",
+      "summary": "Our recent paper, “LLMs Corrupt Your Documents When You Delegate”, has generated discussion about the reliability of AI systems in delegated workflows. We appreciate the interest in this work and want to clarify several important points about what the paper does—and does not—claim. The research aims to develop robust evaluation methods for long-horizon delegated and [&#8230;] The post Further Notes on Our Recent Research on AI Delegation and Long-Horizon Reliability appeared first on Microsoft Research .",
+      "author": "Philippe Laban, Tobias Schnabel, Jennifer Neville",
+      "tags": [
+        "Research Blog"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "e8c0ad032aca",
+      "title": "Introducing Business AI on WhatsApp for Small Businesses in India",
+      "url": "https://about.fb.com/news/2026/05/introducing-business-ai-on-whatsapp-for-small-businesses-in-india/",
+      "source": "Meta Newsroom",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "low",
+      "published": "2026-05-15T04:59:51+00:00",
+      "summary": "To enable small businesses with AI-powered customer support directly into the WhatsApp Business app, we've launched Business AI in India. The post Introducing Business AI on WhatsApp for Small Businesses in India appeared first on Meta Newsroom .",
+      "author": "Facebook",
+      "tags": [
+        "Homepage - Hidden",
+        "India Newsroom"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "fc2ee7451534",
+      "title": "Issue #44",
+      "url": "http://augmentedcoding.dev/issue-44/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-15T00:00:00+00:00",
+      "summary": "When AI produces PhD-level mathematics in an hour WORDPRESS.COM We’re all acutely aware of the impact AI is having on our field of expertise, that of software engineering, and are experiencing a mixture of amazement and unease as a result. However, AI is having a growing impact on other fields, especially those with similar characteristics to ours (e.g. machine provable correctness). This blog post, a member of the Department of Pure Mathematics and Mathematical Statistics at Cambridge University, describes his recent experience with GPT 5.5 Pro: “ChatGPT 5.5 Pro […] produced a piece of…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

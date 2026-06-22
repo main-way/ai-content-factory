@@ -1,0 +1,274 @@
+Introduction
+For one of our recent projects, modeling emotions in online media, we required an emotion recognition model with open weights and a flexible license, maintaining high transparency standards, and, of course, benefiting from the lower costs associated with open models. We subjectively prefer European models, but Hugging Face did not offer a Mistral alternative with a developed model card. One possible reason is that the most detailed training set for emotion recognition, the 28-emotion GoEmotions dataset, is highly class-imbalanced. Fine-tuning an SLM on a high-class-imbalance data set that performs decently on the test requires a deeper focus.
+We treated the class-imbalance problem by a combination of three techniques: (1) undersampling the most represented emotional category, (2) synthetically expanding the minority classes with Nature’s 2025 ISMOTE algorithm, and (3) weighting the loss function. With this combination of techniques, MistralSmall-3.1.GoEmotions, now released on Hugging Face, infers most target emotions relevant to our project with F1 > 0.7.
+This article explains in detail how to fine-tune an open-weight SLM. We’ll also figure out:
+- How to preprocess class-imbalanced data for LLM fine-tuning with the 2025 ISMOTE algorithm.
+- How to decompose sentiment into emotion categories by finetuning a Small Language Model for emotion recognition in text data.
+2. Data
+GoEmotions is a human-annotated dataset of 58k Reddit comments extracted from English-language subreddits and labeled with 27 emotion categories and a “neutral” label. It is a multi-label classification dataset in which each comment may be labeled with multiple TRUEs for emotions (e.g., “Hitting me. That just added another funny dynamic to it even though I wasn’t actually trying to hit her” is True for “amusement”, and “annoyance”).
+The dataset was released on TensorFlow Datasets under the Apache 2.0 License and contains 54,263 labeled texts. Here is what it looks like:
+After a quick check, we can see a high-class imbalance in the data where the neutral category prevails:
+3. Training set preprocessing
+Our goal is to develop a classifier to identify 15 emotions in general-language texts. Training on class-imbalanced data can introduce bias, as the fine-tuned model tends to favor the majority class and perform worse on the minority ones, so preprocessing is essential.
+We used a combination of methods for the training set; the validation and test sets remained unchanged to address class imbalance and maximize performance on the target emotions (fear, sadness, disgust, disapproval, annoyance, anger, disappointment, optimism, amusement, surprise, admiration, excitement, confusion, joy, love):
+- We thinned the data by randomly filtering the “neutral” rows.
+- We generated synthetic samples for the least-represented emotional categories using ISMOTE (Improved Synthetic Minority Over-sampling Technique).
+The ISMOTE algorithm extends the common SMOTE technique by (1) expanding the sample generation space and (2) improving sampling distribution. The synthetically generated samples then have more realistic data distributions than those produced by the original method.
+By reducing the majority class and synthetically expanding the minority categories to 4000 samples, we constructed a relatively balanced set for fine-tuning. The code for ISMOTE oversampling is here.
+4. SLM Fine-tuning
+Among Mistral’s models, we chose the Small class (Small-3.1-24B-Instruct-2503), which fits our GPU and provides the multilingual capabilities we need for the classifier. The Unsloth framework makes the finetuning steps uncomplicated and faster than with Transformers:
+1. Data loading — loading preprocessed training set, validation, and test sets. We use a 60:20:20 split.
+2. Loading the base model — loading the Small-3.1–24B-Instruct-2503 locally.
+3. Apply LoRA —lowering hardware requirements.
+4. Multilabel wrapper with focal loss function — updates the trainer for multilabel classification. Also adds focal loss to weight the loss function for a selected set of emotions, prioritizing their performance.
+5. Evaluation metrics and training args— specifying the evaluation metrics and hyperparameters for model training.
+6. Model training— trainer formulation and launch.
+7. Evaluation — evaluating the best model performance on the test set.
+4.1. Coding
+Here is the code implementation.
+4.1.1. Data loading
+# Loading augmented train, validation and test sets
+BASE = r"augmented"
+def load_split(path: str) -> Dataset:
+with open(path, encoding="utf-8") as f:
+d = json.load(f)
+return Dataset.from_dict({"input_embeds": d["X"], "labels": d["y"]})
+train_dataset = load_split(f"{BASE}/train.json")
+val_dataset = load_split(f"{BASE}/val.json")
+test_dataset = load_split(f"{BASE}/test.json")
+# Formulate embedding dimension
+EMBED_DIM = len(train_dataset[0]["input_embeds"])
+# Return Pytorch tensors
+train_dataset.set_format("torch")
+val_dataset.set_format("torch")
+test_dataset.set_format("torch")
+4.1.2. Loading the base model
+# Load base model with Unsloth FastLanguageModel
+MODEL_NAME = "unsloth/Mistral-Small-3.1-24B-Instruct-2503"
+base_model, _ = FastLanguageModel.from_pretrained(
+model_name=MODEL_NAME,
+max_seq_length=2,
+load_in_4bit=True,
+dtype=torch.bfloat16,
+)
+4.1.3. Apply LoRA
+# Aply Low-rank adaptation (LoRA)
+base_model = FastLanguageModel.get_peft_model(
+base_model,
+r=16,
+lora_alpha=32,
+lora_dropout=0,
+bias="none",
+target_modules=[
+"q_proj", "k_proj", "v_proj", "o_proj",
+"gate_proj", "up_proj", "down_proj",
+],
+use_gradient_checkpointing="unsloth",
+random_state = 3407,
+use_rslora = False,
+)
+4.1.4. Multilabel wrapper with focal loss function
+# Focal loss weights for preffered labels
+FOCAL_ALPHA_DEFAULT = 0.25
+FOCAL_ALPHA_PREFERRED = 0.75
+PREFERRED_LABELS = {
+"fear", "sadness", "disgust", "disapproval", "annoyance",
+"anger", "disappointment", "optimism", "amusement", "surprise",
+"admiration", "excitement", "confusion","joy","love"
+}
+FOCAL_ALPHA_PER_LABEL: list[float] = [
+FOCAL_ALPHA_PREFERRED if lbl in PREFERRED_LABELS else FOCAL_ALPHA_DEFAULT
+for lbl in EMOTION_LABELS
+]
+"Per-label weighted focal binary cross-entropy for multi-label problems"
+class FocalLossWithAlpha(nn.Module):
+def __init__(self, alpha: list[float], gamma: float = 2.0):
+super().__init__()
+self.register_buffer("alpha", torch.tensor(alpha, dtype=torch.float32))
+self.gamma = gamma
+def forward(self, logits: torch.Tensor, targets: torch.Tensor) -> torch.Tensor:
+probs = torch.sigmoid(logits)
+p_t = probs * targets + (1.0 - probs) * (1.0 - targets)
+alpha_t = self.alpha * targets + (1.0 - self.alpha) * (1.0 - targets)
+focal_w = alpha_t * (1.0 - p_t) ** self.gamma
+bce = nn.functional.binary_cross_entropy_with_logits(
+logits, targets, reduction="none"
+)
+return (focal_w * bce).mean()
+# Multilabel classification wrapper with focal loss class weighting
+class MistralForMultiLabel(nn.Module):
+is_loaded_in_4bit = True
+def __init__(self, backbone: nn.Module, num_labels: int,
+hidden_size: int, embed_dim: int):
+super().__init__()
+self.backbone = backbone
+_device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+self.projection = nn.Sequential(
+nn.Linear(embed_dim, hidden_size // 2),
+nn.GELU(),
+nn.Linear(hidden_size // 2, hidden_size),
+).to(_device)
+self.dropout = nn.Dropout(0.1).to(_device)
+self.classifier = nn.Linear(hidden_size, num_labels).to(_device)
+self.focal_loss = FocalLossWithAlpha(FOCAL_ALPHA_PER_LABEL).to(_device)
+def gradient_checkpointing_enable(self, gradient_checkpointing_kwargs=None):
+self.backbone.gradient_checkpointing_enable(gradient_checkpointing_kwargs)
+def gradient_checkpointing_disable(self):
+self.backbone.gradient_checkpointing_disable()
+def forward(
+self,
+input_embeds: torch.Tensor,
+labels: torch.Tensor | None = None,
+**kwargs,
+):
+B = input_embeds.size(0)
+projected = self.projection(input_embeds).unsqueeze(1)
+attn_mask = torch.ones(B, 1, device=input_embeds.device)
+outputs = self.backbone.base_model.model.model(
+inputs_embeds=projected,
+attention_mask=attn_mask,
+output_hidden_states=True,
+)
+pooled = outputs.hidden_states[-1][:, 0, :]
+logits = self.classifier(self.dropout(pooled))
+loss = self.focal_loss(logits, labels.float()) if labels is not None else None
+return {"loss": loss, "logits": logits}
+4.1.5. Evaluation metrics and training args
+# Specifiy the evaluation function
+def compute_metrics(eval_pred):
+logits, labels = eval_pred
+probs = torch.sigmoid(torch.tensor(logits)).numpy()
+preds = (probs >= 0.5).astype(int)
+labels = labels.astype(int)
+from sklearn.metrics import accuracy_score
+exact_accuracy = accuracy_score(labels, preds)
+macro_f1 = f1_score(labels, preds, average="macro", zero_division=0)
+micro_f1 = f1_score(labels, preds, average="micro", zero_division=0)
+macro_precision = precision_score(labels, preds, average="macro", zero_division=0)
+macro_recall = recall_score(labels, preds, average="macro", zero_division=0)
+per_class_f1 = f1_score(labels, preds, average=None, zero_division=0)
+per_class_recall = recall_score(labels, preds, average=None, zero_division=0)
+per_class_precision = precision_score(labels, preds, average=None, zero_division=0)
+per_class_accuracy = (preds == labels).mean(axis=0)
+per_class_metrics = {}
+for i, emotion in enumerate(EMOTION_LABELS):
+per_class_metrics[f"f1_{emotion}"] = float(per_class_f1[i])
+per_class_metrics[f"recall_{emotion}"] = float(per_class_recall[i])
+per_class_metrics[f"precision_{emotion}"] = float(per_class_precision[i])
+per_class_metrics[f"accuracy_{emotion}"] = float(per_class_accuracy[i])
+return {
+"exact_accuracy": exact_accuracy,
+"macro_f1": macro_f1,
+"micro_f1": micro_f1,
+"macro_precision": macro_precision,
+"macro_recall": macro_recall,
+**per_class_metrics,
+}
+# Specify hyperparameters
+training_args = TrainingArguments(
+output_dir=OUTPUT_DIR, # where checkpoints and logs are written
+eval_strategy="epoch", # run evaluation once per epoch
+save_strategy="epoch", # save checkpoint once per epoch
+per_device_train_batch_size=8, # samples per GPU per step
+per_device_eval_batch_size=16, # larger batch is fine — no gradients
+gradient_accumulation_steps=4, # effective batch = 8 × 4 = 32
+num_train_epochs=15, # total passes over the training data
+learning_rate=1e-4, # peak LR after warmup
+bf16=True, # bfloat16 mixed precision
+optim="adamw_8bit", # 8-bit AdamW
+warmup_ratio=0.05, # first 5 % of steps ramp LR from 0 to peak
+lr_scheduler_type="cosine", # cosine decay from peak LR to ~0
+logging_steps=25, # print loss/LR to console every 25 steps
+logging_first_step=True, # also log step 1 to catch early instability
+load_best_model_at_end=True, # restore best checkpoint after training ends
+metric_for_best_model="macro_f1", # criterion used to select the best checkpoint
+greater_is_better=True, # higher macro_f1 is better in evaluation
+gradient_checkpointing=False,
+remove_unused_columns=False, # keep input_embeds column
+save_total_limit=15, # keep all checkpoints on disk to load the best model
+weight_decay=0.01, # L2 regularisation on all trainable parameters
+)
+4.1.6. Model training
+# Set-up the trainer for multilabel finetuning
+class MultiLabelTrainer(Trainer):
+def compute_loss(self, model, inputs, return_outputs=False, **kwargs):
+labels = inputs.pop("labels")
+outputs = model(**inputs, labels=labels)
+loss = outputs["loss"]
+return (loss, outputs) if return_outputs else loss
+def _save_checkpoint(self, model, trial, metrics=None):
+super()._save_checkpoint(model, trial)
+ckpt_dir = self._get_output_dir(trial)
+# Save head
+torch.save({
+"projection": model.projection.state_dict(),
+"classifier": model.classifier.state_dict(),
+}, os.path.join(ckpt_dir, "head_weights.pt"))
+# Save LoRA adapter explicitly (bypasses bitsandbytes serialization issues)
+model.backbone.save_pretrained(os.path.join(ckpt_dir, "lora_adapter"))
+def _load_best_model(self):
+best_ckpt = self.state.best_model_checkpoint
+if not best_ckpt:
+return
+# Restore head
+head_path = os.path.join(best_ckpt, "head_weights.pt")
+if os.path.exists(head_path):
+head = torch.load(head_path, map_location="cpu")
+self.model.projection.load_state_dict(head["projection"])
+self.model.classifier.load_state_dict(head["classifier"])
+print(f"Head restored from: {best_ckpt}")
+else:
+print(f"WARNING: head_weights.pt not found in {best_ckpt}")
+# Restore LoRA adapter
+lora_path = os.path.join(best_ckpt, "lora_adapter")
+if os.path.exists(lora_path):
+from peft import PeftModel
+self.model.backbone.load_adapter(lora_path, adapter_name="default")
+print(f"LoRA restored from: {best_ckpt}")
+else:
+print(f"WARNING: lora_adapter/ not found in {best_ckpt}")
+# Launch the trainer
+trainer = MultiLabelTrainer(
+model=model,
+args=training_args,
+train_dataset=train_dataset,
+eval_dataset=val_dataset,
+compute_metrics=compute_metrics,
+)
+# Launch training
+trainer.train()
+Fine-tuning for 15 epochs took 9 hours and 30 minutes on a machine with an NVIDIA RTX 6000 GPU and 192 GB of VRAM, with the best model loaded at the end.
+4.1.7. Model evaluation
+Let’s show the performance on the test dataset. The standard statistics for model evaluation per class are F1, Precision, and Recall. We can see relatively good performance on the target emotions, with F1 scores over 0.7, for most categories. Full performance is on the model card.
+| Emotion | Precision | Recall | F1 | N |
+| admiration | 0.7415 | 0.6354 | 0.6844 | 993 |
+| amusement | 0.7810 | 0.7422 | 0.7611 | 543 |
+| anger | 0.7423 | 0.7367 | 0.7395 | 395 |
+| annoyance | 0.7049 | 0.5452 | 0.6148 | 609 |
+| confusion | 0.7576 | 0.8251 | 0.7899 | 303 |
+| disappointment | 0.8487 | 0.8459 | 0.8473 | 305 |
+| disapproval | 0.7208 | 0.5841 | 0.6453 | 517 |
+| disgust | 0.8396 | 0.9368 | 0.8856 | 190 |
+| excitement | 0.8240 | 0.9366 | 0.8767 | 205 |
+| fear | 0.9112 | 0.9686 | 0.9390 | 159 |
+| joy | 0.7577 | 0.8024 | 0.7794 | 339 |
+| love | 0.7424 | 0.7903 | 0.7656 | 496 |
+| optimism | 0.8145 | 0.7636 | 0.7882 | 368 |
+| sadness | 0.8534 | 0.8899 | 0.8713 | 327 |
+| surprise | 0.8456 | 0.8555 | 0.8505 | 256 |
+| Macro precision | 0.8295 | |||
+| Macro recall | 0.8184 | |||
+| Micro F1 | 0.7527 | |||
+| Macro F1 | 0.8215 |
+5. Summary
+Let’s now summarize the key points of the article. The requirements and full code are in this repo.
+- Emotion recognition modeling extends sentiment analysis by decomposing the overall sentiment score into its emotional components.
+- MistralSmall-3.1.GoEmotions is on Hugging Face under the Apache 2.0 license. The repo also includes the inference guideline.
+- Deployment use cases are brand and social monitoring, and email categorization.
+Petr Koráb is the founder of Text Mining Stories, a Prague-based development & consultancy company. Learn more about the cutting-edge NLP on our blog.
+AI statement. Some parts of the code were reviewed by Sonnet 4.6 (Cursor). No text was generated using AI.
+Acknowledgements. The National Bank of Slovakia Foundation supported this development. I thank Martin Feldkircher, Václav Jež, and Michala Moravcová for comments and suggestions.
+References
+[1] Ying Li, Yali Yang, Peihua Song, Lian Duan, Rui Ren. 2025. An improved SMOTE algorithm for enhanced imbalanced data classification by expanding sample generation space. Scientific Reports, 15 (23521).
+[2] Yinhan Liu, Jiatao Gu, Naman Goyal, Xian Li, Sergey Edunov
+Marjan Ghazvininejad, Mike Lewis, Luke Zettlemoyer. 2020. Multilingual Denoising Pre-training for Neural Machine Translation. Transactions of the Association for Computational Linguistics, 8, pp. 726–742.

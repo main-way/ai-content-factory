@@ -1,0 +1,33 @@
+ARXIV.ORG
+It is very common for developers to create AGENTS.md
+files, that provide guidance and instructions for AI agents working on their codebase. These files are supported by most popular agentic frameworks, and have become something of an (informal) standard, with around 60k AGENTS.md
+files found on GitHub.
+Furthermore, writing agent guidance is a bit of a chore, so developers will often ask the agent to generate this file for them, based on common conventions and guidance around what make a good AGENTS.md
+file.
+But do these files actually work?
+I must admit, I have been a long-time skeptic of just copy-pasting someone elses prompt into my workflow, how can I be sure it actually adds value and doesn’t just waste tokens. As models become ever-more capable, I’m finding that I need to spend much less time on prompting.
+This study attempts to answer the question of whether AGENTS.md
+scientifically, via a benchmark.
+They find that human-authored files create a 4% improvement in performance, while LLM-generated equivalents results in a reduce performance, by 3%. Not a great result. Worse still …
+“we observe that context files lead to increased exploration, testing, and reasoning by coding agents, and, as a result, increase costs by over 20%.”
+As a result, they recommend that you omitting LLM-generated context files, and that human authored ones are intentionally minimal.
+My personal approach is to start with nothing, no AGENTS.md
+at all. I only add it when I observe a need to encourage a specific behaviour.
+STRIPE.DEV
+This is the second of a two-part series where the Stripe team share the details of their Minions framework. The first installment was published earlier this month.
+So, what is (are?) Minions?
+It is Stripe’s home-grown coding agent framework. Most organisations are adopting agentic tools like GitHub Codex, Claude Code or Devin, whereas Stripe decided to build their own. It is based on Goose (from the technology team at Block, which backs Stripe, Tidal and others), an open source agent framework, which is LLM-agnostic.
+The goal is to give the Minions maximum autonomy. Each have their own ephemeral and isolated developer environment and the ability to run agentic loops (with feedback from unit tests and linters). Critically, they have access to over 400 internal tools via MCP, allowing them to search documentation, access CI status, ticket data and more.
+The Minions are currently creating 100s of PRs each week, with a human-in-the-loop review process.
+From my perspective, the most notable key to success is the context these Minions are provided with, the “toolshed” of information, that allows them to research tasks and locate valuable knowledge with autonomy. This is very different to a more human-first approach where a develop would feed that information to an AI model via a prompt.
+RATFACTOR.COM
+The unrest among the developer community continues. As the AI agents become more capable, what becomes of our craft?
+This blog post explores the loss from the perspective of one’s identity. This stretches far beyond the “day job”, it goes beyond just writing code and delivering products. A social identity is about belonging to a group with shared values and interest.
+“Socially, the ‘computer programmer’ identity has steered my life in small and large ways from the websites and forums I visited to the friends I’ve made, where I work and live.”
+Many of us enjoy the social side of this identity, attending conferences and meetups, meeting like-minded folk, whether strangers of old friends.
+However, what it means to be a computer programmer is changing fast. Those who identify with the ideals of what it used to mean to be a programmer (arguing over abstraction levels, syntax, and bke shedding), may no longer feel a sense of belonging in the new world.
+REDDIT.COM
+You’ve probably heard the stories of ‘vibe coders’ who have had their production database deleted or hard drive formatted by Replit or Cursor. I’m sure there are poor unfortunates having this experience on a daily basis.
+The problem is, the only way to make these systems safe is to give them access to almost nothing, drip-feeding them permissions, carefully reviewing their work. Unfortunately this isn’t a terribly productive environment for the AI (or human) to work within. As a result, people tend to be relatively liberal with their permissions - going YOLO mode.
+The incident shared here is a little different, the AI agent didn’t mean to wipe the user’s F: drive. Unfortunately they made a small mistake with quote escaping.
+AI makes mistakes too.

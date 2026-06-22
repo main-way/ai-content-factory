@@ -1,0 +1,24 @@
+{
+  "date": "2024-03-05",
+  "count": 1,
+  "posts": [
+    {
+      "id": "c33e660e7a97",
+      "title": "Do text embeddings perfectly encode text?",
+      "url": "https://thegradient.pub/text-embedding-inversion/",
+      "source": "The Gradient",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-03-05T20:15:58+00:00",
+      "summary": "'Vec2text' can serve as a solution for accurately reverting embeddings back into text, thus highlighting the urgent need for revisiting security protocols around embedded data.",
+      "author": "Jack Morris",
+      "tags": [
+        "Interpretability",
+        "LLM",
+        "NLP"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

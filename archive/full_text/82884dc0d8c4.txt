@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Sound Field Interpolation Using Physics-Informed Extreme Learning Machine with Pre-Training
+View PDF HTML (experimental)Abstract:Numerous machine learning-based sound field interpolation methods have been proposed. In particular, physics-informed neural networks (PINNs) can accurately interpolate sound fields from a small number of microphones. However, their high computational cost and long training time pose practical challenges for applications requiring real-time processing or online learning. To address this, we propose a hybrid framework that combines PINN-based pre-training with a physics-informed extreme learning machine (PIELM) tailored for acoustic fields. By replacing iterative PINN fine-tuning for each target sound field with closed-form output-layer adaptation using hidden-layer weights pre-trained by PINN, the proposed method efficiently interpolates unknown sound fields from limited observations. Simulation results under simplified one-dimensional free-field conditions demonstrate that, given a pre-trained model, the proposed method achieves interpolation accuracy comparable to that of PINN-based fine-tuning while reducing the adaptation time by more than three orders of magnitude.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

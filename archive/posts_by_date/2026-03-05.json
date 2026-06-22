@@ -1,0 +1,49 @@
+{
+  "date": "2026-03-05",
+  "count": 2,
+  "posts": [
+    {
+      "id": "442508867b11",
+      "title": "The latest AI news we announced in February",
+      "url": "https://blog.google/innovation-and-ai/products/google-ai-updates-february-2026/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-05T16:30:00+00:00",
+      "summary": "an MP4 of a carousel with images reading \"Gemini 3.1 Pro\" and \"Nano Banana 2\"",
+      "author": "Keyword Team",
+      "tags": [
+        "A message from our CEO",
+        "Google DeepMind",
+        "Developer tools",
+        "Google Labs",
+        "Google.org",
+        "Google Cloud",
+        "Gemini",
+        "AI",
+        "Pixel",
+        "Gemini App",
+        "Gemini models",
+        "Google Research",
+        "Safety & Security",
+        "Grow with Google"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "94cadf05be70",
+      "title": "LWiAI Podcast #235 - Sonnet 4.6, Deep-thinking tokens, Anthropic vs Pentagon",
+      "url": "https://lastweekin.ai/p/lwiai-podcast-235-sonnet-46-deep",
+      "source": "Last Week in AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-03-05T08:42:21+00:00",
+      "summary": "Anthropic releases Sonnet 4.6, Google Rolls Out Gemini 3.1 Pro, Anthropic CEO Amodei says Pentagon&#8217;s threats &#8216;do not change our position&#8217; on AI",
+      "author": "Last Week in AI",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

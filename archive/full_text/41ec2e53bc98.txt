@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:GMN4AD: Graph Matching Network for Alzheimer's Disease Diagnosis with Test-Time Domain Adaptation using Multi-centered Structure Magnetic Resonance Imaging
+View PDFAbstract:Alzheimer's Disease (AD) is a progressive neurodegenerative disorder that affects millions of older adults, with prevalence expected to rise significantly in the coming years. Early diagnosis, particularly during the mild cognitive impairment (MCI) stage, is critical for timely intervention. Structural Magnetic Resonance Imaging (sMRI) has emerged as a key modality for detecting AD-related brain changes, but traditional graph-based approaches often struggle with modality and inter-site heterogeneity, limiting diagnostic performance. In this paper, we propose Graph Matching Network for Alzheimer's Disease Diagnosis (GMN4AD), designed to model interactions between heterogeneous brain graphs derived from neuroimaging data. Unlike conventional methods that treat each brain graph independently, GMN4AD leverages graph matching to capture cross-graph relationships, enhancing diagnostic precision. Furthermore, we introduce a test-time domain adaptation strategy that combines contrastive learning to mitigate domain shifts during inference. Extensive experiments on three public AD datasets demonstrate that GMN4AD achieves superior performance compared to state-of-the-art methods, offering a robust and generalizable solution for AD diagnosis.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

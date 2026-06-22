@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Prediction-Powered Causal Inference by Automatic Debiased Machine Learning and Semi-Supervised Riesz Regression
+View PDF HTML (experimental)Abstract:This study investigates semiparametric efficient estimation of causal and structural parameters in a semi-supervised setting. In our setting, unlabeled auxiliary regressors are available in addition to labeled observations consisting of outcomes and regressors. Our goal is to construct estimators of causal and structural parameters whose asymptotic variances are smaller than those of estimators constructed using only labeled data. We refer to this framework as prediction-powered causal inference (PPCI). We first derive the efficient influence function and the efficiency bound, which imply that the use of auxiliary regressors can attain a smaller asymptotic variance than the efficiency bound attainable from labeled observations alone. Then, by combining the efficient influence function with the debiased machine learning (DML) framework, we propose methods that we call DML-PPCI. If we construct an estimating-equation estimator, we refer to the method as EE-DML-PPCI; if we construct a targeted-learning estimator, we refer to the method as TMLE-DML-PPCI. The asymptotic variances of both estimators match our derived efficiency bound. In the construction of the estimators, estimation of the efficient influence function plays an important role. In our study, the efficient influence function is also a Neyman orthogonal score, which depends on the Riesz representer and the regression function. For Riesz representer estimation, we develop semi-supervised generalized Riesz regression with convergence rate guarantees.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

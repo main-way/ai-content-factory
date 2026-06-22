@@ -1,0 +1,36 @@
+What makes a robot gripper useful isn’t that it can pick up one object — it’s that it can pick up the next one, and the one after that, with a tool it’s never held before.
+What makes an autonomous vehicle system safe isn’t just that it can reason through a situation — it’s that it can do so quickly enough on the hardware actually installed in the car.
+What makes a virtual agent capable is exposure to as many different environments as possible before it faces the real world.
+At this year’s Computer Vision and Pattern Recognition (CVPR) conference, NVIDIA Research is presenting three papers that address each of these challenges — and share a common theme: training at scale creates systems that generalize across diverse applications.
+The three papers cover different challenges in physical AI research:
+- GraspGen-X, the first foundation model for zero-shot grasping, was trained on billions of simulated grasps to work with any gripper it’s shown.
+- LCDrive introduces a model that replaces expensive text-based reasoning with compact latent representations, letting autonomous vehicles think faster on embedded hardware.
+- NitroGen is a generalized gameplay AI foundation model that harnesses the NVIDIA Isaac GR00T robot foundation model architecture to help train embodied agents in virtual environments across tens of thousands of hours of interaction.
+NVIDIA also unveiled at CVPR new physical AI agent skills that help researchers and developers speed the development of autonomous vehicles, robots and vision AI systems.
+NitroGen and another NVIDIA-authored paper, PixelDIT, were named best paper finalists at the conference — an accolade given to just 15 of over 4,000 accepted papers at CVPR.
+The First Foundation Model for Grasping
+Most AI systems for robotic grasping are specialists.
+A vision-language-action policy trained for a two-finger gripper only learns to grasp with those two fingers. Similarly, a policy for dextrous grasping will only work for the bespoke multi-fingered gripper it’s trained on. For every new embodiment, the process typically needs to be repeated — requiring new training data, fine-tuning and validation. This constraint means most robotics companies pick a gripper, train for it and stick with it.
+GraspGen-X is the first foundation model for grasping built to eliminate this bottleneck.
+Like a large language model that can apply its understanding of language to a new task without retraining, GraspGen-X applies its understanding of geometry and contact to any robotic gripper it encounters. Given the geometry of a new gripper and an unknown object it’s never seen before, the model generates reliable grasp pose proposals to enable the robot to grasp the object.
+To get there, the researchers needed a dataset that’s impossible to collect in the real world at scale. They generated 2 billion simulated grasps across thousands of object shapes and synthetic gripper configurations, spanning the diversity of form factors a deployed robot might encounter.
+For robot developers, this foundation model eliminates the need for per-gripper training cycles and can be applied out of the box for several commonly used grippers. GraspGenX can be used in conjunction with curoboV2, a new CUDA-accelerated motion planning library, to achieve these grasp poses in unknown environments.
+Building on the GraspGen research foundation, another paper, Grasp-MPC — presented at ICRA 2026 — advances the next step in the pipeline: moving from grasp generation to closed-loop grasp execution.
+Teaching Autonomous Vehicles to Think Faster
+In recent years, researchers have found that letting an AI reason — generating intermediate thinking steps before committing to an answer — reliably improves its decision-making.
+For autonomous vehicles, the challenge is doing that reasoning on the hardware inside an actual vehicle. Text-based chain-of-thought reasoning generates words, and every word is a token that takes time to produce. On the processor running inside a car, token count is a real constraint on how fast the system can respond.
+LCDrive tackles this problem by replacing words with compressed latent representations.
+Instead of generating human-readable reasoning steps, the system thinks in a compact latent space — states that capture spatial information rather than producing text. The architecture alternates between two kinds of thinking: proposing candidate actions, then predicting what the world will look like if those actions are taken.
+It uses that predicted world state to refine its next step. It’s the same reasoning loop — just in a more computationally efficient form than natural language.
+The result: comparable output trajectory quality to text-based reasoning, using roughly half the tokens.
+The model was built on NVIDIA Alpamayo and trained using supervision derived from existing vehicle data.
+Embodied Agents Trained in Virtual Worlds
+Isaac GR00T — NVIDIA’s open foundation model for humanoid robots — is built on a simple principle: expose a model to enough diverse situations, and it will generalize to ones it hasn’t seen.
+NitroGen extends that principle to virtual environments, using the GR00T architecture to train a foundation model for embodied agents across a breadth of virtual worlds.
+Video games offer something that’s hard to build from scratch: structured, varied worlds with defined goals and well-specified success conditions. They’re high-quality training environments, available at scale.
+NitroGen treats them that way — as a training ground for agents that will eventually be trained to handle novel real- or simulated-world situations, like powering a robot that helps with housework based on broad instructions such as, “Put these items away in the pantry.”
+Trained across more than 1,000 games and 40,000 hours of interaction using a model based on GR00T, the resulting agents learn to generalize across environments. The model was evaluated across a range of action role-playing games, platformers, roguelikes and open-world games, demonstrating gameplay behaviors spanning combat, navigation and exploration.
+The same techniques could eventually help enable more adaptive nonplayable characters, AI companions and gameplay systems inside games, as well as broader testing of complex game environments.
+In low-data conditions — where an agent has seen only a handful of examples of a new environment — starting with NitroGen gives agents a huge head start, improving performance by up to 52% over previous state-of-the-art methods.
+The model is open source, available on GitHub and Hugging Face.
+Learn more about NVIDIA at CVPR and explore NVIDIA Research’s work in physical AI, computer vision and autonomous systems. Get started with Isaac GR00T and NVIDIA robotics tools.

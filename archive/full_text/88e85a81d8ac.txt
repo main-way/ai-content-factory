@@ -1,0 +1,10 @@
+import { sleep } from "workflow";
+export async function cancellableWorkflow() { "use workflow";
+const controller = new AbortController();
+const result = await Promise.race([ fetchReport(controller.signal), sleep("30s").then(() => null), ]);
+if (result === null) { controller.abort(); return { status: "timed-out" }; }
+return result;}
+async function fetchReport(signal: AbortSignal) { "use step";
+const response = await fetch("https://api.example.com/report", { signal, });
+return response.json();}
+Passing a signal into a step and cancelling the in-flight operation

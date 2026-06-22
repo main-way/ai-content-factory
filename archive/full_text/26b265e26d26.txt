@@ -1,0 +1,12 @@
+Computer Science > Computation and Language
+Title:Light-weight Pronunciation Assessment via Discrete Speech Token Surprisal
+View PDF HTML (experimental)Abstract:Training automated pronunciation assessment often relies on labeled learner errors or non-native corpora that are costly to collect. We propose a lightweight framework trained only on native speech resources, operating unsupervised or lightly calibrated with a small set of scored utterances. At inference, learner speech is discretized with an SSL encoder and a K-means codebook. A token language model trained on native sequences computes surprisal where higher surprisal indicates phonotactic deviation. We add a transcript-guided Text2DUnit--DTW module that predicts native token sequences from reference text and aligns them to acoustic tokens to derive error-sensitive features. Surprisal and alignment features are fused via simple regression. On SpeechOcean762, PCC improves from 0.60 to 0.66 with transcript guidance, near supervised baselines. Cross-dataset evaluation on L2-ARCTIC shows consistent gains.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,17 @@
+Statistics > Machine Learning
+Title:Flow Matching for Efficient and Scalable Data Assimilation
+View PDF HTML (experimental)Abstract:Data assimilation (DA) estimates a dynamical system's state from noisy observations. Recent generative models like the ensemble score filter (EnSF) improve DA in high-dimensional nonlinear settings but are computationally expensive. We introduce the ensemble flow filter (EnFF), a training-free, flow matching (FM)-based framework that accelerates sampling and offers flexibility in flow design. EnFF uses Monte Carlo estimators for the marginal flow field, localized guidance for observation assimilation, and utilizes a novel flow path that exploits the Bayesian DA formulation. It generalizes classical filters such as the bootstrap particle filter and ensemble Kalman filter. Experiments on high-dimensional benchmarks demonstrate EnFF's improved cost-accuracy tradeoffs and scalability, highlighting FM's potential for efficient, scalable DA. Code is available at this https URL.
+Submission history
+From: Taos Transue [view email][v1] Mon, 18 Aug 2025 19:00:45 UTC (867 KB)
+[v2] Fri, 22 Aug 2025 15:54:49 UTC (867 KB)
+[v3] Sat, 27 Sep 2025 15:59:08 UTC (3,972 KB)
+[v4] Wed, 17 Jun 2026 23:03:35 UTC (4,591 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

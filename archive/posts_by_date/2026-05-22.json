@@ -1,0 +1,129 @@
+{
+  "date": "2026-05-22",
+  "count": 8,
+  "posts": [
+    {
+      "id": "18f4f93feb30",
+      "title": "Catch up on the Dialogues stage at Google I/O 2026.",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-22T18:00:00+00:00",
+      "summary": "Alphabet CEO Sundar Pichai in conversation on the I/O 2026 Dialogues stage",
+      "author": "",
+      "tags": [
+        "AI",
+        "Googlers"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "c814bef41a39",
+      "title": "A practical guide for platform teams managing shared AI deployments",
+      "url": "https://www.datarobot.com/blog/rate-limiting-quota-reservations/",
+      "source": "DataRobot Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-22T15:08:57+00:00",
+      "summary": "Rate Limiting vs. Quota Reservations: when to use each You have a single gpt-oss-20b deployment. Six teams want to use it. Marketing is running batch summarization jobs at 3am. The fraud team needs sub-second responses 24/7. An intern’s Jupyter notebook is accidentally hammering the endpoint in a tight loop. And your GPU bill is already... The post A practical guide for platform teams managing shared AI deployments appeared first on DataRobot .",
+      "author": "Abdelrahman (Abdo) Mahmoud, Petro Chopin, Andriy Popovych",
+      "tags": [
+        "Agentic AI Applications"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "b6e123e9507d",
+      "title": "Agent Skills for Python: File, Code, and Class – Composed in One Provider",
+      "url": "https://devblogs.microsoft.com/agent-framework/agent-skills-for-python-file-code-and-class-composed-in-one-provider/",
+      "source": "Semantic Kernel Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-22T08:34:12+00:00",
+      "summary": "Python developers working with Agent Skills can now author skills as files on disk, as inline Python code, or as reusable classes &#8211; and mix them freely through composable source classes that handle discovery, filtering, and deduplication. A skill living in your local repository, one installed from your organization&#8217;s internal package index, and a quick [&#8230;] The post Agent Skills for Python: File, Code, and Class &#8211; Composed in One Provider appeared first on Microsoft Agent Framework .",
+      "author": "Sergey Menshykh",
+      "tags": [
+        "Agent Framework",
+        "Agent Skills",
+        "Python"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "607ed963287a",
+      "title": "Datasette Agent: an AI assistant for Datasette built on LLM",
+      "url": "https://simonw.substack.com/p/datasette-agent-an-ai-assistant-for",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-22T06:45:47+00:00",
+      "summary": "Plus Gemini 3.5 Flash and more from Google I/O",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "f2261073b77c",
+      "title": "OpenAI named a Leader in enterprise coding agents by Gartner",
+      "url": "https://openai.com/index/gartner-2026-agentic-coding-leader",
+      "source": "OpenAI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-22T00:00:00+00:00",
+      "summary": "OpenAI is named a leader in the 2026 Gartner Magic Quadrant for Enterprise AI Coding Agents, with Codex recognized for innovation and enterprise-scale deployment.",
+      "author": "",
+      "tags": [
+        "AI Adoption"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "d87fa4829619",
+      "title": "VSAS-Bench: Real-Time Evaluation of Visual Streaming Assistant Models",
+      "url": "https://machinelearning.apple.com/research/vsas-bench-streaming-assistant",
+      "source": "Apple ML Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-22T00:00:00+00:00",
+      "summary": "Streaming vision-language models (VLMs) continuously generate responses given an instruction prompt and an online stream of input frames. This is a core mechanism for real-time visual assistants. Existing VLM frameworks predominantly assess models in offline settings. In contrast, the performance of a streaming VLM depends on additional metrics beyond pure video understanding, including proactiveness, which reflects the timeliness of the model’s responses, and consistency, which captures the robustness of its responses over time. To address this limitation, we propose VSAS-Bench, a new…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "2b712628b265",
+      "title": "Issue #45",
+      "url": "http://augmentedcoding.dev/issue-45/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-22T00:00:00+00:00",
+      "summary": "The Web Dev State of AI 2026 STATEOFAI.DEV This is the second edition of the “Web Dev State of AI” survey, and teh results are packed with interesting insights. As the introduction states: “AI-assisted coding’s transition from an early-adopter experiment to a standard practice is now well underway.” Here are some of the interesting findings from the 7,258 developers surveyed: We are producing much more code with AI, respondents reported that ~54% of their code is now AI generated (up from 28% last year) We are using AI much more often, the percentage of respondents stating they use AI…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "740545d72e85",
+      "title": "How Virgin Atlantic ships faster with Codex",
+      "url": "https://openai.com/index/virgin-atlantic",
+      "source": "OpenAI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-22T00:00:00+00:00",
+      "summary": "How Virgin Atlantic used Codex to ship its revamped mobile app on a fixed holiday travel deadline, reaching near-total unit test coverage and zero P1 defects.",
+      "author": "",
+      "tags": [],
+      "has_full_text": false
+    }
+  ]
+}

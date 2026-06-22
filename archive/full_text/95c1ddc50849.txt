@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Synthetic-to-Real Pipeline for Safe Landing Zone Detection
+View PDF HTML (experimental)Abstract:As Uncrewed Aerial Vehicles (UAVs) transition toward higher levels of autonomy, the ability to perform unassisted recovery in non-cooperative, unstructured environments becomes critical. Achieving safe autonomous landing requires high-fidelity semantic resolution to distinguish navigable terrain from hazardous obstacles, yet development is often hindered by the scarcity of annotated aerial datasets. This work proposes a comprehensive perception and data generation pipeline designed to bridge the sim-to-real gap for autonomous landing tasks. We introduce a procedural synthetic data engine that generates photorealistic urban environments with automated semantic annotations through domain randomization. A Transformer-based OneFormer architecture is fine-tuned exclusively on this synthetic data, leveraging multi-head self-attention mechanisms for global context resolution. To ensure operational safety, a deterministic landing module utilizes a Euclidean Distance Transform (EDT) and dynamic inference logic to identify the largest inscribed safe landing zones while maintaining strict clearance buffers around obstacles. Quantitative benchmarking against the UAVid dataset demonstrates robust semantic segmentation performance, while qualitative validation on real-world UAV footage confirms the system's ability to identify collision-free landing sites in unseen environments. Our results highlight the potential of high-fidelity procedural simulation to eliminate the need for manual annotation while providing robust, edge-deployable situational awareness for autonomous UAV recovery.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,113 @@
+{
+  "date": "2026-05-21",
+  "count": 7,
+  "posts": [
+    {
+      "id": "01ec5fbbb35e",
+      "title": "DataRobot for Developers: Skills in Cursor, Gemini, and Claude",
+      "url": "https://www.datarobot.com/blog/datarobot-skills-cursor-gemini-claude/",
+      "source": "DataRobot Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-21T20:27:52+00:00",
+      "summary": "The hardest part of building against a new platform is teaching your tools about it. Your coding agent doesn&#8217;t know the SDK&#8217;s conventions. Your IDE doesn&#8217;t know the CLI commands. Your terminal doesn&#8217;t know the auth pattern. Every gap is a context switch, and every context switch is time spent away from the work. DataRobot... The post DataRobot for Developers: Skills in Cursor, Gemini, and Claude appeared first on DataRobot .",
+      "author": "Amber Bennoui",
+      "tags": [
+        "Claude",
+        "Cursor",
+        "Gemini",
+        "Skills"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "a5b423e0d34d",
+      "title": "We’re launching the Google DeepMind Accelerator program in Asia Pacific to tackle environmental risks",
+      "url": "https://deepmind.google/blog/were-launching-the-google-deepmind-accelerator-program-in-asia-pacific-to-tackle-environmental-risks/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-21T19:46:42+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "7dff812584f6",
+      "title": "MagenticLite, MagenticBrain, Fara1.5: An agentic experience optimized for small models",
+      "url": "https://www.microsoft.com/en-us/research/blog/magenticlite-magenticbrain-fara1-5-an-agentic-experience-optimized-for-small-models/",
+      "source": "Microsoft Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-21T17:00:00+00:00",
+      "summary": "MagenticLite is an agentic system for small models that works across the browser and local file system in a single workflow. It combines specialized models and orchestration to support efficient agentic performance on everyday tasks. The post MagenticLite, MagenticBrain, Fara1.5: An agentic experience optimized for small models appeared first on Microsoft Research .",
+      "author": "Microsoft Research AI Frontiers",
+      "tags": [
+        "Research Blog"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "3e572aa5602b",
+      "title": "All Systems Nominal – Nominal Spotlight",
+      "url": "https://sequoiacap.com/article/all-systems-nominal-nominal-spotlight/",
+      "source": "Sequoia Capital",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-21T15:35:44+00:00",
+      "summary": "The post All Systems Nominal &#8211; Nominal Spotlight appeared first on Sequoia Capital .",
+      "author": "amoore",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "f3c47f4e5dde",
+      "title": "Vega: Zero-knowledge proofs for digital identity in the age of AI",
+      "url": "https://www.microsoft.com/en-us/research/blog/vega-zero-knowledge-proofs-for-digital-identity-in-the-age-of-ai/",
+      "source": "Microsoft Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-21T13:48:40+00:00",
+      "summary": "Vega turns a full credential into a single proof, sharing only what is needed and nothing more, with performance that works in real apps. The post Vega: Zero-knowledge proofs for digital identity in the age of AI appeared first on Microsoft Research .",
+      "author": "Srinath Setty",
+      "tags": [
+        "Research Blog"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "5da14d5c1a98",
+      "title": "Pull anomaly alert details using the Vercel CLI",
+      "url": "https://vercel.com/changelog/pull-anomaly-alert-details-using-the-vercel-cli",
+      "source": "Vercel AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-21T09:00:00+00:00",
+      "summary": "You can now access anomaly alerts and their details directly through the Vercel CLI . With the vercel alerts command, you can list all alerts for a team or given project. For each alert, you can view the start time, the type of alert, and whether or not the alert is still active. With the --ai option, the AI investigation results appear alongside each alert. You and your agent can act on alerts without leaving the terminal. Available on Observability Plus . Learn more about vercel alerts in the CLI documentation . Read more",
+      "author": "Julia Shi",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "31271732ee75",
+      "title": "AI Weekly Issue #494: SpaceX wants $80 billion. OpenAI wants a trillion.",
+      "url": "https://aiweekly.co/issues/spacex-wants-80-billion-openai-wants-a-trillion",
+      "source": "AI Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-21T00:00:00+00:00",
+      "summary": "For nine years the AI boom has been a private bet, priced by a small circle of venture funds and sovereign wealth in rounds most people could never touch. This week it started going public. SpaceX filed an $80 billion IPO prospectus on Wednesday, the largest in history, with a chatbot company and $6.4 billion in AI losses folded inside it. OpenAI is days from filing its own, aiming for a trillion-dollar debut by September. The public markets are about to answer the question private investors kept waving away: at what price?",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

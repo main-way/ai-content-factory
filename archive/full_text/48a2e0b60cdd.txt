@@ -1,0 +1,37 @@
+Look at these three versions of 人工智能 (“artificial intelligence”):
+You can read all three instantly: The full character, 80% retained, 50% retained. That’s not a trick — that’s probably something fundamentally rooted in the Chinese system.
+One clarification: the 80% and 50% refer to the proportion of the image itself retained, not individual characters. Noticing that each character occupies a different number of pixels in the image, we simply cut the image horizontally at a fixed height.
+This made me thinking: is language — at least Chinese — fundamentally visual? I spent a few days turning this over in my brain, and finally decided to find out with the way I know how: train some language models and see what really happens.
+The Experiment: Pixels In, Tokens Out
+Every language model has to deal with tokenization first. The basic idea is: computers don’t understand text, so we assign each word or character an ID, that is, a number. For example, the character 你 becomes 100, 好 becomes 3, etc. From there, the LLM learns everything from scratch.
+In this sense, when you reduce characters such as 山 (mountain) and 水 (water) to simple integers, you throw away their shapes. And Chinese characters have beautiful shapes — stroke configurations, radical components, spatial layouts that carry real information. Another example: 打 (hit), 拍 (pat), and 拉 (pull) all share the radical 扌 (hand). You reduce them to IDs 423, 1089, and 2341, and that relationship is gone.
+So instead of token IDs, I rendered each character as a grayscale image and fed it to a language model. The model’s job was to predict the next character.
+You Don’t Need Great Eyesight
+If you’ve ever taken off your glasses to read, you know that blurry text is still readable. The same principle happens here.
+Take a look at these 8×8 pixel versions of 人工智能 (hold your screen at arm’s length):
+Each character is 64 pixels. And the model, trained on inputs at this resolution, performs just as well as one trained on 80×80 images.
+Indeed, we tested image resolutions from 4×4 all the way to 80×80, and found that: Going from 8×8 to 80×80 — 100 times more pixels — buys essentially nothing.
+The cropping results are even more striking and exciting. With 50% of each character removed, accuracy drops by less than 2%. The model doesn’t need the whole clear picture. It turns out that it needs just enough structure to know which radical family a character belongs to.
+(A note on methodology: in the examples above, I’ve placed full and cropped versions side by side so you can compare. In the actual experiments, each training condition is completely independent — the model trained on cropped characters has never seen a complete one.)
+The Hot-Start Effect
+So, is the visual model better than the text-based one?
+Not in the end. Both converge to essentially identical final accuracy. But the journey looks very different, especially the beginning.
+After seeing only 0.4% of training steps, the visual model is already twice as accurate as the text-based baseline.
+This is what we call the hot-start effect. The visual model arrives at training already knowing something useful: that 打, 拍, and 拉 look similar, and probably behave similarly. The text-based model starts with random embeddings and has to figure this out from scratch.
+If you look at the embedding space at initialization — before any training — you can see this directly:
+You can see that characters sharing the same radical cluster together at the very early training stage. Cosine similarity for radical-sharing pairs: ~0.27 for visual embeddings, ~0.002 for random token embeddings.
+Why the Race Ends in a Tie
+Here’s the key thing: the visual prior encodes visual similarity, but not linguistic co-occurrence. However, next-character prediction ultimately depends on the latter.
+Yes, 打, 拍, and 拉 all share 扌 and look similar. But in actual text, they can appear in very different contexts — 打击犯罪 (combat crime), 拍摄照片 (take photos), 拉动经济 (stimulate the economy), etc. Once the text-based model has seen enough data to learn these patterns, the visual priors start no longer matters.
+In other words, visual inputs warm-starts the optimization. But, well, it doesn’t change the information ceiling.
+This always reminds me of Ted Chiang’s story Story of Your Life (the basis for the film Arrival). In the story, written and spoken language are two independent systems. But they ultimately serve the same purpose: communication. Two paths, same destination.
+Where This Actually Matters
+Despite of the same destination, there are real situations where it matters:
+Low-resource settings. When you don’t have much training data, the visual head start translates into a real practical advantage. In our experiments, with just 10K samples, visual models already outperform a fully trained text baseline on downstream Chinese benchmarks (C-eval).
+Damaged historical texts. This is another exciting one. A visual can help check classical Chinese manuscripts, damaged books, and handwritten documents where strokes are missing or faded.
+What About Compute?
+Good news: almost no overhead. The simplified visual encoder I used actually has fewer parameters than the text baseline (12.6M vs. 19.0M). Memory overhead: +1.3%. So we argue that the visual prior is nearly free.
+The Short Answer
+Is Chinese language visual of its nature? The answer seems to be: at the start, yes. By the end, it doesn’t matter.
+Visual structure gives models a hot start. It is similar to that human reader makes when they see 扌 and immediately know they’re in the territory of hand-related actions. But the deeper patterns of language have to be learned from data. Both representations learn them equally well.
+The paper is on arxiv: https://arxiv.org/abs/2601.09566

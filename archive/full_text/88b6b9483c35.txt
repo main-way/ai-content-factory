@@ -1,0 +1,15 @@
+your phone to greyscale can work wonders if you want to reduce your screen time (that means: increase the time spent in the real world). But when I tried to do this myself, I found that I switched back to »colour« mode quickly (because some apps need colour for usability), and then to forget to go back to greyscale.
+Greyscale-mode works great for me. It makes the phone less attractive, I spend less time on it and get to do more of what I actually want to do. It's part of my low-dopamine phone setup, and it makes my life richer – ironically, you could say, it makes my (off-screen) life more colorful.
+But then everyday life comes along! A greyscale phone has advantages when it comes to make the device less tempting to kill some seconds of boredom, but it has real disadvantages when the colour is not used for entertainment, but for clarity.
+Looking for a way to have my phone on greyscale but some apps in colour, I found a way that required minimal setup, but since then let me stick to the setup. Finally, a greyscale-mode iPhone that works in everyday life!
+The trick is simple: You can setup simple shortcuts (I called mine »Colour« and »Greyscale«) to activate and deactivate the colour filters of your phone (i.e. greyscale mode).
+Then, you can setup automations in the »Shortcuts« app, and trigger these shortcuts when you start or close an app.
+Don't forget to add the way back, too!
+My colour-enabling apps include
+as well as other productivity apps – no dopamine-related problems here, plus regular usability. Good!
+Note that I have 11 apps that disable greyscale mode, but 12 apps that enable it. Why one more to (re-)enable greyscale?
+This one app is: WhatsApp.
+That's because I set up to fire the »enable greyscale« automation whenever I close WhatsApp. Of course, I do not enable colour for WhatsApp, but I use WhatsApp quite often, so this is a »safety fallback«: whenever colour mode remains enabled by accident, it won't endure me closing WhatsApp, which happens often enough. (I used to have a »every day at midnight, reset to greyscale« automation, and »whenever I close WhatsApp« replaced it for me.)
+You might need something like this because locking your phone won't count as »closing the app«, so your phone might stay in colour mode after locking it from, say, Maps, and then be still in colour mode when you unlock the device (ending up on your home screen, if the phone was locked long enough to not bring you back to Maps anymore).
+As you defined a shortcut »Colour«, you can simply tell Siri: »Colour« and it will enable colour mode, in case you want to see something (say, in WhatsApp) in colour.
+In case you enabled the »triple-click lock button« shortcut for enabling the accessibility option of greyscale, don't be confused: that's a different setting from the one we're controlling via Shortcuts here. The two may overlay each other, so you might be finding yourself in perma-greyscale. In that case, try triple-pressing your 'lock' button (or disabling this feature in accessibility where you enabled it).

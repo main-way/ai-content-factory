@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Gradient boosting for extremes: sampling theory and application to insurance
+View PDF HTML (experimental)Abstract:We develop a statistical learning theory for gradient boosting applied to the estimation of covariate-dependent Generalized Pareto (GP) distributions in the context of Peaks-over-Threshold modeling. After an orthogonal reparametrization of the GP likelihood that diagonalizes its Fisher information matrix, we cast the estimation problem within the Empirical Risk Minimization (ERM) framework and derive non-asymptotic error bounds for the boosting estimator. Our analysis accounts for three distinct sources of error in the process: statistical fluctuations, the approximation bias inherent to the asymptotic nature of the GP model-controlled under second-order regular variation-and the approximation error associated with the finite number of boosting iterates, making explicit the resulting bias-variance trade-off. We illustrate the practical benefits of the reparametrization through simulations, showing that it significantly reduces gradient correlation during training and improves convergence stability. The methodology is applied to a medical malpractice insurance dataset from the Texas Department of Insurance, comprising over 18 000 closed claims. The gradient boosting approach yields a good fit for the tail of settlement cost distributions and reveals that the number of days to settlement is the dominant predictor of tail heaviness, consistent with earlier findings in the reserving literature.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

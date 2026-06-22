@@ -1,0 +1,12 @@
+Quantitative Biology > Neurons and Cognition
+Title:Learning Hybrid Biophysical Neuron Models with Neural ODEs
+View PDF HTML (experimental)Abstract:Biophysical neuron models link measurements of neural activity to underlying cellular mechanisms. Yet, a central challenge is that the kinetics of many ion channels are poorly characterized, and practical simplifications -- omitting channels or reducing morphological detail -- introduce systematic gaps between model and biology. Bridging these gaps requires approaches that can flexibly discover unmodeled dynamics while preserving mechanistic interpretability. Here, we introduce a hybrid modeling framework that embeds neural ordinary differential equations into conductance-based biophysical models to capture unknown currents or mis-specified channel kinetics. By parameterizing the neural ODE in terms of voltage-dependent steady-state and time-constant functions, we recover interpretable gating dynamics directly from voltage recordings without assuming a functional form. We show that the hybrid model fits the gating kinetics of 2400 ion channel models and recovers unknown gating dynamics from single current-clamp recordings, generalizing to out-of-distribution stimulus regimes under realistic inputs and parameter misspecification. We also use our method to reduce a multicompartment model of a cortical neuron into a single-compartment hybrid model with a learned axial current, yielding up to an order of magnitude lower computational cost. Together, our results establish a plug-and-play framework for selectively replacing unknown components of conductance-based models with neural ODEs while preserving their mechanistic structure.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

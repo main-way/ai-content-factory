@@ -1,0 +1,12 @@
+Condensed Matter > Disordered Systems and Neural Networks
+Title:Local Coverage Governs Memorization in Diffusion Models
+View PDF HTML (experimental)Abstract:Memorization in diffusion models is often treated as a global property of the model or dataset. In practice, however, a single diffusion model can simultaneously generate both memorized and novel samples. Which training samples are most likely to be memorized? In this work, we show that memorization is governed by \emph{local data coverage}. Leveraging the connection between diffusion models and kernel density estimation (KDE), we derive a theoretical criterion that predicts whether a point is memorized based on the density of training data in its neighborhood and the size of the training dataset. In the high-dimensional limit, this leads to a sharp, local transition: regions of low coverage are dominated by isolated training samples, which are memorized, while dense regions support interpolation and generalization. We validate these predictions empirically, showing that memorization increases with local sparsity and that diffusion models exhibit a coexistence of memorized and novel samples within the same model. Extending this framework to multi-class settings, we further show that classes with higher intra-class sparsity (and thus lower local coverage) are more strongly memorized. Our results provide a local view of memorization in diffusion models, explaining when and where memorization occurs in terms of data geometry.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

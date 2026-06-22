@@ -1,0 +1,173 @@
+{
+  "date": "2026-05-26",
+  "count": 11,
+  "posts": [
+    {
+      "id": "e70e88d9a498",
+      "title": "Наука как стартап: почему врач и исследователь строит компанию",
+      "url": "https://postnauka.org/longreads/158048",
+      "source": "ПостНаука (RU)",
+      "category": "ru_ai",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-05-26T19:13:00+00:00",
+      "summary": "Как из академии выходят от избытка идей",
+      "author": "Михаил Застрожин",
+      "tags": [
+        "Наука",
+        "evergreen"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "b920d871e577",
+      "title": "Rethinking organizational design in the age of agentic AI",
+      "url": "https://www.technologyreview.com/2026/05/26/1137584/rethinking-organizational-design-in-the-age-of-agentic-ai/",
+      "source": "MIT Tech Review AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-26T14:54:10+00:00",
+      "summary": "Amid rapidly growing adoption of enterprise-level AI agents, there’s a disconnect emerging between ambition and execution.&#160; Although 85% of organizations say they want to be agentic within the next three years, 76% say their current operations and infrastructure can’t support that change. They cite a lack of readiness across people, processes, and workflows.&#160; The sticky&#8230;",
+      "author": "MIT Technology Review Insights",
+      "tags": [
+        "Artificial intelligence",
+        "sponsored"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "5fa6d197b415",
+      "title": "Everything, Everywhere is Compliance",
+      "url": "https://www.a16z.news/p/everything-everywhere-is-compliance",
+      "source": "a16z (via Substack)",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-26T14:03:34+00:00",
+      "summary": "Why AI's Biggest Enterprise Opportunity Is Also Its Most Boring",
+      "author": "James da Costa",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "1e2aa2621f26",
+      "title": "Инвестиции глазами инженера, цена риска и private equity — «Мыслить как учёный» #54",
+      "url": "https://postnauka.org/tv/158046",
+      "source": "ПостНаука (RU)",
+      "category": "ru_ai",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-05-26T13:05:00+00:00",
+      "summary": "Алексей Фридлянд, инвестор и PhD в Aerospace Engineering, — о том, как научное мышление помогает в бизнесе и чем private equity отличается от венчура",
+      "author": "Ивар Максутов",
+      "tags": [
+        "Наука",
+        "evergreen"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "ab036e9a693c",
+      "title": "Import AI 458: Reckoning with the future; and a singularity story",
+      "url": "https://importai.substack.com/p/import-ai-458-reckoning-with-the",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-26T12:32:03+00:00",
+      "summary": "What AI-driven miracles will happen this year?",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "7400dc01b3a1",
+      "title": "A reality check on the AI jobs hysteria",
+      "url": "https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria/",
+      "source": "MIT Tech Review AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-26T09:00:00+00:00",
+      "summary": "Haven’t you heard? White-collar jobs are going away, decimated by AI. Waves of layoffs in the tech sector (most recently at Coinbase and Meta and Cisco) are said to presage what will soon come for all of us knowledge workers. But before you quit your job as a software developer or financial analyst—or tech journalist—and&#8230;",
+      "author": "David Rotman",
+      "tags": [
+        "Artificial intelligence",
+        "App",
+        "Subscriber-Only Stories"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "e8227e1ef5eb",
+      "title": "LWiAI Podcast #246 - Gemini 3.5 + Omni, Musk Loses, OpenAI vs Erdős",
+      "url": "https://lastweekin.ai/p/lwiai-podcast-246-gemini-35-omni",
+      "source": "Last Week in AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-26T05:10:23+00:00",
+      "summary": "Google unveils AI model Gemini 3.5 and AI agent Gemini Spark, Omni turns images, audio, and text into video, Musk loses OpenAI court battle",
+      "author": "Last Week in AI",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "a772ee776d38",
+      "title": "Sandbox persistence is now GA",
+      "url": "https://vercel.com/changelog/sandbox-persistence-is-now-ga",
+      "source": "Vercel AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-26T00:01:00+00:00",
+      "summary": "Vercel Sandboxes now automatically save and restore filesystem state between sessions. Persistence is on by default, meaning no snapshots to manage or state to track manually. Each sandbox has a durable, customizable name that acts as a unique reference in your project. You can create, retrieve, or resume a sandbox by name. Vercel spins sessions up and down automatically, without interrupting your workflow. Create a persistent sandbox When you call Sandbox.create() , persistence is enabled by default: Each automatic snapshot consumes snapshot storage , which is billed separately from compute.…",
+      "author": "Harpreet Arora",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "8f270d9731c1",
+      "title": "Vercel Domains now supports price sorting and availability filtering",
+      "url": "https://vercel.com/changelog/vercel-domains-now-supports-price-sorting-and-availability-filtering",
+      "source": "Vercel AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-26T00:00:00+00:00",
+      "summary": "Vercel Domains now supports price sorting and availability filtering. Price sorting shows lower cost domains first, so you can quickly find a domain that fits your budget. Availability filtering moves unavailable domains to the bottom of the search results, so you can focus on domains that you can actually purchase. Try it at vercel.com/domains . Read more",
+      "author": "Elliot Dauber",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "376e96997d09",
+      "title": "Firecrawl joins the Vercel Marketplace",
+      "url": "https://vercel.com/changelog/firecrawl-joins-the-vercel-marketplace",
+      "source": "Vercel AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-26T00:00:00+00:00",
+      "summary": "Firecrawl is now available on the Vercel Marketplace , allowing Vercel teams to power AI agents and applications with structured web data without managing crawling infrastructure. This integration helps developers scrape websites into LLM-ready formats, search and retrieve full page content, and interact with dynamic pages for retrieval and agent workflows. Key capabilities include: Scrape pages into markdown, HTML, structured data, or screenshots Search the web and retrieve full page content in a single call Interact with dynamic websites using AI prompts or code Get started with Firecrawl…",
+      "author": "Hedi Zandi",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "a2b3b1fe0438",
+      "title": "Microfrontends routing now applies to vc alias and branch domains",
+      "url": "https://vercel.com/changelog/microfrontends-routing-now-applies-to-vc-alias-and-branch-domains",
+      "source": "Vercel AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-26T00:00:00+00:00",
+      "summary": "This week we are gradually rolling out an update to Vercel Microfrontends routing for aliases and branch-assigned domains. Aliases inherit Microfrontends routing Aliasing a Microfrontends URL with vc alias now preserves the full microfrontends routing config from the source deployment. Previously, the new alias only inherited the deploymentId . Update to the latest Vercel CLI to pick up the change. Branch domains route across all projects A project domain assigned to a git branch now routes to that branch in every project in the Microfrontend that shares the branch name. Previously, the…",
+      "author": "Tim White",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

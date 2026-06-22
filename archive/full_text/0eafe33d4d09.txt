@@ -1,0 +1,12 @@
+Computer Science > Information Retrieval
+Title:BioArtlas: Computational Clustering of Multi-Dimensional Complexity in Bioart
+View PDF HTML (experimental)Abstract:Bioart brings living material into artistic practice, where a single work can be at once an aesthetic object, a scientific instrument, and an ethical provocation. Traditional categories sort such works along one axis at a time, which flattens the very hybridity that defines the field and leaves curators no way to compare works across many dimensions together. I introduce BioArtlas, a computational atlas that represents each bioartwork along many curated dimensions at once and organizes the field by conceptual similarity rather than by medium or chronology. My method embeds the keywords of all 81 works on each of thirteen interpretive axes, groups related concepts into a shared codebook that tames inconsistent terminology, and then searches systematically for a clustering that is both statistically clean and interpretable. Among the methods that place every work on the map, agglomerative clustering separates the field far more cleanly than the usual k-means baseline (silhouette 0.664 versus 0.483), whereas density-based methods reach higher scores only by discarding most of the corpus as noise. By separating rigorous analysis from public storytelling, BioArtlas turns the tangled complexity of bioart into a navigable landscape, openly available as an interactive interface (this https URL) and dataset (this https URL).
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

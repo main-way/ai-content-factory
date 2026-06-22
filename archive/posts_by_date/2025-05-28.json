@@ -1,0 +1,25 @@
+{
+  "date": "2025-05-28",
+  "count": 1,
+  "posts": [
+    {
+      "id": "ba3765b33286",
+      "title": "Adobe Research Unlocking Long-Term Memory in Video World Models with State-Space Models",
+      "url": "https://syncedreview.com/2025/05/28/adobe-research-unlocking-long-term-memory-in-video-world-models-with-state-space-models/",
+      "source": "Synced Review",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2025-05-28T09:31:27+00:00",
+      "summary": "By combining State-Space Models (SSMs) for efficient long-range dependency modeling with dense local attention for coherence, and using training strategies like diffusion forcing and frame local attention, researchers from Adobe Research successfully overcome the long-standing challenge of long-term memory in video generation. The post Adobe Research Unlocking Long-Term Memory in Video World Models with State-Space Models first appeared on Synced .",
+      "author": "Synced",
+      "tags": [
+        "Machine Learning & Data Science",
+        "Nature Language Tech",
+        "Popular",
+        "Research"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

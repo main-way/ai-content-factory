@@ -1,0 +1,20 @@
+{
+  "date": "2019-11-10",
+  "count": 1,
+  "posts": [
+    {
+      "id": "f853688677f6",
+      "title": "Self-Supervised Representation Learning",
+      "url": "https://lilianweng.github.io/posts/2019-11-10-self-supervised/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2019-11-10T00:00:00+00:00",
+      "summary": "[Updated on 2020-01-09: add a new section on Contrastive Predictive Coding ]. [Updated on 2020-04-13: add a &ldquo;Momentum Contrast&rdquo; section on MoCo, SimCLR and CURL.] [Updated on 2020-07-08: add a &ldquo;Bisimulation&rdquo; section on DeepMDP and DBC.] [Updated on 2020-09-12: add MoCo V2 and BYOL in the &ldquo;Momentum Contrast&rdquo; section.] [Updated on 2021-05-31: remove section on &ldquo;Momentum Contrast&rdquo; and add a pointer to a full post on &ldquo;Contrastive Representation Learning&rdquo; ]",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

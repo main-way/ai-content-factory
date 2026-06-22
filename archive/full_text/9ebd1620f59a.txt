@@ -1,0 +1,99 @@
+“You can’t have your cake and eat it too.”
+I find this sentence extremely poetic but also very practical and useful. The message of this saying is straightforward: everything you accomplish is achieved through a tradeoff, as everything has a price.
+The philosophical discussion is out of scope for this article, but the practical consequences of these considerations are very much in line with data science and software engineering in general. Let me explain.
+In software engineering and data science, there is no such thing as the “perfect design” per se. The same algorithm that is fantastic for a given application fails miserably in others.
+Think of the computation versus memory tradeoffs in the following cases:
+It makes a lot of sense to precompute the distance between two cities and store them in a dataset, and it doesn’t make sense to compute them on the flight. This is because you expect the dataset to be reasonably low maintenance (cities don’t just move around often), and it would be stupid to compute the distance between New York and San Francisco every fraction of a second. [Case A]
+However, it would be equally stupid (and probably impossible) for a chatbot to memorize all the possible questions a human can ask and pull the answer to that question whenever it’s asked. This is because the nature of the problem is much more dynamic, and it requires an “on the fly” computation. [Case B]
+In Case A, we are sacrificing memory and getting extremely quick computation. In Case B, we are spending more computational time, but we are not using any “query” memory.
+Can you get no computational time and no memory? Not really, because you can’t have your cake and eat it too 🙂
+But let’s take a less obvious and more “trendy” example. Let’s talk about Large Language Models (LLMs).
+LLMs are the most powerful AI models we have, and they are trained on all the knowledge available to the world. They are also massive. They are actually so big that we rarely have them in-house, and we usually invoke them through APIs. However, API call = tokens = cost.
+Now imagine you want to use an intelligent system to pick the best restaurant for tonight. You would ask ChatGPT something like: “Can you provide me with a good Italian restaurant that is not super expensive but romantic and in a good location?”
+Now, imagine if the GPT model had to explore all the restaurants in the universe and decide if they are Italian, not expensive, in a good location, and close to your place. Best-case scenario: you would spend millions in tokens, and you’d already be in bed by the time the computation is executed.
+However, we also don’t want to completely give up all the juicy, natural-language interpretative, and information-retrieving power of the LLMs. The key is that, in order to use the LLM and get smart information, we can’t use the most intelligent part of the pipeline all the time (that would be like having your cake and eating it too).
+In this article, I am going to give you a recipe for these smart, LLM-improved recommendation systems, using the restaurant recommendation example we were doing as a use case.
+The input of this system will be the user’s description of their ideal restaurant in a specific city, and the output will be a set of recommended restaurants.
+Let’s get started!
+1. System Design
+The cake saying we discussed is also known in engineering as the Accuracy-Scale-Time triangle:
+- You can make something accurate and on a massive dataset, but it will be slow
+- You can make something accurate and fast, but it won’t scale well on a large dataset
+- You can make something fast and scale well, but it won’t be that accurate.
+Of course, we want our results to be ultimately accurate, so option 3 alone won’t cut it. However, we can refine option 3 with a more accurate model on top of the first one. In other words, Option 3 can give us a good list of candidates with a small computational time, and we can select the most accurate list of recommendations using a Large Language Model.
+In other words, the design looks like this:
+- A quick and simple search will find the top K closest restaurants (rule-based, high recall, low precision)
+- A slow, very intelligent Large Language Model will help us choose, among the top K, the best based on the query. (AI-based, high precision)
+By doing this, we are not wasting time and money on the slow LLM, but we are still getting their smartness by using them on a selected list of candidates.
+Enough yapping. Let’s start coding!
+2. The Script
+2.1 The Setup
+I did the dirty work behind the scenes for you 🙂
+Everything is written in an object-oriented programming (OOP) fashion, with scripts and a pipeline that will take care of the whole process. The GitHub folder is this one, and in order to generate the rest of the code, you can clone it and use this import block here:
+2.2 Data Generation
+Before we can recommend anything, we need something to recommend. In a real system, we would use a restaurant database in an S3 location. For this article, we generate a synthetic one so the whole thing is fully reproducible and free to run.
+This is the job of the RestaurantDataGenerator
+class inside datagenerator.py
+. It builds a reproducible table of ~10,000 restaurants scattered across eight cities (New York, San Francisco, Chicago, Austin, Seattle, Boston, Miami, and Denver). Each restaurant gets:
+– a randomly assembled name
+– a city and a latitude/longitude sampled around that city’s center (within ~13 km),
+– a cuisine style (Italian, Japanese, Mexican, Thai, French, …),
+– a dietary profile (omnivore/vegetarian/vegan)
+– an average score
+– a number of votes
+– a price range (10 / 100 / 1000, an order-of-magnitude average ticket per person).
+This generator is meant to run once. Generating the data is as simple as:
+That single call writes the table to data/restaurants.csv
+, that looks like this:
+Perfect, now that we have our restaurants, let’s see how we can recommend them.
+2.3 Generating the Candidates
+This is Stage 1 of the funnel: the cheap, quick, rule-based list of candidates. The user tells us which city they are in, and we keep only the geographically closest restaurants. The code filters the table down to the city, computes the great-circle distance from the user to every restaurant, and identifies the N_DISTANCE_CANDIDATES
+(50 by default).
+This stage is deliberately high recall, low precision. With this approach, we can run over the whole table (10k restaurants) without a single API call and token costs. Sure, we don’t do anything particularly smart or fancy here, but we are actually filtering all the data that is not a feasible candidate for the user. That alone is a big deal.
+For example, let’s try a real request to the search:
+“cheap vegan tacos with a lively atmosphere” in multiple cities
+This is the output:
+Notice how the shortlist below has no idea about “vegan”, “cheap” or “tacos”: it only knows about distance. However, this is ok, as the goal of this stage is to create an in-the-right-city starting point that the LLM will rerank in Stage 2.
+Let’s get ready for the LLM!
+2.4 Selecting the Candidates
+This is Stage 2, the slow, intelligent, LLM-driven, high-precision end of the funnel. This builds directly on top of the 50-restaurant shortlist from 2.3. The LLM never sees the full 10,000-row table; it only ever sees the small, already-relevant slice that the distance filter handed it.
+We talk to the model through a small OpenAI client. The key is read from OPENAI_API_KEY
+(saved in the environment). The recommender, defined as RestaurantRecommender
+, runs on the query and on the city through RestaurantRecommender.recommender(query,city)
+:
+A couple of things are worth calling out:
+- Precision goes up. Stage 1 was high recall, low precision: it returned the 50 closest restaurants regardless of the request. Stage 2 actually reads the query (cheap vegan tacos with a lively atmosphere), discards everything that does not fit, and returns only the best 5 to 10 with an honest
+fit_score
+.
+- Structured output with Pydantic. We never parse free-form text. The model is forced to answer in the shape of a Pydantic model (via OpenAI structured outputs), so every response is guaranteed to match the schema.
+The output schema carries the restaurant_id
+and name
+(from the candidates), a fit_score
+, value between 0 and 100, and a short reason
+. The response is also wrapped with a friendly summary
+. Running the call for our three cities gives, for example:
+If you notice, this is much better than the raw distance shortlists from 2.3. There, the closest restaurant in each city was an essentially random match (Korean, Lebanese, Mexican-but-vegetarian). Here, the model has reordered the same 50 candidates around what we actually asked for: vegan and Mexican places float to the top with highfit_scores
+, and the model is honest when nothing is a perfect fit, marking partial matches down and explaining why in the reason
+. That is the precision the LLM buys us, applied to a shortlist small enough to stay cheap at scale.
+3. Results
+Let’s step back and look at what the two-stage funnel actually bought us, using the same request across three cities: “cheap vegan tacos with a lively atmosphere”.
+- Stage 1 gives us the list of candidates. The distance shortlists from 2.3 were high recall and low precision by design.
+- Stage 2 identifies the real recommendations. Feeding the 50 candidates from Stage 1 to the LLM reorders them around what was actually asked.
+Here are the final picks the model returned for each city:
+- New York: Golden Spoon (vegan, 4.9) and Maison Fork (Mexican, in budget) rise to the top with fit scores of 90 and 85.
+- Miami: Royal Tavern & Co. (vegan, Mexican, affordable) leads at 85.
+- Boston: Urban Spoon and Little House, both budget Mexican spots, take the top two slots at 90 and 85.
+In every city, the model promoted the candidates that matched the vegan, cheap and Mexican/tacos intent, and it was honest about imperfect fits: places that nailed the diet but not the cuisine (or vice versa) were kept as backups with visibly lower fit_scores
+.
+4. Conclusions
+Thank you for spending time with me, it means a lot. ❤️ Here’s what we have done together:
+– Built a two-stage recommendation funnel that is both scalable and intelligent.
+– Used a cheap, rule-based distance filter (Stage 1) to cut 10,000 restaurants down to the closest 50.
+– Used an LLM rerank (Stage 2) to turn those 50 candidates into the best 5 to 10, with an honest score and reason for each.
+In many real projects, a funnel like the one we built here is usually very popular. These kinds of systems are very scalable, as the LLM is used wisely, and intelligent, as we are using models that can understand the context very efficiently.
+7. Before you head out!
+Thank you again for your time. It means a lot. My name is Piero Paialunga, and I’m this guy here:
+I’m originally from Italy, hold a Ph.D. from the University of Cincinnati, and work as a Data Scientist at The Trade Desk in New York City. I write about AI, Machine Learning, and the evolving role of data scientists both here on TDS and on LinkedIn. If you liked the article and want to know more about machine learning and follow my studies, you can:
+A. Follow me on Linkedin, where I publish all my stories
+B. Follow me on GitHub, where you can see all my code
+C. For questions, you can send me an email at piero.paialunga@hotmail

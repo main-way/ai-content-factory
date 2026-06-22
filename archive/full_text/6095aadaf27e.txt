@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Connections Between Pairs of Filters Improve the Accuracy of Convolutional Neural Networks
+View PDF HTML (experimental)Abstract:While researchers continue to find new and improved network structures for CNNs, most of the newly invented architectures still rely on the traditional pattern of stacking convolutional blocks and separating them with pointwise activation functions. However, there are drawbacks to a network purely building on pointwise nonlinearities. One alternative is to introduce a pairwise connection between two filters of a network. Typical connection functions use multiplications or the minimum operation to realize logical AND connections. In this paper, we go one step further by demonstrating that CNNs can benefit from more general connections, which include parameters that are learned. With such parameters, the network is able to implement different connections in different network layers and better adapt the connection function to the task at hand.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

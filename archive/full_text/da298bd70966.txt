@@ -1,0 +1,12 @@
+Computer Science > Computation and Language
+Title:Multilingual Word-Level Forced Alignment with Self-Supervised Representations and Learned Dynamic Programming
+View PDF HTML (experimental)Abstract:We present a method for accurate multilingual word-level forced alignment, consisting of an alignment encoder and a learned alignment decoder. The encoder integrates two representations: one from the Massively Multilingual Speech (MMS) model and another from a self-supervised phoneme boundary detector (UnSupSeg). It learns to fuse them and to estimate word-boundary probabilities over long temporal contexts. The alignment decoder is a learned dynamic programming that combines encoder outputs with segmental features over the MMS and UnSupSeg representations to infer final word boundaries. Trained iteratively on TIMIT and Buckeye, the proposed approach outperforms Montreal Forced Aligner (MFA) and MMS-based alignment on both datasets. On unseen languages (Dutch, German, and Hebrew), the proposed model achieves performance consistently better than or on par with existing alignment approaches, indicating its potential to scale to 1100+ languages supported by MMS without further training.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

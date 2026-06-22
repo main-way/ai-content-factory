@@ -1,0 +1,3338 @@
+{
+  "date": "2026-06-21",
+  "count": 202,
+  "posts": [
+    {
+      "id": "ae6878b0c191",
+      "title": "Nobel Laureate John Jumper Departs Google DeepMind for Anthropic",
+      "url": "https://www.theinformation.com/briefings/nobel-laureate-john-jumper-departs-google-deepmind-anthropic",
+      "source": "The Information",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T23:55:54+00:00",
+      "summary": "John Jumper, the Google DeepMind Vice President who co-won the 2024 Nobel Prize in Chemistry, is leaving the company to join rival Anthropic, he said on X on Friday. Jumper’s move follows that of another high-profile Google researcher, Noam Shazeer, who earlier this week announced he had joined ...",
+      "author": "Nick Wingfield",
+      "tags": []
+    },
+    {
+      "id": "743d3a995b1c",
+      "title": "Lime Plans to Name Uber as an Anchor Investor in IPO",
+      "url": "https://www.theinformation.com/articles/lime-plans-name-uber-anchor-investor-ipo",
+      "source": "The Information",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T23:44:17+00:00",
+      "summary": "The initial public offering for Lime, an electric scooter and bike rental company that was once a stalwart of the late 2010s startup scene, is getting financial support from an old friend: Uber. The ride-hailing giant is expected to invest a “meaningful” amount in the deal and be named as an anchor investor on the cover of an updated IPO prospectus that Lime plans to file Monday, a person familiar with the matter said. Lime is expected to start talks with IPO investors on a road show this week to raise about $200 million at a roughly $1.8 billion valuation, the person said.",
+      "author": "Cory Weinberg",
+      "tags": []
+    },
+    {
+      "id": "46ff7e0ca3d5",
+      "title": "Petition against Meta's employee training data collection for ML models",
+      "url": "https://mcipetition.com/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T23:34:07+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "663d872622a3",
+      "title": "Samsung Electronics brings ChatGPT and Codex to employees",
+      "url": "https://openai.com/index/samsung-electronics-chatgpt-codex-deployment",
+      "source": "OpenAI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T23:00:00+00:00",
+      "summary": "Samsung Electronics deploys ChatGPT Enterprise and Codex to employees worldwide, marking one of OpenAI’s largest enterprise AI rollouts.",
+      "author": "",
+      "tags": [
+        "Company"
+      ]
+    },
+    {
+      "id": "963a38bbce8b",
+      "title": "Good results fine tuning a local LLM like Qwen 3:0.6B to categorize questions",
+      "url": "https://www.teachmecoolstuff.com/viewarticle/fine-tuning-a-local-llm-to-categorize-questions",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T22:55:23+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "4d4a35fc14d0",
+      "title": "RAG не только для вопросов и ответов: почему он естественно подходит для рекомендаций",
+      "url": "https://habr.com/ru/articles/1050196/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050196",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T22:53:00+00:00",
+      "summary": "Retrieval-Augmented Generation (RAG) чаще всего рассматривается в контексте вопросно-ответных систем и чат-ботов поверх базы знаний. Большинство публикаций и руководств по RAG посвящено схеме «вопрос – ответ с опорой на документы». Однако внутренняя механика RAG – семантический поиск в сочетании с генерацией ответа на основе найденного – хорошо ложится и на другую задачу, которую традиционно решают иными методами: на рекомендации. Цель настоящей статьи – показать, что RAG представляет собой недоиспользованный, но обоснованный инструмент для рекомендательных систем, и разобрать, на каких…",
+      "author": "danyakr",
+      "tags": [
+        "rag",
+        "nlp",
+        "рекомендательные системы",
+        "machine learning",
+        "llm",
+        "информационный поиск",
+        "faiss",
+        "эмбеддинги"
+      ]
+    },
+    {
+      "id": "a344c10fcae3",
+      "title": "Cannes Ad Festival Puts OpenAI’s Projections in Spotlight",
+      "url": "https://www.theinformation.com/articles/cannes-ad-festival-puts-openais-projections-spotlight",
+      "source": "The Information",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T22:01:03+00:00",
+      "summary": "If you’ve wanted to visit the South of France, this might be the week. The annual Cannes Lion ad festival, a time for ad folks from all quarters to gather, gets underway tomorrow. The impact of AI on advertising and media is sure to be front and center. OpenAI’s chief revenue officer, Denise Dresser, is scheduled to appear onstage twice, according to the official program, including on a panel with Google’s chief marketing officer, Lorraine Twohill.&nbsp; People from Google and Meta Platforms, the two digital ad giants, will be ubiquitous, as they always are at Cannes. For Dresser and other…",
+      "author": "Martin Peers",
+      "tags": []
+    },
+    {
+      "id": "48b87e414a7f",
+      "title": "Rent collections are down in New York",
+      "url": "https://www.politico.com/news/2026/06/21/rent-collections-are-down-in-new-york-and-no-ones-sure-why-00966982",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T21:54:34+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "9bd7a67eddd4",
+      "title": "Did my old job only exist because of fraud?",
+      "url": "https://david.newgas.net/did-my-old-job-only-exist-because-of-fraud/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T21:40:53+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "b44a20f9e751",
+      "title": "My 1992 view of the problems of computer programming in 1992",
+      "url": "https://blog.plover.com/prog/fortran-i.html",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T21:34:11+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "71b2d5ba40c5",
+      "title": "Делаем фреймворк Meta-Spider на основе мета-внимания",
+      "url": "https://habr.com/ru/articles/1038684/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1038684",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T21:33:11+00:00",
+      "summary": "Это прямое продолжение статьи \"meta-attention is all you need\" . Будет представлен фреймворк с заготовленным набором инструментов, который вы сможете опробовать в работе с LLM, в том числе в агентных сценариях. Так же будут предоставлена готовая легкая обученная обвязка для моделей, один малыш ( Qwen-3.5-4b) и среднячок (Granite 4.1 8B). Все их можно будет запустить через llama.cpp. Оседлать паука",
+      "author": "Imperius14",
+      "tags": [
+        "transformers",
+        "llm"
+      ]
+    },
+    {
+      "id": "ea5a45c3af5b",
+      "title": "Apertus – Open Foundation Model for Sovereign AI",
+      "url": "https://apertvs.ai/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T21:29:43+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "3972d0f81e54",
+      "title": "PowerFox Browser",
+      "url": "https://powerfox.jazzzny.me/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T21:23:13+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "b7408d2f0aca",
+      "title": "Когда модели стоит «думать», а когда нет: проверил на своём агенте",
+      "url": "https://habr.com/ru/articles/1050192/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050192",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T21:18:06+00:00",
+      "summary": "В продакшене у нас работает агент, который разбирает звонки отдела продаж. Из каждого диалога он вытягивает сумму сделки - обычное числовое поле, ничего сложного. Но есть и вторая часть работы: если клиент сомневается, агент должен подсказать менеджеру, как лучше действовать дальше. Здесь уже без понимания контекста не обойтись. Когда я обновлял модели, снова возник практический вопрос: где действительно имеет смысл включать «режим рассуждения», а где это только зря тратит ресурсы. Чтобы не гадать, я решил проверить всё на данных. Провёл серию замеров - в итоге оказалось, что прошлые опасения…",
+      "author": "Reller",
+      "tags": [
+        "reasoning",
+        "llm",
+        "chain-of-thought",
+        "ии-агенты",
+        "overthinking"
+      ]
+    },
+    {
+      "id": "e7bab2232f0d",
+      "title": "Everything is logarithms",
+      "url": "https://alexkritchevsky.com/2026/05/25/everything-is-logarithms.html",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T21:10:32+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "ea3ff1dad191",
+      "title": "As Europe falls behind the US and China in consumer AI, its engineering companies and AI startups are turning to industrial AI applications to boost efficiency (Marilen Martin/Bloomberg)",
+      "url": "https://www.techmeme.com/260621/p9#a260621p9",
+      "source": "Techmeme",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T21:05:55+00:00",
+      "summary": "Marilen Martin / Bloomberg : As Europe falls behind the US and China in consumer AI, its engineering companies and AI startups are turning to industrial AI applications to boost efficiency &nbsp; &mdash;&nbsp; Pressure to become more efficient has Europe racing to bring artificial intelligence to the shop floor.",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "57a790565b60",
+      "title": "Show HN: Recall – fully-local project memory for Claude Code",
+      "url": "https://github.com/raiyanyahya/recall",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T21:05:37+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "a39868291eaf",
+      "title": "There is minimal downside to switching to open models",
+      "url": "https://www.marble.onl/posts/cancel_claude.html",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T20:56:01+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "8a198266138d",
+      "title": "Polymarket has reportedly been paying creators to post fake betting videos",
+      "url": "https://www.engadget.com/2198495/wall-street-journal-polymarket-reportedly-paying-creators-to-post-fake-betting-videos/",
+      "source": "Engadget",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T20:53:42+00:00",
+      "summary": "The Wall Street Journal reviewed 1,105 videos along with guidance given to creators for crafting their posts.",
+      "author": "staff@engadget.com (Cheyenne MacDonald)",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "id": "1ade56c1410f",
+      "title": "Российский микроконтроллерный блок управления судовыми преобразователями частоты. Часть 2",
+      "url": "https://habr.com/ru/articles/1015420/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1015420",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T20:48:22+00:00",
+      "summary": "Статья посвящена микроконтроллерным системам управления преобразователями частоты для электродвигателей переменного тока. Рассматриваются различные варианты структуры и конструкции систем управления преобразователями частоты. Приводится техническое описание российского микроконтроллерного блока управления БУПЧ, который входит в состав преобразователей частоты для судовых систем электродвижения концерна «Русэлпром»: его состав, устройство, технические характеристики, преимущества и недостатки по сравнению с западными аналогами. Рассматривается сервисное программное обеспечение, которое…",
+      "author": "Maxim_Sergeev",
+      "tags": [
+        "судовая система электродвижения",
+        "судовой электропривод",
+        "преобразователь частоты",
+        "система управления",
+        "СУ ПЧ",
+        "микроконтроллер",
+        "локальная СУ",
+        "центральная СУ",
+        "ПЛК",
+        "блок управления БУПЧ"
+      ]
+    },
+    {
+      "id": "b8ca92a243fd",
+      "title": "Ask for no, don't ask for yes (2022)",
+      "url": "https://www.mooreds.com/wordpress/archives/3518",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T20:17:48+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "2700fb7e3ad3",
+      "title": "В Катаре на заводе СПГ в Рас-Лаффане произошел взрыв",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207639-v-katare-vzriv",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T20:15:14+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "3cafe04889a3",
+      "title": "# Морфоанализатор ингушского языка: как мы научили словарь понимать словоформы — и что изменилось за два месяца",
+      "url": "https://habr.com/ru/articles/1050186/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050186",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T20:14:05+00:00",
+      "summary": "В апреле я писал тут про PaydaDosh — открытый словарь и корпус ингушского языка. Та статья была про «вот, собрали всё в одном месте»: 66 тысяч статей, параллельный корпус, ИИ в разделе вопросов. С тех пор прошло два месяца, и проект перестал быть просто словарём. Мы начали строить грамматику — движок, который понимает, как устроено ингушское слово. Это статья про то, как мы это делаем технически: почему ингушская морфология — это больно, как устроен разбор словоформ, где он ломается и что мы с этим делаем. Плюс короткий обзор всего, что наросло вокруг за эти недели — корпус, инструменты,…",
+      "author": "dofin",
+      "tags": [
+        "ингушский язык",
+        "лингвистика",
+        "словарь",
+        "малые языки",
+        "морфология",
+        "морфоанализатор",
+        "лексикография",
+        "омономия",
+        "корпус текстов",
+        "NLP"
+      ]
+    },
+    {
+      "id": "d82df6ffdc4f",
+      "title": "Today's Wordle Hints, Answer and Help for June 22, #1829",
+      "url": "https://www.cnet.com/tech/gaming/todays-wordle-hints-answer-and-help-for-june-22-1829/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T20:01:00+00:00",
+      "summary": "Here are hints and the answer for today's Wordle for June 22, No. 1,829.",
+      "author": "Gael Cooper",
+      "tags": []
+    },
+    {
+      "id": "2cf513a1d9c7",
+      "title": "Today's NYT Strands Hints, Answers and Help for June 22 #841",
+      "url": "https://www.cnet.com/tech/gaming/todays-nyt-strands-hints-answers-and-help-for-june-22-841/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T20:01:00+00:00",
+      "summary": "Here are hints and answers for the NYT Strands puzzle for June 22 No. 841.",
+      "author": "Gael Cooper",
+      "tags": []
+    },
+    {
+      "id": "5d8ec158991c",
+      "title": "Today's NYT Connections Hints, Answers and Help for June 22, #1107",
+      "url": "https://www.cnet.com/tech/gaming/todays-nyt-connections-hints-answers-and-help-for-june-22-1107/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T20:00:42+00:00",
+      "summary": "Here are some hints and the answers for the NYT Connections puzzle for June 22, No. 1,107.",
+      "author": "Gael Cooper",
+      "tags": []
+    },
+    {
+      "id": "82ca8e8dbc3a",
+      "title": "The American dream is ‘very dead’ for young Americans, says Mrs. Dow Jones",
+      "url": "https://thenextweb.com/news/mrs-dow-jones-american-dream-dead-millennials-gen-z-gambling",
+      "source": "The Next Web",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T19:57:07+00:00",
+      "summary": "The American dream is “very dead” for millennials and Gen Z, according to financial influencer Haley Sacks, better known as Mrs. Dow Jones. In an interview with Business Insider, Sacks argued that traditional markers of middle-class success, homeownership, stable careers, retirement savings, have become functionally inaccessible to younger Americans, pushing them toward gambling and side [&hellip;] This story continues at The Next Web",
+      "author": "Allison Steffens Herrera",
+      "tags": [
+        "Finance",
+        "Next Featured",
+        "Future of Finance",
+        "Lifestyle"
+      ]
+    },
+    {
+      "id": "5b105e7e5ce0",
+      "title": "OSINT для новичков: что можно узнать из открытых источников",
+      "url": "https://habr.com/ru/articles/1050184/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050184",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T19:56:30+00:00",
+      "summary": "Разбираю базовые техники OSINT для новичков: как проверять телефон, email, домен, компанию и изображения через поисковики, реестры, веб-архивы и открытые сервисы. Читать далее",
+      "author": "ProfPearo",
+      "tags": [
+        "osint",
+        "osint tools",
+        "google chrome",
+        "dork",
+        "открытые данные",
+        "критическое мышление",
+        "osint обучение с нуля"
+      ]
+    },
+    {
+      "id": "70bd21df2499",
+      "title": "КС Армении рассмотрит иски оппозиции по оспариванию итогов выборов 26 июня",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207638-ks-armenii-rassmotrit",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T19:53:10+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "ee791b5a905d",
+      "title": "Как отключить Gemini в Google Docs",
+      "url": "https://habr.com/ru/news/1049816/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1049816",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T19:36:58+00:00",
+      "summary": "Редактор TechCrunch Аманда Силберлинг рассказала , как убрать надоедливые всплывающие окна с предложением «писать с помощью Gemini» в Google Docs. Читать далее",
+      "author": "darya_kiwi",
+      "tags": [
+        "искусственный интеллект",
+        "google docs",
+        "gemini",
+        "отключение",
+        "контент и копирайтинг",
+        "ии-ассистент"
+      ]
+    },
+    {
+      "id": "b41cd67a2f44",
+      "title": "Иран потребовал извинений от Трампа для продолжения переговоров в Швейцарии",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207634-iran-potreboval-izvinenii",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T19:27:52+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "a7853f600a0b",
+      "title": "OpenAI научила Codex создавать навыки, просто наблюдая за человеком",
+      "url": "https://habr.com/ru/news/1050182/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050182",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T19:14:08+00:00",
+      "summary": "OpenAI выпустила для Codex функцию&nbsp; Record &amp; Replay : пользователь один раз показывает агенту рабочий процесс на Mac, а тот превращает его в переиспользуемый скилл и в дальнейшем выполняет задачу сам. Вместо того чтобы расписывать инструкцию в промпте, достаточно один раз продемонстрировать, что нужно сделать. Читать далее",
+      "author": "runaway_llm",
+      "tags": [
+        "Codex",
+        "OpenAI"
+      ]
+    },
+    {
+      "id": "d9b6482f3c99",
+      "title": "Аудит алгоритмов: как реализация Boyer-Moore с 190K звёзд на GitHub оказалась brute-force",
+      "url": "https://habr.com/ru/articles/1050180/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050180",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T19:12:28+00:00",
+      "summary": "Проверил реализацию Boyer-Moore в TheAlgorithms/Python (190K+ звёзд). Оказалось, что сдвиг bad character записывается в переменную for-цикла, что в Python не имеет эффекта. Алгоритм выдаёт правильные результаты, но работает как brute-force O(nm) вместо O(n/m). Плюс ещё две находки: бесконечный цикл в типичных реализациях full BM и ошибка в оригинальной статье 1977 года, которую исправили только в 1980-м. Читать далее",
+      "author": "StudyQA",
+      "tags": [
+        "алгоритмы",
+        "Boyer-Moore",
+        "Python",
+        "тестирование",
+        "баги",
+        "open source",
+        "property-based testing",
+        "строковый поиск"
+      ]
+    },
+    {
+      "id": "051cfea7b8b8",
+      "title": "Google открыла в Лос-Анджелесе первый в мире музей искусственного интеллекта Dataland",
+      "url": "https://habr.com/ru/news/1049818/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1049818",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T19:08:53+00:00",
+      "summary": "20 июня в Лос-Анджелесе Google открыла Dataland — первый в мире музей искусственного интеллекта. На первой выставке представлены произведения искусства, созданные с помощью ИИ в режиме реального времени. Читать далее",
+      "author": "darya_kiwi",
+      "tags": [
+        "искусственный интеллект",
+        "google",
+        "gemini",
+        "музей",
+        "лос-анджелес",
+        "искусство",
+        "творчество"
+      ]
+    },
+    {
+      "id": "b465fb41bdc9",
+      "title": "Совбез Белоруссии заявил о попытках втянуть страну в конфликт на Украине",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207633-sovbez-belorussii-zayavil",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T19:04:09+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "5b081f2bff0e",
+      "title": "The Best LED Face Masks That Will Improve Your Skin's Appearance",
+      "url": "https://www.cnet.com/health/best-led-face-masks/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T19:00:00+00:00",
+      "summary": "We tested popular FDA-cleared LED face masks to find the best ones for your home needs.",
+      "author": "Nasha Addarich Martínez",
+      "tags": []
+    },
+    {
+      "id": "55019335857d",
+      "title": "Microsoft подтвердила наличие ошибки в корзине практически во всех версиях Windows 10/11/Server",
+      "url": "https://habr.com/ru/news/1049820/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1049820",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T18:55:10+00:00",
+      "summary": "Microsoft подтвердила наличие новой ошибки в Windows, из-за которой в запросах на удаление в корзине отображаются внутренние имена файлов вместо реальных, сообщает Neowin. Читать далее",
+      "author": "darya_kiwi",
+      "tags": [
+        "windows 11",
+        "ошибка",
+        "корзина",
+        "файлы",
+        "имя файла",
+        "microsoft",
+        "удаление"
+      ]
+    },
+    {
+      "id": "a9fb71cf4cab",
+      "title": "SF-based Humble Robotics, which is developing an electric, self-driving cabless freight truck with 200 miles range and 55 mph max speed, raised $24M (Caroline Petrow-Cohen/Los Angeles Times)",
+      "url": "https://www.techmeme.com/260621/p8#a260621p8",
+      "source": "Techmeme",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T18:55:01+00:00",
+      "summary": "Caroline Petrow-Cohen / Los Angeles Times : SF-based Humble Robotics, which is developing an electric, self-driving cabless freight truck with 200 miles range and 55 mph max speed, raised $24M &nbsp; &mdash;&nbsp; - 7 min Click here to listen to this article&nbsp; &mdash; San Francisco startup Humble Robotics has raised $24 million to build an electric &hellip;",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "9ab140b948c2",
+      "title": "JSON-LD explained for personal websites",
+      "url": "https://hawksley.dev/blog/json-ld-explained-for-personal-websites/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T18:51:47+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "8f27240f91b8",
+      "title": "RICE, ICE, MoSCoW: когда фреймворк приоритизации вас топит",
+      "url": "https://habr.com/ru/articles/1050178/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050178",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T18:47:41+00:00",
+      "summary": "Когда я пришёл в Instameal, у нас был бэклог на сорок задач и ни одного чёткого критерия почему одно важнее другого. Мы попробовали RICE. Потом ICE. Потом MoSCoW. Потом снова RICE с другими весами. Проблема была не в том, что мы выбирали неправильный фреймворк. Проблема была в том, что мы думали: выберем правильный инструмент - и приоритеты выстроятся сами. Не выстроятся. Что такое каждый из трёх RICE: Reach (охват) × Impact (влияние) × Confidence (уверенность) / Effort (усилия). Даёт цифру. Чем выше - тем выше приоритет. ICE: Impact × Confidence × Ease. Проще, быстрее считается. Используется…",
+      "author": "Akhmadaliev",
+      "tags": [
+        "приоритизация",
+        "rice",
+        "ice scoring",
+        "moscow",
+        "методы",
+        "приоритизация бэклога",
+        "product management",
+        "фреймворки"
+      ]
+    },
+    {
+      "id": "9851353b311b",
+      "title": "Германия рассматривает вопрос поэтапного повышения пенсионного возраста",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207608-germaniya-rassmatrivaet-vopros",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T18:38:14+00:00",
+      "summary": "По данным Bloomberg, такая мера может быть принята в рамках масштабной реформы пенсионной системы",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "d8bcfa171605",
+      "title": "Сервисы конвертации кода «съедают» опенсорс",
+      "url": "https://habr.com/ru/companies/globalsign/articles/1050176/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050176",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T18:37:57+00:00",
+      "summary": "Недавно в интернете начал работу сервис рефакторинга Malus.sh по «очистке кода от опенсорсных лицензий». Он позиционирует себя как «чистая комната», где софт очищается от лицензионного бремени. Туда загружается манифест свободного проекта, а LLM за небольшую плату переписывает код с сохранением функциональности. Идея в том, что новый код можно использовать как угодно, без соблюдения требований свободных лицензий APGL, MIT, Apache и др., под которыми опубликован оригинал. Недобросовестные разработчики получают законный способ нарушить лицензию и извлечь коммерческую выгоду из свободного кода.…",
+      "author": "GlobalSign_admin (GlobalSign)",
+      "tags": [
+        "свободные лицензии",
+        "лицензионная очистка",
+        "плагиат",
+        "рерайт",
+        "Malus.sh",
+        "обратная разработка",
+        "рефакторинг",
+        "чистая комната",
+        "chardet"
+      ]
+    },
+    {
+      "id": "5522d44a8046",
+      "title": "Ubisoft co-founder Claude Guillemot dies in plane crash",
+      "url": "https://techcrunch.com/2026/06/21/ubisoft-co-founder-claude-guillemot-dies-in-plane-crash/",
+      "source": "TechCrunch",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T18:34:31+00:00",
+      "summary": "Claude Guillemot, who founded Ubisoft with his four brothers, has died at the age of 69.",
+      "author": "Anthony Ha",
+      "tags": [
+        "Gaming",
+        "Media & Entertainment",
+        "claude guillemot",
+        "ubisoft"
+      ]
+    },
+    {
+      "id": "43e60b647189",
+      "title": "Когда лучше публиковаться на Хабре. Статистический анализ связи времени публикации и охвата статей",
+      "url": "https://habr.com/ru/articles/1050172/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050172",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T18:32:43+00:00",
+      "summary": "На Хабре сейчас высокая конкуренция среди авторов за внимание читателей. По данным самого Хабра , в 2025 году на сайте было более 10 тысяч уникальных авторов контента, а количество публикаций превысило 51 тысячу. Это означает, что даже качественный материал может не получить заметный охват из-за большого количества публикаций в ленте. Есть распространённое мнение, что публиковать статьи нужно в предобеденное время, чтобы люди на обеденном перерыве могли почитать эти статьи, тогда охват будет максимальным. Но так как этого правила придерживаются многие, возникает высококонкурентная среда, где…",
+      "author": "TatarnikovEgor",
+      "tags": [
+        "статистика",
+        "аналитика",
+        "исследование",
+        "лучшее время для публикации",
+        "хабр",
+        "habr"
+      ]
+    },
+    {
+      "id": "e4956d62583c",
+      "title": "Севастополь ввел временные ограничения на транспорт, торговлю и продажу топлива",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207607-sevastopol-vvel-vremennie-ogranicheniya",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T18:16:41+00:00",
+      "summary": "С 22 июня в регионе также отменены массовые уличные мероприятия",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "bafe852aee11",
+      "title": "Росавиация ввела временные ограничения на полеты в районе «Шереметьево»",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207606-rosaviatsiya-vvela-ogranicheniya",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T18:01:11+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "3590bf20af82",
+      "title": "Morgan Stanley Pitches Clients on a New Market for Data Center Loans",
+      "url": "https://www.theinformation.com/articles/morgan-stanley-pitches-clients-new-market-data-center-loans",
+      "source": "The Information",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T18:00:54+00:00",
+      "summary": "Morgan Stanley, one of the most active banks in financing data center developers, is now pitching some of those same clients on tapping a market better known for funding leveraged buyouts. It’s a sign that in the race to raise money for AI infrastructure, developers and their advisors are turning over every stone. Over the last few months, Morgan Stanley has suggested to clients that the next time they need to raise money for data center projects, they consider the leveraged loan market rather than the bond market, according to a person familiar with the matter who asked for anonymity to…",
+      "author": "Dakin Campbell",
+      "tags": []
+    },
+    {
+      "id": "8f182f1881e2",
+      "title": "Будет отскок в IT после кризиса?",
+      "url": "https://habr.com/ru/articles/1050170/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050170",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T17:57:59+00:00",
+      "summary": "Как я думаю, вы уже догадались, IT-отрасль попала в кризис на фоне высокой стоимости денег в развитых экономиках и геополитической ситуации, которая мешает IT-продуктам двигаться в сторону новых рынков. Как итог, IT-компании сокращают программистов, морозят запуск новых проектов и пересматривают долгосрочные планы развития. Также это все подкрепляется страхом бигтехов перед ИИ, что заставляет их тратить все бюджеты на развитие с обширного спектра направлений исключительно на ИИ. Я думаю, они все видели ситуацию Microsoft с Windows Mobile и тем, что это стоило Microsoft. Читать далее",
+      "author": "EmoRagnareks",
+      "tags": [
+        "кризис в it",
+        "ии",
+        "сокращения",
+        "перспективы профессии"
+      ]
+    },
+    {
+      "id": "0bb636e0a10d",
+      "title": "Sources: Virgin Media O2 and VodafoneThree have deployed tech to disable phones stolen from their stores, after phone makers resisted broader antitheft measures (Kieran Smith/Financial Times)",
+      "url": "https://www.techmeme.com/260621/p7#a260621p7",
+      "source": "Techmeme",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T17:55:01+00:00",
+      "summary": "Kieran Smith / Financial Times : Sources: Virgin Media O2 and VodafoneThree have deployed tech to disable phones stolen from their stores, after phone makers resisted broader antitheft measures &nbsp; &mdash;&nbsp; Virgin Media O2 and VodafoneThree's move comes after Apple and Samsung resisted calls to adopt broader measures",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "0e307e259bc8",
+      "title": "Trump admin’s coal investments assist plants with repeated violations",
+      "url": "https://arstechnica.com/science/2026/06/trump-admins-coal-investments-assist-plants-with-repeated-violations/",
+      "source": "Ars Technica",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T17:49:35+00:00",
+      "summary": "At least three coal plants have been repeatedly cited for violating environmental regulations.",
+      "author": "Ajani Stella, Inside Climate News",
+      "tags": [
+        "Policy",
+        "Science",
+        "coal plants",
+        "coal power",
+        "syndication",
+        "trump administration"
+      ]
+    },
+    {
+      "id": "a334accbf454",
+      "title": "Российские ПВО сбили 168 украинских БПЛА за 13 часов",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207605-sbili-168-bpla",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T17:44:21+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Армия и спецслужбы"
+      ]
+    },
+    {
+      "id": "30cd96a6c92c",
+      "title": "Playwright, Selenium, Cypress, WebdriverIO: что реально известно о скорости в 2026 году (и как намерить свои цифры)",
+      "url": "https://habr.com/ru/articles/1050168/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050168",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T17:31:19+00:00",
+      "summary": "За последний месяц я насчитал минимум семь свежих статей с заголовком в духе \"Playwright быстрее Selenium на N%\". Проблема в том, что N у всех разный: 23%, 42%, 63%, \"1.85x\". Методология почти нигде не раскрыта дальше фразы \"controlled environment\". Для решения, которое определяет CI-бюджет и архитектуру тестов на годы вперёд, это не цифры — это шум. Здесь — что из этого шума реально на что-то опирается, почему остальное несопоставимо, и рабочий бенчмарк-харнесс, который вы можете прогнать на своём стеке за один CI-job и получить именно свои числа, а не чужие проценты. Читать далее",
+      "author": "TFStudio",
+      "tags": [
+        "playwright",
+        "selenium",
+        "cypress",
+        "webdriverio"
+      ]
+    },
+    {
+      "id": "33c931989a47",
+      "title": "Я запускаю второй открытый бета-тест",
+      "url": "https://habr.com/ru/articles/1050164/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050164",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T17:28:08+00:00",
+      "summary": "В феврале я публиковал первую статью про Yttri : что это за приложение, зачем я его делаю и почему мне не хватало Obsidian, Notion, почтового клиента, таск-трекера и AI-чата по отдельности. Тогда это был первый публичный заход в бета-тестирование. Первая сотня мест ушла быстрее, чем я ожидал, а комментарии оказались полезнее любой внутренней аналитики. Люди спрашивали про локальность данных, закрытый код, запуск без Ollama, связь задач с письмами и заметками, синхронизацию, доверие к приложению и вообще про то, не слишком ли это большой комбайн. С тех пор Yttri сильно изменился. Это уже не…",
+      "author": "askid",
+      "tags": [
+        "Rust",
+        "Tauri",
+        "Local-First",
+        "AI",
+        "LLM",
+        "Knowledge Management",
+        "Productivity",
+        "продуктивная работа"
+      ]
+    },
+    {
+      "id": "1f49b61e2ba9",
+      "title": "Как на самом деле работает .await: пишем свой async-рантайм на Rust с нуля",
+      "url": "https://habr.com/ru/articles/1050160/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050160",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T17:01:53+00:00",
+      "summary": "Каждый раз, когда вы пишете .await, происходит не магия, а вполне конкретный механизм: Future, Waker и опрос состояния. Чтобы увидеть это своими глазами, я написал собственный async-рантайм на Rust с нуля - с executor, reactor на epoll и рабочим TCP-эхо-сервером. По пути разобрался, как именно tokio будит ваши задачи, и нашёл баг, который тихо висел у меня в проде. Внутри - весь код целиком и объяснение без отсылок к чёрным ящикам. Читать далее",
+      "author": "vibecodingai",
+      "tags": [
+        "rust",
+        "async",
+        "tokio",
+        "future",
+        "waker",
+        "executor"
+      ]
+    },
+    {
+      "id": "b32882166c2b",
+      "title": "Wildcard (YC W25) is hiring an applied ML engineer",
+      "url": "https://www.ycombinator.com/companies/wildcard/jobs/SEmo4di-founding-applied-ml-engineer",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T17:00:28+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "f29c0a99f61e",
+      "title": "Обзор бесплатных инструментов для поиска веб-уязвимостей для 1С-Битрикс и Bitrix24",
+      "url": "https://habr.com/ru/articles/1050132/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050132",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T17:00:14+00:00",
+      "summary": "Существует немало бесплатных инструментов, способных выявлять веб-уязвимости, обнаруживать ошибки конфигурации и автоматизировать проверки безопасности. Если посмотреть на мировую IT-индустрию, огромный вклад в ее развитие вносит именно Open Source. В этой статье рассмотрим ряд бесплатных инструментов, которые можно применять для анализа безопасности сайтов на «1С-Битрикс» и Bitrix24 и других веб-приложений. В конце немного расскажу про BitrixProbe, который начал создавать и пользоваться недавно для себя как дополнение к сканированию коммерческим VM. Читать далее",
+      "author": "ersilh0x",
+      "tags": [
+        "информационная безопасность",
+        "уязвимости",
+        "пентест",
+        "сканирование уязвимостей",
+        "vulnerability management",
+        "управление уязвимостями",
+        "cybersecurity"
+      ]
+    },
+    {
+      "id": "e9bd5e21bd50",
+      "title": "Tool Calling, Explained: How AI Agents Decide What to Do Next",
+      "url": "https://towardsdatascience.com/tool-calling-explained-how-ai-agents-decide-what-to-do-next/",
+      "source": "Towards Data Science",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T17:00:00+00:00",
+      "summary": "Understanding ow LLMs interact with the world around them, from returning data to taking action The post Tool Calling, Explained: How AI Agents Decide What to Do Next appeared first on Towards Data Science .",
+      "author": "Maria Mouschoutzi",
+      "tags": [
+        "Agentic AI",
+        "Deep Dives",
+        "Llm",
+        "Programming",
+        "Python",
+        "Tool Calling"
+      ]
+    },
+    {
+      "id": "f0738ac02e63",
+      "title": "В «Домодедово» ввели ограничения на полеты",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207601-v-domodedovo-ogranicheniya",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T16:57:37+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "fd1f050f3c63",
+      "title": "Запретный 3ds Max на Mac mini M4: 1 час 21 минута на интерьер",
+      "url": "https://habr.com/ru/articles/1050156/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050156",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T16:51:27+00:00",
+      "summary": "Autodesk не рекомендует 3ds Max на Apple Silicon. Я всё равно завёл 3ds Max 2022 + Chaos Corona 15 на Mac mini M4 через Parallels и отрендерил интерьер на CPU за 1 час 21 минуту. Внутри: полный порядок установки, фикс лагов вьюпорта, обход ошибки AVX2 и честные замеры. Читать далее",
+      "author": "abgitdev",
+      "tags": [
+        "3ds Max",
+        "Chaos Corona",
+        "Parallels Desktop",
+        "Mac mini M4",
+        "Apple Silicon",
+        "Windows 11 ARM",
+        "CPU-рендеринг",
+        "эмуляция x64",
+        "AVX2"
+      ]
+    },
+    {
+      "id": "b404ac68682e",
+      "title": "Релиз открытого Android-приложения FairScan 2.0 для сканирования документов",
+      "url": "https://habr.com/ru/news/1050154/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050154",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T16:46:59+00:00",
+      "summary": "Состоялся релиз открытого Android-приложения FairScan 2.0 (доступно на GitHub , а также в Google Play или F-Droid )для сканирования документов. Выпуск FairScan 1.0&nbsp;состоялся в&nbsp;сентябре 2025&nbsp;года. Исходный код проекта написан на Kotlin и опубликован под лицензией GNU General Public License v3.0. Читать далее",
+      "author": "denis-19",
+      "tags": [
+        "FairScan 2.0",
+        "FairScan"
+      ]
+    },
+    {
+      "id": "89c02ac77bd6",
+      "title": "Туск назвал конфликт между Польшей и Украиной стратегической ошибкой",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207600-tusk-nazval-konflikt-oshibkoi",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T16:41:34+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "b9cee8b5a940",
+      "title": "The minimum viable unit of saleable software",
+      "url": "https://brandur.org/minimum-viable-unit",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T16:41:21+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "c826482e3c9d",
+      "title": "Polymarket reportedly paid creators to post deceptive videos about fake bets",
+      "url": "https://techcrunch.com/2026/06/21/polymarket-reportedly-paid-creators-to-post-deceptive-videos-about-fake-bets/",
+      "source": "TechCrunch",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T16:35:00+00:00",
+      "summary": "Many of those videos were reportedly filmed on “near-perfect copies” of the Polymarket website, while featuring trades and winnings that were not real.",
+      "author": "Anthony Ha",
+      "tags": [
+        "Crypto",
+        "Media & Entertainment",
+        "Polymarket"
+      ]
+    },
+    {
+      "id": "6c07e6a81760",
+      "title": "От философии к монетизации: как медитация постепенно превращалась в ментальный фастфуд",
+      "url": "https://habr.com/ru/companies/ru_mts/articles/1049690/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1049690",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T16:33:10+00:00",
+      "summary": "Недавно коллега рассказал о тренинге по осознанности, который проводили у них в компании. Переговорная, коуч с сертификатом MBSR, все расселись по кругу. Двадцать минут дыхательных упражнений, короткая лекция о нейропластичности… Все отвлеклись, немного похихикали — и снова разошлись по рабочим местам. До следующего дедлайна, до следующего квартального отчета или завала. Казалось, Headspace и Calm в начале 2010-х нашли простое решение для сложной проблемы выгорания. То, что они продавали (практику присутствия в моменте без оценочного отношения к собственным мыслям, более известную сегодня как…",
+      "author": "Roman_Parabat (МТС)",
+      "tags": [
+        "медитация",
+        "mindfulness",
+        "осознанность",
+        "буддизм",
+        "психология",
+        "психотерапия",
+        "нейронаука",
+        "йога",
+        "MBSR",
+        "Headspace"
+      ]
+    },
+    {
+      "id": "a6d26c671535",
+      "title": "Что брать на новый проект: валидный дефолт (React) или гринфилд ($mol)",
+      "url": "https://habr.com/ru/articles/1050150/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050150",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T16:30:21+00:00",
+      "summary": "Недавно под постом в канале MoscowJS разгорелся спор — со мной и организатором насчёт смола. Даже не столько насчёт смола, сколько в целом: стоит ли выбирать новые технологии или нет. Думаю, это касается не только смола, а любых новых фреймворков и библиотек. Претензии вроде бы логичные, чтож, давайте разберем их Читать далее",
+      "author": "cmyser",
+      "tags": [
+        "$mol",
+        "фронтенд",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Vue",
+        "DSL",
+        "реактивность",
+        "view.tree",
+        "новые фреймворки"
+      ]
+    },
+    {
+      "id": "476a60471b3a",
+      "title": "«Внуково» снова принимает и отправляет рейсы по согласованию",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207598-vnukovo-snova-po-soglasovaniyu",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T16:25:16+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "880eff13d8fd",
+      "title": "Глава минэнерго США сообщил о прохождении более 120 судов через Ормузский пролив",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207597-o-prohozhdenii-sudov",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T16:16:06+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "048bd53fd4ba",
+      "title": "Nearly 60% of TikTok videos shown to new users are AI slop, study finds",
+      "url": "https://thenextweb.com/news/tiktok-ai-slop-59-percent-new-users-kapwing-study",
+      "source": "The Next Web",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T16:12:14+00:00",
+      "summary": "Nearly six out of every ten videos TikTok serves to a brand-new account are AI-generated junk. That is the central finding of a report published by video editing platform Kapwing, which analysed 10,742 TikTok videos across 20 popular categories and separately examined the first 500 videos shown on the For You page of a freshly [&hellip;] This story continues at The Next Web",
+      "author": "Ana Maria Constantin",
+      "tags": [
+        "Artificial Intelligence",
+        "Next Featured",
+        "TikTok",
+        "Data and security"
+      ]
+    },
+    {
+      "id": "7d71e6815ade",
+      "title": "Prefer duplication over the wrong abstraction (2016)",
+      "url": "https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T16:08:23+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "a6050a9f4921",
+      "title": "TechCrunch Mobility: A new robotaxi scorecard shows China’s dominance",
+      "url": "https://techcrunch.com/2026/06/21/techcrunch-mobility-a-new-robotaxi-scorecard-shows-chinas-dominance/",
+      "source": "TechCrunch",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T16:05:00+00:00",
+      "summary": "Welcome back to TechCrunch Mobility — your central hub for news and insights on the future of transportation.",
+      "author": "Kirsten Korosec",
+      "tags": [
+        "Transportation",
+        "Tesla",
+        "Uber",
+        "zoox",
+        "Waymo",
+        "robotaxi",
+        "techcrunch mobility",
+        "avride"
+      ]
+    },
+    {
+      "id": "394bc44b9b33",
+      "title": "Трамп заявил о предстоящей отставке Стармера",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207596-tramp-o-predstoyaschei-otstavke",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T16:03:59+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "102dfd053ded",
+      "title": "В Швейцарии завершился первый раунд переговоров США и Ирана",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207595-v-shveitsarii-zavershilsya-raund",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T15:55:48+00:00",
+      "summary": "Они велись при посредничестве Пакистана и Катара",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "8e9a0bddf473",
+      "title": "NASA's Perseverance rover has traveled the distance of a marathon on Mars",
+      "url": "https://www.engadget.com/2198455/nasa-perseverance-rover-has-traveled-the-distance-of-a-marathon-on-mars/",
+      "source": "Engadget",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T15:55:23+00:00",
+      "summary": "It did so in just five years.",
+      "author": "staff@engadget.com (Cheyenne MacDonald)",
+      "tags": [
+        "Space"
+      ]
+    },
+    {
+      "id": "9b8427e24cdc",
+      "title": "Sources: Anduril has begun exploring the possibility of establishing operations in Israel and is in talks to recruit a local manager (Sophie Shulman/CTech)",
+      "url": "https://www.techmeme.com/260621/p6#a260621p6",
+      "source": "Techmeme",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T15:55:00+00:00",
+      "summary": "Sophie Shulman / CTech : Sources: Anduril has begun exploring the possibility of establishing operations in Israel and is in talks to recruit a local manager &nbsp; &mdash;&nbsp; Palmer Luckey's $61 billion startup considers local operations, partnerships, and investments in Israeli startups.&nbsp; &mdash;&nbsp; Anduril, the world's largest &hellip;",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "43ad363a2797",
+      "title": "(How to Write a (Lisp) Interpreter (In Python)) (2010)",
+      "url": "https://norvig.com/lispy.html",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T15:36:33+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "1e5ebc4da822",
+      "title": "Володин призвал Польшу определиться с отношением к памяти жертв нацизма",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207594-volodin-prizval-polshu",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T15:31:30+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "a96480a97656",
+      "title": "When the Trump administration cracks down on Anthropic, who benefits?",
+      "url": "https://techcrunch.com/2026/06/21/when-the-trump-administration-cracks-down-on-anthropic-who-benefits/",
+      "source": "TechCrunch",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T15:28:17+00:00",
+      "summary": "On the new episode of Equity, we discussed what actually prompted the administration's latest moves against Anthropic, and what this might mean for the AI ecosystem.",
+      "author": "Anthony Ha",
+      "tags": [
+        "AI",
+        "Government & Policy",
+        "Anthropic",
+        "Donald Trump",
+        "Equity podcast"
+      ]
+    },
+    {
+      "id": "6b9552159e93",
+      "title": "OS Personium: инженерный подход к психологии (Часть 2)",
+      "url": "https://habr.com/ru/articles/1050140/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050140",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T15:20:09+00:00",
+      "summary": "Психология не знает, что такое человек В прошлой статье я подробно разбирал социальные, исторические и политические предпосылки кризиса психологии как единой науки, а также описывал её современное состояние. И, честно говоря, с удивлением обнаружил в комментариях, что есть люди, которые не считают, что у психологии как у науки вообще есть какие-то фундаментальные проблемы. Со мною спорили и советовали почитать Выготского. Поэтому вторую часть этого цикла я как раз и открою цитатой Льва Семёновича Выготского: «Исторически состояние нашей науки таково, что существует много психологий, но не…",
+      "author": "AgileChange",
+      "tags": [
+        "ospersonium",
+        "психология"
+      ]
+    },
+    {
+      "id": "6911b66f62ab",
+      "title": "Resident Evil: Veronica лишилась Code в названии. Разработчики считают её не менее важной, чем номерные части",
+      "url": "https://habr.com/ru/companies/plati/articles/1050138/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050138",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T15:19:48+00:00",
+      "summary": "Недавний Summer Game Fest принёс поклонникам Resident Evil неожиданную новость: Capcom официально анонсировала ремейк Resident Evil Veronica . Однако обсуждают не только возвращение одной из самых необычных частей серии, но и её новое название. Почему разработчики отказались от приставки Code и зачем вообще решили изменить его спустя более двадцати лет? С вами Женя из Plati.market и давайте разберёмся, что стоит за этим решением и почему Capcom решили ввести Veronica в основную линейку франшизы. Читать далее",
+      "author": "Games_evolution (Plati Market)",
+      "tags": [
+        "игры",
+        "resident evil",
+        "новости",
+        "новости игр",
+        "новости игровой индустрии"
+      ]
+    },
+    {
+      "id": "6b3870bdf0ce",
+      "title": "На Западе отказываются нанимать джунов в ИТ — что происходит и при чем тут токенмаксинг?",
+      "url": "https://habr.com/ru/companies/beeline_cloud/articles/1050134/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050134",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T15:16:37+00:00",
+      "summary": "Мы в Beeline Cloud решили продолжить тему увольнений, найма и кадровых перестановок, происходящих под «нейросетевым соусом». Часть компаний сокращает вакансии джунов, делая ставку на (почти фанатичное) использование ИИ в разработке — и тратит на токены больше, чем на «человеческий персонал». Другие идут «против течения» и, напротив, активнее набирают выпускников вузов на младшие позиции с целью обеспечить преемственность поколений. Разберем ситуацию и обсудим мнения! Читать далее",
+      "author": "beeline_cloud (Beeline Cloud)",
+      "tags": [
+        "beeline cloud",
+        "карьера джуна",
+        "развитие персонала",
+        "трудоустройство",
+        "управление персоналом"
+      ]
+    },
+    {
+      "id": "a0285db05316",
+      "title": "Володин возложил цветы к мемориалу «Скорбь» в Брестской крепости",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207593-volodin-vozlozhil-tsveti",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T15:14:47+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "6c58bf4acd9c",
+      "title": "Kafka без брокеров: как я из художественного текста сделал современную техническую документацию",
+      "url": "https://habr.com/ru/companies/pt/articles/1046772/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1046772",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T15:11:01+00:00",
+      "summary": "Недавно я решил перечитать рассказ «В исправительной колонии» Франца Кафки. Впервые я познакомился с ним еще студентом — задолго до того, как узнал о существовании профессии технического писателя. Теперь я смотрел на него совсем иначе — глазами, которые видели тысячи страниц руководств, справочников и API-документации. И в какой-то момент мне в голову пришла довольно абсурдная мысль: я читаю не просто рассказ Кафки — я читаю почти готовую техническую документацию . Читать далее",
+      "author": "Cuder (Positive Technologies)",
+      "tags": [
+        "ии",
+        "языковые модели",
+        "техническая документация",
+        "llm-модели",
+        "llm",
+        "кафка",
+        "промпт"
+      ]
+    },
+    {
+      "id": "b0e724544ba8",
+      "title": "[Перевод] AI не заменит продактов, дизайнеров и разработчиков. Но быстро покажет, где в команде нет доверия",
+      "url": "https://habr.com/ru/articles/1050136/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050136",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T15:04:02+00:00",
+      "summary": "Недавно в нашей команде продакт-менеджеру понадобился рабочий прототип dashboard-панели для демо партнёрам. Прототип должен был показать полный пользовательский сценарий: создание аккаунта, требования безопасности при регистрации, работу с несколькими сессиями, загрузку аналитики и базовые возможности сервиса. В привычном процессе это легко могло бы занять несколько дней: уточнение требований, описание флоу, первые макеты, ревью, правки, ещё одно ревью и подготовка версии, которую уже не стыдно показать на демо. В этот раз процесс пошёл иначе. Мы договорились о базовом сценарии на одной…",
+      "author": "FlappyKird",
+      "tags": [
+        "AI",
+        "продуктовая команда",
+        "продуктовый дизайн",
+        "разработка продукта",
+        "кросс-функциональная команда",
+        "командная работа",
+        "product management",
+        "product design",
+        "collaboration"
+      ]
+    },
+    {
+      "id": "8e0697884a67",
+      "title": "SpaceX’s 74-Day IPO Sets Pace for OpenAI, Anthropic",
+      "url": "https://www.theinformation.com/articles/spacexs-74-day-ipo-sets-pace-openai-anthropic",
+      "source": "The Information",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T15:00:51+00:00",
+      "summary": "SpaceX’s strong first week of trading made one thing clear: Racing through its IPO at warp speed cost it nothing. The company went from initial confidential filing to listing in just 74 days, much faster than other tech IPOs in recent years, including those of CoreWeave, Figma and Airbnb, an analysis of securities filings shows. Initial public offering lawyers and consultants say the speed reflects a more hands-off approach adopted by the Securities and Exchange Commission, which has to review and approve IPO filings before they are made public, in the Trump administration. Heavy demand for…",
+      "author": "Cory Weinberg",
+      "tags": []
+    },
+    {
+      "id": "598fa372fb61",
+      "title": "Reconstructing the Table of Contents a PDF Forgot to Ship, So RAG Can Scope by Section",
+      "url": "https://towardsdatascience.com/reconstructing-the-table-of-contents-a-pdf-forgot-to-ship-so-rag-can-scope-by-section/",
+      "source": "Towards Data Science",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T15:00:00+00:00",
+      "summary": "Enterprise Document Intelligence [Vol.1 #5septies] - When a PDF prints a contents page but exposes no outline, two ways to turn it back into structure, plus the page-alignment step everyone forgets The post Reconstructing the Table of Contents a PDF Forgot to Ship, So RAG Can Scope by Section appeared first on Towards Data Science .",
+      "author": "Kezhan Shi",
+      "tags": [
+        "Large Language Models",
+        "Document Processing",
+        "Llm",
+        "Parsing",
+        "Pdf",
+        "Rag"
+      ]
+    },
+    {
+      "id": "7d04ab1c13d9",
+      "title": "Sources: John Ternus gets ready to put his firm imprint on Apple's industrial design team, which has lost a true seat at Apple's exec table over the past decade (Mark Gurman/Bloomberg)",
+      "url": "https://www.techmeme.com/260621/p5#a260621p5",
+      "source": "Techmeme",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T14:55:00+00:00",
+      "summary": "Mark Gurman / Bloomberg : Sources: John Ternus gets ready to put his firm imprint on Apple's industrial design team, which has lost a true seat at Apple's exec table over the past decade &nbsp; &mdash;&nbsp; Also: The 2027 iPhone and AirPods plans.&nbsp; &mdash;&nbsp; The No. 1 priority for new Apple CEO John Ternus should be revamping &hellip;",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "3985dd440e68",
+      "title": "Apple’s design studio has lost nearly every Jony Ive-era designer. Incoming CEO John Ternus says he’ll fix it.",
+      "url": "https://thenextweb.com/news/apple-design-team-crisis-ternus-ceo-rebuild",
+      "source": "The Next Web",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T14:47:53+00:00",
+      "summary": "Apple’s industrial design studio, once the most influential product design operation in the technology industry, has been gutted. Bloomberg’s Mark Gurman reports that the team no longer has a true seat at the executive table, has less influence and credibility than at any point in decades, and has become a service bureau where other teams [&hellip;] This story continues at The Next Web",
+      "author": "Ana Maria Constantin",
+      "tags": [
+        "Apple",
+        "Deep tech",
+        "Next Featured"
+      ]
+    },
+    {
+      "id": "4d5bfb2feda5",
+      "title": "Ульянов назвал требование США запретить обогащение урана Ирану иррациональным",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207591-ulyanov-nazval-trebovanie-ssha",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T14:43:28+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "b893e7b70421",
+      "title": "Beyond Siri: Here are the practical AI features coming to your iPhone in iOS 27",
+      "url": "https://techcrunch.com/2026/06/21/beyond-siri-here-are-the-practical-ai-features-coming-to-your-iphone-in-ios-27/",
+      "source": "TechCrunch",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T14:40:28+00:00",
+      "summary": "Siri’s AI overhaul may have grabbed the headlines at WWDC, but some of Apple’s most useful AI features are arriving elsewhere in iOS 27.",
+      "author": "Sarah Perez",
+      "tags": [
+        "AI",
+        "Apps",
+        "Hardware",
+        "Apple",
+        "Apple Intelligence",
+        "iOS 27",
+        "wwdc"
+      ]
+    },
+    {
+      "id": "31deac6a1166",
+      "title": "Как один комментарий на Хабре перевернул архитектуру моего мессенджера",
+      "url": "https://habr.com/ru/articles/1050130/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050130",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T14:38:23+00:00",
+      "summary": "После моей первой статьи про Pulse я не ожидал, честно говоря, примерно ничего. Но к моему удивлению увидел реакцию: немного поддержки, немного критики, несколько советов по UX. Эта статья про то, как один комментарий заставил меня задуматься о безопасности, утечках данных, о проведении аудита и изменению подхода к разработке своего небольшого мессенджера. Читать далее",
+      "author": "qubs993",
+      "tags": [
+        "безопасность",
+        "роадмэп",
+        "аудит",
+        "утечка данных",
+        "мессенджеры",
+        "пет-проект"
+      ]
+    },
+    {
+      "id": "54370183d49a",
+      "title": "Что такое MU-плагины и почему они нужны на уровне ядра",
+      "url": "https://habr.com/ru/articles/1050128/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050128",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T14:19:38+00:00",
+      "summary": "Разработка на WordPress часто начинается с установки готовых решений из официального репозитория. По мере роста проекта и усложнения требований к безопасности и производительности стандартный подход перестаёт работать. Обычные плагины требуют активации, могут быть случайно отключены или скомпрометированы через уязвимости в графическом интерфейсе. На определённом этапе разработки возникает необходимость внедрить правила, которые применяются на уровне самого сервера и не могут быть изменены через административную панель. Для подобных задач существуют must-use решения. Под MU-плагинами (Must-Use…",
+      "author": "seberditbase",
+      "tags": [
+        "wordpress",
+        "wordpress plugins",
+        "wordpress security",
+        "инфраструктура"
+      ]
+    },
+    {
+      "id": "bf9292777d45",
+      "title": "Трамп пригрозил Ирану уничтожением в случае закрытия Ормузского пролива",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207589-tramp-prigrozil-iranu",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T14:12:27+00:00",
+      "summary": "Он добавил, что США могут сами взять его под контроль и взимать 20% проходящей по нему нефти",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "a5ee6b872e78",
+      "title": "Microsoft’s June update fixed 208 security flaws and introduced a cascade of new bugs across all Windows versions",
+      "url": "https://thenextweb.com/news/windows-11-kb5094126-recycle-bin-bug-patch-tuesday",
+      "source": "The Next Web",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T13:59:33+00:00",
+      "summary": "Microsoft’s June 2026 Patch Tuesday update is causing problems across every supported version of Windows. KB5094126, released on June 9, patched a record 208 security vulnerabilities, but the update has introduced a string of bugs that range from cosmetic annoyances to machines locked out of their own drives. The most visible issue affects the Recycle [&hellip;] This story continues at The Next Web",
+      "author": "Ana Maria Constantin",
+      "tags": [
+        "Data and security",
+        "Microsoft",
+        "Next Featured"
+      ]
+    },
+    {
+      "id": "1a340c35987c",
+      "title": "Румыния подняла истребители НАТО из-за появления дронов у границы с Украиной",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207590-ruminiya-podnyala-istrebiteli",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T13:58:12+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "90c150fa8116",
+      "title": "Вэнс заявил о значительном прогрессе в переговорах США и Ирана",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207588-vens-zayavil-o-progresse",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T13:41:33+00:00",
+      "summary": "США готовы фундаментально трансформировать американо-иранские отношения",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "0d8b4cc7e849",
+      "title": "Публичный розыгрыш, который нельзя пересчитать — это не розыгрыш, а обещание",
+      "url": "https://habr.com/ru/articles/1050122/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050122",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T13:31:16+00:00",
+      "summary": "1 декабря 1969 года, Вашингтон, штаб-квартира Selective Service. Восемь вечера. В прямом эфире, на глазах у всей страны, конгрессмен Александр Пирни опускает руку в большую стеклянную банку и достаёт первую из 366 синих пластиковых капсул. Внутри — дата: 14 сентября. Этой дате присваивается призывной номер 1. Все мужчины 1944–1950 годов рождения, родившиеся 14 сентября, идут на войну первыми. Прозрачнее не бывает: национальный телеэфир, конгрессмен лично тянет капсулы, 366 дней и 366 капсул на виду у миллионов. Если и существует образец честного публичного розыгрыша — вот он. Только он был…",
+      "author": "constr",
+      "tags": [
+        "UVS",
+        "provably fair",
+        "честный розыгрыш",
+        "лотерея",
+        "drand",
+        "commit-reveal",
+        "верификация",
+        "iGaming",
+        "случайность",
+        "криптография"
+      ]
+    },
+    {
+      "id": "86a8b2c2b92c",
+      "title": "Станет ли сланцевая нефть дешевле обычной?",
+      "url": "https://habr.com/ru/articles/1050042/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050042",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T13:30:50+00:00",
+      "summary": "Мне всегда интересно читать темы, где обсуждают нефтяную отрасль. Больше всего меня забавляет в таких темах упование на некие высокие технологии по добыче, которые развиваются, и, в конце концов, это приведет к тому, что сланцевая нефть и газ станут дешевле традиционных. Самое смешное, что эти мантры я слышу уже второй десяток лет, и риторика с тех пор мало поменялась. Хотя если бы все шло по их плану - то нефть должна стоить долларов по 7 за баррель, как это было году эдак в 1985-м. Но такого нет и не будет. Глупо отрицать роль технологий в развитии любых производственных процессов. Если бы…",
+      "author": "Catx2",
+      "tags": [
+        "добыча",
+        "углеводороды",
+        "сланец",
+        "США",
+        "Россия"
+      ]
+    },
+    {
+      "id": "62206cc97326",
+      "title": "Вышла среда разработки Qt Creator 20",
+      "url": "https://habr.com/ru/news/1049848/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1049848",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T13:28:48+00:00",
+      "summary": "17 июня 2026 года состоялся релиз открытой среды разработки Qt Creator 20, предназначенной для&nbsp;создания кроссплатформенных приложений с&nbsp;использованием библиотеки Qt. Проект поддерживает как&nbsp;разработку классических программ на&nbsp;языке C++, так и использование языка QML, в&nbsp;котором для&nbsp;определения сценариев используется JavaScript, а&nbsp;структура и параметры элементов интерфейса задаются CSS‑подобными блоками. Читать далее",
+      "author": "denis-19",
+      "tags": [
+        "Qt Creator 20",
+        "Qt Creator"
+      ]
+    },
+    {
+      "id": "5831740f8367",
+      "title": "Иран пообещал не вводить пошлины за проход через Ормуз в течение 60 дней",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207586-ne-vvodit-poshlini",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T13:19:16+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "208dc310fcf7",
+      "title": "Отозвали сертификат у MAX и VK: разбираемся, что это технически значит — и почему это не «конец Рунета»",
+      "url": "https://habr.com/ru/articles/1050118/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050118",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T13:17:16+00:00",
+      "summary": "В июне 2026-го ленты заполнили заголовки: «У MAX отозвали сертификат», «GlobalSign лишает Рунет сертификатов», «интернет ломается». Что произошло на самом деле: 6 июня GlobalSign отозвал TLS-сертификат веб-версии MAX, исполняя новые обязательные правила CA/Browser Forum по санкционной проверке. Запущен поэтапный массовый отзыв у российских организаций. Разбираемся технически: что такое отзыв сертификата и чем он отличается от истечения срока и недоверия к корню; почему «небезопасно» в браузере ≠ взлом; почему Chrome и Edge вообще не проверяют отзыв онлайн — и какой эффект реально бьёт…",
+      "author": "Svortex",
+      "tags": [
+        "браузеры",
+        "системное администрирование"
+      ]
+    },
+    {
+      "id": "f9b9e954949a",
+      "title": "В Азербайджане из-за повреждения нефтепровода произошла утечка топлива",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207584-v-azerbaidzhane-utechka",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T13:07:57+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "d1eebef95748",
+      "title": "СК возбудил дело о теракте после атаки ВСУ на Керченский полуостров",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207585-sk-vozbudil-delo",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T13:05:23+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "008bdacba7ed",
+      "title": "9 Things to Do Before a Summer Blackout Hits Your Home",
+      "url": "https://www.cnet.com/health/9-things-to-do-before-a-summer-blackout-hits-your-home/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T13:01:00+00:00",
+      "summary": "From cooling supplies to backup power, these nine steps can help you stay safe and comfortable when the grid goes down this summer.",
+      "author": "Sean Jackson",
+      "tags": []
+    },
+    {
+      "id": "0f3fbb1bb256",
+      "title": "Foldable iPhone Ultra, Galaxy Z Fold 8, Pixel 11 and Other Phones Launching in 2026",
+      "url": "https://www.cnet.com/tech/mobile/comparing-the-2026-phone-lineups-from-apple-samsung-google-and-everyone-else/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T13:00:40+00:00",
+      "summary": "While we've already seen multiple phone launches so far, Samsung, Apple and Google are gearing up for some exciting announcements (including an all-new wide-screen Galaxy Fold) this year.",
+      "author": "Prakhar Khanna",
+      "tags": []
+    },
+    {
+      "id": "f809997fe2be",
+      "title": "What Are the Possibilities to Build Date Tables in Self-Service Environments?",
+      "url": "https://towardsdatascience.com/what-are-the-possibilities-to-build-date-tables-in-self-service-environments/",
+      "source": "Towards Data Science",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T13:00:00+00:00",
+      "summary": "For years, I created date tables with DAX code whenever I didn’t have a way to create them upstream of the data flow. Now I've realised there's another way to do it. Let’s see what the alternatives are and how they compare. The post What Are the Possibilities to Build Date Tables in Self-Service Environments? appeared first on Towards Data Science .",
+      "author": "Salvatore Cagliari",
+      "tags": [
+        "Data Engineering",
+        "Data Science",
+        "Dax",
+        "Power Bi",
+        "Power Bi Tutorials",
+        "Power Query"
+      ]
+    },
+    {
+      "id": "2b08d4fe1044",
+      "title": "Поддержка монархии среди жителей Великобритании упала до минимума за 33 года",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207583-podderzhka-monarhii-upala",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T12:56:07+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "b68dcc58cd26",
+      "title": "I was wrong about the Midjourney ultra-sound scanner",
+      "url": "https://twitter.com/MattZirwas/status/2068365802491834541",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T12:55:08+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "8b8c3ddbcc04",
+      "title": "Show HN: Teach your kids perfect pitch",
+      "url": "https://github.com/paytonjjones/bsharp",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T12:49:48+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "ead6b93e0511",
+      "title": "Identity verification on Claude",
+      "url": "https://support.claude.com/en/articles/14328960-identity-verification-on-claude",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T12:44:13+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "50e1a595751a",
+      "title": "США и Иран в ходе переговоров создали специализированные рабочие группы",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207581-sozdali-rabochie-gruppi",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T12:40:39+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "22a603d5688a",
+      "title": "Amazon says human-in-the-loop AI oversight is failing because humans stop paying attention",
+      "url": "https://thenextweb.com/news/amazon-human-in-the-loop-ai-governance-normalization-deviance",
+      "source": "The Next Web",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T12:35:10+00:00",
+      "summary": "Amazon’s security leadership is arguing against one of the most widely accepted principles in AI governance. Eric Brandwine, VP and distinguished engineer at Amazon Security, told The Register that human-in-the-loop oversight is not the gold standard companies think it is. “Humans are not terribly consistent,” Brandwine said. “Human-in-the-loop isn’t necessarily the gold standard.” His reasoning [&hellip;] This story continues at The Next Web",
+      "author": "Ana Maria Constantin",
+      "tags": [
+        "Amazon",
+        "Artificial Intelligence",
+        "Data and security"
+      ]
+    },
+    {
+      "id": "18245e31ad7f",
+      "title": "$2000-3000 в месяц за рекламу фальшивых ставок и выигрышей: Polymarket и торговля мечтой о лёгких деньгах через студентов-инфлюенсеров",
+      "url": "https://vc.ru/money/2988602-falshivye-stavki-i-vyigryshi-na-polymarket?from=rss",
+      "source": "VC.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T12:31:20+00:00",
+      "summary": "Расследование WSJ.",
+      "author": "Полина Лааксо",
+      "tags": []
+    },
+    {
+      "id": "10607856072f",
+      "title": "Российские силы ПВО за сутки сбили восемь авиабомб и 483 БПЛА",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207566-vs-rf-nanesli-udari",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T12:30:00+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Армия и спецслужбы"
+      ]
+    },
+    {
+      "id": "c57caaf393a4",
+      "title": "Умер преподаватель Школы-студии МХАТ Вячеслав Рыбаков",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207578-umer-vyacheslav-ribakov",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T12:21:15+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "1f2088e66f95",
+      "title": "Солнечная вспышка класса M2.6 зафиксирована на Солнце",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207577-vspishka-na-solntse",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T12:13:33+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "cee6fce3767e",
+      "title": "AI is inflating student grades, and the effect points to outsourced work, not better learning",
+      "url": "https://the-decoder.com/ai-is-inflating-student-grades-and-the-effect-points-to-outsourced-work-not-better-learning/",
+      "source": "The Decoder",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T12:01:46+00:00",
+      "summary": "A UC Berkeley study of more than 500,000 grades found that courses heavy on writing and coding saw grades jump after ChatGPT launched. The effect shows up mainly in homework, a sign that AI is replacing student work rather than improving learning. The article AI is inflating student grades, and the effect points to outsourced work, not better learning appeared first on The Decoder .",
+      "author": "Matthias Bastian",
+      "tags": [
+        "AI research",
+        "Artificial Intelligence",
+        "AI in education",
+        "Learning"
+      ]
+    },
+    {
+      "id": "5691bc6696af",
+      "title": "Премию им. Кеосаяна получит мужчина, обезвредивший нападавшего в ТЦ в Краснодаре",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207576-premiyu-im-keosayana",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T12:01:17+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "90fc3ab2b507",
+      "title": "I Saw the Ultimate Rocket Bike in Action and It Blew Me Away",
+      "url": "https://www.cnet.com/tech/i-saw-the-ultimate-rocket-bike-in-action-and-it-blew-me-away/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T12:00:44+00:00",
+      "summary": "The Force of Nature steam-powered rocket bike took to the track for a record-breaking attempt. I got to see it happen.",
+      "author": "Andrew Lanxon",
+      "tags": []
+    },
+    {
+      "id": "ab773233bf63",
+      "title": "Норвегия вводит почти полный запрет на использование ИИ в начальной школе",
+      "url": "https://habr.com/ru/news/1050104/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050104",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T11:56:35+00:00",
+      "summary": "Власти Норвегии вводят практически полный запрет на использование инструментов генеративного искусственного интеллекта учениками начальной школы, а также ограничивают использование технологии в образовании детей старшего возраста. Таким образом правительство стремится снизить негативное влияние на процесс обучения, пишет Reuters со ссылкой на премьер-министра Норвегии Йонаса Гара Стёре. Читать далее",
+      "author": "Travis_Macrif",
+      "tags": [
+        "ии",
+        "школы",
+        "образование",
+        "норвегия",
+        "дети",
+        "несовершеннолетние",
+        "запрет"
+      ]
+    },
+    {
+      "id": "d3cf6be03775",
+      "title": "МИД Катара объявил о начале переговоров США и Ирана в Швейцарии",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207575-mid-katara-obyavil",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T11:50:59+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "7b587adf8635",
+      "title": "All Your Wearables Have One Glaring Weakness. What Can You Do About It?",
+      "url": "https://www.cnet.com/tech/mobile/features/wearables-right-to-repair-diy-smartwatch-smart-glasses-headphones/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T11:45:46+00:00",
+      "summary": "With helpful DIY instructions and some pointy tools, I fixed a broken smartwatch on my own. And if I can do it, so can you.",
+      "author": "Katie Collins",
+      "tags": []
+    },
+    {
+      "id": "bc0eb6596f27",
+      "title": "Beyond All Reason (Free Total Annihilation Inspired RTS)",
+      "url": "https://www.beyondallreason.info",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T11:38:01+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "a0f56b9b7112",
+      "title": "Hyundai получила полный контроль над Boston Dynamics",
+      "url": "https://habr.com/ru/news/1050098/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050098",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T11:28:48+00:00",
+      "summary": "Южнокорейская Hyundai Motor Group приобрела у SoftBank 9,65% акций американского производителя роботов Boston Dynamics за $325 млн. Таким образом автопроизводитель получил полный контроль над Boston Dynamics в момент, когда компания выводит на рынок коммерческую версию человекоподобного робота Atlas . SoftBank избавляется от активов, чтобы перенаправить капитал в OpenAI. Читать далее",
+      "author": "Travis_Macrif",
+      "tags": [
+        "hyundai",
+        "boston dynamics",
+        "softbank",
+        "atlas",
+        "роботы",
+        "человекоподобные роботы",
+        "гуманоидные роботы"
+      ]
+    },
+    {
+      "id": "770accdb7f77",
+      "title": "Wooting 60HE v2: Peak Keyboard Perfection",
+      "url": "https://www.wired.com/review/review-wooting-60he-v2/",
+      "source": "Wired",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T11:01:00+00:00",
+      "summary": "Wooting’s 60HE v2 isn’t just a terrific Hall Effect keyboard. It’s a fantastic keyboard period.",
+      "author": "Henri Robbins",
+      "tags": [
+        "Gear",
+        "Gear / Reviews",
+        "Gear / Products / Gaming",
+        "Shopping",
+        "Gaming",
+        "keyboards",
+        "Accessories and Peripherals",
+        "Product Review"
+      ]
+    },
+    {
+      "id": "2e25c33a037d",
+      "title": "SoftBank says it is struggling to find startups in Latin America ready for major investments and has completed only two new deals over the past two years (Bloomberg)",
+      "url": "https://www.techmeme.com/260621/p4#a260621p4",
+      "source": "Techmeme",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T11:00:31+00:00",
+      "summary": "Bloomberg : SoftBank says it is struggling to find startups in Latin America ready for major investments and has completed only two new deals over the past two years &nbsp; &mdash;&nbsp; SoftBank Group Corp. is struggling to find startups in Latin America ready for major investments, underscoring how sharply the tech boom &hellip;",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "ce1fef1f6963",
+      "title": "Malware Has Gotten Smarter. Here's How Your Antivirus Has, Too",
+      "url": "https://www.cnet.com/tech/services-and-software/how-antivirus-software-becoming-more-advanced-detecting-threats/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T11:00:00+00:00",
+      "summary": "Antivirus software used to hunt for known malware, but now it’s predicting suspicious behavior before an attack fully lands.",
+      "author": "Marshall Gunnell",
+      "tags": []
+    },
+    {
+      "id": "94b1bbc0ac3b",
+      "title": "The Best NAS Devices for Your Home After Months of Testing",
+      "url": "https://www.wired.com/story/best-nas-devices/",
+      "source": "Wired",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T10:30:00+00:00",
+      "summary": "Network-attached storage (NAS) provides accessible shared space on your home network. After testing, these are my favorite NAS devices.",
+      "author": "Simon Hill",
+      "tags": [
+        "Gear",
+        "Gear / Buying Guides",
+        "Gear / Products / Computers",
+        "Shopping",
+        "buying guides",
+        "storage",
+        "networking",
+        "computing",
+        "Computers",
+        "Buying Guide"
+      ]
+    },
+    {
+      "id": "f7a0139ea9bc",
+      "title": "28 Tips to Take Your ChatGPT Prompts to the Next Level",
+      "url": "https://www.wired.com/story/28-tips-to-take-your-chatgpt-prompts-to-the-next-level/",
+      "source": "Wired",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T10:30:00+00:00",
+      "summary": "Sure, anyone can use OpenAI’s chatbot. But with smart engineering, you can get way more interesting results.",
+      "author": "David Nield",
+      "tags": [
+        "Gear / How To and Advice",
+        "Gear",
+        "voice assistants",
+        "artificial intelligence",
+        "ChatGPT",
+        "chatbots",
+        "OpenAI",
+        "tips",
+        "how-to",
+        "Hello World"
+      ]
+    },
+    {
+      "id": "9bf54716dac3",
+      "title": "If You’re Searching for a New Skillet, Consider Stainless Steel",
+      "url": "https://www.wired.com/story/stainless-steel-skillets-are-great/",
+      "source": "Wired",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T10:30:00+00:00",
+      "summary": "Stainless-steel pans may lack nonstick coatings, but they’re unfussy, they sear well, and they’re built for a lifetime of hard work.",
+      "author": "Joe Ray",
+      "tags": [
+        "Gear",
+        "Gear / How To and Advice",
+        "kitchen",
+        "Food and Drink",
+        "cooking",
+        "Shopping",
+        "Smart Kitchen"
+      ]
+    },
+    {
+      "id": "dbde0c3d7f6e",
+      "title": "Review: Widow's Bay is a boldly original take on comedic horror",
+      "url": "https://arstechnica.com/culture/2026/06/review-widows-bay-is-a-boldly-original-take-on-comedic-horror/",
+      "source": "Ars Technica",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T10:00:11+00:00",
+      "summary": "An eminently binge-able series that honors classic horror tropes while reinventing them in surprising ways",
+      "author": "Jennifer Ouellette",
+      "tags": [
+        "Culture",
+        "Apple TV",
+        "entertainment",
+        "reviews",
+        "streaming television",
+        "Widow's Bay"
+      ]
+    },
+    {
+      "id": "3c721809d385",
+      "title": "Buying a Used iPhone Makes More Sense Than Ever",
+      "url": "https://www.wired.com/story/buying-a-used-iphone-makes-more-sense-than-ever/",
+      "source": "Wired",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T10:00:00+00:00",
+      "summary": "With Apple raising prices soon, you can save a lot of money by buying a used handset or upgrading an older device—safe in the knowledge that it’ll last longer than ever.",
+      "author": "Boone Ashworth",
+      "tags": [
+        "Gear",
+        "Gear / Gear News and Events",
+        "apple",
+        "iPhone",
+        "repairs",
+        "Batteries",
+        "memory",
+        "Upcycle"
+      ]
+    },
+    {
+      "id": "a07593bb3e67",
+      "title": "New York City has defeated Waymo, and the taxi lobby is the reason",
+      "url": "https://thenextweb.com/news/waymo-new-york-city-political-roadblocks-robotaxi",
+      "source": "The Next Web",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T09:58:14+00:00",
+      "summary": "Waymo delivers more than 500,000 paid rides per week across 10 US cities, raised $16 billion in February, and is expanding internationally to Tokyo and London. It cannot operate in New York City. The reason is not technical, it is political. As the New York Times reported this week, opposition from local politicians, labor unions, [&hellip;] This story continues at The Next Web",
+      "author": "Darius Popa",
+      "tags": [
+        "Cars",
+        "Next Featured",
+        "Government and policy"
+      ]
+    },
+    {
+      "id": "20d27f31d827",
+      "title": "Claude Mythos взломал почти все секретные системы США за считанные часы — глава АНБ",
+      "url": "https://habr.com/ru/news/1050086/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050086",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T09:45:14+00:00",
+      "summary": "Глава Агентства национальной безопасности (АНБ) и Киберкомандования США генерал Джошуа Радд рассказал сенатору Марку Уорнеру, что модель Mythos от Anthropic пробила почти все секретные системы страны — и сделала это не за недели, а за считанные часы.&nbsp; Об этом &nbsp;пишет Economist: 11 июня Уорнер, зампред сенатского комитета по разведке, публично сослался на слова генерала. Если это так, то впервые всплыла конкретная причина, по которой власти США в середине июня заставили компанию отключить свои самые мощные модели, — до сих пор обоснование нацбезопасности держали расплывчатым. Читать…",
+      "author": "runaway_llm",
+      "tags": [
+        "claude mythos",
+        "claude fable 5",
+        "anthropic"
+      ]
+    },
+    {
+      "id": "2a21834eea2e",
+      "title": "Путин проведет совещания по авиации и встречу с выпускниками военных вузов",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207564-putin-provedet-soveschaniya",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T09:43:28+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Власть"
+      ]
+    },
+    {
+      "id": "6fa312de8456",
+      "title": "Нейросети для создания видео с музыкой: генерируем клипы с помощью ИИ",
+      "url": "https://habr.com/ru/companies/studyai/articles/1050082/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050082",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T09:38:39+00:00",
+      "summary": "Как сделать видео из фото с музыкой или сгенерировать полноценный музыкальный клип? Разбираем лучшие ИИ для клипов 2026 года с нативной синхронизацией аудио и честным 4K-рендером. Читать далее",
+      "author": "FlyAI (StudyAI)",
+      "tags": [
+        "нейросети для видео",
+        "генерация клипов",
+        "нейросеть для создания музыки",
+        "клип",
+        "ии для видео",
+        "gemini omni",
+        "gemini omni flash",
+        "veo 3",
+        "kling 3.0",
+        "suno"
+      ]
+    },
+    {
+      "id": "a6a9d523fdbb",
+      "title": "Вэнс обозначил ключевые темы переговоров США и Ирана в Швейцарии",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207562-vens-oboznachil-klyuchevie",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T09:32:28+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "0984714a1a5d",
+      "title": "Hackers hijacked Brazil’s emergency alert system and sent ‘misanthropy’ to millions of phones",
+      "url": "https://thenextweb.com/news/brazil-civil-defense-alert-hack-misanthropy-cell-broadcast",
+      "source": "The Next Web",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T09:30:24+00:00",
+      "summary": "Hackers breached Brazil’s national civil defense alert system overnight, sending fake “Extreme Alert” notifications containing the word “misantropi4” to millions of mobile phones across at least seven states. The Civil Defense Alert platform was taken offline at 1:30 am on Saturday after the Ministry of Integration and Regional Development confirmed the intrusion. The Federal Police [&hellip;] This story continues at The Next Web",
+      "author": "Ana Maria Constantin",
+      "tags": [
+        "Data and security",
+        "Next Featured",
+        "Government and policy"
+      ]
+    },
+    {
+      "id": "2808911e5fa2",
+      "title": "Fars: КСИР не выдает разрешения на проход через Ормузский пролив",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207561-fars-ssha-ne-vidayut",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T09:29:16+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "874a79fbd098",
+      "title": "Создание аналога Firebase на open-source компонентах",
+      "url": "https://habr.com/ru/companies/amvera/articles/1050034/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050034",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T09:28:12+00:00",
+      "summary": "Мы уже разобрались с тем, что такое BaaS, почему появились Firebase и Supabase, чем они отличаются от обычного backend и можно ли самому собрать что-то похожее. Как я и говорил в прошлой статье, сегодня мы наконец попробуем самостоятельно собрать альтернативу Firebase с Realtime исключительно на open-source компонентах! Но важная оговорка: мы не будем делать полный клон Firebase с его тонной функционала, но мы соберем минимальную рабочую альтернативу, которую уже можно подключить к frontend через SDK и использовать почти как Firebase. Читать далее",
+      "author": "MarkovM (Amvera)",
+      "tags": [
+        "аналог firebase",
+        "альтернатива firebase",
+        "замена firebase",
+        "аналог supabase",
+        "альтернатива supabase",
+        "замена supabase",
+        "managed postgresql",
+        "firebase в россии",
+        "supabase в россии",
+        "supabase firebase hosting"
+      ]
+    },
+    {
+      "id": "5059b94593ce",
+      "title": "Signal’s Meredith Whittaker says AI chatbots ‘are not your friends’ and calls Copilot agents a backdoor",
+      "url": "https://thenextweb.com/news/signal-whittaker-ai-chatbots-not-friends-copilot-backdoor-privacy",
+      "source": "The Next Web",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T09:15:40+00:00",
+      "summary": "Signal president Meredith Whittaker has warned that AI chatbots “are not your friends,” “are not conscious beings,” and “are not sentient interlocutors,” pushing back against the growing tendency of users to treat AI systems as trusted companions. The comments came in a Bloomberg interview published this week in which Whittaker laid out her case that [&hellip;] This story continues at The Next Web",
+      "author": "Ana Maria Constantin",
+      "tags": [
+        "Apps",
+        "Artificial Intelligence",
+        "Government and policy",
+        "Data and security"
+      ]
+    },
+    {
+      "id": "3d59c5147dfb",
+      "title": "В Севастополе обезвредили упавший на крышу дома беспилотник",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207559-sevastopole-obezvredili",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T09:14:06+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Армия и спецслужбы"
+      ]
+    },
+    {
+      "id": "f2cff1614b1e",
+      "title": "Очередь на Крымском мосту выросла до 650 автомобилей",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207560-ochered-na-krimskom",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T09:12:43+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "dbdc51beea25",
+      "title": "Sam Altman says a whole generation of researchers held AI back by underestimating what scaling could do",
+      "url": "https://the-decoder.com/sam-altman-says-a-whole-generation-of-researchers-held-ai-back-by-underestimating-what-scaling-could-do/",
+      "source": "The Decoder",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T09:12:01+00:00",
+      "summary": "At a Stanford talk, Sam Altman defended LLM scaling and hit back at skeptics, saying a whole generation of researchers slowed the field by underestimating what scaling could do. He cited OpenAI's recent disproof of a mathematical conjecture as evidence. The article Sam Altman says a whole generation of researchers held AI back by underestimating what scaling could do appeared first on The Decoder .",
+      "author": "Matthias Bastian",
+      "tags": [
+        "AI in practice",
+        "Artificial Intelligence",
+        "Short News",
+        "OpenAI",
+        "Sam Altman"
+      ]
+    },
+    {
+      "id": "570fdf471b82",
+      "title": "Защита конфиденциальных данных в облачных LLM",
+      "url": "https://habr.com/ru/articles/1050076/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050076",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T09:08:10+00:00",
+      "summary": "Защита персональных данных и коммерческой тайны при работе с облачными LLM требует многоуровневого подхода, сочетающего архитектурные, технические и организационные меры. Наиболее надежным решением является полный контроль над средой обработки данных. Читать далее",
+      "author": "Seklikov",
+      "tags": [
+        "llm",
+        "ai",
+        "guardrails",
+        "infosecurity",
+        "infosec"
+      ]
+    },
+    {
+      "id": "b18aadae87df",
+      "title": "День 1579: в Крыму ограничили свободную продажу бензина и отпуск его по талонам",
+      "url": "https://vc.ru/money/2988546-ogranichenie-prodazhi-benzina-v-krymu?from=rss",
+      "source": "VC.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T09:06:44+00:00",
+      "summary": "Собираем новости, события и мнения о рынках, банках и реакциях компаний.",
+      "author": "Евгения Евсеева",
+      "tags": []
+    },
+    {
+      "id": "be59b2946b82",
+      "title": "В Севастополе ввели график временного отключения электроэнергии",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207556-sevastopole-vveli-grafik",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T09:06:33+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "b189b3aa27ec",
+      "title": "[Перевод] Вынужден попрощаться: руководство Google окончательно утратило моральные принципы",
+      "url": "https://habr.com/ru/companies/ruvds/articles/1049426/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1049426",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T09:01:02+00:00",
+      "summary": "Это прощальное послание я отправил своим коллегам, когда решил покинуть Google, где последние годы занимал должность ведущего инженера-архитектора в подразделении Android Security. На эту позицию категории «Independent Contributor» (сотрудник без подчинённых) я перешёл с поста директора, сняв с себя управленческие обязанности ради возвращения с семьёй в Австрию. Публикуя здесь копию этого письма, я хочу открыто показать, что больше не являюсь сотрудником компании и не могу выступать связующим звеном с отделами безопасности Android. Читать далее",
+      "author": "Bright_Translate (RUVDS.com)",
+      "tags": [
+        "ruvds_перевод",
+        "android",
+        "карьера в it",
+        "информационная безопасность",
+        "защита персональных данных",
+        "операционные системы"
+      ]
+    },
+    {
+      "id": "b37019165e27",
+      "title": "A Critical Deadline Is Approaching for Windows and Linux Security",
+      "url": "https://www.wired.com/story/a-critical-deadline-is-approaching-for-windows-and-linux-security/",
+      "source": "Wired",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T09:00:00+00:00",
+      "summary": "The cryptographic keys that secure your computer's boot sequence will start to expire on June 24. Here's what that means for you.",
+      "author": "Dan Goodin, Ars Technica",
+      "tags": [
+        "Security",
+        "Security / Security News",
+        "Ars Technica",
+        "malware",
+        "vulnerabilities",
+        "Linux",
+        "Windows",
+        "security",
+        "Key Components"
+      ]
+    },
+    {
+      "id": "fc49a28c7abb",
+      "title": "Денисов Антон: Понять, как продаёт команда: топ-17 ИИ-сервисов речевой аналитики",
+      "url": "https://spark.ru/post/334349",
+      "source": "Spark.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T08:28:26+00:00",
+      "summary": "",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "c21fe39ca8a7",
+      "title": "AWS says AI agents lack business context and security, launches two services to patch the gaps",
+      "url": "https://the-decoder.com/aws-says-ai-agents-lack-business-context-and-security-launches-two-services-to-patch-the-gaps/",
+      "source": "The Decoder",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T08:25:41+00:00",
+      "summary": "At its summit in New York, AWS unveiled two new services. Continuum automatically detects, prioritizes, and fixes code vulnerabilities. Context builds a knowledge graph from corporate data to give AI agents the business context they need. Both tackle the same problem: agents that write code fast but get things wrong too often. The article AWS says AI agents lack business context and security, launches two services to patch the gaps appeared first on The Decoder .",
+      "author": "Jonathan Kemper",
+      "tags": [
+        "AI in practice",
+        "Artificial Intelligence",
+        "Agent",
+        "AWS"
+      ]
+    },
+    {
+      "id": "33340517cb66",
+      "title": "Автор учебника по основам государственности Полосин получил госнаграду",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207558-putin-podpisal-ukaz",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T08:25:37+00:00",
+      "summary": "Президент Путин подписал указ о награждении его медалью ордена «За заслуги перед Отечеством» I степени",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Власть"
+      ]
+    },
+    {
+      "id": "ddbb96b980d9",
+      "title": "Google Hits 50% IPv6",
+      "url": "https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T08:21:22+00:00",
+      "summary": "Comments",
+      "author": "barqawiz",
+      "tags": []
+    },
+    {
+      "id": "5b099158773c",
+      "title": "В Крыму госпитализировали 14 пострадавших от атаки ВСУ",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207555-krimu-gospitalizirovali",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T08:11:31+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "7529a1256131",
+      "title": "«Мертвый интернет» против «замерзшего» — обсуждаем популярные конспирологические теории о будущем сети",
+      "url": "https://habr.com/ru/companies/vasexperts/articles/1050070/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050070",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T08:11:01+00:00",
+      "summary": "Исследователи говорят, что трафик систем ИИ в интернете превысил человеческий. Скрейперы и краулеры собирают данные на сайтах для тонкой настройки или обучения новых моделей, а агентные системы выполняют действия от имени пользователя. Все это дало новый толчок теориям «интернет-апокалипсиса» о неизбежной кончине «человеческой» сети, в том виде, который мы знаем и любим. Разбираемся, что такое «теория мертвого интернета», что на этот счет говорят исследования и статистика, кто считает, что интернет «не умрет, но замерзнет» — и что со всем этим делать? Читать далее",
+      "author": "VASExperts (VAS Experts)",
+      "tags": [
+        "vas experts",
+        "мертвый интернет",
+        "генеративный контент",
+        "ии траффик",
+        "ии боты"
+      ]
+    },
+    {
+      "id": "e5e2b4632a45",
+      "title": "Оживление android-планшета глазами новичка. Как я нашел себе классную читалку на лето",
+      "url": "https://habr.com/ru/companies/timeweb/articles/1047826/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1047826",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T08:05:56+00:00",
+      "summary": "По личным ощущениям, индустрия планшетов потихоньку отошла на второй план у массовых пользователей. И речь сейчас про буквально все сегменты, от недорогих устройств на Android до всей линейки iPad. Эта история осталась актуальной для гораздо более узкой прослойки людей, как будто. Я же, в свою очередь, любил свой iPad сначала mini второго поколения (еще в студенческие годы), а затем и Air 2, который дожил до 2023 года, пока его случайно не разбила старшая дочь. Но вот как-то новый мне покупать не хотелось — я банально не нашел ни одной причины это делать по большей части. А недавно, разбирая…",
+      "author": "AkaneKuroshiki (Timeweb Cloud)",
+      "tags": [
+        "android",
+        "прошивка",
+        "samsung",
+        "twrp",
+        "ностальгия",
+        "ностальгии пост",
+        "манга",
+        "читалка",
+        "игры",
+        "timeweb_статьи_выходного_дня"
+      ]
+    },
+    {
+      "id": "e433105cd6c0",
+      "title": "A 3D voxel game engine written in APL",
+      "url": "https://github.com/namgyaaal/avoxelgame",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T08:04:54+00:00",
+      "summary": "Comments",
+      "author": "sph",
+      "tags": []
+    },
+    {
+      "id": "f5d36845a83b",
+      "title": "Мобильная разработка за неделю #635 (15 — 21 июня)",
+      "url": "https://habr.com/ru/articles/1050068/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050068",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T08:02:51+00:00",
+      "summary": "В новом дайджесте вопросы доступного пространства в условиях ненадежного поведения horizontalSizeClass и выход Android 17, гид в смешанной реальности с использованием Android XR и живой космос на Metal, иерархия корутин в Android, приложение с расписанием автобусов, скам сети с подписками, домашний сервер с Qwen Code за 25к и многое другое. Подключайтесь! Читать далее",
+      "author": "RoboForm",
+      "tags": [
+        "разработка под android",
+        "разработка под ios",
+        "разработка мобильных приложений"
+      ]
+    },
+    {
+      "id": "c265e23d76a0",
+      "title": "Mythos 5: что известно и как с этим жить",
+      "url": "https://habr.com/ru/companies/axiomjdk/articles/1049202/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1049202",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T08:00:56+00:00",
+      "summary": "12 июня компания Anthropic сообщила , что правительство США временно запретило доступ к моделям Fable 5 и Mythos 5 пользователям из других стран как за пределами США, так и внутри страны, включая иностранных сотрудников самой Anthropic. Компания утверждает, что доступ к остальным моделям Anthropic это решение не касается. Однако сам факт принудительного отключения доступа к двум передовым моделям снова поднял главный вопрос последних месяцев: насколько быстро развиваются ИИ-системы и готовы ли бизнес, регуляторы и разработчики к рискам, которые появляются вместе с такими возможностями.…",
+      "author": "alexbik (Axiom JDK)",
+      "tags": [
+        "ии",
+        "ai",
+        "mythos",
+        "mythos 5",
+        "fable",
+        "fable 5",
+        "anthropic",
+        "информационная безопасность",
+        "кибербезопасность",
+        "кибератака"
+      ]
+    },
+    {
+      "id": "b01f4eb73571",
+      "title": "Орбитальные дата-центры Маска: фантастика или следующий этап развития ИИ?",
+      "url": "https://habr.com/ru/companies/selectel/articles/1048672/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1048672",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T08:00:53+00:00",
+      "summary": "Развитие ИИ сейчас упирается не в алгоритмы или производительность чипов . Главной проблемой становятся сами вычислительные мощности. Новые дата-центры строят по всему миру, однако вместе с этим возникает дефицит свободных ресурсов, прежде всего, воды и энергии. На этом фоне начали появляться весьма необычные идеи. Одна из них — перенести часть вычислений в космос. Именно такой подход продвигают Илон Маск и SpaceX. Компания рассматривает создание орбитальных вычислительных узлов, которые будут получать энергию от солнечных панелей, а избыточное тепло сбрасывать напрямую в космос. Концепция…",
+      "author": "TrexSelectel (Selectel)",
+      "tags": [
+        "selectel",
+        "spacex",
+        "маск",
+        "космос",
+        "ии",
+        "дата-центры"
+      ]
+    },
+    {
+      "id": "720b4362e412",
+      "title": "Вышел кроссплатформенный инструмент с открытым исходным кодом для создания скриншотов Flameshot 14.0",
+      "url": "https://habr.com/ru/news/1049808/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1049808",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T07:30:47+00:00",
+      "summary": "18 июня 2026 года состоялся выпуск кроссплатформенного инструмента с открытым исходным кодом для создания скриншотов Flameshot 14.0. Исходный код проекта написан на C++ и опубликован на GitHub под лицензией GNU General Public License v3.0. Стабильная версия Flameshot 13.0 вышла в августе 2025 года. Выпуск Flameshot 0.1.0 произошёл в июне 2017 года. Читать далее",
+      "author": "denis-19",
+      "tags": [
+        "Flameshot 14",
+        "Flameshot"
+      ]
+    },
+    {
+      "id": "62520d12abef",
+      "title": "Владимиру Конкину присвоили звание народного артиста России",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207553-vladimiru-konkinu-prisvoili",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T07:27:12+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "ba61435f9d2e",
+      "title": "Из-за временного закрытия Крымского моста задерживаются 11 поездов",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207552-iz-za-vremennogo-zakritiya",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T07:22:27+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Армия и спецслужбы"
+      ]
+    },
+    {
+      "id": "618794b330b4",
+      "title": "Вэнс прилетел в Швейцарию на переговоры с Ираном",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207549-vens-priletel",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T07:08:59+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "346e4aaaa12f",
+      "title": "На крымских АЗС перестали отпускать топливо физическим и юридическим лицам",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207550-na-krimskih-azs-perestali",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T07:01:00+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "989deeed0359",
+      "title": "AEON выпустит одноплатный компьютер для создания встраиваемых систем",
+      "url": "https://habr.com/ru/news/1050056/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050056",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T06:57:43+00:00",
+      "summary": "Компания AAEON представит одноплатный компьютер UP WCL для создания встраиваемых систем и периферийных устройств с ИИ-функциями. Он работает на аппаратной платформе Intel Wildcat Lake с Windows 11 LTSC или Ubuntu 24.04 LTS. Читать далее",
+      "author": "maybe_elf",
+      "tags": [
+        "aaeon",
+        "одноплатный компьютер",
+        "встраиваемые системы",
+        "периферийные устройства",
+        "wildcat lake",
+        "ubuntu 24.04 lts",
+        "windows 11"
+      ]
+    },
+    {
+      "id": "e36ac03a81ef",
+      "title": "Вышла стабильная версия systemd 261",
+      "url": "https://habr.com/ru/news/1049802/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1049802",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T06:51:00+00:00",
+      "summary": "19 июня 2026 года состоялся релиз стабильной версии подсистемы инициализации и управления службами в Linux systemd 261 . Читать далее",
+      "author": "denis-19",
+      "tags": [
+        "systemd 261",
+        "systemd"
+      ]
+    },
+    {
+      "id": "7e4d43dc4990",
+      "title": "Аэропорт «Внуково» принимает и отправляет рейсы по согласованию",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207548-aeroport-vnukovo-prinimaet",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T06:49:45+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Армия и спецслужбы"
+      ]
+    },
+    {
+      "id": "73391e33c30a",
+      "title": "Паромную переправу через Керченский пролив закроют с 21 июня",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207546-paromnuyu-perepravu",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T06:39:20+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Армия и спецслужбы"
+      ]
+    },
+    {
+      "id": "cb907788febc",
+      "title": "Новый медиаплеер Windows 11 потребляет в 3,5 раза больше памяти и требует платы за видеокодеки",
+      "url": "https://habr.com/ru/news/1050054/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050054",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T06:37:32+00:00",
+      "summary": "Новый медиаплеер Microsoft для Windows 11 раскритиковали за то, что он использует гораздо больше памяти, чем классический Windows Media Player. Кроме того, он скрывает некоторые популярные кодеки за платным доступом. Читать далее",
+      "author": "maybe_elf",
+      "tags": [
+        "microsoft",
+        "windows 11",
+        "windows media player",
+        "проигрыватель",
+        "критика",
+        "кодеки",
+        "работа с видео",
+        "потребление памяти"
+      ]
+    },
+    {
+      "id": "007c82e8e791",
+      "title": "Медведев: экс-президенты Украины возвратом орденов признали себя нацистами",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207544-medvedev-eks-prezidenti-ukraini",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T06:31:54+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "9b4a435de876",
+      "title": "Геотермия стала горячей темой: Fervo Energy продала инвесторам идею нового источника энергии для дата-центров",
+      "url": "https://habr.com/ru/companies/ru_mts/articles/1044086/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1044086",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T06:30:24+00:00",
+      "summary": "На бирже Nasdaq этой весной выстрелила не новая нейросеть и не производитель чипов. В мае 2026 года инвесторы поверили в старую идею о том, что можно брать тепло из Земли и круглосуточно превращать его в электроэнергию. Fervo вышла на IPO Nasdaq, разместила акции выше изначального диапазона и собрала 2,174 миллиарда долларов валовой выручки. Рынок купил обещание стабильной чистой энергии для ЦОД и сетей. Разбираем, почему размещение превысило план, какую идею продала Fervo Energy и на что купились инвесторы. Читать далее",
+      "author": "darovska_online (МТС)",
+      "tags": [
+        "энергетика",
+        "дата-центры",
+        "цод",
+        "геотермальная энергия",
+        "fervo",
+        "nasdaq",
+        "ipo",
+        "будущее здесь",
+        "технологии",
+        "энергия"
+      ]
+    },
+    {
+      "id": "a9e75c753b2f",
+      "title": "Windows UI evolution: Clicking an unassociated file",
+      "url": "https://movq.de/blog/postings/2026-06-20/0/POSTING-en.html",
+      "source": "Hacker News (frontpage)",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T06:24:52+00:00",
+      "summary": "Article URL: https://movq.de/blog/postings/2026-06-20/0/POSTING-en.html Comments URL: https://news.ycombinator.com/item?id=48616173 Points: 5 # Comments: 0",
+      "author": "jandeboevrie",
+      "tags": []
+    },
+    {
+      "id": "e1b382b75439",
+      "title": "Владельцы Google Pixel 10 Pro XL и Pixel 10 Pro Fold столкнулись с багом в Gmail",
+      "url": "https://habr.com/ru/news/1050050/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050050",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T06:17:19+00:00",
+      "summary": "В последних флагманских смартфонах Google Pixel обнаружили программную ошибку, которая нарушает работу приложения Gmail. Читать далее",
+      "author": "maybe_elf",
+      "tags": [
+        "google pixel",
+        "pixel 10",
+        "gmail",
+        "gemini",
+        "gboard",
+        "смартфоны",
+        "мобильные приложения",
+        "электронные письма",
+        "баги",
+        "искусственный интеллект"
+      ]
+    },
+    {
+      "id": "49cc83e46843",
+      "title": "Один человек погиб при атаке ВСУ на паром в Керченском проливе",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207543-odin-chelovek-pogib",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T06:15:03+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "ff75b2e5be1f",
+      "title": "Самоучка с Claude Code заявил, что расшифровал минойское письмо, не поддававшееся 120 лет",
+      "url": "https://habr.com/ru/news/1050012/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050012",
+      "source": "Habr (news)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T06:00:11+00:00",
+      "summary": "Том Ди Мино — инженер-самоучка и лингвист-любитель из долины Гудзона — заявил, что расшифровал линейное письмо А, минойскую письменность бронзового века, над которой специалисты безуспешно бьются больше столетия. Сразу важная оговорка: это пока именно заявка, а не подтвержденный результат. Ни научной статьи, ни препринта в открытом доступе нет, рецензирование не завершено, а единственный публичный источник —&nbsp; пост в блоге &nbsp;знакомого автора, который сам отмечает, что знает Ди Мино лично. По его словам, Ди Мино изучает классическую историю и языки с 18 лет, читает про письмо А семь…",
+      "author": "runaway_llm",
+      "tags": [
+        "Claude Code"
+      ]
+    },
+    {
+      "id": "d1ebe231828a",
+      "title": "Investigation: Polymarket is paying creators to make deceptive videos about winning bets, targeting users in the US, where its primary crypto platform is banned (Wall Street Journal)",
+      "url": "https://www.techmeme.com/260621/p3#a260621p3",
+      "source": "Techmeme",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T06:00:01+00:00",
+      "summary": "Wall Street Journal : Investigation: Polymarket is paying creators to make deceptive videos about winning bets, targeting users in the US, where its primary crypto platform is banned &nbsp; &mdash;&nbsp; The prediction market has flooded social media with deceptive videos by paid creators, according to a Wall Street Journal investigation",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "6f5fc3705053",
+      "title": "Украина до конца 2026 года должна выплатить МВФ около $1,5 млрд",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207540-ukraina-do-kontsa",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T05:49:17+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "08b6418582ce",
+      "title": "The 100k Whys of AI",
+      "url": "https://lcamtuf.substack.com/p/the-100000-whys-of-ai",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T05:45:21+00:00",
+      "summary": "Comments",
+      "author": "surprisetalk",
+      "tags": []
+    },
+    {
+      "id": "a4ce8e0e3507",
+      "title": "Косачев: молодые европейцы опасаются изучать историю Второй мировой",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207539-kosachev-molodie-evropeitsi",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T05:36:27+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "4c5c3551a8cc",
+      "title": "Маск предложил раздать американцам деньги из бюджета",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207538-mask-predlozhil",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T05:28:33+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные новости"
+      ]
+    },
+    {
+      "id": "b448d3275054",
+      "title": "Бэкпорты теперь делают боты: как Valkey пустил ИИ-агентов в мейнтенанс — и удержал контроль",
+      "url": "https://habr.com/ru/articles/1050038/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050038",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T05:25:49+00:00",
+      "summary": "Valkey (форк Redis под крылом Linux Foundation) в релизном цикле 9.1 отдал ИИ-агентам рутину мейнтенанса: бэкпорт-агент сам раскатывает фиксы по веткам 7.2/8.0/8.1/9.0, отдельный агент сканирует provenance кода на конфликт с нынешней лицензией Redis (чтобы в форк случайно не затёк несовместимый код родителя), а агентский поиск багов наткнулся на ещё закрытую CVE. Разбираю не «ИИ заменяет мейнтейнеров», а как это сделали по уму: по словам Мэделин Олсон из AWS, агентов посадили на ограниченный, проверяемый слой (CI + ревью + человек на мерже) — «using AI agents without losing control». Главный…",
+      "author": "opium",
+      "tags": [
+        "Valkey",
+        "Redis",
+        "AI-агенты",
+        "open source",
+        "бэкпорт",
+        "DevOps"
+      ]
+    },
+    {
+      "id": "766e6cf4004b",
+      "title": "The Lost Story of Alan Turing's \"Delilah\" Project",
+      "url": "https://spectrum.ieee.org/alan-turings-delilah",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T05:15:33+00:00",
+      "summary": "Comments",
+      "author": "asdefghyk",
+      "tags": []
+    },
+    {
+      "id": "d70d73a08b35",
+      "title": "Inside Palantir's fight to save its £330M, seven-year contract with NHS England, as public and political pressure grows to end the deal via a 2027 break clause (Financial Times)",
+      "url": "https://www.techmeme.com/260621/p2#a260621p2",
+      "source": "Techmeme",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T05:15:01+00:00",
+      "summary": "Financial Times : Inside Palantir's fight to save its &pound;330M, seven-year contract with NHS England, as public and political pressure grows to end the deal via a 2027 break clause &nbsp; &mdash;&nbsp; Critics question how the tech giant won a showpiece contract.&nbsp; It complains about the politicisation of procurement.",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "419b6c1c17ce",
+      "title": "Brazil takes its National Civil Defense warning platform offline after suspected hackers send an unauthorized alert to mobile phones in several states (Mariana Catacci/CNN)",
+      "url": "https://www.techmeme.com/260621/p1#a260621p1",
+      "source": "Techmeme",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T05:15:01+00:00",
+      "summary": "Mariana Catacci / CNN : Brazil takes its National Civil Defense warning platform offline after suspected hackers send an unauthorized alert to mobile phones in several states &nbsp; &mdash;&nbsp; An unauthorized alert bearing a mysterious message that was sent to cell phones in several states across Brazil on Saturday morning &hellip;",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "e188c95dc3b0",
+      "title": "Экс-премьер Польши призвал Киев вернуть военную технику вместе с орденами",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207537-eks-premer-polshi-prizval",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T04:59:38+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "79c3cdc0654a",
+      "title": "Беспилотник ВСУ атаковал многоквартирный дом в Белгородской области",
+      "url": "https://www.vedomosti.ru/society/news/2026/06/21/1207536-bespilotnik-vsu-atakoval",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T04:53:34+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Общество"
+      ]
+    },
+    {
+      "id": "ebfd44adcc05",
+      "title": "Today's NYT Mini Crossword Answers for Sunday, June 21",
+      "url": "https://www.cnet.com/tech/gaming/todays-nyt-mini-crossword-answers-for-sunday-june-21/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T04:46:37+00:00",
+      "summary": "Here are the answers for The New York Times Mini Crossword for June 21.",
+      "author": "Gael Cooper",
+      "tags": []
+    },
+    {
+      "id": "1816c01cce15",
+      "title": "Премьер Баварии призвал прекратить выплату украинцам пособий по безработице",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207535-premer-bavarii-prizval",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T04:45:59+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "791ff12cdfe1",
+      "title": "За ночь над регионами РФ сбили 239 украинских БПЛА",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207534-za-noch-nad",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T04:37:00+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Армия и спецслужбы"
+      ]
+    },
+    {
+      "id": "65411946b238",
+      "title": "Building Reliable Agentic AI Systems",
+      "url": "https://martinfowler.com/articles/reliable-llm-bayer.html",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T04:28:39+00:00",
+      "summary": "Comments",
+      "author": "sarangk90",
+      "tags": []
+    },
+    {
+      "id": "a89ee1d410ff",
+      "title": "Spiegel: разделение Германии на ФРГ и ГДР влияет на отношение к Украине",
+      "url": "https://www.vedomosti.ru/politics/news/2026/06/21/1207533-spiegel-razdelenie-germanii",
+      "source": "Ведомости (technology)",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-21T04:27:37+00:00",
+      "summary": "",
+      "author": "Ведомости",
+      "tags": [
+        "Политика / Международные отношения"
+      ]
+    },
+    {
+      "id": "f208560178c9",
+      "title": "Your brain was never designed for this much bad news",
+      "url": "https://www.sciencedaily.com/releases/2026/06/260614012006.htm",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T04:02:08+00:00",
+      "summary": "Comments",
+      "author": "colinprince",
+      "tags": []
+    },
+    {
+      "id": "1ffc6a6f024b",
+      "title": "'From' EPs Talk Season 4's Man in Yellow and Murderous Dolls",
+      "url": "https://www.cnet.com/tech/services-and-software/from-eps-talk-season-4s-man-in-yellow-murderous-dolls-and-a-focus-on-the-fans/",
+      "source": "CNET",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T04:01:47+00:00",
+      "summary": "I chatted with John Griffin, Jeff Pinkner and Jack Bender about the penultimate season.",
+      "author": "Meara Isenberg",
+      "tags": []
+    },
+    {
+      "id": "6c88f1a4080f",
+      "title": "Armstrong Effect",
+      "url": "https://en.wikipedia.org/wiki/Armstrong_effect",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T03:54:22+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
+    },
+    {
+      "id": "242c9b137df4",
+      "title": "Империя на дешевой одежде — История H&amp;M",
+      "url": "https://habr.com/ru/articles/1050032/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050032",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T03:04:19+00:00",
+      "summary": "Почему H&amp;M сжигает тонны собственной одежды? Почему именно женские трусики удвоили прибыль компании? И почему H&amp;M называют убийцами высокой моды. И как владелец H&amp;M Стефан Перссон стал самым богатым человеком Швеции. Читать далее",
+      "author": "ivanarefyev",
+      "tags": [
+        "история компании",
+        "история бренда",
+        "история успеха"
+      ]
+    },
+    {
+      "id": "8ce1dd544264",
+      "title": "Четыре грабли, один вихрь и 60% на CIFAR-10 с M0+",
+      "url": "https://habr.com/ru/articles/1050030/?utm_source=habrahabr&utm_medium=rss&utm_campaign=1050030",
+      "source": "Хабр Статьи",
+      "category": "ru_corp_it",
+      "language": "ru",
+      "priority": "high",
+      "published": "2026-06-21T02:58:28+00:00",
+      "summary": "Продолжение цикла. До этого были базовые цифры и анонс 5 архитектур. Теперь - что сломалось, как чинили, что узнали. Читать далее",
+      "author": "Fakeonomics",
+      "tags": [
+        "TernML",
+        "тернарные нейросети",
+        "TinyML",
+        "микроконтроллеры",
+        "QAT",
+        "ViT",
+        "CNN",
+        "GraphKAN",
+        "Cortex-M0+",
+        "квантование"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "e04ea6b4dd4e",
+      "title": "A look at Jane Street's push to supercharge trading with AI and become a major AI investor; it invested $1B in CoreWeave in April and has a stake in Anthropic (Gregory Zuckerman/Wall Street Journal)",
+      "url": "https://www.techmeme.com/260620/p13#a260620p13",
+      "source": "Techmeme",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-06-21T02:15:02+00:00",
+      "summary": "Gregory Zuckerman / Wall Street Journal : A look at Jane Street's push to supercharge trading with AI and become a major AI investor; it invested $1B in CoreWeave in April and has a stake in Anthropic &nbsp; &mdash;&nbsp; The firm has surged from a handful of staffers to 3,500 with plans to recruit more than 500 employees this year.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "dab11b5beb8c",
+      "title": "Developers don't understand CORS (2019)",
+      "url": "https://fosterelli.co/developers-dont-understand-cors",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T01:35:40+00:00",
+      "summary": "Comments",
+      "author": "toilet",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "80867fb7f266",
+      "title": "White House delays US voting-machine vulnerability report",
+      "url": "https://www.reuters.com/world/white-house-delays-release-us-voting-machine-study-midterms-near-2026-06-19/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T01:29:53+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": [],
+      "has_full_text": false
+    },
+    {
+      "id": "052a30c7a5b3",
+      "title": "When I reject AI code even if it works",
+      "url": "https://vinibrasil.com/when-i-reject-ai-code-even-if-it-works/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T00:58:13+00:00",
+      "summary": "Comments",
+      "author": "vnbrs",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "071db837ef27",
+      "title": "'We had to get out of the way': The backlash over delivery robots",
+      "url": "https://www.bbc.com/news/articles/c0rygp005wjo",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T00:12:49+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "31c5ca121636",
+      "title": "Project Fetch: Phase Two",
+      "url": "https://www.anthropic.com/research/project-fetch-phase-two",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T00:00:25+00:00",
+      "summary": "Comments",
+      "author": "stopachka",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

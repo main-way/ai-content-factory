@@ -1,0 +1,36 @@
+AI runs at the speed of light. More and more, that light is made in Texas.
+Coherent broke ground today on an expanded manufacturing building in Sherman, Texas.
+The company makes the lasers, optical components and compound semiconductors that wire AI systems together — and runs what it calls the world’s first 6-inch indium phosphide fab.
+NVIDIA founder and CEO Jensen Huang and Coherent CEO Jim Anderson were on hand for the ceremony, joined by Sherman Mayor Shawn Temann and Adriana Cruz, executive director of Texas Economic Development and Tourism, who delivered remarks.
+The expanded building will scale production of the same InP wafers that carry data between chips, servers and data centers at the speed of light — the optical backbone of modern AI infrastructure.
+It’s the kind of milestone that turns a commitment into construction: a concrete step in expanding advanced semiconductor manufacturing in the United States.
+“AI is the ultimate general-purpose technology,” Huang said during a conversation with Anderson at the groundbreaking. “Because intelligence is fundamental — the ability to process information, to reason and solve problems — it affects every single industry.”
+Public programs like the CHIPS Act, funded at roughly $50 billion, were designed to bring chip manufacturing back to the U.S.
+As part of today’s event, Coherent is announcing a $50 million CHIPS Act grant to help finance the expanded Sherman facility — building on roughly $17 million in earlier support from the Texas CHIPS program and the Sherman Economic Development Corporation.
+NVIDIA’s own commitment to produce up to $500 billion of AI infrastructure in the U.S. through industry partnerships with new sites in Arizona and Texas adds private-sector momentum.
+“Coherent is a world-class company, and the work you do is vital to our future, vital to the future of artificial intelligence and vital to reindustrializing the United States,” Huang said.
+Compound semiconductors like indium phosphide and gallium arsenide — the materials behind the high-speed networking and optical interconnects that modern AI runs on — don’t get the headlines that logic chips do. But their domestic supply chains have been thin for years. Today’s event was an argument that the gap is closing.
+When 576 GPUs span eight racks and operate as a single system — as they will in NVIDIA Vera Rubin Ultra NVL576, which links eight NVLink racks of 72 NVIDIA Rubin Ultra GPUs into one 576-GPU domain — copper can’t carry the signal across that distance.
+To connect hundreds of thousands of processors separated by hundreds or thousands of feet across a data center, the only way to solve that problem is silicon photonics, Huang explained.
+As signaling rates climb, the reach of a metal trace shrinks, and spanning eight racks in copper would burn power on retimers and signal conditioning that a data center would rather spend on compute.
+Optics pays a one-time penalty to move from electrical to light, but once paid, distance is nearly free. At NVL576 scale, light is the most power-efficient option.
+NVIDIA and Coherent aren’t new to each other — they’ve worked together for roughly two decades.
+In March, they deepened the relationship into a multiyear strategic partnership: NVIDIA is investing $2 billion in Coherent to support R&D, future capacity and U.S.-based manufacturing, alongside a multibillion-dollar purchase commitment for advanced laser and optical networking products.
+Sherman, a city of roughly 45,000 people an hour north of Dallas, has become the latest dateline for the AI era — emblematic of a boom built as much on picks, shovels and manufacturing muscle as on software.
+“When we get to full capacity, this site will support more than 550 direct jobs — and thousands of jobs, direct and indirect,” Anderson said.
+What the factory ships isn’t a single product dropped into a single slot. It’s the lasers, transceivers and pluggable optical modules that move data across NVIDIA networking — each enabling a different part of the system.
+“As AI systems grow larger and more powerful, connectivity is just as important as compute,” Anderson said. “AI runs on compute, but it scales on connectivity — and Sherman is where that connective tissue gets built.”
+Today’s event made that visible.
+Before the groundbreaking, guests toured the existing fab and previewed the equipment that will populate the expanded building once it’s running. An NVIDIA rack stood on the factory floor, one of the six stops on the tour.
+The tour was followed by a fireside chat with Huang and Anderson, where the two CEOs discussed the partnership and what scaling domestic optical manufacturing means for the AI buildout ahead.
+“Today marks an important milestone — not just for Coherent, but for American manufacturing and for the future of AI infrastructure,” Anderson said.
+The semiconductor laser was born in U.S. labs — Bell Labs demonstrated a room-temperature version in 1970 — before the technology and its manufacturing largely migrated overseas.
+“We were founded as a manufacturing company in 1971. We’ve always been a U.S. manufacturing company — and after 50 years, the most advanced 6-inch indium phosphide line in the world is right here in Sherman,” Anderson said.
+That manufacturing gap shows up in the wafers themselves: while silicon fabs run on 12-inch wafers, most of the world’s InP production is still stuck on 3- and 4-inch wafers — lower yields and far fewer components per run.
+Moving to 6-inch wafers roughly quadruples the usable area of a 3-inch wafer (area scales with the square of the diameter), driving down cost and unlocking the volume the AI buildout demands.
+It took 50 years to build the first line, Huang said — and in one year, they’ve quadrupled it, a measure of the demand for accelerated computing.
+Inside, the core processes are familiar: lithography, photoresist, depositing and etching materials, layer by layer. The difference is the material. On an InP substrate, engineers grow exotic compound-semiconductor layers and tune them for precise optical properties — the physics that lets a chip emit and modulate light.
+Today, that InP travels inside Coherent’s pluggable optics — transceivers about the size of a USB stick that plug into the front of NVIDIA networking switches and move data between racks across the data center floor, where copper can’t reach. Each module carries an indium phosphide laser.
+Those same modules now help enable NVIDIA Spectrum-X Photonics and Quantum-X Photonics switches with co-packaged optics: Coherent supplies the external laser module that plugs into the switch’s front plate.
+And as NVIDIA works to keep optics from becoming the next bottleneck, demand for those lasers only climbs.
+“Ten years from now, I think we’ll look back and realize AI is what made it possible to invest in sustainable energy, upgrade our energy grid and reconstitute a workforce,” Huang said. “You can’t have only information workers in an economy — you also have to have builders. We have an opportunity over the next 10 years to reshape our communities and be much more balanced.”

@@ -1,0 +1,54 @@
+Introducing container caching in Amazon SageMaker AI for faster model scaling
+Today, we’re excited to announce container image caching for Amazon SageMaker AI inference, the next major advancement in our faster scaling optimization journey. This speeds up end-to-end latency by up to 2x for generative AI models during scale-out events.
+Over the years, Amazon SageMaker AI has continued to reduce latency across these scaling stages: detecting the need to scale out, provisioning instances, downloading container images, fetching model weights, and starting containers. Amazon SageMaker AI previously introduced sub-minute Amazon CloudWatch metrics to help detect scale-out needs up to 6x faster than traditional mechanisms and launched an inference component data caching solution that stores container images and model artifacts on already running instances. This approach reduced the cold start latency for scaling inference component operations that reuse existing instances. Together, these features improved auto scaling responsiveness for scenarios where an inference component can be placed on an already provisioned instance and use the existing cache.
+With container caching, Amazon SageMaker AI extends these scaling improvements to scenarios where new instances must be launched. Container caching removes container image download latency even when new instances must be launched, the scenario where our previous instance-store-based caching couldn’t help. In this post, we show how container caching addresses the container image download bottleneck and demonstrate the performance improvements you can expect.
+The scaling challenge: When new instances must launch
+The following diagram shows the steps during instance scaling when a new instance is launched.
+- Instance provisioning: New Amazon Elastic Compute Cloud (Amazon EC2) instance is launched.
+- Container image pull: Container image is pulled from Amazon Elastic Container Registry (Amazon ECR).
+- Model artifact download: Model weights are fetched from Amazon Simple Storage Service (Amazon S3).
+- Container startup and health checks: The inference server initializes, loads the model into memory, and passes readiness checks.
+Note: Container image download and model artifact download happen in parallel.
+Container image download is often a major contributor to endpoint scale-out latency, especially for generative AI workloads. These workloads use large containers such as SageMaker Large Model Inference (LMI, powered by vLLM), vLLM, and NVIDIA Triton. Caching the container removes the container image pull step during new instance scale-out events for the common endpoint patterns:
+- Single model endpoints – Scaling is achieved by launching additional instances, each hosting its own copy of the model.
+- Inference component-based endpoints – Scaling adds new instances only when no existing instance has sufficient capacity to host an additional inference component.
+How container caching removes the image pull bottleneck
+The following image shows how the scaling timeline changes for the Qwen3-8B (16 GB) model on an ml.g6.2xlarge instance using the LMI container (17.7 GB compressed).
+Before Container Caching:
+- Pull container image from Amazon ECR: 333 seconds
+- Model artifact download from Amazon S3: 168 seconds
+Image pulls and model download ran in parallel, so the end-to-end startup latency was 525 seconds.
+After Container Caching:
+- Container image is already cached locally: 0 seconds
+- Model artifact download: 77 seconds. With the container image pre-cached, the model download no longer competes for network bandwidth with the image pull, reducing its latency from 168 seconds to 77 seconds.
+The end-to-end startup latency drops to 258 seconds.
+Result: Container caching removes the image pull from the scale-out path and eliminates network bandwidth contention, reducing end-to-end startup latency from 525 seconds to 258 seconds, approximately 51 percent improvement. If a cached image is unavailable, SageMaker AI automatically falls back to pulling from Amazon ECR, so scaling is never blocked.
+How container caching works with inference components
+Container caching works with inference components. When you deploy multiple inference components, the cache stores each unique container image referenced by your inference components.
+Security and tenant isolation
+Container image caching maintains the same strict tenant isolation guarantees that SageMaker AI provides today. Each cache is dedicated to a single customer endpoint and is not shared across AWS accounts or endpoints. When a customer deletes their SageMaker AI endpoint, the associated image cache is automatically purged.
+Performance results
+The following table shows observed results from early access customers who tested container caching:
+| Customer | Instance | Image size | Model size | P50 Before (sec) | P50 After (sec) | P50 Improvement | |
+| 1 | Customer 1 | ml.g4dn.xlarge | 15.7 GB | 0 GB | 381 | 134 | -65% |
+| 2 | Customer 2 | ml.g5.2xlarge | 17.5 GB | 5.8 GB | 346 | 164 | -52% |
+| 3 | Customer 3 | ml.g5.xlarge | 10.6 GB | 6.5 GB | 346 | 216 | -38% |
+The magnitude of improvement depends on the instance type, container image size, and model size of the endpoint.
+Combining all three auto scaling optimizations
+For the fastest scaling response, you can combine all three capabilities introduced across our auto scaling optimization series. Each one removes a different source of delay from the scale-out path.
+| Optimization | What it improves | How to enable | |
+| 1 | Sub-minute metrics improvement | Triggers scale-up needs faster by 6x | Configure a ConcurrentRequestsPerModel or ConcurrentRequestsPerCopy target tracking policy |
+| 2 | Data cache for inference component-based endpoints | Reduces image pull time when adding model copies on existing instances | No opt-in required: container caching activates automatically for inference component-based endpoints on supported accelerator instance types. |
+| 3 | Container image cache | Removes image pull time when launching new instances | No opt-in required: container caching activates automatically for any endpoint using supported accelerator instance types. |
+Together, these optimizations remove the major sources of scale-out latency. Sub-minute metrics detect demand 6x faster, triggering scaling decisions in seconds rather than minutes. The two caching layers complement each other along different scaling axes. When a new inference component copy is placed on an existing instance, data caching removes image and model download latency. When scaling requires launching a new instance, container image caching provides zero image-pull time at launch.
+Supported configurations
+Container caching is supported for accelerator instance types on SageMaker inference endpoints. It works with any container image hosted in Amazon ECR, including custom images. No modifications to your container are required.
+Container caching is available in all commercial AWS Regions where SageMaker AI inference is supported. For the latest list of supported instance types and Regions, see the Amazon SageMaker AI documentation.
+Conclusion
+With new container caching, Amazon SageMaker AI provides a suite of auto scaling optimizations purpose-built for generative AI inference.
+- Sub-minute metrics let auto scaling detect load changes up to 6x faster than standard 1-minute CloudWatch metrics.
+- Faster scaling on existing instances: Instance-store container caching removes image pull and model download latency when reusing running instances.
+- Faster scaling on new instances (this launch): Container cache removes image pull when launching new instances, reducing the end-to-end scaling latency by up to 50 percent.
+Together, these features change the SageMaker AI scaling experience from minutes of cold-start latency to rapid, predictable responses. Your generative AI applications can now handle traffic spikes with confidence, maintaining low latency and high availability for end users.
+To get started, deploy your generative AI workloads to a SageMaker AI inference endpoint on a supported accelerator instance type. Container caching activates automatically. To learn more about supported instance types and Regions, see the Amazon SageMaker AI documentation. You can also try the AWS Management Console to create or update your endpoints.
+Looking ahead, we continue to invest in reducing scaling latency even further. Stay tuned.

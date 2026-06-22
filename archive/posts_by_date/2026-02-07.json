@@ -1,0 +1,20 @@
+{
+  "date": "2026-02-07",
+  "count": 1,
+  "posts": [
+    {
+      "id": "cb17ba77e9d7",
+      "title": "How StrongDM’s AI team build serious software without even looking at the code",
+      "url": "https://simonw.substack.com/p/how-strongdms-ai-team-build-serious",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-02-07T16:53:50+00:00",
+      "summary": "Plus Pydantic's Monty, distributing Go binaries through PyPI, Opus 4.6 and Codex 5.3",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

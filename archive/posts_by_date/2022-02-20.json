@@ -1,0 +1,36 @@
+{
+  "date": "2022-02-20",
+  "count": 2,
+  "posts": [
+    {
+      "id": "ef00e3c661d8",
+      "title": "Canva Review 2022: Details, Pricing & Features",
+      "url": "https://techncruncher.blogspot.com/2022/02/canva-review-2022-details-pricing.html",
+      "source": "TechCrunch",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2022-02-20T12:02:00+00:00",
+      "summary": "Are you looking for a new graphic design tool? Would you like to read a detailed review of Canva? As it's one of the tools I love using. I am also writing my first ebook using canva and publish it soon on my site you can download it is free.&nbsp; Let's start the review. Canva has a web version and also a mobile app What is Canva ? Canva is a free graphic design web application that allows you to create invitations, business cards , flyers, lesson plans, banners, and more using professionally designed templates. You can upload your own photos from your computer or from Google Drive, and add…",
+      "author": "noreply@blogger.com (Unknown)",
+      "tags": [
+        "review"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "5839fc3246ea",
+      "title": "Learning with not Enough Data Part 2: Active Learning",
+      "url": "https://lilianweng.github.io/posts/2022-02-20-active-learning/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2022-02-20T00:00:00+00:00",
+      "summary": "This is part 2 of what to do when facing a limited amount of labeled data for supervised learning tasks. This time we will get some amount of human labeling work involved, but within a budget limit, and therefore we need to be smart when selecting which samples to label.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

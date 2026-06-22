@@ -1,0 +1,146 @@
+For context, I am a data analyst trying to transition into data engineering. I have been documenting that journey publicly, starting with a 12-month self-study roadmap I put together earlier this year. The most recent step in that journey was building my first ETL pipeline from scratch using the GitHub API, which I wrote about here on TDS. That pipeline worked. It pulled data, cleaned it, saved it to a CSV. I was happy with it.
+So I decided to push it further, make it more “production-ready” as the internet likes to say. What happened next genuinely surprised me. Not because things broke, but because of what the breaking revealed.
+The Original Pipeline
+The original pipeline was basic, which was fine because that was the point. Extract data from the GitHub API, do a bit of cleaning, save everything to a CSV file. It worked perfectly for what it was: a learning exercise. But a CSV file and a one-time script is not how data engineering works in the real world. I wanted to find out what “real world” actually meant in practice, so I decided to push the pipeline further and see what happened.
+Here is the full original pipeline for anyone who hasn’t read the previous article:
+import requests
+from datetime import datetime, timedelta
+url = "https://api.github.com/search/repositories"
+params = {
+"q": "language:python created:>2025-04-22",
+"sort": "stars",
+"order": "desc",
+"per_page": 30
+}
+response = requests.get(url, params=params)
+data = response.json()
+import pandas as pd
+repos = []
+for repo in data['items']:
+repos.append({
+"name": repo['name'],
+"owner": repo['owner']['login'],
+"stars": repo['stargazers_count'],
+"forks": repo['forks_count'],
+"language": repo['language'],
+"description": repo['description'],
+"url": repo['html_url'],
+"created_at": repo['created_at']
+})
+df = pd.DataFrame(repos)
+df_clean = df.dropna(subset=['description'])
+df_clean = df_clean.copy()
+df_clean['viral'] = df_clean['stars'].apply(lambda x: 'Yes' if x > 50000 else 'No')
+df_clean = df_clean.sort_values('stars', ascending=False).reset_index(drop=True)
+df_clean.to_csv('github_trending_repos.csv', index=False)
+print("Pipeline complete. File saved.")
+Simple, readable, and it works. But the moment you try to run it more than once, or come back to it the next day, the cracks start to show.
+Wall One: The Pipeline Had No Memory
+The first upgrade was straightforward. Instead of saving to a CSV file, I loaded the data into a SQLite database. SQLite is still just a single file, but it behaves like a real database. You can query it, check what’s already in it, and build on top of it properly. It felt like a small change. It wasn’t.
+I ran the pipeline once and got 22 repos. Then I ran it a second time without changing anything and checked the database.
+Total rows: 44 Unique repos: 22 Duplicates: 22
+Honestly, I didn’t expect it. I guessed it could happen but I never really thought it would. But I’m glad it did, because it was the first time I actually watched my pipeline break. And what it revealed was simple but important: the script had no memory. Every time it ran, it started completely fresh and blindly appended whatever it found. No warning, no error. Just “Pipeline complete” like everything was fine.
+This is where I came across a concept called idempotency.
+Idempotency is a fancy word for a simple idea. If something has already happened, it shouldn’t happen again. In the context of a data pipeline, it means that running your pipeline once or running it ten times should always produce the same result. No extra rows, no duplicates, no silent corruption of your data.
+The fix was straightforward in principle. Before inserting anything into the database, the pipeline now checks if that record already exists. If it does, it removes it first, then inserts the fresh version. One small change in thinking, but it completely changes how reliable your pipeline is.
+And here’s the part that stuck with me: a basic script will never think about this on its own. You have to build it in deliberately. That’s not scripting anymore. That’s engineering.
+Wall Two: The Data Disappeared Overnight
+The second wall was less technical and more unsettling.
+When I closed Colab for the night and came back the next day, there was this uneasy feeling. I had to run everything again from scratch and hope nothing broke, even though everything had worked perfectly the night before. The database I had carefully built was just gone. And I remembered that before this project, I had actually struggled to find my original ETL pipeline file. I spent time looking for it before I finally did. That feeling of almost losing your work stays with you.
+I knew there had to be a better way. A real pipeline cannot depend on someone being there to rerun it every morning. The data has to live somewhere that survives beyond the session.
+The fix here was mounting Google Drive directly inside Colab and pointing the database connection there instead of to the temporary Colab environment. One line change:
+conn = sqlite3.connect('/content/drive/MyDrive/github_repos.db')
+Now the database lives in Google Drive. Close the session, restart the runtime, open a new notebook entirely. The data is still there waiting.
+But this fix revealed something bigger. If persisting data already requires thinking about where things live and how they survive, what happens when you need the pipeline to run automatically every day without you touching it at all?
+Wall Three: Nobody Can Press Run Forever
+The third wall was the one that excited me the most, which surprised me.
+Even with the duplicate problem solved and the database living safely in Google Drive, someone still has to open the notebook and press run. Colab is not a server. It is an interactive environment. It does not wake up at 3am, pull fresh data from the GitHub API, and go back to sleep. That is not what it was built for.
+And when I thought about it from a real world perspective, that clicked immediately. In an actual company, nobody is sitting there on alert at midnight waiting to run a script. The pipeline has to run itself. On a schedule. Reliably. Whether or not anyone is watching.
+This is where tools like Apache Airflow, Prefect, and cloud-based cron jobs come in. These are not Python scripts. They are systems that live on servers, manage schedules, handle failures, send alerts when something goes wrong, and keep a history of every run.
+Scheduling is honestly the concept I am most excited to dig into next, because it is where data engineering starts to feel like real infrastructure work.
+Walking Through the Key Changes
+Let me walk through the three actual changes I made to the pipeline and what each one does.
+1. Swapping CSV for SQLite
+# Before
+df_clean.to_csv('github_trending_repos.csv', index=False)
+# After
+conn = sqlite3.connect('github_repos.db')
+df_clean.to_sql('repos', conn, if_exists='append', index=False)
+conn.close()
+Saving to a CSV is fine for a one-time analysis. But a CSV is just a text file. You cannot easily query it, and it does not scale well as your data grows. SQLite is an actual database, which means you can run SQL queries on it, check what is already inside it, and build on top of it properly. Same simplicity, much more capability.
+2. Fixing the duplicate problem
+cursor.execute('''
+DELETE FROM repos WHERE url IN (SELECT url FROM repos_temp)
+''')
+cursor.execute('''
+INSERT INTO repos SELECT * FROM repos_temp
+''')
+This is the idempotency fix. Before inserting anything, the pipeline checks if that repo already exists in the database using its URL as a unique identifier. If it does, it deletes it first, then inserts the fresh version. So no matter how many times the pipeline runs, you always end up with clean, non-duplicated data.
+3. Persisting data to Google Drive
+# Before
+conn = sqlite3.connect('github_repos.db')
+# After
+conn = sqlite3.connect('/content/drive/MyDrive/github_repos.db')
+This is one line but it changes everything. Instead of saving the database to the temporary Colab environment where it disappears when the session closes, it saves directly to Google Drive. Close the notebook, restart the runtime, come back tomorrow. Your data is still there waiting for you.
+Here is the full upgraded pipeline putting all three changes together:
+import requests
+import pandas as pd
+import sqlite3
+from datetime import datetime, timedelta
+# Extract
+yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+url = "https://api.github.com/search/repositories"
+params = {
+"q": f"language:python created:>{yesterday}",
+"sort": "stars",
+"order": "desc",
+"per_page": 30
+}
+response = requests.get(url, params=params)
+data = response.json()
+# Transform
+repos = []
+for repo in data['items']:
+repos.append({
+"name": repo['name'],
+"owner": repo['owner']['login'],
+"stars": repo['stargazers_count'],
+"forks": repo['forks_count'],
+"language": repo['language'],
+"description": repo['description'],
+"url": repo['html_url'],
+"created_at": repo['created_at']
+})
+df = pd.DataFrame(repos)
+df_clean = df.dropna(subset=['description'])
+df_clean = df_clean.copy()
+df_clean['viral'] = df_clean['stars'].apply(lambda x: 'Yes' if x > 50000 else 'No')
+df_clean = df_clean.sort_values('stars', ascending=False).reset_index(drop=True)
+# Load
+conn = sqlite3.connect('/content/drive/MyDrive/github_repos.db')
+cursor = conn.cursor()
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS repos (
+name TEXT, owner TEXT, stars INTEGER, forks INTEGER,
+language TEXT, description TEXT, url TEXT,
+created_at TEXT, viral TEXT, loaded_at TEXT
+)
+''')
+df_clean['loaded_at'] = datetime.now().strftime('%Y-%m-%d')
+df_clean.to_sql('repos_temp', conn, if_exists='replace', index=False)
+cursor.execute('''
+DELETE FROM repos WHERE url IN (SELECT url FROM repos_temp)
+''')
+cursor.execute('''
+INSERT INTO repos SELECT * FROM repos_temp
+''')
+conn.commit()
+conn.close()
+print("Pipeline complete. Duplicates handled.")
+So What Is Data Engineering, Really?
+If you had asked me what data engineering was after I built my first ETL pipeline, I would have said it was mostly about writing scripts. Extract, transform, load. Repeat. That is what it looked like from the outside.
+But after pushing that pipeline further and watching it break in three different ways, I think about it differently now. Data engineering is about building systems that are reliable, not just scripts that run. There is a difference. A script does what you tell it, once, when you tell it. A system handles failure, remembers what it has already done, persists data beyond a single session, and runs itself on a schedule without anyone watching.
+Idempotency, persistence, scheduling. None of these concepts showed up when I was running my pipeline once in a notebook. They only revealed themselves when I tried to make it work like something real.
+And in a real company, you cannot afford to get this wrong. The data your pipeline produces is being used to make decisions. If it is full of duplicates, or disappears overnight, or only runs when someone remembers to press a button, that is not a data pipeline. That is a liability.
+I still have a lot to learn. Scheduling is the next wall I am walking toward. But I am walking toward it now knowing that data engineering was never just about writing scripts. I just had to break a few things to see that.
+This is an ongoing data engineering series. Follow along as I document every step of the journey, including the parts that don’t go smoothly.

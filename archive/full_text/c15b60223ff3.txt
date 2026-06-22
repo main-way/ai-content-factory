@@ -1,0 +1,64 @@
+Gemini models have always kept up with AI advancements. From text-based chatbots in 2023, Gemini has evolved into a multimodal system capable of understanding and generating text, audio, images… and now videos.
+AI video generation is no longer a standalone tool. With Gemini Omni, video creation becomes mainstream.
+Gemini Omni isn’t important because it generates videos.
+When used correctly, the use cases for it can actually be very creative (if you can look past the guardrails).
+Yeah your read it right. At the bare minimum, Gemini Omni can work with a single image or a line of text to create an entire video!
+This is possible because Gemini Omni doesn’t treat text, images, audio, and video as separate tasks.
+Instead, it understands them as different forms of information. As a result, a simple prompt like “A drone flying over snow-covered mountains at sunrise” can be expanded into a complete video sequence with motion, scene transitions, and cinematic details.
+Similarly, users can provide a static image and ask Gemini Omni to animate it, generating natural camera movement, object motion, and environmental effects from a single visual input.
+Here are the 3 main use cases for Gemini Omni:
+Test: Upload an image and animate it into a video.
+Prompt: “This is a silhouette of a fictional killer-like character (like the main character in American Psyc*o). I want you to animate it in a way that conveys a stealthy, dangerous personality while keeping the video’s style consistent with the image.”
+Result:
+Aside from the BGM, the video was amazing. The style was somewhat retained from the input image (albeit I wanted everything to be 2D coded).
+Note: Even though this task was supposed to use just an image for the video generation, a supplementary prompt had to be provided for some context.
+Test: Generate a cinematic scene using only a text prompt.
+Prompt:
+TITLE: The Cloud Painter
+STYLE: Whimsical animated short film. Charming, lighthearted, visually polished. Soft storybook aesthetic. High-quality animation. Consistent character design throughout the entire video.
+PROMPT:
+A small, round white rabbit wearing a yellow raincoat stands alone in a vast green meadow beneath an overcast sky.
+The rabbit remains the same size, appearance, clothing, and proportions throughout the entire video.
+In its paw, the rabbit holds a tiny paintbrush that glows with soft golden light.
+Curious, the rabbit reaches upward and gently paints a streak across a low-hanging cloud.
+Wherever the brush touches, the gray cloud transforms into colorful shapes.
+The rabbit paints a small fish-shaped cloud. The fish lazily swims through the sky.
+The rabbit laughs and paints a bird-shaped cloud. The cloud bird flaps its wings and joins the fish.
+Excited, the rabbit continues painting. The sky gradually fills with playful cloud creatures: whales, turtles, foxes, and dragons, all made entirely from soft fluffy clouds.
+The rabbit never changes clothing, never changes species, and always remains a small white rabbit in a yellow raincoat.
+A gentle breeze carries the cloud creatures across the sky. The rabbit watches proudly from the meadow below.
+Golden sunlight slowly breaks through the clouds, illuminating the scene with warm afternoon light.
+The cloud animals gather overhead and form a giant heart shape in the sky.
+The rabbit sits quietly in the grass and admires its work.
+Final shot: a wide cinematic view of the meadow, the rabbit sitting peacefully beneath a sky filled with beautiful living cloud creatures drifting into the sunset.
+VISUAL REQUIREMENTS:
+• One character only
+• Consistent rabbit appearance in every shot
+• Consistent yellow raincoat
+• Soft pastel color palette
+• Gentle camera movements
+• Storybook-quality visuals
+• Cute but elegant design
+• No dialogue
+• High visual coherence
+• Smooth animation
+• Strong character consistency
+NEGATIVE PROMPT:
+Character changing appearance, changing clothing, extra limbs, missing limbs, human hands, realistic humans, multiple rabbits, duplicated characters, distorted anatomy, flickering objects, inconsistent proportions, text, subtitles, watermark, logo, horror, darkness, aggressive action, chaotic motion.
+Result:
+A great video for the prompt that was provided. The animation was consistent with the prompt.
+Note: A negative prompt is basically a list of things you’re telling the model:
+Think of the main prompt as the accelerator and the negative prompt as the guardrails.
+Test: Use a video as input and edit it according to the prompt.
+Prompt: “Turn this video of my gameplay in anime style. Black and white panels and all that good stuff.”
+Result:
+Final Verdict
+These three tests cover the majority of real-world use cases: creating videos from scratch, animating existing images, and maintaining consistency using reference images. Together, they provide a clear picture of where Gemini Omni excels and where its current limitations become apparent.
+Here are some of the limitations of Gemini Omni:
+The biggest problem of Gemini Omni is its copyright policy and third party guardrails. You could almost never work with a piece of content that shows that either:
+Even if you’re uploading something completely novel, you might be greeted with this:
+The duration it takes for video generation (< a minute in most cases) and the usage limits are secondary problems. To me, the constant denial of generation due to varying reasons, was the most annoying part of my experience with Gemini Omni.
+There are 2 ways of accessing Gemini Omni:
+Access limits and availability may vary by plan and region. Gemini uses compute-based limits which vary based on the complexity of the video, its size and other such factors.
+Gemini Omni makes one thing clear: AI video generation is no longer a separate novelty. Across image-to-video, text-to-video, and video editing, it shows how a simple prompt or reference can turn into a usable visual sequence with surprising speed, style, and creative range.
+But the experience is not frictionless. Short durations, usage limits, watermarking, regional restrictions, and strict content guardrails still hold it back. For now, Gemini Omni feels like a powerful glimpse of what seamless video generation would be like in the future.

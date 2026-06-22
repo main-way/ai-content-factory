@@ -1,0 +1,9 @@
+lib/bot.ts
+// Vue / Nuxtimport { useChat } from "@chat-adapter/web/vue";
+// Svelte / SvelteKitimport { useChat } from "@chat-adapter/web/svelte";
+const chat = useChat({ api: "/api/chat" });
+Framework-specific useChat imports for Vue and Svelte
+// Vue / Nuxtimport { useChat } from "@chat-adapter/web/vue";
+// Svelte / SvelteKitimport { useChat } from "@chat-adapter/web/svelte";
+const chat = useChat({ api: "/api/chat" });
+Framework-specific useChat imports for Vue and Svelte

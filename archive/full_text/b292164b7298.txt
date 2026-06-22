@@ -1,0 +1,4 @@
+vite.config.ts
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";import { defineConfig } from "vite";import { workflow } from "workflow/vite";
+export default defineConfig({ plugins: [ workflow(), tanstackStart(), ],});
+Adding the Workflow SDK plugin to a TanStack Start Vite config

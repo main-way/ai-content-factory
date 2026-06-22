@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:AdaTT: Text-Guided Instrument Timbre Transfer with Target-Adaptive Structural Control
+View PDF HTML (experimental)Abstract:This paper addresses timbral ambiguity in instrument timbre transfer under fine-grained structural conditions. We argue this issue stems from instrument-specific expressive details in these conditions, which conflict with the target timbral properties. For example, imposing a violin's pitch-dominant vibrato contours onto a flute, which naturally exhibits loudness-dominant vibrato, impairs timbral fidelity. We propose AdaTT, a target-adaptive system that ensures high timbral fidelity across diverse timbre transfer scenarios within the ControlNet scheme. It selectively scales the frame-wise influence of pitch and loudness controls via text prompts to match the target instrument's identity. We also present a semi-automatic data construction pipeline to teach the model which expressive details to transform or preserve. Results show AdaTT achieves superior timbral fidelity and naturalness while retaining score-level content. Audio samples are available at this https URL.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

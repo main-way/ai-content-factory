@@ -1,0 +1,138 @@
+I Solved My Mystery Fatigue with AI
+Here’s how you can do the same
+The diagnostics game: I am not dying, but also not better
+Imagine that every hour, I spin a wheel, and there’s a 20% chance that I’ll be hit with crushing fatigue, brain fog, lightheadedness, or nausea. When it hits, I couldn’t trust myself to drive. Walking to a grocery store two minutes away feels impossible. Stringing a sentence together takes effort. I can’t plan anything. I was homebound for hours, so I texted a friend at 4 p.m. to cancel dinner, but then at 5 p.m. I felt completely fine. So I lie on the couch watching people my age hustling across the street, building one of the fastest-growing products in AI.
+Welcome to the diagnostic game I’ve been playing. Last year, I was diagnosed with a prolactinoma—a tumor on the pituitary gland in the center of my head. Two brain surgeries last August and November couldn’t fully remove it (you can find my partner Andrew’s public research on my care here). When a drug successfully controlled the tumor’s growth, I couldn’t be more excited. And then these episodes started. I had no idea how to make them stop until I cracked the mystery by running a process with AI. Now, I’ve been feeling consistently good for a month :)
+End of April 2026, at a friend’s wedding, when my fatigue started getting worse. I ended up leaving the wedding early.
+AI + a good process + an educated user can beat PCPs
+Here’s the bold version of my claim: an AI-literate patient running a good process with a frontier model can outperform most PCP visits for ambiguous, multi-system symptoms.
+Cardiologist Eric Topol writes in Deep Medicine:
+Patients exist in a world of insufficient data, insufficient time, insufficient context, and insufficient presence.
+A good process with AI solves all four. You can collect detailed, longitudinal data and feed it to models that are always available and endlessly patient. The models aren’t smarter than your doctor, but a thoughtful process built around them gives you something the medical system structurally can’t.
+To be clear, no model outperformed my neuroendocrinologist, the country’s top expert in my condition. The models didn’t anticipate his hypothesis, and I gained more clarity in 20 minutes with him than in the dozens of hours I spent eliciting them. But they did raise nearly every hypothesis1 his NP offered on a phone visit, and even flagged a specialized test the NP independently ordered for me. Unsurprisingly, they also easily beat every PCP I’ve seen.
+Many people put off dealing with non-debilitating symptoms that impair them. A friend’s girlfriend has been fatigued for months. An acquaintance regularly wakes up with a swollen neck and face, and no specialist has explained why. They procrastinate not out of laziness but because the last time they tried figuring it out, they walked away with a fat bill and nothing that worked. Who could blame them?
+The models’ current health capabilities can already give patients far more agency over their care. Most people don’t realize it because they don’t know how to use the models, and nobody is teaching them. Every emerging AI use case has a big elicitation gap; I saw this firsthand evaluating agents on software engineering tasks at METR.
+I am not a medical professional, but I’ve been a prosumer of health AI. I want to help people use it to improve their wellness, so I turned what worked for me into a repeatable four-step process.
+Here are the four steps at a glance:
+Tracking: log your symptoms and their possible causes
+Testing: get blood work or other specialized tests
+Analyzing: examine your tracked data and test results together
+Experimenting: make lifestyle changes, try supplements or medications with your physician’s guidance
+This process turns your mystery symptoms into trackable, verifiable tasks—the kind of work AI does best. If you’d rather skip ahead, the appendix has a plug-and-play system prompt and a coding-agent skill, both built around this method. But the step-by-step sections below cover details the artifacts leave out.
+Before diving into the four steps, let’s cover a few health-specific prompting tips.
+Step 0: Health Prompting Tips
+The Basics
+Always use reasoning models with high thinking effort, such as Claude Opus 4.8 or GPT 5.5. You’ll need a paid subscription to access these models, but it is the most worthwhile $20 I’ve spent in my health journey.
+Create a project to organize your health records. With a project, you upload your clinical records only once, and the model builds memory around your specific health concerns over time.
+For advanced users: try a coding agent (like Codex or Claude Code). The advantages are:
+They handle complex file formats (e.g., CT / MRI images) and large data dumps (e.g., months of Garmin data) better.
+Their planning mode can surface unknown-unknowns, which is critical in diagnosis.
+Instead of re-uploading a file every time it changes, you can keep all your data in a local folder and edit it in place.
+You can build custom tools and reminders for your symptom tracker
+Provide ALL the context
+No amount of context is too much. This is true whether you’re seeing a PCP and talking to a model. However, an average doctor only lets their patient talk for ~11s before interrupting. Models have infinite time and patience. So, be liberal and give it everything!
+Write up your medical history, including gender, age, weight, height, family history, and other information that you think matters. Share this as a text snippet to the model.
+Attach all potentially relevant records: blood work results, specialty tests, past clinical notes, etc. ChatGPT Health allows you to connect certain EHR systems directly; otherwise, these records can usually be exported from your electronic healthcare system. You can simply ask an LLM how to do so!
+Keep adding context as you go. New data surfaces throughout the four-step process, so pause periodically and ask what else might be relevant. It’s more likely you’ve missed something than not. The model and your doctor should ask the questions that surface your unknown-unknowns, but with such a narrow view into your life, they’ll often miss things you’d catch.
+Have data privacy concerns? Both ChatGPT and Claude let you opt out of having your data used for training; however, they are not by default HIPAA-compliant right now. I am happy to share my data because the upside of improving my day-to-day is high enough to outweigh the concern. This is a view that other patients and advocates share, but it’s ultimately a personal decision.
+Be Specific
+Describe symptoms in detail: severity, duration, what you did beforehand, and what caused it to stop.
+For any result you haven’t uploaded as a file, give the test’s full name, your exact value (not just “in range”), and the reference range from your chart.
+T4 is not free T4; estrogen is not ultrasensitive estradiol. Without specifics, the model may steer you wrong.
+Different labs use different equipment, which means different reference ranges for the same test.
+Being “in range” doesn’t tell the whole story. A borderline-high result is nothing like one that’s 10x over the limit.
+Be Critical
+Models can confidently say wrong things. The best defense is to understand the underlying science yourself. This can be time-intensive, but you ask the models to teach it to you :)
+When you suspect an answer is off, regenerate it a few times and compare across different models. When they independently agree, the answer is more likely to be right.
+Don’t take any risky medical action (e.g., adjusting medication) until your care team signs off.
+Step 1: Tracking
+Why tracking?
+A week into my on-and-off fatigue, I kept catching myself thinking: “Maybe I feel bad because of X, since last time I felt bad, X happened too.” But two minutes of reflection would turn up just as many cases where the symptoms showed up without X, or X showed up without the symptoms. There are simply too many factors that might cause fatigue, headaches, and whatever else you’re dealing with. You cannot recall everything perfectly from memory, which is why tracking matters.
+Longitudinal data on yourself also sets a baseline for any intervention you want to try. While some changes are dramatic enough to notice immediately, most changes such as diet, sleep, supplements, and even some medications, work slowly. Having the numbers lets you identify which interventions actually help based on more than vibes alone.
+Tracking also forces you to question your assumptions about your body and look systematically at every variable that might be feeding your illness. My prolactinoma was diagnosed about 2.5 years late because I never took my irregular periods seriously.
+Finally, tracking helps you see progress and hold onto hope. For weeks, I was frustrated and desperate for any improvement. The data let me point to something concrete: I’ve tried these interventions, and now I at least know they don’t work. That’s progress! The zig-zag in the numbers reminds me that healing isn’t linear.
+My actual tracked data while I was figuring out my fatigue
+What to track?
+Ask an LLM to help you find a small set of high-signal metrics. Start by describing your symptoms and your working hypothesis, then ask what factors you should track. Follow up by asking what hidden assumptions you might be making and what you might have missed.
+Figuring out what to track is an iterative process. At first, I logged only daily calories. But when I noticed that a small amount of carbs sometimes helped me recover faster mid-episode, I tracked carbs on the same spreadsheet. Later, I cut the friction by logging macros in an app instead of reconstructing my daily intake from memory each night.
+Tracking is useless if you don’t stick with it, so commit only to what you can sustain, then expand slowly.
+How to track?
+There are only two rules: make it as easy as possible for yourself, and keep it in a format that’s easy to export and parse.
+Because my symptoms are episodic with unknown triggers, I erred toward comprehensiveness. Here’s my setup, which takes about 20 minutes a day:
+Specialized apps:
+The Garmin watch I already wear tracks sleep score and steps.
+Cronometer for food and liquid intake, which I also share with my dietitian.
+Briefly, an over-the-counter continuous glucose monitor.
+Core spreadsheets in Notion, which contain a daily log and an hourly log:
+The hourly log runs from 9 am - 10 pm. For each hour, I record energy level (1–5), any symptoms, and notes on what I felt might be relevant.
+The daily log tracks menstrual cycle day, days since my last tumor-medication dose, the previous night’s sleep score, calories and carbs, that day’s exercise, any stressors, and the average of the day’s hourly energy scores. Plus a notes column for anything else.
+I had an AI agent build the spreadsheets for me and auto populate fields such as menstrual cycle date.
+Depending on your situation, you may not need a central spreadsheet at all. If you only want to track food, exercise, and daily energy, a diet app, an exercise app, and one number a day in Apple Notes will do. You can stitch them together with AI later.
+The point is to make your stack as frictionless as possible. For me, everything has to work on my phone so I can log on the fly. Customize it for yourself: if logging every meal is exhausting, just photograph your food and hand it to ChatGPT for a rough macro estimate.2
+Step 2: Testing
+Tracking captures how you feel, but it’s often too subjective to be diagnostic on its own. That’s why you run tests in parallel to find the root cause of an ambiguous symptom.
+For my fatigue, lightheadedness, and brain fog, here’s what I tested:
+General blood work. I used Function Health for a panel covering 100+ biomarkers at $365 a year. It’s pricier than asking a PCP for individual tests, but it was the most efficient way—in cost and time—to get broad coverage at once.
+Specialized testing. Given my pituitary history, I asked my endocrinologist for a full pituitary hormone panel. Research with the models led me to suspect an HPA-axis issue, which calls for an ACTH stimulation test—the same one my NP later suggested independently3.
+At home blood pressure measurements. To screen for orthostatic intolerance patterns.
+Gut health testing. I deal with frequent bloating, so I wanted to rule it in or out, even though I’m unsure it contributes to the fatigue.
+There’s an overwhelming number of direct-to-consumer tests out there, from DEXA scans to full genome sequencing. I’d caution against over-testing; it’s both costly and emotionally exhausting. In the same project where you’ve stored your health data, ask the model what additional tests might be worthwhile. I’ve found them just conservative enough in what they recommend.
+Step 3: Analyzing
+Now that you have longitudinal symptom and lifestyle data alongside your test results, you can put the LLMs to their fullest use. No PCP can sift through a month of scattered notes on how you felt, when, and against which environmental and behavioral factors—but that data-wrangling is exactly what these models are trained to do.
+Here’s everything I handed the model
+All my tracked data: my central spreadsheet, plus exports from Cronometer and the continuous glucose monitor.
+With coding agents (Codex, Claude Code), I threw in my entire Garmin history too.
+All my test results: Function Health4, the specialized pituitary labs5, gut health results, and at-home blood pressure readings.
+Specific questions I asked the models:
+Looking through all the data in this project, can you find any patterns in what triggers my fatigue and what resolves it?
+What hypotheses might explain my symptoms?
+Why do my symptoms tend to hit in the mid-afternoon, and why does social interaction temporarily relieve them? Where does each root-cause hypothesis fit those patterns, and where does it fail?
+Given those hypotheses, what interventions might reduce the frequency and severity of the symptoms? Would any additional testing help?
+By the time I talked through my symptoms with my PCP, my endocrinologist, and his NP, every question they asked was something I’d already investigated through this cycle of tracking, testing, and analyzing.
+Step 3.5: Building a supporting cast
+Assembling a team of experts is something I underinvested in at first. But analyzing my own logs, I noticed that roughly half the time, eating a snack improved my symptoms—and though nausea made me averse to food, eating had always resolved the nausea. Those patterns pushed me to consult a dietitian to double-check my nutrition.
+I didn’t expect to learn much and was pleasantly surprised. She pointed out that even though my meals were balanced, I’d been under-fueling by ~300 calories a day for a long time—possibly tipping my body into “energy-saving mode” and leaving me more prone to fatigue. Eating a snack proactively in the mid-afternoon seemed to help me get ahead of the crashes.
+Your supporting cast might look different: a physical therapist, a sleep coach, a psychologist. Some services even offer essentially free6 initial visits. Never underestimate what one of these conversations can surface. Worst case, you rule out one more possible cause, which is still useful progress.
+Step 4: Experimenting
+When done well, the analysis surfaces a set of behavioral, dietary, supplement, or medication changes worth trying. Never adjust medication without consulting your doctor, but plenty of lifestyle changes are easy to test while you wait for an appointment. And because you collected baseline data with no interventions in place, you already have a way to measure whether each change works!
+From my own tracking, testing, and analysis, here are the leading conclusions and the experiments I ran:
+My blood work showed low ferritin even though my iron and iron saturation are normal, so I started iron supplements.
+I raised my intake by roughly 300 calories a day, making sure I hit the recommended amount of carbs specifically, not just the total.
+My blood pressure runs low-normal, so I tracked my fluid intake for a few days to rule out dehydration as a cause of the lightheadedness.
+I took a little creatine after workouts.
+I paused all exercise for a week, then resumed for a week. Seeing no post-exertion fatigue, I went back to my usual strength training.
+My endocrinology team had me stop my tumor medication for four weeks, test my prolactin (the hormone my tumor secretes), and restart at half the dose, since my prolactin level was too low.
+My endocrinologist also suspects low estrogen may be contributing, so we’re testing it on days 1, 14, and 21 of my next cycle to see whether I need supplementation.
+These experiments fall into roughly three categories, each worth treating differently:
+Definitely worth doing. Taking iron when ferritin is below range is recommended7 whether or not it’s the cause of my fatigue. Staying hydrated is likewise a no-brainer. Start these right away since there’s usually no need to worry about them overlapping with other experiments.
+Harmless but maybe useless. Creatine is in this category. It may do little, but it could confound experiments running at the same time and make my real symptoms harder to read. It’s often worth spacing experiments like this out so you can isolate their effects.
+Potentially risky or costly. Changing a medication dose or stopping exercise both belong here. For these, consult your physician and keep the change time-bounded: when I stopped my medication and my exercise, I had a plan to resume and a clear sense of what I was testing. Run these one at a time.
+And the loop continues
+Even though I’ve been feeling great for many weeks in a row, I still need to return to the testing phase to confirm that my prolactin, estrogen, and ferritin have normalized, but the rest of the cycle is mostly closed.
+Though the four-step loop will keep running on other parts of my health. Now that my energy is stabilizing, my next quest is body recomposition given my hormonal complications8. I expect the same process will help me find my own fitness recipe better than any single trainer or dietitian could—who, like the PCPs, will struggle to hold all my medical context at once.
+Nobody is coming to save you
+If you have any ambiguous symptoms you’ve been waiting to resolve, I hope this essay gives you a concrete way to begin. We don’t need to wait until AI can cure cancer to use it to improve our health.
+You don’t need to understand medicine. You don’t need to be technical. You don’t need anyone’s permission. Because by default, nobody is coming to save you. So go and take charge of your own health!
+If you’re a scientist, physician, patient, researcher, or building in Health AI, reach out!
+Here’s my calendar; I’d love to help you make better use of AI. Grab time before ideas and thoughts escape you :)
+I have an unusual perspective as an AI-researcher-turned-patient. I don’t yet know how I want to carry this forward, or whether I want to work on AI x health at all, but I’d love to help where I can. A few sketches of what I can offer and what I want to learn:
+If you’re a scientist or physician, I am happy to help improve how you’re using AI or build out a custom harness / workflow for your specialized use case.
+If you’re an AI researcher, I’ve informally given health model behavior feedback to researchers at a lab, and have more thoughts on consumer health evals that go beyond the accuracy of answers.
+If you’re a patient, I’m happy to offer thoughts on how to elicit the models for your research—but only after you’ve tried the basics in the prompting section and the prompts or skills I linked in the appendix :)
+If you’re working on applied health AI, I’d love to understand what you think will remain a bottleneck given advanced intelligence. I wonder whether the path to health AGI being useful will look very different from software AGI, given that humans are the problem and must stay in the loop.
+I’m generally curious about reusable tooling and consumer-side harnesses for personal medicine investigations.
+Appendix I: Plug-and-Play Artifacts
+System prompt, Skill for Codex and Claude Code
+This article is detailed, so I’ve made it easy to apply without memorizing all of it. Below is a system prompt you can drop into a project instruction if you use ChatGPT or Claude on web or mobile.
+And if you’re comfortable with coding agents like Codex or Claude Code, here’s a skill I built that starts with a short symptom intake and routes you to the right phase of the four-step process. It takes a little more setup but is more comprehensive than the system prompt alone.
+Appendix II: Bulid Your Personal Health Stack
+AI’s coding and research capabilities are now good enough for each of us to build personalized health tools for our own needs. Just bring your problem, and you can get the models to scaffold themselves to solve it. A few examples that come to mind:
+Can’t remember to track things hourly? Set up a ChatGPT scheduled task that pings you every hour, or a long-running Claude app that texts you and logs your responses in a spreadsheet.
+Don’t want to log what you ate, let alone upload the photos manually? Run a scheduled job that pulls food photos from your iCloud daily.
+Have too much data across hospitals, labs, and devices, and need to catch a new doctor up on your past treatments? Build a website to visualize things, as GitLab co-founder Sid did with his own cancer data here.
+Every small, personalized improvement in how you collect, organize, and analyze data is now within reach, and anyone can build something custom. The biggest unlock still ahead, I think, is continuous monitoring beyond blood glucose—hormone monitoring, for instance—which could give us a far more granular view of how the body’s systems interact.
+Thank you Jane, Rahul, Eli, Luke, and Andrew for thoughts and feedback on this piece <3
+The models aren’t good at estimating quantity from a photo alone—in my experience, the error can be up to 2x off in both directions.
+Function Health doesn’t let you bulk-export results until a clinician writes a summary, which takes weeks. So I had Codex use browser automation to read the results straight off my screen once I’d logged in, and pull every abnormal test’s name, value, and reference range, plus brief summaries of the in-range results.
+MyChart doesn’t let you bulk export test results either, so I asked an LLM how to circumvent this. I ended up connecting MyChart to Apple Health, which automatically compiles your lab results in PDFs
+Fay, where I found my dietitian, gives you an upfront cost estimate; if a dietitian is in-network, that estimate is often $0, and even if you’re later charged a co-pay, Fay refunds you to match the original estimate.

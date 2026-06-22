@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Towards Paradigm-General Suicide Risk Detection via Speech LLM
+View PDF HTML (experimental)Abstract:Suicide risk among adolescents remains a critical public health concern, and speech provides a non-invasive and scalable approach for its detection. Speech-based suicide risk assessment commonly relies on carefully designed speech elicitation paradigms (\textit{e.g.,} verbal fluency, reading, or question answering) to probe cognitive and affective states. Existing approaches, however, typically focus on one single paradigm at a time. This paper, for the first time, investigates cross-paradigm approaches that unify diverse speech elicitation paradigms within a single model. Specifically, we use a speech LLM as backbone with a mixture of DoRA experts (MoDE) to capture complementary cues across assessments dynamically, tested on 1,223 participants across ten speech elicitation paradigms. Results show that MoDE outperforms both paradigm-specific and conventional joint-learning models. Moreover, it can generalise to unseen paradigms and provide better confidence calibration.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

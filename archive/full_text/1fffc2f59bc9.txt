@@ -1,0 +1,86 @@
+Optical interconnects are needed to boost GPU throughput and utilization.
+In the next five years, scale-up interconnects will transition from copper to optical interconnects — primarily co-packaged optics (CPO), with some near-packaged optics (NPO), and perhaps some vertical-cavitity-surface-emitting lasers (VCSELs).
+The demand for AI has become visibly real with Anthropic hitting a $47 billion annual run rate, followed closely by OpenAI and Google Gemini. Anthropic says its growth is limited not by demand but by compute capacity. So the pressure is on to get the most performance out of every GPU/XPU. Scale-up optical enables this with higher bandwidths and lower latencies, resulting in much higher utilization and performance for every GPU/XPU.
+In a few years, compute racks will look something like the mock-up below. All high-bandwidth interconnects will be yellow single-mode fiber (SMF) cables. In this example, the compute trays are the bottom 80% of the rack, connected by SMF to shuffle boxes at the top that peel off the fiber ribbons to different switch planes. Another rack holds the switch trays. There can be multiple compute racks to create an even larger pod. This is one implementation. Switch and compute could be packaged differently by others, but they will use a similar interconnect.
+Fig. 1: A demo compute rack with 100% CPO interconnect. Source: Ayar Labs and Wiwynn
+A CPO link is in one direction from the driving laser through the optical engine (OE) on the XPU, through the SMF to the switch tray, and to the optical engine on the switch. There is another CPO link from the switch back to the XPU. The links in both directions go through the same series of devices. There are many more devices in the optical path than are first apparent — we’ll dive into the details below. Each step in the link’s optical path involves a loss of laser power. The cumulative loss of laser power is the link budget. If the cumulative loss is too high, there won’t be enough light to activate the receiver at the end of the link. This is the optical link budget, which determines how much laser power is needed. Lasers are expensive, so minimizing the link budget is important. As we’ll see, 99% of the laser power is lost before reaching the receiver.
+The other link budget is monetary. All of the components in the link must cost less in total than a certain amount to be considered economically attractive in terms of dollars/bandwidth delivered.
+The optical link is between a GPU/switch and a switch/GPU, as shown below.
+Fig. 2: A simplified optical link ELS-OE-OE. Source: OCI MSA Technical Specification
+There are a lot more steps in the optical path than are shown above. Here are the major elements of a CPO link GPU-to-switch (switch-to-GPU is the same in reverse):
+GPU tray
+Everyone building CPO acknowledges the end-to-end link budget is a major challenge, trading off power, performance, and cost. The discussion below uses publicly available data, such as Google search, to illustrate the challenge.
+As we step through each element, we’ll keep a running total of how much laser power is left at each stage.
+Below is a preview of the link budget.
+Fig. 3: Example of CPO link budget from ELSFP output to Receiver OE.
+External laser source small form factor pluggable (ELSFP)
+The ELSFP is external and pluggable to make failures easy and quick to fix. The laser in the ELSFP optically focuses the laser beam into a polarizing maintaining fiber (PMF) cable (much more expensive than single-mode), which then attaches to the connector on the Optical Engine.
+The details of the ELSFP’s optical path were reviewed in detail in last month’s article on Lasers for Scale-up. The optical path of the ELSFP is:
+The focusing lens concentrates the light into the output PMF fiber.
+Figure 3 in last month’s article showed the optical loss total in the ELSFP to be -1.5 to -3 dB, where -1.5 dB corresponds to 29% loss and -3 dB corresponds to 50% loss.
+Cumulative power retained from laser output to ELSFP output: 50% to 71%.
+An ELSFP’s power is measured at the output of the MT connector, after these losses.
+The power is per channel (or lambda or wavelength).
+ELSFPs can be specified in dBm or milliwatts of ELSFP output power per channel:
+20dBm = 100 mW
+23dBm = 200 mW
+26dBm = 400 mW
+Polarizing maintaining fiber (PMF)
+The output of the ELSFP goes into a PMF, which is ~100x more expensive than SMF, which is the bright yellow cable commonly seen in the data center.
+Maintaining the laser’s polarization using a PMF means a much more efficient coupler can be used to receive the laser into the Optical Engine (OE). Reducing the loss of the coupler is worth the extra cost of the PMF which is shorter than 1 meter. (The cost of a higher power laser is more than the cost of the short PMF).
+The loss per meter of PMF is very low, typically <0.001dB/meter in the O-band (1,310nm).
+Detachable connector at input to first OE (optical engine)
+CPO detachable connectors are a new technology. Scale-out optics use pluggable transceivers that are too bulky for CPO. CPO detachable connectors need to be very small to fit in the GPU/Switch packages.
+Detachable connectors are required to ease handling of the multi-chip package (MCP) for compute/switch. Without detachable connectors, dozens of fibers would have to be connected to the switch/compute MCP, which could break during assembly of the compute/switch tray.
+There are numerous manufacturers of detachable connectors: Senko, Molex (which recently acquired Teramount), Corning, Foci, ACON, Foxconn, Furukawa, and others. They have developed a wide range of approaches to solve this very new challenge.
+Shown below is a conceptual diagram of a detachable connector coupling a fiber array to a Photonic Integrated Circuit (PIC), which is part of an optical engine.
+In this example, the coupling to the PIC/OE is via the die edge to a lens array. The mating connectors enable detachability and re-attachability. The optical path is PIC – lens array – connector path – lens array – fiber array. Edge coupling is very difficult in volume production.
+Nvidia is the first company using TSMC COUPE. As TSMC showed at IEEE ECTC 2025, COUPE brings the laser fiber in from the top. The example below shows edge connect, which is much more difficult to scale up in mass production.
+Fig. 4: A detachable connector for a PIC/optical engine (Source: MDPI, Progress in Research on Co-Packaged Optics, 2024, Creative Commons CC BY license)
+The fiber array has fibers for a) laser input, b) data inputs, and c) data outputs.
+Senko has publicly disclosed insertion losses below -1.5 dB for their Senko SEAT optical interface and detachable Metallic PIC Coupler (MPC). This is a 29% loss.
+Cumulative power retained from the ELSFP output to the input of the first OE: 71%.
+Optical engine #1 – transmitter
+The optical engine both transmits and receives. But the link is unidirectional, so we are looking at transmission first modulating the laser input. The electrical data being transmitted comes from the XPU/Switch to the OE.
+A 1D grating coupler is used to bring in the laser light on the PMF. This works because the light is polarized. TSMC’s COUPE reports insertion losses of approximately -1.2dB = 24% loss (2025 IEEE ECTC paper).
+Each silicon photonics device and each silicon waveguide loses more light. Public sources talk about -1dB through a silicon photonics device for waveguide losses, not counting the input and output grating couplers. The modulators required for CPO have significant insertion loss that pubic sources indicate are in the -3db to -6dB range.
+A 2D grating coupler (2DGC) is required for input and output of data with mixed polarizations. Public sources indicate typical losses of -3 dB.
+The cumulative losses just in the optical engine PIC = -1.2 + -1 + (-3 to -6) + -3 = -8.2 to -11.2dB = 85% to 92% loss in total.
+Cumulative power retained from the ELSFP output to the output of the first OE = 11% to 6%.
+Detachable connector at output of the OE
+This is the same as the input of the OE with the same losses, below -1.5 dB = 29% loss.
+Cumulative power retained from the ELSFP output to the output of the first OE connector = 8% to 4%.
+SMF to XPU tray face plate to customer connectors to switch tray face plate
+Between the optical engines, the OCI MSA Technical Specification, section 2.4, specifies a total fiber link loss of -2.5 dB for the customer’s link devices between the compute and switch trays.
+This covers the face plate connector on the GPU Tray through any intermediate connectors (or in the future OCS) to the face plate connector on the Switch Tray. The face plate connectors are MT connectors with multiple fibers. At some place in the rack, the individual fibers need to be separated, then rebundled to pass to the switch trays.
+The spec assumes up to 500 meters of SMF-28 fiber (this is a Corning fiber, a type of SMF), which could enable a very large pod size. The SMF losses are trivial. Connectors have much higher losses.
+-2.5 dB loss = 44% power loss.
+Cumulative power retained from the ELSFP output to after the face plate connector on the Switch Tray = 4% to 2%.
+Detachable Connector at input of Receiver OE
+This is the same as the Transmitter OE with the same losses, below -1.5 dB = 29% loss.
+Cumulative power retained from ELSFP output to input of 2nd OE = 3% to 1.6%.
+Optical engine #2 – receiver
+The connector feeds data light into a 2D grating coupler with about -3 dB Loss.
+Assume again that the silicon photonics device has a total loss of -1 dB to the final photodetector in the receiver. The received data is translated to electric pulses and sent to the Switch.
+The cumulative losses on the Optical Engine Receiver = -3 + -1 = -4 dB = 60% loss.
+Cumulative power retained from Laser output to the final Receiver stage = 1.2% to 0.6%.
+The power at the last stage needs to be reliable enough to activate the final photodetectors for data reception. This calculation is used to work back to what laser power is needed.
+Power retained from ELSFP output to 2nd OE Receiver
+ELSFP Output Power 1.1% 0.6%
+100 mW 1.1mW 0.6mW
+200 mW 2.2mW 1.2mW
+400 mW 4.4mW 2.4mW
+Here is the overview of the link budget again, using the 1.1% case:
+Fig. 5: Example of CPO link budget from ELSFP output to receiver OE.
+This illustrates how challenging it is to make the CPO channel budget work. Any improvements in insertion loss at any stage can reduce the laser power and, more importantly, the laser cost.
+As if this isn’t complicated enough, there is significant firmware involved in maintaining a link. For example, the OE chiplet at one end of the link may be at a different temperature at the other end, which can affect the wavelength of light emitted. There are complex feedback loops running on the OE to ensure the temperatures, and therefore the wavelengths, are kept in acceptable bounds.
+This is similar to the complex feedback loops already used commonly in electrical SerDes (like PLLs and CDRs, as well as adaptive equalization).
+It’s always desirable to minimize the cost of a communications link. However, the value proposition of CPO for scale-up is delivering bandwidth and pod size not achievable with copper. The result is much higher utilization and therefore performance of the GPU/XPUs, which are the most expensive element in the scale-up pod.
+The supply chain for everything involved with AI data centers is being stretched by rapid demand growth, leading to the need to make large forward purchase commitments at premium prices.
+The major players don’t disclose their link costs, but a ballpark estimate can be made from public sources. The most expensive elements in the CPO links in descending order are:
+The optical engines are a combination of photonics and advanced finFET CMOS. They are based on existing high-volume manufacturing.
+SMF has been in use in data centers for decades, and has a mature manufacturing infrastructure.
+Lasers and connectors are based on much less mature manufacturing infrastructure. The demand/supply mismatch and the newness of the products make them very expensive today. Lasers and connectors are complex devices, but they are made by numerous manufacturers to similar specs. So with volume, lasers and connectors should eventually come down the learning curve, rendering their costs much lower over three to five years relative to other link elements.
+Scale-up optical links require careful planning across a complex combination of elements to deliver high performance at low cost per bandwidth.
+New technologies like lasers and connectors will be initially very costly, but both are more like DRAM than GPU, so costs should drop after a few years of rapid-ramp demand outstripping supply.
+Silicon photonics is more than 30 years old, but only recently have production volumes ramped, and they will ramp much more. So there will be rapid learning and technical improvements/inventions to reduce losses at all stages, which will further boost performance and lower cost per bandwidth.

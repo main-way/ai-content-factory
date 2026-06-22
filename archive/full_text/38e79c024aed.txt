@@ -1,0 +1,11 @@
+Computer Science > Machine Learning
+Title:Energy-Conserved Neural Pipelines: Attenuating Error Propagation in Modular Neural Networks via Physical Conservation Constraints
+View PDF HTML (experimental)Abstract:Modular neural network pipelines suffer from error compounding: noise at any module boundary propagates and potentially amplifies through subsequent modules. We introduce energy conservation as a hard physical constraint on inter-module information flow. Activation energy (the squared L2 norm of feature vectors) is enforced to be exactly preserved at every module boundary. Unlike soft energy penalties, conservation is an inviolable law: the network may redistribute energy across neurons but cannot create or destroy it. Four experiments on CIFAR-10 demonstrate: (1) conservation retains 77.4% of clean accuracy at noise sigma=0.2, versus 35.1% for baselines and 30.9% for energy-penalized models (p<0.001, 5 seeds); (2) pipelines become depth-invariant, retaining 93.3% at depths 2 through 5 with noise at every boundary; (3) the advantage generalizes to systematic bias (+45.1%), Gaussian (+40.4%), and adversarial noise (+4.8%), with a principled non-effect on dropout (-0.3%); (4) on ResNet-18, the conservation advantage scales inversely with intrinsic normalization: +0.3 pp with BatchNorm, +26.2 pp without at sigma=0.2, reaching +58.0 pp at sigma=0.5. Experiment 5 validates the operator on a real modular robotic pipeline (MuJoCo physics, Franka Panda). Across three independent runs on separate machines (90 trials per cell), conservation provides +18.9 pp average advantage on monocular-depth-style noise. A formal bound proves conserved noise energy is strictly less than input noise energy.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

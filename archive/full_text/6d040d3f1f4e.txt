@@ -1,0 +1,239 @@
+You bought the Mac Mini for Openclaw. Perfect.
+💵💵 Running a local model eliminates the monthly cost for your OpenClaw agents, entirely. 💵💵
+However, getting everything installed and configured can be confusing, especially if you’re new to local LLMs.
+In this article, I’ll show you how to set up a local LLM (in the most pain-free way) on your Mac Mini that can power your agent for free.
+You can use it even if you’re a beginner.
+🤨 “I’ve heard that local LLMs don’t work as well, is that true?”
+A local LLM (properly set up) will perform almost indistinguishably for tasks like emails, calendar management, reminders, home IoT automation and basic internet research (things you actually do with OpenClaw).
+If you need to do something more advanced, like using OpenClaw for software engineering, there’s a link at the bottom which highlights how to set up a fallback model.
+⚠️Note: This guide is not a full OpenClaw tutorial.
+It’s intended to help you get your local LLM up and running with your agent(s) as quickly as possible.
+Hardware
+This article was tested on a Mac Mini with the following specs
+| OS | macOS Tahoe |
+| Version | 26.3.1 |
+| Processor | M2 |
+| Cores | 8 |
+| Unified Memory | 24GB |
+If you’re thinking about buying a Mac Mini, I’d recommend at least an M2+ processor with at least 24GB of RAM. You can get away with 16GB, however, things will be quite tight and you might run into errors with larger contexts.
+Setting things up
+First, install OpenClaw using the official guide. If you’ve already done this, skip this step.
+1. Install llama.cpp
+We’re going to skip using Ollama (the recommended local provider), and opt for llama.cpp. By using a quantized model along with llama.cpp, we can speed up inference by as much as 70%
+We need to build llama.cpp from the source with metal flags on and cuda off. This handles some of the optimizations needed to run the model on your Mac at full speed. Simply follow the steps below.
+1️⃣ First, from your home directory, install some prerequisites using brew.
+# paste this into your terminal
+$ brew install cmake curl
+2️⃣ Then, build llama.cpp with the appropriate flags
+# Clone llama.cpp
+git clone https://github.com/ggml-org/llama.cpp
+# Configure build with Metal acceleration
+cmake llama.cpp -B llama.cpp/build \
+-DBUILD_SHARED_LIBS=OFF \
+-DGGML_METAL=ON \
+-DGGML_CUDA=OFF
+# Build
+cmake --build llama.cpp/build \
+--config Release \
+-j$(sysctl -n hw.ncpu) \
+--clean-first \
+--target llama-cli llama-mtmd-cli llama-server llama-gguf-split
+Now, we have llama.cpp available to use
+2. Download the local LLM
+As mentioned, the key to getting good performance from a local model is quantization.
+Quantizing allows us to use a larger, more capable model, “compressed” intelligently so that it fits on smaller hardware. This allows the quantized model to retain most of the performance of its full-size source model.
+Unless you have a large GPU or Mac with the maximum amount of unified memory (80GB+ VRAM) quantizing is a must
+Blindly following the OpenClaw documentation while trying to use a quantized model will leave you confused and frustrated.
+There is simply no guide available which clearly outlines how to make quantized models work with agents.
+Below is a tested recipe that will work for your agent.
+Model Choice: Qwen 3.5-9B
+Here we’re using Qwen 3.5 (the 9B parameter version).
+As of June 2026, it’s a top performer for local models, edging out Gemma 4-12B. This will fit on both a 16GB or 24GB Mac with a total of 6-8GB of RAM required. Users also rank this highly for OpenClaw.
+Also remember that agents require longer contexts, which will prevent us from running a larger 27B version, even with quantization.
+1️⃣ Let’s download the model
+# download model
+curl -L -o models/Qwen3.5-9B-UD-Q4_K_KL.gguf \
+"https://huggingface.co/unsloth/Qwen3.5-9B-MTP-GGUF/resolve/main/Qwen3.5-9B-UD-Q4_K_XL.gguf?download=true"
+2️⃣ Download the template, save it to templates.
+mkdir templates && \
+curl -L -o templates/qwen35.jinja \
+"https://huggingface.co/froggeric/Qwen-Fixed-Chat-Templates/resolve/main/chat_template.jinja"
+Important, you must use an agent compatible template for OpenClaw. Without this step, nothing will work.
+3. Start llama-server
+Llama-server will serve as our backend API. OpenClaw will use this webservice instead of calling the API from OpenAI or Anthropic directly.
+We installed llama-server already, and downloaded our model. Let’s run a quick test.
+1️⃣ Run a quick test
+./llama.cpp/llama-server \
+-m models/Qwen3.5-9B-UD-Q4_K_XL.gguf \
+--chat-template-file templates/qwen35.jinja \
+--temp 0.7 \
+--top-p 0.9 \
+--top-k 20 \
+-c 64000 \
+-ngl 20 \
+--host 127.0.0.1 \
+--port 8080
+You should see something like so (without errors)
+srv llama_server: model loaded
+llama_server: server is listening on http://127.0.0.1:8080
+update_slots: all slots are idle
+2️⃣ Now, lets write a launchd
+daemon, so your local LLM server starts automatically and stays available after reboot. If you’re familiar with Linux, launchd
+is essentially systemd
+for macOS
+Save the following as /Library/LaunchDaemons/com.openclaw.llama-server.plist
+. You will need to use sudo
+for this.
+Expand this for the plist
+file
+❗Ensure that you replace YOUR_USERNAME
+with your actual username in the xml.
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>Label</key>
+<string>com.openclaw.llama-server</string>
+<key>UserName</key>
+<string>YOUR_USERNAME</string>
+<key>ProgramArguments</key>
+<array>
+<string>/Users/YOUR_USERNAME/llama.cpp/llama-server</string>
+<string>-m</string>
+<string>/Users/YOUR_USERNAME/models/Qwen3.5-9B-UD-Q4_K_XL.gguf</string>
+<string>--chat-template-file</string>
+<string>/Users/YOUR_USERNAME/templates/qwen35.jinja</string>
+<string>--temp</string>
+<string>0.7</string>
+<string>--top-p</string>
+<string>0.9</string>
+<string>--top-k</string>
+<string>20</string>
+<string>-c</string>
+<string>64000</string>
+<string>-ngl</string>
+<string>20</string>
+<string>--host</string>
+<string>127.0.0.1</string>
+<string>--port</string>
+<string>8080</string>
+</array>
+<key>WorkingDirectory</key>
+<string>/Users/YOUR_USERNAME</string>
+<key>RunAtLoad</key>
+<true/>
+<key>KeepAlive</key>
+<true/>
+<key>StandardOutPath</key>
+<string>/tmp/llama-server.log</string>
+<key>StandardErrorPath</key>
+<string>/tmp/llama-server.err</string>
+</dict>
+</plist>
+Now, enable it.
+sudo chown root:wheel /Library/LaunchDaemons/com.openclaw.llama-server.plist && \
+sudo chmod 644 /Library/LaunchDaemons/com.openclaw.llama-server.plist && \
+sudo launchctl bootstrap system /Library/LaunchDaemons/com.openclaw.llama-server.plist
+We can check to see if the service is running appropriately by tailing our log file
+tail -f /tmp/llama-server.err
+Now we have both our local LLM loaded, running successfully as a daemon. All we need to do now is reconfigure OpenClaw.
+4. Reconfigure OpenClaw to use the local model
+We now need to add this local model to our OpenClaw config so it’s useable by our gateway.
+1️⃣ Add to the “models” block in .openclaw/openclaw.json
+{
+"models": {
+"providers": {
+"local": {
+"baseUrl": "http://127.0.0.1:8080/v1",
+"apiKey": "sk-local",
+"api": "openai-completions",
+"models": [
+{
+"id": "qwen3-9b",
+"name": "Qwen3.5 9B Local",
+"contextWindow": 64000,
+"maxTokens": 8192
+}
+]
+}
+/* REMOVE THIS COMMENT */
+/* you may add additional providers, like anthropic here */
+}
+}
+}
+Note: the settings for
+contextWindow
+andmaxTokens
+may need to be adjusted for your specific workflows
+You’ll also need to set the default model for your agents
+"agents": {
+"defaults": {
+"model": {
+"primary": "local/qwen3-9b"
+},
+"models": {
+"local/qwen3-9b": {}
+}
+}
+It’s also helpful to verify the config is accurate, run this command below to check the syntax
+openclaw config validate
+2️⃣ Restart the gateway, ensuring that the local model is now available
+openclaw gateway restart
+3️⃣ Test to see if OpenClaw has properly registered our local model
+openclaw models list --provider local
+We can also run a simple inference call
+openclaw infer model run \
+--model local/qwen3-9b \
+--prompt "Reply with exactly: pong" \
+--json
+You should receive a JSON object in return. Important: verify that you do not have any leaked tags in the response. You shouldn’t, but this is doubly important for security
+{
+"ok": true,
+"capability": "model.run",
+"transport": "local",
+"provider": "local",
+"model": "qwen3-9b",
+"attempts": [],
+"outputs": [
+{
+"text": "pong",
+"mediaUrl": null
+}
+]
+}
+We’ve now verified all the plumbing works correctly. To be entirely sure (or if this is your first agent), let’s set up a sample skill, and ensure that the model correctly reasons and performs tool calling as expected
+5. Verify functionality with a test skill
+Let’s create a test ‘python-calc’ skill, that will allow us to test whether our local model can correctly reason and output tool calls.
+1️⃣ Run this to create the skill. This will add this tool for all of your openclaw agents.
+mkdir -p ~/.openclaw/workspace/skills/python-calc
+cat << 'EOF' > ~/.openclaw/workspace/skills/python-calc/SKILL.md
+---
+name: python-calc
+description: A tool that evaluates mathematical expressions by executing a Python one-liner.
+version: 1.0.0
+---
+## Instructions
+1. Extract the exact mathematical expression the user wants to calculate.
+2. Use your built-in shell tool to run this exact command, replacing `<expr>` with the expression: `python3 -c "print(<expr>)"`
+3. Wait for the shell tool to return the stdout output.
+4. You MUST generate a final conversational response to the user containing the exact numeric result returned by the script.
+EOF
+Again, restart the gateway.
+2️⃣ Now, we can run a sample agent call to verify the tool outputs correctly:
+openclaw agent --local --agent main --verbose on --thinking high --message \
+"Use the python-calc skill to calculate 8664 multiplied by 222.
+Do not use skill_workshop. Tell me the final answer."
+And, after a second or so, if everything works correctly, we should something along the lines of:
+The final answer is 1,923,408.
+Fantastic!
+Realistically, we can see speeds of up to 20-70 tokens per second*. While this isn’t Claude speed (130 tps+), this is quite reasonable for an OpenClaw agent with minimal hardware.
+Remember, the thinking mode has been set to high, so it’s ok if it takes a bit longer.
+If you’re unsure of whether or not openclaw is using your model, in another terminal window, tail the llama-server log by running
+tail -f /tmp/llama-server.err
+*Your actual speeds may vary
+Wrapping up
+Running a local LLM, especially with custom templates and quantizing, can be quite frustrating. Setting this up the first time on a friend’s Mac took 2 days of back and forth! Thanks to Jacob W. for the inspiration.
+That’s it! Hopefully this saves you a lot of 💸
+If it did, or if I saved you some headaches, you can also buy me a coffee here.
+☕Cheers!

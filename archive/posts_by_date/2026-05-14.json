@@ -1,0 +1,53 @@
+{
+  "date": "2026-05-14",
+  "count": 3,
+  "posts": [
+    {
+      "id": "3d30727982c4",
+      "title": "Granite Embedding Multilingual R2: Open Apache 2.0 Multilingual Embeddings with 32K Context — Best Sub-100M Retrieval Quality",
+      "url": "https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual-r2",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-14T18:55:01+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "f96cf296842e",
+      "title": "Governance at the Speed of Agents: Microsoft Agent Framework and Agent Governance Toolkit, Better Together",
+      "url": "https://devblogs.microsoft.com/agent-framework/governance-at-the-speed-of-agents-microsoft-agent-framework-and-agent-governance-toolkit-better-together/",
+      "source": "Semantic Kernel Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-14T18:36:20+00:00",
+      "summary": "Building powerful AI agents is only half the story, running them safely in production is the real challenge. As customers adopt Microsoft Agent Framework for agent orchestration, a clear need has emerged for robust, built-in governance. In this post, Imran Siddique from the AGT team walks through how Agent Governance Toolkit pairs with Agent Framework [&#8230;] The post Governance at the Speed of Agents: Microsoft Agent Framework and Agent Governance Toolkit, Better Together appeared first on Microsoft Agent Framework .",
+      "author": "Imran Siddique, Shawn Henry",
+      "tags": [
+        ".NET",
+        "A2A",
+        "Agent Framework",
+        "Agent Governance Toolkit"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "c2fad0632e54",
+      "title": "Unlocking asynchronicity in continuous batching",
+      "url": "https://huggingface.co/blog/continuous_async",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-14T00:00:00+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

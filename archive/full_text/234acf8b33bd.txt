@@ -1,0 +1,12 @@
+Computer Science > Robotics
+Title:Learning Dynamic Swing-Up of an Inverted Pendulum using Remote Magnetic Actuation
+View PDF HTML (experimental)Abstract:Electromagnetic Navigation Systems (eMNS) have gained considerable attention for minimally invasive surgery and targeted drug delivery. While most of the literature relies on quasi-static control of these systems, recent work has demonstrated the benefits of dynamic approaches. However, trajectory tracking far from equilibrium states remains largely unaddressed. We close this gap by demonstrating the first swing-up of a magnetically actuated inverted pendulum using the clinically-ready Navion eMNS. Although the inverted pendulum is not clinically relevant in itself, the proposed method utilizes torques and forces as control objectives, making it applicable to other magnetically actuated devices such as catheters and guidewires. Our approach combines trajectory optimization that accounts for internal eMNS dynamics with time-varying Linear Quadratic Regulator (LQR) state feedback and Iterative Learning Control (ILC), which leverages previous trial data and the system's dynamic model to progressively refine the feedforward command. While LQR alone fails due to the complex phenomena of magnetic actuation, ILC enables successful swing-up within six iterations. Furthermore, post-experimental analysis reveals that the learned ILC correction closely matches the torque discrepancy predicted by high-fidelity magnetic field model calibration, suggesting learning and adaptation as a promising tool to deal with uncertainties in electromagnetic actuation arising, e.g., from patient-specific physiological motion patterns and field model calibration inaccuracies.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

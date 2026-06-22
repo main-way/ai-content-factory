@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Simultaneous hyperkinetic movement disorders phenotyping: a cross-cohort pediatric transfer study using routine videos, markerless pose estimation and a tabular foundation model
+View PDF HTML (experimental)Abstract:Objective: To develop and externally test a video-based framework for simultaneous detection of hyperkinetic MDs phenomenologies: dystonia, tremor, myoclonus, chorea, athetosis, ballismus, stereotypies, and tics using routine clinical recordings, with explicit testing of external, cross-cohort transfer from adult to pediatric populations. Methods: In this proof-of-concept study, the framework combines markerless pose estimation, kinematic descriptors, and a pretrained fondation model. A shared predictive backbone was developed on 21 adults with confirmed hyperkinetic MDs and 4 healthy controls assessed under a standardized protocol. External validation was performed on an independent external cohort: a real-world pediatric sample (n=12, monogenic combined MDs). For the external dataset, the backbone was deployed without retraining; lightweight calibration adjusted only the final subject-level decision step using a small labeled subset of patients selected by clinicians as representative of the cohort's phenotypic range. Results: After local calibration of the decision layer on the clinician-selected subset, performance improved consistently on the held-out pediatric patients (n=7): Hamming accuracy rose from 0.804 to 0.839 and the Jaccard index from 0.548 to 0.633. This calibrated performance was preserved, and the Jaccard index further improved, when the evaluation was restricted to the phenomenologies with more definite clinician agreement (Hamming accuracy 0.9, Jaccard index 0.786), indicating that the gains did not rest on the least-reliable labels.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

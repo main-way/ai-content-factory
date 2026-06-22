@@ -1,0 +1,12 @@
+Quantitative Biology > Neurons and Cognition
+Title:Low-dimensional representation of brain networks for seizure risk forecasting
+View PDF HTML (experimental)Abstract:Identifying preictal states -- periods during which seizures are more likely to occur -- remains a central challenge in clinical computational neuroscience. In this study, we introduce a novel framework that embeds functional brain connectivity networks, derived from intracranial EEG (iEEG) recordings, into a low-dimensional Euclidean space. This compact representation captures essential topological features of brain dynamics and facilitates the detection of subtle connectivity changes preceding seizures. Using standard machine learning techniques, we define a dimensionless biomarker, $\mathcal{B}$, that discriminates between interictal (seizure-free) and preictal (within 24 hours of seizure) network states. Our method focuses on connectivity patterns among a subset of informative iEEG electrodes, identified through permutation-based testing, enabling robust classification of brain states across time. We validate our approach using a leave-one-out cross-validation scheme and a pseudo-prospective forecasting strategy, assessing performance with metrics such as F1-score and balanced accuracy. Results show that low-dimensional Euclidean embeddings of iEEG connectivity yield interpretable and predictive markers of preictal activity, offering promising implications for real-time seizure forecasting and individualized therapeutic interventions.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

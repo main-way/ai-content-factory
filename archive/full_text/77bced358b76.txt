@@ -1,0 +1,40 @@
+Minimal now supports importing and exporting across Markdown, Rich Text, HTML, PDF, plain text, and our proprietary format MNML. The following essay describes how we accomplished this system in the Swift programming language. To read about the human-centered design and how we fit this new technology into our iOS and macOS app, read the design-centric essay right here.
+It’s not easy to coerce one file format into another, and adding support for more and more file formats gets ever more complex. To manage this complexity, we built a cohesive system that relies on an Intermediate Representation to serve as a middleman across file formats. The Intermediate Representation (or “IR”) allows us to simply convert a given file format to and from the IR, instead of across every possible file format pair.
+Intermediate Representation
+If we were to convert notes directly from one format to another, we’d be caught in a complex web of conversions that only gets more complex as we add more file formats. To avoid this mess, we first built a system called Intermediate Representation.
+The IR sits in the middle of all file formats. With this architecture, adding support for a new format simply requires building that format’s own bespoke converter, without any concern for other file formats. Complexity grows linearly as we expand support to new types of data.
+Nature does this.
+Biologists call this the bow-tie or hourglass architecture. In gist, a simplified intermediary stage allows the two sides of the interaction to be independently complex.
+For example, a cell consumes an incredible array of molecules that is then digested into a smaller set of shared intermediaries (catabolism). On the other side, the cell then assembles these intermediaries back into the complex array of molecules that the cell puts to use (anabolism). If the cell had to map all of the input molecules to the required output molecules, it would need multiple times more internal processes to fully metabolize. The Intermediate Representation makes it simpler and makes either side of the operation more evolvable.
+However, nature provides a powerful lesson for programmers and designers: systems that depend on a shared intermediary often get frozen. While the IR makes it easier for any side of the equation to evolve on its own, it makes it harder for the broader system to evolve: changing the definition of the IR requires everything that interacts with it to update to the new shape.
+An excellent example of architectural lock-in is the genetic code, often described as a "frozen accident." Nucleic-acid information (stored in DNA and copied as RNA) is read in 3-unit sequences called codons, and each codon is an instruction for the assembly of amino acid chains. The meaning of these symbols is so deeply embedded in the machinery of life that it cannot simply be changed or re-interpreted; if the meaning of a codon were changed, proteins would be misconstructed by the cell.
+The genetic code – the shared mapping of codons to amino acids – is like a biological Intermediate Representation. It sits between the nucleic-acid sequences and the construction of proteins, determining how complex life is expressed via a standardized code. This standard is nearly universal across life for a reason: once it became central to the expression of cellular machinery, it became increasingly improbable that the shared logic and rules might change.
+Code
+Below is our IR's document structure, written in Swift. We placed it in its own "IR" namespace to prevent naming collisions without creating a dedicated package (this code lives alongside the rest of our code).
+Not all file formats support the same conventions (eg, Markdown doesn’t represent colored text, and MNML doesn’t support tables), so during conversion we’ll often emit concessions.
+Parsing and Rendering
+Conversion begins by parsing the source file into the IR, and ends by rendering the IR into the target file format. Below are DocumentParser and DocumentRenderer protocols. Each file format needs to implement its parsing and rendering logic by crafting bespoke implementations of these protocols.
+For example, to support HTML we implemented DocumentParserHTML and DocumentRendererHTML, and to support Markdown we implemented DocumentParserMarkdown and DocumentRendererMarkdown, allowing us to convert between HTML and Markdown files. Building parsers and renderers for each file type, we can convert from one to the other with ease.
+Here is how we coerce an HTML file into Markdown:
+Integration in Our Notes App
+Making our conversion engine a well-appreciated feature within the Minimal app took careful consideration. The obvious case is simple: export notes, and import notes, but we realized there's opportunity for more subtle capabilities – which are the kind of opportunities that our app is all about (if can deliver a feature without an interface, we're thrilled).
+We originally built the conversion engine in response to a deluge of requests to support imports from other writing apps as well as exports to the Mac file system. Once we had the conversion engine working, we realized that it deserves to be used throughout Minimal, and not just in a formal “Export” or “Import” dialogue.
+We encountered the following Import surface areas, and built first-class support for each case:
+Drag into the Notes List
+Drag into a note
+Paste on the Notes list
+Paste files into a note, and paste Rich Text into a note (eg, copy from Pages and paste in Minimal)
+Importing notes with the Share extension from apps that support system sharing
+Menu > File > Import
+Similarly for exports:
+Via Note Action button > Export
+Notes List > right-click/long-press > Export
+Command-shift-E export keyboard shortcut
+Quick Export, exporting a note instantly using the most recently used export settings, via command-option-E
+Menu > File > Export
+To serve all of these scenarios, we built a series of utilities to detect file types, recursively handle folders, emit concessions and report import/export degradation, stage files during bulk import/export, and support roundtrip export-import flows.
+To support the export-import roundtrip we built a proprietary .mnml file type. When writers import these files, Minimal knows to import notes verbatim, avoiding concessions entirely while perfectly re-importing, 100% of the time.
+To support Rich Text copy-and-paste, we built our own pasteboard that accommodates multiple formats while ensuring that within-app pastes will avoid lossy conversion-engine roundtrips:
+These features combine powerfully. For example, a writer can bulk export thousands of notes with confidence as they change Apple ID’s or move notes from a work computer to a personal device. As another example, writers can store technical documentation in Minimal and use the Quick Export keyboard shortcut to rapidly copy/paste Markdown files directly into LLMs like Claude or ChatGPT.
+This is the outcome of a Quick Export. Claude is ready to read the file into context and produce a more relevant response.
+The conversion engine itself is a powerful piece of code, but the real utility exists where the engine gets integrated throughout the Minimal app. You can read about our design choices right here.

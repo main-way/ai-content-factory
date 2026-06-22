@@ -1,0 +1,20 @@
+{
+  "date": "2020-10-29",
+  "count": 1,
+  "posts": [
+    {
+      "id": "aa5fb176f34e",
+      "title": "How to Build an Open-Domain Question Answering System?",
+      "url": "https://lilianweng.github.io/posts/2020-10-29-odqa/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2020-10-29T00:00:00+00:00",
+      "summary": "[Updated on 2020-11-12: add an example on closed-book factual QA using OpenAI API (beta). A model that can answer any question with regard to factual knowledge can lead to many useful and practical applications, such as working as a chatbot or an AI assistant🤖. In this post, we will review several common approaches for building such an open-domain question answering system.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

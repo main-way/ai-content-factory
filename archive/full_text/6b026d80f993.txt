@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:AMN: An Adaptive Multi-Scale Fusion Network with Boundary and Uncertainty Modeling for Nuclei Segmentation
+View PDF HTML (experimental)Abstract:Accurate classification of nuclei subtypes in histopathology images is critical for downstream tasks including tumor grading, immune infiltrate quantification, and prognosis prediction. Existing approaches rely on either convolutional or transformer-based encoders in isolation, limiting their ability to simultaneously capture fine-grained local texture and long-range spatial context. We present AMN (Adaptive Multi-Scale Nuclei Network), a dual-encoder segmentation framework that jointly leverages a Swin Transformer and a ResNet-50 feature pyramid, fused via a learned per-channel gating mechanism that dynamically weighs each encoder's contribution at every scale. AMN is trained with a multi-objective loss combining class-weighted focal loss, boundary-aware loss with positive-pixel emphasis, and a novel uncertainty-modulated classification term that suppresses overconfident erroneous predictions. Evaluated on the CoNIC benchmark across seven nuclei classes, AMN achieves a mean Dice of 0.82 and mean F1 of 0.68, with an F1 of 0.67 on the diagnostically challenging lymphocyte class. AMN outperforms eight baseline models spanning pure-CNN, pure-transformer, and recent hybrid architectures: U-Net, ResU-Net, DeepLabV3+, SegNet, ViT-Small, HmsU-Net, ConvFormer-UNet, and BEFUnet. Cross-dataset evaluation on MoNuSeg demonstrates strong generalization without retraining and validating the domain robustness of the learned representations.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

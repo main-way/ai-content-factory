@@ -1,0 +1,65 @@
+The US government yanked Anthropic's newest models days after launch, while state attorneys general opened formal process against OpenAI. That turns frontier capability into something investors have to discount: a model can be state-of-the-art on Monday and policy-frozen by Friday. The market still wants the upside, but the asset now has a kill-switch.
+Get more from AI Weekly
+More signal, less noise — pick your channels.
+You're reading the weekly brief. Below are the other ways to follow the story — every channel free, easy to leave.
+-
+→ Explore 16 deep divesWeekly topic-specific newsletters: Generative AI, Machine Learning, AI in Business, Robotics, Frontier Research, Geopolitics, Healthcare, and more.Browse all 16 deep dives →
+-
+→ Breaking AI alertsWhen something major breaks (a $60B acquisition, a regulator's emergency meeting, a frontier model leak), alert subscribers know within hours. Typically 0-2 emails per day.Get breaking alerts →
+-
+→ AI News Today (live)Live dashboard updated as the scanner finds news: scored stories from the last 48 hours, weekly entity movers, and quarterly trend lines across 113 AI companies, people, and topics.Open AI News Today →
+Quick Hits
+The Year Governments Got Serious
+-
+US order disables Claude Fable 5 and Mythos 5 - Anthropic received a US export-control order Friday at 5:21 PM ET, disabling Fable 5 and Mythos 5 globally after a jailbreak showed the model identifying software flaws. [techcrunch.com]
+-
+State attorneys general subpoena OpenAI - New York's attorney general served OpenAI a subpoena covering advertising practices, user engagement, model behavior, consumer and health data handling, and treatment of minors and seniors. [techcrunch.com]
+AI Supply Chain Under Siege
+-
+Agentjacking turns Sentry errors into AI-agent instructions - Tenet Security researchers disclosed an attack that plants malicious instructions in Sentry error events, then waits for Claude Code or Cursor to ingest them during debugging. [thehackernews.com]
+-
+LangGraph flaws chain into agent RCE - Check Point disclosed three LangGraph vulnerabilities, including a SQLite checkpointer injection, msgpack deserialization issue, and Redis checkpointer flaw that can combine against self-hosted agent deployments. [thehackernews.com]
+-
+400-plus AUR packages backdoored for developer secrets - Attackers adopted orphaned Arch Linux AUR packages and rewrote build scripts to pull npm and bun payloads harvesting SSH keys, GitHub tokens, OpenAI tokens, shell histories, and browser sessions. [thehackernews.com]
+The Lab Gladiator Era
+-
+Mistral eyes a EUR3B raise at a EUR20B valuation - The proposed round would nearly double Mistral's September 2025 valuation as European governments push for sovereign AI infrastructure and less dependence on US platforms. [techcrunch.com]
+-
+Meta's AI training unit draws internal revolt - Roughly 6,500 engineers were moved into Meta's Applied AI Engineering unit to create puzzles and coding problems for model training, triggering a petition signed by 1,600 employees. [techcrunch.com]
+The arc: frontier risk is now market risk
+Anthropic spent the spring arguing that frontier capability needs stronger controls. This week, that argument came back as an enforcement action. The US export-control order did not just target Mythos 5, the restricted model Anthropic had held for vetted cyberdefenders and infrastructure providers. It also disabled Fable 5 globally three days after launch, after a jailbreak showed software-flaw discovery capability.
+That changes the IPO story. If a frontier model can be switched off by national-security order, then capability is no longer just product advantage. It is regulatory inventory. Investors have to ask whether the best model in the portfolio is actually deployable, which customers can legally touch it, and whether a safety claim becomes evidence for a future restriction.
+OpenAI is now facing a different version of the same collision. The state AG subpoena is not about benchmarks or model cards. It asks how OpenAI advertises, how it drives engagement, how models behave, and how the company handles vulnerable groups and sensitive data. That is consumer-protection law moving into the model layer.
+The security stories point in the same direction. Agentjacking works because developer tools now trust machine-readable context from systems like Sentry. The LangGraph chain matters because self-hosted agents increasingly carry execution privileges. The AUR compromise matters because attackers are already hunting AI and developer tokens in the same sweep.
+The counter-trade is AGI without the same LLM bottleneck. Yann LeCun's world-model and energy-based-model camp has been arguing that text prediction is not enough for human-level intelligence; a new DeepMind-linked paper this week frames AGI-to-ASI as a path with multiple routes, including paradigm shifts and multi-agent collectives. If frontier LLMs become politically fragile, that alternative architecture story gets more attractive to capital.
+The old release question was: is the model better? The new release question is: who can it harm, what privileges can it reach, and which regulator gets there first?
+Key takeaways
+-
+Anthropic's safety posture is now part of its regulatory exposure. The same cyber capability that made Fable 5 and Mythos 5 strategically important also triggered a US order.
+-
+AI-agent security is shifting from prompt tricks to infrastructure abuse. Sentry events, LangGraph checkpoints, and package build scripts are now part of the agent attack surface.
+-
+Markets now need a model-risk discount. Mistral's rumored EUR3B raise shows capital still wants sovereign AI exposure, but Anthropic's shutdown shows investors also have to price deployability, jurisdiction, and regulatory interruption.
+Worth Reading
+-
+US pulls Anthropic's newest models [techcrunch.com]
+-
+OpenAI faces state AG investigation [techcrunch.com]
+-
+Agentjacking attack tricks AI coding agents [thehackernews.com]
+-
+LangGraph flaw chain exposes self-hosted agents [thehackernews.com]
+-
+Mistral rumored to raise EUR3B [techcrunch.com]
+-
+From AGI to ASI [arxiv.org]
+-
+A Yann LeCun-linked startup charts a new path to AGI [wired.com]
+Worth Watching
+The videos AI practitioners are passing around right now — curated on AI TV.
+This week's poll
+What should investors discount most after the Claude shutdown?
+Last week, 168 of you voted:
+Visa just wired ChatGPT to shop and pay on your behalf — at any Visa merchant, potentially without you clicking "buy." How much spending authority should an AI agent have?
+What should investors discount most after the Claude shutdown?
+— Alexis

@@ -1,0 +1,340 @@
+{
+  "date": "2026-05-19",
+  "count": 20,
+  "posts": [
+    {
+      "id": "ffefb38b8f9a",
+      "title": "CEO Interview: SmartSEC",
+      "url": "https://www.cbinsights.com/research/ceo-interview-smartsec/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T19:46:19+00:00",
+      "summary": "Fabio Leto, CEO of SmartSEC, tells CB Insights how they view the market, customer needs, and their company. How do you define your market, and where does your company fit into that space? SmartSEC operates at the intersection of cybersecurity, IoT, &#8230; The post CEO Interview: SmartSEC appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "63751fb3a376",
+      "title": "OlmoEarth v1.1: A more efficient family of Earth observation models",
+      "url": "https://huggingface.co/blog/allenai/olmoearth-v1-1",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T18:38:09+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "97094a738fe1",
+      "title": "CEO Interiew: Stargo",
+      "url": "https://www.cbinsights.com/research/ceo-interiew-stargo/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T18:16:07+00:00",
+      "summary": "Joel Sellam, CEO if Stargo, tells CB Insights how they view the market, customer needs, and their company. How do you define your market and where does your company fit into that space? We operate in the global freight logistics &#8230; The post CEO Interiew: Stargo appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "16f3bbb12126",
+      "title": "CEO Interview: Kubegrade",
+      "url": "https://www.cbinsights.com/research/ceo-interview-kubegrade/",
+      "source": "CB Insights Research",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:55:29+00:00",
+      "summary": "Tim Grassin, CEO of Kubegrade, tells CB Insights how they view the market, customer needs, and their company. How do you define your market and where does your company fit into that space? So essentially, Kubegrade operates in a relatively &#8230; The post CEO Interview: Kubegrade appeared first on CB Insights Research .",
+      "author": "Lindsay Stanley",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "10861640c1d2",
+      "title": "Making it easier to understand how content was created and edited",
+      "url": "https://blog.google/innovation-and-ai/products/identifying-ai-generated-media-online/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "A chat input box mockup featuring an uploaded thumbnail of dog-themed latte art, the text \"Is this generated with AI?\", and action icons for adding files, voice input, and sending.",
+      "author": "Pushmeet Kohli",
+      "tags": [
+        "Google Cloud",
+        "AI Products",
+        "Gemini",
+        "Google DeepMind"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "512dc73fda87",
+      "title": "Simulate real-world places with Project Genie and Street View",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/project-genie-expands/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "an MP4 video with text reading \"Project Genie\"",
+      "author": "Nicole Segaran",
+      "tags": [
+        "Maps",
+        "Google DeepMind",
+        "Google Labs"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "c4a1df62bd71",
+      "title": "Gemini for Science: AI experiments and tools for a new era of discovery",
+      "url": "https://blog.google/innovation-and-ai/technology/research/gemini-for-science-io-2026/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "Person using a microscope with \"Gemini for Science\" text and star icon.",
+      "author": "Yossi Matias",
+      "tags": [
+        "Google Research",
+        "Gemini",
+        "Google Labs",
+        "Google DeepMind"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "757b4a2a57b0",
+      "title": "How AI Mode is changing the way people search in the U.S.",
+      "url": "https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "A graphic features the text \"How people are using AI Mode in the U.S.\" surrounded by colorful, stylized illustrations of a pencil, planet, banana, gift box, cursor, gamepad, and lipstick on a light blue background.",
+      "author": "Shivani Mohan",
+      "tags": [
+        "Search",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "adac55b4e4fe",
+      "title": "New ways to create and get things done in Google Workspace",
+      "url": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "Google Workspace",
+      "author": "Yulie Kwon Kim",
+      "tags": [
+        "Google Workspace",
+        "Google One",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "cd2fbffde559",
+      "title": "I/O 2026: Welcome to the agentic Gemini era",
+      "url": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "a series of colorful icons representing Google I/O against a black background",
+      "author": "Sundar Pichai",
+      "tags": [
+        "Search",
+        "Google Labs",
+        "Google Workspace",
+        "AI",
+        "Gemini App",
+        "Gemini models"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "388f97def8c6",
+      "title": "Gemini 3.5: frontier intelligence with action",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "Gemini 3.5 text and multi-colored star icon on an abstract blue background.",
+      "author": "Noam Shazeer",
+      "tags": [
+        "Gemini models",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "6cad7b8bd247",
+      "title": "A new era for AI Search",
+      "url": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "Text that reads \"The best of a search engine with the best of AI\"",
+      "author": "Elizabeth Reid",
+      "tags": [
+        "Search",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "6277c54bdb44",
+      "title": "Everything new in our Google AI subscriptions, fresh from I/O 2026",
+      "url": "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "The image shows colorful icons. The copy reads: More magic in one plan. More power, more perks, same price.",
+      "author": "Shimrit Ben-Yair",
+      "tags": [
+        "Google One",
+        "Gemini",
+        "YouTube",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "8feaaef8f93e",
+      "title": "I/O 2026",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/",
+      "source": "Google AI Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "At Google I/O 2026, we shared how we’re making AI more helpful for everyone. See everything we announced.",
+      "author": "",
+      "tags": [
+        "Gemini App",
+        "Gemini models",
+        "Developer tools",
+        "AI"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "e7785d8c77e3",
+      "title": "Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.",
+      "url": "https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think",
+      "source": "VentureBeat AI",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-19T17:45:00+00:00",
+      "summary": "For a quarter century, the Google search box has been one of the most recognizable interfaces in computing: a thin white rectangle, a blinking cursor, a few typed words, and a list of blue links. On Tuesday, Google will formally retire that paradigm. At its annual I/O developer conference , Google announced a sweeping redesign of the search box itself — the literal text field where billions of queries begin every day — transforming it from a simple keyword input into a dynamic, AI-driven conversation starter that can accept text, images, PDFs, videos, and even open Chrome tabs as inputs. The…",
+      "author": "michael.nunez@venturebeat.com (Michael Nuñez)",
+      "tags": [
+        "Technology",
+        "Infrastructure",
+        "Business",
+        "AI"
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "14010cdfe089",
+      "title": "DataRobot for Developers: Skills, MCP, and the agentic developer surface",
+      "url": "https://www.datarobot.com/blog/skills-mcp-agent-developer/",
+      "source": "DataRobot Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-19T13:12:53+00:00",
+      "summary": "You shouldn’t have to leave Cursor to build, deploy, or monitor a production-grade agent. You can wire together LangChain, a vector DB, a monitoring tool, and a deployment pipeline yourself, but you’ll spend more time on that plumbing than on the agent itself. DataRobot is the shortcut. It now lives where you build, integrating directly... The post DataRobot for Developers: Skills, MCP, and the agentic developer surface appeared first on DataRobot .",
+      "author": "Amber Bennoui",
+      "tags": [
+        "AI Agent Development",
+        "Cursor",
+        "MCP",
+        "Skills"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "1f9e966d4c74",
+      "title": "The last six months in LLMs in five minutes",
+      "url": "https://simonw.substack.com/p/the-last-six-months-in-llms-in-five",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T04:30:21+00:00",
+      "summary": "In this newsletter:",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "e05bf9ebf2f8",
+      "title": "Introducing the Ettin Reranker Family",
+      "url": "https://huggingface.co/blog/ettin-reranker",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T00:00:00+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "19a26d4a853d",
+      "title": "EpiCache: Episodic KV Cache Management for Long-Term Conversation on Resource-Constrained Environments",
+      "url": "https://machinelearning.apple.com/research/epicache",
+      "source": "Apple ML Research",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-19T00:00:00+00:00",
+      "summary": "Modern large language models (LLMs) extend context lengths to millions of tokens, enabling coherent, personalized responses grounded in long conversational history. However, the Key-Value (KV) cache grows linearly with the extended dialogue history, causing the model’s memory footprint to quickly exceed device limits. While recent KV cache compression methods attempt to reduce memory usage, most apply cache eviction after processing the entire context, incurring unbounded peak memory usage. Additionally, query-dependent eviction narrows the cache semantics to a single query, leading to…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "0f4d83dea22f",
+      "title": "AI Weekly Issue #493: Meta hired $145B in capex and fired 8,000 people",
+      "url": "https://aiweekly.co/issues/meta-hired-145b-in-capex-and-fired-8000-people",
+      "source": "AI Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-19T00:00:00+00:00",
+      "summary": "Six days after we called $725B a bet on what no one wanted, the receipts started landing. Meta committed $145B to AI infrastructure the same week it began firing 8,000 people. Standard Chartered described its own cuts as replacing \"lower-value human capital.\" Pope Leo XIV announced he'd co-launch his first AI encyclical with Anthropic's Christopher Olah at the Vatican on May 25.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

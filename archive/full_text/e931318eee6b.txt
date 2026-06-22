@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Benchmarking stereo reconstruction for 3D printable Martian terrain models
+View PDF HTML (experimental)Abstract:Reconstructing printable 3D models from Mars rover imagery is challenging because Martian terrain is low-texture, irregular, and partially observed. We evaluate a pipeline that estimates stereo depth from NASA Curiosity images, completes geometry, and exports watertight OBJ meshes. On Middlebury, RAFT-Stereo outperforms semi-global block matching (SGBM), reducing disparity MAE from 3.22px to 0.73px and increasing valid prediction coverage from 76.3% to 100.0%. On Curiosity imagery, however, RAFT's denser disparities show weaker edge alignment and higher photometric reprojection error, suggesting that benchmark accuracy does not directly transfer to Martian terrain reconstruction. Geometry completion demonstrates a tradeoff between local fidelity and global connectivity. We find that alpha shapes preserve accurate but fragmented structure, Poisson reconstruction produces more coherent meshes but adds unsupported surfaces, and a deterministic diffusion-fill baseline is intermediate but sensitive to stereo quality. Overall, standard stereo and completion methods can produce printable approximations of Martian terrain, but reliable reconstruction requires stronger domain-specific validation.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

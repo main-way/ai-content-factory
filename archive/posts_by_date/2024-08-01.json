@@ -1,0 +1,40 @@
+{
+  "date": "2024-08-01",
+  "count": 2,
+  "posts": [
+    {
+      "id": "9aed0cdaa155",
+      "title": "The Hidden Bottleneck: How GPU Memory Hierarchy Affects Your Computing Experience",
+      "url": "https://blog.paperspace.com/the-hidden-bottleneck-how-gpu-memory-hierarchy-affects-your-computing-experience/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-01T22:55:40+00:00",
+      "summary": "In this article, we examine the mechanisms behind GPU memory hierarchy.",
+      "author": "Melani Maheswaran",
+      "tags": [
+        "GPU"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "8f7c2e355808",
+      "title": "Enhancing NLP Models for Robustness Against Adversarial Attacks: Techniques and Applications",
+      "url": "https://blog.paperspace.com/enhancing-nlp-models-for-robustness-against-adversarial-attacks-techniques-and-applications/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-08-01T02:37:59+00:00",
+      "summary": "Learn about a variety of techniques used to keep deep learning NLP models secure.",
+      "author": "Adrien Payong",
+      "tags": [
+        "NLP",
+        "Security",
+        "Deep Learning"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

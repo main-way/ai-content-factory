@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Design and Fabrication of a Spin Coater with In-Situ Optical Measurement for Soft Thin Films
+View PDF HTML (experimental)Abstract:Spin coating is widely used for fabrication of thin polymer and elastomer films, yet reliable thickness verification of highly compliant materials remains challenging due to deformation from contact-based measurements and the cost and complexity of conventional optical metrology. Accurate thickness control is especially critical in soft elastomer applications such as dielectric elastomer actuators (DEAs), where mechanical and functional performance scales strongly with film thickness. This work presents a low-cost, primarily 3D-printed benchtop spin coater with an integrated, minimally deforming optical thickness measurement system for soft-film fabrication workflows. The system is designed to manufacture films between 50 and 300 microns thick with repeatability within 10 microns. Thickness is measured in-situ by tracking displacement of a reflected laser beam via quadrant photodetector, avoiding significant deformation. Optical geometry, sensor linearity constraints, and structural validation via finite element analysis are discussed. Experimental validation using calibrated metal shims demonstrated a thickness resolution of 3.6-3.7 microns and best-case measurement repeatability of 13 microns (95 percent confidence interval). The platform repeatably produced silicone films within 9 microns of target thickness, demonstrating that accessible optical metrology can be integrated into a low-cost spin coating system for practical, thickness-controlled fabrication of compliant thin films without specialized industrial instrumentation.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

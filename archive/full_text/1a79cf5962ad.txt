@@ -1,0 +1,16 @@
+Instagram AI chatbot breach may have affected over to 20,000 accounts, Meta discloses
+Key Points
+- A flaw in Meta's AI support chatbot led to the compromise of up to 20,225 Instagram accounts over seven weeks.
+- A buggy recovery tool let hackers send password reset links to arbitrary, unverified email addresses.
+- Meta disabled the chatbot, invalidated the manipulated links, and forced affected users to reset their passwords immediately.
+In an official data breach notification, Meta has for the first time put a number on the scope of the already-known vulnerability in its AI support chatbot. The hacking campaign ran for nearly seven weeks.
+Meta has released a data breach notification to the Maine Attorney General's office with the first concrete numbers on the hacking campaign targeting Instagram accounts. At least 20,225 accounts were compromised, including 30 in Maine.
+Hackers exploited Meta's AI-powered support chatbot for Instagram for months to take over other people's accounts. The chatbot, an account recovery tool called "High Touch Support," was designed to help locked-out users regain access. But a bug in a separate code path meant the system never checked whether the email address provided actually belonged to the Instagram account in question.
+According to the notification, the attacks started around April 17, 2026, and weren't discovered until May 31. The attackers exploited the already-known flaw in the AI-powered "High Touch Support" recovery system, which sent password reset links to any email address without verifying it belonged to the account.
+Meta calls the 20,225 figure an upper bound, since some access attempts may have come from legitimate account holders. The data that was potentially accessible includes contact info, birth dates, posts, direct messages, account activity, profile information, and linked services, according to Meta. The company says it doesn't know which information was actually viewed. Thisweekinsecurity first reported on the notification.
+Meta disables chatbot and audits all platforms
+As an immediate response, Meta disabled the AI chatbot, removed the faulty code path, and invalidated all password reset links generated through the system. Affected users were placed into a mandatory security checkpoint and asked to reset their passwords through verified channels.
+Before reactivating the tool, Meta plans to fix the email verification step in the recovery process and audit similar account recovery systems across all its platforms. The incident comes at a time when Meta has laid off thousands of employees while betting heavily on AI. The AI support chatbot had previously been marketed by Meta as a win for account security.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

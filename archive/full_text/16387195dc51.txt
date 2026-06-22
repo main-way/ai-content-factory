@@ -1,0 +1,12 @@
+Statistics > Methodology
+Title:Bayesian Nonparametric Detection of Anomalies in Multivariate Functional Data
+View PDF HTML (experimental)Abstract:Anomalies in functional data arise from rare or distinct processes that deviate from the dominant data-generating mechanism. Detecting such departures is essential in applications where they may correspond to errors, structural changes, or other behavior of interest. This work introduces a Bayesian nonparametric approach for anomaly detection in multivariate functional data. We model functional data as an infinite mixture of multi-output Gaussian processes, with a finite and automatically determined number of mixture components obtained through slice sampling. Mean functions are represented using a wavelet basis and regularized through Besov priors to obtain a smooth and sparse representation of the data. Cross-functional dependence is captured using the intrinsic coregionalization model and we solve covariance kernel selection by introducing a Carlin-Chib product space step in the Markov Chain Monte Carlo algorithm. Within this model, anomalous observations are assigned to small mixture components without requiring prior specification of the number or nature of anomalies. We consider a semi-supervised setting, in which labels are available for 15% of the normal observations and a large class imbalance is present. The utility of our model is demonstrated on both univariate and multivariate functional data.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

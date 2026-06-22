@@ -1,0 +1,12 @@
+Physics > Medical Physics
+Title:A beam--membrane biomechanical vocal fold model incorporating posturing and glottal conformation
+View PDF HTML (experimental)Abstract:The posture of the vocal folds produced by laryngeal muscle activation plays a central role in determining the dynamics of voice production. Abnormal vocal fold configurations are frequently associated with inefficient phonation and a variety of voice disorders. Although diverse glottal closure patterns have been observed clinically, the biomechanical mechanisms governing their dynamic behavior and resulting phonatory characteristics remain incompletely understood. Moreover, existing numerical models that incorporate the effects of the intrinsic musculature on posturing and glottal conformation are computationally expensive, which limits their suitability for large-scale parametric investigations. In this work, we introduce a computationally inexpensive vocal fold (VF) model wherein the body and cover VF layers are treated as a composite beam and a coupled membrane, respectively. Intrinsic laryngeal muscle activation, in addition to positioning the arytenoid cartilages and cricothyroid joint, introduces moments at the boundaries of the structure that influence glottal conformation. The model produces phonatory characteristics that are qualitatively consistent with those reported in high-fidelity finite-element models and clinical studies, thereby supporting its predictive capability while offering substantial computational advantage. The proposed framework provides biomechanical insights into the influence of incomplete glottal closure on phonation dynamics and may serve as a computationally tractable tool for investigating mechanisms underlying certain voice disorders.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

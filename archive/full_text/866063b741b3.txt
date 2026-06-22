@@ -1,0 +1,19 @@
+SpaceX wants to put data centers in orbit, and Musk says it's no big deal
+Key Points
+- SpaceX wants to put AI data centers in orbit. Elon Musk calls it a near-trivial problem, pointing to existing Starlink technology.
+- The first AI satellite would deliver 150 kilowatts of sustained compute—roughly one Nvidia GB300 rack. But without tight chip-to-chip coupling in space, complex AI training remains out of reach for now.
+- SpaceX is targeting mass production by the end of 2027. Competitor Jeff Bezos, however, expects orbital data centers won't beat ground-based facilities on cost for up to 20 years.
+SpaceX wants to put data centers in orbit, and Elon Musk is pitching it as a near-trivial engineering problem ahead of the company's IPO.
+"Part of what we want to convey here is that there is not some magic that is necessary, that doesn't exist," Musk said in a video discussion published by SpaceX. "A lot of this is technology we've already made for the Starlink V3 satellites. We don't think this is a super hard problem compared to the things we already do."
+For reference, Musk says the first AI satellite would deliver 150 kilowatts of peak power and 120 kilowatts of sustained compute - comparable to a single Nvidia GB300 rack, which draws about 140 kilowatts. Cooling would come from radiating heat into space. Power would come from solar panels. The factory in Bastrop, Texas, is supposed to hit meaningful production volumes by the end of 2027.
+Watch @ElonMusk provide a technical update on SpaceX's capability to manufacture, launch, and operate AI satellites at scale → https://t.co/PSCyWrNsOg pic.twitter.com/vhtr46uax7
+- SpaceX (@SpaceX) June 8, 2026
+SpaceX still has to prove this isn't just IPO talk
+A GB300 system isn't a standalone server, though. It's a tightly coupled supercomputer: Blackwell GPUs connected via NVLink with terabytes per second of bandwidth into a shared memory space. That kind of coupling can't be replicated in orbit yet.
+Google's "Suncatcher" paper on orbital TPU swarms shows just how wide the gap is. Matching the compute of a single 1-gigawatt data center would take roughly 10,000 satellites flying in formation just a few hundred meters apart, using free-space optics to get anywhere close to terrestrial bandwidth. On top of that, cosmic radiation causes bit flips that can corrupt training runs, and launch costs would need to drop to about $200 per kilogram, according to Google.
+Musk does have a point on one thing: SpaceX already knows how to build solar panels, radiators, laser crosslinks, and mass-produced satellites, thanks to Starlink. That includes data transfer between nodes in orbit. A single satellite running GPU workloads, executing models, and passing results along via laser link isn't science fiction. For inference workloads with moderate latency and bandwidth needs, it could work sooner rather than later.
+The hard part is everything that makes today's AI clusters powerful. Training large foundation models—at least right now—depends on tens of thousands of tightly coupled GPUs with coherent memory. That's a different beast entirely.
+Competitor Jeff Bezos expects orbital data centers won't be cheaper than ground-based facilities for up to 20 years. That timeline puts Musk's pitch in a much more sober light ahead of SpaceX's $1.75 trillion valuation.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

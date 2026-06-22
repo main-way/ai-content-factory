@@ -1,0 +1,12 @@
+Computer Science > Sound
+Title:A Lightweight Dual-Factor Acoustic Authentication System via Cascaded GMM-DTW Architecture for Edge Computing
+View PDF HTML (experimental)Abstract:This paper presents a lightweight, cascaded GMM-DTW dual-factor voice lock system for resource-constrained edge environments. By utilizing a shared MFCC feature space, the framework implements a sequential defense mechanism combining GMM speaker screening and DTW passphrase verification. To counter presentation threats without extra hardware, a dynamic joint absolute-relative margin constraint is integrated into the GMM classification space, limiting the physical imposter and high-fidelity replay attack False Acceptance Rates (FAR) to 2.73% and 6.67%, respectively, with a legitimate False Rejection Rate (FRR) of 16.67%. Due to Sakoe-Chiba window optimization, the global end-to-end processing latency under temporal stress is rigidly bounded at 9.82ms on a single-core CPU, comprising 1.51ms for feature extraction, 0.54ms for GMM scoring, and 7.77ms for worst-case DTW matching. These empirical benchmarks demonstrate the viability of white-box acoustic cascades for secure, deterministic real-time deployment on low-power edge nodes.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

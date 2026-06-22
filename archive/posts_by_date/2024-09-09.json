@@ -1,0 +1,40 @@
+{
+  "date": "2024-09-09",
+  "count": 2,
+  "posts": [
+    {
+      "id": "cae179043c8d",
+      "title": "What's Missing From LLM Chatbots: A Sense of Purpose",
+      "url": "https://thegradient.pub/dialog/",
+      "source": "The Gradient",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-09-09T17:28:48+00:00",
+      "summary": "LLM-based chatbots&#x2019; capabilities have been advancing every month. These improvements are mostly measured by benchmarks like MMLU, HumanEval, and MATH (e.g. sonnet 3.5, gpt-4o). However, as these measures get more and more saturated, is user experience increasing in proportion to these scores? If we envision a future",
+      "author": "Kenneth Li",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "622c963cab46",
+      "title": "Лёгкий способ бросить Google",
+      "url": "https://roem.ru/09-09-2024/303407/lyogkij-sposob-brosit-google/?from=roem_rss",
+      "source": "Roem.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2024-09-09T16:05:51+00:00",
+      "summary": "Как уже знают те, кто читал «Лёгкий способ бросить курить», ответ на то, как легко бросить Google действительно есть — им надо перестать пользоваться. Сейчас это будет относительно безболезненно. Если вы живёте в России, то проблема может быть даже не в том, что что-то заблокируют из РФ.",
+      "author": "Юрий Синодов, sinodov@roem.ru",
+      "tags": [
+        "Госвеб",
+        "Кейсы",
+        "Текучка",
+        "Google",
+        "Блокировка"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

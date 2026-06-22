@@ -1,0 +1,39 @@
+{
+  "date": "2026-04-28",
+  "count": 2,
+  "posts": [
+    {
+      "id": "4af17d3dfa66",
+      "title": "A2A v1 Is Here: Cross-Platform Agent Communication in Microsoft Agent Framework for .NET",
+      "url": "https://devblogs.microsoft.com/agent-framework/a2a-v1-is-here-cross-platform-agent-communication-in-microsoft-agent-framework-for-net/",
+      "source": "Semantic Kernel Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-28T20:57:51+00:00",
+      "summary": "As organizations move from single-agent prototypes to multi-agent production systems, the ability for agents to communicate reliably across platforms and organizational boundaries becomes essential. With the release of A2A Protocol v1.0 and updated support in the Microsoft Agent Framework, you can now connect and expose your AI agents using a stable, production-ready interoperability standard &#8211; [&#8230;] The post A2A v1 Is Here: Cross-Platform Agent Communication in Microsoft Agent Framework for .NET appeared first on Microsoft Agent Framework .",
+      "author": "Sergey Menshykh",
+      "tags": [
+        ".NET",
+        "A2A",
+        "Agent Framework",
+        "Announcement"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "3fabcf9934d1",
+      "title": "Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents",
+      "url": "https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-28T15:58:57+00:00",
+      "summary": "",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

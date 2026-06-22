@@ -1,0 +1,5 @@
+macOS 27 Beta Breaks The Ability To Boot Asahi Linux
+Whether it's an accidental bug by Apple or an intended change, Apple changed the boot picker and Startup Disk handling with macOS 27. Any Asahi Linux partition is still present and without data loss but is no longer visible and thus unable to boot for at least the time being.
+Those that do try out macOS 27 beta, hopefully you have a secondary installation of macOS 26 or older to allow for booting your Asahi Linux partition in the interim.
+Asahi Linux filed a bug report with Apple over this behavior change in macOS Golden Gate while they wait to hear more from the company. In the meantime they are warning users to avoid macOS 27.
+In other Apple Silicon Linux news this week, Linux 7.2 is set to enable boot support for the Apple M3 devices albeit not yet usable for end-users and, well, if you haven't upgraded to macOS 27 Golden Gate.

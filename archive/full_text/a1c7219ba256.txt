@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:PreAct-Bench: Benchmarking Predictive Monitoring in LLMs
+View PDF HTML (experimental)Abstract:Large language models (LLMs) are increasingly deployed as autonomous agents capable of executing multi-step action trajectories toward a given objective. While existing safety research has focused on detecting unethical behavior from complete trajectories, this paradigm is fundamentally retrospective: it identifies harm only after it has already occurred. In this work, we study a critical yet overlooked safety task, which we term Predictive Monitoring: given only a partial action trajectory, can a model infer whether it will culminate in an unethical action before the overt action is executed? To support this task, we present PreActBench, a benchmark of 1,000 paired ethical and unethical action trajectories spanning five domains. We evaluate a range of LLMs, safety guardrail models, and latent probing methods across varying fractions of the action trajectory using our Prefix Foresight F1 metric. Results show that while humans achieve promising performance, predictive monitoring remains challenging even for strong models, highlighting the need for future-oriented risk reasoning in LLM safety.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

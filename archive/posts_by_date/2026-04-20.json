@@ -1,0 +1,57 @@
+{
+  "date": "2026-04-20",
+  "count": 3,
+  "posts": [
+    {
+      "id": "76376cb3ea8c",
+      "title": "Anthropic’s MCP vulnerability: When ‘expected behavior’ becomes a supply chain nightmare",
+      "url": "https://bdtechtalks.com/2026/04/20/anthropic-mcp-vulnerability/?utm_source=rss&utm_medium=rss&utm_campaign=anthropic-mcp-vulnerability",
+      "source": "BDTechTalks",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-20T13:15:22+00:00",
+      "summary": "Security researchers have uncovered a massive architectural flaw in Anthropic's Model Context Protocol, exposing millions of AI applications to remote takeovers. The post Anthropic’s MCP vulnerability: When ‘expected behavior’ becomes a supply chain nightmare first appeared on TechTalks .",
+      "author": "Ben Dickson",
+      "tags": [
+        "Blog",
+        "AI security",
+        "Anthropic",
+        "Artificial intelligence (AI)",
+        "cybersecurity",
+        "large language models",
+        "Model context protocol (MCP)",
+        "Remote Code Execution"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "e1d05b7e37ad",
+      "title": "Import AI 454: Automating alignment research; safety study of a Chinese model; HiFloat4",
+      "url": "https://importai.substack.com/p/import-ai-454-automating-alignment",
+      "source": "Import AI Newsletter",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-04-20T12:30:19+00:00",
+      "summary": "At what point do the financial markets price in the singularity?",
+      "author": "Jack Clark",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "434526b1fd71",
+      "title": "Gradient-based Planning for World Models at Longer Horizons",
+      "url": "http://bair.berkeley.edu/blog/2026/04/20/grasp/",
+      "source": "BAIR Blog (Berkeley)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-04-20T09:00:00+00:00",
+      "summary": "GRASP is a new gradient-based planner for learned dynamics (a “world model”) that makes long-horizon planning practical by (1) lifting the trajectory into virtual states so optimization is parallel across time, (2) adding stochasticity directly to the state iterates for exploration, and (3) reshaping gradients so actions get clean signals while we avoid brittle “state-input” gradients through high-dimensional vision models. Large, learned world models are becoming increasingly capable. They can predict long sequences of future observations in high-dimensional visual spaces and generalize…",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

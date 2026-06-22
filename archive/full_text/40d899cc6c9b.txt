@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Exploration of Foundation Model-Based Robots in Patient and Elderly Care
+View PDF HTML (experimental)Abstract:Demand for older-adult and patient care is growing rapidly as populations age worldwide. Foundation models are increasingly being integrated into robots and interactive agents, with the promise of more flexible communication and personalized assistance. However, care settings require reliable and workflow-compatible systems with accountable human oversight, and it remains unclear whether current embodied systems can translate technical advances into clinical impact. This Perspective synthesizes foundation model-based care robots across three areas: design features, user experience, and evidence for care-related outcomes. Current systems most commonly use foundation models as conversational and reasoning layers within voice-centered socially assistive embodiments, while multimodal grounding and physical autonomy remain limited. Empirical evaluations report positive usability and engagement benefits, but reliability failures persist across the interaction pipeline such as hallucinations and conversational breakdowns. Evidence for care impact remains concentrated in proximal outcomes such as cognitive engagement and participation, with limited evidence for validated clinical or care-related changes. We argue that future research should transition toward care-specific evaluation standards, accountable autonomy, and integration into care workflows to support more responsive and responsible care technologies.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

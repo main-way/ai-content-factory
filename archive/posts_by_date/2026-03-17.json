@@ -1,0 +1,69 @@
+{
+  "date": "2026-03-17",
+  "count": 4,
+  "posts": [
+    {
+      "id": "c4b3baf6b1c8",
+      "title": "Fireside chat about agentic engineering at the Pragmatic Summit",
+      "url": "https://simonw.substack.com/p/fireside-chat-about-agentic-engineering",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-17T16:06:00+00:00",
+      "summary": "Plus five new chapters of my Agentic Engineering Patterns guide",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "7d4268752b84",
+      "title": "Measuring progress toward AGI: A cognitive framework",
+      "url": "https://deepmind.google/blog/measuring-progress-toward-agi-a-cognitive-framework/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-17T16:03:47+00:00",
+      "summary": "We’re introducing a framework to measure progress toward AGI, and launching a Kaggle hackathon to build the relevant evaluations.",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "a56f1dd9fece",
+      "title": "Measuring progress toward AGI: A cognitive framework",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/measuring-agi-cognitive-framework/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-17T16:00:00+00:00",
+      "summary": "Several rectangles in lines diagonally across the image. Each rectangle has swirls.",
+      "author": "Oran Kelly",
+      "tags": [
+        "Google DeepMind"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "cc2a6e93b13f",
+      "title": "Broadening advanced AI education across Africa",
+      "url": "https://blog.google/company-news/inside-google/around-the-globe/google-africa/ai-research-foundations/",
+      "source": "DeepMind Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-03-17T08:00:00+00:00",
+      "summary": "Three images. One is a person speaking, one is a group of people on computers, one is one person on a computer.",
+      "author": "Leslie Yeh",
+      "tags": [
+        "Google in Africa",
+        "Google.org",
+        "Google Research",
+        "Google DeepMind"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Beyond Speaker Independence: Evaluating Cross-Lingual Acoustic-to-Articulatory Inversion Across Finnish and Russian
+View PDF HTML (experimental)Abstract:Acoustic-to-articulatory inversion (AAI) remains challenging under domain shifts where changes in speaker attributes and cross-language conditions often degrade performance. We conduct a systematic evaluation under such shifts and establish baseline benchmarks on FROST-EMA, a Finnish-Russian bilingual EMA corpus. FROST-EMA addresses the English bias and limited speaker diversity of existing resources. We benchmark (i) articulatory targets (raw EMA coordinates vs tract variables), (ii) acoustic front-ends (MFCC vs SSL features), and (iii) inversion back-ends (BiLSTM vs a lightweight attention-based sequence model). We further define evaluation protocols for cross-gender transfer (within language) and cross-language transfer (within gender). The results indicate that cross-gender mismatch introduces moderate Pearson correlation declines (approximately 0.05 to 0.10) relative to the in-domain baseline, whereas cross-language mismatch causes larger drops (approximately 0.10 to 0.20).
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

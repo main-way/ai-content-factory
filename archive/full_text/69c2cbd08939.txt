@@ -1,0 +1,5 @@
+workflows/sync-user.ts
+import { useStorage } from "nitro/storage";
+export async function getUserPreferences(userId: string) { "use step";
+const storage = useStorage("cache"); return await storage.getItem(`preferences:${userId}`);}
+Reading from Nitro storage inside a step function

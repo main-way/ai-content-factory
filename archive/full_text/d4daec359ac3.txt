@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:SAILS: Surrogate-based Analysis of Interactions via Local Effect Smooths
+View PDF HTML (experimental)Abstract:Feature interactions drive much of the predictive power of machine learning models, yet existing explanation methods only detect and quantify interactions without revealing their functional form, or visualize only restricted interaction types. We propose Surrogate-based Analysis of Interactions via Local effect Smooths (SAILS), a model-agnostic framework that analyzes pairwise interactions through interpretable generalized additive model (GAM) surrogates fitted to the local effects of a black-box model. For each interval of a feature of interest, the surrogate smooth terms isolate the interaction components on derivative level, enabling (i) interaction detection through a heuristic derived from significance tests on smooth terms, (ii) interaction form categorization into linear, product-separable, and non-product-separable types, and (iii) tailored, interpretable visualizations for each interaction type. We empirically validate the framework through controlled simulations and a real-world task, demonstrating its effectiveness for pairwise interactions, with limitations under strong feature correlations and higher-order interactions. SAILS fills a notable gap in the XAI toolbox, going beyond detection of interactions alone to characterizing their functional form.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

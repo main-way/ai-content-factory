@@ -1,0 +1,16 @@
+OpenAI researchers show small doses of "beneficial trait" training make AI models broadly safer and harder to manipulate
+Reinforcement learning on realistic scenarios with desired behavioral traits is supposed to make AI models safer and more helpful across domains. The approach is fundamentally different from Anthropic's constitutional method.
+When AI models are trained on problematic behavior in one domain, that misalignment can spread to other areas. OpenAI researchers have now tested whether the reverse also works: Can good behavior generalize just as broadly?
+According to a blog post on OpenAI's alignment page, the answer is yes. The research team trained a model using reinforcement learning on realistic conversations designed to test specific desired traits: truthfulness, epistemic humility, corrigibility, transparency in reasoning, fairness, and concern for human well-being. The scenarios covered domains like healthcare, education, science, law, and engineering.
+Good behavior transfers to unfamiliar domains
+Only a small share of this "beneficial trait" data was mixed into the regular RL post-training pipeline. Still, the model improved on 44 out of 53 independent benchmarks measuring deception, honesty, sycophancy, reward hacking, and health and mental health scenarios, according to the paper.
+Training on health data alone also improved non-health evaluations like reward hacking and deception detection. The reverse held true, too: training without any health or science data still boosted performance on health benchmarks. The researchers conclude that RL training reinforces basic behavioral patterns that work across domains.
+Models become resistant to harmful steering
+The team also tested whether the improvements hold up under pressure. Adversarial prompts that badly destabilized the baseline model had far less effect on the beneficial-trait model. Harmful fine-tuning was also less able to erode the trained traits.
+The model stayed just as steerable for helpful instructions as before. The researchers call this "selective persistence" - the model resists harmful steering without losing useful flexibility.
+A different path than Anthropic
+OpenAI's method differs sharply from Anthropic's alignment approach. First, OpenAI relies on empirically measurable behavioral traits reinforced through RL in realistic scenarios. Anthropic, by contrast, works with an explicit "Claude constitution," a written values document that serves as the top-level guide for training and behavior.
+Second, OpenAI leans heavily on benchmarks: 44 out of 53 evaluations show improvements that generalize across domains and evaluation methods. Anthropic takes a more principles-based approach where the model is supposed to understand why certain behaviors are desired, grounded in constitutional texts and high-quality training examples. The company says this makes its models more resistant to attacks. A direct comparison of the two approaches doesn't exist yet.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

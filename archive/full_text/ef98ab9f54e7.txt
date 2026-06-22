@@ -1,0 +1,65 @@
+В предыдущей части были рассмотрены варианты ingress-контролера. В этой статье расскажем, как мы тестировали Traefik и постепенно готовим инфраструктуру к переходу на Gateway API без простоев и массового переписывания сервисов.
+Почему Traefik?
+Основными причинами выбора Traefik стали:
+Зрелость проекта и качественная документация
+Автоматическое обнаружение новых сервисов
+Высокая производительность и средняя сложность настройки
+Поддержка Gateway API
+Но самым главным фактором стало наличие специального провайдера Kubernetes Ingress NGINX.
+Этот провайдер по заверению документации позволяет мигрировать с ingress-nginx с минимальными изменениями в объектах Ingress. Он следит за объектами Ingress в k8s, у которых установлен ingressClassName: nginx и преобразует их в конфигурацию traefik.
+Очень много конфигурации для ingress-nginx контроллера задавалось через аннотации в Ingress-объектах. Kubernetes Ingress NGINX поддерживает часть этих аннотаций, что и позволяет мигрировать на новый контроллер с минимальными изменениями.
+В документации Traefik есть отдельная статья, как провести миграцию с минимальным даунтаймом.
+Сам Traefik мы устанавливали из официального Helm-чарта.
+Чтобы включить Kubernetes Ingress NGINX provider, достаточно добавить настройки в values-файл и установить Traefik:
+helm upgrade --install traefik traefik/traefik --version=39.0.5 \ --namespace traefik --create-namespace \ -f values-<env>.yaml \ --atomic --wait --debug --timeout=600s
+Какие были проблемы
+Миграция через Kubernetes Ingress NGINX provider действительно работает, но в основном для относительно простых ingress-конфигураций без специфичных ingress-nginx-аннотаций.
+Дело в том, что на текущий момент provider поддерживает только часть аннотаций ingress-nginx. Полный список поддерживаемых и неподдерживаемых аннотаций есть в документации.
+В наших конфигурациях особенно не хватало поддержки следующих аннотаций:
+nginx.ingress.kubernetes.io/rewrite-target
+nginx.ingress.kubernetes.io/upstream-vhost
+nginx.ingress.kubernetes.io/configuration-snippet
+nginx.ingress.kubernetes.io/permanent-redirect
+nginx.ingress.kubernetes.io/proxy-connect-timeout
+nginx.ingress.kubernetes.io/x-forwarded-prefix
+Список поддерживаемых аннотаций постепенно расширяется. Например, во время подготовки статьи уже появилась базовая поддержка rewrite-target, но до стабильного релиза изменения пока не дошли.
+В GitHub-репозитории Traefik также открыто большое количество запросов на поддержку дополнительных ingress-nginx-аннотаций.
+В некоторых случаях можно дождаться реализации нужной функции. Но если времени на ожидание нет, конфигурации приходится адаптировать вручную.
+Как мы реализовали rewrite-target
+Для части сервисов нам требовалось обрезать префиксы запросов: (/api и /microservice-a, /microservice-b)
+Для этого мы создали middleware в Traefik:, реализующий функционал изменения пути в запросе:
+apiVersion: traefik.io/v1alpha1 kind: Middleware metadata: name: app-strip-prefixes namespace: test-ns spec: stripPrefixRegex: regex: - "/microservice-[a-z0-9\\-]+" - "/api"
+После этого добавили аннотации Traefik в Ingress-объект:
+annotations: traefik.ingress.kubernetes.io/router.entrypoints: websecure traefik.ingress.kubernetes.io/router.middlewares: test-ns-app-strip-prefixes@kubernetescrd
+и заменили ingressClassName: traefik.
+После этого Ingress-объект начинает отслеживаться другим провайдером (Ingress Kubernetes). При этом аннотации ingress-nginx контроллера можно оставить, чтобы при необходимости быстро переключаться между контроллерами через изменение ingressClassName
+.
+Переходим на Gateway API
+Если все равно нужно переписывать некоторые настройки Ingress-объектов, то почему бы сразу не переходить на GatewayAPI? Traefik вполне может работать одновременно и c IngressAPI и c GatewayAPI.
+Вот пример манифеста объектов GatewayAPI. Нам также понадобится middleware app-strip-prefixes. —- apiVersion
+:
+—- apiVersion: traefik.io/v1alpha1 kind: Middleware metadata: name: app-strip-prefixes namespace: test-ns spec: stripPrefixRegex: regex: - "/microservice-[a-z0-9\\-]+" - "/api" --- apiVersion: gateway.networking.k8s.io/v1 kind: Gateway metadata: name: infra-gateway namespace: test-ns spec: gatewayClassName: traefik listeners: - allowedRoutes: namespaces: from: Same name: websecure port: 8443 protocol: HTTPS hostname: infra.example.com tls: certificateRefs: - group: "" kind: Secret name: wildcard-example.com namespace: test-ns mode: Terminate —- apiVersion: gateway.networking.k8s.io/v1 kind: HTTPRoute metadata: name: app-a-route namespace: test-ns spec: hostnames: - infra.example.com parentRefs: - group: gateway.networking.k8s.io kind: Gateway name: infra-gateway namespace: test-ns sectionName: websecure rules: - backendRefs: - group: "" kind: Service name: app-a-svc namespace: test-ns port: 80 weight: 1 filters: - extensionRef: group: traefik.io kind: Middleware name: app-strip-prefixes type: ExtensionRef matches: - path: type: PathPrefix value: /microservice-a
+При этом в рамках одного хоста infra.example.com
+часть путей (Location) может продолжать работать с обычными Ingress-объектами, а часть уже использовать Gateway API.
+Многие задачи, которые пока не решены через аннотации, в Traefik можно реализовать через middleware.
+Со списком поддерживаемых middlewares можно ознакомиться тут. А тут список поддерживаемых аннотаций самого Traefik.
+План миграции
+После анализа вариантов и проверки гипотез мы сформировали следующий подход:
+устанавливаем Traefik рядом с ingress-nginx
+ingress-объекты с поддерживаемыми аннотациями оставляем без изменений
+сложные ingress-конфигурации сразу переводим на Gateway API
+постепенно отказываемся от Ingress API
+Главный принцип миграции — постепенный переход с возможностью отката на любом этапе. Поскольку в одном Kubernetes-кластере могут одновременно работать несколько ingress-контроллеров, а также могут одновременно существовать Ingress и Gateway объекты, новый контроллер можно установить параллельно со старым и постепенно переносить нагрузку.
+В итоге план миграции выглядит так:
+Инвентаризация ingress-ресурсов, используемых аннотаций и сложных конфигураций. Это позволяет заранее понять объем изменений и определить конфигурации, которые потребуют переписывания.
+Установка нового контроллера в k8s-кластер рядом со старым
+Тестирование на пилотном сервисе различных сценариев: Ingress API, Gateway API, TLS, маршрутизации и интеграций с backend-системами.
+Переключение «простых» ingress на Traefik. Нужно перенести те сервисы, в ingress которых нет неподдерживаемых аннотаций. Для переключения трафика достаточно изменить DNS-запись или backend балансировщика.
+Постепенный перевод «сложных» сервисов с неподдерживаемыми ingress-аннотациями на Gateway API.
+Такой подход позволяет контролировать процесс перехода и минимизировать риски в production-инфраструктуре.
+Сейчас мы находимся на завершающем этапе тестирования и переключаем первые сервисы. Инвентаризация и установка нового контроллера занимают немного времени. Основные трудозатраты связаны с тестированием сценариев и переписыванием сложных ingress-конфигураций с учетом всех деталей реализации.
+Выводы
+Если у вас простая конфигурация и используются типовые ingress-конфигурации, переход на Traefik может пройти почти незаметно. В таких случаях достаточно использовать провайдер совместимости Kubernetes Ingress NGINX, и большинство манифестов продолжат работать без изменений или с минимальными правками. После этого можно постепенно переходить на Gateway API.
+Если же инфраструктура активно использует сложные механизмы - например, rewrite, кастомные сниппеты и нетиповые настройки прокси, то избежать изменений не получится. В таком случае нет большого смысла дважды переписывать конфигурации: сначала под Traefik + Ingress API, а потом под Gateway API. Логичнее сразу переходить на Gateway API как на основное направление развития экосистемы Kubernetes. Переход на Gateway API — это уже вопрос времени и ресурсов. Поэтому перед миграцией важно провести аудит конфигураций, оценить риски, спланировать этапы перехода и заранее заложить необходимые ресурсы.
+UPD: пока статья готовилась к публикации вышел «долгожданный» релиз traefik v3.7.0, в котором добавилась поддержка гораздо большего числа аннотаций ingress-nginx, включая rewrite-target
+. Также обновился и helm-чарт traefik до версии 4.0.0. Мы уже протестировали новую версию на нескольких кластерах и теперь миграция практически не требует никаких изменений со стороны объектов Ingress

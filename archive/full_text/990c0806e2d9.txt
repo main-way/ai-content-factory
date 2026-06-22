@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:POPSICLE: Benchmark Datasets for Segmentation and Localization in CryoET
+View PDF HTML (experimental)Abstract:Cryo-electron tomography (cryoET) has emerged as a powerful tool in structural and cellular biology by enabling direct visualization of macromolecular structures within intact cells, thereby linking molecular architecture to cellular organization in a native context. Realizing the full potential of cryoET, however, increasingly depends on advances in computational analysis, particularly machine learning (ML), to interpret its complex and information-rich data. Despite rapid progress, ML development for cryoET remains bottlenecked by the lack of standardized, well-annotated benchmarks. Existing evaluations are typically small, task-specific, and are assembled in isolation, limiting robust comparisons across methods. Here, we present POPSICLE, a benchmark suite for cryoET segmentation and macromolecular localization built from the CryoET Data Portal - an open, ML-ready repository of tomographic data, metadata, and annotations. POPSICLE spans eukaryotic and prokaryotic systems, both purified and fully in situ samples, and dense voxel-wise segmentation as well as sparse localization tasks. Built on a living data resource, it can expand as new datasets and annotations become available. Baseline experiments reveal substantial variation in model rankings across tasks, underscoring the need for benchmarks tailored to the unique characteristics of cryoET rather than evaluation practices adapted from adjacent biomedical imaging domains. POPSICLE thus provides an open and extensible foundation for reproducible ML evaluation in cryoET.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,12 @@
+Statistics > Applications
+Title:Understanding Long-Term Dynamics of Individual Metro Usage: A Hidden Semi-Markov State Framework with Survival Analysis
+View PDF HTML (experimental)Abstract:Understanding how individual metro usage evolves over multi-year horizons is essential for transit planning and passenger retention. However, existing approaches typically characterize mobility patterns as static clusters or short-term variability, leaving the lifecycle dynamics of transit participation underexplored. This study proposes a state-based lifecycle modeling framework that integrates Hidden Semi-Markov Models (HSMM) with discrete-time survival analysis to characterize the evolution of individual metro mobility. The HSMM infers latent mobility states with explicit duration distributions and a transition matrix governing regime changes, while the survival component models exit and re-entry events via state-dependent hazard functions conditioned on mobility-state trajectories and behavioral history. Applied to four years of smart card data from the Shanghai metro system (2021-2024), the framework enables the identification of interpretable mobility states, the characterization of transition dynamics, and the quantification of state-dependent exit and re-entry processes. The analysis reveals five robust mobility states with a directional transition hierarchy centered on an occasional-usage gateway state, and fundamentally different temporal mechanisms governing disengagement and return: exit hazard is state-dependent but duration-independent, whereas re-entry hazard decays sharply with inactivity length. These findings provide a methodological foundation for lifecycle-oriented mobility analysis and practical guidance for transit operators to identify at-risk users and time retention interventions.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

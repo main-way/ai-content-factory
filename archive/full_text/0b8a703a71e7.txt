@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:Context-Aware Multimodal Claim Verification in Spoken Dialogues
+View PDF HTML (experimental)Abstract:Every day, millions absorb claims from podcasts and streams that no fact-checker ever sees. Spoken misinformation is built through conversation, where credibility comes not from facts alone but from how claims are framed, reinforced, or left unchallenged across turns. Yet fact-checking has focused on isolated text, leaving dialogue audio under-studied. We introduce MAD2, a new Multi-turn Audio Dialogues benchmark for spoken claim verification, containing 1,000 two-speaker dialogues with 3,368 check-worthy claims and approximately 10 hours of audio, and propose calibrated multimodal fusion of a context-aware audio encoder and a dialogue-aware text model. Across settings, adding dialogue context improves verification, but the gains depend on scenario type. Using only preceding context often matches offline performance, supporting live-moderation settings, and audio contributes most when transcript-based models are destabilized by additional context. Overall, conversational structure matters more for verification than misinformation framing.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

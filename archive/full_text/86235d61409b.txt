@@ -1,0 +1,12 @@
+Computer Science > Sound
+Title:Latency-Configurable Streaming Speech Enhancement via Asymmetric Temporal Padding
+View PDF HTML (experimental)Abstract:Streaming speech enhancement requires balancing algorithmic latency against quality, yet existing approaches largely treat this as a binary causal versus non-causal choice. LaCo-SENet addresses this issue with two mechanisms parameterized by a single training-time hyperparameter. First, asymmetric temporal padding redistributes past and future context in convolutions, enabling systematic latency configuration. Second, dual-buffer streaming combines state buffers for past context with lookahead buffers that supply future context at both the input and feature levels. Selective state updates also prevent future-frame leakage into the streaming state, ensuring training-inference consistency. On VoiceBank+DEMAND, a fixed-budget (1.37M parameters) backbone yields a family of models spanning 12.5-75.0 ms, with PESQ rising from 3.35 to 3.43. At just 12.5 ms (fully causal), a PESQ of 3.35 matches or exceeds the prior causal state-of-the-art (3.27 at 46.5 ms).
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

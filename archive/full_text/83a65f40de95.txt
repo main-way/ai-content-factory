@@ -1,0 +1,12 @@
+Computer Science > Cryptography and Security
+Title:Learning QoE from Packet-Level Measurements in Encrypted Video Conferencing Traffic
+View PDF HTML (experimental)Abstract:The quality of the user experience has become one of the most important aspects in todays world, as it directly influences individuals willingness to continue using or abandon a product or service. In this context, video conferencing applications (VCAs), which experienced widespread adoption following the COVID-19 pandemic, must deliver excellent performance to remain competitive in an increasingly crowded market. Although content providers (CPs) such as Zoom, WhatsApp, Telegram, and Google Meet can assess conversation quality by comparing transmitted and received data. The widespread use of end-to-end encryption in VCAs makes quality-of-experience (QoE) evaluation by internet service providers (ISPs) far more challenging. Since ISPs do not have access to the encrypted content, they must rely on passive measurements of unencrypted traffic characteristics on the data path. In this work, we present a simple yet effective QoE prediction framework based on an almost stock convolutional neural network (CNN) architecture that uses only the packet sizes extracted from the communication between two participants in a video conferencing (VC) call to predict two QoE metrics: BRISQUE and MOS. The proposed framework is simple, easy to implement, and does not require high-end computational resources, yet it provides superior prediction performance, as shown in our experiments on two custom datasets collected from WhatsApp and Zoom, which achieve substantial improvements over previous models for the QoE prediction task.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

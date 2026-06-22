@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Locomotion analysis of a quadruped interacting with the lunar granular surface
+View PDF HTML (experimental)Abstract:Deploying legged robots in extra-terrestrial environments includes many challenges due to complex terrain interactions, energy, and thermal constraints. For effective mechanical design of a lunar exploration quadrupedal robot, careful consideration of motor torques, energy expenditure, and cost of transport is required. The lunar surface is composed of granular regolith, which impacts the locomotion of legged robots and their performance. Locomotion algorithms trained with rigid contact assumptions are also ineffective when applied to environments with soft contacts, such as granular surfaces, which can result in instability and poor tracking. In this report, the physical modelling of the granular lunar surface-robot foot contacts is applied to a simulation environment with locomotion trained using Reinforcement Learning. A comparison is conducted between the policy trained on rigid contact and soft contact environments, analysing the gait and locomotion performance metrics. The analysis demonstrates that soft contacts simulating regolith surfaces pose additional challenges for Reinforcement Learning based training, result in a qualitatively different gait, and increase the overall energy expenditure.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

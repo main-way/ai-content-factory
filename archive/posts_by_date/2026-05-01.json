@@ -1,0 +1,52 @@
+{
+  "date": "2026-05-01",
+  "count": 3,
+  "posts": [
+    {
+      "id": "9d706b219a96",
+      "title": "DeepSeek v4, and the end of the OpenAI/Microsoft AGI clause",
+      "url": "https://simonw.substack.com/p/deepseek-v4-and-the-end-of-the-openaimicrosoft",
+      "source": "Simon Willison (via Substack)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-05-01T16:46:41+00:00",
+      "summary": "Plus LLM 0.32a0",
+      "author": "Simon Willison",
+      "tags": [],
+      "has_full_text": true
+    },
+    {
+      "id": "3f75090b306f",
+      "title": "Building a Natural Language Interface to the Spotify Ads API with Claude Code Plugins",
+      "url": "https://engineering.atspotify.com/2026/5/spotify-ads-api-claude-plugins/",
+      "source": "Spotify Engineering",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-01T16:00:02+00:00",
+      "summary": "Turning OpenAPI spec and Markdown files into a conversational ads management tool — no compiled code required. The post Building a Natural Language Interface to the Spotify Ads API with Claude Code Plugins appeared first on Spotify Engineering .",
+      "author": "Spotify Engineering",
+      "tags": [
+        "AI",
+        "Developer Tools",
+        "Developer Experience"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "1c584c59586b",
+      "title": "Issue #42",
+      "url": "http://augmentedcoding.dev/issue-42/",
+      "source": "Augmented Coding Weekly",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2026-05-01T00:00:00+00:00",
+      "summary": "The West forgot how to make things, now it’s forgetting how to code TECHTRANCHES.DEV This is an interesting blog post that warns of the risk we are running around collective loss of knowledge, and just how long it takes to rebuild. It starts with a few military examples, how long it took to restart Stinger missile production to support Ukraine, the challenge of re-learning how to produce Fogbank for nuclear warheads. All are examples of how hard it is to regain knowledge once it is lost. The fact that Artemis wasn’t a trivial exercise is probably another good example. What does this have to…",
+      "author": "Colin Eberhardt",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

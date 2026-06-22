@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:An Electric Potential-Augmented Benchmark Dataset for Physics-Guided Image Reconstruction of Electrical Capacitance Tomography
+View PDF HTML (experimental)Abstract:While deep learning has significantly advanced image reconstruction of Electrical Capacitance Tomography (ECT), most data-driven methods map directly between capacitance and permittivity distribution, treating the sensor as a black box. This overlooks the electric potential field -- the fundamental physical link governing the nonlinear and ill-posed ``soft-field'' effect. To address this, we propose an electric potential-augmented ECT benchmark dataset designed to explicitly integrate latent physics behind ECT into the learning process. Generated via a COMSOL-MATLAB pipeline for an eight-electrode sensor as an example, the dataset comprises 20,000 randomized samples across four typical flow patterns. Crucially, alongside the conventional capacitance vectors and permittivity distributions depicted as images, each sample preserves eight excitation-wise full-field potential maps. Beyond data release, we provide illustrative evaluation protocols for both forward and inverse problems of ECT. Through comprehensive testing on both in-distribution (IID) and out-of-distribution (OOD) scenarios, we systematically demonstrate how the inclusion of electric potential maps enhances modeling accuracy and robustness. Fundamentally, the explicit inclusion of latent field information significantly lowers the barrier to integrating physical laws into ECT modeling, thereby establishing a standardized foundation for future physics-guided machine learning of ECT image reconstruction.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

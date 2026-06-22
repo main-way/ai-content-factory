@@ -1,0 +1,34 @@
+Link to headingRegister a connector once, then reuse it across projects and environments
+vercel connect create slack --name mybot
+Create a Slack connector
+Link to headingRequest scoped tokens at runtime
+import { getToken } from '@vercel/connect';
+const token = await getToken('slack/mybot', { subject: { type: 'app' },});
+Request a token at runtime
+Link to headingThe app proves its identity with OIDC
+Link to headingScope each token to exactly what the task needs
+import { getToken } from '@vercel/connect';
+const token = await getToken('github/mybot', { subject: { type: 'app' }, authorizationDetails: [ { type: 'github_app_installation', repositories: ['myorg/repo1'], // one repo, not the whole org permissions: ['contents:read'], // read-only, not write }, ],});
+Scope a token to one repository, read-only
+Link to headingAct on behalf of a specific user, with per-user token scoping
+import { getToken } from '@vercel/connect';
+const token = await getToken('linear/mybot', { subject: { type: 'user', id: 'user_123' },});
+Request a token for a specific user
+Link to headingContain access by environment, and revoke it when you need to
+# Revoke just your own tokens for a connectorvercel connect revoke-tokens slack/mybot --my-tokens
+# Or revoke every token, across all users and installationsvercel connect revoke-tokens slack/mybot --all-tokens
+Revoke a connector's tokens
+Link to headingDrive event-driven agents from verified Slack triggers
+Link to headingVercel Connect meets your code where it already is
+import { defineMcpClientConnection } from "eve/connections";import { connect } from "@vercel/connect/eve";
+export default defineMcpClientConnection({ url: "https://mcp.linear.app/sse", auth: connect("linear/mybot"),});
+An eve connection to Linear over MCP
+import { slackRoute } from "eve/channels/slack";import { connectSlackCredentials } from "@vercel/connect/eve";
+export default slackRoute({ credentials: connectSlackCredentials("slack/mybot"),});
+An eve Slack channel
+Link to headingAccess becomes something you request, scoped to the task
+Set up Vercel Connect in this app so it can post to Slack without storing a Slack token. Install the vercel-connect skill with `npx skills add vercel/vercel-plugin --skill vercel-connect` and follow it. Read vercel.com/docs/connect.md for anything the skill does not cover. Link the project (`vercel link`) and pull a local OIDC token (`vercel env pull`), create a Slack connector with `vercel connect create slack --name mybot`, and attach it to this project. Then install @vercel/connect and request a token at runtime with getToken('slack/mybot', { subject: { type: 'app' } }). Use the token to post a test message to a channel I choose. Verify with the project's typecheck, and do not commit unless I ask.
+A starting prompt for your coding agent
+Connect your first agent
+Your deployment proves its identity over OIDC and gets back a short-lived token, scoped to one task. Works with Slack, GitHub, Linear, and any OAuth MCP server.
+Get started

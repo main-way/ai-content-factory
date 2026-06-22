@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Computing Smooth Geodesics under Two-Sided Curvature Bounds with Applications to Robotics and Image Analysis
+View PDF HTML (experimental)Abstract:Curvature of planar curves serves as a key regularization term for computing second-order minimal paths, due to its tight relevance to desirable geometric properties such as smoothness, rigidity, and elasticity. In this paper, we tackle a more challenging problem in computational physics and geometry problem: tracking minimal paths whose curvature is constrained by arbitrary upper and lower bounds. For that purpose, we propose a new curvature-bounded geodesic model, developed under the Hamilton-Jacobi-Bellman (HJB) partial differential equation (PDE) framework. It provides strong geometric control over minimal paths by enforcing curvature range constraints, whose paths are smooth and of bounded curvature limitation. We also present a discretization scheme for the Hamiltonian and the HJB PDE incorporating curvature bounds, allowing efficient solver for estimating numerical solutions to the model. Finally, we illustrate the capability of the proposed curvature-bounded geodesic model in applications of robot path planning and curvilinear structures tracking from images. Numerical experiments demonstrate that the proposed curvature-bounded geodesic model serves as a powerful and robust tool for finding satisfactory paths.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

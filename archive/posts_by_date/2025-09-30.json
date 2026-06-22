@@ -1,0 +1,44 @@
+{
+  "date": "2025-09-30",
+  "count": 2,
+  "posts": [
+    {
+      "id": "a2c08b63ac4b",
+      "title": "Botober 2025: Terrible recipes from a tiny neural net",
+      "url": "https://www.aiweirdness.com/tiny-jello/",
+      "source": "AI Weirdness",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "low",
+      "published": "2025-09-30T22:31:05+00:00",
+      "summary": "After seeing generated text evolve from the days of tiny neural networks to today&apos;s ChatGPT-style large language models, I have to conclude: there&apos;s something special about the tiny guys. Maybe it&apos;s the way the tiny neural networks string together text letter by letter just",
+      "author": "Janelle Shane",
+      "tags": [
+        "botober",
+        "botober 2025",
+        "jello",
+        "recipes",
+        "vintage recipes",
+        "vintage neural networks",
+        "char-rnn",
+        "the recipe calls for one banana michael, how hard could that be",
+        "you may think cucumteragus is cucumber plus asparagus but then where does the t come from"
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "527e2a3fbbab",
+      "title": "Bonus: Char-rnn's jello creations",
+      "url": "https://www.aiweirdness.com/bonus-char-rnns-jello-creations/",
+      "source": "AI Weirdness",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "low",
+      "published": "2025-09-30T22:30:21+00:00",
+      "summary": "",
+      "author": "Janelle Shane",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

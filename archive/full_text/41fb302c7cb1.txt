@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Evaluating Dynamic Range Compressor Models Using Control-Voltage Measurements: an Approach and Dataset
+View PDF HTML (experimental)Abstract:The quantity that defines the behavior of a dynamic range compressor is the time-varying gain applied to the signal as a function of the input level. However, models of these devices are typically evaluated using proxy metrics because isolating the gain reduction signal from the audio input-output data included in existing datasets creates an ill-conditioned inverse problem. It is unclear how accurately these metrics describe the behavior the model is tasked with emulating, particularly as waveform-based metrics can be influenced by secondary effects introduced by analog processing and capture, even when those effects are inaudible. We investigate a method of evaluation in which the gain-reduction signal produced by a model is measured directly against a gain-reduction control voltage signal produced by the hardware. To evaluate the efficacy of this metric as a learning objective, a gray-box model is trained using loss computed directly over the gain control signals alongside two models trained using common proxy losses. The models trained using proxy losses did not achieve parity with models trained directly on the gain control signal when evaluated with respect to the underlying control trajectory, and the waveform-domain metrics assigned similar errors to models that were clearly separated by the direct metric. To facilitate further exploration of this method of evaluation, we present a Solid State Logic bus compressor dataset that includes the gain control voltage signal captured alongside the audio output.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Systems and Control
+Title:QUIET: Quantifying Underutilized Influential Edges for Targeted Synchronization
+View PDF HTML (experimental)Abstract:Network control theory can be used to model intrinsic and extrinsic strategies to steer neural dynamics. Standard approaches are node-centric, structural, and focused on achieving desired instantaneous states. Here, we develop an edge-centric approach which incorporates both structure and function to achieve extended patterns of neural dynamics characterized by desired synchronization states. Our method, Quantifying Underutilized Influential Edges for Targeted Synchronization (QUIET), is an edge-centric framework that integrates structural controllability of individual white matter connections and mutual information between pairwise functional timeseries to identify energy-efficient synchronization pathways. QUIET identifies quiet highways, edges that are structurally influential but functionally underutilized, to optimize regional synchronization. We validated QUIET across 75 synthetic configurations, where QUIET-ranked edge sets significantly outperformed random selection in 93% of cases (p<0.01). The framework, tested on Human Connectome Project participants, revealed that the control energy required for synchronization of the salience network correlates with fluid intelligence. QUIET, applied to healthy adults undergoing dexmedetomidine-induced unresponsiveness, showed that the frontoparietal and default-mode networks exhibited the largest control energy required for synchronization in both awake and sedated states. QUIET is released as a stand-alone software to be used to study theoretically-defined synchronization pathways, which in turn could inform testable hypotheses in perturbative studies.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

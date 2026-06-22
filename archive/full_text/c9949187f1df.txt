@@ -1,0 +1,65 @@
+This article will go through solving a fun probability puzzle that one of my favorite YouTubers (3Blue1Brown) put out recently. By the way, if you aren’t familiar with his channel, you need to check him out. He focuses on intuitive visuals and explanations that will make you wonder why math is taught any other way.
+The problem setup
+The short I linked below will give you the best introduction, but I’ll go over the set up briefly here as a supplement.
+Imagine we have a box with multiple strings in it. We randomly select the end of one string and then randomly select the end of another string. We then tie the ends together. One of two things can happen: (1) the ends come from different strings and we now have one, longer string or (2) the second end is from the same string we selected initially and tying them together makes a loop.
+If we tie two separate strings together, we place the longer string back in the box. If we make a loop, we remove it from the box. This process of randomly selecting strings continues until there are no strings left in the box.
+The problem question is, how many loops do we expect this process to create? Or, in less precise, but more practical words – If we repeated this process many times, what is the average number of loops that would be created?
+Key observations about the problem
+Having a good grasp of a problem is always key to finding a good solution. Outside of simply understanding the mechanics covered in the last section, there are some key observations that we will need to understand.
+Observation #1
+Each round of random draws has two random components. The first random draw and the second. The first draw isn’t very important. The second draw is, because it determines if we make a loop or a longer string.
+Observation #2
+Each round results in one fewer string in the box no matter what happens. If a loop is made, the string that made the loop is removed. If a longer string is made, two strings became one, reducing the count of strings in the box by 1.
+Observation #3
+The number of draws is not a random variable. Each round removes a string from the box regardless of the outcome (observation #2). Each round has two draws, so, the number of rounds will be equal to the number of strings. For example, if we have 10 strings, we have 20 random draws in 10 rounds. Note that the last ’round’ has just one remaining string and always results in a loop.
+Observation #4
+This observation builds on the other three and is the most important. From the perspective of counting loops, each round of random draws is independent of the prior rounds. This means that we can break the problem down into individual rounds rather than having to consider the entire sequence of rounds together.
+Note that if we were interested in metrics like the expected circumference of a circle, this observation would not be true. The length of strings (and therefore the circumference of loops) are dependent on the prior rounds.
+Okay, with these observations down, let’s get into how we can solve the problem!
+The “brute force” solution
+Almost all problems like these (and real-life problems) have a brute force-style solution. An approach that is like digging a hole for a swimming pool by hand.
+For this problem, we can make a probability tree and manually calculate the expected number of loops. Looks go through it here.
+This is a clunky, but fine solution for small numbers of strings. In the video, Grant specifically calls out 50 strings as a number to solve for (that would require a tree that has 250 leaves!). He did that to push his audience out of the brute force method into smarter solutions.
+Let’s see if we can come up with a smarter approach.
+Divide and conquer solution
+By really thinking through the characteristics of the random process, we realized that each round of random draws is independent of the others (observation #4). Because of this property, we can calculate the expected value of single draws and then see if we can find a way to combine multiple single draws to solve the problem.
+Expected number of loops from a single draw
+We have already realized that the first random draw isn’t very important (observation #1) – it is really all about the second draw.
+Let’s walk through a simple problem with 4 strings. We do our first random draw to get the first end (it doesn’t really matter which one we choose). Our second random draw can be any of the ends in the box, except the end that we selected for the first draw.
+Imagine we have 4 strings in the box, which gives us 8 ends. After choosing the first end, we can’t choose it again, so we have 7 ends we can choose from. One of the 7 will result in a loop, the other ends will not create a loop. The image below illustrates the set up more clearly than talking through the numbers.
+So, the probability of making a loop is 1/7 and the probability of not making a loop is 6/7 – this yields 1/7 expected loops (1*1/7 + 0*6/7).
+Let’s generalize this to a formula using the number of strings as an input. If S is the number of strings – the number of ends is 2S (two ends per string). After the first selection, we can choose from 2S-1 ends, only one of those ends result in a loop. So, the formula for expected loops is 1/(2S-1).
+Combining multiple draws to solve the full problem
+Now that we’ve created a formula to calculate the expected number of loops for a single round, let’s work through how to combine multiple rounds. Because of observation #4 (the independence of rounds for counting loops) and observation #2 (deterministic number of rounds) we can simply add up the expected loops from each round. Of course, we have to update the number of strings for each round – we can do this using the summation function.
+Now that we have the formula, finishing the challenge is as trivial as plugging in 50 for S which gives us ~2.94 loops – mission accomplished!
+The Monte Carlo solution
+Because this problem has a closed form solution, we could’ve stopped our conversation with the last section. However, there is value in talking about how we could solve this problem with a Monte Carlo simulation. While not necessary for fairly simple problems, Monte Carlo can come to the rescue if we add some complicating wrinkles.
+Monte Carlo simulations estimate values using repeated random processes. In our problem, we simulate the random drawing process multiple times, and take the average of the number of loops counted across the simulations.
+As the number of simulations increases – thanks to the law of large numbers – the Monte Carlo number converges to the true expected value. Here is the link to the full code – I’ll add the loop that creates the actual simulation below.
+from monte_carlo_funcs import create_strings, select_ends, tie_ends
+# Run the Monte Carlo
+list_of_circles = []
+num_strings = 50
+num_simulations = 10000
+if __name__ == "__main__":
+for _ in range(0, num_simulations):
+# create the simulated starting box of strings
+strings = create_strings(num_strings)
+# start circle counter for this simulation
+circle_counter = 0
+# draw from the box until there are no more strings left
+while len(strings) > 0:
+end_1, end_2, strings = select_ends(strings)
+strings, circle_bool = tie_ends(strings, end_1, end_2)
+circle_counter += circle_bool
+# add the number of circles that counts number of circles for each round
+list_of_circles.append(circle_counter)
+print(np.mean(list_of_circles))
+When I ran this (it will change a little each time) I got 2.95 – very close to the correct 2.94. This highlights something important – the Monte Carlo process is a good way to get an estimate, but the flexibility comes at the cost of exactness.
+Making the problem harder
+Let’s take some time to highlight the where the Monte Carlo approach shines by making the problem a lot harder. What if we changed the problem from calculating the expected number of loops to the expected average circumference of the loops. This problem is much more complex because it relies on dependencies between each round of random draws.
+I wasn’t able to figure out a closed-form solution to the problem (one could exist). When we can’t find closed form solutions to problems – which will be the majority of the time – Monte Carlo can save the day! We could easily modify the Monte Carlo code to track the lengths of each string and then use those lengths to calculate the circumferences of loops when they are created. Using Monte Carlo reduces this calculation from a very difficult math problem to a fairly simple coding problem.
+The main takeaway is when creating a closed form solution is difficult or impossible, Monte Carlo can be an easier way of solving the problem.
+Conclusion
+The ability to deeply understand a problem and thoughtfully create a solution has always been a differentiating data science skill – and with our recent reliance on generative AI – it’s becoming an even rarer commodity. I found this puzzle to be a fun exercise to sharpen those skills.
+While you won’t have to calculate the expected number of loops in a box of strings as a data professional (or it is at least very unlikely), you will frequently encounter situations where the path to a solution is not immediately obvious. Deeply understanding the problem, breaking it down into smaller components, and carefully developing a tailored solution are skills that transfer directly to real data science and analytics work.

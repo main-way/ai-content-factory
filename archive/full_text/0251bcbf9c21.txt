@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Fast and Robust On-Device Speaker Diarization: Relative Minimum Cluster Size for Stride-Accelerated Pipelines
+View PDF HTML (experimental)Abstract:Speech applications such as meeting transcription and voice agents would benefit from on-device speaker diarization, but practical adoption is limited by inference cost. We study how far a Pyannote 3.1-based pipeline can be accelerated on consumer hardware (an RTX 5070 Ti GPU and an Apple M4 laptop) while preserving diarization error rate (DER). A simple recipe: coarser segmentation stride and per-chunk embedding, yields multi-fold speedups and is DER-neutral on AMI, but degrades sharply on in-the-wild data: on VoxConverse, DER rises from 0.075 to 0.113. We trace the failure to speaker under-counting in the clustering stage, caused by a fixed minimum cluster size interacting with the reduced number of embeddings per speaker. We propose a relative minimum cluster size, mcs = round(f * n) with f = 0.01, which adapts to the embedding budget per recording. A single value of f recovers VoxConverse DER to 0.079 (about 89% of the lost accuracy) while keeping AMI flat, and the accelerated pipeline reaches up to 12.2x speedup on AMI (MPS) over our CAM++ baseline.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

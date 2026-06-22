@@ -1,0 +1,20 @@
+{
+  "date": "2021-01-02",
+  "count": 1,
+  "posts": [
+    {
+      "id": "02453aa81958",
+      "title": "Controllable Neural Text Generation",
+      "url": "https://lilianweng.github.io/posts/2021-01-02-controllable-text-generation/",
+      "source": "Lil'Log (Lilian Weng)",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2021-01-02T00:00:00+00:00",
+      "summary": "[Updated on 2021-02-01: Updated to version 2.0 with several work added and many typos fixed.] [Updated on 2021-05-26: Add P-tuning and Prompt Tuning in the &ldquo;prompt design&rdquo; section.] [Updated on 2021-09-19: Add &ldquo;unlikelihood training&rdquo; .]",
+      "author": "",
+      "tags": [],
+      "has_full_text": true
+    }
+  ]
+}

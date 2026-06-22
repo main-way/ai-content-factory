@@ -1,0 +1,17 @@
+Computer Science > Sound
+Title:LISTEN: Lightweight Industrial Sound-representable Transformer for Edge Notification
+View PDFAbstract:Deep learning-based machine listening is broadening the scope of industrial acoustic analysis, yet its widespread implementation on live shop floors is hindered by the reliance on large, task-specific annotated datasets for every new task. While emerging general-purpose sound foundation models aim to alleviate data dependency, they reveal critical dilemmas in practice. General-purpose sound foundation models are computationally expensive and fail in industrial scenarios characterized by tonal harmonics, broadband noise, and transient fault events, making instant, on-site deployment impractical. These challenges combined mean that a practical, end-to-end system for deploying a sound foundation model on a live shop floor has remained elusive. To address this challenge, this study introduces LISTEN (Lightweight Industrial Sound-representable Transformer for Edge Notification), the first lightweight foundation model specialized for industrial sound. Through Knowledge Distillation (KD) from the large-scale teacher model IMPACT (Industrial Machine Perception via Acoustic Cognitive Transformer), we construct LISTEN optimized for resource-constrained edge environments. By freezing the backbone and training only a shallow head on minimal target-process data, rather than performing full fine-tuning or retraining, LISTEN achieves nearly identical performance to IMPACT across diverse manufacturing processes. This study further demonstrates a complete system for real-time machine monitoring, encompassing data acquisition with Industrial Internet of Things (IIoT) devices, rapid model adaptation using minimal annotated data, and real-time monitoring on a low-cost edge device. By validating the entire system on a live CNC machine, this work establishes the first feasible end-to-end system for deploying a lightweight industrial sound foundation model in an active industrial environment.
+Submission history
+From: Changheon Han [view email][v1] Thu, 10 Jul 2025 16:02:50 UTC (6,371 KB)
+[v2] Fri, 11 Jul 2025 13:50:18 UTC (6,396 KB)
+[v3] Thu, 11 Jun 2026 14:13:45 UTC (20,479 KB)
+[v4] Sat, 13 Jun 2026 17:39:14 UTC (20,494 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

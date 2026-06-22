@@ -1,0 +1,2 @@
+Monorepos that deploy many projects can now configure all of their project's Git settings more conveniently.
+Previously, if you wanted to consistently configure each project's settings for commit status, repository_dispatch events, etc., you had to click through to every project's settings and consistently apply the same setting. Now, you can do it all in one place.

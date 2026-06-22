@@ -1,0 +1,23 @@
+New AI model called "Count Anything" does exactly what it says, and that's harder than it sounds
+Key Points
+- "Count Anything" counts and labels objects across a wide variety of image types, from satellite imagery and medical scans to everyday photos, using nothing more than a text prompt.
+- The system builds on Meta's SAM3 and combines two approaches: it draws boxes around large objects and places points on small, dense targets, then merges the results without double counting.
+- Trained on the custom-built CLOC dataset, the model outperforms many competitors in tests but still struggles with ambiguous terms and extremely dense scenes.
+Large language models can describe images, interpret charts, and pull text from photos. Multimodality is a given for modern AI systems. But one seemingly simple task remains surprisingly hard: reliably counting objects in an image.
+Getting those counts right has real consequences, whether it's a doctor reading a scan, a farmer estimating crop yields, or a city planner analyzing traffic. Until now, each of these tasks has required its own specialized system.
+That's where "Count Anything" comes in. The new AI model from researchers at Tsinghua University and other institutions aims to count objects across very different types of images, whether that's heads in crowds, cars in satellite photos, cells in medical scans, or bacterial colonies in the lab.
+It's a familiar problem. A system that reliably counts heads in a crowd often chokes on tightly packed cells under a microscope or tiny vehicles seen from above. The researchers want a single model that takes text input, marks every counted object in the image, and handles wildly different image types.
+Two counters are better than one
+The key idea is combining two approaches that complement each other. One specializes in large, clearly visible objects and draws bounding boxes around them. The other handles small, densely packed objects by placing a dot on each detected target.
+Both predictions get merged at the end. A simple rule keeps the same object from being counted twice. When both counters flag the same target, only the prediction with higher confidence survives.
+The system builds on a pretrained model from Meta called SAM3 that can process images and text together. Count Anything adds small adapter components on top for the counting task instead of retraining the whole model from scratch.
+A single dataset spanning six visual domains
+For the model to learn this broadly, the researchers first had to build a matching dataset. Existing public datasets were typically built for a single purpose, like tumor cells or satellite images. The researchers merged them, cleaned up conflicting labels, and released the result as CLOC, which they say is the largest dataset for text-guided counting to date.
+It contains about 220,000 images, 619 categories, and 15 million labeled objects across six domains. Those include everyday photos, satellite and drone imagery, medical tissue samples, microscopic cell images, agricultural images like wheat ears, and bacterial culture photos.
+Strong lead on its own benchmark
+In the team's own comparison tests, Count Anything sits well ahead of competing systems like CountGD, CLIP-Count, and Grounding DINO, according to the paper. On average, the model miscounts by about nine objects per queried category in an image. The best competing model is off by more than twice that. For pure crowd counting, Count Anything stays competitive but doesn't quite match the best specialized systems.
+The researchers acknowledge further limits. When terms are ambiguous or highly specialized, the model can miss objects or misclassify them. In extremely dense scenes with heavy occlusion, it also becomes hard to tell whether two predictions refer to the same object or two different ones. The code for Count Anything is available on GitHub.
+How much current AI systems still struggle with basic visual tasks was recently shown by the BabyVision benchmark. In tests with 80 children, most frontier models scored below the average three-year-old. Even top models like Gemini 3 Pro barely hit 50 percent, while adults scored above 94 percent. The gap was especially stark when counting occluded 3D blocks, where the best model managed just 20.5 percent. Humans solved it without a single error.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

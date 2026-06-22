@@ -1,0 +1,171 @@
+Should an agent learn only from the behavior it is currently using, or can it also learn from behavior generated in some other way?
+That is the central difference between on-policy and off-policy learning.
+To make that distinction intuitive, we need one basic definition. In reinforcement learning, a policy is the rule or strategy an agent uses to decide what action to take in each situation. Once that idea is clear, the contrast becomes easier to see. An on-policy method learns from the same strategy the agent is currently following. An off-policy method separates the two. The agent may behave according to one strategy while learning about another.
+This is more than just terminology. It affects some of the most important properties of a learning algorithm: how it explores, how much data it needs, whether it can learn from old experience, and how stable training is likely to be. In settings where data is cheap, this may seem like a technical choice. In settings where data is costly, slow, or risky to collect, it becomes a practical necessity.
+Consider a robot learning to move through a busy warehouse. For safety reasons, its behavior during training may need to remain conservative. An on-policy method improves that conservative behavior directly. An off-policy method allows something more flexible e.g., the robot can continue acting cautiously while learning, from collected experience, about a different strategy that might eventually perform better. That separation between how an agent behaves and what it learns about is the key idea behind off-policy learning.
+This single distinction helps organize a large part of reinforcement learning. It explains the classical contrast between SARSA and Q-learning, and it continues to shape many modern deep RL methods. In this article, we will unpack that idea carefully, starting from the tabular setting where every update is transparent, and then use that foundation to build intuition for the broader RL landscape.
+What You’ll Take Away:
+- On-policy methods learn from the same strategy the agent is currently using to interact with the environment. They are often more stable and easier to reason about, but they usually cannot make as much use of old data. SARSA is the standard tabular example of on-policy learning.
+- Off-policy methods learn about a target strategy using data collected from a different behavior strategy. This makes them more data-efficient and allows them to learn from replay buffers, logged data, or another agent’s experience, but training can be less stable. Q-learning is the standard tabular example of off-policy learning.
+- Expected SARSA sits between them by taking an expectation over next actions, it often reduces variance and can be used in either an on-policy or off-policy setting.
+- This distinction influences some of the most important properties of an RL system, including exploration, sample efficiency, stability, and safety during learning.
+- Tabular methods are not just historical stepping stones—they provide the clearest way to build intuition for the same ideas that reappear in modern deep RL.
+To make this distinction precise, we need to step back and ask a more basic question: what is an RL agent actually trying to learn? Before comparing algorithms like SARSA and Q-learning, it helps to understand the object they are updating. In most tabular RL methods, the agent is not learning actions directly; it is learning estimates of how good different actions are in different situations. Once that idea is clear, the difference between on-policy and off-policy learning becomes much easier to see.
+1. What’s the Agent Trying to Learn?
+Imagine an agent wandering around a world. At each step, it’s in some state s, picks an action a, gets a reward r, and lands in a new state s’. Its goal: maximize the total reward it collects over time.
+But to do that, the agent needs a way to evaluate its choices. It has to answer questions like:
+- Is taking action (a) in state (s) a good idea?
+- Will that choice lead to better rewards later on?
+- How much does the answer depend on what the agent does next?
+A central concept in reinforcement learning is the action-value function, usually written as (Q(s, a)). In plain language, this function measures how good it is to take action (a) in state (s), taking into account not just the immediate reward, but also the future rewards that may follow.
+More precisely, under a policy π, the action-value function is defined as the expected return when we start in state s, take action a, and then follow policy π forever after:
+where (Gt) is the total discounted return from time step (t):
+Putting those together, we can write the action-value function explicitly as:
+The notation may look heavy at first, but the intuition is simple:
+If I take action (a) in state (s) now, and then continue following policy (π), how much reward should I expect in total?
+The value of an action does not depend only on what happens immediately after it is taken. It also depends on what the agent does afterwards. The same action can have different values under different future strategies. That is why the action-value function is always defined with respect to a policy. And this is exactly where the on-policy/off-policy distinction begins.
+We have to remember two important terms:
+- Target policy (π): the policy the agent is trying to evaluate or improve.
+- Behavior policy (b): the policy that actually generates the experience.
+With those definitions, we can state the distinction clearly:
+- In on-policy learning, the agent learns about the same policy it is using to act. That means the target policy and the behavior policy are the same: (π= b).
+- In off-policy learning, the agent learns about one policy while following another. In that case, the target policy and the behavior policy are different: (\pi \neq b).
+This may seem like a small difference in wording, but it has big consequences.
+In an on-policy method, the agent improves the strategy it is actually using in the environment. In an off-policy method, the agent may behave in one way, perhaps cautiously or randomly for exploration, while learning about a different strategy in the background. That separation is what allows off-policy methods to reuse old data, learn from exploratory actions, and even benefit from experience collected by another agent.
+A simple analogy helps. Imagine you are learning to play chess. An on-policy approach is like improving by analyzing the exact moves you actually make during your games. An off-policy approach is like playing one style in practice while studying the consequences of stronger moves from game records or expert examples. In both cases you are learning, but the relationship between how you act and what you learn about is different. That relationship is the key idea behind this article.
+In the next section, we will make this distinction concrete by looking at how value estimates are updated in practice. That is where the contrast between SARSA and Q-learning becomes especially illuminating.
+2. Temporal-Difference Learning: Where the Story Really Begins
+Before comparing SARSA and Q-learning, we need to understand the idea they both build on i.e., Temporal-Difference (TD) learning.
+If on-policy versus off-policy tells us what kind of policy relationship an algorithm uses, TD learning tells us how the agent updates what it knows from experience. In that sense, TD learning is the shared foundation beneath many of the most important reinforcement learning methods.
+Historically, TD learning sits between two older ideas:
+- Monte Carlo methods, which learn from complete episodes. They use actual returns from experience, but they can only update after an episode ends.
+- Dynamic Programming, which updates estimates by bootstrapping from other estimates. It can be very efficient, but it assumes access to a full model of the environment.
+TD learning combines the best of both worlds. Like Monte Carlo methods, it learns directly from experience and does not require a model of the environment. Like Dynamic Programming, it updates estimates using other estimates, rather than waiting until the very end of an episode.
+That combination is what makes TD learning so powerful.
+Suppose the agent is trying to estimate the value of a state (V(s)). After moving from state (St) to (St+1) and receiving reward (Rt+1), a one-step TD update looks like this:
+V(St) ← V(St) + α [Rt+1 + γV(St+1) − V(St)]
+At first glance, this may look like just another equation, but the logic is simple. The agent starts with its current estimate (V(S_t)), then nudges that estimate toward a better target:
+Target = Rt+1 + γV(St+1)
+This target says: take the immediate reward you just observed, then add the discounted estimate of what comes next. The quantity inside the brackets,
+δt = Rt+1 + γV(St+1) − V(St)
+is called the TD error. You can think of the TD error as a measure of surprise:
+- If it is close to zero, the agent’s prediction was about right.
+- If it is positive, things turned out better than expected.
+- If it is negative, things turned out worse than expected.
+So the TD update is really a very natural idea: predict, observe, compare, and correct.
+This is also where the idea of bootstrapping enters. In TD learning, the agent updates an estimate using another estimate. Instead of waiting to see the full future return, it uses its current guess about the next state as part of the target. That makes learning faster and more incremental, which is one reason TD methods are so central in reinforcement learning.
+But bootstrapping comes with an important consequence: which estimate we bootstrap from matters.
+And that is exactly where the on-policy/off-policy distinction begins to show up in algorithmic form.
+Both SARSA and Q-learning are TD control methods. They use TD-style updates to learn action values and improve behavior over time. The crucial difference between them is the target they bootstrap from:
+- SARSA updates using the action the agent actually takes next.
+- Q-learning updates using the action that currently looks best according to its estimates.
+That single change is enough to make one method on-policy and the other off-policy.
+In the next section, we will see exactly how.
+3. SARSA: Learning the Consequences of Our Own Choices
+SARSA is the classic on‑policy TD control algorithm. Its name comes from the tuple it uses:
+(State, Action, Reward, next State, next Action).
+Here’s the update rule:
+Q(St,At) ← Q(St,At) + α[Rt+1+γ Q(St+1,At+1)−Q(St,At)]
+That Q(St+1, At+1) is the value of the action the agent actually committed to for the next step. It is not the best action, not an average, just the action it is really going to take.
+That might not sound like a big deal, but it changes everything. If the agent uses an ε‑greedy policy (mostly greedy, sometimes random), then SARSA learns the value of that ε‑greedy policy, warts and all. The agent takes its own imperfections into account.
+Code snippet (conceptual):
+# SARSA update
+next_action = policy(Q, next_state)
+td_target = reward + gamma * Q[next_state, next_action]
+td_error = td_target - Q[state, action]
+Q[state, action] += alpha * td_error
+After updating Q, the agent simply re‑derives its ε‑greedy policy from the new Q values. If the policy eventually visits all state‑action pairs and ε decays to zero, SARSA converges to the optimal policy. But during learning, it’s learning about its own (imperfect) behavior.
+A Walk on the Cliff
+The best way to see this in action is Cliff Walking. Picture a grid:
+Start at S, goal at G. Each step costs −1. If we step on the cliff, we get −100 and reset to S.
+We have two obvious strategies:
+- The safe path – go up and around, far from the cliff.
+- The cliff‑hugging path – just walk along the bottom row straight to the goal.
+SARSA learns the safe path.
+Why? Because it knows it sometimes takes random actions. If we walk right next to the cliff, occasionally we will stumble off. SARSA’s value estimates reflect that risk. So it prefers the inland route.
+If our agent really does make mistakes sometimes, taking the safe route is the smart thing to do. In the classic Cliff Walking experiment, ε is held constant at 0.1, so SARSA never becomes fully greedy; that’s why its learned policy stays safe. With decaying ε, SARSA would eventually converge to the optimal path, but would have incurred many more falls along the way.
+4. Q‑Learning: Imagining a Perfect Future
+Q‑learning flips the script. Here’s its update:
+Instead of using the next action’s value, it uses the maximum over all possible next actions. That’s the off‑policy move. The agent may be stumbling around with ε‑greedy, but its updates act as if it will act optimally from the next step onward.
+Code snippet (conceptual):
+# Q-learning update
+td_target = reward + gamma * np.max(Q[next_state, :])
+td_error = td_target - Q[state, action]
+Q[state, action] += alpha * td_error
+Q‑Learning on Cliff Walking
+Back to the cliff. Q‑learning learns the cliff‑hugging path.
+It imagines a future where it acts perfectly—no random stumbles. In that perfect world, walking next to the cliff is fine, because a perfect agent never falls. The max operator assumes optimal behavior at every future step, so the risk of exploration simply disappears from its estimates.
+What does that mean in practice? During training, Q‑learning often does worse online than SARSA. It walks dangerously close to the cliff and occasionally falls, racking up big penalties. SARSA, playing it safe, gets a higher cumulative reward during learning.
+But after training, when we turn off exploration, Q‑learning walks the optimal short path. SARSA sticks to the longer safe route.
+This is the classic trade‑off: better final performance vs. better performance while learning.
+5. Expected SARSA: The Best of Both Worlds?
+There’s a third algorithm that sits right between SARSA and Q‑learning: Expected SARSA. It uses an expectation over all next actions instead of a single sample or a max:
+That sum is a weighted average of all possible next actions, where the weights are the probabilities from the current policy.
+Why is this cool?
+- No variance from action sampling. SARSA’s updates bounce around because the next action is random. Expected SARSA averages over all possibilities, giving much smoother updates.
+- It can be on‑ or off‑policy. If the target policy π is the same as the behavior policy, it’s on‑policy. If π is greedy while behavior is exploratory, it’s off‑policy.
+- It includes Q‑learning as a special case. When ππ is greedy, the sum collapses to maxaQ(St+1, a).
+In the Cliff Walking experiments, Expected SARSA usually beats both SARSA and Q‑learning across a range of step sizes. The downside? Computing that sum requires iterating over all actions—fine for small grids, but expensive when we have large or continuous action spaces. That’s why Q‑learning (and its deep version DQN) remains more popular in practice.
+6. The Hidden Trap: Maximization Bias in Q‑Learning
+Q‑learning has a sneaky flaw: maximization bias. Because it uses maxaQ(St+1,a), and those Q values are just noisy estimates, the maximum tends to be an overestimate.
+Imagine all true action values are 0, but our estimates have some random noise. The maximum of those noisy estimates will usually be positive. Q‑learning then bootstraps from that positive overestimate, making it even larger. Over time, the agent becomes overconfident.
+The fix, from the textbook, is Double Q‑learning. Use two independent Q‑functions, Q1 and Q2. Let one pick the best action, the other evaluate it:
+To keep things symmetric, the update for would be:
+Decoupling selection from evaluation cancels out the positive bias. This idea later gave us Double DQN, a key improvement over the original Deep Q‑Network.
+7. The n‑Step View: A Spectrum, Not a Binary
+One of the most mind‑expanding ideas in the textbook is that one‑step TD and Monte Carlo are just two ends of a spectrum, connected by n‑step returns.
+The n‑step TD target looks like this:
+- n=1 gives us the standard one‑step TD target (used by SARSA and Q‑learning).
+- n=∞ gives us the full Monte Carlo return, no bootstrapping.
+Larger n means more reliance on actual rewards (lower bias) but also more variance. Smaller n means more reliance on current estimates (higher bias) but lower variance and faster propagation.
+The on‑/off‑policy distinction gets even richer here. For n‑step SARSA, the actions in the trajectory must come from the policy we are learning. For off‑policy n‑step methods, we need importance sampling to correct for mismatched distributions. That’s a deep topic, but it shows that the choice between on‑ and off‑policy isn’t a simple switch; it plays out across all temporal horizons.
+8. So, when Should we use what?
+Let’s get practical. When we are building a real system, how do we choose?
+Sample Efficiency & Experience Replay
+Off‑policy’s superpower is reusing old data. Because its updates don’t assume the data came from the current policy, we can store every transition in a replay buffer and sample it thousands of times. That’s why DQN works so well—it learns from millions of past experiences. On‑policy methods like PPO have to collect fresh data after every update, which is much less sample‑efficient.
+Online Performance During Learning
+If we are deploying an agent that has to perform well from day one, we probably want an on‑policy method. SARSA (or PPO) will be more cautious and stable while learning. Off‑policy methods may explore too aggressively and cost us real‑world penalties.
+Safety & Risk Sensitivity
+This is a big one. SARSA naturally builds risk‑awareness because it learns from its own imperfect execution. If we know our agent will occasionally make mistakes, SARSA will avoid states where a mistake is catastrophic. Q‑learning assumes perfect execution in the future, so it can be dangerously overconfident.
+The Deadly Triad (Why Deep RL Sometimes Fails)
+When we combine function approximation (like a neural network) + bootstrapping + off‑policy learning, we get what is known as the deadly triad. This combination can lead to divergence or instability unless carefully managed.
+9. Cheat Sheet: SARSA vs. Q‑Learning vs. Expected SARSA
+| Property | SARSA | Q‑Learning | Depends on the variant |
+| Policy paradigm | On‑policy | Off‑policy | Either |
+| Bootstrap target | Sampled next action | Max next action | Expected next action |
+| Online performance | Better | Worse | Better |
+| Asymptotic policy quality | Suboptimal (with fixed ε) | Optimal | Optimal |
+| Update variance | Higher | Medium | Lowest |
+| Computational cost | Low | Low | Medium |
+| Experience reuse | No | Yes | Yes (off‑policy variant) |
+| Maximization bias | No | Yes | No |
+| Deadly triad risk | Low | Higher | Depends on variant |
+10. The Deep Learning Connection
+All of this isn’t just academic. Every modern deep RL algorithm inherits the soul of these tabular methods:
+- DQN: Q‑learning with a neural network, replay buffer, and target network. Off‑policy through and through.
+- Double DQN: Q‑learning with the Double Q‑learning fix.
+- PPO: On‑policy, stable, uses fresh data each time.
+- SAC: Off‑policy actor‑critic with entropy bonus, uses replay buffer for sample efficiency.
+- Experience replay: only possible because of off‑policy learning.
+Every one of those algorithms is just a particular answer to the same fundamental question.
+11. So, which Philosophy Do You Choose?
+There’s no universal right answer. It depends on what you’re building.
+Go on‑policy if:
+- Safety matters (you don’t want risky behavior during learning).
+- You need good performance from the start.
+- You can afford to collect fresh data after each update.
+- You’re worried about stability (the deadly triad).
+Go off‑policy if:
+- Sample efficiency is critical (e.g., robotics, expensive simulations).
+- You have a replay buffer or pre‑collected data.
+- You care mainly about final performance, and can tolerate some messy learning.
+- You’re in simulation where steps are cheap.
+Consider Expected SARSA if:
+- You want lower variance updates.
+- You might want to switch between on‑ and off‑policy modes.
+- Your action space is small enough to compute expectations.
+In practice, many modern systems mix the two: an off‑policy critic for efficient learning, an on‑policy actor for stable improvement. But understanding the trade‑offs at the tabular level gives you the power to make those choices deliberately.
+The gridworld examples aren’t training wheels—they’re the foundation. Once you’ve internalized them, you can look at any RL algorithm and immediately see where it sits on the on‑/off‑policy spectrum, and why it works the way it does.
+References
+- Sutton, R. S., & Barto, A. G. (2018). Reinforcement Learning: An Introduction (2nd ed.). MIT Press. Available at incompleteideas.net
+If this clicked for you, you might enjoy the next pieces in this series, on n‑step methods and eligibility traces, where the on‑/off‑policy distinction gets even richer, and the connections to modern algorithms go even deeper.

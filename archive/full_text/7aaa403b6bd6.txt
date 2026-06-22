@@ -1,0 +1,53 @@
+I tried the model extensively day and night since its release, and for the 72 hours that the model was available.
+Unfortunately, the model is not currently available, as it was suspended by an order of the US government. However, since I got to try out the model extensively, I want to give my thoughts on the model, what I was able to do with the model, its limitations, and so on. Even though the model is not currently available, I believe and hope that it will become available again soon. I also think that in a few months’ time we’ll see other models with the same capabilities.
+Of course, there have been a lot of articles discussing Claude Fable and its capabilities. I believe this article is interesting because I spend every single day working with Claude Code and have been doing it essentially every day since the start of the year 2026. When Claude Fable was released, I immediately tested the model to its full capabilities. I had a series of tasks that Opus was not able to one-shot or complete easily, which I tested Claude Fable on to really test its capabilities.
+You should just check out this article to learn my opinion on Claude Fable’s capabilities, especially comparing it to other frontier models such as Claude Opus 4.8 and GPT-5.5.
+Why care about Claude Fable 5
+First of all, we should start with why you should care about Claude Fable 5. This is perhaps the most anticipated LLM ever, as it had a lot of hype going around it for months before it was launched.
+Anthropic itself spent a lot of time hyping up the model, talking about its capabilities and how dangerous it could be in the wrong hands.
+A lot of people were thus excited for the launch of the model, and it finally launched last week with full access to anyone with a Claude Pro or Max subscription.
+The model was made widely available to anyone, to everyone. Personally, I did not experience any issues using the model until Saturday morning, Norwegian time. Even though the model was not available for too long (I believe around 72 hours), I feel like I got to test the model extensively and formed a good opinion on both its upsides, downsides, and overall capabilities.
+What Claude Fable does well
+First of all, I want to cover what Claude Fable did well. My overall impression is that it’s significantly better than Claude Opus 4.8. I have read other people online mentioning how they felt that the capabilities didn’t go that much further than Claude Opus 4.8. In my opinion, this was obviously not true. I believe that people reporting this have not tested Claude Fable on complex enough tasks.
+Of course, if you try Claude Fable on an already easy task that Claude Opus is able to do, you’ll not experience its full capabilities. Where Claude Fable really shines is when you apply it to super complex coding tasks.
+Completing complex tasks end-to-end
+I had several tasks I was working on where I had spent some time with Claude Opus 4.8 to implement it. Opus was definitely able to implement it, but it wasn’t a one-shot implementation, and I had to manually guide Claude Opus through some of the implementations.
+These tasks were, for example:
+- A feature implementation where I had to change code in multiple repos
+- Fixing an issue/bug that a customer experienced, where I had to improve the information extraction capabilities of an LLM
+Unfortunately, I can’t go into more detail about these issues because it’s work that’s in a closed codebase. What I did to compare Claude Opus versus Claude Fable is that I had previously applied Claude Opus to these problems and solved them with quite a bit of manual direction. I then applied it to Claude Fable, and it was able to one-shot the problems. A clear sign that Fable is a more powerful model than Opus.
+As a more generic note on Fable’s capabilities, I would say the following:
+Claude Fable is more able to complete tasks end-to-end, with both better understanding of ambiguities and user intent, better at implementing the actual planned solution, and better at verifying the solution is actually correct through navigating on the computer or running integration tests.
+I simply found that Claude Fable was willing to run for longer periods of time, completing more complex tasks without giving up or ending up in recurring issues. I simply felt that tasks were now being done more autonomously, and I didn’t have to give that much direction to ensure the model was aligned with my intentions.
+Discovering issues in codebases
+Another incredible capability I noticed in Claude Fable was that it was much better than Claude Opus at discovering issues in codebases, either finding bugs or looking for refactoring opportunities or potential future issues.
+I constantly run a prompt similar to the one below to discover issues in my codebase.
+Scan thoroughly through the codebase to identify any potential bugs,
+issues, or refactoring opportunities, and come back to me with an
+HTML report with issues prioritized from most severe to least severe.
+With Claude Opus, I ran this same prompt and didn’t get good results either. Claude Opus wasn’t able to discover any more refactoring opportunities or bugs, or the issues it discovered weren’t really relevant. (Of course, note that this was the case after I had already been doing a lot of refactoring and bug detection with Claude Opus in a specific repository.)
+However, when I then applied Claude Fable with the exact same prompt, it started finding a lot of severe issues, both security-wise and actual bugs, and also finding a lot of good refactoring opportunities that Claude Opus was not able to see.
+I immediately started going through all the repositories with Claude Fable running this prompt and fixing all the issues. I pushed a lot of code that vastly increased the quality of my codebases.
+I think this is probably the single clearest sign that Fable is a more powerful model than Opus. You could run the exact same prompt in the same codebase where Fable is able to detect a bunch of issues that Claude Opus was not able to detect.
+I’m just happy that I got to run this refactoring, bug detection, and fixing a lot before the model was unfortunately suspended.
+What Claude Fable doesn’t do well
+In the previous section, I covered what Claude Fable does really well. I think it’s important to also highlight some downsides of Claude Fable, considering it’s not a perfect model.
+Price
+Claude Fable is definitely the most powerful coding model I’ve ever used. However, one of the major issues is how many tokens it spends to complete tasks.
+Naturally, this is not an issue with the model itself. It’s more of an issue with the rate limits that you have with Anthropic. Using Claude Fable with a subscription, I started hitting the subscription limit way faster.
+This is definitely a limitation, as you cannot just run the model infinitely anymore. Furthermore, I would argue that the subscription pricing of Claude Fable is very prohibitive for almost all companies. Running a model that costs $10 per million in and $50 per million out is not feasible for basically anyone but the largest of companies.
+Of course, you could argue that you can use Claude Fable only for planning and only for bug detection, and then use Claude Opus for actual implementations. I agree this could probably be done, and you would still reap most of the benefits from Claude Fable; however, spending a lot of time optimizing which model you use in which situations is very time-consuming and definitely something you want to avoid if you want to be as productive and effective as possible.
+This is one of the major downsides, I’d argue, rate limits and how much you can use the model/the cost of the model if you’re using API pricing.
+Sometimes the model is overly eager
+Another small downside I would also like to cover with Claude Fable is that the model is sometimes overly eager to find issues or perform implementations. Sometimes I found that the model was implementing things in an overly complex manner. For example, changing way more lines of code than it really needed to, or finding more issues in a codebase where a lot of the issues weren’t really that severe.
+I find this slightly annoying sometimes, but I also believe that this is a trade-off that Anthropic has accepted. You, of course, want the model to always look for issues and constantly try to fix them, and you want the fix to work immediately, of course. It’s hard to balance this eagerness and, at the same time, avoid the model becoming overly eager to find issues and fix them.
+Overall, however, this is quite a small downside. It’s just one small thing I noticed when using Claude Fable. By far the biggest downside is the prohibitive pricing of the model.
+Conclusion
+In this article, I covered my thoughts on Claude Fable. I’ve compared it against the previous frontier model from Anthropic, which was Claude Opus 4.8. The Claude Fable 5 model is incredible, but also has some downsides:
+- One being that it’s overly eager, which I believe is quite a small downside.
+- The pricing. The pricing is, of course, an important downside. However, it’s not an issue with the model itself, and the best models are always going to cost a lot of money. People can make their own consideration if the model is worth what you have to pay for it.
+All in all, however, it’s a very powerful model. I hope that it becomes available again and that other models, both from other frontier labs and open source models, will reach these capabilities in a few months, so that we have even more powerful coding agents to perform software engineering tasks.
+Also, check out How to Effectively Run Many Claude Code Agents in Parallel.
+👉 My free eBook and Webinar:
+👉 Find me on socials:
+💌 Substack

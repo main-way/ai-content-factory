@@ -1,0 +1,12 @@
+Quantitative Biology > Neurons and Cognition
+Title:Unambiguous Representations in Neural Networks: An Information-Theoretic Approach to Intentionality
+View PDF HTML (experimental)Abstract:Representations pervade our daily experience, from letters representing sounds to bit strings encoding digital files. While such representations require externally defined decoders to convey meaning, conscious experience is fundamentally different: a neural state corresponding to perceiving a red square cannot alternatively encode the experience of a green triangle. This intrinsic property of consciousness suggests that conscious representations must be unambiguous in a way that conventional representations are not. We formalize this intuition using information theory, defining representational ambiguity as the conditional entropy H(I|R) over possible interpretations I given a representation R. Through experiments on neural networks trained to classify MNIST digits, we demonstrate that relational structures in network connectivity can unambiguously encode representational content. From relational structure alone, we achieve perfect (100%) accuracy for dropout-trained networks and 38% for standard backpropagation (chance: 10%) in identifying output neuron class identity, despite identical task performance, demonstrating that representational ambiguity can arise orthogonally to behavioral accuracy. We further show that spatial position of input neurons, relevant to phenomenal properties like visual field location, can be decoded from network connectivity with R^2 up to 0.844. These results provide a quantitative method for measuring representational ambiguity in neural systems and demonstrate that neural networks can exhibit the low-ambiguity representations posited as necessary (though not sufficient) by theoretical accounts such as narrow representationalism and IIT.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

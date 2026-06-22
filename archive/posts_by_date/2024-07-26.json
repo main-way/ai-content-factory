@@ -1,0 +1,23 @@
+{
+  "date": "2024-07-26",
+  "count": 1,
+  "posts": [
+    {
+      "id": "873cdfebf3bc",
+      "title": "The Mechanics of Monocular Depth Estimation in Estimating Depth from 2D Images",
+      "url": "https://blog.paperspace.com/the-mechanics-of-monocular-depth-estimation-in-estimating-depth-from-2d-images/",
+      "source": "Paperspace Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "medium",
+      "published": "2024-07-26T00:49:14+00:00",
+      "summary": "In this article, we will delve into the mechanics of monocular depth estimation, exploring the neural network architectures used, the techniques for training and improving these models, and the practical applications of this exciting field.",
+      "author": "Shaoni Mukherjee",
+      "tags": [
+        "Vision-Model",
+        "Tutorial"
+      ],
+      "has_full_text": true
+    }
+  ]
+}

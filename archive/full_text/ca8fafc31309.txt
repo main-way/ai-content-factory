@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:DeRA-MOS: Optimizing Text-to-Music Evaluation via Decoupled Listwise Ranking and Modality Alignment
+View PDF HTML (experimental)Abstract:Evaluating text-to-music (TTM) systems remains expensive because music impression (MI) and text alignment (TA) scores rely on human mean opinion scores (MOS). Most automatic MOS estimators are trained with point-wise regression or distributional classification. These objectives do not directly optimize rank-based metrics and provide weak geometric constraints for cross-modal coherence. To address these gaps, we propose DeRA-MOS, a decoupled optimization framework for TTM evaluation. For MI, we introduce a batch-aware listwise ranking loss that models relative order within each mini-batch and better aligns with evaluation based on Spearman's rank correlation coefficient (SRCC). For TA, we introduce a score-anchored modality alignment loss that maps human scores to target audio-text similarity and regularizes the latent space before fusion. By effectively mitigating the point-wise training mismatch and modality drift, experiments on MusicEval demonstrate that our decoupled framework yields substantial improvements in both MI and TA ranking metrics, establishing a robust paradigm for large-scale TTM evaluation.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

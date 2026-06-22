@@ -1,0 +1,22 @@
+vercel connect create slack --name mybot
+Create a Slack connector
+import { getToken } from '@vercel/connect';const token = await getToken('slack/mybot', { subject: { type: 'app' },});
+Request a token at runtime
+Link to headingScoped tokens
+const token = await getToken('github/mybot', { subject: { type: 'app' }, authorizationDetails: [{ type: 'github_app_installation', repositories: ['myorg/repo1'], permissions: ['contents:read'] }],});
+Scope a token to one repository, read-only
+vercel connect token slack/mybot --subject user
+Request a token for a specific user
+Link to headingIsolation and revocation
+vercel connect attach slack/mybot --project my-app --environment production
+Attach a connector to a single environment
+vercel connect revoke-tokens slack/mybot --all-tokens
+Revoke every token a connector has issued
+Link to headingTriggers
+vercel connect attach slack/mybot --triggers
+Forward verified Slack webhooks to a project
+Link to headingConnectors and adapters
+Link to headingGet started
+Connect your first agent
+Your deployment proves its identity over OIDC and gets back a short-lived token, scoped to one task. Works with Slack, GitHub, Linear, and any OAuth MCP server.
+Get started

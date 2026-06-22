@@ -1,0 +1,191 @@
+The richest parser you can buy reads the table, the scan, and the text trapped inside a figure. It also needs the document handed to someone else’s cloud.
+For a lot of enterprise work that’s a non-starter. The insurance contract on your desk, the medical record, the M&A data room, the signed employment agreement. Legal will not let those bytes leave the building, never mind cross a border into someone else’s cloud. The richest parser in the world is useless if compliance blocks the upload.
+Docling is the other half of the answer. It’s IBM Research’s open-source document parser (MIT license, declared in the project’s LICENSE file on GitHub): layout detection, OCR, reading-order, and TableFormer (IBM’s deep-learning model that detects table structure (rows, columns, headers) without regex). All of it as a pip install
+. It runs on your own machine. The first call downloads the models to a local cache; every call after that is offline. No API key, no per-page charge, the document never leaves the host.
+And the output is the same relational tables as fitz and Azure. The downstream pipeline does not care which engine produced the dict. Retrieval, generation, annotation read rows. They never read the PDF.
+Article 5 bis made the case for richer parsing. Tables that keep their columns. OCR on scanned pages. Text recovered from inside figures. Headings even when the PDF has no bookmarks. None of that argument changes here. What changes is where the computation happens.
+Azure DI is a managed cloud service. You send it bytes, it sends back structure. For a public arXiv paper that’s fine. For the documents that fill a real enterprise archive it often isn’t:
+- Confidentiality: Insurance policies, health records, contracts under NDA, anything with personal data. Sending them to a third-party API is a data-processing event that legal has to sign off on, and frequently won’t.
+- Residency: “The data stays in this region” is a contractual term in a lot of industries. A cloud parser in the wrong region breaks it.
+- Air-gapped environments: Some networks have no outbound internet at all. A cloud call is not slow there, it’s impossible.
+- Cost at scale: A few cents per page is nothing for a thousand pages and a real line item for ten million.
+Docling answers all four the same way: the model runs where the document already is. The tradeoff moves from money and trust to compute and setup. You pay in CPU seconds and a one-time model download instead of per-page fees and a compliance review. For a confidential corpus that’s the trade you want.
+The rest of this article is the same shape as Article 5 bis, because the contract is the same. Where Docling differs from Azure in the details, the difference is called out.
+One call, the same tables as the fitz parser, in the same shape, all from one local Docling conversion. The Docling SDK call itself is short: build a DocumentConverter
+, hand it a path, read back a DoclingDocument
+. The first call downloads the layout and TableFormer weights to a local cache; every call after that is offline.
+from docling.document_converter import DocumentConverter
+converter = DocumentConverter() # lazy: loads no model yet
+result = converter.convert("data/paper/1706.03762v7.pdf")
+doc = result.document # a DoclingDocument
+# what one DoclingDocument exposes
+doc.export_to_markdown() # full document as markdown
+doc.tables # TableItem list (each carries .data.table_cells)
+doc.pictures # PictureItem list (bbox + optional ocr / classification)
+doc.texts # TextItem list, labelled title / section_header / paragraph / formula / caption
+That DoclingDocument
+is what every builder in this article reads. parse_pdf_docling
+wraps the call above and turns the document into the same dict of tables every other engine returns, so downstream bricks read the output without knowing which engine ran. Here is how you call the wrapper.
+out = parse_pdf_docling("data/contracts/MyContract.pdf")
+out["line_df"] # text items + table cells + checkboxes
+out["page_df"] # one row per page
+out["image_df"] # pictures, ocr_text + classification
+out["toc_df"] # reconstructed from layout labels
+out["object_registry"] # captions detected by label
+out["cross_ref_df"] # body-text mentions (regex)
+out["span_df"] # empty (no sub-line typography)
+out["parsing_summary"] # doc-level synthesis dict
+parse_pdf_docling
+is the local twin of parse_pdf
+: same call shape, same dict of tables out, so every downstream brick reads it without knowing which engine ran. The body is worth seeing, because it shows the shape every engine in the series follows: convert once, then one small builder per table, and reuse the engine-agnostic builders for the tables that only need line_df
+.
+def parse_pdf_docling(pdf_path):
+doc = convert_pdf(pdf_path) # one Docling conversion, shared
+line_df = docling_pdf_to_line_df(pdf_path, doc=doc) # text + table cells
+image_df = build_image_df_docling(doc) # pictures + ocr_text
+toc_df = build_toc_df_docling(doc) # title / section_header
+object_registry = build_object_registry_docling(doc) # caption labels
+page_df = build_page_df(line_df) # reused fitz builder (line_df only)
+cross_ref_df = build_cross_ref_df(line_df) # reused fitz builder (line_df only)
+return {"line_df": line_df, "image_df": image_df, "toc_df": toc_df,
+"object_registry": object_registry, "page_df": page_df,
+"cross_ref_df": cross_ref_df, "span_df": pd.DataFrame(),
+"parsing_summary": parsing_summary}
+Reading it top to bottom: one convert_pdf
+runs the models once, then there is one small builder per table (each reads that shared doc
+), and the two tables that only need line_df
+, page_df
+and cross_ref_df
+, are produced by the very same fitz builders the native parser uses. The dict at the end is the contract every engine returns.
+What that one conversion runs. It is tempting to file Docling under “OCR”. It is not OCR; OCR is one optional stage inside it. A convert()
+runs a layout model first (it finds the regions, table, figure, heading, body, and their reading order), then TableFormer on each detected table (the grid of rows, columns, and headers), and only then, if the page is a scan with no text layer, an OCR engine to read the pixels. On a born-digital PDF the OCR stage is skipped entirely: the cell text comes from the native text layer. So a table’s markdown is TableFormer’s structure filled with cell text that, on a native PDF, no OCR ever touched. The OCR engine you pick (EasyOCR, PaddleOCR, Tesseract, RapidOCR) only changes what happens on scanned pixels, and the quality knob for the tables themselves is TableFormer’s mode (fast
+vs accurate
+), not the OCR backend.
+To show this on something you can check, we ran Docling on the Attention Is All You Need paper (Vaswani et al. 2017; arXiv non-exclusive distribution license, declared on the arXiv abstract page), the same public arXiv PDF used across the series. Fifteen pages, born-digital, no native bookmarks, four real tables, six figures, five display equations. A document where fitz already does well on the prose but loses the tables and the section structure. Drop in your own PDF and the same builders run; the numbers below are what Docling returned on this one.
+Docling’s TableFormer model detects each table as a grid of cells with row and column indices and header flags. We flatten that grid into markdown rows so the table lives inside line_df
+like any other content, one line per table row, with a | --- |
+separator after the header. Table 1 of the paper (a 5-row, 4-column complexity comparison) comes back as six line_df
+rows: five data rows plus the | --- |
+separator that follows the header.
+The flattening itself is short, and worth seeing because it is the whole trick: lay out an empty rows x cols
+grid, drop each TableFormer cell into its (row, column)
+slot, then join each row into one markdown line.
+def table_to_markdown_rows(table):
+n_rows, n_cols = table.data.num_rows, table.data.num_cols
+grid = [[""] * n_cols for _ in range(n_rows)]
+header = set()
+for cell in table.data.table_cells: # the cells TableFormer found
+row, col = cell.start_row_offset_idx, cell.start_col_offset_idx
+grid[row][col] = cell.text.strip()
+if cell.column_header:
+header.add(row)
+h = min(header) if header else 0
+rows = ["| " + " | ".join(grid[h]) + " |", # header row
+"| " + " | ".join(["---"] * n_cols) + " |"] # separator
+rows += ["| " + " | ".join(grid[r]) + " |" # data rows
+for r in range(n_rows) if r != h]
+return rows # one markdown line per source row -> one line_df row each
+We keep the cells inside line_df
+instead of adding a separate table-cells table. One DataFrame for every downstream brick to read; paragraph lines and table rows look the same on the way out. The cost: per-cell queries need a markdown parse step. For RAG questions this is fine. The retriever matches keywords on the row text. The model reads the markdown directly. This is the same design choice the Azure builder makes, so a downstream chunker treats fitz, Azure, and Docling table rows identically.
+Two more sources feed line_df
+. Text that Docling finds inside a figure region lands as ordinary text rows (recovered through layout + OCR), so a label rendered inside a diagram is searchable. And checkbox items become single-character lines, [x]
+for selected and [ ]
+for unselected, so a check-the-box form field becomes queryable. On the Attention paper the line count rises from the raw prose to 560 rows once the four tables are flattened in.
+Same row, two new columns. For each detected picture, we collect every text item whose bbox sits inside the figure region by at least 50% and join them as ocr_text
+. The architecture diagram on page 3 and the two attention diagrams on page 4 carry their labels inside the figure; those labels show up in ocr_text
+and become retrievable.
+The second new column is classification
+. Docling ships an optional picture classifier that tags each figure (chart type, logo, and so on). When the classifier is enabled the tag lands in classification
+; when it isn’t, the column is there for shape parity but stays blank. Azure has no equivalent, so this is one place Docling goes further. The same column on a fitz-produced image_df
+does not exist at all; fitz returns width_px
+/ height_px
+/ image_hash
+and never OCRs the image.
+The Attention paper has no native bookmarks. Run fitz’s build_toc_df
+on it and you get an empty table, which is the common enterprise case: Word exports, scans, anything not authored in LaTeX with hyperref set up. Generation then loses the section structure.
+Docling labels every heading directly:
+- a
+title
+item for the document title when it detects one - a
+section_header
+item for each section heading (on this paper Docling tagged even the title as a section heading)
+The builder walks both labels, assigns a level, and assembles a TOC with the same start_page
+, end_page
+, start_y
+, and breadcrumb
+columns as the fitz path. The lookback pass that computes end_page
+is identical to the fitz and Azure one; only the source of the rows differs.
+On the Attention paper it recovers 28 headings where fitz recovers zero. That number is not inflated: Docling tagged each section heading once, including sub-sections of Method and Results, which is correct for this paper. On a document with shorter, denser sections the count would be lower.
+How deep the hierarchy goes depends on the document. When Docling’s layout model assigns distinct heading levels you get a genuine multi-level tree; on this paper it labelled the headings at a single level, so the reconstructed TOC is mostly flat. Either way it’s a usable section index where fitz would give nothing. Azure does the same trick from its own role tags; the two are even, with Docling running locally.
+Fitz detects captions by regex anchored at the start of a line, ^Figure \d+\b
+, ^Table \d+\b
+. It misses Fig. 2
+and multi-line wraps, and it false-positives on a body sentence that opens with “Figure 2 shows…”.
+Docling labels caption blocks with a caption
+label during layout analysis. We read the label directly, no regex needed to find the caption. The (object_type, object_id)
+join key into cross_ref_df
+is still pulled from the caption text by the same regex the fitz and Azure builders use, so the join works the same with any engine. On the Attention paper this lands all nine captions (Figure 1 through 5, Table 1 through 4) in object_registry
+. The win is recall: Docling catches captions fitz’s line-start regex would miss.
+Three counts land in the doc-level synthesis dict:
+n_tables_detected
+: how many tables TableFormer found (4 on the Attention paper).n_pictures
+: how many figures the layout model identified (6).n_formulas
+: how many display equations Docling tagged asformula
+(5).
+These make routing easy. A document with n_tables_detected = 18
+looks like a contract where table structure matters. A document with n_formulas
+in the dozens is a maths-heavy paper where you may want a formula-aware downstream step. A document with n_pictures = 0
+is text-only; no point scanning figures for inside-text.
+Two tables stay the same shape. page_df
+and cross_ref_df
+are built from line_df
+alone, so the engine that produced line_df
+is irrelevant. One implementation, three engines, no drift.
+span_df
+is empty under Docling, exactly as under Azure. The layout model does not expose sub-line typography (per-word bold or italic). When you need spans for heading detection or term emphasis, stay on fitz for that document. The engines complement each other.
+Every per-row table from parse_pdf_docling
+carries parsing_method == "docling"
+. Every per-row table from parse_pdf
+carries "fitz"
+; from parse_pdf_azure_layout
+, "azure_layout"
+. Same column, same name, every engine. The point is downstream.
+This is what adaptive parsing (Article 10) consumes. The default pass uses fitz. Pages that fail a pre-parse check (a table region with no rows extracted, an image-heavy page with sparse text, an OCR layer with low quality) get re-parsed by a heavier engine. With Docling that re-parse is local, so it stays available even when the document can’t go to a cloud. The re-parsed rows replace or append to the original line_df
+rows, and the parsing_method
+column keeps the trail.
+Three downstream patterns the column enables:
+- De-duplication: when the same page got two passes, keep the heavier engine’s rows over fitz’s via an explicit precedence map.
+- Audit: a row with
+parsing_method == "docling"
+tells you a model, not plain text extraction, produced it; the answer’s confidence weighting can use that. - Routing accounting: which pages needed the heavy path, and how long they took.
+Docling is free to run, but not free to operate. Three things matter.
+Latency: On CPU, a page through the full Docling pipeline (layout + TableFormer + OCR) takes roughly 1 to 5 seconds depending on how busy the page is. The 15-page Attention paper, with OCR on, parsed in well under a couple of minutes on a laptop CPU. A GPU cuts this sharply. Fitz parses the same document in under a second. So the routing rule is the same as for Azure: parse with fitz first, escalate to Docling only on pages fitz handled poorly. The difference from Azure is that the escalation costs CPU time, not money or a network round trip.
+Setup: The first conversion downloads the layout and TableFormer models (hundreds of MB) to a local cache, and the docling
+install pulls in PyTorch, which is large. Budget for the disk and the one-time download. After that it’s offline. In an air-gapped environment you pre-stage the model cache; there’s no runtime call home.
+Compute, not per-page fees: There is no per-page charge. The cost is the machine you run it on. For ten million pages a year on confidential data, owning the compute is usually cheaper than a per-page cloud bill, and it’s the only option when the data can’t leave at all.
+These numbers move with hardware and Docling versions. The shape is what matters: fitz is nearly free and instant, Docling costs seconds of local compute and a one-time setup, Azure costs cents per page and a network hop to a cloud you have to trust.
+Default to fitz. Escalate when a specific signal says fitz is not enough, and pick the heavy engine by where the document is allowed to go.
+- fitz: every parse, by default. Born-digital PDFs with selectable text and simple layout. Free, instant, offline.
+- Docling: when fitz misses (tables, scans, figure text, no bookmarks) and the document is confidential or the environment is air-gapped. Local, free to run, nothing leaves the machine. Also the right default when you’d rather own compute than pay per page.
+- Azure DI: when fitz misses and sending the document to a cloud is acceptable, and you’d rather have a managed service than run models yourself. Per-page cost, zero infra to maintain, fastest to wire up.
+The signals that trigger escalation are the same ones Article 5 bis listed: a detected table region with no row-like structure, an image-heavy page with sparse text, a low OCR-quality score, or a document with no native TOC where generation needs section context. Article 10 builds the dispatcher that reads those signals. The parsing_method
+column is what lets every downstream stage know which engine ran on which row.
+The same relational tables, whichever engine fills them. Capability rows are nearly a tie between Azure and Docling; the rows that decide are operational. Azure sends the document to a cloud and bills per page. Docling keeps the document on the machine and bills nothing but compute. Fitz does neither and costs nothing.
+Docling is documented in the IBM Research technical report (Auer et al. 2024), which describes the layout pipeline, the TableFormer cell-detection model, and the reading-order step. The cell-level table extraction Docling inherits has its own research lineage (Smock et al. 2022, PubTables-1M / Table Transformer). The right cross-reading for this article is Article 5bis (Azure DI), which gives the same table contract from a paid cloud service: same capability, different operational profile.
+Same direction as the article:
+- Auer et al., Docling Technical Report, IBM Research 2024 (arXiv:2408.09869). Reference architecture for the local layout pipeline this article uses: layout detection, TableFormer, reading-order, unified document representation.
+- Smock, Pesala, Abraham, PubTables-1M / Table Transformer (TATR), CVPR 2022 (arXiv:2110.00061). The research lineage behind the cell-level table extraction Docling and Azure both ship.
+Different angle, different context:
+- Microsoft, Azure AI Document Intelligence. Layout model. Paid cloud equivalent of the same cascade (Article 5bis). Same table contract; trades local compute for cloud upload and per-page cost. The right choice when the operational team prefers a managed service over hosting model weights locally.
+The question is rarely “which parser is best”, it is “what is this document allowed to do, and what does this page need”. A born-digital page with clean prose: fitz. A table page in a public report: Azure if you want it managed, Docling if you want it local. Article 10 wires the dispatcher that makes the call per page.
+Earlier in the series:
+- Document Intelligence: series intro. What the series builds, brick by brick, and in what order.
+- Baseline Enterprise RAG, from PDF to highlighted answer. The four-brick pipeline end to end: PDF in, highlighted answer out.
+- Embeddings Aren’t Magic: The Predictable Failure Modes of RAG Retrieval. Where embedding similarity wins (synonyms, typos, paraphrase), where it predictably breaks (unknown terms, negation, term-vs-answer relevance), and how to use it anyway.
+- Rerankers Aren’t Magic Either: When the Cross-Encoder Layer Is Worth the Cost. What a cross-encoder adds over bi-encoder embeddings, measured, and when it is worth the latency.
+- RAG is not machine learning, and the ML toolkit solves the wrong problem. Why chunk-size sweeps and finetuning optimize the wrong thing; route by question type instead.
+- From regex to vision models: which RAG technique fits which problem. Two axes, document complexity and question control, that pick the technique for each case.
+- 10 common RAG mistakes we keep seeing in production. Ten production mistakes, organized brick by brick, with the fix for each.
+- Beyond extract_text: the two layers of a PDF that drive RAG quality. The first half of the parsing brick: the document’s nature, signals, and summary.
+- Stop returning flat text from a PDF: the relational shape RAG needs (link to come). The second half of the parsing brick: the relational tables every downstream brick reads.
+- When PyMuPDF can’t see the table: parse PDFs for RAG with Azure Layout (link to come). The same tables from Azure Layout: native table cells, OCR, paragraph roles.

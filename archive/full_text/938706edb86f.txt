@@ -1,0 +1,62 @@
+This is what I’ll cover in this article. I’ll discuss specific techniques you can implement right now, which will maximize how much you can get out of your coding agents. I strongly urge you to try out these techniques right away, as I believe they can be beneficial to essentially all coders.
+I’ll present some very specific techniques that are just simple prompt updates, but some of them are also more along the lines of ideas that are thought processes that you want to implement in your coding practices. This can also be seen as inspiration for how to improve your general coding.
+Why maximize Claude Code
+First of all, I always like to cover why you should be interested in an article. The reason you should maximize Claude Code and Codex is simply that if you use the right techniques, you can get so much more out of the coding agents.
+A common saying is that:
+The ones getting the most out of AI are the people that are already the best
+This means that AI is, of course, a skill enhancer, but it doesn’t work on a flat level. It works more as an enhancer of your current skills.
+Let’s pretend programming skill is a scale where you get points for your skill in programming and how effectively you can implement new solutions. For example, if your coding skill level is 10 points, AI might make you three times more effective, and you’ll end up at 30 points total.
+However, if your existing coding skill level is 50 points instead, you’ll still get that 3x effectivity boost, and you’ll actually end up at 150 points. Previously, the skill point difference was 20 points, and now, with the use of AI, it’s become 120 points. This highlights my idea with AI: the people who get the most out of using these new AI models are the people who are already the best. If you can apply specific techniques to get more out of the coding agent, you’ll experience massive productivity boosts.
+Specific techniques to maximize Claude Code
+Now I’ll start getting into some specific techniques that I use to maximize Claude Code and Codex. I’ll cover four techniques in this article.
+- Heavy usage of OpenClaw and cron jobs. In general: spend as many tokens as possible
+- Active usage of Claude Code hooks
+- Ultracode maximizes the effort used by coding agents to perform more advanced work
+- Make your coding agent present the remaining tasks and a recap at the end of its responses
+Heavy usage of OpenClaw
+The first technique or idea I’ll cover is to actively use OpenClaw and, in general, try to spend as many tokens as possible.
+OpenClaw is a system where you can have bots running in your messaging channel, for example, Discord or Slack. These bots can be powered by an API with Claude Code or through your Codex subscription. Bots are essentially AI agents that run either periodically (which you can do with cron jobs), or you can make them react to specific messages or events. Usually, it’s easier if I’m more specific with how you can use it, so I’ll cover some specific usage areas where you can have OpenClaw agents running.
+- Have an OpenClaw agent message you every time you’re tagged in a GitHub pull request and perform an automatic code review for you
+- Make an agent go through your product every night and report issues to you in the morning
+- Have an agent automatically perform bug triaging so you don’t have to triage the bugs yourself
+There are, of course, very many other use cases you can have for OpenClaw. The whole idea is that it’s basically a coding agent that runs 24/7, that you can set to perform specific tasks, and you don’t have to constantly be in the driver’s seat of the model. The model will basically make all the decisions itself.
+Active usage of Claude Code hooks
+Claude Code Hooks is also a very interesting concept. Hooks are basically code that you can run at specific points in time. Some different hooks you have in Claude Code are:
+- On startup of Claude Code
+- On close of Claude Code
+- Whenever the agent asks the user a question
+- Whenever the agent finishes a task
+Basically, you can ensure a piece of code always runs whenever any of these events happen, and of course, several other events. To be specific, you can, for example, make Claude Code automatically generalize knowledge from the thread it’s been working on when you close it. Or you can make it ping you with a sound on your computer whenever it asks you a question and finishes a task.
+The ping sound is something I recently implemented and a technique I’m very happy with. I basically make my Claude Code make a sound on my computer whenever it asks me a question or when it finishes a task that I need to review.
+This is great because I never need to pay attention to the terminal itself. I just need to wait until a sound comes, and then I know I have to check in on my agents. This makes it much easier for me to focus on other tasks once I’ve spun up my agents.
+Claude Code Ultracode – high effort coding agents
+Claude Code recently released something called Ultracode with extra high-level thinking. This is basically a technique where you create a swarm of agents that perform a lot of different work, and it’s basically a way to spend even more tokens while completing work.
+In general, using more tokens is a good thing because performance typically scales with the number of tokens used. Of course, this reaches a limit at some point, so spending a billion tokens every time wouldn’t make AGI, of course. In general, spending more tokens makes the agents perform better, and Ultracode with Claude Code basically makes you use a lot of tokens.
+Now you might ask yourself:
+Spending more tokens means the agent spends longer to complete a task, right?
+The counterargument here is that it doesn’t really matter if the agent spends longer to complete the task; the only thing that really matters is if the agent is able to complete the task successfully, or if you need to correct mistakes that the agent has made.
+To be specific, you can basically choose between the following:
+- Use a faster and cheaper model spending fewer tokens, which completes the implementation in ten minutes, but you have to spend one and a half hours afterward to correct its mistakes and iterate on it until you reach the solution you desired.
+- Spend 10 minutes talking to Claude Ultracode, and then have Claude Ultracode spend 30 minutes actually implementing, for a total of 40 minutes. Yes, you spent more time initially talking to the coding agent, and the coding agent spent a longer time during implementation, but overall, you spent way less time because you didn’t actually have to spend time correcting the agent’s mistakes and iterating with it afterward.
+If you look at it from this perspective, it’s a pretty simple decision. You should basically always choose the model that spends a longer time but provides higher quality.
+Present remaining tasks and recap at the end of responses
+Another very nice thing I’ve started implementing recently is to have my agents present remaining tasks that I need to do, and a recap at the end of each response. I did this by simply prompting my agents at the user level, the CLAUDE.md file. I said at the end of your response, always, if you’re asking me to do something, use the following syntax.
+- [] <task 1>
+- [] <task 2>
+- [] <task 3>
+...
+This way it’s super easy for me to see if the agent is asking me to do something or I need to test something. I started doing this because I noticed that I can’t really read everything that Claude Code gives me, because it writes way too much text. In a lot of cases, Claude Code would ask me to do something, but I wouldn’t actually read the response it gave to me, and I wouldn’t notice it if it asked me to perform something.
+This is, of course, problematic, as it can have a negative effect on the quality. However, now that I make it use check boxes, I immediately notice if Claude Code has tasks for me, and I can more easily complete them.
+This is especially important if you have a lot of agents running in parallel and you typically are away from a specific thread for over 10 minutes. In these situations, it’s often hard to remember exactly what you were doing in a specific thread when you come back to it. You need a simple way of coming back to the thread immediately and knowing what to do.
+Another point in this area is that I make my coding agents make a recap as well, below the tasks that they’re asking me to do. This is already featured in Claude Code. You can make it create a recap; however, I noticed that the recap is often a bit delayed, and I usually want to recap instantly. I instead make Claude Code create the recap itself, which makes it super easy for me to come back to a thread that I’ve been away from for 10 to 30 minutes while working on other coding agents.
+Conclusion
+In this article, I discussed the newest techniques that I’m applying now to get the most out of my Claude Code. I covered why it is so important to consistently optimize the way you program with coding agents, highlighting that the best people are the people who get the most out of coding agents. If you want to get the most out of the newest AI tools, you need to spend time optimizing them. I then covered four specific techniques that I think you can try out right away:
+- Using OpenClaw
+- Utilizing Claude Code hooks
+- Using as many tokens as possible with Claude Code Ultracode
+- Ensuring Claude Code presents the remaining tasks and recaps at the end of responses
+I believe if you apply these four techniques, you’ll notice immediate improvements in your efficiency with Claude Code. I also encourage you to constantly think about other techniques that you can apply yourself that can further enhance your work with coding agents such as Claude Code and Codex.
+Also check out my article on How to Run Multiple Coding Agents in Parallel.
+👉 My free eBook and Webinar:
+👉 Find me on socials:
+💌 Substack
