@@ -1,0 +1,215 @@
+[_env] Loaded: /home/apps_maker/.hermes/.env, /home/apps_maker/ai-digest/.env
+[_env] Loaded: /home/apps_maker/.hermes/.env, /home/apps_maker/ai-digest/.env
+
+============================================================
+  🚀 AI-Digest Pipeline | date=2026-06-23 | target=28 posts
+============================================================
+
+[19:13:11] [INFO]   2026-06-23: 1343 posts loaded (with full_text: 602/1343)
+[19:13:11] [INFO] 📰 Total unique posts: 1343
+[19:13:11] [INFO] 🌐 After language filter: 1343 posts
+[19:13:11] [INFO] 🧠 Loading embedding model...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 1645.73it/s]
+[19:13:16] [INFO] 📝 Embedding 1343 texts (batch_size=8)...
+Batches:   0%|          | 0/168 [00:00<?, ?it/s]Batches:   1%|          | 1/168 [00:00<02:33,  1.09it/s]Batches:   1%|          | 2/168 [00:01<01:56,  1.42it/s]Batches:   2%|▏         | 3/168 [00:01<01:38,  1.68it/s]Batches:   2%|▏         | 4/168 [00:02<02:01,  1.35it/s]Batches:   3%|▎         | 5/168 [00:03<01:48,  1.50it/s]Batches:   4%|▎         | 6/168 [00:04<01:43,  1.56it/s]Batches:   4%|▍         | 7/168 [00:04<01:37,  1.66it/s]Batches:   5%|▍         | 8/168 [00:05<01:37,  1.64it/s]Batches:   5%|▌         | 9/168 [00:05<01:45,  1.51it/s]Batches:   6%|▌         | 10/168 [00:06<01:35,  1.66it/s]Batches:   7%|▋         | 11/168 [00:06<01:26,  1.82it/s]Batches:   7%|▋         | 12/168 [00:07<01:31,  1.71it/s]Batches:   8%|▊         | 13/168 [00:08<01:37,  1.59it/s]Batches:   8%|▊         | 14/168 [00:08<01:42,  1.50it/s]Batches:   9%|▉         | 15/168 [00:09<01:47,  1.42it/s]Batches:  10%|▉         | 16/168 [00:10<01:38,  1.54it/s]Batches:  10%|█         | 17/168 [00:10<01:36,  1.57it/s]Batches:  11%|█         | 18/168 [00:11<01:25,  1.76it/s]Batches:  11%|█▏        | 19/168 [00:11<01:27,  1.71it/s]Batches:  12%|█▏        | 20/168 [00:12<01:24,  1.76it/s]Batches:  12%|█▎        | 21/168 [00:13<01:24,  1.73it/s]Batches:  13%|█▎        | 22/168 [00:13<01:24,  1.72it/s]Batches:  14%|█▎        | 23/168 [00:14<01:40,  1.45it/s]Batches:  14%|█▍        | 24/168 [00:15<01:35,  1.51it/s]Batches:  15%|█▍        | 25/168 [00:16<01:42,  1.39it/s]Batches:  15%|█▌        | 26/168 [00:16<01:47,  1.32it/s]Batches:  16%|█▌        | 27/168 [00:17<01:51,  1.26it/s]Batches:  17%|█▋        | 28/168 [00:18<01:55,  1.22it/s]Batches:  17%|█▋        | 29/168 [00:19<01:55,  1.21it/s]Batches:  18%|█▊        | 30/168 [00:20<01:54,  1.21it/s]Batches:  18%|█▊        | 31/168 [00:21<01:54,  1.20it/s]Batches:  19%|█▉        | 32/168 [00:22<01:53,  1.20it/s]Batches:  20%|█▉        | 33/168 [00:23<01:58,  1.14it/s]Batches:  20%|██        | 34/168 [00:23<01:47,  1.25it/s]Batches:  21%|██        | 35/168 [00:24<01:49,  1.21it/s]Batches:  21%|██▏       | 36/168 [00:25<01:49,  1.21it/s]Batches:  22%|██▏       | 37/168 [00:26<01:43,  1.27it/s]Batches:  23%|██▎       | 38/168 [00:26<01:34,  1.37it/s]Batches:  23%|██▎       | 39/168 [00:27<01:32,  1.40it/s]Batches:  24%|██▍       | 40/168 [00:27<01:19,  1.60it/s]Batches:  24%|██▍       | 41/168 [00:28<01:22,  1.54it/s]Batches:  25%|██▌       | 42/168 [00:29<01:49,  1.15it/s]Batches:  26%|██▌       | 43/168 [00:30<01:49,  1.15it/s]Batches:  26%|██▌       | 44/168 [00:31<01:47,  1.15it/s]Batches:  27%|██▋       | 45/168 [00:32<01:46,  1.15it/s]Batches:  27%|██▋       | 46/168 [00:33<01:41,  1.20it/s]Batches:  28%|██▊       | 47/168 [00:33<01:35,  1.27it/s]Batches:  29%|██▊       | 48/168 [00:34<01:36,  1.24it/s]Batches:  29%|██▉       | 49/168 [00:35<01:31,  1.30it/s]Batches:  30%|██▉       | 50/168 [00:36<01:28,  1.34it/s]Batches:  30%|███       | 51/168 [00:36<01:32,  1.27it/s]Batches:  31%|███       | 52/168 [00:37<01:34,  1.23it/s]Batches:  32%|███▏      | 53/168 [00:38<01:35,  1.20it/s]Batches:  32%|███▏      | 54/168 [00:39<01:39,  1.14it/s]Batches:  33%|███▎      | 55/168 [00:40<01:26,  1.31it/s]Batches:  33%|███▎      | 56/168 [00:40<01:15,  1.48it/s]Batches:  34%|███▍      | 57/168 [00:41<01:21,  1.36it/s]Batches:  35%|███▍      | 58/168 [00:42<01:25,  1.29it/s]Batches:  35%|███▌      | 59/168 [00:43<01:30,  1.21it/s]Batches:  36%|███▌      | 60/168 [00:44<01:31,  1.18it/s]Batches:  36%|███▋      | 61/168 [00:45<01:28,  1.22it/s]Batches:  37%|███▋      | 62/168 [00:45<01:21,  1.30it/s]Batches:  38%|███▊      | 63/168 [00:46<01:15,  1.38it/s]Batches:  38%|███▊      | 64/168 [00:46<01:12,  1.44it/s]Batches:  39%|███▊      | 65/168 [00:47<01:03,  1.63it/s]Batches:  39%|███▉      | 66/168 [00:47<01:02,  1.63it/s]Batches:  40%|███▉      | 67/168 [00:48<01:01,  1.65it/s]Batches:  40%|████      | 68/168 [00:49<01:01,  1.63it/s]Batches:  41%|████      | 69/168 [00:49<00:59,  1.67it/s]Batches:  42%|████▏     | 70/168 [00:50<00:57,  1.69it/s]Batches:  42%|████▏     | 71/168 [00:50<00:59,  1.64it/s]Batches:  43%|████▎     | 72/168 [00:51<01:00,  1.60it/s]Batches:  43%|████▎     | 73/168 [00:52<01:00,  1.58it/s]Batches:  44%|████▍     | 74/168 [00:52<00:58,  1.60it/s]Batches:  45%|████▍     | 75/168 [00:53<01:04,  1.44it/s]Batches:  45%|████▌     | 76/168 [00:54<01:02,  1.46it/s]Batches:  46%|████▌     | 77/168 [00:54<01:00,  1.52it/s]Batches:  46%|████▋     | 78/168 [00:55<00:57,  1.57it/s]Batches:  47%|████▋     | 79/168 [00:56<00:56,  1.57it/s]Batches:  48%|████▊     | 80/168 [00:56<00:54,  1.60it/s]Batches:  48%|████▊     | 81/168 [00:57<00:54,  1.60it/s]Batches:  49%|████▉     | 82/168 [00:58<00:54,  1.56it/s]Batches:  49%|████▉     | 83/168 [00:59<01:10,  1.21it/s]Batches:  50%|█████     | 84/168 [01:00<01:09,  1.21it/s]Batches:  51%|█████     | 85/168 [01:00<01:03,  1.32it/s]Batches:  51%|█████     | 86/168 [01:01<01:00,  1.37it/s]Batches:  52%|█████▏    | 87/168 [01:02<00:55,  1.46it/s]Batches:  52%|█████▏    | 88/168 [01:02<00:56,  1.42it/s]Batches:  53%|█████▎    | 89/168 [01:03<00:59,  1.32it/s]Batches:  54%|█████▎    | 90/168 [01:04<01:00,  1.30it/s]Batches:  54%|█████▍    | 91/168 [01:05<00:55,  1.39it/s]Batches:  55%|█████▍    | 92/168 [01:05<00:51,  1.47it/s]Batches:  55%|█████▌    | 93/168 [01:05<00:40,  1.86it/s]Batches:  56%|█████▌    | 94/168 [01:06<00:32,  2.29it/s]Batches:  57%|█████▋    | 95/168 [01:06<00:36,  2.00it/s]Batches:  57%|█████▋    | 96/168 [01:07<00:37,  1.90it/s]Batches:  58%|█████▊    | 97/168 [01:07<00:38,  1.85it/s]Batches:  58%|█████▊    | 98/168 [01:08<00:35,  1.96it/s]Batches:  59%|█████▉    | 99/168 [01:08<00:36,  1.89it/s]Batches:  60%|█████▉    | 100/168 [01:09<00:40,  1.69it/s]Batches:  60%|██████    | 101/168 [01:10<00:42,  1.58it/s]Batches:  61%|██████    | 102/168 [01:10<00:41,  1.58it/s]Batches:  61%|██████▏   | 103/168 [01:11<00:33,  1.93it/s]Batches:  62%|██████▏   | 104/168 [01:11<00:32,  1.97it/s]Batches:  62%|██████▎   | 105/168 [01:12<00:30,  2.06it/s]Batches:  63%|██████▎   | 106/168 [01:12<00:30,  2.06it/s]Batches:  64%|██████▎   | 107/168 [01:13<00:31,  1.94it/s]Batches:  64%|██████▍   | 108/168 [01:13<00:25,  2.38it/s]Batches:  65%|██████▍   | 109/168 [01:14<00:31,  1.88it/s]Batches:  65%|██████▌   | 110/168 [01:14<00:34,  1.67it/s]Batches:  66%|██████▌   | 111/168 [01:15<00:35,  1.58it/s]Batches:  67%|██████▋   | 112/168 [01:16<00:36,  1.52it/s]Batches:  67%|██████▋   | 113/168 [01:16<00:30,  1.83it/s]Batches:  68%|██████▊   | 114/168 [01:17<00:27,  1.99it/s]Batches:  68%|██████▊   | 115/168 [01:17<00:25,  2.06it/s]Batches:  69%|██████▉   | 116/168 [01:17<00:24,  2.11it/s]Batches:  70%|██████▉   | 117/168 [01:18<00:23,  2.21it/s]Batches:  70%|███████   | 118/168 [01:18<00:22,  2.23it/s]Batches:  71%|███████   | 119/168 [01:18<00:17,  2.76it/s]Batches:  71%|███████▏  | 120/168 [01:19<00:18,  2.55it/s]Batches:  72%|███████▏  | 121/168 [01:19<00:16,  2.87it/s]Batches:  73%|███████▎  | 122/168 [01:20<00:16,  2.74it/s]Batches:  73%|███████▎  | 123/168 [01:20<00:13,  3.34it/s]Batches:  74%|███████▍  | 124/168 [01:20<00:11,  3.91it/s]Batches:  74%|███████▍  | 125/168 [01:20<00:09,  4.49it/s]Batches:  75%|███████▌  | 126/168 [01:20<00:10,  3.82it/s]Batches:  76%|███████▌  | 127/168 [01:21<00:09,  4.54it/s]Batches:  76%|███████▌  | 128/168 [01:21<00:07,  5.08it/s]Batches:  77%|███████▋  | 129/168 [01:21<00:06,  5.74it/s]Batches:  77%|███████▋  | 130/168 [01:21<00:08,  4.42it/s]Batches:  78%|███████▊  | 131/168 [01:21<00:09,  3.76it/s]Batches:  79%|███████▊  | 132/168 [01:22<00:08,  4.47it/s]Batches:  79%|███████▉  | 133/168 [01:22<00:10,  3.41it/s]Batches:  80%|███████▉  | 134/168 [01:22<00:08,  3.81it/s]Batches:  80%|████████  | 135/168 [01:23<00:10,  3.14it/s]Batches:  81%|████████  | 136/168 [01:23<00:09,  3.31it/s]Batches:  82%|████████▏ | 137/168 [01:23<00:11,  2.68it/s]Batches:  82%|████████▏ | 138/168 [01:24<00:09,  3.21it/s]Batches:  83%|████████▎ | 139/168 [01:24<00:09,  2.96it/s]Batches:  83%|████████▎ | 140/168 [01:24<00:10,  2.78it/s]Batches:  84%|████████▍ | 141/168 [01:25<00:07,  3.38it/s]Batches:  85%|████████▍ | 142/168 [01:25<00:06,  3.95it/s]Batches:  85%|████████▌ | 143/168 [01:25<00:05,  4.53it/s]Batches:  86%|████████▌ | 144/168 [01:25<00:05,  4.05it/s]Batches:  86%|████████▋ | 145/168 [01:26<00:05,  3.84it/s]Batches:  87%|████████▋ | 146/168 [01:26<00:06,  3.57it/s]Batches:  88%|████████▊ | 147/168 [01:26<00:05,  3.61it/s]Batches:  88%|████████▊ | 148/168 [01:26<00:05,  3.85it/s]Batches:  89%|████████▊ | 149/168 [01:27<00:04,  3.96it/s]Batches:  89%|████████▉ | 150/168 [01:27<00:04,  4.09it/s]Batches:  90%|████████▉ | 151/168 [01:27<00:03,  4.35it/s]Batches:  90%|█████████ | 152/168 [01:27<00:03,  4.56it/s]Batches:  91%|█████████ | 153/168 [01:27<00:03,  4.77it/s]Batches:  92%|█████████▏| 154/168 [01:28<00:02,  4.95it/s]Batches:  92%|█████████▏| 155/168 [01:28<00:02,  5.11it/s]Batches:  93%|█████████▎| 156/168 [01:28<00:02,  4.65it/s]Batches:  93%|█████████▎| 157/168 [01:29<00:04,  2.58it/s]Batches:  94%|█████████▍| 158/168 [01:29<00:03,  2.59it/s]Batches:  95%|█████████▍| 159/168 [01:29<00:02,  3.03it/s]Batches:  95%|█████████▌| 160/168 [01:30<00:02,  3.46it/s]Batches:  96%|█████████▌| 161/168 [01:30<00:01,  3.90it/s]Batches:  96%|█████████▋| 162/168 [01:30<00:01,  4.50it/s]Batches:  97%|█████████▋| 163/168 [01:30<00:01,  4.99it/s]Batches:  98%|█████████▊| 164/168 [01:30<00:00,  5.18it/s]Batches:  98%|█████████▊| 165/168 [01:30<00:00,  5.67it/s]Batches:  99%|█████████▉| 166/168 [01:30<00:00,  5.95it/s]Batches: 100%|██████████| 168/168 [01:31<00:00,  7.40it/s]Batches: 100%|██████████| 168/168 [01:31<00:00,  1.84it/s]
+[19:14:47] [INFO]    Done in 91.2s, shape=(1343, 384)
+[19:14:47] [INFO] 🔵 UMAP: (1343, 384) → (n, 20)...
+[19:15:19] [INFO]    UMAP done in 31.7s
+[19:15:19] [INFO] 🔴 HDBSCAN (min_cluster_size=3)...
+[19:15:19] [INFO]    HDBSCAN done in 0.2s — clusters=110, noise=243
+[19:15:20] [INFO] 🏆 Clusters ranked: 98
+[19:15:20] [INFO]   #1: size= 18 score=1.81 → The Coming Loop
+[19:15:20] [INFO]   #2: size=  6 score=1.50 → No Claude Fable 5? No problem: Sakana achieves frontier performance wi
+[19:15:20] [INFO]   #3: size=  7 score=1.31 → The AI world is getting ‘loopy’
+[19:15:20] [INFO]   #4: size= 12 score=1.31 → Meta launches cheaper smart glasses without Ray-Ban
+[19:15:20] [INFO]   #5: size=  6 score=1.29 → The Crunchbase Tech Layoffs Tracker
+
+============================================================
+  📝 Generating digest (28 posts)...
+============================================================
+
+[19:15:20] [INFO] 
+--- Cluster 1: The Coming Loop (score=1.81) ---
+[19:15:26] [INFO]    ✍️  Writing digest post (1/28)...
+[19:15:43] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме "The Coming Loop".\n\nИз материалов мне нужно использовать только факты. Основной материал - эт'
+[19:15:46] [INFO]    🖼  Media: 1 images, 0 videos
+[19:15:46] [INFO]    ✅ Added post #1: 
+[19:15:46] [INFO] 
+--- Cluster 2: No Claude Fable 5? No problem: Sakana achieves frontier performance wi (score=1.50) ---
+[19:15:52] [INFO]    ✍️  Writing digest post (2/28)...
+[19:16:03] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме о Sakana Fugu. \n\nКлючевые требования:\n- 1500-2500 знаков\n- Без ИТ-жаргона (запрещены: baselin'
+[19:16:03] [INFO]    🖼  Media: 1 images, 0 videos
+[19:16:03] [INFO]    ✅ Added post #2: 
+[19:16:04] [INFO] 
+--- Cluster 3: The AI world is getting ‘loopy’ (score=1.31) ---
+[19:16:12] [INFO]    ✍️  Writing digest post (3/28)...
+[19:16:29] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме «The AI world is getting ‘loopy’».\n\nТребования:\n- Без ИТ-жаргона (запрещено: baseline, pipeli'
+[19:16:29] [INFO]    🖼  Media: 0 images, 0 videos
+[19:16:29] [INFO]    ✅ Added post #3: 
+[19:16:30] [INFO] 
+--- Cluster 4: Meta launches cheaper smart glasses without Ray-Ban (score=1.31) ---
+[19:16:35] [INFO]    ✍️  Writing digest post (4/28)...
+[19:16:44] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме "Meta launches cheaper smart glasses without Ray-Ban".\n\nТребования:\n- Без ИТ-жаргона (запреще'
+[19:16:45] [INFO]    🖼  Media: 1 images, 0 videos
+[19:16:45] [INFO]    ✅ Added post #4: 
+[19:16:46] [INFO] 
+--- Cluster 5: The Crunchbase Tech Layoffs Tracker (score=1.29) ---
+[19:16:49] [INFO]    #5 ✅ coherent=True: All six articles are centered on the theme of workforce reductions in the techno
+[19:16:52] [INFO]    ✍️  Writing digest post (5/28)...
+[19:17:04] [DEBUG]    [CLEANUP] RAW_START: 'The user wants me to write a B2B-focused digest article in Russian about "The Crunchbase Tech Layoffs Tracker". Let me analyze the requirements:\n\n1. Write in Russian\n2. B2B audience (entrepreneurs, SM'
+[19:17:05] [INFO]    🖼  Media: 1 images, 0 videos
+[19:17:05] [INFO]    ✅ Added post #5: 
+[19:17:06] [INFO] 
+--- Cluster 6: Instagram for TV is now available on Samsung TVs in the US (score=1.29) ---
+[19:17:08] [INFO]    #6 ✅ coherent=True: All four articles cover the same topic: Instagram's expansion of its TV app to S
+[19:17:11] [INFO]    ✍️  Writing digest post (6/28)...
+[19:17:26] [DEBUG]    [CLEANUP] RAW_START: 'The user wants me to write a B2B-focused digest about Instagram for TV being available on Samsung TVs in the US. Let me analyze the materials:\n\nKey facts from the materials:\n1. Instagram for TV is now'
+[19:17:30] [INFO]    🖼  Media: 1 images, 0 videos
+[19:17:30] [INFO]    ✅ Added post #6: 
+[19:17:31] [INFO] 
+--- Cluster 7: Valve's Steam Machine ships June 29 for $1,049, but you probably won't (score=1.12) ---
+[19:17:34] [INFO]    #7 ✅ coherent=True: All three articles cover the same topic: Valve's Steam Machine console, specific
+[19:17:36] [INFO]    ✍️  Writing digest post (7/28)...
+[19:17:50] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме о выпуске Steam Machine от Valve.\n\nОсновные факты из материалов:\n1. Valve объявила о выпуске '
+[19:17:52] [INFO]    🖼  Media: 1 images, 0 videos
+[19:17:52] [INFO]    ✅ Added post #7: 
+[19:17:53] [INFO] 
+--- Cluster 8: Tesla in autopilot crashed into Texas home, killing one (score=1.11) ---
+[19:17:55] [INFO]    #8 ✅ coherent=True: All three articles report on the same incident: a Tesla vehicle operating in Aut
+[19:17:58] [INFO]    ✍️  Writing digest post (8/28)...
+[19:18:10] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать информативный дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме аварии Tesla в Техасе.\n\nКлючевые требования:\n- Объём: 1500-2500 знаков\n- Без ИТ'
+[19:18:10] [INFO]    🖼  Media: 1 images, 0 videos
+[19:18:10] [INFO]    ✅ Added post #8: 
+[19:18:11] [INFO] 
+--- Cluster 9: ByteDance Unveils Seedance 2.5 Video Model (score=1.11) ---
+[19:18:16] [INFO]    ✍️  Writing digest post (9/28)...
+[19:18:27] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме «ByteDance Unveils Seedance 2.5 Video Model».\n\nТребования:\n- Без ИТ-жаргона (запрещены слова:'
+[19:18:27] [INFO]    🖼  Media: 1 images, 0 videos
+[19:18:27] [INFO]    ✅ Added post #9: 
+[19:18:28] [INFO] 
+--- Cluster 10: WhatsApp gets new chief as Meta taps India’s CRED founder Kunal Shah a (score=1.09) ---
+[19:18:34] [INFO]    ✍️  Writing digest post (10/28)...
+[19:18:45] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме о назначении нового главы WhatsApp и инвестициях Meta в CRED.\n\nКлючевые факты из материалов:\n'
+[19:18:45] [INFO]    🖼  Media: 0 images, 0 videos
+[19:18:45] [INFO]    ✅ Added post #10: 
+[19:18:46] [INFO] 
+--- Cluster 11: AI Weekly Issue #495: Musk, Zuckerberg killed Trump's AI safety order  (score=1.09) ---
+[19:18:52] [INFO]    ✍️  Writing digest post (11/28)...
+[19:19:03] [DEBUG]    [CLEANUP] RAW_START: 'Анализирую задачу:\n1. Нужно написать дайджест на тему "AI Weekly Issue #495: Musk, Zuckerberg killed Trump\'s AI safety order in three phone calls"\n2. Однако в предоставленных материалах этой статьи не'
+[19:19:03] [INFO]    🖼  Media: 0 images, 0 videos
+[19:19:03] [INFO]    ✅ Added post #11: 
+[19:19:04] [INFO] 
+--- Cluster 12: 5 Essential Approaches to Robust Outlier Detection (score=1.05) ---
+[19:19:07] [INFO]    #12 ✅ coherent=True: All three articles focus on outlier or anomaly detection, covering different asp
+[19:19:10] [INFO]    ✍️  Writing digest post (12/28)...
+[19:19:23] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме «5 Essential Approaches to Robust Outlier Detection».\n\nТребования:\n- Без ИТ-жаргона (запрещен'
+[19:19:23] [INFO]    🖼  Media: 1 images, 0 videos
+[19:19:23] [INFO]    ✅ Added post #12: 
+[19:19:23] [INFO] 
+--- Cluster 13: Google plans a 12-week incubator, picking 10 to 20 AI startups from it (score=1.04) ---
+[19:19:29] [INFO]    ✍️  Writing digest post (13/28)...
+[19:19:37] [DEBUG]    [CLEANUP] RAW_START: 'The user wants me to write a B2B-focused digest article in Russian about Google\'s new AI incubator for "Xoogler" alumni. Let me analyze the requirements:\n\n1. 1500-2500 characters in Russian\n2. B2B aud'
+[19:19:37] [INFO]    🖼  Media: 0 images, 0 videos
+[19:19:37] [INFO]    ✅ Added post #13: 
+[19:19:38] [INFO] 
+--- Cluster 14: 8086 Segmented Memory was a good idea (score=1.03) ---
+[19:19:45] [INFO]    ✍️  Writing digest post (14/28)...
+[19:20:01] [DEBUG]    [CLEANUP] RAW_START: 'Let me analyze the request carefully:\n\n1. I need to write a B2B digest text in Russian (1500-2500 characters)\n2. Topic: "8086 Segmented Memory was a good idea"\n3. The text should NOT use IT jargon (ba'
+[19:20:05] [INFO]    🖼  Media: 1 images, 0 videos
+[19:20:05] [INFO]    ✅ Added post #14: 
+[19:20:05] [INFO] 
+--- Cluster 15: NVIDIA Blackwell Leads on First Agentic AI Infrastructure Benchmark (score=1.01) ---
+[19:20:11] [INFO]    ✍️  Writing digest post (15/28)...
+[19:20:29] [DEBUG]    [CLEANUP] RAW_START: 'Let me analyze this task:\n\n1. I need to write a B2B-focused digest in Russian about "NVIDIA Blackwell Leads on First Agentic AI Infrastructure Benchmark"\n2. I need to use ONLY facts from the provided '
+[19:20:30] [INFO]    🖼  Media: 1 images, 0 videos
+[19:20:30] [INFO]    ✅ Added post #15: 
+[19:20:31] [INFO] 
+--- Cluster 16: OpenAI launches new initiative to help find and patch open source bugs (score=1.00) ---
+[19:20:37] [INFO]    ✍️  Writing digest post (16/28)...
+[19:20:48] [DEBUG]    [CLEANUP] RAW_START: 'Let me analyze the user\'s request:\n\n1. They want a digest text in Russian for B2B audience (entrepreneurs, SMB managers)\n2. Topic: "OpenAI launches new initiative to help find and patch open source bu'
+[19:20:48] [INFO]    🖼  Media: 0 images, 0 videos
+[19:20:48] [INFO]    ✅ Added post #16: 
+[19:20:48] [INFO] 
+--- Cluster 17: NVIDIA Brings Trusted, 24/7 AI Agents to Telecom Operations (score=0.99) ---
+[19:20:55] [INFO]    ✍️  Writing digest post (17/28)...
+[19:21:12] [DEBUG]    [CLEANUP] RAW_START: 'Давайте проанализирую задачу:\n\n1. Нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB)\n2. Тема: "NVIDIA Brings Trusted, 24/7 AI Agents to Telecom Operations"\n'
+[19:21:12] [INFO]    🖼  Media: 1 images, 0 videos
+[19:21:12] [INFO]    ✅ Added post #17: 
+[19:21:13] [INFO] 
+--- Cluster 18: Learning What Not to Forget: Long-Horizon Agent Memory from a Few Kilo (score=0.98) ---
+[19:21:19] [INFO]    ✍️  Writing digest post (18/28)...
+[19:21:34] [DEBUG]    [CLEANUP] RAW_START: 'Пользователь просит написать дайджест на тему "Learning What Not to Forget: Long-Horizon Agent Memory from a Few Kilobytes of Learning", но в предоставленных материалах этой статьи нет. Есть только др'
+[19:21:34] [INFO]    🖼  Media: 1 images, 0 videos
+[19:21:34] [INFO]    ✅ Added post #18: 
+[19:21:35] [INFO] 
+--- Cluster 19: AI Weekly Issue #494: SpaceX wants $80 billion. OpenAI wants a trillio (score=0.96) ---
+[19:21:40] [INFO]    ✍️  Writing digest post (19/28)...
+[19:21:54] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме из AI Weekly Issue #494: «SpaceX wants $80 billion. OpenAI wants a trillion.»\n\nИз материалов '
+[19:21:55] [INFO]    🖼  Media: 0 images, 0 videos
+[19:21:55] [INFO]    ✅ Added post #19: 
+[19:21:55] [INFO] 
+--- Cluster 20: AI Weekly Issue #489: PE built AI's new distribution layer (score=0.91) ---
+[19:22:01] [INFO]    ✍️  Writing digest post (20/28)...
+[19:22:13] [DEBUG]    [CLEANUP] RAW_START: 'Давайте проанализирую материалы и напишу дайджест на русском языке для B2B-аудитории.\n\nМатериалы:\n1. The Information - о том, как клиенты AI экономят на счетах от Anthropic и OpenAI, переходя на более'
+[19:22:14] [INFO]    🖼  Media: 0 images, 0 videos
+[19:22:14] [INFO]    ✅ Added post #20: 
+[19:22:14] [INFO] 
+--- Cluster 21: Extending Human Intelligence Through AI (score=0.90) ---
+[19:22:22] [INFO]    ✍️  Writing digest post (21/28)...
+[19:22:39] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме «Extending Human Intelligence Through AI» (Расширение человеческого интеллекта через ИИ).\n\nТр'
+[19:22:39] [INFO]    🖼  Media: 1 images, 0 videos
+[19:22:39] [INFO]    ✅ Added post #21: 
+[19:22:39] [INFO] 
+--- Cluster 22: Sector Snapshot: Robotics Startups On Fire As Venture Funding Surges T (score=0.89) ---
+[19:22:46] [INFO]    ✍️  Writing digest post (22/28)...
+[19:22:59] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме "Sector Snapshot: Robotics Startups On Fire As Venture Funding Surges To Record Numbers In 20'
+[19:22:59] [INFO]    🖼  Media: 0 images, 0 videos
+[19:22:59] [INFO]    ✅ Added post #22: 
+[19:23:00] [INFO] 
+--- Cluster 23: Brain-computer interface trials are taking off (score=0.89) ---
+[19:23:06] [INFO]    ✍️  Writing digest post (23/28)...
+[19:23:24] [DEBUG]    [CLEANUP] RAW_START: 'The user wants me to write a B2B-focused digest article in Russian about brain-computer interface (BCI) trials, based on the provided materials. Let me analyze the requirements:\n\n1. Write in Russian f'
+[19:23:24] [INFO]    🖼  Media: 1 images, 0 videos
+[19:23:24] [INFO]    ✅ Added post #23: 
+[19:23:25] [INFO] 
+--- Cluster 24: SpaceX lands $6.3bn compute deal with Reflection AI (score=0.85) ---
+[19:23:32] [INFO]    ✍️  Writing digest post (24/28)...
+[19:23:41] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать связный информативный текст на русском языке для B2B-аудитории о сделке между SpaceX и Reflection AI. \n\nКлючевые факты из материалов:\n1. Reflection AI будет платить SpaceX $150 млн '
+[19:23:41] [INFO]    🖼  Media: 1 images, 0 videos
+[19:23:41] [INFO]    ✅ Added post #24: 
+[19:23:42] [INFO] 
+--- Cluster 25: Sublinearly Structured Deep Neural Networks Achieve Feature Learning C (score=0.85) ---
+[19:23:48] [INFO]    ✍️  Writing digest post (25/28)...
+[19:23:58] [DEBUG]    [CLEANUP] RAW_START: 'The user wants me to write a B2B digest article in Russian about "Sublinearly Structured Deep Neural Networks Achieve Feature Learning Consistency for Compositional Functions". \n\nKey requirements:\n1. '
+[19:23:58] [INFO]    🖼  Media: 1 images, 0 videos
+[19:23:58] [INFO]    ✅ Added post #25: 
+[19:23:58] [INFO] 
+--- Cluster 26: Metric-Dependent Annotation Saturation for Learning from Label Distrib (score=0.80) ---
+[19:24:05] [INFO]    ✍️  Writing digest post (26/28)...
+[19:24:16] [DEBUG]    [CLEANUP] RAW_START: 'Let me analyze the task:\n\n1. I need to write a digest in Russian for B2B audience (entrepreneurs, SMB managers)\n2. Topic: "Metric-Dependent Annotation Saturation for Learning from Label Distributions"'
+[19:24:16] [INFO]    🖼  Media: 1 images, 0 videos
+[19:24:16] [INFO]    ✅ Added post #26: 
+[19:24:17] [INFO] 
+--- Cluster 27: Issue #37 (score=0.80) ---
+[19:24:24] [INFO]    ✍️  Writing digest post (27/28)...
+[19:24:36] [DEBUG]    [CLEANUP] RAW_START: 'Мне нужно написать дайджест на русском языке для B2B-аудитории (предприниматели, руководители SMB) по теме "Issue #37". \n\nУ меня есть несколько материалов:\n1. Towards Data Science - о использовании Cl'
+[19:24:36] [INFO]    🖼  Media: 1 images, 0 videos
+[19:24:36] [INFO]    ✅ Added post #27: 
+[19:24:37] [INFO] 
+--- Cluster 28: I Put the Ultimate Phone Cameras to a Head-to-Head Test (Neither Is an (score=0.79) ---
+[19:24:44] [INFO]    ✍️  Writing digest post (28/28)...
+[19:24:55] [DEBUG]    [CLEANUP] RAW_START: 'Let me analyze the task:\n\n1. Write a B2B digest text in Russian (1500-2500 characters)\n2. Topic: "I Put the Ultimate Phone Cameras to a Head-to-Head Test (Neither Is an iPhone)"\n3. Audience: entrepren'
+[19:24:55] [INFO]    🖼  Media: 1 images, 0 videos
+[19:24:55] [INFO]    ✅ Added post #28: 
+[19:24:56] [INFO] ✅ Reached target: 28 posts
+[19:24:56] [INFO] 
+✅ Generated 28 digest posts
+[19:24:56] [INFO] 💾 Saved to Obsidian: /srv/obsidian-base/BRIEFINGS/AI-Digest/digest_2026-06-23.md
+[19:24:56] [INFO] 💾 Saved to output:  /home/apps_maker/ai-digest/output/digest_2026-06-23_clusterized.md
+[19:24:56] [INFO] 📱 Telegram: sent digest_2026-06-23.md (212055 bytes)
+
+============================================================
+  ✅ Done! 28 posts. Obsidian: digest_2026-06-23.md | Telegram: ✅
+============================================================
+

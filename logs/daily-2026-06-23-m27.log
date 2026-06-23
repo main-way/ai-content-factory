@@ -1,0 +1,190 @@
+[_env] Loaded: /home/apps_maker/.hermes/.env, /home/apps_maker/ai-digest/.env
+[_env] Loaded: /home/apps_maker/.hermes/.env, /home/apps_maker/ai-digest/.env
+
+============================================================
+  🚀 AI-Digest Pipeline | date=2026-06-23 | target=28 posts
+============================================================
+
+[20:31:00] [INFO]   2026-06-23: 1343 posts loaded (with full_text: 602/1343)
+[20:31:00] [INFO] 📰 Total unique posts: 1343
+[20:31:00] [INFO] 🌐 After language filter: 1343 posts
+[20:31:00] [INFO] 🧠 Loading embedding model...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 4720.12it/s]
+[20:31:04] [INFO] 📝 Embedding 1343 texts (batch_size=8)...
+Batches:   0%|          | 0/168 [00:00<?, ?it/s]Batches:   1%|          | 1/168 [00:00<02:39,  1.05it/s]Batches:   1%|          | 2/168 [00:01<01:55,  1.44it/s]Batches:   2%|▏         | 3/168 [00:01<01:41,  1.63it/s]Batches:   2%|▏         | 4/168 [00:02<01:49,  1.50it/s]Batches:   3%|▎         | 5/168 [00:03<01:32,  1.77it/s]Batches:   4%|▎         | 6/168 [00:03<01:25,  1.89it/s]Batches:   4%|▍         | 7/168 [00:03<01:19,  2.04it/s]Batches:   5%|▍         | 8/168 [00:04<01:16,  2.10it/s]Batches:   5%|▌         | 9/168 [00:05<01:24,  1.88it/s]Batches:   6%|▌         | 10/168 [00:05<01:23,  1.90it/s]Batches:   7%|▋         | 11/168 [00:06<01:20,  1.94it/s]Batches:   7%|▋         | 12/168 [00:06<01:29,  1.74it/s]Batches:   8%|▊         | 13/168 [00:07<01:33,  1.66it/s]Batches:   8%|▊         | 14/168 [00:08<01:42,  1.50it/s]Batches:   9%|▉         | 15/168 [00:09<01:45,  1.45it/s]Batches:  10%|▉         | 16/168 [00:09<01:36,  1.58it/s]Batches:  10%|█         | 17/168 [00:10<02:09,  1.16it/s]Batches:  11%|█         | 18/168 [00:11<01:59,  1.26it/s]Batches:  11%|█▏        | 19/168 [00:12<02:02,  1.22it/s]Batches:  12%|█▏        | 20/168 [00:12<01:49,  1.36it/s]Batches:  12%|█▎        | 21/168 [00:13<01:40,  1.46it/s]Batches:  13%|█▎        | 22/168 [00:14<01:35,  1.53it/s]Batches:  14%|█▎        | 23/168 [00:14<01:43,  1.39it/s]Batches:  14%|█▍        | 24/168 [00:15<01:37,  1.47it/s]Batches:  15%|█▍        | 25/168 [00:16<01:44,  1.37it/s]Batches:  15%|█▌        | 26/168 [00:17<01:47,  1.33it/s]Batches:  16%|█▌        | 27/168 [00:18<01:49,  1.29it/s]Batches:  17%|█▋        | 28/168 [00:19<01:58,  1.18it/s]Batches:  17%|█▋        | 29/168 [00:19<01:57,  1.18it/s]Batches:  18%|█▊        | 30/168 [00:20<01:56,  1.18it/s]Batches:  18%|█▊        | 31/168 [00:21<01:56,  1.18it/s]Batches:  19%|█▉        | 32/168 [00:22<02:00,  1.12it/s]Batches:  20%|█▉        | 33/168 [00:23<02:00,  1.12it/s]Batches:  20%|██        | 34/168 [00:24<01:48,  1.24it/s]Batches:  21%|██        | 35/168 [00:25<01:52,  1.19it/s]Batches:  21%|██▏       | 36/168 [00:25<01:51,  1.18it/s]Batches:  22%|██▏       | 37/168 [00:26<01:50,  1.19it/s]Batches:  23%|██▎       | 38/168 [00:27<01:48,  1.20it/s]Batches:  23%|██▎       | 39/168 [00:28<01:47,  1.20it/s]Batches:  24%|██▍       | 40/168 [00:29<01:41,  1.26it/s]Batches:  24%|██▍       | 41/168 [00:29<01:45,  1.21it/s]Batches:  25%|██▌       | 42/168 [00:30<01:47,  1.17it/s]Batches:  26%|██▌       | 43/168 [00:31<01:51,  1.12it/s]Batches:  26%|██▌       | 44/168 [00:32<01:48,  1.14it/s]Batches:  27%|██▋       | 45/168 [00:33<01:40,  1.22it/s]Batches:  27%|██▋       | 46/168 [00:34<01:35,  1.28it/s]Batches:  28%|██▊       | 47/168 [00:34<01:29,  1.35it/s]Batches:  29%|██▊       | 48/168 [00:35<01:30,  1.33it/s]Batches:  29%|██▉       | 49/168 [00:36<01:27,  1.36it/s]Batches:  30%|██▉       | 50/168 [00:36<01:23,  1.41it/s]Batches:  30%|███       | 51/168 [00:37<01:21,  1.43it/s]Batches:  31%|███       | 52/168 [00:38<01:22,  1.41it/s]Batches:  32%|███▏      | 53/168 [00:39<01:26,  1.33it/s]Batches:  32%|███▏      | 54/168 [00:39<01:27,  1.30it/s]Batches:  33%|███▎      | 55/168 [00:40<01:35,  1.18it/s]Batches:  33%|███▎      | 56/168 [00:41<01:17,  1.44it/s]Batches:  34%|███▍      | 57/168 [00:42<01:18,  1.41it/s]Batches:  35%|███▍      | 58/168 [00:42<01:22,  1.33it/s]Batches:  35%|███▌      | 59/168 [00:43<01:21,  1.35it/s]Batches:  36%|███▌      | 60/168 [00:44<01:17,  1.39it/s]Batches:  36%|███▋      | 61/168 [00:44<01:16,  1.41it/s]Batches:  37%|███▋      | 62/168 [00:45<01:13,  1.44it/s]Batches:  38%|███▊      | 63/168 [00:46<01:15,  1.40it/s]Batches:  38%|███▊      | 64/168 [00:47<01:10,  1.47it/s]Batches:  39%|███▊      | 65/168 [00:47<01:01,  1.67it/s]Batches:  39%|███▉      | 66/168 [00:48<01:02,  1.63it/s]Batches:  40%|███▉      | 67/168 [00:48<01:03,  1.59it/s]Batches:  40%|████      | 68/168 [00:49<01:12,  1.39it/s]Batches:  41%|████      | 69/168 [00:50<01:08,  1.44it/s]Batches:  42%|████▏     | 70/168 [00:50<01:04,  1.51it/s]Batches:  42%|████▏     | 71/168 [00:51<01:03,  1.52it/s]Batches:  43%|████▎     | 72/168 [00:52<01:01,  1.56it/s]Batches:  43%|████▎     | 73/168 [00:52<01:00,  1.57it/s]Batches:  44%|████▍     | 74/168 [00:53<01:00,  1.55it/s]Batches:  45%|████▍     | 75/168 [00:54<00:59,  1.55it/s]Batches:  45%|████▌     | 76/168 [00:54<00:59,  1.55it/s]Batches:  46%|████▌     | 77/168 [00:55<01:01,  1.47it/s]Batches:  46%|████▋     | 78/168 [00:56<01:00,  1.49it/s]Batches:  47%|████▋     | 79/168 [00:56<01:00,  1.48it/s]Batches:  48%|████▊     | 80/168 [00:57<00:58,  1.51it/s]Batches:  48%|████▊     | 81/168 [00:58<00:56,  1.54it/s]Batches:  49%|████▉     | 82/168 [00:58<00:55,  1.56it/s]Batches:  49%|████▉     | 83/168 [00:59<00:56,  1.50it/s]Batches:  50%|█████     | 84/168 [01:00<00:57,  1.46it/s]Batches:  51%|█████     | 85/168 [01:00<00:55,  1.50it/s]Batches:  51%|█████     | 86/168 [01:01<00:52,  1.57it/s]Batches:  52%|█████▏    | 87/168 [01:01<00:51,  1.57it/s]Batches:  52%|█████▏    | 88/168 [01:02<00:51,  1.56it/s]Batches:  53%|█████▎    | 89/168 [01:03<00:51,  1.53it/s]Batches:  54%|█████▎    | 90/168 [01:04<00:53,  1.47it/s]Batches:  54%|█████▍    | 91/168 [01:04<00:50,  1.52it/s]Batches:  55%|█████▍    | 92/168 [01:05<00:49,  1.54it/s]Batches:  55%|█████▌    | 93/168 [01:05<00:38,  1.93it/s]Batches:  56%|█████▌    | 94/168 [01:05<00:30,  2.40it/s]Batches:  57%|█████▋    | 95/168 [01:06<00:34,  2.12it/s]Batches:  57%|█████▋    | 96/168 [01:06<00:37,  1.93it/s]Batches:  58%|█████▊    | 97/168 [01:07<00:38,  1.86it/s]Batches:  58%|█████▊    | 98/168 [01:07<00:34,  2.01it/s]Batches:  59%|█████▉    | 99/168 [01:08<00:38,  1.78it/s]Batches:  60%|█████▉    | 100/168 [01:09<00:41,  1.63it/s]Batches:  60%|██████    | 101/168 [01:10<00:55,  1.20it/s]Batches:  61%|██████    | 102/168 [01:11<00:52,  1.26it/s]Batches:  61%|██████▏   | 103/168 [01:11<00:40,  1.61it/s]Batches:  62%|██████▏   | 104/168 [01:12<00:39,  1.63it/s]Batches:  62%|██████▎   | 105/168 [01:12<00:35,  1.75it/s]Batches:  63%|██████▎   | 106/168 [01:13<00:34,  1.79it/s]Batches:  64%|██████▎   | 107/168 [01:13<00:32,  1.89it/s]Batches:  64%|██████▍   | 108/168 [01:13<00:25,  2.31it/s]Batches:  65%|██████▍   | 109/168 [01:14<00:25,  2.29it/s]Batches:  65%|██████▌   | 110/168 [01:14<00:26,  2.23it/s]Batches:  66%|██████▌   | 111/168 [01:15<00:25,  2.24it/s]Batches:  67%|██████▋   | 112/168 [01:15<00:25,  2.22it/s]Batches:  67%|██████▋   | 113/168 [01:15<00:20,  2.69it/s]Batches:  68%|██████▊   | 114/168 [01:16<00:20,  2.61it/s]Batches:  68%|██████▊   | 115/168 [01:16<00:20,  2.53it/s]Batches:  69%|██████▉   | 116/168 [01:17<00:21,  2.42it/s]Batches:  70%|██████▉   | 117/168 [01:17<00:21,  2.39it/s]Batches:  70%|███████   | 118/168 [01:18<00:21,  2.30it/s]Batches:  71%|███████   | 119/168 [01:18<00:17,  2.85it/s]Batches:  71%|███████▏  | 120/168 [01:18<00:17,  2.69it/s]Batches:  72%|███████▏  | 121/168 [01:18<00:14,  3.32it/s]Batches:  73%|███████▎  | 122/168 [01:19<00:14,  3.11it/s]Batches:  73%|███████▎  | 123/168 [01:19<00:12,  3.65it/s]Batches:  74%|███████▍  | 124/168 [01:19<00:10,  4.17it/s]Batches:  74%|███████▍  | 125/168 [01:19<00:10,  4.15it/s]Batches:  75%|███████▌  | 126/168 [01:20<00:13,  3.17it/s]Batches:  76%|███████▌  | 127/168 [01:20<00:10,  3.80it/s]Batches:  76%|███████▌  | 128/168 [01:20<00:08,  4.52it/s]Batches:  77%|███████▋  | 129/168 [01:20<00:07,  5.20it/s]Batches:  77%|███████▋  | 130/168 [01:20<00:08,  4.30it/s]Batches:  78%|███████▊  | 131/168 [01:21<00:10,  3.64it/s]Batches:  79%|███████▊  | 132/168 [01:21<00:08,  4.26it/s]Batches:  79%|███████▉  | 133/168 [01:21<00:09,  3.67it/s]Batches:  80%|███████▉  | 134/168 [01:21<00:07,  4.39it/s]Batches:  80%|████████  | 135/168 [01:22<00:08,  3.90it/s]Batches:  81%|████████  | 136/168 [01:22<00:06,  4.64it/s]Batches:  82%|████████▏ | 137/168 [01:22<00:07,  4.09it/s]Batches:  82%|████████▏ | 138/168 [01:22<00:06,  4.84it/s]Batches:  83%|████████▎ | 139/168 [01:23<00:06,  4.33it/s]Batches:  83%|████████▎ | 140/168 [01:23<00:08,  3.39it/s]Batches:  84%|████████▍ | 141/168 [01:23<00:06,  3.88it/s]Batches:  85%|████████▍ | 142/168 [01:23<00:05,  4.36it/s]Batches:  85%|████████▌ | 143/168 [01:23<00:05,  4.89it/s]Batches:  86%|████████▌ | 144/168 [01:24<00:05,  4.19it/s]Batches:  86%|████████▋ | 145/168 [01:24<00:05,  4.16it/s]Batches:  87%|████████▋ | 146/168 [01:24<00:05,  4.03it/s]Batches:  88%|████████▊ | 147/168 [01:25<00:05,  3.58it/s]Batches:  88%|████████▊ | 148/168 [01:25<00:05,  3.51it/s]Batches:  89%|████████▊ | 149/168 [01:25<00:05,  3.49it/s]Batches:  89%|████████▉ | 150/168 [01:25<00:04,  3.85it/s]Batches:  90%|████████▉ | 151/168 [01:26<00:04,  4.01it/s]Batches:  90%|█████████ | 152/168 [01:26<00:03,  4.37it/s]Batches:  91%|█████████ | 153/168 [01:26<00:03,  4.57it/s]Batches:  92%|█████████▏| 154/168 [01:26<00:02,  4.71it/s]Batches:  92%|█████████▏| 155/168 [01:26<00:02,  4.78it/s]Batches:  93%|█████████▎| 156/168 [01:27<00:02,  4.81it/s]Batches:  93%|█████████▎| 157/168 [01:27<00:02,  5.08it/s]Batches:  94%|█████████▍| 158/168 [01:27<00:01,  5.46it/s]Batches:  95%|█████████▍| 159/168 [01:27<00:01,  5.54it/s]Batches:  95%|█████████▌| 160/168 [01:27<00:01,  5.85it/s]Batches:  96%|█████████▌| 161/168 [01:27<00:01,  6.05it/s]Batches:  96%|█████████▋| 162/168 [01:28<00:00,  6.38it/s]Batches:  97%|█████████▋| 163/168 [01:28<00:00,  6.57it/s]Batches:  98%|█████████▊| 164/168 [01:28<00:00,  6.78it/s]Batches:  98%|█████████▊| 165/168 [01:28<00:00,  7.33it/s]Batches:  99%|█████████▉| 166/168 [01:28<00:00,  7.08it/s]Batches: 100%|██████████| 168/168 [01:28<00:00,  8.86it/s]Batches: 100%|██████████| 168/168 [01:28<00:00,  1.89it/s]
+[20:32:33] [INFO]    Done in 88.8s, shape=(1343, 384)
+[20:32:34] [INFO] 🔵 UMAP: (1343, 384) → (n, 20)...
+[20:33:06] [INFO]    UMAP done in 31.9s
+[20:33:06] [INFO] 🔴 HDBSCAN (min_cluster_size=3)...
+[20:33:06] [INFO]    HDBSCAN done in 0.2s — clusters=110, noise=243
+[20:33:06] [INFO] 🏆 Clusters ranked: 98
+[20:33:06] [INFO]   #1: size= 18 score=1.81 → The Coming Loop
+[20:33:06] [INFO]   #2: size=  6 score=1.50 → No Claude Fable 5? No problem: Sakana achieves frontier performance wi
+[20:33:06] [INFO]   #3: size=  7 score=1.31 → The AI world is getting ‘loopy’
+[20:33:06] [INFO]   #4: size= 12 score=1.31 → Meta launches cheaper smart glasses without Ray-Ban
+[20:33:06] [INFO]   #5: size=  6 score=1.29 → The Crunchbase Tech Layoffs Tracker
+
+============================================================
+  📝 Generating digest (28 posts)...
+============================================================
+
+[20:33:06] [INFO] 
+--- Cluster 1: The Coming Loop (score=1.81) ---
+[20:33:20] [ERROR]    LLM error: Expecting ',' delimiter: line 2 column 19 (char 20)
+[20:33:20] [INFO]    ✍️  Writing digest post (1/28)...
+[20:34:05] [INFO]    🖼  Media: 1 images, 0 videos
+[20:34:05] [INFO]    ✅ Added post #1: 
+[20:34:05] [INFO] 
+--- Cluster 2: No Claude Fable 5? No problem: Sakana achieves frontier performance wi (score=1.50) ---
+[20:34:21] [INFO]    ✍️  Writing digest post (2/28)...
+[20:34:56] [INFO]    🖼  Media: 1 images, 0 videos
+[20:34:56] [INFO]    ✅ Added post #2: 
+[20:34:56] [INFO] 
+--- Cluster 3: The AI world is getting ‘loopy’ (score=1.31) ---
+[20:35:11] [INFO]    ✍️  Writing digest post (3/28)...
+[20:35:37] [INFO]    🖼  Media: 0 images, 0 videos
+[20:35:37] [INFO]    ✅ Added post #3: 
+[20:35:38] [INFO] 
+--- Cluster 4: Meta launches cheaper smart glasses without Ray-Ban (score=1.31) ---
+[20:35:46] [INFO]    #4 ✅ coherent=True: All 12 articles focus on Meta's newly announced smart glasses, covering product 
+[20:35:51] [INFO]    ✍️  Writing digest post (4/28)...
+[20:36:10] [INFO]    🖼  Media: 1 images, 0 videos
+[20:36:10] [INFO]    ✅ Added post #4: 
+[20:36:11] [INFO] 
+--- Cluster 5: The Crunchbase Tech Layoffs Tracker (score=1.29) ---
+[20:36:23] [INFO]    ✍️  Writing digest post (5/28)...
+[20:36:44] [INFO]    🖼  Media: 1 images, 0 videos
+[20:36:44] [INFO]    ✅ Added post #5: 
+[20:36:45] [INFO] 
+--- Cluster 6: Instagram for TV is now available on Samsung TVs in the US (score=1.29) ---
+[20:36:51] [INFO]    #6 ✅ coherent=True: All four articles cover the same topic: Instagram's expansion to Samsung smart T
+[20:36:59] [INFO]    ✍️  Writing digest post (6/28)...
+[20:37:29] [INFO]    🖼  Media: 1 images, 0 videos
+[20:37:29] [INFO]    ✅ Added post #6: 
+[20:37:30] [INFO] 
+--- Cluster 7: Valve's Steam Machine ships June 29 for $1,049, but you probably won't (score=1.12) ---
+[20:37:36] [ERROR]    LLM error: Extra data: line 7 column 1 (char 190)
+[20:37:41] [INFO]    ✍️  Writing digest post (7/28)...
+[20:38:10] [INFO]    🖼  Media: 1 images, 0 videos
+[20:38:10] [INFO]    ✅ Added post #7: 
+[20:38:10] [INFO] 
+--- Cluster 8: Tesla in autopilot crashed into Texas home, killing one (score=1.11) ---
+[20:38:17] [ERROR]    LLM error: Expecting ',' delimiter: line 2 column 20 (char 21)
+[20:38:26] [INFO]    ✍️  Writing digest post (8/28)...
+[20:38:51] [INFO]    🖼  Media: 1 images, 0 videos
+[20:38:51] [INFO]    ✅ Added post #8: 
+[20:38:52] [INFO] 
+--- Cluster 9: ByteDance Unveils Seedance 2.5 Video Model (score=1.11) ---
+[20:39:03] [INFO]    ✍️  Writing digest post (9/28)...
+[20:39:55] [INFO]    🖼  Media: 1 images, 0 videos
+[20:39:55] [INFO]    ✅ Added post #9: 
+[20:39:55] [INFO] 
+--- Cluster 10: WhatsApp gets new chief as Meta taps India’s CRED founder Kunal Shah a (score=1.09) ---
+[20:40:08] [INFO]    ✍️  Writing digest post (10/28)...
+[20:40:35] [INFO]    🖼  Media: 0 images, 0 videos
+[20:40:35] [INFO]    ✅ Added post #10: 
+[20:40:35] [INFO] 
+--- Cluster 11: 5 Essential Approaches to Robust Outlier Detection (score=1.05) ---
+[20:40:41] [ERROR]    LLM error: Expecting ',' delimiter: line 1 column 19 (char 18)
+[20:40:46] [INFO]    ✍️  Writing digest post (11/28)...
+[20:41:12] [INFO]    🖼  Media: 1 images, 0 videos
+[20:41:12] [INFO]    ✅ Added post #11: 
+[20:41:12] [INFO] 
+--- Cluster 12: Google plans a 12-week incubator, picking 10 to 20 AI startups from it (score=1.04) ---
+[20:41:27] [INFO]    ✍️  Writing digest post (12/28)...
+[20:41:50] [INFO]    🖼  Media: 0 images, 0 videos
+[20:41:50] [INFO]    ✅ Added post #12: 
+[20:41:50] [INFO] 
+--- Cluster 13: 8086 Segmented Memory was a good idea (score=1.03) ---
+[20:42:05] [INFO]    ✍️  Writing digest post (13/28)...
+[20:42:52] [INFO]    🖼  Media: 1 images, 0 videos
+[20:42:52] [INFO]    ✅ Added post #13: 
+[20:42:53] [INFO] 
+--- Cluster 14: AI Weekly Issue #495: Musk, Zuckerberg killed Trump's AI safety order  (score=1.03) ---
+[20:43:07] [INFO]    ✍️  Writing digest post (14/28)...
+[20:43:44] [INFO]    🖼  Media: 0 images, 0 videos
+[20:43:44] [INFO]    ✅ Added post #14: 
+[20:43:45] [INFO] 
+--- Cluster 15: NVIDIA Blackwell Leads on First Agentic AI Infrastructure Benchmark (score=1.01) ---
+[20:43:57] [INFO]    ✍️  Writing digest post (15/28)...
+[20:44:25] [INFO]    🖼  Media: 1 images, 0 videos
+[20:44:25] [INFO]    ✅ Added post #15: 
+[20:44:26] [INFO] 
+--- Cluster 16: OpenAI launches new initiative to help find and patch open source bugs (score=1.00) ---
+[20:44:37] [INFO]    ✍️  Writing digest post (16/28)...
+[20:45:03] [INFO]    🖼  Media: 0 images, 0 videos
+[20:45:03] [INFO]    ✅ Added post #16: 
+[20:45:03] [INFO] 
+--- Cluster 17: NVIDIA Brings Trusted, 24/7 AI Agents to Telecom Operations (score=0.99) ---
+[20:45:17] [INFO]    ✍️  Writing digest post (17/28)...
+[20:45:48] [INFO]    🖼  Media: 1 images, 0 videos
+[20:45:48] [INFO]    ✅ Added post #17: 
+[20:45:48] [INFO] 
+--- Cluster 18: Learning What Not to Forget: Long-Horizon Agent Memory from a Few Kilo (score=0.98) ---
+[20:46:01] [INFO]    ✍️  Writing digest post (18/28)...
+[20:46:40] [INFO]    🖼  Media: 1 images, 0 videos
+[20:46:40] [INFO]    ✅ Added post #18: 
+[20:46:41] [INFO] 
+--- Cluster 19: AI Weekly Issue #494: SpaceX wants $80 billion. OpenAI wants a trillio (score=0.96) ---
+[20:46:53] [INFO]    ✍️  Writing digest post (19/28)...
+[20:47:21] [INFO]    🖼  Media: 0 images, 0 videos
+[20:47:21] [INFO]    ✅ Added post #19: 
+[20:47:21] [INFO] 
+--- Cluster 20: AI Weekly Issue #489: PE built AI's new distribution layer (score=0.91) ---
+[20:47:36] [INFO]    ✍️  Writing digest post (20/28)...
+[20:48:01] [INFO]    🖼  Media: 0 images, 0 videos
+[20:48:01] [INFO]    ✅ Added post #20: 
+[20:48:01] [INFO] 
+--- Cluster 21: Extending Human Intelligence Through AI (score=0.90) ---
+[20:48:16] [INFO]    ✍️  Writing digest post (21/28)...
+[20:48:43] [INFO]    🖼  Media: 1 images, 0 videos
+[20:48:43] [INFO]    ✅ Added post #21: 
+[20:48:43] [INFO] 
+--- Cluster 22: Sector Snapshot: Robotics Startups On Fire As Venture Funding Surges T (score=0.89) ---
+[20:48:55] [INFO]    ✍️  Writing digest post (22/28)...
+[20:49:18] [INFO]    🖼  Media: 0 images, 0 videos
+[20:49:18] [INFO]    ✅ Added post #22: 
+[20:49:18] [INFO] 
+--- Cluster 23: Brain-computer interface trials are taking off (score=0.89) ---
+[20:49:31] [INFO]    ✍️  Writing digest post (23/28)...
+[20:50:00] [INFO]    🖼  Media: 1 images, 0 videos
+[20:50:00] [INFO]    ✅ Added post #23: 
+[20:50:00] [INFO] 
+--- Cluster 24: SpaceX lands $6.3bn compute deal with Reflection AI (score=0.85) ---
+[20:50:16] [INFO]    ✍️  Writing digest post (24/28)...
+[20:50:42] [INFO]    🖼  Media: 1 images, 0 videos
+[20:50:42] [INFO]    ✅ Added post #24: 
+[20:50:43] [INFO] 
+--- Cluster 25: Sublinearly Structured Deep Neural Networks Achieve Feature Learning C (score=0.85) ---
+[20:50:55] [INFO]    ✍️  Writing digest post (25/28)...
+[20:51:24] [INFO]    🖼  Media: 1 images, 0 videos
+[20:51:24] [INFO]    ✅ Added post #25: 
+[20:51:25] [INFO] 
+--- Cluster 26: Metric-Dependent Annotation Saturation for Learning from Label Distrib (score=0.80) ---
+[20:51:33] [INFO]    #26 ✅ coherent=True: All three articles focus on machine learning approaches to annotation quality, l
+[20:51:40] [INFO]    ✍️  Writing digest post (26/28)...
+[20:52:03] [INFO]    🖼  Media: 1 images, 0 videos
+[20:52:03] [INFO]    ✅ Added post #26: 
+[20:52:04] [INFO] 
+--- Cluster 27: Issue #37 (score=0.80) ---
+[20:52:10] [INFO]    #27 ✅ coherent=True: All five articles are centered on Claude Code, Anthropic's AI-powered coding too
+[20:52:19] [INFO]    ✍️  Writing digest post (27/28)...
+[20:52:47] [INFO]    🖼  Media: 1 images, 0 videos
+[20:52:47] [INFO]    ✅ Added post #27: 
+[20:52:48] [INFO] 
+--- Cluster 28: I Put the Ultimate Phone Cameras to a Head-to-Head Test (Neither Is an (score=0.79) ---
+[20:53:00] [INFO]    ✍️  Writing digest post (28/28)...
+[20:53:26] [INFO]    🖼  Media: 1 images, 0 videos
+[20:53:26] [INFO]    ✅ Added post #28: 
+[20:53:26] [INFO] ✅ Reached target: 28 posts
+[20:53:26] [INFO] 
+✅ Generated 28 digest posts
+[20:53:26] [INFO] 💾 Saved to Obsidian: /srv/obsidian-base/BRIEFINGS/AI-Digest/digest_2026-06-23.md
+[20:53:26] [INFO] 💾 Saved to output:  /home/apps_maker/ai-digest/output/digest_2026-06-23_clusterized.md
+[20:53:27] [INFO] 📱 Telegram: sent digest_2026-06-23.md (200831 bytes)
+
+============================================================
+  ✅ Done! 28 posts. Obsidian: digest_2026-06-23.md | Telegram: ✅
+============================================================
+
