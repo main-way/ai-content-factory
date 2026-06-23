@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:ReFPO: Reflow Regularization for Flow Matching Policy Gradients
+View PDF HTML (experimental)Abstract:We present Reflow-regularized Flow Matching Policy Gradients (ReFPO), a simple online RL method that adds explicit Reflow regularization to FPO for efficient flow-based control. We uncover a key structural property: the gradient updates in Flow Matching Policy Gradients (FPO) can be interpreted as an implicit advantage-weighted Reflow process, providing a new geometric perspective on flow-based policy gradients. Building on this insight, ReFPO introduces an explicit geometric regularizer that can be implemented with a single line of code change without incurring additional computational overhead or auxiliary distillation stages. By synergizing advantage-guided updates with path rectification, our method reduces CFM proxy-ratio spikes, stabilizes PPO-style training, and enables high-fidelity one-step inference that often matches or exceeds multi-step performance. We experimentally demonstrate that ReFPO improves average performance and discretization robustness across GridWorld, MuJoCo Playground, and high-dimensional Humanoid Control tasks, providing a scalable and stable approach for generative policies in complex physical simulations.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

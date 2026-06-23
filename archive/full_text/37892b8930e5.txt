@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Delta-Diffusion: Modeling Longitudinal Brain Amyloid-PET Trajectories via Conditional Poisson Diffusion Bridge
+View PDF HTML (experimental)Abstract:While longitudinal brain PET imaging is the gold standard for quantifying the spatiotemporal accumulation of Beta-amyloid, its widespread clinical utility is constrained by high operational costs and cumulative radiation risks. Recent deep generative models show promise in longitudinal image synthesis; however, they often fail to capture subtle pathological progression due to identity drift and a persistent bias toward trivially replicating baseline signal intensities rather than modeling temporal transition. To this end, we propose Delta-Diffusion, a novel progression-aware framework that redefines longitudinal PET synthesis as a conditional Poisson Diffusion Bridge (PDB) process. Unlike standard diffusion models that start from Gaussian noise, our PDB formulation is mathematically anchored to the subject's baseline PET, effectively transforming the generative task into a conditional distribution transition of the amyloid trajectory. To handle heteroscedastic nature of PET imaging, we introduce a physically-grounded Poisson perturbation within a Diffusion Transformer (DiT). This architecture uses adaptive scale-shift modulation to precisely calibrate the synthesis with the elapsed clinical interval and structural MRI context. A volume-of-interest balanced objective is designed to emphasize sparse, high-risk regions of amyloid accumulation. Validated on two cohorts with 542 subjects, Delta-Diffusion demonstrates superior performance in capturing longitudinal variations in amyloid deposition compared to state-of-the-art methods, offering a robust computational framework for tracking disease progression.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

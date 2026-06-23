@@ -1,0 +1,46 @@
+I've been running Bitdefender and Windows Security on my machines for a while now. Between the two of them, I've never had a serious infection or compromised account. They run in the background, I update them and I don't think about them much more than that.
+But that's a problem. When you stop thinking about your own security and hand it off entirely to software, you stop developing important instincts. The software becomes a substitute for judgement rather than a supplement to it, and if it ever goes away, you're left with habits you never build.
+So, to see how much heavy lifting the software was doing, I turned off both Bitdefender and Windows Security for a week and went off of the security instincts I'd built up over years of practicing cybersecurity best practices and just being online in general. By the end of the week, I had a newfound appreciation for how much work those instincts and the software was doing.
+Why I did this, and why you probably shouldn't
+Let me be clear: Turning off your antivirus is a bad idea. I know this. My editor knows this. But we made an informed decision to run this experiment anyway
+The thing is, there's a question nobody really asks when it comes to cybersecurity: How much of your security online is actually the software, and how much is you? We've been told for years to install the protection, keep it updated and let it do its thing. Fine. But what happens when it isn't running? What happens when it's just you?
+That's what I wanted to find out. Not to be reckless, but because I genuinely believe that most people have little idea how much their own behavior matters, and how little they've ever been pushed to really think about it.
+I was careful about this. Before I disabled a single thing, I ran the experiment on a secondary device, not my main machine. Everything important was backed up. My browsing stayed within the range of what I'd normally do on any given week -- I wasn't hunting for trouble. The whole point was to see what a normal week looks like without the safety net underneath you.
+This was a controlled experiment with a specific purpose, to figure out whether basic security awareness holds up on its own, and what that means for the way we think about protection software.
+Here's to one week of paying very close attention.
+No net, no scanner, no problem… hopefully
+As I've written about before, I use two layers of antivirus protection in my normal setup: Bitdefender and Windows Security, which is Microsoft's built-in solution. Together, they cover pretty much everything I need. Real-time scanning, web filtering, anti-phishing, automatic threat blocking and so on. It's a solid stack, and turning it off just felt wrong. But that's exactly what I did. For science.
+I disabled real-time protection on both. I turned off Bitdefender's web filtering and anti-phishing. I left the firewall running, because cutting that off would have moved this experiment from interesting to genuinely irresponsible, and that's not the story I'm here to tell.
+What I was left with was a fully connected, fully functional Windows machine with no active scanning, no automatic threat detection, and nothing catching threats in the background. Just a browser, an internet connection and whatever judgment I'd built up over the years.
+The week, day by day
+Day 1: Monday
+The first day was definitely the strangest, and not because anything bad happened. I opened my browser, checked emails, read the news and did some work. Normal stuff.
+But there was this low-level awareness running in the background of my brain that usually isn't there. Every link and download prompt felt more deliberate and got a second look.
+It wasn't paranoia exactly, but it wasn't comfort, either.
+Day 2: Tuesday
+I got a phishing email. I've written thousands of articles online with my primary email address under it, so this isn't exactly unusual. I get phishing emails all the time, but between Bitdefender's web filtering and Gmail's own spam detection, they rarely make it to my inbox.
+It was a fake invoice from what appeared to be a "logistics company" I'd never heard of. I didn't click it, but I noticed that without Bitdefender or Google catching it for me, I spent a little more time interacting with it than I would have had if it never hit my inbox to begin with. This turned out to be a representative taste of my antivirusless time.
+Day 3: Wednesday
+Uneventful, mostly. I downloaded a PDF from a site I didn't fully recognize, which is exactly the kind of thing I would normally let Bitdefender assess for me. I checked the URL carefully, looked up the organization behind it, and decided it was fine. It was fine. But that process, which normally takes zero seconds, took about 3 minutes.
+Day 4: Thursday
+I started noticing how often I rely on browser warnings and built-in protections I hadn't fully accounted for. Google Chrome flagged a site as potentially dangerous before it even loaded. That's not Bitdefender or Windows Security. That's Google doing its own thing. It was a useful reminder that there are more layers to this than most people think about.
+Day 5: Friday
+By Friday I had settled into a slower, deliberate but functional rhythm. I wasn't avoiding the internet (how could I?), but I was aware that I was paying way more attention to it in a way I normally outsource to software.
+I found myself reading URLs more carefully, hovering over links before clicking and being more selective about what I let onto the machine. These aren't complicated habits, but they do require you to think. That extra bit of pressure and constant vigilance can get exhausting.
+Days 6 and 7: The weekend
+The weekend was the real challenge, because weekend browsing is looser. Streaming, shopping, following links from social media and other kinds of low-attention activity where most people get into trouble.
+I kept the same discipline I'd developed through the week and got through it without incident. Nothing malicious made it onto the machine.
+But by Sunday night I was ready to turn everything back on. The week alone was close to making me go crazy, but I'd proven what I needed to prove and was tired of thinking so hard about everything.
+What actually protects you
+Here's what the week taught me. Your habits matter as much as your software.
+I got through seven days without a compromised machine, but I wasn't relying on luck. Instead, I survived on a set of behaviors that I'd internalized over years of being online, and that many people never consciously think about because they've always had software thinking for them.
+The first one is the most obvious. I didn't click things I wasn't sure about: phishing emails, suspicious download prompts or links from sources I didn't recognize without doing more research. When your antivirus isn't there to catch those, you have to catch them yourself. And you can, if you're constantly paying attention.
+The second was being deliberate about where I downloaded files from. Trusted sources only. If I didn't recognize a site, I looked it up before I let anything off of it onto my machine.
+The third was URL awareness. I was always checking to make sure the site I was about to enter credentials into was actually the site I thought it was. This is the thing that stops most phishing attacks and credit card fraud cold, and it requires nothing more than a few seconds of attention.
+The fourth was keeping everything updated. Windows, Chrome and every other application I use during the week. Unpatched software is a common way for attackers to get in, and it's also one of the easiest things to stay on top of.
+None of these things require special software or technical knowledge. They just require the decision to treat your own behavior online as a security tool, which it absolutely is. The problem is when people don't think about it that way because the software has always been there to catch what they miss.
+That's the gap worth closing.
+So, does antivirus actually matter?
+I want to be careful here, because the wrong takeaway from this experiment is that antivirus software is unnecessary and you can just be smart online instead. I got through the week clean because I already had good habits. Many people don't, and for those people, having good antivirus is the thing standing between them and a genuinely bad decision. And even for me, it was an exhausting effort, and I was glad to have the additional layer of security back.
+There's also a category of threat that good habits simply don't protect you from, like keyloggers or drive-by downloads. These exist precisely because human judgment has limits, and antivirus software exists to cover those to the best of their ability.
+What this week demonstrated is that software and behavior are supposed to work together. Antivirus catches what you miss. Good habits reduce how much there is to catch. By combining the two, you create two lines of defense to protect yourself and your data online.

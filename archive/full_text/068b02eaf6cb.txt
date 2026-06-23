@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:A Systematic Survey on Event Camera Representation Learning
+View PDF HTML (experimental)Abstract:Event cameras offer distinctive advantages, including microsecond-level latency and high dynamic range, rendering them promising for challenging perception tasks. Inspired by biological vision, they output asynchronous and sparse event streams rather than dense image frames, creating a fundamental mismatch with mainstream neural networks. This survey reviews recent advances in event camera representation learning from the perspective of converting raw event streams into learnable representations. We organize existing methods into two main categories: (1) dense-based representations, which transform raw event streams into regular grid-like structures to leverage mature RGB backbones and multimodal fusion pipelines, and (2) sparse-based representations, which retain events as discrete spatio-temporal structures to preserve fine-grained temporal dynamics and data sparsity. This representation-centric organization clarifies how different representations balance structural regularity, temporal fidelity, sparsity preservation, and architectural compatibility. For each category, we examine the underlying design choices, modeling principles, and task-level this http URL further summarize standard benchmarks and evaluation settings across representative high-level perception and low-level vision tasks. Finally, we discuss open problems and outline future research directions toward more efficient, scalable, and robust event-based perception systems.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

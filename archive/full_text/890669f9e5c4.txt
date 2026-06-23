@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Null-Calibrated Conformal Selection via Target-Membership Scores
+View PDF HTML (experimental)Abstract:Conformal selection aims to identify test candidates whose unknown responses fall in a target region while controlling the false discovery rate. Existing methods often inherit prediction-oriented nonconformity scores, such as residual or clipped residual scores, from conformal prediction. We argue that the natural score for selection is instead the target-membership probability. This score directly addresses the binary event being selected, and any monotone transform of it gives the Neyman--Pearson oracle ranking at a fixed null selection level. This distinction is irrelevant for mean-monotone targets, where conventional scores induce essentially the same ranking, but becomes important for interval-valued, variance-driven, multimodal, or multi-condition targets, where prediction-oriented scores can be misaligned with selection power. We study membership-score-based conformal selection and isolate one conformal calibration route, Null-Calibrated Conformal Selection (NCCS), which ranks test scores against confirmed non-target calibration examples. Under null exchangeability, NCCS yields finite-sample valid null p-values, which can be combined with BY under arbitrary dependence or with BH under standard positive-dependence conditions. Experiments support the score principle: membership scores match conventional scores on mean-monotone targets, substantially improve over mean-score selection on variance-driven targets, and, when calibrated by NCCS, trade power for finite-sample null validity in rare-target regimes where direct empirical-FDP thresholding can be anti-conservative.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

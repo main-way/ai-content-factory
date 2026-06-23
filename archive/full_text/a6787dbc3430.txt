@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Learning-Based Modeling of Soft Robots via Cosserat Rod Theory
+View PDF HTML (experimental)Abstract:Modeling soft robot dynamics is challenging due to their continuum structure and typically nonlinear dynamics. Creating models based on first-order principles is typically time-demanding, and their expressiveness is limited, whereas data-driven models lack interpretability and physical consistency. This work aims to overcome these challenges by introducing a port-Hamiltonian Gaussian Process Regression framework for learning and simulating the dynamics of planar, rod-like soft robots. In detail, the proposed model integrates Cosserat rod theory and Hamiltonian physics with data-driven inference to preserve the system's energy structure while accurately learning the rod dynamics. Numerical simulations show that we can achieve accurate and energy-consistent representations of a rod-like soft robot, showing the potential for a robust and interpretable pathway for modeling complex continuum mechanics.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

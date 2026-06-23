@@ -1,0 +1,6 @@
+api/ws.ts
+import express from 'express';import { createServer } from 'http';import { WebSocketServer } from 'ws';
+const app = express();const server = createServer(app);const wss = new WebSocketServer({ server });
+wss.on('connection', (ws) => { ws.on('message', (data) => { ws.send(data); });});
+export default server;
+Node.js WebSocket server using Express and the ws library, deployed as a Vercel Function

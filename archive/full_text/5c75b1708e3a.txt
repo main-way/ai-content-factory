@@ -1,0 +1,63 @@
+5 Essential Approaches to Robust Outlier Detection
+Outliers can easily ruin the performance of any predictive analysis models you build: robustly detecting and handling them is crucial in any data project. This article lists and compares five essential approaches for detecting them.
+# Introduction
+Ever come across some weird data points in your dataset while exploring it? One or a few that seem unduly different from the vast majority of observations, thus drastically skewing your means and inflating variances? I've been there, too. These points are outliers. Their impact isn't limited to altering data statistics: outliers can easily ruin the performance of any predictive analysis models you build, so robustly detecting and handling them is crucial in any data project. This article lists and compares five essential approaches for detecting them, along with a short Python example for each.
+# 1. The Z-Score Method
+The Z-score calculation is a simple method that works best for data variables that are normally distributed. It measures how many standard deviations each point lies from the mean. In essence, a data point whose Z-score is 3 or higher (or -3 or lower) is flagged as an outlier: that means there's a distance of more than three standard deviations between that point and the mean. Despite its simplicity, it has the drawback that means and standard deviations are inherently highly sensitive to extreme values.
+import numpy as np
+from scipy import stats
+data = np.array([10, 12, 11, 13, 12, 11, 10, 12, 11, 13, 250])
+z_scores = np.abs(stats.zscore(data))
+outliers = data[z_scores > 3]
+print(outliers)
+Output:
+[250]
+# 2. The Interquartile Range (IQR) Method
+Are your data variables not normally distributed? Then the IQR is a better and more robust bet than Z-score calculations. This method uses percentiles, specifically by determining the spread between the first quartile (Q1, 25th percentile) and the third quartile (Q3, 75th percentile). Boundary points lying 1.5 times the IQR below Q1 and above Q3 are calculated, as shown below, and they act as a "fence." In other words, any point falling outside these two fences on either side is flagged as an outlier. The good news: the IQR's robustness stems from the fact that extreme values don't alter quartiles the way they alter means and standard deviations.
+import numpy as np
+data = np.array([10, 12, 11, 13, 12, 11, 10, 12, 11, 13, 250])
+q1, q3 = np.percentile(data, [25, 75])
+iqr = q3 - q1
+lower_fence = q1 - 1.5 * iqr
+upper_fence = q3 + 1.5 * iqr
+outliers = data[(data < lower_fence) | (data > upper_fence)]
+print(outliers)
+Output:
+[250]
+# 3. Isolation Forests
+When handling complex datasets with high dimensionality, traditional methods like Z-scores and the IQR are no longer effective. Enter isolation forests, a machine learning technique that learns to isolate anomalies from "normal" data. The idea resembles that of classical decision trees for classification and regression: outliers are rare data points, so isolating them through tree partitions is much easier. Thus, when a point is very easily separated from others by the tree algorithm, chances are it's an outlier.
+import numpy as np
+from sklearn.ensemble import IsolationForest
+data = np.array([10, 12, 11, 13, 12, 11, 10, 12, 11, 13, 250]).reshape(-1, 1)
+model = IsolationForest(contamination=0.1, random_state=42)
+predictions = model.fit_predict(data)
+outliers = data[predictions == -1]
+print(outliers)
+Output:
+[[250]]
+# 4. Median Absolute Deviation (MAD)
+This is a considerably more robust version of the Z-score, so to speak: MAD uses the median — immune to extreme values — and absolute deviations from it to calculate an enhanced "Z-score." Be aware, though, that even though it can be applied to non-normal variables, it is normally used on one-dimensional data, i.e. it is a univariate technique.
+import numpy as np
+from scipy.stats import median_abs_deviation
+data = np.array([10, 12, 11, 13, 12, 11, 10, 12, 11, 13, 250])
+mad = median_abs_deviation(data, scale="normal")
+median = np.median(data)
+modified_z_scores = np.abs(data - median) / mad
+outliers = data[modified_z_scores > 3]
+print(outliers)
+Output:
+[250]
+# 5. Density-Based Clustering: DBSCAN
+This is a great approach for identifying outliers in spatial data or datasets with complex groupings. The DBSCAN algorithm builds groups around points that are close to each other in areas of high density. During its application, data points isolated in lower-density areas are automatically identified as noise, i.e. outliers. Just like method number 3 (isolation forests), this is a multivariate technique that allows for evaluating multi-dimensional data points in the outlier detection process.
+import numpy as np
+from sklearn.cluster import DBSCAN
+data = np.array([10, 12, 11, 13, 12, 11, 10, 12, 11, 13, 250]).reshape(-1, 1)
+model = DBSCAN(eps=5, min_samples=2)
+labels = model.fit_predict(data)
+outliers = data[labels == -1]
+print(outliers)
+Output:
+[250]
+# Wrapping Up
+Choosing the right outlier detection method comes down to understanding your data. The Z-score and the IQR are quick, simple options for univariate data, with the IQR being the safer choice when your variables are not normally distributed. MAD offers a more robust univariate alternative for cases where extreme values could otherwise skew the result. When your data has multiple dimensions or complex structure, isolation forests and DBSCAN extend outlier detection beyond simple statistical thresholds, capturing relationships that the simpler methods miss entirely. There is no single best approach, only the one best suited to the shape and scale of your data.
+Iván Palomares Carrascosa is a leader, writer, speaker, and adviser in AI, machine learning, deep learning & LLMs. He trains and guides others in harnessing AI in the real world.

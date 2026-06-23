@@ -14,7 +14,7 @@
       "summary": "Plus GPT-5.4 and Gemini 3.1 Flash-Lite and worrying news concerning team Qwen",
       "author": "Simon Willison",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8a3407b4a8e5",
@@ -28,7 +28,7 @@
       "summary": "The post Services: The New Software appeared first on Sequoia Capital .",
       "author": "amoore",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b6cf249b5f01",
@@ -42,7 +42,7 @@
       "summary": "Relicensing with AI-assisted rewrite TUANANH.NET In the last issue I covered how Cloudflare cloned Next.js in order to create a more cloud-native framework, sharing my wonder at how simple this was (due to an extensive test suite), but also sharing concerns about the impact on Next.js as a project, and its maintainers. This blog post uncovers yet another issue with AI re-writes. chardet, a popular open source project, has an LGPL licence (copyleft and restrictive), due to its dependency on some Mozilla code. The team used Claude Code to automate a re-write of the problematic dependency,…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

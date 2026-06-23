@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Towards Detecting Neural Audio Codec Synthesized Heart Sounds
+View PDF HTML (experimental)Abstract:In this paper, we introduce Synthetic Heart Sound Detection (SHAC), a task aimed at identifying phonocardiograms (PCGs) synthesized using neural audio codecs (NACs). To facilitate research in this direction, we release CARDIOFAKE, the first benchmark dataset for SHAC containing both real and codec-synthesized PCGs. We benchmark spectral representations (MFCC, LFCC) and self-supervised learning (SSL) representations (e.g., WavLM) for the task. Furthermore, we propose GROOT, a fusion framework that integrates spectral and SSL features for leveraging their complementary behavior. Experiments show that GROOT, combining MFCC and WavLM, achieves state-of-the-art performance, outperforming individual representations and competitive baselines.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Beyond Importance: Interchange-Sobol Sensitivity Reveals Task-Specific Content Channels in Transformer Components
+View PDF HTML (experimental)Abstract:Mechanistic interpretability methods summarize a transformer component by a single importance score, conflating two distinct roles: a component may matter because it transports task-relevant content, or because the forward computation degrades when its contribution is removed. We introduce \emph{Interchange-Group Sobol Decomposition} (IGSD), a paired-intervention framework that compares matched activation replacement with zero ablation on the same component, estimates two Sobol-style variance indices, and uses their signed difference to separate the two roles, with intervention validity monitored by a symmetric off-manifold diagnostic $\widehat{\mathrm{ST}}>1$. In factual recall, IGSD identifies an early-layer content channel in both GPT-2 small and Qwen2.5-1.5B that standard importance methods underestimate. A controlled subject and relation donor design shows that the early channel transports relation-frame content while late attention transports subject-retrieval content, refining at head granularity to the known $\mathrm{Attn}_{L9H8}$ head. Late-layer clamping confirms that the early signal is expressed through downstream transformations rather than residual pass-through. These results show that replacement and deletion are not interchangeable controls and their divergence provides a practical statistical diagnostic for content transport in transformer components.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

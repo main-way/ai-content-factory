@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:UniSLAD: A Unified Framework for Structural and Logical Industrial Visual Anomaly Detection
+View PDF HTML (experimental)Abstract:Visual anomaly detection is a fundamental task in industrial automation. While existing approaches have achieved notable progress in identifying structural defects, the detection of logical anomalies remains relatively underexplored. In practice, structural and logical anomalies frequently co-occur in industrial workflows. Therefore, a solution capable of detecting both structural and logical anomalies is crucial for advancing comprehensive anomaly detection research. To address this limitation, we propose a unified framework, termed UniSLAD, which jointly addresses logical and structural anomalies without additional training, enabling a practical solution for dynamic industrial environments. First, we introduce a dual-feature extractor that synergistically integrates a Convolutional Neural Network (CNN) backbone for local texture perception with a Transformer backbone for global contextual reasoning, yielding richer and more comprehensive representations. Building on this foundation, we design dual-granularity feature representation modules. At the patch level, memory banks enhanced by the Mahalanobis Transform (MT) preserve representative features and support more discriminative anomaly scoring. At the image level, distribution maps are aggregated using Lower-Upper Mean (LUM) and Power Mean Pooling (PMP), yielding a more robust global representation than conventional average pooling. Extensive experiments on the two industrial benchmarks demonstrate that UniSLAD achieves competitive performance in comprehensive anomaly detection, achieving 99.4% and 93.1%, respectively. Furthermore, ablation studies verify the individual contributions and effectiveness of each proposed component.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

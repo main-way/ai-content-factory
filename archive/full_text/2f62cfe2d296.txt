@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Bayesian Model Averaging under Predictor Redundancy via Density-Ratio Posterior Compression
+View PDF HTML (experimental)Abstract:Bayesian model averaging in support-indexed regression induces a posterior distribution over active predictor supports. Under predictor redundancy, posterior mass can spread across many nearly interchangeable supports, making exact-support summaries unstable or hard to interpret even when prediction is stable. We study how to report an already fitted Bayesian model averaging posterior without changing the Bayesian target. A report uses hard or soft regions of support space, and its compressed reporting law is compared with the reference posterior through an explicit density ratio. This ratio gives computable total-variation and Kullback--Leibler distortion, bounds for bounded predictive summaries, retained-mass diagnostics, and fallback-weight diagnostics. The framework covers fixed hard regions, metric-ball regions, posterior-cluster regions, and pooled-pruned region dictionaries. We prove exact error formulas and validation bounds for these region reports, and give conditions under which a few regions can replace a long list of individual supports. In simulations, our region reports often give shorter and clearer summaries while preserving the main posterior information, and the density-ratio diagnostics show when too much information has been lost.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

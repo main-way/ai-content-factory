@@ -31,7 +31,7 @@
       "summary": "A better way to limit Claude Code (and other coding agents!) access to Secrets PATRICKMCCANNA.NET Coding agents are truly powerful tools, able to bash out large quantities of code which hopefully does what you want it to. Towards the end of last year many people were sharing just how successful these agents can be if you just let them run unchecked. Terms like Yolo Mode , where you allow the agent to run any command it wants unchecked; and Ralph Wiggum loop , where you don’t send too much time questioning a agents approach, you just let it keep bashing away at a problem until it is done, were…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

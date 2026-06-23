@@ -20,7 +20,7 @@
         "Startup Battlefield 200",
         "TechCrunch Disrupt 2026"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "97fd2150ce72",
@@ -40,7 +40,7 @@
         "Google",
         "In Brief"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ed37af53929c",
@@ -59,7 +59,7 @@
         "Intermediate (200)",
         "Technical How-to"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "aa3542ef1be2",
@@ -78,7 +78,7 @@
         "Intermediate (200)",
         "Technical How-to"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e3c9aad93a6b",
@@ -99,7 +99,7 @@
         "defense tech",
         "mach industries"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7a8f5bd4e587",
@@ -121,7 +121,7 @@
         "Microsoft",
         "nvidia"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "53757847869a",
@@ -138,7 +138,7 @@
         "Amazon Bedrock",
         "Announcements"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ad01ffda0458",
@@ -152,7 +152,7 @@
       "summary": "The post Listen to the Market appeared first on Sequoia Capital .",
       "author": "amoore",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bb212983c015",
@@ -170,7 +170,7 @@
         "Build Mode",
         "Startup Battlefield"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8b75acc1f9b5",
@@ -191,7 +191,7 @@
         "Artificial intelligence (AI)",
         "large language models"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7d21ec3ff9c0",
@@ -211,7 +211,7 @@
         "OpenAI",
         "sam altman"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f9aa15045de4",
@@ -228,7 +228,7 @@
         "News Briefs",
         "PE Deals"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c7878e746123",
@@ -245,7 +245,7 @@
         "News Briefs",
         "PE Deals"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3179cbd705cd",
@@ -263,7 +263,7 @@
         "Amazon Bedrock AgentCore",
         "Announcements"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e8a9a8411839",
@@ -277,7 +277,7 @@
       "summary": "Elastic build machines now monitor your build's memory usage and automatically adjust to prevent out-of-memory (OOM) failures: If your build is fast but memory-intensive, we will no longer downgrade you to a smaller machine If your build is close to running out of memory, we will automatically upgrade to a higher tier If your build fails due to an out-of-memory error, the next deployment will automatically run on a higher tier Thresholds are set conservatively to balance deployment reliability and cost. Vercel only considers your build's memory usage, not the memory used by Vercel's own build…",
       "author": "Mehul Kar",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c5bb26e67939",
@@ -315,7 +315,7 @@
         "Elon Musk",
         "SpaceX"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "21bed726942b",
@@ -329,7 +329,7 @@
       "summary": "Совокупное состояние российских миллиардеров с начала 2026 года увеличилось почти на $22 млрд, следует из данных рейтинга Bloomberg Billionaires Index. Сильнее всего капитал вырос у сооснователя компании по производству минеральных удобрений «Еврохим» и СУЭК (Сибирская угольная энергетическая компания) Андрея Мельниченко. Его капитал вырос на $5,63 млрд, до $24,6 млрд. В то же время состояние предпринимателей Михаила Прохорова и Павла Дурова, наоборот, сократилось.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "73dc7a6da666",
@@ -348,7 +348,7 @@
         "AWS Lambda",
         "Technical How-to"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fe953d88d468",
@@ -365,7 +365,7 @@
         "News Briefs",
         "PE Deals"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1124c6b8de11",
@@ -407,7 +407,7 @@
         "unicorn",
         "venture"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e4841d06b7f2",
@@ -437,7 +437,7 @@
       "summary": "На Московской бирже состоялись первые тесты торгов с использованием автономных ИИ-агентов, сообщают «Ведомости». Технология позволяет алгоритмам не только собирать статистику, но и самостоятельно принимать решения в заданных ограничениях. По словам экспертов, главная опасность заключается в «галлюцинациях» нейросетей: алгоритмы начинают ошибаться и действовать синхронно, а это способно обрушить рынок ценных бумаг.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "388c0763bb7e",
@@ -458,7 +458,7 @@
         "OpenAI",
         "SpaceX"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "907279281489",
@@ -494,7 +494,7 @@
         "Developer tools",
         "AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2015d5b1d007",
@@ -512,7 +512,7 @@
         "Exclusive",
         "Windborne Systems"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "892787d0c419",
@@ -526,7 +526,7 @@
       "summary": "Ко Дню защиты детей в чате с Алисой AI появились готовые шаблоны и промпты для семейных задач. Пользователи смогут оживлять детские рисунки, создавать открытки и приглашения, объединять старые и новые фото, а также искать информацию о школах, лагерях и товарах для детей. Новые сценарии доступны на сайте Алисы AI, в приложениях Яндекса и в Яндекс Браузере.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3cf2c3be558d",
@@ -540,7 +540,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8b3d86573bde",
@@ -554,7 +554,7 @@
       "summary": "Wildberries может получить долю в «AliExpress Россия», сообщил телеграм-канал «Свободная касса» со ссылкой на источники. Редакция Russian Business направила запрос в Wildberries, но в пресс-службе отказались от комментариев. Одновременно с этим сервис «AliExpress СНГ» подтвердил запуск тестовой интеграции с Wildberries.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "03e6e22cffa5",
@@ -576,7 +576,7 @@
         "Google",
         "Search"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "17944c067e42",
@@ -596,7 +596,7 @@
         "payments",
         "Revolut"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1fd1e439302f",
@@ -610,7 +610,7 @@
       "summary": "Apple перенесла сроки выхода своих первых AR-очков как минимум на конец 2027 года, сообщает Bloomberg. Устройство с внутренним кодовым названием N50 остаётся одним из приоритетных направлений Apple в сегменте носимой электроники. Ранее в компании обсуждался запуск устройства уже в 2026-м.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d6631acf6c8b",
@@ -624,7 +624,7 @@
       "summary": "a16z leads Endra's Series A",
       "author": "Joe Schmidt IV",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ebd4bc574f2f",
@@ -638,7 +638,7 @@
       "summary": "The Pentagon is racing to field autonomous platforms faster than it can sustain them.",
       "author": "John Aguillard",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0457d3e0e2a6",
@@ -652,7 +652,7 @@
       "summary": "Chat SDK now supports Velt with the new vendor-official adapter . Build bots that read and reply within Velt comment threads, right where your team already works: documents, text editors, and canvases. Tag the bot, and it will answer in the same thread, grounding its reply with the document name, URL, and anchored text. The adapter maps Velt documents to Chat SDK channels, comment annotations to threads, and individual comments to messages. Read the Velt documentation to get started. Read more",
       "author": "Josh Singh",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "662d18c1f0ab",
@@ -666,7 +666,7 @@
       "summary": "Chat SDK now supports AgentPhone with the new vendor-official adapter . Give your bot its own phone number so it can handle voice calls and text messages using the same handlers you already write. When a call ends, the transcript is delivered as a message, allowing your bot to respond via SMS or iMessage. Calls and messages to the same number arrive via a single webhook, so you handle both from a single endpoint rather than a separate pipeline for each channel. They also land in one thread, so your bot maintains context throughout the conversation. Read the AgentPhone documentation to get…",
       "author": "Vishal Yathish",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "287852ed7fbc",
@@ -680,7 +680,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f85ba61840da",
@@ -694,7 +694,7 @@
       "summary": "Do you feel as though you are living in a revolution?",
       "author": "Jack Clark",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4066e7386373",
@@ -708,7 +708,7 @@
       "summary": "Каждая третья российская компания (33%) увеличила оклады сотрудников в первой половине 2026 года, сообщает Forbes. Ещё 59% организаций сохранили уровень зарплат на прежнем уровне. До конца года повысить оклады планируют 29% компаний, но больше половины (58%) не намерены менять текущие показатели.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "40a078879743",
@@ -724,7 +724,7 @@
       "tags": [
         "The Download"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "890b25eddf68",
@@ -757,7 +757,7 @@
         "Artificial Intelligence",
         "LLMs"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2538a1f7d666",
@@ -774,7 +774,7 @@
         "Startups",
         "Venture"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "174e051a93ad",
@@ -800,7 +800,7 @@
         "unicorn",
         "venture"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "edda576551eb",
@@ -821,7 +821,7 @@
         "launch vehicle",
         "Unastella"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0417997d923f",
@@ -853,7 +853,7 @@
       "tags": [
         "Daily Update"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dc7c3c3870de",
@@ -872,7 +872,7 @@
         "China",
         "Summary"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d7f8c187aad7",
@@ -889,7 +889,7 @@
         "Партнёрский материал",
         "Статьи"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3b379a04800e",
@@ -903,7 +903,7 @@
       "summary": "Qwen 3.7 Plus from Alibaba is now available on Vercel AI Gateway . Both Qwen 3.7 Plus and 3.7 Max are free for paid AI Gateway users till 6/4/26 12:00pm PT. The model unifies vision and language into a single agent foundation, with capabilities spanning GUI and CLI operation, coding and productivity workflows with full-modality input, and visual agent tasks including perception and reasoning. It is designed to generalize across diverse agent harnesses. To use Qwen 3.7 Plus, set model to alibaba/qwen-3.7-plus in the AI SDK . AI Gateway provides a unified API for calling models, tracking usage…",
       "author": "Jerilyn Zheng",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8ed91a11dc4f",
@@ -919,7 +919,7 @@
       "tags": [
         "Agent Framework"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "62ec228a88f1",
@@ -936,7 +936,7 @@
         "AI Infrastructure",
         "Cloud"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "92cc0c1be44d",
@@ -957,7 +957,7 @@
         "Industrial and Manufacturing",
         "Metropolis"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3041ae5e998f",
@@ -978,7 +978,7 @@
         "Industrial and Manufacturing",
         "NVIDIA Vera Rubin"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "594228079104",
@@ -999,7 +999,7 @@
         "Physical AI",
         "Simulation and Design"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "70abe1bbdd2b",
@@ -1020,7 +1020,7 @@
         "Open Source",
         "RTX AI Garage"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8ebf1e8f27fe",
@@ -1034,7 +1034,7 @@
       "summary": "Anthropic confidentially filed a draft S-1 with the SEC today for a proposed public offering. The company also shipped Claude Opus 4.8 last week with a 4x code-reliability gain. NVIDIA used GTC Taipei to open Cosmos 3, ramp Vera Rubin into production, and put a 1-petaflop AI box on developer laptops. Google retires Gemini 2.0 Flash today. California's SB 867 — banning AI companion chatbots in children's toys — cleared the Senate; Illinois's data-center regulation stalled in committee. The labs sprint. The states crawl.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1a2bf41a704e",
@@ -1048,7 +1048,7 @@
       "summary": "Vercel Blob now supports OIDC authentication and is the default setting when connecting new projects. Vercel-issued OIDC tokens are short-lived and rotate automatically, so you no longer need a long-lived BLOB_READ_WRITE_TOKEN . To upgrade an existing store, first update your project to use the latest @vercel/blob , then navigate to the Projects tab under your Blob store and select Upgrade to OIDC from the project's context menu. Functions running on Vercel receive the token automatically and authenticate requests with it: The Vercel CLI picks up the same environment variables once you update…",
       "author": "Elliot Dauber",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

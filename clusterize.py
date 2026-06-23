@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """
-clusterize.py — Clustering pipeline для AI-Digest.
+clusterize.py — AI-Digest pipeline.
 
-Собирает посты за день, эмбеддит, кластеризует (UMAP + HDBSCAN),
-анализирует топ-10 кластеров через LLM и отправляет результат в Telegram.
+Собирает посты за день → embeddings → UMAP → HDBSCAN →
+для каждого кластера (топ-N по score):
+  1. LLM: связный ли кластер? (одна тема или свалка)
+  2. LLM: проверка анти-тем
+  3. LLM: пишет пересказ 1500-2500 знаков
+  4. Из лучшего поста: извлекает og:image / og:video
+→ формирует digest.md → сохраняет в Obsidian → отправляет в Telegram как документ
 
 Использование:
-    python clusterize.py                     # сегодня (после fetch)
-    python clusterize.py --date 2026-06-22   # конкретная дата
-    python clusterize.py --fetch-hours 24    # сначала fetch на 24ч
-    python clusterize.py --days 3            # за 3 дня (rolling window)
-    python clusterize.py --dry-run           # только clustering, без LLM
+    python clusterize.py --date 2026-06-23
+    python clusterize.py --days 3
+    python clusterize.py --dry-run          # без LLM и отправки
+    python clusterize.py --limit 25        # сколько тем в дайджесте (default 28)
 """
 
 import argparse
@@ -21,67 +25,103 @@ import os
 import re
 import sys
 import time
+import urllib.request
+import urllib.error
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# ─── Vendor imports (installed separately) ───────────────────────────────────
+# ─── Env ──────────────────────────────────────────────────────────────────────
+# Загружает ~/.hermes/.env и ./.env автоматически
+import _env as _env_module
+_env_module._()
+
+# ─── Vendor imports ────────────────────────────────────────────────────────────
 try:
     import torch
+    torch.set_num_threads(2)          # memory optimization
     import numpy as np
     from sentence_transformers import SentenceTransformer
     import umap
     import hdbscan
-    from sklearn.feature_extraction.text import CountVectorizer
-    import nltk
-    NLTK_AVAILABLE = True
 except ImportError as e:
     print(f"❌ Missing dependency: {e}")
-    print("   Run: pip install sentence-transformers umap-learn hdbscan scikit-learn nltk")
+    print("   Run: .venv/bin/pip install sentence-transformers umap-learn hdbscan")
     sys.exit(1)
 
-# ─── Constants ───────────────────────────────────────────────────────────────
+# ─── Paths ────────────────────────────────────────────────────────────────────
 PROJECT_DIR = Path(__file__).parent
-STORAGE_DIR = PROJECT_DIR / "storage"
-CLUSTER_DIR = PROJECT_DIR / "clusters"
-CLUSTER_DIR.mkdir(exist_ok=True)
+STORAGE_DIR  = PROJECT_DIR / "storage"
+OBSIDIAN_BASE = Path("/srv/obsidian-base")
+OBSIDIAN_DIGEST = OBSIDIAN_BASE / "BRIEFINGS" / "AI-Digest"
 
+# ─── Model ────────────────────────────────────────────────────────────────────
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-UMAP_N_COMPONENTS = 20
-UMAP_MIN_DIST = 0.1
-HDBSCAN_MIN_CLUSTER_SIZE = 3
+
+# ─── Clustering ───────────────────────────────────────────────────────────────
+UMAP_N_COMPONENTS  = 20
+UMAP_MIN_DIST      = 0.1
+HDBSCAN_MIN_SIZE   = 3
 HDBSCAN_MIN_SAMPLES = 2
+MIN_DIVERSITY      = 0.12     # отсеивает кластеры-клоны одного источника
 
-# Telegram — set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID env vars
-BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "151453888")
-
-# LLM (MiniMax API — use api.minimax.io, NOT api.minimax.chat)
-LLM_API_KEY = os.environ.get("MINIMAX_API_KEY", "")
+# ─── LLM ──────────────────────────────────────────────────────────────────────
+LLM_API_KEY  = os.environ.get("MINIMAX_API_KEY", "")
 LLM_BASE_URL = "https://api.minimax.io/v1"
-LLM_MODEL = "MiniMax-M2"  # NOT MiniMax-M2-7B — use exact model name
+LLM_MODEL    = "MiniMax-M2"
 
-# ─── Helpers ─────────────────────────────────────────────────────────────────
+# ─── Telegram ─────────────────────────────────────────────────────────────────
+BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+CHAT_ID   = os.environ.get("TELEGRAM_CHAT_ID", "7079923530")
+
+# ─── Digest output ────────────────────────────────────────────────────────────
+TARGET_Digest_COUNT = 28      # 25-30 тем в дайджесте
+MIN_DIGEST_CHARS   = 1500     # нижняя граница объёма одного поста
+MAX_DIGEST_CHARS   = 2500     # верхняя граница
+
+# ─── Anti-topics (из channel_profiles.yaml) ──────────────────────────────────
+ANTI_TOPICS = [
+    "Политические и геополитические ИИ-новости (санкции, регулирование, войны)",
+    "Академическая теория и исследования без практического применения",
+    "Узкоспециализированные темы (медицинские ИИ-исследования, научные бенчмарки)",
+    "Сделки и финансовые новости ИИ-компаний на бирже (IPO, фандрейзинг, оценки)",
+    "Аэрокосмические и оборонные ИИ-проекты",
+    "Hardware и GPU-бенчмарки без привязки к бизнесу",
+]
+
+# ─── Helpers ──────────────────────────────────────────────────────────────────
 
 def log(msg: str, level: str = "INFO"):
     ts = datetime.now().strftime("%H:%M:%S")
     print(f"[{ts}] [{level}] {msg}", file=sys.stderr)
 
 
-def hash_url(url: str) -> str:
-    return hashlib.sha256(url.encode()).hexdigest()[:12]
+def log_section(msg: str):
+    print(f"\n{'='*60}", file=sys.stderr)
+    print(f"  {msg}", file=sys.stderr)
+    print(f"{'='*60}\n", file=sys.stderr)
 
+
+# ─── Posts ────────────────────────────────────────────────────────────────────
 
 def load_posts(date_str: str = None, days: int = 1) -> list[dict]:
-    """Load posts from storage. If days > 1, merge multiple days."""
+    """Load posts from storage/*.json. Merges multiple days if days > 1.
+    Enriches each post with full_text from archive/full_text/ if available.
+    """
+    # ─── Build scraped content cache from archive ──────────────────────────────
+    ARCHIVE_FULLTEXT_DIR = PROJECT_DIR / "archive" / "full_text"
+    scraped_cache: dict[str, str] = {}
+    if ARCHIVE_FULLTEXT_DIR.is_dir():
+        for fpath in ARCHIVE_FULLTEXT_DIR.iterdir():
+            if fpath.suffix == ".txt":
+                pid = fpath.stem  # filename without .txt = post id
+                scraped_cache[pid] = fpath.read_text(encoding="utf-8", errors="ignore")[:8000]
+
     if date_str:
         dates = [date_str]
     else:
-        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-        dates = []
-        for i in range(days):
-            d = datetime.now(timezone.utc) - timedelta(days=i)
-            dates.append(d.strftime("%Y-%m-%d"))
+        today = datetime.now(timezone.utc)
+        dates = [(today - timedelta(days=i)).strftime("%Y-%m-%d") for i in range(days)]
 
     all_posts = []
     for d in dates:
@@ -93,111 +133,79 @@ def load_posts(date_str: str = None, days: int = 1) -> list[dict]:
             data = json.load(f)
         posts = data.get("posts", [])
         if posts:
-            log(f"  Loaded {len(posts)} posts from {d}")
+            # Enrich with scraped full text if available
+            for p in posts:
+                pid = p.get("id", "")
+                if pid in scraped_cache:
+                    p["full_text"] = scraped_cache[pid]
+            log(f"  {d}: {len(posts)} posts loaded (with full_text: {sum(1 for p in posts if 'full_text' in p)}/{len(posts)})")
             all_posts.extend(posts)
 
-    # Deduplicate by URL
-    seen_urls = set()
-    unique_posts = []
+    # Dedup by URL
+    seen, unique = set(), []
     for p in all_posts:
         url = p.get("url", "")
-        if url and url not in seen_urls:
-            seen_urls.add(url)
-            unique_posts.append(p)
+        if url and url not in seen:
+            seen.add(url)
+            unique.append(p)
 
-    log(f"📰 Total unique posts: {len(unique_posts)} (deduped)")
-    return unique_posts
+    log(f"📰 Total unique posts: {len(unique)}")
+    return unique
 
 
-def fetch_today(hours: int = 24) -> list[dict]:
-    """Run fetch.py and load the resulting posts."""
-    log(f"📡 Running fetch.py (last {hours}h)...")
-    import subprocess
-    result = subprocess.run(
-        [sys.executable, str(PROJECT_DIR / "fetch.py"),
-         "--hours", str(hours), "--storage", "storage"],
-        capture_output=True, text=True, cwd=str(PROJECT_DIR)
-    )
-    if result.returncode != 0:
-        log(f"⚠️  fetch.py failed: {result.stderr[-300:]}", "WARN")
-    # Load what was just fetched
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    path = STORAGE_DIR / f"posts_{today}.json"
-    if path.exists():
-        with open(path) as f:
-            data = json.load(f)
-        return data.get("posts", [])
-    return []
+def lang_ok(p: dict) -> bool:
+    return p.get("language", "en") in ("en", "ru", "")
 
+
+# ─── Embeddings ───────────────────────────────────────────────────────────────
 
 def prepare_text(post: dict) -> str:
-    """Build embedding-ready text from a post."""
-    title = post.get("title", "")
+    title   = post.get("title", "")
     summary = post.get("summary", "")
-    source = post.get("source", "")
-    # Title is most informative; prepend it
+    source  = post.get("source", "")
     return f"{title} [source: {source}] {summary}".strip()
 
 
-# ─── Embedding ───────────────────────────────────────────────────────────────
-
-def embed_posts(posts: list[dict], model_name: str = EMBEDDING_MODEL) -> tuple[list[str], np.ndarray, list[dict]]:
-    """Embed posts using sentence-transformers. Returns (texts, embeddings, post_list)."""
-    log(f"🧠 Loading embedding model: {model_name}")
-    model = SentenceTransformer(model_name)
+def embed_posts(posts: list[dict]) -> tuple[list[str], np.ndarray, list[dict]]:
+    log("🧠 Loading embedding model...")
+    model = SentenceTransformer(EMBEDDING_MODEL, device="cpu")
 
     texts = [prepare_text(p) for p in posts]
-    valid_idx = [i for i, t in enumerate(texts) if t.strip()]
-
-    # Filter empty
+    valid_idx   = [i for i, t in enumerate(texts) if t.strip()]
     valid_posts = [posts[i] for i in valid_idx]
     valid_texts = [texts[i] for i in valid_idx]
 
-    log(f"📝 Embedding {len(valid_texts)} texts...")
+    log(f"📝 Embedding {len(valid_texts)} texts (batch_size=8)...")
     t0 = time.time()
     embeddings = model.encode(valid_texts, show_progress_bar=True,
-                               batch_size=16, convert_to_numpy=True)
-    log(f"   Done in {time.time() - t0:.1f}s, shape: {embeddings.shape}")
+                             batch_size=8, convert_to_numpy=True)
+    log(f"   Done in {time.time()-t0:.1f}s, shape={embeddings.shape}")
+    import gc
+    gc.collect()
     return valid_texts, embeddings, valid_posts
 
 
-# ─── Clustering ──────────────────────────────────────────────────────────────
+# ─── Clustering ───────────────────────────────────────────────────────────────
 
-def cluster(embeddings: np.ndarray, texts: list[str], posts: list[dict]
-            ) -> tuple[dict, np.ndarray]:
-    """
-    Cluster embeddings with UMAP + HDBSCAN.
-    Returns (cluster_data: dict[cluster_id -> {posts, texts, centroid_idx}],
-             labels: np.ndarray)
-    """
-    log(f"🔵 UMAP dimensionality reduction: {embeddings.shape} → ({embeddings.shape[0]}, {UMAP_N_COMPONENTS})")
+def cluster(embeddings: np.ndarray, texts: list[str], posts: list[dict]):
+    log(f"🔵 UMAP: {embeddings.shape} → (n, {UMAP_N_COMPONENTS})...")
     t0 = time.time()
-    reducer = umap.UMAP(
-        n_components=UMAP_N_COMPONENTS,
-        min_dist=UMAP_MIN_DIST,
-        metric="cosine",
-        random_state=42,
-        n_jobs=1,
-    )
+    reducer = umap.UMAP(n_components=UMAP_N_COMPONENTS, min_dist=UMAP_MIN_DIST,
+                        metric="cosine", random_state=42, n_jobs=1)
     reduced = reducer.fit_transform(embeddings)
-    log(f"   UMAP done in {time.time() - t0:.1f}s")
+    log(f"   UMAP done in {time.time()-t0:.1f}s")
 
-    log(f"🔴 HDBSCAN clustering (min_cluster_size={HDBSCAN_MIN_CLUSTER_SIZE})...")
+    log(f"🔴 HDBSCAN (min_cluster_size={HDBSCAN_MIN_SIZE})...")
     t0 = time.time()
     clusterer = hdbscan.HDBSCAN(
-        min_cluster_size=HDBSCAN_MIN_CLUSTER_SIZE,
-        min_samples=HDBSCAN_MIN_SAMPLES,
-        metric="euclidean",
-        cluster_selection_method="eom",
-        prediction_data=True,
+        min_cluster_size=HDBSCAN_MIN_SIZE, min_samples=HDBSCAN_MIN_SAMPLES,
+        metric="euclidean", cluster_selection_method="eom", prediction_data=True,
     )
     labels = clusterer.fit_predict(reduced)
-    log(f"   HDBSCAN done in {time.time() - t0:.1f}s, clusters: {len(set(labels)) - (1 if -1 in labels else 0)}")
+    n_clusters = len(set(labels)) - (1 if -1 in labels else 0)
+    n_noise   = int((labels == -1).sum())
+    log(f"   HDBSCAN done in {time.time()-t0:.1f}s — clusters={n_clusters}, noise={n_noise}")
 
-    n_noise = int((labels == -1).sum())
-    log(f"   Noise points (outliers): {n_noise}/{len(labels)}")
-
-    # Build cluster_data
     cluster_data = {}
     for i, label in enumerate(labels):
         if label == -1:
@@ -208,47 +216,41 @@ def cluster(embeddings: np.ndarray, texts: list[str], posts: list[dict]
         cluster_data[label]["posts"].append(posts[i])
         cluster_data[label]["texts"].append(texts[i])
 
-    return cluster_data, labels
+    return cluster_data
 
 
-def cluster_stats(cluster_data: dict, embeddings: np.ndarray,
-                  texts: list[str]) -> list[dict]:
-    """Compute ranking stats for each cluster. Returns sorted list."""
+# ─── Scoring ──────────────────────────────────────────────────────────────────
 
-    def avg_interpoint_dist(indices, centroid_idx):
-        """Lower = more compact cluster."""
-        if len(indices) < 2:
-            return 0.0
-        e = embeddings[indices]
-        c = embeddings[centroid_idx]
-        dists = np.linalg.norm(e - c, axis=1)
-        return float(dists.mean())
+def avg_interpoint_dist(embeddings: np.ndarray, indices: list[int], centroid_idx: int) -> float:
+    if len(indices) < 2:
+        return 0.0
+    e = embeddings[indices]
+    c = embeddings[centroid_idx]
+    return float(np.linalg.norm(e - c, axis=1).mean())
 
-    scored_clusters = []
+
+def score_clusters(cluster_data: dict, embeddings: np.ndarray) -> list[dict]:
+    """Score and sort clusters. Returns list of dicts with full cluster info."""
+    scored = []
     for cid, cd in cluster_data.items():
         indices = cd["indices"]
         posts_l = cd["posts"]
-        texts_l = cd["texts"]
 
-        # Centroid (mean embedding)
+        # Centroid
         centroid_idx = indices[np.linalg.norm(
-            embeddings[indices] - embeddings[indices].mean(axis=0),
-            axis=1
+            embeddings[indices] - embeddings[indices].mean(axis=0), axis=1
         ).argmin()]
 
         # Source diversity
-        sources = set(p.get("source", "") for p in posts_l)
         domain_sources = set()
         for p in posts_l:
-            url = p.get("url", "")
-            if url:
-                m = re.search(r"https?://([^/]+)", url)
-                if m:
-                    domain_sources.add(m.group(1))
+            m = re.search(r"https?://([^/]+)", p.get("url", ""))
+            if m:
+                domain_sources.add(m.group(1))
 
-        # Date spread (how recent)
-        recent_count = 0
+        # Velocity (% of posts in last 48h)
         cutoff = datetime.now(timezone.utc) - timedelta(hours=48)
+        recent = 0
         for p in posts_l:
             pub = p.get("published", "")
             if pub:
@@ -258,340 +260,565 @@ def cluster_stats(cluster_data: dict, embeddings: np.ndarray,
                     if dt.tzinfo is None:
                         dt = dt.replace(tzinfo=timezone.utc)
                     if dt > cutoff:
-                        recent_count += 1
+                        recent += 1
                 except Exception:
                     pass
 
-        size = len(indices)
+        size     = len(indices)
         diversity = len(domain_sources) / max(size, 1)
-        velocity = recent_count / max(size, 1)
-        spread = 1.0 / (1.0 + avg_interpoint_dist(indices, centroid_idx))
+        velocity  = recent / max(size, 1)
+        spread   = 1.0 / (1.0 + avg_interpoint_dist(embeddings, indices, centroid_idx))
 
-        # ── Filters ────────────────────────────────────────────────────────────
-        # Skip low-diversity clusters (near-duplicate spam, same story copy-pasted)
-        MIN_DIVERSITY = 0.12
+        # Filter: low diversity = copy-paste spam
         if diversity < MIN_DIVERSITY:
             continue
 
-        # ── Scoring ─────────────────────────────────────────────────────────────
-        # Original: size × velocity × diversity × spread  (size dominates)
-        # Fixed: diversity and velocity matter more; size is capped
-        # log-size prevents mega-clusters from crushing everything
-        size_score = math.log1p(size)           # log(1+size) — diminishing returns
-        score = (
-            size_score
-            * (0.5 + 0.5 * velocity)           # fresh news bonus
-            * (0.3 + 0.7 * diversity)           # diversity weight increased
-            * (0.4 + 0.6 * spread)              # compactness matters
-        )
+        size_score = math.log1p(size)
+        score = size_score * (0.5 + 0.5 * velocity) * (0.3 + 0.7 * diversity) * (0.4 + 0.6 * spread)
 
-        # Top title (most central post)
+        # Top post (most central)
         top_post = posts_l[np.linalg.norm(
-            embeddings[indices] - embeddings[indices].mean(axis=0),
-            axis=1
+            embeddings[indices] - embeddings[indices].mean(axis=0), axis=1
         ).argmin()]
 
-        scored_clusters.append({
-            "cluster_id": int(cid),
-            "size": size,
-            "score": round(score, 3),
-            "velocity": round(velocity, 2),
-            "diversity": round(diversity, 2),
-            "spread": round(spread, 3),
-            "top_title": top_post.get("title", "")[:120],
-            "top_url": top_post.get("url", ""),
-            "top_source": top_post.get("source", ""),
-            "sources": list(domain_sources)[:8],
-            "posts": posts_l,
-            "texts": texts_l,
+        scored.append({
+            "cluster_id":  int(cid),
+            "size":        size,
+            "score":       round(score, 3),
+            "velocity":    round(velocity, 2),
+            "diversity":   round(diversity, 2),
+            "spread":      round(spread, 3),
+            "top_title":   top_post.get("title", "")[:120],
+            "top_url":     top_post.get("url", ""),
+            "top_source":  top_post.get("source", ""),
+            "domains":     list(domain_sources)[:8],
+            "posts":       posts_l,
+            "texts":       cd["texts"],
         })
 
-    scored_clusters.sort(key=lambda x: -x["score"])
-    return scored_clusters
+    scored.sort(key=lambda x: -x["score"])
+    return scored
 
 
-# ─── LLM Analysis ────────────────────────────────────────────────────────────
+# ─── LLM ─────────────────────────────────────────────────────────────────────
 
-def llm_analyze_clusters(top_clusters: list[dict], model: str = LLM_MODEL
-                         ) -> list[dict]:
-    """Send top clusters to LLM for coherence analysis."""
+def llm_json(prompt: str, max_tokens: int = 500) -> dict | None:
+    """POST to MiniMax-M2, return parsed JSON or None."""
     if not LLM_API_KEY:
-        log("⚠️  MINIMAX_API_KEY not set, skipping LLM analysis", "WARN")
-        return []
+        log("⚠️  MINIMAX_API_KEY not set", "WARN")
+        return None
 
-    import urllib.request
-    import urllib.error
-
-    results = []
-    for rank, cl in enumerate(top_clusters[:10], 1):
-        posts_l = cl["posts"]
-        titles = [p.get("title", "")[:150] for p in posts_l[:12]]
-        summaries = [p.get("summary", "")[:200] for p in posts_l[:8]]
-
-        prompt = f"""You are analyzing a news cluster for an AI/tech newsletter.
-A cluster contains {len(posts_l)} news items. Your job is to determine:
-1. Is this ONE coherent story/theme, or MULTIPLE unrelated stories?
-2. If ONE: write a 2-sentence narrative summary
-3. If MULTIPLE: suggest how to split it
-4. Rate coherence 1-10
-5. Suggest the best post angle/title (in Russian)
-
-Cluster titles:
-{chr(10).join(f"{i+1}. {t}" for i, t in enumerate(titles[:12]))}
-
-Summaries:
-{chr(10).join(f"- {s}" for s in summaries[:8])}
-
-Respond ONLY with valid JSON (no markdown):
-{{
-  "coherent": true or false,
-  "narrative": "2-sentence summary in Russian",
-  "angle": "post title suggestion in Russian (max 100 chars)",
-  "coherence_score": 7,
-  "story_type": "single_release" or "trend" or "multiple_unrelated",
-  "key_sources": ["source1", "source2"]
-}}
-"""
-        payload = json.dumps({
-            "model": model,
-            "messages": [{"role": "user", "content": prompt}],
-            "temperature": 0.3,
-            "max_tokens": 500,
-        }).encode()
-
-        req = urllib.request.Request(
-            f"{LLM_BASE_URL}/chat/completions",
-            data=payload,
-            headers={
-                "Authorization": f"Bearer {LLM_API_KEY}",
-                "Content-Type": "application/json",
-            },
-            method="POST",
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=60) as resp:
-                data = json.load(resp)
-            content = data["choices"][0]["message"]["content"]
-            # Extract JSON
-            match = re.search(r"\{.*\}", content, re.DOTALL)
-            if match:
-                analysis = json.loads(match.group())
-                cl["llm"] = analysis
-                log(f"  Cluster {rank}: coherent={analysis.get('coherent')}, "
-                    f"score={analysis.get('coherence_score')}, "
-                    f"angle={analysis.get('angle', '')[:60]}")
-            else:
-                log(f"  Cluster {rank}: LLM returned non-JSON: {content[:100]}", "WARN")
-                cl["llm"] = None
-        except urllib.error.HTTPError as e:
-            log(f"  Cluster {rank}: HTTP {e.code}: {e.read().decode()[:200]}", "ERROR")
-        except Exception as e:
-            log(f"  Cluster {rank}: {e}", "ERROR")
-
-        results.append(cl)
-        time.sleep(0.5)  # rate limit
-
-    return results
-
-
-# ─── Telegram ────────────────────────────────────────────────────────────────
-
-def send_telegram(text: str, parse_mode: str = "HTML") -> bool:
-    """Send message via Telegram Bot."""
-    import urllib.request
-    import urllib.error
-
-    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
     payload = json.dumps({
-        "chat_id": CHAT_ID,
-        "text": text,
-        "parse_mode": parse_mode,
-        "disable_web_page_preview": True,
+        "model":      LLM_MODEL,
+        "messages":   [{"role": "user", "content": prompt}],
+        "temperature": 0.3,
+        "max_tokens":  max_tokens,
     }).encode()
 
-    req = urllib.request.Request(url, data=payload,
-                                  headers={"Content-Type": "application/json"},
-                                  method="POST")
+    req = urllib.request.Request(
+        f"{LLM_BASE_URL}/chat/completions",
+        data=payload,
+        headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
+        method="POST",
+    )
     try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            return json.load(resp).get("ok", False)
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            data = json.load(resp)
+        content = data["choices"][0]["message"]["content"]
+        # Strip think blocks
+        content = re.sub(r"<[^>]+>", "", content).strip()
+        start, end = content.find("{"), content.rfind("}")
+        if start != -1 and end != -1 and end > start:
+            return json.loads(content[start:end+1])
+    except urllib.error.HTTPError as e:
+        log(f"   HTTP {e.code}: {e.read().decode()[:200]}", "ERROR")
     except Exception as e:
-        log(f"⚠️  Telegram send failed: {e}", "WARN")
+        log(f"   LLM error: {e}", "ERROR")
+    return None
+
+
+SYSTEM_PROMPT = """Ты — редактор ИИ-дайджеста. Пиши ТОЛЬКО готовый контент. НЕ добавляй перед текстом описание задачи, анализ требований или мысли вслух. Выводи ТОЛЬКО финальный русский текст дайджеста, БЕЗ markdown-разметки (кроме ссылки в конце)."""
+
+def llm_text(prompt: str, max_tokens: int = 2000) -> str | None:
+    """POST to MiniMax-M2, return text response or None."""
+    if not LLM_API_KEY:
+        log("⚠️  MINIMAX_API_KEY not set", "WARN")
+        return None
+
+    payload = json.dumps({
+        "model":      LLM_MODEL,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user",   "content": prompt},
+        ],
+        "temperature": 0.7,
+        "max_tokens":  max_tokens,
+    }).encode()
+
+    req = urllib.request.Request(
+        f"{LLM_BASE_URL}/chat/completions",
+        data=payload,
+        headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            data = json.load(resp)
+        content = data["choices"][0]["message"]["content"]
+        content = re.sub(r"<[^>]+>", "", content).strip()
+        return content
+    except urllib.error.HTTPError as e:
+        log(f"   HTTP {e.code}: {e.read().decode()[:200]}", "ERROR")
+    except Exception as e:
+        log(f"   LLM error: {e}", "ERROR")
+    return None
+
+
+# ─── LLM Checks per Cluster ──────────────────────────────────────────────────
+
+def check_coherence(cluster: dict) -> tuple[bool, str]:
+    """
+    Задаёт LLM вопрос: это одна тема или несвязная свалка?
+    Returns (is_coherent: bool, reason: str)
+    """
+    titles = "\n".join(f"- {p.get('title','')[:120]}" for p in cluster["posts"][:10])
+    prompt = f"""Analyze this news cluster. Is it ONE coherent topic/theme, or MIXED/unrelated articles?
+
+Cluster size: {cluster['size']}
+Titles:
+{titles}
+
+Respond with JSON only (no markdown):
+{{
+  "coherent": true or false,
+  "reason": "1-2 sentences explaining why",
+  "main_topic": "what is this cluster about in 5 words max"
+}}"""
+    result = llm_json(prompt, max_tokens=300)
+    if not result:
+        # Fail open — don't discard cluster on LLM error
+        return True, "LLM unavailable"
+    is_coherent = result.get("coherent", True)
+    reason = result.get("reason", "")
+    log(f"   #{cluster['rank']} {'✅' if is_coherent else '⚠️'} coherent={is_coherent}: {reason[:80]}")
+    return bool(is_coherent), reason
+
+
+def check_anti_topic(cluster: dict) -> tuple[bool, str]:
+    """
+    Проверяет кластер на антитемы.
+    Returns (is_anti_topic: bool, matched_anti: str)
+    """
+    topic_desc = cluster.get("main_topic", cluster["top_title"][:80])
+    titles_sample = "\n".join(f"- {p.get('title','')[:100]}" for p in cluster["posts"][:6])
+
+    prompt = f"""Check if this news cluster matches ANY of the anti-topics below.
+
+MAIN TOPIC (from cluster analysis): {topic_desc}
+
+SAMPLE TITLES:
+{titles_sample}
+
+ANTI-TOPICS TO CHECK:
+{chr(10).join(f"- {a}" for a in ANTI_TOPICS)}
+
+Respond with JSON only:
+{{
+  "is_anti": true or false,
+  "matched_anti_topic": "which anti-topic matched, or empty string"
+}}"""
+    result = llm_json(prompt, max_tokens=250)
+    if not result:
+        return False, ""
+    is_anti = result.get("is_anti", False)
+    matched = result.get("matched_anti_topic", "")
+    if is_anti:
+        log(f"   ⛔ anti-topic matched: {matched}")
+    return bool(is_anti), matched
+
+
+def write_digest_post(cluster: dict) -> dict | None:
+    """
+    Генерирует текст одного поста для дайджеста (1500-2500 знаков).
+    Returns dict with keys: text, best_post (dict with url/title/media) or None.
+    """
+    # Find best post: the one with most complete info
+    best_post = max(cluster["posts"],
+                    key=lambda p: (len(p.get("summary", "")), bool(p.get("url"))))
+
+    best_url    = best_post.get("url", "")
+    best_title  = best_post.get("title", "")
+    best_source = best_post.get("source", "")
+
+    # Collect all post data for the LLM
+    # Prefer full_text (from scrape.py) over summary (from RSS)
+    posts_data = []
+    for p in cluster["posts"][:8]:
+        content = (
+            p.get("full_text", "").strip()[:3000]
+            or p.get("summary", "").strip()[:400]
+        )
+        posts_data.append({
+            "title":   p.get("title", ""),
+            "url":     p.get("url", ""),
+            "source":  p.get("source", ""),
+            "content": content,
+        })
+
+    posts_text = "\n".join(
+        f"**[{d['source']}]** {d['title']}\n   {d['content']}\n   → {d['url']}"
+        for d in posts_data
+    )
+
+    prompt = f"""Напиши на русском языке связный информативный текст объёмом 1500–2500 знаков для B2B-аудитории (предприниматели, руководители SMB) по теме:
+
+«{cluster.get('main_topic', cluster['top_title'])}»
+
+Требования к тексту:
+- Без ИТ-жаргона (запрещено: baseline, pipeline, framework, workflow, scaling, deploy, rollout, integration, агент, пайплайн, фреймворк)
+- Объясни читателю, почему эта тема важна для его бизнеса
+- Используй ТОЛЬКО факты из материалов ниже, ничего не выдумывай
+- Если материалов мало — напиши короче, но качественно
+- В конце текста добавь источник в формате: 📍 Источник: [название](URL)
+
+Материалы:
+{posts_text}
+
+Пиши ТОЛЬКО готовый текст дайджеста. НЕ пиши перед текстом описание задачи или план. НАЧИНАЙ СРАЗУ С ПЕРВОГО ПРЕДЛОЖЕНИЯ ТЕКСТА."""
+
+    text = llm_text(prompt, max_tokens=3000)
+    if not text:
+        return None
+
+    # Validate length
+    clean_text = re.sub(r"<[^>]+>", "", text).strip()
+    if len(clean_text) < MIN_DIGEST_CHARS:
+        log(f"   ⚠️  Post too short ({len(clean_text)} chars), adding content from next best posts...")
+        # Try adding more posts to the prompt
+        extra_posts = []
+        for p in cluster["posts"][8:]:
+            extra_posts.append(f"- {p.get('title','')[:100]}: {p.get('summary','')[:200]}")
+        if extra_posts:
+            extra_prompt = prompt + "\n\nДополнительные материалы:\n" + "\n".join(extra_posts[:5])
+            text = llm_text(extra_prompt, max_tokens=3000)
+            if text:
+                clean_text = re.sub(r"<[^>]+>", "", text).strip()
+
+    return {
+        "text":       clean_text,
+        "best_post":  best_post,
+        "url":        best_url,
+        "title":      best_title,
+        "source":     best_source,
+        "topic":      cluster.get("main_topic", ""),
+    }
+
+
+# ─── Media Extraction ─────────────────────────────────────────────────────────
+
+def fetch_media(url: str, timeout: int = 8) -> dict:
+    """Extract og:image, og:video from article HTML. Returns {images: [], videos: []}."""
+    result = {"images": [], "videos": []}
+    try:
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "Mozilla/5.0 (compatible; AI-Digest/1.0)",
+            "Accept": "text/html",
+        })
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            html = resp.read().decode("utf-8", errors="ignore")
+    except Exception:
+        return result
+
+    # og:image
+    for match in re.finditer(r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']', html, re.I):
+        if match.group(1) not in result["images"]:
+            result["images"].append(match.group(1))
+    for match in re.finditer(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image["\']', html, re.I):
+        if match.group(1) not in result["images"]:
+            result["images"].append(match.group(1))
+
+    # og:video
+    for match in re.finditer(r'<meta[^>]+property=["\']og:video["\'][^>]+content=["\']([^"\']+)["\']', html, re.I):
+        if match.group(1) not in result["videos"]:
+            result["videos"].append(match.group(1))
+
+    # twitter:image
+    if not result["images"]:
+        for match in re.finditer(r'<meta[^>]+name=["\']twitter:image["\'][^>]+content=["\']([^"\']+)["\']', html, re.I):
+            if match.group(1) not in result["images"]:
+                result["images"].append(match.group(1))
+
+    return result
+
+
+def enrich_with_media(posts: list[dict]) -> list[dict]:
+    """Fetch og:image for top posts in parallel. Updates posts in-place."""
+    def _fetch(p: dict) -> dict:
+        url = p.get("url", "")
+        if not url:
+            return p
+        media = fetch_media(url)
+        p["_media"] = media
+        return p
+
+    log(f"🖼 Fetching media for {len(posts)} posts...")
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        futures = {ex.submit(_fetch, p): p for p in posts}
+        for fut in as_completed(futures):
+            try:
+                fut.result()
+            except Exception:
+                pass
+    return posts
+
+
+# ─── Markdown Formatter ───────────────────────────────────────────────────────
+
+def build_digest_md(items: list[dict], date_str: str) -> str:
+    """Build full digest markdown file."""
+
+    # Table of contents
+    toc_lines = ["## 📑 Содержание", ""]
+    for i, item in enumerate(items, 1):
+        topic_short = item.get("topic", item.get("title", "?"))[:60]
+        safe_slug = re.sub(r"[^a-zA-Z0-9а-яА-ЯёЁ]", "-", topic_short).lower()
+        toc_lines.append(f"{i}. [{topic_short}](#{safe_slug})")
+
+    toc = "\n".join(toc_lines)
+
+    # Posts
+    post_blocks = []
+    for i, item in enumerate(items, 1):
+        topic = item.get("topic", item.get("title", ""))
+        safe_slug = re.sub(r"[^a-zA-Z0-9а-яА-ЯёЁ]", "-", topic[:60]).lower()
+        text  = item.get("text", "")
+        url   = item.get("url", "")
+        src   = item.get("source", "")
+        media = item.get("media", {})
+
+        # Media block
+        media_lines = []
+        if media.get("images"):
+            media_lines.append(f"🖼 [Иллюстрация]({media['images'][0]})")
+        if media.get("videos"):
+            media_lines.append(f"🎬 [Видео]({media['videos'][0]})")
+
+        media_block = ""
+        if media_lines:
+            media_block = "\n" + " | ".join(media_lines) + "\n"
+
+        # Source line
+        source_line = f"📍 Источник: [{src}]({url})" if url else f"📍 Источник: {src}"
+
+        post_blocks.append(f"""## {i}. {topic}
+
+{text}
+
+{source_line}
+{media_block}""")
+
+    posts_section = "\n\n".join(post_blocks)
+
+    # Header
+    total_posts = sum(it.get("n_source_posts", 0) for it in items)
+    header = f"""---
+date: {date_str}
+type: ai-digest
+tags:
+  - ai/дайджест
+  - ai/новости
+  - briefing
+source_file: digest_{date_str}.md
+posts_in_period: ~{total_posts}
+language:
+  - en
+  - ru
+---
+
+**Проект:** [[AI-бизнес-mAIn-WAY]]
+**Категория:** [[AI-Agency]]
+
+# 📡 AI-Digest — {date_str}
+
+**Тем в дайджесте:** {len(items)}
+**Сгенерировано:** {datetime.now().strftime('%Y-%m-%d %H:%M UTC')}
+
+{toc}
+
+---
+
+"""
+
+    return header + posts_section
+
+
+# ─── Obsidian ─────────────────────────────────────────────────────────────────
+
+def save_digest_obsidian(content: str, date_str: str) -> Path:
+    OBSIDIAN_DIGEST.mkdir(parents=True, exist_ok=True)
+    path = OBSIDIAN_DIGEST / f"digest_{date_str}.md"
+    path.write_text(content, encoding="utf-8")
+    log(f"💾 Saved to Obsidian: {path}")
+
+    # Also save to output/ for convenience
+    output_dir = PROJECT_DIR / "output"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / f"digest_{date_str}_clusterized.md"
+    output_path.write_text(content, encoding="utf-8")
+    log(f"💾 Saved to output:  {output_path}")
+
+    return path
+
+
+# ─── Telegram ─────────────────────────────────────────────────────────────────
+
+def send_telegram_document(file_path: Path, caption: str = "") -> bool:
+    """Send file as Telegram document via Bot API sendDocument."""
+    if not BOT_TOKEN:
+        log("⚠️  TELEGRAM_BOT_TOKEN not set, skipping Telegram", "WARN")
+        return False
+
+    import subprocess
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendDocument"
+
+    cmd = [
+        "curl", "-s", "-X", "POST", url,
+        "-F", f"chat_id={CHAT_ID}",
+        "-F", f"document=@{file_path}",
+    ]
+    if caption:
+        cmd += ["-F", f"caption={caption}"]
+
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+        data = json.loads(result.stdout)
+        if data.get("ok"):
+            doc = data["result"]["document"]
+            log(f"📱 Telegram: sent {doc['file_name']} ({doc['file_size']} bytes)")
+            return True
+        else:
+            log(f"⚠️  Telegram error: {data.get('description', result.stdout[:200])}", "ERROR")
+            return False
+    except Exception as e:
+        log(f"⚠️  Telegram send failed: {e}", "ERROR")
         return False
 
 
-def format_telegram_message(clusters: list[dict]) -> str:
-    """Format clustering results as Telegram HTML message."""
-
-    header = (
-        "📊 <b>AI-Digest: Кластеры за сегодня</b>\n"
-        f"⏰ {datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
-        f"🔢 Кластеров найдено: {len(clusters)}\n\n"
-    )
-
-    blocks = []
-    for rank, cl in enumerate(clusters[:10], 1):
-        size = cl["size"]
-        score = cl["score"]
-        top_title = cl["top_title"]
-        top_url = cl["top_url"]
-        sources = cl["sources"]
-        velocity = cl["velocity"]
-        diversity = cl["diversity"]
-
-        llm_info = ""
-        if cl.get("llm"):
-            llm = cl["llm"]
-            coherent = "✅" if llm.get("coherent") else "⚠️"
-            angle = llm.get("angle", "—")
-            coherence_score = llm.get("coherence_score", "—")
-            llm_info = (
-                f"\n   {coherent} нарратив: <i>{angle}</i>\n"
-                f"   📊 Связность: {coherence_score}/10\n"
-            )
-            story_type = llm.get("story_type", "—")
-            key_sources = llm.get("key_sources", [])
-            if key_sources:
-                llm_info += f"   🔗 Источники: {', '.join(key_sources[:3])}\n"
-
-        sources_str = ", ".join(sorted(sources)[:5])
-
-        block = (
-            f"🏷 <b>Кластер #{rank}</b> | {size} шт. | score={score}\n"
-            f"   📰 {top_title}\n"
-            f"   🔗 {top_url[:80]}\n"
-            f"   📡 Источники: {sources_str}\n"
-            f"   ⚡ Velocity={velocity} | Diversity={diversity}"
-            f"{llm_info}\n"
-        )
-        blocks.append(block)
-
-    footer = (
-        "\n━━━━━━━━━━━━━━━━━━━━\n"
-        "💡 <i>Каждый кластер → тема для поста. "
-        "Чем выше score, тем популярнее тема.</i>"
-    )
-
-    # Telegram message limit ~4096 chars
-    msg = header + "\n\n".join(blocks) + footer
-    if len(msg) > 4000:
-        msg = header + "\n\n".join(blocks[:7]) + "\n\n<i>(остальные кластеры → см. в файле)</i>" + footer
-
-    return msg
-
-
-# ─── Save results ─────────────────────────────────────────────────────────────
-
-def save_results(clusters: list[dict], date_str: str):
-    """Save full clustering results to JSON."""
-    out_path = CLUSTER_DIR / f"clusters_{date_str}.json"
-
-    # Serializable version (without raw embeddings, keep posts)
-    save_data = []
-    for cl in clusters:
-        serial = {k: v for k, v in cl.items() if k not in ("texts",)}
-        # Embeddings are numpy arrays — skip. Posts are kept for digest generation.
-        save_data.append(serial)
-
-    with open(out_path, "w") as f:
-        json.dump({
-            "generated_at": datetime.now(timezone.utc).isoformat(),
-            "date": date_str,
-            "total_clusters": len(clusters),
-            "clusters": save_data,
-        }, f, ensure_ascii=False, indent=2)
-
-    log(f"💾 Results saved: {out_path}")
-    return out_path
-
-
-# ─── Main ───────────────────────────────────────────────────────────────────
+# ─── Main Pipeline ────────────────────────────────────────────────────────────
 
 def main():
-    parser = argparse.ArgumentParser(description="AI-Digest clustering pipeline")
-    parser.add_argument("--date", help="Date in YYYY-MM-DD format (default: today)")
-    parser.add_argument("--days", type=int, default=1, help="Rolling window in days (default: 1)")
-    parser.add_argument("--fetch-hours", type=int, default=0,
-                        help="Run fetch.py first with N hours (0=skip fetch)")
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Skip LLM analysis")
-    parser.add_argument("--top-k", type=int, default=10,
-                        help="Number of top clusters to analyze (default: 10)")
-    parser.add_argument("--model", default=EMBEDDING_MODEL,
-                        help=f"Embedding model (default: {EMBEDDING_MODEL})")
-    parser.add_argument("--min-cluster-size", type=int, default=HDBSCAN_MIN_CLUSTER_SIZE,
-                        help=f"HDBSCAN min_cluster_size (default: {HDBSCAN_MIN_CLUSTER_SIZE})")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--date",      help="Date YYYY-MM-DD (default: today)")
+    parser.add_argument("--days",       type=int, default=1, help="Rolling window days")
+    parser.add_argument("--limit",     type=int, default=TARGET_Digest_COUNT, help="Target post count")
+    parser.add_argument("--dry-run",   action="store_true", help="Skip LLM, skip send")
     args = parser.parse_args()
 
     date_str = args.date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    target   = args.limit
 
-    log(f"🚀 Clusterize pipeline | date={date_str} | days={args.days} | fetch_hours={args.fetch_hours}")
+    log_section(f"🚀 AI-Digest Pipeline | date={date_str} | target={target} posts")
 
-    # Step 1: Load posts
-    if args.fetch_hours > 0:
-        posts = fetch_today(hours=args.fetch_hours)
-        if not posts:
-            log("❌ No posts fetched, exiting", "ERROR")
-            sys.exit(1)
-    else:
-        posts = load_posts(date_str=date_str, days=args.days)
-        if not posts:
-            log("❌ No posts found. Run with --fetch-hours 24 first.", "ERROR")
-            sys.exit(1)
-
-    # Filter to English + Russian only (per project convention)
-    def lang_ok(p):
-        lang = p.get("language", "en")
-        return lang in ("en", "ru", "")
+    # 1. Load
+    posts = load_posts(days=args.days)
+    if not posts:
+        log("❌ No posts found", "ERROR")
+        sys.exit(1)
 
     posts = [p for p in posts if lang_ok(p)]
     log(f"🌐 After language filter: {len(posts)} posts")
 
-    # Step 2: Embed
-    texts, embeddings, valid_posts = embed_posts(posts, model_name=args.model)
+    # 2. Embed
+    texts, embeddings, valid_posts = embed_posts(posts)
 
-    # Step 3: Cluster
-    cluster_data, labels = cluster(embeddings, texts, valid_posts)
-
+    # 3. Cluster
+    cluster_data = cluster(embeddings, texts, valid_posts)
     if not cluster_data:
-        log("❌ No clusters found (all points are noise). Exiting.", "ERROR")
+        log("❌ No clusters found", "ERROR")
         sys.exit(1)
 
-    # Step 4: Score and rank
-    scored = cluster_stats(cluster_data, embeddings, texts)
-    log(f"🏆 Top clusters by score:")
-    for rank, cl in enumerate(scored[:5], 1):
-        log(f"  #{rank}: size={cl['size']:3d} score={cl['score']:.2f} "
-            f"vel={cl['velocity']:.2f} div={cl['diversity']:.2f} → {cl['top_title'][:70]}")
+    # 4. Score & rank
+    scored = score_clusters(cluster_data, embeddings)
+    log(f"🏆 Clusters ranked: {len(scored)}")
+    for i, cl in enumerate(scored[:5], 1):
+        log(f"  #{i}: size={cl['size']:3d} score={cl['score']:.2f} → {cl['top_title'][:70]}")
 
-    top_k = min(args.top_k, len(scored))
-    top_clusters = scored[:top_k]
+    if args.dry_run:
+        log("✅ Dry run — exiting before LLM")
+        sys.exit(0)
 
-    # Step 5: LLM analysis
-    if not args.dry_run and top_clusters:
-        log(f"🤖 LLM analysis for top {top_k} clusters...")
-        analyzed = llm_analyze_clusters(top_clusters)
-        # Update scored with LLM results
-        cl_ids = {cl["cluster_id"] for cl in analyzed}
-        for cl in scored:
-            if cl["cluster_id"] in cl_ids:
-                for a in analyzed:
-                    if a["cluster_id"] == cl["cluster_id"]:
-                        cl["llm"] = a.get("llm")
+    # 5-8. Process clusters → digest items
+    log_section(f"📝 Generating digest ({target} posts)...")
+    digest_items = []
 
-    # Step 6: Save
-    save_results(scored, date_str)
+    for idx, cl in enumerate(scored, 1):
+        if len(digest_items) >= target:
+            log(f"✅ Reached target: {target} posts")
+            break
 
-    # Step 7: Telegram
-    msg = format_telegram_message(top_clusters if not args.dry_run else scored[:10])
-    ok = send_telegram(msg)
-    log(f"📱 Telegram: {'sent' if ok else 'FAILED'} ({len(msg)} chars)")
+        if idx > target * 3:
+            # Safety: don't check more than 3x target clusters
+            log(f"⚠️  Checked {idx-1} clusters, only got {len(digest_items)} posts. Stopping.")
+            break
 
-    # Summary
-    log(f"\n✅ Done! Top {top_k} clusters ready.")
-    log(f"   📁 {CLUSTER_DIR / f'clusters_{date_str}.json'}")
-    if not args.dry_run:
-        log(f"   📱 Telegram: {'✅ sent' if ok else '❌ failed'}")
+        cl["rank"] = len(digest_items) + 1
+        log(f"\n--- Cluster {idx}: {cl['top_title'][:70]} (score={cl['score']:.2f}) ---")
+
+        # 5. Coherence check
+        is_coherent, reason = check_coherence(cl)
+        if not is_coherent:
+            log(f"   ⏭  Skipping: несвязный кластер — {reason[:80]}")
+            continue
+
+        # 6. Anti-topics check
+        is_anti, matched = check_anti_topic(cl)
+        if is_anti:
+            log(f"   ⛔ Skipping: антитема — {matched}")
+            continue
+
+        # 7. Write digest post
+        log(f"   ✍️  Writing digest post ({len(digest_items)+1}/{target})...")
+        item = write_digest_post(cl)
+        if not item:
+            log(f"   ⏭  Skipping: LLM failed to generate post")
+            continue
+
+        post_text = item["text"]
+        if len(post_text) < MIN_DIGEST_CHARS:
+            log(f"   ⏭  Skipping: too short ({len(post_text)} chars < {MIN_DIGEST_CHARS})")
+            continue
+
+        # 8. Media
+        best_url = item.get("url", "")
+        media = {"images": [], "videos": []}
+        if best_url:
+            media = fetch_media(best_url)
+            log(f"   🖼  Media: {len(media['images'])} images, {len(media['videos'])} videos")
+
+        item["media"] = media
+        item["n_source_posts"] = cl["size"]
+        digest_items.append(item)
+        log(f"   ✅ Added post #{len(digest_items)}: {item.get('topic','')[:60]}")
+
+        time.sleep(0.5)  # rate limit
+
+    if not digest_items:
+        log("❌ No digest items generated", "ERROR")
+        sys.exit(1)
+
+    log(f"\n✅ Generated {len(digest_items)} digest posts")
+
+    # 9. Build markdown
+    md_content = build_digest_md(digest_items, date_str)
+
+    # 10. Save to Obsidian
+    obsidian_path = save_digest_obsidian(md_content, date_str)
+
+    # 11. Send to Telegram
+    caption = f"📡 AI-Digest за {date_str} — {len(digest_items)} тем"
+    ok = send_telegram_document(obsidian_path, caption)
+
+    log_section(f"✅ Done! {len(digest_items)} posts. Obsidian: {obsidian_path.name} | Telegram: {'✅' if ok else '❌'}")
 
 
 if __name__ == "__main__":

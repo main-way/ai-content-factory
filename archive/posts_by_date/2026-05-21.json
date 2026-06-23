@@ -19,7 +19,7 @@
         "Gemini",
         "Skills"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a5b423e0d34d",
@@ -33,7 +33,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7dff812584f6",
@@ -49,7 +49,7 @@
       "tags": [
         "Research Blog"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3e572aa5602b",
@@ -63,7 +63,7 @@
       "summary": "The post All Systems Nominal &#8211; Nominal Spotlight appeared first on Sequoia Capital .",
       "author": "amoore",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f3c47f4e5dde",
@@ -79,7 +79,7 @@
       "tags": [
         "Research Blog"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5da14d5c1a98",
@@ -93,7 +93,7 @@
       "summary": "You can now access anomaly alerts and their details directly through the Vercel CLI . With the vercel alerts command, you can list all alerts for a team or given project. For each alert, you can view the start time, the type of alert, and whether or not the alert is still active. With the --ai option, the AI investigation results appear alongside each alert. You and your agent can act on alerts without leaving the terminal. Available on Observability Plus . Learn more about vercel alerts in the CLI documentation . Read more",
       "author": "Julia Shi",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "31271732ee75",
@@ -107,7 +107,7 @@
       "summary": "For nine years the AI boom has been a private bet, priced by a small circle of venture funds and sovereign wealth in rounds most people could never touch. This week it started going public. SpaceX filed an $80 billion IPO prospectus on Wednesday, the largest in history, with a chatbot company and $6.4 billion in AI losses folded inside it. OpenAI is days from filing its own, aiming for a trillion-dollar debut by September. The public markets are about to answer the question private investors kept waving away: at what price?",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

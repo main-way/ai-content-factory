@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:IViT: A Novel Interpretable Visual Transformer for Skin Disease Detection
+View PDFAbstract:The clinical diagnosis of skin diseases is susceptible to interference from inter-class similarity of skin lesions, and over-reliance on clinicians'experience easily leads to subjective bias. Although existing deep learning aided diagnosis methods achieve competitive accuracy, they suffer from the black-box opacity of Vision Transformer (ViT) and poor adaptability to medical few-shot scenarios. Moreover, mainstream explainable algorithms generally face the bottleneck of significant accuracy degradation when improving interpretability. This paper proposes an interpretable ViT (IViT) constrained by Quadratic Programming (QP). The introduced pre-trained transfer learning adapts to few-shot feature extraction. A discrete QP feature selection framework is constructed to screen generic and discriminative features consistent with clinical diagnostic logic. A multi-objective loss function is designed to reduce feature redundancy and optimize activation distribution while preserving classification performance. Experimental results on six standard skin disease datasets show that IViT achieves an accuracy of 93.80%, only 0.21% lower than the baseline, with feature redundancy reduced by 29.5%. Its core activation regions are consistent with clinically concerned lesion areas. The proposed model balances accuracy and interpretability, providing a reliable solution for the clinical deployment of few-shot intelligent skin disease diagnosis.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

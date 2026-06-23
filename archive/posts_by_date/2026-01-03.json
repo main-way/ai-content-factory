@@ -21,7 +21,7 @@
         "Meta",
         "vision language models (VLM)"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fb5626f10819",
@@ -43,7 +43,7 @@
         "Кино",
         "Прокат"
       ],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

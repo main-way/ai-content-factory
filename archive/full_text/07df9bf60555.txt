@@ -1,0 +1,11 @@
+Computer Science > Machine Learning
+Title:Error Highways: Scaling Predictive Coding to Very Deep Networks
+View PDF HTML (experimental)Abstract:Predictive coding networks (PCNs) offer a biologically-plausible, local-learning alternative to back-propagation of errors (backprop). Nevertheless, they have remained largely confined to shallow architectures and evaluated on simple machine intelligence benchmarks. A central obstacle to scaling PCNs is that the learning signal decays rapidly as it propagates away from the clamped boundaries, leaving interior layers effectively unchanged. To directly counter this problem, we propose highway error propagation (HEP), a scheme that augments the free energy function underlying predictive coding (PC) by altering its neural structure with feedback matrices $V_{L\to i}$ that couple selected hidden states directly to the clamped output error. Since this coupling is linear in the hidden state, the highway pathway delivers a correction at every inference step whose magnitude is independent of depth, in contrast to vanilla PC where the output error reaches the $i$-th hidden layer with attenuation that decays exponentially in depth. This bypasses the Jacobian chain while preserving the local PC synaptic update rule. On MNIST and Fashion-MNIST, we show that HEP effectively trains MLPs of up to 128 layers with accuracy that is robust with respect to depth.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -19,7 +19,7 @@
         "Chat History",
         "Microsoft Agent Framework"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "845a82356a94",
@@ -33,7 +33,7 @@
       "summary": "Plus Claude Code pricing confusion and changes in the system prompt between Claude Opus 4.6 and 4.7",
       "author": "Simon Willison",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "807d3648751f",
@@ -47,7 +47,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9b870ee1e1e9",
@@ -61,7 +61,7 @@
       "summary": "I’ve had quite a busy week, and am about to head off on holiday, so haven’t had much time to keep up with the AI news this week, let alone write this newsletter. So for this week, I’m just sharing a few notes on articles that caught my attention. Normal service will resume next week! Claude 4.7 Tokenizer Cost Analysis CLAUDECODECOMP.COM&lt;/small We all know that LLMs require a considerable amount of compute in order to operate, and that the investment in OpenAI, Anthropic et al means that the service is heavily subsidised. Recently we’ve started seeing companies making small tweaks to model…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

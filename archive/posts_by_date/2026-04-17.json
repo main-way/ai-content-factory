@@ -14,7 +14,7 @@
       "summary": "Mythos System Card SANITY.IO I somehow managed to miss of one of the biggest news stories in last week’s edition, the release of Anthropics’s Mythos model. Or more correctly, its non-release! The latest model from Anthropic is so powerful they haven’t formally released it yet. During model evaluation they determined that its ability to find exploits was so significant that they are initially only making it available to select organisations via project Glasswing . For a quick overview of this story, I’d recommend taking a look at Simon Willison’s blog post . While the model’s ability to find…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

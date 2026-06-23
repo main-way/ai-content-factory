@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Anatomically Consistent TMJ Disc Segmentation via Semantic Anchoring and Clinical Priors
+View PDF HTML (experimental)Abstract:Segmenting the temporomandibular joint (TMJ) disc from MRI is essential for accurate diagnosis of internal derangement, yet it remains unreliable in practice due to its small size, low contrast, and morphological variability. Existing methods, primarily adapted from general segmentation architectures, often produce fragmented or anatomically inconsistent masks, leading to unstable measurements of disc position and shape for downstream diagnosis. To address these challenges, we propose TISC, a TMJ disc segmentation framework that integrates semantic anchoring with clinical metadata-guided boundary refinement. The framework first establishes robust disc localization in the foundation model feature space via a Prototypical Semantic Anchoring (PSA) module that aggregates adjacent-slice MedDINOv3 features and derives a prototype-driven similarity map. It then performs targeted boundary refinement through a Clinical-Metadata Point Refinement (C-MPR) module, with point-wise predictions modulated by Mouth Open Limitation (MOL), a clinical indicator associated with disc displacement without reduction. On a large-scale cohort of 2,488 PD MRI volumes from 1,300 patients, our method achieves up to a 4.96 Dice improvement over strong baselines across diverse architectures, delivering more anatomically coherent and clinically reliable TMJ disc segmentation.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

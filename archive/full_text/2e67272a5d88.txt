@@ -1,0 +1,11 @@
+Computer Science > Graphics
+Title:Illuminating English Letters Using a Flying Light Speck
+View PDF HTML (experimental)Abstract:This paper presents the design and implementation of a Flying Light Speck (FLS) to illuminate English letters. The FLS uses its onboard camera and computing to localize and follow a trajectory to illuminate a letter. We evaluate the illuminations quantitatively and qualitatively. The latter is based on an IRB approved human subject study with 20 participants. The obtained results show a 42 to 56 millimeter error that impacts the detection of letters. A key finding is that the order in which the illumination of letters is presented to subjects has a significant effect on detection duration.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

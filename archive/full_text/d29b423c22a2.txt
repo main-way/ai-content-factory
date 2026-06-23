@@ -1,0 +1,30 @@
+Everyone says Claude can’t make pictures. That’s partly true.
+Here is the kind of art it makes on its own, with no plugins and no connectors:
+Drawn by Claude in SVG, no image model anywhere near it. Not pixels but code: shapes and coordinates that stay sharp at any size and redraw themselves when you ask.
+What follows is the full tour, with the exact prompts that made each piece, so you can see the range of Claude’s visual capabilities and try it yourself.
+You have probably heard that Claude can’t make images. It is the one knock on it that never quite goes away. Open a chat, ask for a picture, and you will not get a photo back the way you would from Midjourney or the image tools baked into ChatGPT and Gemini.
+That part is true, but is also half the story. There is a whole that Claude makes entirely on its own, with no connectors, no credits, and no signing up for some third-party tool. It draws. Not with pixels, but with code. And it carries one advantage that no image generator can match, which we will get to near the end.
+Below is what that looks like, with the exact prompts that produced each piece. Everything you are about to see was drawn by Claude.
+When Claude makes a visual, it writes SVG. Instead of painting a grid of colored dots, SVG describes a picture as shapes and coordinates: a circle here, a line there, this color, that angle. It is a recipe for a drawing rather than a photograph of one.
+Two useful things fall out of that. First, the art stays razor sharp at any size, because the shapes are recomputed instead of stretched. Second, and this is the part that matters most, you can change the picture by changing the words, which is the trick we will come back to.
+The trade is honest: this is flat, graphic, vector-style work. Think logos, icons, diagrams, and editorial illustration, not photorealistic skin or painterly texture. Within that lane, though, the range is wider than most people expect.
+Here are five pieces, each made from a single plain-English request. The prompt sits under each one so you can try it yourself.
+Pure outline, even line weight. The kind of thing that sits nicely at the top of a blog post or as a quiet section break.
+Isometric work is all angles and consistent shading, which is exactly the sort of math code is good at. Useful for product explainers and how-it-works graphics.
+The win here is consistency. Ask for a set and you get shapes that share the same weight and spacing, which is the hard part to keep steady by hand.
+Hand Claude numbers and it will lay out a chart with labels, a baseline, and a highlighted bar. Good for reports and slides where you want one tidy figure rather than a spreadsheet.
+Characters land too, as long as you keep them flat and graphic. This is where “vector” starts to feel like proper illustration rather than clip art.
+Here is the part worth the price of admission. With a normal image generator, a small change means rolling the dice again and hoping the next render keeps everything you liked. With Claude’s drawings, you just say what to change, and it edits the picture you already have.
+Watch a plain mug pick up a few requests, one sentence at a time.
+Three sentences, three edits, and the mug never lost its shape between steps. Try doing that cleanly with a text-to-image model.
+This is the real reason to care. Claude does not just hand you a picture, it hands you a picture you can keep steering. The conversation is with the editor.
+The difference between a flat “meh” and something you would publish usually comes down to how you ask. A few habits that help:
+Being clear about the ceiling is the whole point. Promise someone a painterly portrait and they will be let down. Show them a clean icon set, a chart, or the fox above, and they tend to be surprised it came out of a chat window at all.
+Claude will not paint you a photo. But it will draw you something good, for free, the moment you ask, and then let you redirect it with a sentence. For a huge slice of everyday visual work, the headers, the icons, the diagrams, the little illustrations that make a page feel made rather than dumped, that is more than enough.
+The fastest way to believe it is to open a chat and ask for one thing. Try “draw me a flat vector mountain scene at sunset as an SVG,” then tell it to warm up the sky. Watching the picture change on command is the moment it clicks.
+Note: Every illustration in this article was drawn by Claude as SVG and rendered to image as-is. No image generator or connector was used to make them.
+A. Yes. Claude draws in SVG code—shapes and coordinates instead of pixels: producing logos, icons, diagrams, and flat illustrations with no plugins, connectors, or credits required.
+A. Flat, graphic, vector-style work: single-line art, isometric drawings, icon sets, charts, and flat character illustrations. Not photorealism, painterly texture, or busy organic scenes.
+A. SVG describes pictures as shapes, so art stays razor sharp at any size. Best of all, you edit it by changing words, not regenerating.
+A. You can keep steering the same picture. Instead of rerolling and hoping, just say what to change and Claude edits the existing drawing directly.
+A. Name the style, set a palette and mood, request SVG, edit one thing per message, and ask for sets together to keep style consistent.

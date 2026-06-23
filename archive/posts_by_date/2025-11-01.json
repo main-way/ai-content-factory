@@ -14,7 +14,7 @@
       "summary": "In this post, I’ll introduce a reinforcement learning (RL) algorithm based on an “alternative” paradigm: divide and conquer . Unlike traditional methods, this algorithm is not based on temporal difference (TD) learning (which has scalability challenges ), and scales well to long-horizon tasks. We can do Reinforcement Learning (RL) based on divide and conquer, instead of temporal difference (TD) learning. Problem setting: off-policy RL Our problem setting is off-policy RL . Let’s briefly review what this means. There are two classes of algorithms in RL: on-policy RL and off-policy RL.…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:BayesFP: Posterior Estimation for Flow-Based Policies via Feynman-Kac Sampling
+View PDF HTML (experimental)Abstract:Robots must generate trajectories that remain faithful to learned expert behavior while satisfying safety constraints and task-specific objectives specified only at inference time. We formulate constrained trajectory generation for pretrained diffusion and flow-matching policies as Bayesian posterior sampling, with the learned demonstration distribution as a prior and an inference-time, cost-derived likelihood tilting it toward feasible, optimal trajectories. To sample from this posterior without any retraining of the base policy, we leverage the Feynman--Kac corrector framework, originally formulated for diffusion models, and extend it to deterministic flow-matching policies. The result is a unified, inference-time, retraining-free sampler for diffusion and flow policies. We validate the approach on pretrained Diffusion Policy, GR00T-N1.6, and $\pi_{0.5}$ checkpoints across simulated and real-world manipulation tasks, including planning around non-convex obstacles introduced at inference time, and show improvements over the base $\pi_{0.5}$ on zero-shot tasks.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

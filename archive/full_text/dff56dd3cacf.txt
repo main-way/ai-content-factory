@@ -1,0 +1,98 @@
+Привет, Хабр! Android устроен иначе, чем большинство платформ: операционная система может в любой момент уничтожить Activity или Fragment и пересоздать их заново, причём по самым разным причинам (поворот экрана, нехватка памяти, смена темы, языка, dark mode).
+Начинающие разработчики про это забывают, и через месяц после релиза накапливаются утечки, после поворота экрана теряются данные форм, а после возврата из фона приложение крашится с NullPointerException
+в неожиданных местах.
+Разберём пять типичных ошибок, на которых сыпется почти каждый первый Android‑проект, и покажем, какие инструменты появились в современном Android‑стеке для борьбы с этой болью.
+Утечка Activity через нестатический внутренний класс или захват в лямбде
+Простой сценарий: на экране есть кнопка, по которой через пять секунд должен показаться Toast. Логика выглядит даже безобидно:
+class MainActivity : AppCompatActivity() { override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_main) findViewById<Button>(R.id.button).setOnClickListener { Handler(Looper.getMainLooper()).postDelayed({ Toast.makeText(this, "Hello!", Toast.LENGTH_SHORT).show() }, 5000) } } }
+Пользователь нажал кнопку, в течение этих пяти секунд повернул экран. Android уничтожает старую Activity, создаёт новую. Старая Activity физически продолжает существовать в памяти, потому что её удерживает Handler, который держит лямбду, которая через this
+ссылается на старую Activity. Если за пять секунд пользователь повернул экран десять раз, в памяти живёт одиннадцать копий Activity, и сборщик мусора их не уберёт.
+Это утечка памяти. На одной Activity она почти незаметна, на сложных экранах с большим количеством view и подгруженными изображениями каждая утечка стоит десятки мегабайт. После часа использования приложение получает OutOfMemoryError и крашится.
+Решение: понять, что Handler с долгим delayed‑task должен быть отменён в
+onDestroy
+, либо использоватьlifecycleScope
+, который сам отменяет работу при уничтожении компонента:
+class MainActivity : AppCompatActivity() { override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_main) findViewById<Button>(R.id.button).setOnClickListener { lifecycleScope.launch { delay(5000) Toast.makeText(this@MainActivity, "Hello!", Toast.LENGTH_SHORT).show() } } } }
+lifecycleScope
+это специальный CoroutineScope, привязанный к жизненному циклу Activity (или Fragment). Когда Activity уничтожается, все корутины внутри lifecycleScope
+автоматически отменяются, ссылок на Activity больше нет, утечка не происходит.
+Та же логика работает для AsyncTask (хотя в 2026 году им уже почти никто не пользуется), для Thread, для подписок на RxJava, для любых асинхронных операций. Правило простое: если что‑то долгоживущее держит ссылку на Activity, нужно явно эту ссылку освободить при уничтожении или использовать scope, который сам это сделает.
+Утечка через статический Context
+Распространённая ошибка при написании первого Singleton:
+object NetworkManager { private lateinit var context: Context fun init(ctx: Context) { context = ctx } fun makeRequest(url: String) { // используем context для чего-нибудь } } // В Activity class MainActivity : AppCompatActivity() { override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) NetworkManager.init(this) } }
+Singleton живёт всё время работы процесса. Если в Singleton сохраняется this
+от Activity, эта Activity никогда не будет собрана сборщиком мусора, потому что Singleton держит на неё ссылку. После пары поворотов экрана в памяти живут все старые Activity, и каждая тянет за собой layout, view, загруженные ресурсы.
+Решение: для долгоживущих сервисов всегда передавать Application Context, который существует ровно один на весь процесс и не зависит от Activity:
+object NetworkManager { private lateinit var context: Context fun init(applicationContext: Context) { context = applicationContext.applicationContext } } // В Activity NetworkManager.init(applicationContext)
+Метод applicationContext
+возвращает Context, привязанный к Application, а не к Activity. Application существует столько же, сколько процесс приложения, поэтому хранить его в Singleton безопасно. Activity получает свой контекст через this
+, но для долгоживущих сервисов это не подходит.
+Полезное правило: если объект живёт дольше одной Activity, ему нужен Application Context. Если объект используется внутри одной Activity для UI‑операций (показать диалог, запустить другой Activity), нужен Activity Context. Перепутать их просто: с Application Context невозможно показать диалог, а с Activity Context в долгоживущем сервисе течёт память.
+Запуск работы в onCreate без её отмены при уничтожении
+Сценарий загрузки данных с сети при открытии экрана:
+class ProductListActivity : AppCompatActivity() { private lateinit var adapter: ProductAdapter override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_product_list) adapter = ProductAdapter() findViewById<RecyclerView>(R.id.list).adapter = adapter GlobalScope.launch { val products = productRepository.fetchAll() withContext(Dispatchers.Main) { adapter.submitList(products) } } } }
+GlobalScope
+запускает корутину, которая живёт, пока работает процесс. Если пользователь покинул экран до завершения сетевого запроса, корутина продолжает выполняться, и в момент возврата на главный поток обращается к adapter
+, который привязан к уничтоженной Activity.
+В лучшем случае это утечка памяти (Activity не собирается, потому что её держит корутина), в худшем — IllegalStateException
+, если внутри adapter обращается к view, которые уже null.
+Это та же проблема, что и в первой ошибке, только в другой обёртке. Решение похожее: использовать lifecycleScope
+для работы, привязанной к экрану, или viewModelScope
+для работы, которая должна пережить поворот экрана, но завершиться при уходе пользователя с экрана:
+class ProductListViewModel : ViewModel() { private val _products = MutableStateFlow<List<Product>>(emptyList()) val products: StateFlow<List<Product>> = _products.asStateFlow() init { viewModelScope.launch { _products.value = productRepository.fetchAll() } } } class ProductListActivity : AppCompatActivity() { private val viewModel: ProductListViewModel by viewModels() private lateinit var adapter: ProductAdapter override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_product_list) adapter = ProductAdapter() findViewById<RecyclerView>(R.id.list).adapter = adapter lifecycleScope.launch { repeatOnLifecycle(Lifecycle.State.STARTED) { viewModel.products.collect { products -> adapter.submitList(products) } } } } }
+Здесь работа разделена на два слоя. ViewModel и её viewModelScope
+живут поверх поворотов экрана: запрос на сервер выполняется один раз, при повороте экрана новая Activity получает ту же самую ViewModel и не делает повторный запрос. lifecycleScope
+в Activity подписывается на поток данных, но активна подписка только когда Activity в состоянии STARTED или RESUMED (через repeatOnLifecycle
+). Когда Activity уходит в STOPPED, подписка автоматически отменяется, при возвращении на экран подключается заново.
+GlobalScope
+в коде почти всегда как ошибка. Эта идиома существует для очень специфических случаев (фоновые задачи, которые правда должны жить столько же, сколько процесс), но для обычной работы с данными экрана её использовать нельзя.
+Потеря данных при повороте экрана
+Простой пример формы:
+class FeedbackActivity : AppCompatActivity() { private lateinit var editText: EditText override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_feedback) editText = findViewById(R.id.feedback_input) } }
+Пользователь набрал длинный текст, повернул экран. Android уничтожил Activity, создал заново, текст пропал. Точнее, текст в EditText сохраняется автоматически системой, потому что у EditText есть android:id и встроенный механизм сохранения View state. Но если бы это была не EditText, а кастомное состояние (например, текущий шаг wizard‑формы, выбранный таб, состояние загрузки), оно бы пропало.
+Решение через onSaveInstanceState
+:
+class WizardActivity : AppCompatActivity() { private var currentStep = 0 override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_wizard) currentStep = savedInstanceState?.getInt(KEY_CURRENT_STEP) ?: 0 showStep(currentStep) } override fun onSaveInstanceState(outState: Bundle) { super.onSaveInstanceState(outState) outState.putInt(KEY_CURRENT_STEP, currentStep) } companion object { private const val KEY_CURRENT_STEP = "current_step" } }
+onSaveInstanceState
+вызывается системой перед уничтожением Activity. Туда складываются примитивы и Parcelable‑объекты, которые потом восстанавливаются в onCreate
+или onRestoreInstanceState
+. Bundle ограничен размером (около 1 MB на API 28+, меньше на старых версиях), поэтому большие данные туда класть нельзя.
+Современный подход для серьёзных приложений: ViewModel плюс SavedStateHandle. ViewModel переживает повороты экрана сама по себе, без участия пользователя:
+class WizardViewModel(savedStateHandle: SavedStateHandle) : ViewModel() { var currentStep: Int by savedStateHandle.saveable(initialValue = 0) }
+SavedStateHandle
+сохраняет данные не только при повороте, но и при уничтожении процесса операционной системой (например, когда приложение в фоне и система освобождает память). При возвращении в приложение через час пользователь оказывается на том же шаге, на котором ушёл.
+Эта связка ViewModel плюс SavedStateHandle сейчас идиоматичный подход. Для совсем простых случаев onSaveInstanceState
+достаточно, для сложных экранов с состоянием лучше сразу выносить логику в ViewModel.
+Доступ к View после onDestroyView в Fragment
+Самая частая ошибка с Fragment. Сценарий:
+class ProductFragment : Fragment(R.layout.fragment_product) { private var _binding: FragmentProductBinding? = null private val binding get() = _binding!! override fun onViewCreated(view: View, savedInstanceState: Bundle?) { super.onViewCreated(view, savedInstanceState) _binding = FragmentProductBinding.bind(view) lifecycleScope.launch { val product = productRepository.fetch() binding.titleTextView.text = product.title } } }
+Пользователь открыл экран, fragment запустил загрузку, пользователь сразу нажал назад. Fragment проходит через onDestroyView
+, ViewBinding нужно освободить, но в коде про это забыли. Когда корутина завершается, обращается к binding.titleTextView
+и получает либо null pointer (если ViewBinding обнулили), либо IllegalStateException
+(если View уже detached).
+В Fragment есть две сущности lifecycle: lifecycle самого Fragment и lifecycle его View. Когда фрагмент находится в backstack и не виден, его View уничтожается, но сам Fragment живёт. ViewModel и lifecycleScope
+Fragment остаются активными, хотя View уже нет. Это и есть источник проблемы.
+Решение: использовать
+viewLifecycleOwner.lifecycleScope
+для работы, связанной с View, и обнулять binding вonDestroyView
+:
+class ProductFragment : Fragment(R.layout.fragment_product) { private var _binding: FragmentProductBinding? = null private val binding get() = _binding!! override fun onViewCreated(view: View, savedInstanceState: Bundle?) { super.onViewCreated(view, savedInstanceState) _binding = FragmentProductBinding.bind(view) viewLifecycleOwner.lifecycleScope.launch { val product = productRepository.fetch() binding.titleTextView.text = product.title } } override fun onDestroyView() { super.onDestroyView() _binding = null } }
+viewLifecycleOwner.lifecycleScope
+отменяется при уничтожении View, а не Fragment. Корутина не дойдёт до обращения к binding
+, потому что её отменят в onDestroyView
+. Обнуление _binding
+нужно, чтобы Fragment, лежащий в backstack, не держал ссылку на старый View и не мешал сборщику мусора.
+Для большего удобства принята идиома property delegate, который автоматизирует освобождение binding:
+class FragmentViewBindingDelegate<T : ViewBinding>( private val fragment: Fragment, private val viewBindingFactory: (View) -> T ) : ReadOnlyProperty<Fragment, T> { private var binding: T? = null init { fragment.viewLifecycleOwnerLiveData.observe(fragment) { viewLifecycleOwner -> viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver { override fun onDestroy(owner: LifecycleOwner) { binding = null } }) } } override fun getValue(thisRef: Fragment, property: KProperty<*>): T { return binding ?: viewBindingFactory(thisRef.requireView()).also { binding = it } } } fun <T : ViewBinding> Fragment.viewBinding(factory: (View) -> T) = FragmentViewBindingDelegate(this, factory)
+Использование:
+class ProductFragment : Fragment(R.layout.fragment_product) { private val binding by viewBinding(FragmentProductBinding::bind) }
+Никакого ручного освобождения и никакого _binding
+со знаком вопроса. Delegate сам подписывается на lifecycle View и обнуляет ссылку. Эта идиома используется почти во всех современных Android‑проектах.
+Все пять ошибок выше связаны с непониманием жизненного цикла компонентов: что когда создаётся, что когда уничтожается, кто кого может держать.
+В debug‑сборках обязательно стоит подключить LeakCanary: библиотека автоматически находит утечки и показывает цепочку объектов, которая держит Activity или Fragment в памяти. Подключается за пять минут, окупается на первой же находке.
+Хотите глубже разобраться, как Android‑приложение живёт после запуска — от архитектуры экрана до асинхронных операций?
+Присмотритесь к открытым урокам:
+2 июля в 20:00 — «От API до экрана: создаём Android‑приложение на рекомендуемой архитектуре». Записаться
+Покажем, как связать серверное API, сетевой слой и экран приложения в единую рабочую архитектуру.20 июля в 20:00 — «Асинхронное программирование в Android». Записаться
+Объясним, зачем Android‑приложению несколько потоков, как тяжёлые операции влияют на отклик интерфейса и как с этим работать.
+Оба урока бесплатны и проходят в рамках онлайн‑курсов OTUS. Их проводят преподаватели‑практики, поэтому это хорошая возможность познакомиться с экспертами, посмотреть на реальные подходы к разработке Android‑приложений и получить ответы на свои вопросы во время прямого эфира.

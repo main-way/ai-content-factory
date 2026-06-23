@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Two Layers of Instability in Causal Estimation
+View PDF HTML (experimental)Abstract:There is a precise sense in which drawing causal inferences from observational data is hard, even when identifiability is assumed. In particular, Robins and Ritov (1997) and Robins et al. (2003) showed that causal effects can be discontinuous as a function of the data distribution: two arbitrarily close data distributions might correspond to different causal effects. This is a fact independent of the choice of estimator; however, not all estimators are equally unstable. Our contribution is to surface a second layer of instability that depends on the choice of estimator. We show that many standard point estimates can be read as point summaries of multimodal distributions over the space of structural causal models. As such, estimators can jump discontinuously in the data distribution. This defines a taxonomy of estimators that admits a decision-theoretic reading: stability depends on whether the implicit loss function an estimator optimizes is aligned with the causal effect itself. Specifically, inverse propensity weighted estimators and regression estimators are examples of discontinuous summaries, while explicit posterior means and medians are shown to be continuous.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

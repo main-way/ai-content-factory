@@ -1,0 +1,100 @@
+The C++26 standard features a series of improvements to the format library. In this article, we will look at the most important of them.
+Printing an empty line
+Prior to C++26, printing an empty line had to be done like this:
+std::print("\n");
+In C++26, std::println
+has an overload without any parameters that prints a new line to the console.
+std::print();
+Formatting pointers
+Formatting pointer types was not available directly, it required a hack: reinterpreting the pointer type as an integer type in order to print it.
+int i = 0; const void* p = &i; std::println("{:#018x}", reinterpret_cast<uintptr_t>(p));
+In C++26, the formatting library supports formatting of pointer types directly:
+- implicitly, no specifier is required
+- explicitly, with wither the
+p
+(for lowercase) orP
+(for uppercase) specifiers
+Null pointers are formatted as 0x0
+(unless padding is specified).
+Here are several examples of formatting pointers:
+int i = 0; const void* p = &i; std::println("{}", p); // lowercase, the default => 0x7fffb2715a54 std::println("{:p}", p); // explicit, same as none => 0x7fffb2715a54 std::println("{:P}", p); // uppercase => 0X7FFFB2715A54 std::println("{:018}", p); // zero-padded to width 18 => 0x00007fffb2715a54 std::println("{:>20}", p); // right-aligned in a 20-wide field => 0x7fffb2715a54 std::println("{}", nullptr); // => 0x0 std::println("{:016}", nullptr); // => 0x00000000000000
+Formatting paths
+Another feature that required a workaround was printing paths from the std::filesystem
+namespace. You could use path::string()
+to get the string representation of a path.
+namespace fs = std::filesystem; fs::path p = "/usr/local/bin/clang++"; std::println("{}", p.string());
+However, this prints the path unquoted. On the other hand, using the <<
+operator would print the path in quotes:
+std::cout << p << '\n';
+C++26 adds a std::formatter
+for std::filesystem::path
+, which makes it easier to format paths.
+- by default, paths are formatted unquoted
+- the
+?
+option defines a debug form which gives an escaped representation (in quotes) - the
+g
+option forces generic (forward-slash) separators (which mainly shows up on Windows)
+fs::path p = "/usr/local/bin/clang++"; std::println("{}", p); // /usr/local/bin/clang++ std::println("{:?}", p); // "/usr/local/bin/clang++"
+fs::path p = R"(C:\Users\marius\file.txt)"; std::println("{}", w); // C:\Users\marius\file.txt (native separators) std::println("{:g}", w); // C:/Users/marius/file.txt (generic) std::println("{:g?}", w); // "C:/Users/marius/file.txt" (generic + escaped)
+A related issue solved along was Windows string representation of paths. std::filesystem::path
+stores its text in wchar_t
+encoded as UTF-16 (Windows native). But p.string()
+narrows it down to the active code page, rather than UTF-8 which is what the formatting library expects. The result was a non-ASCII path could get transcoded to gibberish. The C++26 std::formatter<std::filesystem::path>
+converts Windows native UTC-16 to UTF-8 using Unicode transcoding and avoiding code pages, therefore solving the problem. Ill-formed UTF-16 is replaced with U+FFFD
+by default, or escaped under {:?}
+.
+constexpr std::format
+In C++26, the formatting functions std::format
+, std::vformat
+, std::format_to
+, std::format_to_n
+, std::formatted_size
+, and their wide variants, plus the underlying pieces (the format context, std::basic_format_arg
+, std::basic_format_string
+, and the format member of the standard formatters) are constexpr
+.
+This makes it possible to use static_assert
+for instance with std::format
+such as in the following examples:
+static_assert(std::format("{} {}", 1, 2) == "1 2"); static_assert(sizeof(void*) == 8, std::format("expected 64-bit, pointer is {} bytes", sizeof(void*)));
+This works because it relies on to_chars()
+overloads which have been made constexpr
+, but only for integral types. So it can be used with strings, integer types, bool
+, char
+, and pointers
+. But there are several limitations to this feature. The following are not supported:
+- floating-point types
+- chrono types
+- locale-aware formatting (using the
+L
+specifier – as in{:L}
+, makes the call non-constant)
+For now, compile-time std::format
+covers integers, strings, and diagnostics well, with floating-point support waiting on a separate paper (P3652) to make the floating-point <charconv>
+functions constexpr
+.
+std::runtime_format becomes std::dynamic_format
+The format string of std::format
+or std::print
+must be a constant expression. For instance, you can write this:
+std::println("{} = {}", "x", 13);
+But you cannot write the following:
+std::string strf = "{} = {}"; std::println(strf, "x", 13);
+This is ill-formed because strf
+is only known at runtime, and therefore is not a constant expression. The workaround is to use std::vformat
+:
+const char* key = "y"; int val = 13; std::string strf = "{} = {}"; std::string s = std::vformat(strf, std::make_format_args(key, val)); std::println("{}", s);
+There is a workaround for the workaround (it’s basically syntactic sugar for std::vformat
+), the formally known as std::runtime_format
+function, that returns an object that stores a dynamic format string directly usable in user-oriented formatting functions and can be implicitly converted to std::basic_format_string
+.
+std::string strf = "{} = {}"; std::println(std::runtime_format(strf), "x", 13);
+In the final version of C++26, this has been simply renamed to std::dynamic_format
+(although at this time the compilers that do support it still use the previous name). Therefore, the snippet above now becomes:
+std::string strf = "{} = {}"; std::println(std::dynamic_format(strf), "x", 13);
+std::dynamic_format
+is constexpr, which means it can be used in constant-evaluation contexts, such as in the following example:
+constexpr auto make_string = [](std::string_view f) { return std::format(std::dynamic_format(f), 1, 2); }; static_assert(make_string("{}+{}") == "1+2");
+See more
+You can learn more about these changes from the following articles:

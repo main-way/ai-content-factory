@@ -14,7 +14,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "55f8cdd33ed6",
@@ -30,7 +30,7 @@
       "tags": [
         "Research Blog"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "827a2f104a20",
@@ -52,7 +52,7 @@
         "large language models",
         "Open source models"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9155cb8e56b8",
@@ -66,7 +66,7 @@
       "summary": "What laws does superintelligence demand?",
       "author": "Jack Clark",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "caa8bc3ba563",
@@ -83,7 +83,7 @@
         "Enterprise Planning",
         "SAP"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "493dd3fda709",
@@ -100,7 +100,7 @@
         "Search",
         "AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "81099b76cd14",
@@ -114,7 +114,7 @@
       "summary": "Image captioning is one of the most fundamental tasks in computer vision. Owing to its open-ended nature, it has received significant attention in the era of multimodal large language models (MLLMs). In pursuit of ever more detailed and accurate captions, recent work has increasingly turned to reinforcement learning (RL). However, existing captioning-RL methods and evaluation metrics often emphasize a narrow notion of caption quality, inducing trade-offs across core dimensions of captioning. For example, utility-oriented objectives can encourage noisy, hallucinated, or overlong captions that…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

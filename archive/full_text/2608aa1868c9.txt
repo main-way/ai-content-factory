@@ -1,0 +1,15 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:A Skin-Tone-Aware Dual-Representation Remote Photoplethysmography Framework for Contactless Respiratory Rate Estimation
+View PDF HTML (experimental)Abstract:Respiratory rate is a vital indicator of pulmonary and cardiovascular health, yet conventional methods for estimating respiratory rate are often intrusive due to their contact-based nature. Remote photoplethysmography offers a promising non-contact alternative and has been widely used for heart rate estimation; however, its potential for respiratory rate estimation remains underexplored. Existing methods typically adapt green and chrominance-based projections originally designed for heart rate estimation, which only partially capture respiratory dynamics. Most prior work focuses on the Eulerian representation with fixed or empirically selected RGB projections.
+To address these gaps, we propose a skin-tone-aware dynamic RGB signal projection that captures respiratory information. To mitigate the sensitivity of the Lagrangian representation to non-respiratory motion, we introduce a denoising network for motion-based remote photoplethysmography signals. We further design a phase-independent contrastive loss that enables Eulerian and Lagrangian representations to collaboratively learn respiratory rate information. We also introduce RR-rPPG, a respiratory-rate facial video dataset with Indian demographic representation.
+We evaluate the method on RR-rPPG and the publicly available COHFACE dataset, where it consistently outperforms comparison methods and achieves up to a 42.1% reduction in mean absolute error across the evaluated settings.
+The proposed framework demonstrates the effectiveness of jointly leveraging skin-tone-aware Eulerian and denoised Lagrangian representations for contactless respiratory rate estimation from facial videos. In addition, RR-rPPG contributes a diverse benchmark resource for future research in remote respiratory monitoring. The code and dataset will be made publicly available upon paper acceptance.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

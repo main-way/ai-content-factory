@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Acoustic Landmark Detector based on Conformer and HuBERT
+View PDF HTML (experimental)Abstract:Acoustic landmarks (abrupt acoustic changes tied to speech events) offer a linguistically grounded representation for speech analysis. We study automatic landmark detection with Conformer models, evaluating 14 configurations spanning architecture, loss, label representation, feature extractor, and data conditions on 1 839 manually annotated utterances with eight landmark types. We propose Gaussian soft labels with per-class temporal spread (sigma=10-20 ms), improving F1-at-20 ms by 7.0% absolute vs. hard labels by modeling annotation variability. Frozen HuBERT features perform best without fine-tuning (F1-at-20 ms=0.77). Stops and fricatives are reliable (F1>0.80), while vowels remain challenging (F1 approx 0.55). On our corpus, our system reaches a 13.8% Landmark Error Rate (LER). This is not directly comparable to AutoLandmark (31.3%) or SpeechMark (56.5%), evaluated on a different corpus and metric. Per-class trends show detectability increases with event abruptness, consistent with Stevens' theory.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

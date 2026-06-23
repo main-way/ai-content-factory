@@ -22,7 +22,7 @@
         "ИИ",
         "Искусственный интеллект"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e357cdab8755",
@@ -36,7 +36,7 @@
       "summary": "Porting 100k lines from TypeScript to Rust using Claude Code in a month VJEUX.COM This is an amazing story of how Chris Chedeau (AKA Vjeux) ported a 100k line TypeScript library to Rust, in just 4 weeks, without writing a single line of code himself. Oh yes … and he has never written Rust code either! And the final Rust port is 3.5x faster than the JavaScript equivalent. (as an aside, this is the same Chedeau / Vjeux who inspired me to use an agentic loop to implement flexbox a few weeks back, repeating a task he did 10 years ago in implementing React Native) The first part of his post…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

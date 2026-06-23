@@ -1,0 +1,12 @@
+Link to headingWhat is Vercel Flags
+Link to headingWhy framework-native matters
+Link to headingServer-side evaluation
+app/page.tsx
+import { showNewFeature } from "@/flags"
+export default async function Page() { const isEnabled = await showNewFeature() return isEnabled ? <NewDashboard /> : <OldDashboard />}
+Reading the flag server-side in a route. The user receives the correct variant before the page paints.
+Link to headingAutomatic flag registration
+flags.ts
+import { flag } from "flags/next"import { vercelAdapter } from "@flags-sdk/vercel"
+export const showNewFeature = flag({ key: "show-new-feature", adapter: vercelAdapter()})
+Defining a flag with the Flags SDK and the Vercel adapter.

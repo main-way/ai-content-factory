@@ -1,0 +1,54 @@
+Sakana AI's Fugu orchestrates multiple LLMs to match Anthropic's Fable and Mythos benchmarks
+Key Points
+- Japanese AI startup Sakana AI is launching Fugu, a system that dynamically coordinates multiple language models from a swappable pool while behaving like a single model through one API.
+- Sakana says Fugu outperforms Anthropic's best models, Fable and Mythos, in benchmarks, even though neither model is part of its LLM pool.
+- Fugu comes in a base version for everyday tasks and a more powerful Fugu Ultra variant. The swappable pool design also aims to reduce dependence on any single AI provider.
+Update –
+- Added first impressions
+Update, June 23, 2026:
+First hands-on tests paint a mixed picture
+Early reviews of Fugu tell a less enthusiastic story than the benchmarks. AI researcher Ethan Mollick writes on X that Fugu Ultra is "incredibly slow." His usual coding tests took 30 minutes. Results were "fine" but fell short of Fable in practice. He demonstrates with his 3D simulation benchmark "Harbor Town".
+X user @LLMJunky blew through his entire five-hour quota on the $20 plan with a single prompt. A ThreeJS coding task came back "notably worse than GPT 5.5" and needed seven or eight fix rounds before the game even ran. "Early impressions…not great," he wrote.
+On Hacker News, developers gripe that the $200-a-month plan gets you less than three hours a week. The API is reportedly slow, and output quality isn't close to Fable. Code reviews were a bright spot, though, roughly matching Opus 4.8 or GPT 5.5. Hamel Husain on X agrees it's solid for code reviews but weaker on frontend work, calling it "a bit jagged in its abilities."
+A head-to-head by X user Mark Santos on a Crossy Road clone shows Fugu Ultra finishing in 22 minutes at $7.32, way faster and cheaper than Opus 4.8 at 79 minutes and $37.85. But Santos liked the output less.
+Sakana AI's sovereignty claim also drew pushback. The system still depends on whatever models sit in its pool, and Sakana uses proprietary models like Claude Opus for its benchmarks. Smart engineering can squeeze more out of AI models, but that's nothing new. This so-called "harness engineering" plays a big role in agentic AI.
+Original article from June 22, 2026:
+Tokyo-based AI startup Sakana AI is launching Fugu, a system that dynamically coordinates multiple AI models to compete with leading systems like Anthropic's Fable 5. The approach also aims to reduce dependence on any single AI provider.
+Tokyo-based startup Sakana AI has unveiled Fugu, a multi-LLM orchestrator that looks and feels like a single model to the user. Sakana already had strong results with orchestrator setups for coding. Its ALE-Agent placed 21st out of 1,000 human experts in a coding competition.
+Fugu is itself a language model, trained to call other LLMs from an agent pool, including copies of itself. Depending on the request, it either handles a task on its own or pulls together a team of specialized models. Selection, delegation, checks, and synthesis all run internally. Users access everything through a single OpenAI-compatible API.
+Fugu Ultra aims to match top-tier models
+Sakana AI is launching two variants. The base Fugu model targets low latency and solid everyday performance across coding, code review, and chatbot use cases. Teams with privacy or compliance needs can exclude specific agents from the pool.
+Fugu Ultra is built for maximum answer quality on complex, multi-step problems. Early users have put it to work on AI research, reproducing scientific papers, cybersecurity analysis, and patent and literature searches.
+According to benchmark results Sakana AI published, Fugu Ultra performs on par with Anthropic's Fable 5 and Mythos Preview across a range of coding, reasoning, science, and agent benchmarks.
+Neither Anthropic model is in Fugu's agent pool, though, since they aren't publicly available. With those models included, Fugu would likely score even higher. Sakana AI says the baseline comparison numbers come from the model providers themselves. The table below shows how Fugu stacks up against the underlying base models.
+| Benchmark | Fugu | Fugu Ultra | Opus 4.8 | Gemini 3.1 Pro | GPT 5.5 |
+|---|---|---|---|---|---|
+| SWE Bench Pro | 59.0 | 73.7 | 69.2 | 54.2 | 58.6 |
+| TerminalBench 2.1 | 80.2 | 82.1 | 74.6 | 70.3 | 78.2 |
+| LiveCodeBench | 92.9 | 93.2 | 87.8 | 88.5 | 85.3 |
+| LiveCodeBench Pro | 87.8 | 90.8 | 84.8 | 82.9 | 88.4 |
+| Humanity's Last Exam | 47.2 | 50.0 | 49.8 | 44.4 | 41.4 |
+| CharXiv Reasoning | 85.1 | 86.6 | 84.2 | 83.3 | 84.1 |
+| GPQA-D | 95.5 | 95.5 | 92.0 | 94.3 | 93.6 |
+| SciCode | 60.1 | 58.7 | 53.5 | 58.9 | 56.1 |
+| τ³ Banking | 21.7 | 20.6 | 20.6 | 8.4 | 20.6 |
+| Long-Context Reasoning | 74.7 | 73.3 | 67.7 | 72.7 | 74.3 |
+| MRCRv2 | 86.6 | 93.6 | 87.9 | 84.9 | 94.8 |
+Orchestration as a hedge against vendor lock-in
+Sakana AI is pitching Fugu as a safeguard against single-provider dependence. The company points to the recent export controls on Anthropic's Fable and Mythos models as a concrete example. Access to top AI systems can vanish overnight due to regulatory shifts or foreign policy decisions.
+"For an organization or a nation, relying on a single company’s APIs for critical infrastructure, finance, or governance is a material vulnerability. This risk is no longer a hypothetical possibility, but a reality," Sakana AI writes in its announcement. Fugu's model pool is fully swappable, so the system can reroute to other models if one provider goes dark.
+The system's real-world performance depends entirely on which models are in the pool, though. If several top providers restrict access at the same time, Fugu's options shrink too. An orchestrator like Fugu may boost resilience, but it's not the same as true sovereignty.
+Still, Fugu could be worth watching on raw performance alone. How much the orchestration drives up token usage and costs remains an open question that Sakana doesn't address in its announcement.
+Early testers report gains on complex workflows
+About 500 beta users have already tested the system in real-world settings, according to Sakana AI. Fugu proved strongest on long, multi-step workflows like automated data research, security analysis, and code reviews.
+One software developer says Fugu Ultra catches far more bugs during code review than GPT-5.5. "Where other tools flag about three issues, Fugu surfaced more than twenty." Sakana AI also claims Fugu beat Gemini 3.1 Pro, Opus 4.8, and GPT 5.5 in its own tests on automated research, mechanical design, and financial forecasting.
+Video: According to Sakana, Fugu solves and visualizes a Rubik's Cube faster than the individual models.
+"The beta made clear that multi-agent orchestration matters most when the task is messy, long-running, and difficult to solve with a single model call," writes Sakana AI.
+Both variants are live now through a single API on the product page and console. Sakana offers subscription plans for daily use and usage-based billing for bigger workloads.
+Sakana's bet is an AI ecosystem rather than a single model
+Fugu's technical approach builds on Sakana AI's own research into learned model orchestration, specifically two papers presented at ICLR 2026 called Trinity and Conductor.
+The idea fits Sakana AI's broader vision of applying natural principles like swarm behavior, evolution, and collective intelligence to AI systems. The company sees powerful AI not as a single-model problem but as a collaborative ecosystem that goes beyond what any one model can do alone.
+Sakana AI was founded by former Google AI researchers Llion Jones and David Ha. Jones co-authored the 2017 "Attention Is All You Need" paper that gave us the Transformer.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

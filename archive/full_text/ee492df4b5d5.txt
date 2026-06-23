@@ -1,0 +1,12 @@
+Computer Science > Computation and Language
+Title:FiLM-Coordinated Dual-Branch Transformer for Global-Local Dependency Modeling in Language Modeling
+View PDF HTML (experimental)Abstract:Standard Transformers use a single self-attention pathway to model both global dependencies and local patterns, creating tension between long-range structural reasoning and fine-grained local representation learning. We propose a FiLM-coordinated dual-branch Transformer for language modeling, where each layer explicitly contains a global branch and a local branch, and feature-wise linear modulation (FiLM) is used for dynamic cross-branch coordination instead of simple concatenation or static addition. The key idea is that the two branches represent different dependency views of the same input, making channel-wise calibration more suitable than heavy token-level interaction. We therefore design a bidirectional FiLM module in which each branch generates per-channel scaling and shifting parameters to condition the other. Experiments on multiple small-scale language modeling settings show that the proposed structure consistently outperforms same-width single-branch baselines and weakened dual-branch variants under a fixed lightweight configuration. On TinyShakespeare and a 1M-character subset of WikiText-2, the full dual-branch FiLM model achieves the best results among same-width structural baselines. Multi-seed results support the stability of the gains, while mechanistic analyses show that FiLM learns input-dependent, layer-dependent, and channel-selective modulation patterns rather than static scaling. Parameter-matched widened single-branch baselines also indicate that the current design still leaves room for improvement in parameter efficiency.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

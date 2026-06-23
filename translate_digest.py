@@ -14,10 +14,15 @@ translate_digest.py — перевод AI-Digest на русский.
 
 import argparse
 import html
+import os
 import re
 import sys
 import time
 from pathlib import Path
+
+# ── Env ──────────────────────────────────────────────────────────────────────
+import _env as _env_module
+_env_module._()
 
 # ── Конфиг ──────────────────────────────────────────────────────────────────
 API_KEY = os.environ.get("OPENROUTER_API_KEY", "")

@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:MaRS: Robust Out-of-Distribution Detection via Mahalanobis Residual Scoring
+View PDF HTML (experimental)Abstract:Foundation models provide highly descriptive representations for medical images, yet their reliability degrades under distribution shifts arising from changes in patients, devices, or acquisition conditions. Reliable out-of-distribution (OOD) detection is therefore essential for safe deployment. Recent post-hoc detectors efficiently exploit frozen embeddings (\emph{e.g.}, kNN), whereas reconstruction-based OOD detection in latent feature space has seen limited adoption due to inconsistent performance. In this work, we show that the limitation of reconstruction-based methods in latent space does not stem from poor reconstruction quality, but from how reconstruction errors are scored. Standard $L_2$ residual norms collapse the anisotropic residual structure, thereby suppressing informative deviations. To address this limitation, we introduce \texttt{MaRS} (Mahalanobis Residual Scoring), a label-free OOD detector that learns an in-distribution manifold using a lightweight autoencoder and measures deviation via a Mahalanobis distance on reconstruction residuals, yielding variance-aware OOD scores. Across three imaging modalities, multiple types of distribution shift, and different model families and scales, \texttt{MaRS} outperforms established confidence-, distance-, and reconstruction-based baselines, while remaining fully post-hoc and lightweight. The code is available at this https URL.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

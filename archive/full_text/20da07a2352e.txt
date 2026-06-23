@@ -1,0 +1,12 @@
+Computer Science > Computation and Language
+Title:Beyond 'One Language, One Script': Quantifying Orthographic Bias in Multilingual VLMs with PuMVR
+View PDFAbstract:Current Vision-Language Models (VLMs) are celebrated for their multilingual capabilities, yet they operate under a flawed assumption: that one language corresponds to a single writing system. This overlooks billions of users of multi-script languages like Punjabi, Serbian, Hindi-Urdu, Kurdish, among many others, for whom a model's capability may be fractured by orthographic bias. We introduce PuMVR (Punjabi Multimodal Visual Reasoning), the first benchmark designed to quantify script-dependent bias through 375 culturally grounded image-reasoning tasks across Punjabi's three active scripts (Gurmukhi, Shahmukhi, Roman). Evaluating 10 state-of-the-art VLMs, we expose a substantial Script Gap: models frequently solve visual puzzles in one script while failing identical tasks in another, with accuracy deltas reaching 16% and Script Consistency Rates (SCR) as low as 24.8%. Crucially, visual input boosts absolute performance but does not close this gap, the relative bias persists. Our analysis suggests reasoning patterns show limited cross-script transferability, and Chain-of-Thought pathways diverge based on script alone. We propose SCR as a core metric for script-agnostic evaluation, challenging current multilingual assessment paradigms and providing a framework for equitable AI.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

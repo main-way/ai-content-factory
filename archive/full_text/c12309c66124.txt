@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Scaling up fine-grained intracranial vessel annotations in computed tomography angiography
+View PDF HTML (experimental)Abstract:In this work, we present SemanticVessel, a dataset for fine-grained brain vessel segmentation in computed tomography angiography scans. Based on the detailed contrast provided by dynamic 4D-CTA scans, we generate segmentation traces for arteries and veins. We then use intensity-guided region growing to obtain segmentations of the majority of vascular territories in the human brain, which are refined and annotated with 20 unique arterial classes by an expert radiologist. Unlike existing datasets, where minor arteries are discarded as background content, we merge these minor arteries into a generic arterial class. Due to the multiple-phase acquisition of dynamic 4D-CTA, labels for a single phase can be re-used for other phases in the same series, greatly increasing the size of our dataset with no additional annotation cost. The results show that models trained with the additional generic artery class produce better fine-grained segmentations across the board. We will make our code, annotation GUI, and model weights available to the scientific community. Code, weights, and data will be made available on this https URL
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

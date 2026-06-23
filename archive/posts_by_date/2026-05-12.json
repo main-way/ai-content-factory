@@ -23,7 +23,7 @@
         "entrepreneurship",
         "purpose-driven"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "15deeae3d860",
@@ -37,7 +37,7 @@
       "summary": "Introducing Co-Scientist, a collaborative AI partner built with Gemini to help researchers accelerate scientific breakthroughs.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4f0e51d00909",
@@ -53,7 +53,7 @@
       "tags": [
         "Research Blog"
       ],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

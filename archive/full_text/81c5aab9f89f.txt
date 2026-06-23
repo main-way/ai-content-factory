@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:A Projection-Based Surrogate Gradient Interpretation for Neural Codec Wrappers
+View PDFAbstract:Neural wrappers are learned pre-and postprocessing networks designed to enhance the performance of conventional video codecs. Although these approaches can significantly improve compression efficiency, training them remains challenging due to the non-differentiability of video codecs, which arises from the multiple discrete decisions involved in the encoding process. Surrogate gradients have recently emerged as an effective solution for enabling end-to-end learning with conventional codecs. They offer two main advantages: they avoid training an additional network to mimic the codec, and they can improve compression performance. In particular, the recently proposed SCALED method, which leverages the true compression error, has shown strong results for training neural pre-processors such as downscalers. However, this SCALED gradient was originally introduced as a reparameterization trick, which limits its interpretability. In this paper, we show that this surrogate gradient can be interpreted as a first-order local approximation of the video codec, providing insight into its effectiveness. We further demonstrate that it is effective not only for learning downscaling operations, but also for the more challenging task of full neural wrapping with pre-and post-processing networks. Finally, we show that the approach generalizes well across different video codecs, quality factors, and tasks, including multiple downscaling ratios, yielding BD-Rate (PSNR) reductions of up to -23.59% on x264 and -20.07% on VVenC relative to standard resampling baselines.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

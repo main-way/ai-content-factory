@@ -1,0 +1,13 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Explainable AI in Speaker Recognition -- Attention Map Visualisation and Evaluation
+View PDF HTML (experimental)Abstract:Explaining and understanding the decision-making process of artificial intelligence (AI) systems, particularly those implemented by neural networks, falls within the field of explainable AI (XAI). Analogous to the human attention mechanism, neural networks are assumed to possess their own attention mechanisms that selectively process information during decision-making. This work proposes to study one XAI topic: analysing and visualising the attention mechanisms of neural networks. Our experiments are performed on speaker recognition neural networks that are trained to identify speaker identity from a given utterance.
+Previous studies have widely used class activation map (CAM)-based methods to analyse and visualise the attention mechanisms of neural networks. Each of these methods produces an attention map for each network input, highlighting which input regions are selectively processed when the speaker recognition network makes decisions. However, the evaluation of attention maps produced by these methods remains largely underexplored. This work systematically reviews an existing attention map evaluation algorithm, establishing key concepts and identifying its shortcomings. On the basis of this existing evaluation algorithm, a new version is then proposed to address the identified shortcomings, called the Modified Randomised Input Sampling for Explanation - Evaluation algorithm (Modified RISE-eval). Using Modified RISE-eval, we evaluate the attention maps produced by two representative CAM-based methods, GradCAM and LayerCAM, applied to a certain speaker recognition network. The evaluation results demonstrate that GradCAM and LayerCAM each exhibit distinct advantages when applied under different experimental conditions in the speaker recognition task.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

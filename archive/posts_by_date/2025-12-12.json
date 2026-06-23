@@ -23,7 +23,7 @@
         "entrepreneurship",
         "purpose-driven"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a5d306602c8a",
@@ -46,7 +46,7 @@
         "Электромобили",
         "Яндекс"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b66a706833fe",
@@ -60,7 +60,7 @@
       "summary": "If You’re Going to Vibe Code, Why Not Do It in C? STEPHENWARMSAY.NET As someone who hasn’t touched C (or C++) in over 20 years, I can honestly say I haven’t asked myself this question! Stephen, like many of us, is wrestling with the impact AI may have on the joy and satisfaction we experience as developers. A great many of us enjoy the craft of writing software and consider it both a career and a hobby. How will AI change this dynamic? Quite simply, does vibe coding take all the fun out of it. However, the main thrust of this blog post is about programming languages themselves. Despite the…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:A Viscosity Semigroup Framework for Stable Image Reconstruction
+View PDF HTML (experimental)Abstract:Starting from the axiomatic formulation of scale-space theory, we develop a viscosity-solution framework for multiscale image representations arising from degenerate elliptic-parabolic partial differential equations. Rather than introducing a new semigroup theory, we work within the standard viscosity-solution setting, using comparison principles to obtain well-posedness, uniqueness, and contraction in the supremum norm. This perspective is used to motivate a hybrid reconstruction operator in which a learned inverse map is followed by a nonlinear diffusion evolution. At the continuous level, the diffusion operator satisfies non-expansiveness, which provides stability for the reconstruction process; this framework is then evaluated on a CT-based mesothelioma classification task, where it attains an AUC of 0.875 with negligible variation across epochs, while the baseline model acquires AUC values from 0.49 to 0.80 without a clear convergence pattern. These observations are consistent with the stabilizing role suggested by the discussed viscosity theory.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

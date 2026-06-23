@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:2D Versus 3D Diffusion for In Silico Training of Interventional X-ray AI Models
+View PDF HTML (experimental)Abstract:The ability to synthesize realistic X-ray images has catalyzed the development of AI models for X-ray image-guided procedures, which otherwise suffer from a lack of available annotated data. Prior work has demonstrated the effectiveness of mechanistic simulation of digitally reconstructed radiographs (DRRs) as a training data source for a myriad of tasks, including segmentation and anatomical landmark detection, with comparable or superior performance to real data training. However, mechanistic DRR synthesis still relies on the availability of annotated high-resolution anatomical models. Deriving these from CT images of real patients or specimens imposes an undesirable bottleneck on data quantity and variability. In this work, we explore two methods for synthesizing training data: (1) a 3D conditional latent diffusion model that generates CT volumes to use as inputs for mechanistic DRR generation without real, 3D anatomical models, and (2) a view-conditioned 2D diffusion model that produces synthetic X-rays. In controlled experiments, we demonstrate that synthetic 2D diffusion-based X-rays can be used to train an anatomical landmark detection model that generalized to real X-ray images with performance rivaling that of a model trained on real X-ray images. Thus, we provide preliminary evidence that synthetic, 2D diffusion-based training data can substitute for real X-ray data, identifying a promising avenue towards generating large, diverse datasets for training robust AI models in interventional X-ray imaging.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

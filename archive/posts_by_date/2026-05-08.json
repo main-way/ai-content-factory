@@ -16,7 +16,7 @@
       "tags": [
         "Research Blog"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e821b92b41de",
@@ -30,7 +30,7 @@
       "summary": "Plus updates from Anthropic's Code w/ Claude conference",
       "author": "Simon Willison",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "228a9e5ac18c",
@@ -44,7 +44,7 @@
       "summary": "The post AI Ascent 2026 appeared first on Sequoia Capital .",
       "author": "amoore",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "70615ef3544f",
@@ -60,7 +60,7 @@
       "tags": [
         "AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a8b82a1934b2",
@@ -74,7 +74,7 @@
       "summary": "Overview of adaptive parallel reasoning. What if a reasoning model could decide for itself when to decompose and parallelize independent subtasks, how many concurrent threads to spawn, and how to coordinate them based on the problem at hand? We provide a detailed analysis of recent progress in the field of parallel reasoning, especially Adaptive Parallel Reasoning. Disclosure: this post is part landscape survey, part perspective on adaptive parallel reasoning. One of the authors (Tony Lian) co-led ThreadWeaver ( Lian et al., 2025 ), one of the methods discussed below. The authors aim to…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f1bb07285992",
@@ -92,7 +92,7 @@
         "Agent Framework",
         "Python"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "213e4bb8e11b",
@@ -106,7 +106,7 @@
       "summary": "Current critic-less RLHF methods aggregate multi-objective rewards via an arithmetic mean, leaving them vulnerable to constraint neglect: high-magnitude success in one objective can numerically offset critical failures in others (e.g., safety or formatting), masking low-performing “bottleneck” rewards vital for reliable multi-objective alignment. We propose Reward-Variance Policy Optimization (RVPO), a risk-sensitive framework that penalizes inter-reward variance during advantage aggregation, shifting the objective from “maximize sum” to “maximize consistency.” We show via Taylor expansion…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4d3a2b074941",
@@ -120,7 +120,7 @@
       "summary": "At Apple, we believe privacy is a fundamental human right. As AI capabilities increase and become more integrated into people’s daily lives, advancing research in privacy-preserving techniques is increasingly important to ensure privacy is protected while users enjoy innovative AI experiences. Apple’s fundamental research has consistently pushed the state-of-the-art in this domain, and earlier this year, we hosted the Workshop on Privacy-Preserving Machine Learning & AI. This two-day event brought together Apple researchers and members of the broader research community to discuss the…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e9ff30bb5734",
@@ -134,7 +134,7 @@
       "summary": "We propose HeadsUp, a scalable feed-forward method for reconstructing high-quality 3D Gaussian heads from large-scale multi-camera setups. Our method employs an efficient encoder-decoder architecture that compresses input views into a compact latent representation. This latent representation is then decoded into a set of UV-parameterized 3D Gaussians anchored to a neutral head template. This UV representation decouples the number of 3D Gaussians from the number and resolution of input images, enabling training with many high-resolution input views. We train and evaluate our model on an…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9bf773ad67f3",
@@ -148,7 +148,7 @@
       "summary": "We introduce a framework for learning latent representations of 4D objects which are descriptive, faithfully capturing object geometry and appearance; compressive, aiding in downstream efficiency; and accessible, requiring minimal input, i.e., an unstructured dynamic point cloud, to construct. Specifically, Velox trains an encoder to compress spatiotemporal color point clouds into a set of dynamic shape tokens. These tokens are supervised using two complementary decoders: a 4D surface decoder, which models the time-varying surface distribution capturing the geometry; and a Gaussian decoder…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "779a7f812523",
@@ -162,7 +162,7 @@
       "summary": "Code w/ Claude CLAUDE.COM A couple of days ago Anthropic held its Code w/ Claude event in San Francisco, with future events planned for London and Tokyo. Anthropic used this event for a business update (an 80-fold growth in recurring revenues!) and various product launches. Notably there were no significant model launches or updates, reflecting the recent move towards investment in the harness that surrounds the model - which is where capability gains are being made. Anthropic are certainly a leader here, Claude Code was the first agentic harness from a model lab. There were some updates to…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

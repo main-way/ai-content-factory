@@ -1,0 +1,13 @@
+Statistics > Machine Learning
+Title:Statistical Inference for Misspecified Contextual Bandits
+View PDF HTML (experimental)Abstract:Contextual bandit algorithms have transformed modern experimentation by enabling real-time adaptation for personalized treatment. Yet these advantages create challenges for statistical inference due to adaptivity. We study inference with contextual-bandit data without assuming a well-specified outcome model. In this setting, we show a previously overlooked issue: standard algorithms such as LinUCB may fail to stabilize under misspecified working models, leading to non-Gaussian estimator behavior and invalid inference. This issue is practically important, as misspecified working models -- such as approximations of complex dynamical systems -- are often employed by online agents in real-world adaptive experiments to balance reward, computational tractability, and robustness.
+We develop an inverse-probability-weighted Z-estimation framework for a broad class of marginal moment targets, including projection parameters, structural parameters with noisy contexts, and off-policy values. We identify a stability condition tailored to this framework, scaled inverse-propensity convergence, under which the IPW-Z estimator is consistent and asymptotically normal with a consistent sandwich variance estimator. We further establish sufficient conditions for scaled inverse-propensity convergence for several policy classes, including multi-armed bandit algorithms and smooth contextual allocation policies. Simulations and a HeartSteps V1 real-data-calibrated application show reliable coverage and competitive performance across multiple targets. Overall, our results highlight the importance of stability-aware adaptive design for valid post-experiment inference.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

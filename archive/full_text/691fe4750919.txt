@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Using Phonological-Level Wav2Vec2 for Mandarin Automatic Mispronunciation Detection and Diagnosis
+View PDF HTML (experimental)Abstract:Automatic mispronunciation detection and diagnosis (MDD) plays a crucial role in L2 Mandarin pronunciation learning. While end-to-end (E2E) based MDD methods have substantially improved phoneme-level detection accuracy, diagnostic feedback remains limited, as segmental and tonal errors are not explicitly separated. In this paper, we propose a phonological feature-based MDD framework that models both segmental and tonal attributes within a unified Wav2Vec2 CTC architecture. Experimental results show that the proposed method reduces the False Acceptance Rate (FAR) by 10.1% and the Diagnostic Error Rate (DER) by 23.6% compared with the phoneme-only baseline system. By decomposing phonemes into low-level phonological components, the proposed approach enables more detailed and interpretable diagnostic feedback for L2 learners.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

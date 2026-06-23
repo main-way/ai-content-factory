@@ -1,0 +1,17 @@
+Computer Science > Machine Learning
+Title:LAYUP: Asynchronous decentralized gradient descent with LAYer-wise UPdates
+View PDF HTML (experimental)Abstract:The increasing size of deep learning models has made distributed training across multiple devices essential. Synchronous, centralized methods incur large communication and synchronization overheads. Communication efficient algorithms can reduce these overheads, but often require extra buffers, remain sensitive to stragglers or parameter drift. We present LayUp, an asynchronous decentralized SGD method with layer-wise updates. LayUp asynchronously exchanges incremental layer-wise updates during backpropagation. It uses randomized gossip communication, enabling updates to be applied as soon as they are available without buffering. These design choices reduce parameter drift and improve robustness to stragglers. We establish a theoretical upper bound for the gradient bias introduced by layer-wise updates and prove convergence of LayUp. We empirically validate LayUp on vision and language modeling tasks, showing convergence up to ~32% faster in terms of wall-clock time compared to synchronous data parallel training and up to ~27% faster than comparable communication efficient algorithms while maintaining better task performance. This speed-up is partly due to higher model FLOPs utilization, as we demonstrate. By injecting delays into the communication between workers, we show that LayUp remains robust to stragglers while DDP and other methods degrade in performance. Overall, LayUp provides a novel practical, straggler-robust alternative for distributed training without sacrificing accuracy.
+Submission history
+From: Cabrel Teguemne Fokam [view email][v1] Tue, 8 Oct 2024 12:32:36 UTC (511 KB)
+[v2] Wed, 5 Feb 2025 14:03:40 UTC (1,845 KB)
+[v3] Fri, 7 Feb 2025 13:33:12 UTC (1,741 KB)
+[v4] Fri, 19 Jun 2026 10:32:23 UTC (1,082 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

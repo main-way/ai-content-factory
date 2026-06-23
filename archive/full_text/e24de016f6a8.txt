@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:ARGUSTRACK: A Multi-View Annotation System for Multi-Object Tracking
+View PDF HTML (experimental)Abstract:Multi-Camera Multi-Target (MCMT) tracking has emerged as a critical capability for applications ranging from autonomous driving to animal behavior monitoring. While recent advances have yielded sophisticated tracking algorithms, the availability of annotated multi-view data remains a significant bottleneck. Existing annotation tools predominantly support single-camera workflows or rely on LiDAR sensors, making cross-view labeling tedious and impractical for camera-only setups. We present ARGUS-TRACK, a multi-camera annotation system that addresses these limitations by enabling annotators to work directly on a bird's-eye-view (BEV) plane. Given calibrated camera parameters, a single ground-plane annotation is automatically projected into 2D bounding boxes across all relevant views, inherently ensuring identity consistency without manual cross-view alignment. To further accelerate the labeling process, ARGUSTRACK incorporates two complementary mechanisms: a Temporal Aware module that propagates annotations from preceding frames to initialize new ones, requiring only minor positional adjustments; and a Multi-camera Semi-annotation module that leverages off-the-shelf 2D detectors combined with foot-point estimation to automatically generate candidate BEV positions for annotator verification. We evaluate ARGUSTRACK through a pilot study on multi-camera broiler tracking and demonstrate that it substantially reduces annotation time compared to conventional single-camera labeling workflows.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

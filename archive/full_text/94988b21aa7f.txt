@@ -1,0 +1,24 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Open Annotations and Synthetic Data for Field Localisation in Indian Bank Cheques
+View PDF HTML (experimental)Abstract:Automated cheque processing requires localising key fields (date, legal amount, IFSC code, account number, signature, and payee name)
+before any recognition step. The IDRBT Cheque Image Dataset is, to our knowledge, the only public collection of Indian bank cheques, but it
+ships without field annotations and with no stated licence, so its redistribution terms are unclear. We address both limitations. First,
+we release six-field bounding-box annotations for all 112 cheques in the dataset, distributed annotations-only and keyed to the original
+filenames so that the IDRBT redistribution terms are respected. Second, we release 295 fully redistributable synthetic cheque images
+produced by a cut-paste pipeline that composites annotated field regions from real cheques onto content-erased, bank-specific canvas
+templates; because patches are pasted at their source coordinates, annotations carry forward unchanged. Third, we provide a ResNet-50
+direct-regression baseline that predicts all six fields in a single forward pass, and use it for a controlled test of the synthetic data.
+The test is sobering: because cheque layouts are rigid, a no-learning baseline that simply predicts each field's mean training box already
+reaches 0.691 mean IoU and 80% accuracy at IoU >= 0.5, and once seed variance and training compute are accounted for, the cut-paste
+synthetic data yields no measurable improvement over real data alone (an equal-compute real-only model matches or beats the
+synthetic-augmented model on every aggregate metric). We report this negative result in full, since it cautions against assuming
+appearance-only augmentation helps fixed-layout documents and points instead to layout-varying synthesis. The annotations and synthetic
+images are released as reusable resources on the Hugging Face Hub under permissive licences.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

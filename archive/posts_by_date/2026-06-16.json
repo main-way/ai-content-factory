@@ -25,7 +25,7 @@
         "cooling",
         "Stay Cool"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3f2ad9f2cfb2",
@@ -39,7 +39,7 @@
       "summary": "The company's next major product wave could include AI-focused AirPods, smart glasses, a 20th-anniversary iPhone and a new foldable.",
       "author": "Nelson Aguilar",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4f029a64dda4",
@@ -69,7 +69,7 @@
       "tags": [
         "Laptops"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8ade010001cd",
@@ -83,7 +83,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3f248660d89f",
@@ -97,7 +97,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b9e5e3c7f3f2",
@@ -111,7 +111,7 @@
       "summary": "Today we are introducing Vercel for Enterprise Apps and Agents , a platform that gives your entire company the ability to ship with AI safely, behind your access and security boundaries. Over the past year, employees across Vercel shipped hundreds of agents and internal apps. Getting to production was the easy part, because we built them with eve on top of the Agent Stack and deployed them on Vercel. The difficult questions came after those agents were being used by our employees across the company: Who is allowed to use each agent? How do we keep internal agents internal? Which data and…",
       "author": "Jeanne Grosser",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c7ba620c90fb",
@@ -125,7 +125,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7b0b77197773",
@@ -143,7 +143,7 @@
         "Announcements",
         "Intermediate (200)"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e9ed648d3b34",
@@ -167,7 +167,7 @@
         "Mythos",
         "Ramp"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e56087ba39e5",
@@ -191,7 +191,7 @@
         "Simulation and Design",
         "Virtual Reality"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "83772298a491",
@@ -224,7 +224,7 @@
         "training supercomputers",
         "University of California Berkeley"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "be7e598a3f72",
@@ -238,7 +238,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dafe6e506b30",
@@ -259,7 +259,7 @@
         "trump administration",
         "xAI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7746116aeeca",
@@ -273,7 +273,7 @@
       "summary": "Kyle Orland / Ars Technica : Anthropic pauses its plan to move Claude Agent SDK to token-based billing from June 15, saying &ldquo;Nothing changes for now&rdquo;, giving power users a pricing reprieve &nbsp; &mdash;&nbsp; On Monday, though, Anthropic abruptly announced it had paused those pricing changes just as they were set to take effect &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f079545d0a19",
@@ -292,7 +292,7 @@
         "hewlett packard enterprise",
         "vmware"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "73f0fe714484",
@@ -318,7 +318,7 @@
         "NVIDIA Spectrum-X Ethernet",
         "NVLink"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7ec29f4cdedc",
@@ -337,7 +337,7 @@
         "cybersecurity",
         "hide my email"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f48976e873fc",
@@ -351,7 +351,7 @@
       "summary": "CNBC : SpaceX closed up 4.83% on Tuesday for a $2.65T market cap, just above Amazon's, after popping ~12% intraday and briefly overtaking Microsoft's $2.93T market cap &nbsp; &mdash;&nbsp; SpaceX shares popped about 12% on Tuesday, as Elon Musk's rocket builder continued its meteoric rise following a record-breaking IPO on Friday.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2614e4a42bc2",
@@ -365,7 +365,7 @@
       "summary": "Ben Weiss / Fortune : Sources: PayPal plans to close its 10-year-old PayPal Ventures arm amid new CEO Enrique Lores' shakeup and has hired Jefferies to explore selling some positions &nbsp; &mdash;&nbsp; PayPal is shuttering its 10-year-old venture team amid a broader corporate shakeup, according to five sources familiar with the matter.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dc4ae5786280",
@@ -381,7 +381,7 @@
       "tags": [
         "Space"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7b5f0939cb2e",
@@ -403,7 +403,7 @@
         "пдд",
         "вождение"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "56464012bbbc",
@@ -424,7 +424,7 @@
         "Genomics",
         "Horizontal gene transfer"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d0d63c1c075e",
@@ -438,7 +438,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2fec6fb288ad",
@@ -456,7 +456,7 @@
         "нефункциональные требования",
         "github"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7e89ccb13ad7",
@@ -470,7 +470,7 @@
       "summary": "The retro phone has a physical T9 texting button layout, the ability to run most Android-based apps and a social media blacklist.",
       "author": "Tyler Graham",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ec6de238074c",
@@ -484,7 +484,7 @@
       "summary": "UK government partners with Google DeepMind to build a new AI-powered prototype aimed at faster housing decisions.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ab0b230b5a0b",
@@ -498,7 +498,7 @@
       "summary": "Meta's smart glasses are raising surveillance concerns again.",
       "author": "Omar Gallaga",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ad8828785b99",
@@ -531,7 +531,7 @@
         "Computing",
         "Wearables"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9821879b30a5",
@@ -552,7 +552,7 @@
         "satellite",
         "space"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b588735a2ad2",
@@ -569,7 +569,7 @@
         "api",
         "food"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c525450dac37",
@@ -606,7 +606,7 @@
         "subscription",
         "token-based"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a925bd05a68d",
@@ -625,7 +625,7 @@
         "Drones",
         "Defence"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "79ea46741914",
@@ -639,7 +639,7 @@
       "summary": "The AI tool will be trained on proprietary Disney assets, helping Imagineers rapidly produce 3D models of characters and rides.",
       "author": "Corinne Reichert",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8822a59c6ac9",
@@ -662,7 +662,7 @@
         "софт",
         "инструменты"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7fe8694457e8",
@@ -676,7 +676,7 @@
       "summary": "Tegan Jones / SmartCompany : Melbourne-based Everlab, which is building an AI-powered preventive healthcare platform, raised a AU$65M Series A led by Airtree Ventures &nbsp; &mdash;&nbsp; Melbourne healthtech startup Everlab has raised $65 million in Series A funding led by Airtree Ventures as it expands its preventative healthcare platform into global markets.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ba258126bd24",
@@ -692,7 +692,7 @@
       "tags": [
         "PC Gaming"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4e3e0063e186",
@@ -706,7 +706,7 @@
       "summary": "A pair of MacBooks top the list, including Apple’s new Neo, but I have plenty of picks for Windows users, including budget models and high-powered rigs for gamers and creators and everything in between.",
       "author": "Matt Elliott",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "89266766ba22",
@@ -723,7 +723,7 @@
         "Subscriber eBooks",
         "Subscriber-Only Stories"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d622f0f32cd9",
@@ -737,7 +737,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "032c47e847c8",
@@ -754,7 +754,7 @@
         "Artificial Intelligence",
         "Next Featured"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5b0fb295dca1",
@@ -798,7 +798,7 @@
         "Immigration and Customs Enforcement",
         "Group Chat"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "86f363a96ffb",
@@ -812,7 +812,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c833ffd0db26",
@@ -826,7 +826,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a003a9a1e711",
@@ -844,7 +844,7 @@
         "Announcements",
         "Intermediate (200)"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ff6d444e10ee",
@@ -865,7 +865,7 @@
         "SpaceX",
         "spacex ipo"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8c5bbbf4b3e3",
@@ -895,7 +895,7 @@
       "summary": "Here are some hints and the answers for the NYT Connections puzzle for June 17 No. 1,102.",
       "author": "Gael Cooper",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "122f1ff79bbe",
@@ -909,7 +909,7 @@
       "summary": "Here are hints and the answer for today's Wordle for June 17, No. 1,824.",
       "author": "Gael Cooper",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9c25355afdf8",
@@ -923,7 +923,7 @@
       "summary": "Here are hints and answers for the NYT Strands puzzle for June 17, No. 836.",
       "author": "Gael Cooper",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f7b8ba7a9d16",
@@ -937,7 +937,7 @@
       "summary": "Apple's MacBook lineup includes three tiers: Neo, Air and Pro. See our favorites and find the best MacBook for your laptop budget and needs.",
       "author": "Matt Elliott",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3bc6d1194692",
@@ -951,7 +951,7 @@
       "summary": "This is what spending money on a more advanced AI model will get you.",
       "author": "Blake Stimac",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9838082a7947",
@@ -965,7 +965,7 @@
       "summary": "Anthropic's Claude AI service appeared to stop working on Tuesday. Here's what we know so far.",
       "author": "Jon Reed",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "15059a461358",
@@ -985,7 +985,7 @@
         "Copilot",
         "Microsoft"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d51b17cdad8a",
@@ -1002,7 +1002,7 @@
         "Artificial Intelligence",
         "Next Featured"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a272183da641",
@@ -1020,7 +1020,7 @@
         "эйай",
         "llm"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d0296ecb4fa5",
@@ -1038,7 +1038,7 @@
         "Cursor Origin",
         "SpaceX"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3084b259a681",
@@ -1052,7 +1052,7 @@
       "summary": "Ivan Mehta / TechCrunch : Sensor Tower: ChatGPT's market share fell to 46.4% at the end of May, as Gemini rose to 27.7% and Claude to 10.3%; Grok, Meta AI, and others have less than 5% &nbsp; &mdash;&nbsp; More than three and a half years after ChatGPT's initial release, AI assistants are now used by millions of people worldwide, and the competitive landscape is changing fast.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6dbf7814017f",
@@ -1075,7 +1075,7 @@
         "случайное зерно",
         "сравнение моделей"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dd9e76a976eb",
@@ -1107,7 +1107,7 @@
         "Google",
         "Artificial Intelligence"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cfee0e03cc9d",
@@ -1126,7 +1126,7 @@
         "Google Chrome",
         "Новости"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4428f3605161",
@@ -1140,7 +1140,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b04faeb46e0b",
@@ -1159,7 +1159,7 @@
         "Next Featured",
         "Data and security"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2433c64cde85",
@@ -1177,7 +1177,7 @@
         "Reliance",
         "дуров"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fe34b82eb2b5",
@@ -1195,7 +1195,7 @@
         "paramount skyance",
         "Warner Bros."
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d98992b7dbc1",
@@ -1211,7 +1211,7 @@
       "tags": [
         "Gaming"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3521e20fe488",
@@ -1225,7 +1225,7 @@
       "summary": "Z.ai : Z.ai debuts GLM-5.2, saying the open-weights AI model brings improvements to agentic coding and long-horizon tasks, with a 1M context window and an MIT license &nbsp; &mdash;&nbsp; We're introducing GLM-5.2, our latest flagship model for long-horizon tasks.&nbsp; It marks a substantial leap in long-horizon task capability &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ec17a89f9f8c",
@@ -1239,7 +1239,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "afd0d5f77b77",
@@ -1269,7 +1269,7 @@
       "tags": [
         "Wearables"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1a433075c8e4",
@@ -1288,7 +1288,7 @@
         "Qualcomm",
         "SMART Glasses"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "04ab97535b8c",
@@ -1309,7 +1309,7 @@
         "AI research",
         "AI search"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ac7e0ed3352b",
@@ -1323,7 +1323,7 @@
       "summary": "Sarah Perez / TechCrunch : Google launches Android 17 and Wear OS 7, available first on Pixel devices, with support for the latest AI models, a bubble bar UI, and live updates on Wear OS &nbsp; &mdash;&nbsp; Google on Tuesday released the final version of its Android 17 operating system, as well as its counterpart for smartwatches, Wear OS 7.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c43356ae5256",
@@ -1347,7 +1347,7 @@
         "Ecology",
         "Going Green"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1b6b02eb503c",
@@ -1363,7 +1363,7 @@
       "tags": [
         "News"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3f6cd091e706",
@@ -1383,7 +1383,7 @@
         "In Brief",
         "World Cup 2026"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c564fd3ce4c0",
@@ -1400,7 +1400,7 @@
         "Claude Fable 5",
         "Claude Mythos"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "087051f4ded2",
@@ -1425,7 +1425,7 @@
         "Pentagon",
         "US Military"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "734a3e8e84bd",
@@ -1442,7 +1442,7 @@
         "Artificial Intelligence",
         "Next Featured"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3df563b75e34",
@@ -1456,7 +1456,7 @@
       "summary": "App timers, screen time limits and new restrictions on the Google Play Store are the company's solution to concerns about child safety online.",
       "author": "Katelyn Chedraoui",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8ab8523c271d",
@@ -1478,7 +1478,7 @@
         "smartphones",
         "wear OS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4a500f4a83d6",
@@ -1498,7 +1498,7 @@
         "Google",
         "Pixel Drop"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4350c11c18d2",
@@ -1514,7 +1514,7 @@
       "tags": [
         "News"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dfbff226c8c9",
@@ -1530,7 +1530,7 @@
       "tags": [
         "News"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "270532fa5061",
@@ -1544,7 +1544,7 @@
       "summary": "The latest from Android is upon us. Here's what to expect and a glimpse of what's down the road.",
       "author": "Blake Stimac",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4d2d34acaf4a",
@@ -1572,7 +1572,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a321d9a201b5",
@@ -1590,7 +1590,7 @@
         "Next Featured",
         "Self-driving"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "51e64d76b789",
@@ -1617,7 +1617,7 @@
         "OpenAI",
         "Thanks, Capitalism"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d99210dcf154",
@@ -1636,7 +1636,7 @@
         "Mobileye",
         "robotaxi"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "70ca3a799317",
@@ -1650,7 +1650,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9edce605e88f",
@@ -1669,7 +1669,7 @@
         "EVs",
         "Rivian"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5684f01f709d",
@@ -1703,7 +1703,7 @@
         "Amazon SageMaker AI",
         "Technical How-to"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fb6d44dbb8e1",
@@ -1719,7 +1719,7 @@
       "tags": [
         "Новости"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cc18c1fc60b8",
@@ -1742,7 +1742,7 @@
         "chargers",
         "Half-and-Half"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a4aea1c76e1a",
@@ -1756,7 +1756,7 @@
       "summary": "David Heaney / UploadVR : Qualcomm announces Snapdragon Reality Elite, its new flagship XR chipset, and says it will debut in the compute puck of Xreal's Aura Android XR device this fall &nbsp; &mdash;&nbsp; Qualcomm just announced Snapdragon Reality Elite, its new flagship XR chipset, and it will debut in the compute puck of Xreal's Aura Android XR device this fall.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ba54450ef784",
@@ -1770,7 +1770,7 @@
       "summary": "A place to pressure-test the decisions you can't put in a board deck",
       "author": "Ivan Makarov",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "206e9bfd4cab",
@@ -1790,7 +1790,7 @@
         "закупки",
         "macbook"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a51840b61133",
@@ -1807,7 +1807,7 @@
         "News Briefs",
         "PE Deals"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "853a9bb1a5cc",
@@ -1827,7 +1827,7 @@
         "Venture",
         "unicorn"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b7f4ae66b21d",
@@ -1848,7 +1848,7 @@
         "блокировка домена",
         "беларусь"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c6958d243eb5",
@@ -1862,7 +1862,7 @@
       "summary": "Sara Fischer / Axios : Letter: Hightouch, an ad tech startup valued at $2.75B in April, offers to buy LiveRamp's identity business from Publicis for $800M to $1.2B in cash and stock &nbsp; &mdash;&nbsp; Hightouch, an ad tech startup recently valued at $2.75 billion, has offered to buy LiveRamp's identity business from ad holding group Publicis &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "19c7216f2b05",
@@ -1880,7 +1880,7 @@
         "llm",
         "юридические вопросы"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "850f0c6ac20e",
@@ -1908,7 +1908,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8ad7ba77a757",
@@ -1924,7 +1924,7 @@
       "tags": [
         "Nintendo"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "523864fa9812",
@@ -1949,7 +1949,7 @@
         "Tech",
         "Wearable"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "340adf6d5cbb",
@@ -1963,7 +1963,7 @@
       "summary": "Qualcomm's new Snapdragon Reality Elite could show up in a lot more future headsets, but it's appearing in Google and Xreal's upcoming Android XR glasses first. It's promising significant boosts for graphics, battery and AI.",
       "author": "Scott Stein",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9403ed5b839a",
@@ -1980,7 +1980,7 @@
         "Artificial Intelligence",
         "Future of work"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cbfdd4fd44dd",
@@ -1994,7 +1994,7 @@
       "summary": "Увеличение рекламного бюджета не всегда приводит к росту узнаваемости бренда, сообщили группа рекламных агентств Media Instinct Group и исследовательская компания Profi Online Research. В ходе исследования специалисты выяснили, что гораздо сильнее на запоминаемость бренда влияют единый визуальный стиль, регулярное присутствие бренда в рекламе и использование эмоциональных образов. Также эксперты сообщили, что лучше всего аудитория запоминает простые сообщения, которые человек может считать за пару секунд.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6101a70f6e74",
@@ -2032,7 +2032,7 @@
         "Tech",
         "Wearable"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "147a41ba12b8",
@@ -2053,7 +2053,7 @@
         "Snapchat",
         "specs"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "897cc4dbaf73",
@@ -2069,7 +2069,7 @@
       "tags": [
         "Accessories"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "432418d955a3",
@@ -2085,7 +2085,7 @@
       "tags": [
         "Wearables"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "26f50f579eea",
@@ -2101,7 +2101,7 @@
       "tags": [
         "Wearables"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "63819be4dd56",
@@ -2122,7 +2122,7 @@
         "design",
         "engineering"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a158037b4a0b",
@@ -2138,7 +2138,7 @@
       "tags": [
         "Accessories"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "95bccd6105cb",
@@ -2161,7 +2161,7 @@
         "Wearables",
         "Fresh Eyes"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bcf7effb618a",
@@ -2178,7 +2178,7 @@
         "Computing",
         "Wearables"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "21247c92f24a",
@@ -2192,7 +2192,7 @@
       "summary": "They're fully standalone augmented reality and far more expensive than other smart glasses (but cheaper than Apple Vision Pro). I haven't tried them out yet, but did talk to Snap CEO Evan Spiegel.",
       "author": "Scott Stein",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c03533571df5",
@@ -2206,7 +2206,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "78fc4b6ad1a2",
@@ -2225,7 +2225,7 @@
         "AI search",
         "WordPress"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "50b2aac8729f",
@@ -2246,7 +2246,7 @@
         "trump administration",
         "wind turbines"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "04193d0c60d4",
@@ -2262,7 +2262,7 @@
       "tags": [
         "TV & Movies"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "799eb45228cf",
@@ -2276,7 +2276,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "789e204f8afb",
@@ -2290,7 +2290,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6a6dbe4dedc4",
@@ -2312,7 +2312,7 @@
         "spacex",
         "xAI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dea80f86c14c",
@@ -2328,7 +2328,7 @@
       "tags": [
         "Streaming"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a8a99da03dcc",
@@ -2355,7 +2355,7 @@
         "NVIDIA Vera",
         "NVIDIA Vera Rubin"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5f54739bfd57",
@@ -2375,7 +2375,7 @@
         "Llm",
         "Token Management"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b5740d4beed0",
@@ -2399,7 +2399,7 @@
         "Кибербезопасность",
         "Новости"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f65ff9ca0c5b",
@@ -2425,7 +2425,7 @@
         "robot vacuum",
         "Robot Report"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4ba5459ced6c",
@@ -2439,7 +2439,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cef29d08e769",
@@ -2474,7 +2474,7 @@
         "Anthropic",
         "openai"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8b5587ded666",
@@ -2488,7 +2488,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dc6bafe28bd1",
@@ -2506,7 +2506,7 @@
         "Claude Fable 5",
         "OpenAI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e806e745eee1",
@@ -2524,7 +2524,7 @@
         "Mozilla Thunderbird",
         "Thunderbird"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "79a07e07967b",
@@ -2538,7 +2538,7 @@
       "summary": "Review: The sequel tackles the reality of our screen-obsessed world with emotional depth and humor.",
       "author": "Abrar Al-Heeti",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ccbbbd469fd1",
@@ -2552,7 +2552,7 @@
       "summary": "The dual-wielding crime boss is the headliner of the season, but the first new hybrid map in four years might be the bigger win.",
       "author": "Adam Benjamin",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f9fa48e8516b",
@@ -2566,7 +2566,7 @@
       "summary": "Ozon погасил 7 421 626 обыкновенных акций, сообщили в пресс-службе компании. Погашение устранило размытие акционерного капитала, возникшее из-за дополнительной эмиссии акций. Допвыпуск был проведён в 2026 году в рамках долгосрочной программы мотивации сотрудников. Общее количество акций компании после погашения составило 216 413 735 штук.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "177d2aae5c02",
@@ -2591,7 +2591,7 @@
         "дизайн интерфейсов",
         "ozon tech"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e4982dd524fa",
@@ -2616,7 +2616,7 @@
         "request id",
         "идентификаторы"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d516edde44df",
@@ -2638,7 +2638,7 @@
         "SpaceX",
         "spacex ipo"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b49961d82c0d",
@@ -2658,7 +2658,7 @@
         "Telegram",
         "Telegram ban"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6c3ecf06de23",
@@ -2672,7 +2672,7 @@
       "summary": "Securing internal systems with an AI Control Roadmap, combining traditional safeguards and real-time monitoring.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "402a1765ac8f",
@@ -2703,7 +2703,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "99958d6833c1",
@@ -2717,7 +2717,7 @@
       "summary": "I tried Nimble's innovative (if a little pricey) 10,000-mAh power bank that splits in two, so you can share with someone else in need of a charge.",
       "author": "David Carnoy",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "304ebcda59b4",
@@ -2734,7 +2734,7 @@
         "сознание",
         "слепое пятно"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6e8888f3fe09",
@@ -2751,7 +2751,7 @@
         "SpaceX",
         "биржа"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8e3f21e984d6",
@@ -2765,7 +2765,7 @@
       "summary": "Капитал Илона Маска достиг $1,4 трлн, сообщает рейтинг Forbes Real-Time Billionaires. Для сравнения: состояние сооснователя Google Ларри Пейджа, который занимает второе место в списке богатейших людей планеты, оценивается — всего — в $300 млрд. Рост капитала Илона Маска произошёл спустя несколько дней после первичного размещения акций (IPO) SpaceX, которое стало крупнейшим в истории мирового рынка.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7eb747f7c053",
@@ -2782,7 +2782,7 @@
         "Наука",
         "evergreen"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "001980923ce2",
@@ -2796,7 +2796,7 @@
       "summary": "After many, many months spent testing vegan meal kits and prepared meals, I can safely say that these services have the best plant-based dishes.",
       "author": "Anna Gragert",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e112236a3e5e",
@@ -2817,7 +2817,7 @@
         "импортозамещение",
         "импортозамещение microsoft"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f67d1813ee6c",
@@ -2834,7 +2834,7 @@
         "Artificial Intelligence",
         "Security"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b7fe3395a9e0",
@@ -2858,7 +2858,7 @@
         "payments",
         "Ripple"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0f6822dee2d7",
@@ -2874,7 +2874,7 @@
       "tags": [
         "Streaming"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3819cac544ad",
@@ -2922,7 +2922,7 @@
         "telegram",
         "индия"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4ebf6409e95c",
@@ -2938,7 +2938,7 @@
       "tags": [
         "Gaming"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4409e128c6b4",
@@ -2962,7 +2962,7 @@
         "design",
         "environment"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1c5e2bd97139",
@@ -2976,7 +2976,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bd8dbdd98e9e",
@@ -2997,7 +2997,7 @@
         "jpa",
         "kotlin"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "48941515de2f",
@@ -3028,7 +3028,7 @@
         "Microsoft",
         "Next Featured"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "62f3ea18d568",
@@ -3054,7 +3054,7 @@
         "республика крым",
         "севастополь"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "72b2b4b59adb",
@@ -3075,7 +3075,7 @@
         "SpaceXAI",
         "xAI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "729f35e698ce",
@@ -3089,7 +3089,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ce084dfaaf33",
@@ -3109,7 +3109,7 @@
         "devops",
         "docker"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1129d42201ca",
@@ -3134,7 +3134,7 @@
         "управление ИТ-услугами",
         "автоматизация"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "85214728217b",
@@ -3159,7 +3159,7 @@
         "вождение",
         "робомобили"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1359598de494",
@@ -3180,7 +3180,7 @@
         "smartphones",
         "Check Please"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3e0b760d886f",
@@ -3197,7 +3197,7 @@
         "News Briefs",
         "PE Deals"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2b4c89d3385f",
@@ -3219,7 +3219,7 @@
         "SpaceX",
         "xAI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ba7f1f9acc6a",
@@ -3241,7 +3241,7 @@
         "Digital Q.AppServer",
         "Java"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d8300015f80e",
@@ -3264,7 +3264,7 @@
         "housing",
         "gadgets"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "78894b01dead",
@@ -3282,7 +3282,7 @@
         "т2",
         "базис"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4eed0afedacf",
@@ -3307,7 +3307,7 @@
         "складской учет",
         "производство"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "39294416a114",
@@ -3331,7 +3331,7 @@
         "NVIDIA Blackwell",
         "NVIDIA Spectrum-X Ethernet"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "526daa4a5420",
@@ -3354,7 +3354,7 @@
         "route 256",
         "ozon tech"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "feb65f9e80a7",
@@ -3375,7 +3375,7 @@
         "meetings",
         "plaud"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6d040d3f1f4e",
@@ -3396,7 +3396,7 @@
         "Local Llm",
         "OpenClaw"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "75f264368a5a",
@@ -3410,7 +3410,7 @@
       "summary": "Министерство культуры России потребовало через суд взыскать с киностудии «Союзмультфильм» субсидию в размере 60 млн рублей и более 71 млн рублей в качестве процентов за пользование денежными средствами, сообщает «Интерфакс». Общая сумма требований превышает 131 млн рублей. В «Союзмультфильме» утверждают, что субсидия не дошла до студии из-за банкротства банка.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9cf04374677d",
@@ -3426,7 +3426,7 @@
       "tags": [
         "Mobile"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "aabe3d2ff6e8",
@@ -3457,7 +3457,7 @@
         "News Briefs",
         "PE Deals"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "89e7fb240fad",
@@ -3478,7 +3478,7 @@
         "Architecture",
         "housing"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f9c4e0583697",
@@ -3497,7 +3497,7 @@
         "Layoffs",
         "Robinhood"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b6325972e59e",
@@ -3519,7 +3519,7 @@
         "гроза",
         "физика"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c2e2e674baad",
@@ -3556,7 +3556,7 @@
         "аналитическая кор-команда",
         "архитектура роли"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bb259de27df6",
@@ -3570,7 +3570,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d4ec9432b822",
@@ -3590,7 +3590,7 @@
         "housing",
         "Architecture"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ac86c5d39af7",
@@ -3614,7 +3614,7 @@
         "браузерные api",
         "автоматизация тестирования"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9f1d12c3d3f7",
@@ -3631,7 +3631,7 @@
         "News Briefs",
         "PE Deals"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7bebbae4ff3c",
@@ -3650,7 +3650,7 @@
         "windows",
         "macos"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b0c34572b2b0",
@@ -3674,7 +3674,7 @@
         "точка доступа",
         "беспроводные технологии"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "afb204d2633f",
@@ -3702,7 +3702,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fbd29e0904ce",
@@ -3727,7 +3727,7 @@
         "microsoft",
         "облачные сервисы"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "79d2e53494a7",
@@ -3745,7 +3745,7 @@
         "DietPi 10",
         "DietPi"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "81ddfdce023c",
@@ -3777,7 +3777,7 @@
         "Mobileye",
         "robotaxi"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "21078d97e983",
@@ -3801,7 +3801,7 @@
         "графика",
         "графика во всех проявлениях"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "95df997385b5",
@@ -3818,7 +3818,7 @@
         "машинное обучение",
         "ритейл"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5fb5e5e39719",
@@ -3840,7 +3840,7 @@
         "Искусственный интеллект",
         "центробанк"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b53a7ddd9906",
@@ -3882,7 +3882,7 @@
       "summary": "Samsung lets you be the \"guy in the chair\" with an interactive fan site tied to the upcoming Spider-Man: Brand New Day flick.",
       "author": "Antuan Goodwin",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "920e8e0161e5",
@@ -3910,7 +3910,7 @@
       "summary": "A step-by-step path through the skills that turn a machine learning practitioner into someone who ships large language model applications.",
       "author": "Vinod Chugani",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "334995bc103f",
@@ -3935,7 +3935,7 @@
         "Cities",
         "The Future of Home"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "eb100f5925b7",
@@ -3956,7 +3956,7 @@
         "health care",
         "The Future of Home"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1d2195c3b70f",
@@ -3982,7 +3982,7 @@
         "environment",
         "climate"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "28573f946bff",
@@ -4006,7 +4006,7 @@
         "household",
         "smart home"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0a7badb639a5",
@@ -4028,7 +4028,7 @@
         "home",
         "housing"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "87ae527a111d",
@@ -4052,7 +4052,7 @@
         "interior design",
         "housing"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "78bf79de085d",
@@ -4075,7 +4075,7 @@
         "Бэкенд",
         "Статьи"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a13b1af7aced",
@@ -4115,7 +4115,7 @@
         "недвижимость",
         "росреестр"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "642ba6de55fa",
@@ -4132,7 +4132,7 @@
         "News Briefs",
         "PE Deals"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "04e67c5fcba6",
@@ -4148,7 +4148,7 @@
       "tags": [
         "Sponsored"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "12f8a9797820",
@@ -4166,7 +4166,7 @@
         "программирование",
         "графика"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "41bdc4ac143d",
@@ -4189,7 +4189,7 @@
         "погружение",
         "adaptation"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ebf053823498",
@@ -4212,7 +4212,7 @@
         "ии-ассистенты",
         "ии-помощники"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c883283ecdfa",
@@ -4233,7 +4233,7 @@
         "endpoint protection",
         "вредоносное по"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "214c4374ebfc",
@@ -4254,7 +4254,7 @@
         "reader survey",
         "survey"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4d86ccd00678",
@@ -4268,7 +4268,7 @@
       "summary": "Правительство разрешило работать в такси на кроссовере Jetour X70 Plus. В Минпромторге пояснили ТАСС, что модель выпускается в рамках инвестиционного контракта, поэтому, по закону, её можно использовать при работе в такси. При этом уровень локализации у автомобиля недостаточный — всего 1500 баллов из 3200.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9bd165255687",
@@ -4289,7 +4289,7 @@
         "Mlops",
         "Software Engineering"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "409fc77163e8",
@@ -4308,7 +4308,7 @@
         "нетворкинг",
         "нетворкинг в ит"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f9b0a4b04bbe",
@@ -4329,7 +4329,7 @@
         "SpaceXAI",
         "xAI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0b952235d1d2",
@@ -4350,7 +4350,7 @@
         "сборка пк",
         "тренды"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "047ea2d613ca",
@@ -4384,7 +4384,7 @@
         "hallucinations",
         "Probably"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "aea5a4917f9e",
@@ -4403,7 +4403,7 @@
         "it-компании",
         "it-инфраструктура"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "67baa6d4bf08",
@@ -4421,7 +4421,7 @@
         "сеть",
         "радиоволны"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5801b76c0c9c",
@@ -4446,7 +4446,7 @@
         "мобильные игры",
         "ruvds_статьи"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "59c533f1b552",
@@ -4469,7 +4469,7 @@
         "telegram",
         "server management"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a142be45241f",
@@ -4497,7 +4497,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e7f08d32fa3f",
@@ -4511,7 +4511,7 @@
       "summary": "Китайский ИИ-стартап DeepSeek привлёк более $7,4 млрд в ходе первого раунда финансирования, сообщают The Information и The Wall Street Journal. Оценка компании превысила $50 млрд, что сделало её самым дорогим ИИ-проектом в Китае. При этом основатель DeepSeek Лян Вэньфэн сохранил полный контроль над бизнесом благодаря необычной схеме сделки.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8678804db47c",
@@ -4537,7 +4537,7 @@
         "tablets",
         "Windows Dressing"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ba32556912d3",
@@ -4562,7 +4562,7 @@
         "journalism",
         "Ad Blocker"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e5208e0c0ae5",
@@ -4583,7 +4583,7 @@
         "банки",
         "маркетплейсы"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "51eb75bff15b",
@@ -4607,7 +4607,7 @@
         "уязвимости",
         "безопасность контейнеров"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3d87633e5dd0",
@@ -4628,7 +4628,7 @@
         "Новости",
         "Искусственный интеллект"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0bb0b2e650e5",
@@ -4653,7 +4653,7 @@
         "agentic AI",
         "MCP"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6dbf0d757456",
@@ -4681,7 +4681,7 @@
       "summary": "25 и 26 июня в Санкт-Петербурге пройдёт конференция Conversations от Just AI, разработчика решений на базе искусственного интеллекта. Спикеры обсудят внедрение генеративного ИИ в бизнес, ИИ-агентов, новые подходы к созданию продуктов, изменения на венчурном рынке и технологические аспекты разработки ИИ-решений. Среди заявленных участников конференции — Lenta Tech, VK, «Северсталь», Wildberries, «Норникель», S7 Tech Lab, «Битрикс24», X5 Dodo Engineering и другие компании.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fea96deb444b",
@@ -4717,7 +4717,7 @@
         "VSA",
         "QAT"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "48710fe95660",
@@ -4745,7 +4745,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7c69c1a881c1",
@@ -4766,7 +4766,7 @@
         "ИИ-агенты",
         "работа с ИИ"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c8187894b237",
@@ -4805,7 +4805,7 @@
         "масштабирование",
         "высокая доступность"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "63c49bc52b39",
@@ -4835,7 +4835,7 @@
       "tags": [
         "The Download"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "770bd3483854",
@@ -4853,7 +4853,7 @@
         "spacex",
         "xai"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d17bdbabf31b",
@@ -4869,7 +4869,7 @@
       "tags": [
         "биометрия"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7cda5e7df279",
@@ -4883,7 +4883,7 @@
       "summary": "The iconic phone grip has been redesigned and goes on sale today at Apple Stores.",
       "author": "Bridget Carey",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "82a29bdfbb1b",
@@ -4897,7 +4897,7 @@
       "summary": "In this article, you will learn how to replace pandas loops with 7 faster methods for optimized data processing.",
       "author": "Bala Priya C",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2b21f3d00109",
@@ -4911,7 +4911,7 @@
       "summary": "В 2ГИС появилась «Лента друзей» — раздел с отзывами, оценками, фотографиями и видео друзей и авторов, на которых подписан пользователь. Таким образом, сервис дал возможность следить за рекомендациями знакомых и находить на карте места, которые они советуют посетить. Функция уже доступна в России на устройствах iOS и Android.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e9130b769a77",
@@ -4932,7 +4932,7 @@
         "Rag",
         "Rag Architecture"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cd034a9be99c",
@@ -4946,7 +4946,7 @@
       "summary": "Kimba is an AI-powered sleep technology system that releases personalized scents to help you sleep better. Here’s how it works.",
       "author": "Anna Gragert",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4e98f2e1f054",
@@ -4966,7 +4966,7 @@
         "обновление",
         "мессенджер"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "de75a70f371c",
@@ -4987,7 +4987,7 @@
         "исследование",
         "фейковые новости"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8b7f5a93fc3c",
@@ -5019,7 +5019,7 @@
         "реклама",
         "рекламные кампании"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "07a96b56158c",
@@ -5037,7 +5037,7 @@
         "News",
         "xAI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "accddfb12baa",
@@ -5055,7 +5055,7 @@
         "AI",
         "марк цукерберг"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bca76c76b486",
@@ -5079,7 +5079,7 @@
         "Архитектура приложений",
         "Статьи"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "01183e0faf80",
@@ -5097,7 +5097,7 @@
         "Artificial Intelligence",
         "Short News"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "789c798aeecd",
@@ -5111,7 +5111,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f02f9db97757",
@@ -5133,7 +5133,7 @@
         "metals",
         "Voyager Ventures"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6f60b1912e1f",
@@ -5154,7 +5154,7 @@
         "Mergers and Acquisitions",
         "SpaceX"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "98586e1b1098",
@@ -5175,7 +5175,7 @@
         "LLMs",
         "parameter to prompt injection"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ad1830e5024c",
@@ -5189,7 +5189,7 @@
       "summary": "Российский поставщик облачных сервисов и решений в сфере ИИ Cloud.ru планирует впервые выпустить свои облигации. Максимальный объём размещения оценивают в 10 млрд рублей. Ранее компания отчиталась о росте выручки на 50% — до 76,5 млрд рублей по итогам 2025-го.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b179b7d3ae0d",
@@ -5203,7 +5203,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8f897b5a767a",
@@ -5231,7 +5231,7 @@
         "home office",
         "Seat Map"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6e2ff18fa1c3",
@@ -5259,7 +5259,7 @@
         "home office",
         "Seat Map"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7d6e5d1a8982",
@@ -5287,7 +5287,7 @@
         "home office",
         "Seat Map"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d81c47dd70ca",
@@ -5306,7 +5306,7 @@
         "Sidebar - Featured",
         "Threads"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0753f67bdbae",
@@ -5331,7 +5331,7 @@
         "Startups",
         "Venture"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d27c9320474a",
@@ -5353,7 +5353,7 @@
         "Social Media",
         "Risky Business"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6d25f4f4d66f",
@@ -5371,7 +5371,7 @@
         "Social",
         "Threads"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c9b65226d2de",
@@ -5399,7 +5399,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a2dfcddf9904",
@@ -5440,7 +5440,7 @@
         "smartwatches",
         "Product Review"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "752ebc9394a9",
@@ -5461,7 +5461,7 @@
         "OpenAI",
         "sensor tower"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "71c193751d90",
@@ -5480,7 +5480,7 @@
         "кадры",
         "новосибирская область"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "69655ed468ed",
@@ -5496,7 +5496,7 @@
       "tags": [
         "Daily Update"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4f987a5e8603",
@@ -5523,7 +5523,7 @@
         "video games",
         "Need for Speed"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9c4b09fb9d14",
@@ -5546,7 +5546,7 @@
         "облака",
         "США"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "52586f60cf5a",
@@ -5560,7 +5560,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f8d891724f19",
@@ -5578,7 +5578,7 @@
         "Artificial Intelligence",
         "Anthropic"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "89124697cfe6",
@@ -5597,7 +5597,7 @@
         "Short News",
         "Deepseek"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "333ba8b5798d",
@@ -5620,7 +5620,7 @@
         "coding",
         "Tokenomics 101"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "02ecd5d7c5ac",
@@ -5639,7 +5639,7 @@
         "Short News",
         "OpenAI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "61b60fe070ab",
@@ -5653,7 +5653,7 @@
       "summary": "Правительство одобрило поправки к законопроекту об административной ответственности участников платформенной экономики, узнал Forbes. За ценовое давление на селлеров и ограничения из-за отказа участвовать в скидках маркетплейсы могут получить штраф до 400 тыс. рублей, а за отдельные нарушения — до 500 тыс. рублей. Новые правила начнут действовать уже с 1 октября 2026 года.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1874bcf608ef",
@@ -5667,7 +5667,7 @@
       "summary": "В декабре 2020 года Дарио ушёл из топ-менеджмента OpenAI из-за конфликта с руководством. Вместе с сестрой Даниэлой и ещё пятью коллегами они зарегистрировали компанию Anthropic, которую сегодня оценивают почти в триллион долларов. Их модель Claude конкурирует с главными нейросетями и корпорациями: от OpenAI до Google. Этот нейропрофайл — о том, как обычный парень возглавил мировую ИИ-революцию.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "933f0bd9faa9",
@@ -5692,7 +5692,7 @@
         "Индия",
         "экзамены"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4113ea08e6b0",
@@ -5711,7 +5711,7 @@
         "smartphone",
         "smartphones"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a0c826c444f1",
@@ -5729,7 +5729,7 @@
         "App",
         "Features and Investigations"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bac82cc4389a",
@@ -5754,7 +5754,7 @@
         "digital wellness",
         "Let Freedom Ring"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f4d78f4e259a",
@@ -5768,7 +5768,7 @@
       "summary": "77% россиян хотя бы иногда покупают товары российских брендов, сообщает образовательная платформа Fashion Factory School. Особенной популярностью локальные марки пользуются у молодёжи — к ним обращаются 84% опрошенных. Для многих покупателей локальные бренды стали не только альтернативой зарубежным, но и способом подчеркнуть свою индивидуальность.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "de95044dd5eb",
@@ -5796,7 +5796,7 @@
       "summary": "Оба уже находятся под санкциями ЕС.",
       "author": "Евгения Евсеева",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3e80444113bf",
@@ -5818,7 +5818,7 @@
         "дэг",
         "ЦИК"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "28788dcc0fa6",
@@ -5832,7 +5832,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "164498055e1b",
@@ -5846,7 +5846,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bc6634deae55",
@@ -5863,7 +5863,7 @@
         "Machine Learning",
         "Statistics"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "36e0e1f0c2b5",
@@ -5887,7 +5887,7 @@
         "Ростелеком",
         "система Мир"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "657bd284518c",
@@ -5901,7 +5901,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a00ce2d34d39",
@@ -5938,7 +5938,7 @@
         "University of Wisconsin-Madison",
         "Utsunomiya University"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a399e347cca7",
@@ -5959,7 +5959,7 @@
         "malaysia",
         "respond"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dba125a330d5",
@@ -5987,7 +5987,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fde98f474085",
@@ -6001,7 +6001,7 @@
       "summary": "Собственный бренд Яндекс Фабрики Commo представил новые беспроводные полноразмерные наушники Etude. Устройство способно работать без подзарядки до 120 часов и поддерживает активное шумоподавление. Стоимость наушников — от 8 тыс. рублей.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "019de1164120",
@@ -6015,7 +6015,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4c3314cf096d",
@@ -6029,7 +6029,7 @@
       "summary": "Собираем новости, события и мнения о рынках, банках и реакциях компаний.",
       "author": "Артур Томилко",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d9c28bc25588",
@@ -6075,7 +6075,7 @@
         "cs.AI",
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2907abe8735c",
@@ -6092,7 +6092,7 @@
         "cs.LG",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "084d2e7903df",
@@ -6108,7 +6108,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "71ce304e587b",
@@ -6124,7 +6124,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e5481c58357e",
@@ -6142,7 +6142,7 @@
         "cs.AI",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "156b516b6bae",
@@ -6159,7 +6159,7 @@
         "cs.LG",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6ffcfaa4b0a6",
@@ -6175,7 +6175,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ac43d953888e",
@@ -6191,7 +6191,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "60a713c974de",
@@ -6208,7 +6208,7 @@
         "cs.LG",
         "cs.CY"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "af6a40afada9",
@@ -6225,7 +6225,7 @@
         "cs.LG",
         "cs.DB"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2c2d157254f2",
@@ -6241,7 +6241,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6a206cb33203",
@@ -6258,7 +6258,7 @@
         "cs.LG",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c31f8aaaafe3",
@@ -6275,7 +6275,7 @@
         "cs.LG",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b2ba4e1f761f",
@@ -6291,7 +6291,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e8f723c77a75",
@@ -6307,7 +6307,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "059ffec182cd",
@@ -6324,7 +6324,7 @@
         "cs.LG",
         "math.NT"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c15518f4b24d",
@@ -6341,7 +6341,7 @@
         "cs.LG",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "90913a42652b",
@@ -6359,7 +6359,7 @@
         "cs.NA",
         "math.NA"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "78e793c3d20f",
@@ -6375,7 +6375,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f847d2a618c3",
@@ -6392,7 +6392,7 @@
         "cs.LG",
         "stat.AP"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "869ee083fd60",
@@ -6409,7 +6409,7 @@
         "cs.LG",
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e43ff8f8e32f",
@@ -6425,7 +6425,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d540996a8311",
@@ -6441,7 +6441,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7c5b1a31206b",
@@ -6457,7 +6457,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4e8bd1a89a85",
@@ -6473,7 +6473,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0fd2073c9d12",
@@ -6489,7 +6489,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "21e5a478eadf",
@@ -6505,7 +6505,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "946a87344979",
@@ -6521,7 +6521,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "70e3f4a3f9c6",
@@ -6537,7 +6537,7 @@
       "tags": [
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5f0756330889",
@@ -6554,7 +6554,7 @@
         "cs.LG",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5fc17b669f14",
@@ -6570,7 +6570,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dc2b78aed7dd",
@@ -6587,7 +6587,7 @@
         "cs.AI",
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4a7a63acfa06",
@@ -6606,7 +6606,7 @@
         "cs.SI",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2cf8cad5c510",
@@ -6624,7 +6624,7 @@
         "cs.CY",
         "cs.MA"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ed8719076880",
@@ -6640,7 +6640,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a8554f5afc5a",
@@ -6656,7 +6656,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c41bdb67177d",
@@ -6673,7 +6673,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "03d604df203f",
@@ -6689,7 +6689,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "92b8fb4e434b",
@@ -6705,7 +6705,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d1a554104c6d",
@@ -6721,7 +6721,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f8df690fd5d7",
@@ -6738,7 +6738,7 @@
         "cs.AI",
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0dd4f78e8e9b",
@@ -6756,7 +6756,7 @@
         "cs.GT",
         "physics.soc-ph"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ccdaeed338ac",
@@ -6772,7 +6772,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a03e7c5de940",
@@ -6788,7 +6788,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f155786673e2",
@@ -6804,7 +6804,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0e34b884cdd1",
@@ -6820,7 +6820,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7e654c9aea34",
@@ -6837,7 +6837,7 @@
         "cs.AI",
         "cs.CR"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d90d6709b063",
@@ -6853,7 +6853,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "91fdea915912",
@@ -6869,7 +6869,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d34c8d0e1043",
@@ -6885,7 +6885,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9de80f69b15d",
@@ -6901,7 +6901,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0b7674547af9",
@@ -6918,7 +6918,7 @@
         "cs.AI",
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2761468bd157",
@@ -6934,7 +6934,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "626ff14e9170",
@@ -6950,7 +6950,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6bce323f54c0",
@@ -6966,7 +6966,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c44c480219ad",
@@ -6985,7 +6985,7 @@
         "cs.IR",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fdd835b2475f",
@@ -7001,7 +7001,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "24da84388201",
@@ -7017,7 +7017,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "75d79694ec78",
@@ -7034,7 +7034,7 @@
         "cs.AI",
         "stat.AP"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b93b04661ae9",
@@ -7050,7 +7050,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "750eb34d8e10",
@@ -7066,7 +7066,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8a4ed92a8355",
@@ -7084,7 +7084,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6400e4d3eba8",
@@ -7100,7 +7100,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4fd67d4ed40d",
@@ -7117,7 +7117,7 @@
         "cs.CL",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "112449801888",
@@ -7133,7 +7133,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f05f0cd2506f",
@@ -7151,7 +7151,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "781f331193ef",
@@ -7167,7 +7167,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7186df704742",
@@ -7183,7 +7183,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "81ee763a6cc6",
@@ -7200,7 +7200,7 @@
         "cs.CL",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8c6ec1c0800c",
@@ -7216,7 +7216,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "af29735faee0",
@@ -7232,7 +7232,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bca2f8b03337",
@@ -7248,7 +7248,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2e1881239a8e",
@@ -7264,7 +7264,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "63caaa9ede55",
@@ -7281,7 +7281,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ff031419303e",
@@ -7298,7 +7298,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "43b7284b022e",
@@ -7314,7 +7314,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cd3b6ab3e962",
@@ -7331,7 +7331,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3a8aea36e31a",
@@ -7347,7 +7347,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7cc207da8346",
@@ -7363,7 +7363,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d279ffde0e1a",
@@ -7379,7 +7379,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4b5dc37db76c",
@@ -7396,7 +7396,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6482505a22b2",
@@ -7412,7 +7412,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dd048a28afd1",
@@ -7429,7 +7429,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "31ef22a8a67c",
@@ -7445,7 +7445,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ef00b0c5b2ec",
@@ -7462,7 +7462,7 @@
         "cs.CL",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "db7a576270cd",
@@ -7479,7 +7479,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "019d4da4147b",
@@ -7496,7 +7496,7 @@
         "cs.CL",
         "cs.IR"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "14b1122243c6",
@@ -7513,7 +7513,7 @@
         "cs.CL",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "46d6a98751fd",
@@ -7531,7 +7531,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "82d3d3219d6b",
@@ -7548,7 +7548,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3c7001ab7a9e",
@@ -7566,7 +7566,7 @@
         "cs.AI",
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "48496e6d097f",
@@ -7582,7 +7582,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a6383e12dc76",
@@ -7598,7 +7598,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bd9ccc7dd4ce",
@@ -7615,7 +7615,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4b79529260fd",
@@ -7631,7 +7631,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6ec1e21427ee",
@@ -7647,7 +7647,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "64d590a06100",
@@ -7663,7 +7663,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6b4eaf968035",
@@ -7679,7 +7679,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "82860f4b731a",
@@ -7695,7 +7695,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d9443b6f6eb5",
@@ -7714,7 +7714,7 @@
         "cs.LG",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6ea236e6dade",
@@ -7730,7 +7730,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "52c0118fcfa7",
@@ -7746,7 +7746,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1937a4bea2fe",
@@ -7763,7 +7763,7 @@
         "cs.CV",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "962808042b2a",
@@ -7779,7 +7779,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0e18bdda7d23",
@@ -7796,7 +7796,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bf9966f888b1",
@@ -7813,7 +7813,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4f895f56f983",
@@ -7830,7 +7830,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0ebd376088ba",
@@ -7849,7 +7849,7 @@
         "cs.LG",
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9a99a818cfaa",
@@ -7866,7 +7866,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8e00a4dbe6d1",
@@ -7883,7 +7883,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e5f8daf00a84",
@@ -7900,7 +7900,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7eca970fb1ff",
@@ -7918,7 +7918,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "43e097760ffd",
@@ -7935,7 +7935,7 @@
         "cs.CV",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7b9b3eb3e6ce",
@@ -7952,7 +7952,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "883e5dea5957",
@@ -7969,7 +7969,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bbdc98694ca0",
@@ -7986,7 +7986,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "84dd65a96796",
@@ -8003,7 +8003,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ea0504e50711",
@@ -8020,7 +8020,7 @@
         "cs.CV",
         "cs.DM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4ae10863c830",
@@ -8039,7 +8039,7 @@
         "cs.LG",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4e056a9c2dac",
@@ -8057,7 +8057,7 @@
         "cs.AI",
         "cs.MA"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bf1cdf334ed7",
@@ -8075,7 +8075,7 @@
         "cs.AI",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "61a3031c1680",
@@ -8095,7 +8095,7 @@
         "cs.LG",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0a5a7fa506e9",
@@ -8114,7 +8114,7 @@
         "cs.CV",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9b22ac67f969",
@@ -8131,7 +8131,7 @@
         "cs.MM",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4d7fd2d0b1f0",
@@ -8149,7 +8149,7 @@
         "cs.LG",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cba1f7c24375",
@@ -8168,7 +8168,7 @@
         "cs.MM",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c3b40f255203",
@@ -8187,7 +8187,7 @@
         "cs.MM",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4e46245fc869",
@@ -8207,7 +8207,7 @@
         "cs.DB",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1d0b862a631e",
@@ -8224,7 +8224,7 @@
         "cs.CV",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "eb6b347292cb",
@@ -8242,7 +8242,7 @@
         "cs.CV",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c66054a3d78f",
@@ -8259,7 +8259,7 @@
         "cs.CV",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "43e4254ea585",
@@ -8277,7 +8277,7 @@
         "cs.AI",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e052eba336d6",
@@ -8295,7 +8295,7 @@
         "cs.LG",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "aa06f66c7955",
@@ -8315,7 +8315,7 @@
         "cs.MM",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c7c6d1b5a42f",
@@ -8333,7 +8333,7 @@
         "cs.AI",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ebead7214154",
@@ -8349,7 +8349,7 @@
       "tags": [
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "79158e1d792b",
@@ -8367,7 +8367,7 @@
         "cs.IR",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d1a4e370bbff",
@@ -8384,7 +8384,7 @@
         "eess.IV",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c7dab87c5fda",
@@ -8401,7 +8401,7 @@
         "cs.CV",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4b0f93927872",
@@ -8418,7 +8418,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c85da49095d0",
@@ -8435,7 +8435,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f32f758399ca",
@@ -8453,7 +8453,7 @@
         "cs.LG",
         "stat.ME"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "39aab94127f7",
@@ -8470,7 +8470,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3825cb75262d",
@@ -8487,7 +8487,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "32666c99652f",
@@ -8504,7 +8504,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5eccd34f93f6",
@@ -8525,7 +8525,7 @@
         "math.ST",
         "stat.TH"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d572278baec5",
@@ -8544,7 +8544,7 @@
         "math.ST",
         "stat.TH"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c9ba7edf0ccc",
@@ -8563,7 +8563,7 @@
         "cs.NA",
         "math.NA"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "86770fa047a6",
@@ -8580,7 +8580,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2de0ab2d6dd0",
@@ -8597,7 +8597,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e8105328aa3f",
@@ -8614,7 +8614,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0c57e792c4a3",
@@ -8632,7 +8632,7 @@
         "cs.LG",
         "stat.ME"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "70288ef06e3c",
@@ -8649,7 +8649,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "43cf4283438d",
@@ -8667,7 +8667,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "60934c5b1331",
@@ -8684,7 +8684,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a88a4d62dccc",
@@ -8701,7 +8701,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "aa7c3cb0d73a",
@@ -8721,7 +8721,7 @@
         "nlin.CD",
         "stat.ME"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2d06010ca052",
@@ -8739,7 +8739,7 @@
         "cs.LG",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1a8ba2ef92ad",
@@ -8758,7 +8758,7 @@
         "eess.IV",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a4307853c6f3",
@@ -8775,7 +8775,7 @@
         "hep-ph",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "276168c8aa40",
@@ -8794,7 +8794,7 @@
         "math.OC",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "50e91673f2c1",
@@ -8812,7 +8812,7 @@
         "math.DS",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3f31c9806b55",
@@ -8832,7 +8832,7 @@
         "stat.ML",
         "stat.TH"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ce5163167657",
@@ -8850,7 +8850,7 @@
         "cs.AI",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ac8624691c86",
@@ -8869,7 +8869,7 @@
         "q-fin.RM",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ff8e69a39fcc",
@@ -8888,7 +8888,7 @@
         "cs.LG",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5dcfea50cd42",
@@ -8907,7 +8907,7 @@
         "stat.ML",
         "stat.TH"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f125c2331d15",
@@ -8925,7 +8925,7 @@
         "cs.AI",
         "cs.HC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "29b7cad22e98",
@@ -8941,7 +8941,7 @@
       "tags": [
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "70a7f5895c7e",
@@ -8958,7 +8958,7 @@
         "q-bio.NC",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "06d5d966a362",
@@ -8975,7 +8975,7 @@
         "q-bio.NC",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "077b936b5e1a",
@@ -8991,7 +8991,7 @@
       "tags": [
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b132c83c61bc",
@@ -9008,7 +9008,7 @@
         "q-bio.NC",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2281a4409fd7",
@@ -9028,7 +9028,7 @@
         "physics.data-an",
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8dac7850686b",
@@ -9045,7 +9045,7 @@
         "cs.CV",
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2eceb04202df",
@@ -9063,7 +9063,7 @@
         "cs.AI",
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1a3ba3a4b219",
@@ -9082,7 +9082,7 @@
         "physics.app-ph",
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4138fc7e34c5",
@@ -9099,7 +9099,7 @@
         "q-bio.NC",
         "math.DS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "52745baf83b3",
@@ -9116,7 +9116,7 @@
         "q-bio.NC",
         "physics.data-an"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "604ccaa7242a",
@@ -9133,7 +9133,7 @@
         "q-bio.NC",
         "nlin.CD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1026c1ea4160",
@@ -9150,7 +9150,7 @@
         "q-bio.NC",
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d3d6832b3aa3",
@@ -9167,7 +9167,7 @@
         "q-bio.NC",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b59cf01af9fe",
@@ -9184,7 +9184,7 @@
         "q-bio.NC",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "957b3f8e3b26",
@@ -9201,7 +9201,7 @@
         "cs.CL",
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "668cc7018582",
@@ -9217,7 +9217,7 @@
       "tags": [
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e3eb078a2200",
@@ -9233,7 +9233,7 @@
       "tags": [
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2dd34bf6507b",
@@ -9251,7 +9251,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f2ede32498b4",
@@ -9268,7 +9268,7 @@
         "cs.NE",
         "math.OC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7a4f48bc88fd",
@@ -9286,7 +9286,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0ee01511b102",
@@ -9302,7 +9302,7 @@
       "tags": [
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c78e99223e3a",
@@ -9320,7 +9320,7 @@
         "cs.GR",
         "cs.HC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "649adecaca59",
@@ -9341,7 +9341,7 @@
         "cs.SY",
         "physics.med-ph"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "33421efc33bf",
@@ -9358,7 +9358,7 @@
         "cs.DS",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f30f823a3a34",
@@ -9376,7 +9376,7 @@
         "cs.AI",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "00b49192525e",
@@ -9395,7 +9395,7 @@
         "cs.MA",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a0f74cd96066",
@@ -9415,7 +9415,7 @@
         "cs.SY",
         "eess.SY"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e3710373a56c",
@@ -9432,7 +9432,7 @@
         "cs.LG",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6eb0b3e0058f",
@@ -9451,7 +9451,7 @@
         "cs.NE",
         "physics.app-ph"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1f64d5d84438",
@@ -9469,7 +9469,7 @@
         "cs.AR",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dc9deafee435",
@@ -9487,7 +9487,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "67920348ffab",
@@ -9505,7 +9505,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "df05e0333a0b",
@@ -9522,7 +9522,7 @@
         "cs.NE",
         "eess.SP"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2b108c1944a0",
@@ -9540,7 +9540,7 @@
         "cs.AI",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "46aa5aa516ef",
@@ -9559,7 +9559,7 @@
         "cs.NE",
         "math.IT"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a0eb01d7d5f9",
@@ -9577,7 +9577,7 @@
         "cs.AI",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "594ff4e9f022",
@@ -9594,7 +9594,7 @@
         "cs.RO",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0fc3a1b545a5",
@@ -9613,7 +9613,7 @@
         "cs.IT",
         "math.IT"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5f29fd7b25bc",
@@ -9631,7 +9631,7 @@
         "cs.AI",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "49c49df27d87",
@@ -9648,7 +9648,7 @@
         "eess.IV",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e3374d57f24c",
@@ -9666,7 +9666,7 @@
         "cs.CV",
         "cs.GR"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2960c44f3449",
@@ -9682,7 +9682,7 @@
       "tags": [
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8ef3c2bc0d6b",
@@ -9698,7 +9698,7 @@
       "tags": [
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "adb404b27282",
@@ -9717,7 +9717,7 @@
         "cs.IT",
         "math.IT"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5dba82e3f1ea",
@@ -9733,7 +9733,7 @@
       "tags": [
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c9ff82eba803",
@@ -9750,7 +9750,7 @@
         "eess.IV",
         "physics.med-ph"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "33d75c79a2b0",
@@ -9767,7 +9767,7 @@
         "q-bio.OT",
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c27dcc859b2a",
@@ -9785,7 +9785,7 @@
         "eess.AS",
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "590a8bfb95cf",
@@ -9802,7 +9802,7 @@
         "cs.CV",
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2a9824fee76e",
@@ -9819,7 +9819,7 @@
         "cs.CV",
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7693328ac1fb",
@@ -9835,7 +9835,7 @@
       "tags": [
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c00abd92c093",
@@ -9853,7 +9853,7 @@
         "cs.CV",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "01763f2812e2",
@@ -9869,7 +9869,7 @@
       "tags": [
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8e5171fe25b1",
@@ -9888,7 +9888,7 @@
         "eess.IV",
         "physics.med-ph"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "202bd1857b7b",
@@ -9907,7 +9907,7 @@
         "cs.LG",
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7b6d2f520986",
@@ -9925,7 +9925,7 @@
         "cs.RO",
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "97eb17034ef1",
@@ -9942,7 +9942,7 @@
         "cs.CV",
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f14d75de2ff1",
@@ -9960,7 +9960,7 @@
         "eess.IV",
         "eess.SP"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e2b9a27d2e30",
@@ -9979,7 +9979,7 @@
         "cs.CV",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d109ae064470",
@@ -9997,7 +9997,7 @@
         "cs.LG",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f1994a3d8f30",
@@ -10015,7 +10015,7 @@
         "cs.AI",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ea6646658622",
@@ -10032,7 +10032,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cbcbf52571d7",
@@ -10049,7 +10049,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9b79651c52d8",
@@ -10066,7 +10066,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ace47c3484b3",
@@ -10083,7 +10083,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d3f4472f6a57",
@@ -10100,7 +10100,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "51e9cdcba356",
@@ -10117,7 +10117,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3f6500b7b327",
@@ -10134,7 +10134,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "caa0c5c31af3",
@@ -10152,7 +10152,7 @@
         "cs.IT",
         "math.IT"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "693560f74354",
@@ -10169,7 +10169,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "216703b387ca",
@@ -10186,7 +10186,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "efb394dc198e",
@@ -10203,7 +10203,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "28a682e41d4a",
@@ -10220,7 +10220,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7cbd3592b0ae",
@@ -10237,7 +10237,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d32baf3ac091",
@@ -10254,7 +10254,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "992c94a62fd0",
@@ -10270,7 +10270,7 @@
       "tags": [
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b23d24ae2d20",
@@ -10287,7 +10287,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3a8de5ae055c",
@@ -10305,7 +10305,7 @@
         "cs.LG",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "14d42ea724ff",
@@ -10324,7 +10324,7 @@
         "cs.LG",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5e1a1d78af7d",
@@ -10343,7 +10343,7 @@
         "cs.CL",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "767f507d93aa",
@@ -10362,7 +10362,7 @@
         "cs.CL",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f0eac8a13b68",
@@ -10380,7 +10380,7 @@
         "cs.CL",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "258ea72f5739",
@@ -10397,7 +10397,7 @@
         "cs.SD",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cd00f0d508bd",
@@ -10415,7 +10415,7 @@
         "cs.AI",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a992daf2be6a",
@@ -10433,7 +10433,7 @@
         "cs.AI",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c4c94c53753c",
@@ -10451,7 +10451,7 @@
         "cs.LG",
         "math.OC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "95c1ddc50849",
@@ -10467,7 +10467,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3dde5f8ffea2",
@@ -10484,7 +10484,7 @@
         "cs.RO",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5a50b078f687",
@@ -10500,7 +10500,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "179ebc446516",
@@ -10516,7 +10516,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c55e396e952c",
@@ -10534,7 +10534,7 @@
         "cs.CV",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b3faf49ce26f",
@@ -10550,7 +10550,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4a34b247b263",
@@ -10566,7 +10566,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "939346d0ff9b",
@@ -10584,7 +10584,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e7ab42338e97",
@@ -10600,7 +10600,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "41cfe006ebb2",
@@ -10616,7 +10616,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "26785f8867ee",
@@ -10632,7 +10632,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "76937eea8b22",
@@ -10648,7 +10648,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ba820a30e375",
@@ -10664,7 +10664,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5c7fb008ab09",
@@ -10681,7 +10681,7 @@
         "cs.RO",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "292894fc06d5",
@@ -10698,7 +10698,7 @@
         "cs.RO",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "38dc1dd847d9",
@@ -10714,7 +10714,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b617ea7a4be7",
@@ -10730,7 +10730,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "790353613172",
@@ -10746,7 +10746,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4c1df2057b1a",
@@ -10764,7 +10764,7 @@
         "cs.CY",
         "cs.HC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "46c64ae5de04",
@@ -10782,7 +10782,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "367a355b8f70",
@@ -10798,7 +10798,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a2ea26ed7aee",
@@ -10814,7 +10814,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "38029f475b16",
@@ -10830,7 +10830,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e1ab3e6a857f",
@@ -10846,7 +10846,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "03d5584dc3f7",
@@ -10862,7 +10862,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e022a6a289ba",
@@ -10878,7 +10878,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fd94a4ef6e45",
@@ -10897,7 +10897,7 @@
         "cs.SY",
         "eess.SY"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bbf1775f3100",
@@ -10913,7 +10913,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cd32a374d65b",
@@ -10929,7 +10929,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1d7ab4db7ef5",
@@ -10948,7 +10948,7 @@
         "Policy",
         "Report"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7c6e97636ed6",
@@ -10962,7 +10962,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "67ea4bd39d82",
@@ -10987,7 +10987,7 @@
         "чистая архитектура",
         "ddd"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0a8db0ed75a5",
@@ -11001,7 +11001,7 @@
       "summary": "Bluetti's new FridgePower helps protect refrigerated food and perishables when your home loses power.",
       "author": "Ajay Kumar",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "418801759a4d",
@@ -11029,7 +11029,7 @@
       "summary": "Yasutaka Tamura / Bloomberg : Taxi-hailing app Go's shares grew 21% in its Tokyo debut, after raising $553M in Japan's largest IPO this year, giving the company a market value of ~$1.16B &nbsp; &mdash;&nbsp; Taxi-hailing app provider Go Inc.'s shares surged 21% in its trading debut on the Tokyo Stock Exchange on Tuesday &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fdcd63a8f281",
@@ -11053,7 +11053,7 @@
         "politics",
         "Impasse"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bce649a7bcab",
@@ -11067,7 +11067,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "11f0712317e4",
@@ -11081,7 +11081,7 @@
       "summary": "NBC News : A look at Roblox's biometric age-checking tool, which will help place users into age-based accounts starting this month, amid controversy over user privacy &nbsp; &mdash;&nbsp; &ldquo;Not everyone is going to be happy all the time,&rdquo; the platform's head of safety product policy told NBC News, saying Roblox believes its safety updates are worth the turbulence.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9430b7a27fe8",
@@ -11113,7 +11113,7 @@
         "SyncMon",
         "University of Wisconsin-Madison"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8505d331d8bd",
@@ -11127,7 +11127,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fbfce93c8fac",
@@ -11144,7 +11144,7 @@
         "алгоритмическая торговля",
         "статистический анализ"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d380a573f1bf",
@@ -11172,7 +11172,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ae3727fdc990",
@@ -11191,7 +11191,7 @@
         "ии видео",
         "нейросеть видео"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "78370ad0c08f",
@@ -11219,7 +11219,7 @@
       "summary": "Vercel Sandboxes can run uninterrupted sessions for up to 24 hours (up from 5 hours). This new max duration unlocks workloads that require longer runtimes, such as large-scale data processing, end-to-end testing pipelines, and long-lived agentic workflows. Pair with persistent sandboxes to maintain durable state across extended runs. The 24 hour max duration is available on all Pro and Enterprise plans. Learn more about limits in the documentation . Read more",
       "author": "Rob Herley",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c5d97b035f32",
@@ -11233,7 +11233,7 @@
       "summary": "The all-out splurge, the killer deal, or the Goldilocks middle ground. We've tested every Apple Watch to help you land you perfect match.",
       "author": "Vanessa Hand Orellana",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "031fe56c38cf",
@@ -11263,7 +11263,7 @@
       "summary": "GLM 5.2 is now available on AI Gateway . Built for long-horizon tasks, GLM 5.2 carries project-level engineering context across a single task, runs long-running tasks more reliably, and follows engineering standards more consistently. The context window for this model has been upgraded to 1M tokens, up from 200K in GLM 5.1. To use GLM 5.2, set model to zai/glm-5.2 in the AI SDK : AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting ,…",
       "author": "Jerilyn Zheng",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "88e85a81d8ac",
@@ -11277,7 +11277,7 @@
       "summary": "The Workflow SDK 5 beta now supports the standard AbortController and AbortSignal APIs across workflow and step boundaries. Create a controller inside a workflow, pass its signal into one or more steps, and cancel in-flight operations using the same API fetch already uses. That signal stays durable across suspensions and deterministic replay. When a step is running, it sees the cancellation, even when it's in a separate function invocation. Cancellation is also cooperative; steps have to inspect the signal or pass it to an API that supports AbortSignal . Use it to stop a slow step when a…",
       "author": "Pranay Prakash",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b292164b7298",
@@ -11291,7 +11291,7 @@
       "summary": "Workflow SDK now supports TanStack Start applications on Vercel. TanStack Start is built on Vite and Nitro , so the existing workflow/vite plugin works directly. Add it to vite.config.ts alongside tanstackStart() . From there, write workflow and step functions in standard TypeScript with \"use workflow\" and \"use step\" . They run as durable, resumable operations that survive restarts, sleep for days, and retry on failure, with compilation, queue configuration, and persistence handled by the plugin. Read the TanStack Start guide to learn more and create your first durable workflow. Read more",
       "author": "Peter Wielander",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

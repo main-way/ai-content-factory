@@ -1,0 +1,5 @@
+Researchers from The University of Tokyo, ETH Zurich, CISPA, and RIKEN published a technical paper titled “PuDGhost: Experimental Analysis of Computation Result Corruption in Processing-using-DRAM Operations on Real DRAM Chips and Implications for Future Systems.”
+Abstract excerpt:
+“We reveal PuDGhost, an interference phenomenon where a PuD operation in a given column produces erroneous results due to interference from 1) data in non-activated DRAM rows and 2) data in other columns that compute concurrently under the same SiMRA operation.” The paper also reports that “concurrently computing columns affects SiMRA outputs by up to 48%.”
+Find the technical paper here. June 2026.
+Tokuda, Daichi, İsmail Emir Yüksel, Tatsuya Kubo, Ataberk Olgun, Haocong Luo, Nisa Bostanci, Jikun Wang, A. Giray Yağlıkçı, Shinya Takamaeda-Yamazaki, and Onur Mutlu. “PuDGhost: Experimental Analysis of Computation Result Corruption in Processing-using-DRAM Operations on Real DRAM Chips and Implications for Future Systems.” arXiv preprint arXiv:2606.19119 (2026).

@@ -12,6 +12,7 @@ from __future__ import annotations
 import base64
 import io
 import json
+import os
 import re
 import urllib.request
 import urllib.error
@@ -23,6 +24,10 @@ import hashlib
 import sys
 
 sys.path.insert(0, str(Path(__file__).parent))
+
+# ─── Env ──────────────────────────────────────────────────────────────────────
+import _env as _env_module
+_env_module._()
 
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
 MINIMAX_API_KEY = os.environ.get("MINIMAX_API_KEY", "")

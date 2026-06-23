@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Betting on Moments: Legendre Jumper Martingales for Online Exchangeability Testing
+View PDFAbstract:We present a family of conformal test martingales based on shifted Legendre polynomials, which extends the Simple Jumper martingale. The Simple Legendre Jumper substitutes the linear betting function with a polynomial of arbitrary degree, thereby facilitating the detection of variance, skewness, and higher-order deviations from uniformity; the standard Simple Jumper is a specific instance of degree one. The Product Legendre Jumper integrates multiple polynomial degrees into a unified betting function, although its state space expands exponentially-a cost we refer to as the jumping tax. To address this issue, we introduce the Variational Legendre Jumper, which factorises the joint adaptation through a mean-field approximation, thereby reducing exponential scaling to linear time with minimal loss in power. Lastly, the Composite Legendre Jumper incorporates several jumping rates, ensuring a wealth floor under exchangeability and automatic adaptation to the shift's timescale. Empirical results from a real-world classification task demonstrate that the combined methods consistently surpass any single-degree martingale under distributional shift, and the composite variant is recommended as the default when the shift timescale is unknown.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

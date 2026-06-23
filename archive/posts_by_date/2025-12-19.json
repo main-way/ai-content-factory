@@ -23,7 +23,7 @@
         "they managed to convince the chatbot it was a Soviet vending machine from 1962, living in the basement of Moscow State University",
         "tarantara tarantara"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8f4317dccc4b",
@@ -37,7 +37,7 @@
       "summary": "This week’s issue focuses on agentic loops, the feedback mechanisms that allow AI coding agents to iteratively improve their work. How I wrote JustHTML using coding agents FRIENDLYBIT.COM This feels like one of the most stark illustrations of how coding agents will fundamentally change the way we approach software development in the future … This post tells the story of how Emil built a spec-compliant HTML5 parser in Python (with zero dependencies), using a variety of different methods - all heavily reliant on coding agents. It’s a brief blog post, but describes a fascinating journey. If…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

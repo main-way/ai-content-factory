@@ -1,0 +1,12 @@
+Computer Science > Neural and Evolutionary Computing
+Title:VQ4SNN: Vector Quantization for Memory-Efficient FPGA Spiking Neural Networks
+View PDF HTML (experimental)Abstract:Spiking Neural Networks (SNNs) offer an energy-efficient paradigm for edge AI, making them attractive for hardware acceleration. However, deploying dense SNNs on FPGAs is constrained by limited on-chip memory for synaptic weight storage. To address this bottleneck, we propose VQ4SNN, a hardware-aware architecture that reduces memory requirements through Vector Quantization (VQ)-based weight sharing. To the best of our knowledge, this is the first application of VQ to pipelined spatial-dataflow SNN accelerators on FPGAs. VQ4SNN replaces conventional weight storage with a two-level memory organization consisting of compact pointers and a shared codebook of quantized weight vectors. The proposed design integrates FPGA-aware memory mapping with analytical VQ parameter selection, enabling efficient deployment on such accelerators while preserving inference accuracy. The experimental results show a reduction of 52-61% in the total number of BRAMs compared to the state-of-the-art uncompressed FPGA SNNs without increasing overall logic utilization.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

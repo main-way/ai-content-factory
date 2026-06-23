@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Vaani Benchmark V1.0: An Inclusive Multimodal Benchmark Dataset for Hindi
+View PDF HTML (experimental)Abstract:Benchmarking is critical for the systematic evaluation and comparison of automatic speech recognition (ASR) systems. While several open-source datasets are available for Hindi ASR, existing benchmarks remain limited in geographic diversity, demographic representation, and transcription robustness. We introduce an inclusive, multimodal Hindi ASR benchmark collected from 104 districts across India. The dataset consists of spontaneous speech elicited using image prompts and recorded in real-world acoustic conditions across diverse demographic groups. Each audio segment is annotated with three independent transcriptions, enabling multi-reference evaluation that accounts for permissible orthographic and lexical variations. This design supports more robust, inclusive, and realistic ASR evaluation. We benchmark multiple open-source and proprietary ASR models and report their comparative performance on the benchmark dataset.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

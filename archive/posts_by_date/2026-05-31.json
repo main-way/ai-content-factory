@@ -14,7 +14,7 @@
       "summary": "Chat SDK now supports Lark and Feishu via a new vendor-official adapter . Build bots that post, edit, and delete messages, stream replies via Lark's native cardkit typewriter API, send interactive cards, and react with emojis across both Lark and Feishu conversations. The adapter connects over Lark's WebSocket transport, so bots run from any long-running Node process without exposing an HTTP webhook endpoint. To get started, read the Lark or Feishu documentation. Read more",
       "author": "Josh Singh",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c456a12d23d2",
@@ -31,7 +31,7 @@
         "Linux",
         "Новости"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "97f3012b6ad8",
@@ -49,7 +49,7 @@
         "Intermediate",
         "Project-based Article"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d5e89efc25a5",
@@ -63,7 +63,7 @@
       "summary": "MiniMax M3 is now available on Vercel AI Gateway . M3 is MiniMax's first model with a 1M-token context window and native multimodality, built around MiniMax Sparse Attention (MSA). M3 improves on software engineering, terminal-based tool use, and agentic web browsing, and is tuned for multi-turn collaboration. To use MiniMax M3, set model to minimax/minimax-m3 in the AI SDK . Pass an image alongside a prompt to use M3's multimodal input: AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for…",
       "author": "Jerilyn Zheng",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

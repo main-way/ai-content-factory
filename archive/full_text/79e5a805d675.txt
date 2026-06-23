@@ -1,0 +1,62 @@
+Impeccable by Design
+AI raised the floor. Time to raise the ceiling.
+America | Tech | Opinion | Culture | Charts
+Today I’m launching Renaissance Geek – the company behind Impeccable – with backing from a16z led by Anish Acharya, and a new partnership with GitHub. Here’s the bet I’m making. - Paul Bakaus
+It’s a weird time to try to create excellent digital work.
+It is suddenly much easier to produce a first draft of almost anything: code, interfaces, copy, images, internal tools, prototypes, decks, product ideas. The blank page is less blank. Work that used to take days now takes minutes.
+AI has unquestionably raised the floor.
+And yet.
+Why does it feel like producing something excellent is getting harder?
+We’re being told to let AI execute on our behalf, by trading the time-intensive, manual creative labor for a prompt input. To go all in on loopmaxxing. We might have to sacrifice precision, but hey, at least we’re shipping faster, right? Well, that’s a false dichotomy.
+There’s a reason we haven’t yet seen AI video’s Hayao Miyazaki, AI music’s Paul McCartney, AI writing’s Haruki Murakami, or AI design’s Tobias van Schneider.
+“Lower the floor, raise the ceiling.” John Maeda reminded me of that phrase recently, and it goes back to the early days of computing at MIT. Lower the barrier so more people can make things; raise the ceiling so experts can go further. John used the phrase for this exact moment, and he generously named Impeccable as one of the tools doing the lowering.
+He’s right, and I’ll keep pushing that barrier down, until reaching a solid baseline takes no effort at all. In fact, I’ve invested most of my adult life in pursuit of what I call anti-gatekeeping: jQuery UI allowed a generation of web designers to ship rich web UIs for the first time. Chrome DevTools became a web designer’s trusted tool to preview what their sites would look like on mobile. And yes, Impeccable brings competent design to everyone who wants it.
+But excellent work is not one-shotted. It comes from clear intent, relentless iteration, judgment, and craft. It is now very easy to make something. It is still very hard to make something truly great, let alone genre-defining.
+Mindlessly shipping more stuff faster is not a strategy, and plenty of companies are about to learn this the expensive way. The creative AI tools we build can’t just focus on lowering the barrier to entry and raising the output floor, they must also enable creatives to insert themselves into the agentic loop for the last mile. That last 20% that pushes the work out-of-distribution, out of mediocrity, beyond the average.
+It’s what I call amplified craft, and that’s the work I’m most excited about.
+Today I’m announcing Renaissance Geek, the company behind Impeccable, with backing from a16z, led by Anish Acharya.
+Impeccable started as an open-source design skill for AI coding agents. It gives builders and agents a shared design vocabulary, persistent project context, deterministic quality checks, and a live browser loop for visual iteration. It runs in the real codebase, where the work will actually ship.
+It spread faster than I can cleanly measure. It’s reached over 40,000 GitHub stars and 160,000 installs through skills.sh alone, which reflects only a fraction of the real numbers (Impeccable is commonly installed via npx impeccable install or Claude’s native marketplace).
+But Impeccable is also the first expression of a broader bet: AI does its best creative work when a human is actively part of the loop.
+Taste Can Be Amplified, but Not Lab-Grown
+There is a tempting idea floating around right now: maybe we can solve taste.
+Train better models. Build better taste benchmarks. Capture the patterns. Make the model produce tasteful work by default.
+I understand the appeal. I also think it misses the point.
+One of my favorite new pastimes is categorizing and detecting design-slop. Impeccable is one of the most popular ways to get rid of obvious slop in this category. But the absence of slop doesn’t result in taste.
+Slop is also, as it turns out, a moving target.
+Here is what it looked like in 2022:
+We tried to fix it: We told the models to avoid patterns like purple gradients and glowing buttons, then pushed them into a different part of their latent space.
+Which gave us this: 2026 slop.
+Instrument Serif italic headlines on warm beige are not bad design. In the right hands they can work. But once the pattern is everywhere, it stops signaling taste, starts signaling the absence of a decision, and worse: it simply doesn’t perform well because it doesn’t stick out. Today’s antidote to slop becomes tomorrow’s slop the moment everyone reaches for it.
+So no, you can’t bottle taste. It’s personal, contextual, and always moving; try to mass-produce it and you get algorithmic Uniqlo. What you can do is catch the tells that have nothing to do with taste, and Impeccable does: weak hierarchy, lazy spacing, broken contrast, the compositions every model reaches for when no one is steering.
+Stripping slop, though, is the side quest. The main quest is amplifying human intent. The best creative tools hand you sharper instruments and leave the seeing to you; a camera doesn’t tell you what to shoot, it just makes more shots possible.
+Design Is Moving Into Production
+The design/engineering handoff is breaking. The world it assumed, where a design freezes and then engineers translate it into code, barely exists anymore. Code changes every day now, and an agent can spin up ten new interface states before lunch. A frozen mockup can’t keep up with a product that won’t hold still.
+I’ve watched this happen all year, in startups and Fortune 500s alike. PMs are shipping real code. Designers are becoming design engineers. The work is migrating to where the product actually lives.
+Through all of it, engineers got a new tool every week. Designers mostly got left out. What did show up for them was built for PMs and engineers, or it was incumbents building richer connectors to an existing design canvas.
+Figma still matters, to be clear; it’s a wonderful place to explore and think, and none of this means designers have to learn to code (though I firmly believe knowing CSS and HTML well makes you a better web designer). The shift is simpler than that. More of the real design work now happens against the live product, in the browser, where it ships. And for good reason: it leads to faster iteration without process friction, while others are still waiting for handoffs.
+That gap is why I built Impeccable. It teaches agents to speak design, so a designer, engineer, or founder can steer in plain language: critique this layout, fix the type, recolor it, watch it change live in the browser. And whatever you create with Impeccable is real production code, ready to ship.
+The Interface Is Still Primitive
+The human-agent interface is still early.
+Right now, the dominant way to work with agents is chat. Chat is powerful. I use it constantly. But chat is also passive. It gives you a blank box and asks you to imagine everything.
+Great creative software works nothing like that: A video editor gives you a timeline, a design tool gives you a canvas with layers and guides, and music software gives you tracks you can see and scrub. None of these just take orders; they show you the work and let you feel it change as you push on it.
+Most AI tools still behave like a brilliant intern sitting behind a curtain. You can ask for almost anything, but the interface rarely helps you discover what to ask. That has to change. If agents are going to do creative work with us, they need richer loops: ways to critique, compare, remember, and adjust in real time.
+Impeccable’s shared design vocabulary and Live Mode are early experiments in a more active human-agent interface. You can point at the work, steer it, compare variants, and accept changes back into source. There is much more to explore, and Renaissance Geek will invest deeply in the interfaces and workflows that amplify creative work.
+Impeccable is our first tool for this new age, but it decidedly won’t be the only one.
+The Era Of The Renaissance Geek
+For a long time, being a generalist was treated as a liability. Pick a lane. Specialize. Become the designer, the engineer, the PM, the marketer, the operator. Teams were built around handoffs between people with cleanly separated roles.
+AI is making that model feel less inevitable.
+The people who seem most dangerous right now are T-shaped generalists with high taste, high intent, high agency, and deep curiosity. They may start as designers, engineers, founders, writers, researchers, or operators. But they are increasingly living closer to code, because code is where ideas become real.
+That is the Renaissance Geek: A modern-day ‘renaissance man’ who can move between disciplines because AI gives them reach, and whose ever-evolving taste driven by their genuine interest in art, culture, society and technology gives them direction.
+These are the people I care the most about: the ones who want the work better, not just faster, who still sweat the last 10 percent and can feel when a product has no point of view.
+AI will make those people much more powerful.
+What We Are Building
+Impeccable is Renaissance Geek’s first product that amplifies craft, and we’re focused on making it a daily, trusted toolkit for solopreneurs and large enterprises alike.
+To get Impeccable into the hands of even more builders, I’m also excited to share today that Renaissance Geek is partnering with GitHub.
+The team at GitHub cares about the same things we do: raising the ceiling on quality and design. That’s why Impeccable comes pre-bundled with the new GitHub Copilot app, one of the most widely used agent harnesses in the world. Every builder who opens the app gets a design and quality layer from the start.
+Backed by a16z in a round led by Anish Acharya, Renaissance Geek will keep building the tools for that last mile: the ones that help humans steer AI toward work worth shipping. Anish and I see the same gap in how today’s models and coding harnesses still fail us on creative work, and he’s written up why a16z backed the company. I’m incredibly lucky to have him along for the ride.
+Remember the Renaissance Geek? I’m trying to hire a few. First, a chief of staff to turn this momentum into a real operating cadence, plus design advocates and design engineers who care about the last 10 percent more than is strictly healthy. If that’s you, the open roles are here.
+The next wave of AI should not be about pushing humans further out of the loop. That story is boring and dystopian. The more interesting future is delightfully strange and exciting: tiny teams with enormous range, designers moving in code, engineers suddenly learning about vertical rhythm, PMs prototyping real products, agents that become active collaborators, and craftspeople using machines to make work that would have been impossible alone.
+AI raised the floor.
+Time to raise the ceiling.
+This newsletter is provided for informational purposes only, and should not be relied upon as legal, business, investment, or tax advice. Furthermore, this content is not investment advice, nor is it intended for use by any investors or prospective investors in any a16z funds. This newsletter may link to other websites or contain other information obtained from third-party sources - a16z has not independently verified nor makes any representations about the current or enduring accuracy of such information. If this content includes third-party advertisements, a16z has not reviewed such advertisements and does not endorse any advertising content or related companies contained therein. Any investments or portfolio companies mentioned, referred to, or described are not representative of all investments in vehicles managed by a16z; visit https://a16z.com/investment-list/ for a full list of investments. Other important information can be found at a16z.com/disclosures. You’re receiving this newsletter since you opted in earlier; if you would like to opt out of future newsletters you may unsubscribe immediately.

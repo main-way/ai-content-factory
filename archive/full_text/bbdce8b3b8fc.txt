@@ -1,0 +1,249 @@
+3 NLTK Tricks for Advanced Text Preprocessing & Linguistic Analysis
+In this article, we will walk through three essential NLTK tricks to elevate your text preprocessing: preserving phrase integrity with the MWETokenizer, context-aware lemmatization with POS mapping, and statistical collocation extraction using association measures.
+# Introduction
+Natural language processing (NLP) has undergone an obvious paradigm shift in recent years, with large language models (LLMs) and transformers handling complex end-to-end understanding tasks. However, in any practical NLP workflow, raw text must still be tokenized, normalized, and analyzed before it ever reaches a model. While modern NLP libraries and ecosystems like SpaCy or Hugging Face are fantastic for building general-purpose deep learning pipelines or integrating with LLMs, the Natural Language Toolkit (NLTK) remains a viable, transparent option for fine-grained structural linguistics, custom text normalization, and statistical corpus analysis.
+Unfortunately, many developers incorrectly believe that LLMs render traditional text preprocessing obsolete, or they write text preprocessing code using naive methods that discard critical linguistic structure. They split multi-word expressions like "machine learning" into separate, meaningless words; they perform context-blind lemmatization that yields inaccurate base forms; or they rely on simple raw frequency counts that miss meaningful word associations.
+To build robust, semantically accurate NLP models, you need to preserve structural and linguistic context at the preprocessing stage. In this article, we will walk through three essential NLTK tricks to elevate your text preprocessing:
+- preserving phrase integrity with the
+MWETokenizer
+- context-aware lemmatization with Part-of-Speech (POS) mapping
+- statistical collocation extraction using association measures
+# 1. Preserving Domain Terminology with the Multi-Word Expression Tokenizer
+Tokenization is the foundation of any NLP pipeline. However, standard tokenizers split sentences strictly by whitespace and punctuation. This becomes problematic when dealing with domain-specific multi-word expressions — such as "neural network"
+, "decision tree"
+, or "San Francisco"
+— where the individual words combine to form a single semantic concept.
+If a tokenizer splits "neural network"
+into "neural"
+and "network"
+, a downstream vectorizer (like Bag-of-Words or TF-IDF) will treat them as unrelated features, diluting the signal and introducing noise. Developers often try to fix this by writing search-and-replace regular expressions on the raw text before tokenizing.
+Using character-level replacements (e.g. text.replace("neural network", "neural_network")
+) is brittle. It fails to respect word boundaries, handles punctuation poorly, and is incredibly slow to execute across large datasets. The optimized approach is to tokenize the text first and then run NLTK's native MWETokenizer
+to merge these tokens cleanly.
+The naive approach of regex replacement relies on character-level string manipulation, which does not scale well and can inadvertently modify substrings inside unrelated words:
+import re
+import time
+# Sample corpus
+raw_texts = [
+"We are studying neural networks and deep learning.",
+"The decision tree is a popular model in machine learning.",
+"A neural network can have many layers."
+] * 5000
+cleaned_texts = []
+for text in raw_texts:
+# Manual string replacements for domain terms
+text = re.sub(r"\bneural networks?\b", "neural_network", text, flags=re.IGNORECASE)
+text = re.sub(r"\bdecision trees?\b", "decision_tree", text, flags=re.IGNORECASE)
+text = re.sub(r"\bmachine learnings?\b", "machine_learning", text, flags=re.IGNORECASE)
+# Tokenize the processed string
+tokens = text.lower().split()
+cleaned_texts.append(tokens)
+print("Sample tokens:", cleaned_texts[0])
+Output:
+Sample tokens: ['we', 'are', 'studying', 'neural_network', 'and', 'deep', 'learning.']
+Now let's try using NLTK's tokenizers. We first tokenize using the standard word_tokenize
+method and then pass the token streams through an initialized MWETokenizer
+that handles merging on token boundaries efficiently:
+import nltk
+from nltk.tokenize import word_tokenize, MWETokenizer
+import time
+# Ensure NLTK resources are downloaded
+nltk.download('punkt', quiet=True)
+raw_texts = [
+"We are studying neural networks and deep learning.",
+"The decision tree is a popular model in machine learning.",
+"A neural network can have many layers."
+] * 5000
+# Initialize tokenizer and register MWE tuples
+mwe_tokenizer = MWETokenizer([
+('neural', 'network'),
+('neural', 'networks'),
+('decision', 'tree'),
+('decision', 'trees'),
+('machine', 'learning')
+], separator='_')
+cleaned_texts_mwe = []
+for text in raw_texts:
+# Tokenize words using NLTK's standard tokenizer
+tokens = word_tokenize(text.lower())
+# Merge specified multi-word expressions
+merged_tokens = mwe_tokenizer.tokenize(tokens)
+cleaned_texts_mwe.append(merged_tokens)
+print("Sample tokens:", cleaned_texts_mwe[0])
+We get the same output, but in a more elegant and linguistically-accurate — and scalable — approach:
+Sample tokens: ['we', 'are', 'studying', 'neural_network', 'and', 'deep', 'learning.']
+Using the MWETokenizer
+shifts the operation from slow character-level string matches to token-level comparison.
+- We define the multi-word expressions as tuples of independent tokens:
+('neural', 'network')
+. - By setting
+separator='_'
+, the tokenizer merges the matching sequence into a single string token:"neural_network"
+. - Because it acts directly on token arrays, it is immune to boundary matching bugs and handles trailing punctuation (like
+"neural networks."
+splitting into"neural"
+,"networks"
+,"."
+first, then safely merging to"neural_networks"
+,"."
+) correctly. It executes faster and scales cleanly to hundreds of domain terms.
+# 2. Context-Aware Lemmatization with POS-Tag Mapping
+Lemmatization is the process of reducing a word to its base dictionary form (its lemma) — "running" -> "run", "better" -> "good". This is an essential normalization step, as it groups different grammatical inflections of the same word together.
+However, NLTK's WordNetLemmatizer
+defaults to treating every word as a noun. If you pass verbs or adjectives without specifying their POS category, the lemmatizer will return the word unchanged. For example:
+lemmatizer.lemmatize("running")
+yields"running"
+(instead of "run")lemmatizer.lemmatize("better")
+yields"better"
+(instead of "good")
+To solve this, we must dynamically identify the grammatical role of each word in the sentence using NLTK's POS tagger, map those tags to WordNet's simplified categories (noun, verb, adjective, adverb), and pass them to the lemmatizer.
+This naive approach feeds words directly to the lemmatizer. It misses verb and adjective conversions, resulting in suboptimal vocabulary normalization:
+import nltk
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True)
+sentence = "The feet of the running runners are getting better and faster."
+tokens = word_tokenize(sentence.lower())
+lemmatizer = WordNetLemmatizer()
+# Naive lemmatization: assumed to be all nouns
+naive_lemmas = [lemmatizer.lemmatize(token) for token in tokens]
+print("Tokens: ", tokens)
+print("Naive Lemmas:", naive_lemmas)
+Output:
+Tokens: ['the', 'feet', 'of', 'the', 'running', 'runners', 'are', 'getting', 'better', 'and', 'faster', '.']
+Naive Lemmas: ['the', 'foot', 'of', 'the', 'running', 'runner', 'are', 'getting', 'better', 'and', 'faster', '.']
+Let's look at an optimized version: we write a clean helper dictionary mapping Penn Treebank tags (returned by NLTK's pos_tag
+) to WordNet POS constants, ensuring every word type is lemmatized accurately:
+import nltk
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+from nltk.corpus import wordnet
+# Download POS tagger resources
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True)
+nltk.download('averaged_perceptron_tagger', quiet=True)
+sentence = "The feet of the running runners are getting better and faster."
+tokens = word_tokenize(sentence.lower())
+# Generate POS tags for each token
+pos_tags = nltk.pos_tag(tokens)
+# Map Penn Treebank tags to WordNet tags
+def get_wordnet_pos(treebank_tag):
+if treebank_tag.startswith('J'):
+return wordnet.ADJ
+elif treebank_tag.startswith('V'):
+return wordnet.VERB
+elif treebank_tag.startswith('N'):
+return wordnet.NOUN
+elif treebank_tag.startswith('R'):
+return wordnet.ADV
+else:
+# Default to WordNet's default noun handling
+return None
+lemmatizer = WordNetLemmatizer()
+# Lemmatize utilizing mapped POS tags
+context_lemmas = []
+for token, tag in pos_tags:
+wn_tag = get_wordnet_pos(tag)
+if wn_tag:
+lemma = lemmatizer.lemmatize(token, pos=wn_tag)
+else:
+lemma = lemmatizer.lemmatize(token)
+context_lemmas.append(lemma)
+print("POS Tagged: ", pos_tags)
+print("Context Lemmas:", context_lemmas)
+Output:
+POS Tagged: [('the', 'DT'), ('feet', 'NNS'), ('of', 'IN'), ('the', 'DT'), ('running', 'NN'), ('runners', 'NNS'), ('are', 'VBP'), ('getting', 'VBG'), ('better', 'RBR'), ('and', 'CC'), ('faster', 'RBR'), ('.', '.')]
+Context Lemmas: ['the', 'foot', 'of', 'the', 'running', 'runner', 'be', 'get', 'well', 'and', 'faster', '.']
+NLTK's pos_tag
+labels words using the Penn Treebank tagset (e.g. 'VBG'
+for a gerund verb, 'JJR'
+for a comparative adjective).
+- Our helper function
+get_wordnet_pos()
+inspects the first character of the tag. Inline with WordNet's POS standards, if it starts with 'J', we map it to WordNet's Adjective tag (wordnet.ADJ
+); if it starts with 'V', to Verb (wordnet.VERB
+), and so on. - By feeding the correct POS tag into
+lemmatizer.lemmatize(token, pos=wn_tag)
+, the lemmatizer successfully resolves "running" to "run", "are" to "be", "getting" to "get", "better" to "good", and "faster" to "fast". This preserves the semantic core of the sentence, drastically reducing vocabulary sparsity for downstream ML models.
+# 3. Statistical Phrase Extraction using Collocation Finders
+Extracting key phrases or multi-word concepts from text is valuable for topic modeling, search indexing, and sentiment analysis. These phrases are known as collocations, which are sequences of words that co-occur more often than would be expected by chance.
+The naive way to find collocations is to count all raw bigrams (two-word sequences) and sort them by frequency. However, this approach yields highly uninformative pairs. Due to raw frequency distributions, combinations like "of the", "in the", and "on a" will always dominate the top results. Even after filtering out stopwords, raw counts can favor random, coincidental pairings that happen to repeat a few times.
+The optimized solution is to use NLTK's BigramCollocationFinder
+combined with statistical association metrics. Instead of counting raw frequency, we apply association measures like Pointwise Mutual Information (PMI) or Chi-Square statistics. These metrics evaluate whether two words appear together significantly more often than they would by pure chance.
+First, our naive approach simply counts raw bigrams and slices the top matches, capturing noise and common function words:
+from collections import Counter
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.util import bigrams
+# Sample corpus
+corpus = """
+Natural language processing is an active field of AI. Machine learning plays a key role
+in natural language processing. Deep learning architectures have revolutionized natural
+language processing. We need machine learning models to solve these natural language tasks.
+"""
+tokens = word_tokenize(corpus.lower())
+# Extract and count raw bigrams
+raw_bigrams = list(bigrams(tokens))
+bigram_counts = Counter(raw_bigrams)
+print("Top 5 Raw Bigrams:")
+for bigram, freq in bigram_counts.most_common(5):
+print(f"{bigram}: {freq}")
+Output:
+Top 5 Raw Bigrams:
+('natural', 'language'): 4
+('language', 'processing'): 3
+('machine', 'learning'): 2
+('processing', '.'): 2
+('processing', 'is'): 1
+Here, we initialize NLTK's collocation finder, apply filter constraints, and use the BigramAssocMeasures
+class to score phrase associations using Pointwise Mutual Information (PMI):
+import nltk
+from nltk.collocations import BigramCollocationFinder
+from nltk.metrics.association import BigramAssocMeasures
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+nltk.download('punkt', quiet=True)
+nltk.download('stopwords', quiet=True)
+corpus = """
+Natural language processing is an active field of AI. Machine learning plays a key role
+in natural language processing. Deep learning architectures have revolutionized natural
+language processing. We need machine learning models to solve these natural language tasks.
+"""
+tokens = word_tokenize(corpus.lower())
+# Initialize the collocation finder
+finder = BigramCollocationFinder.from_words(tokens)
+# Filter out punctuation and stop words
+stop_words = set(stopwords.words('english'))
+filter_stops = lambda w: w in stop_words or not w.isalnum()
+finder.apply_word_filter(filter_stops)
+# Filter out bigrams that occur less than N times
+finder.apply_freq_filter(2)
+# Score bigrams using pointwise mutual information
+pmi_measures = BigramAssocMeasures()
+top_collocations = finder.score_ngrams(pmi_measures.pmi)
+print("Top Collocations by PMI:")
+for bigram, pmi_score in top_collocations[:5]:
+# Formulate a clean print representation
+phrase = " ".join(bigram)
+print(f"Phrase: {phrase:<30} | PMI Score: {pmi_score:.4f}")
+Output:
+Top Collocations by PMI:
+Phrase: machine learning | PMI Score: 3.8074
+Phrase: language processing | PMI Score: 3.3923
+Phrase: natural language | PMI Score: 3.3923
+BigramCollocationFinder.from_words()
+extracts all two-word groups while maintaining structural positions.- We clean the candidates using
+finder.apply_word_filter()
+, which dynamically excludes bigrams containing stop words or punctuation marks without modifying the original word spacing context. - By setting
+apply_freq_filter(2)
+, we ignore random combinations that only happen once, reducing statistical noise. - Finally, scoring with pointwise mutual information mathematically measures the probability of the two words appearing together divided by the probability of them appearing independently. This highlights highly coupled terms like "machine learning" and "natural language" while ignoring common, loose combinations.
+# Wrapping Up
+Custom text preprocessing is the key to extracting cleaner signals from raw text, and NLTK provides the structural tools required to customize these operations.
+By incorporating these three NLTK techniques, you can build much more robust NLP workflows:
+- Preserving domain terminology with
+MWETokenizer
+merges compound words at the token level, preventing key concepts from being broken apart during vectorization - Context-aware lemmatization couples POS tag generation with WordNet mapping to retrieve linguistically accurate base forms, significantly reducing vocabulary dimensionality
+- Statistical collocation extraction uses mathematical association metrics like PMI to isolate true semantic phrases from raw corpus data, bypassing the noise of simple frequency counts
+Using these structural patterns in your feature engineering process ensures that downstream classification, search, and clustering algorithms receive high-quality, semantically intact tokens.
+Matthew Mayo (@mattmayo13) holds a master's degree in computer science and a graduate diploma in data mining. As managing editor of KDnuggets & Statology, and contributing editor at Machine Learning Mastery, Matthew aims to make complex data science concepts accessible. His professional interests include natural language processing, language models, machine learning algorithms, and exploring emerging AI. He is driven by a mission to democratize knowledge in the data science community. Matthew has been coding since he was 6 years old.

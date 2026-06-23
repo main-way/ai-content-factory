@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Configurable Algorithms for Histopathologic Cancer Detection on Quantum Hardware
+View PDFAbstract:Histopathologic cancer detection is challenging due to tissue variability, staining differences, and subtle visual distinctions between disease classes. We propose two quantum algorithms for this task: a configurable dual-gradient CSWAP circuit (DG-CSWAP) that computes multi-directional edge responses in a single execution via per-pixel local Ry encoding, and a hardware-efficient destructive swap circuit (DG-DST) natively matched to quantum processing unit (QPU) gate sets at substantially lower circuit complexity. We prove algebraic equivalence between DG-CSWAP and DG-DST, enabling a two-circuit QPU validation strategy. A three-stage NISQ mitigation pipeline, including readout error correction, bias subtraction, and slope regression, reduces single-pixel hardware MSE by ~8x. Validated on five quantum processors via Amazon Braket, the method achieves inter-platform Pearson r ~ 0.93-0.94 across all local-simulator pairs. Compared to a prior Quantum Fourier Transform (QFT) based amplitude-encoding baseline requiring 12-qubit global state preparation and a three-model ensemble (85.55% on PatchCamelyon), the proposed method uses shot-based measurements, executes on real quantum hardware, and achieves 79.80% accuracy with a single ResNet-50. A Lite configuration delivers a 17x preprocessing speedup at a 2.59% accuracy cost. To the best of our knowledge, this is the first quantum hardware implementation study with noise mitigation for histopathologic image classification.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

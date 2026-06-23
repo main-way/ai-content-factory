@@ -1,0 +1,44 @@
+Ten days after Washington pulled Anthropic's top models from foreign hands, the bill came due. This week Beijing blacklisted 56 American firms, Anthropic's own filing admitted the trigger was a routine coding request rival models can run, and Microsoft's CEO warned that letting "a few models eat everything" won't survive politically. The export war just stopped being one-directional — here's the week that made it mutual.
+Sponsor
+Quick Hits
+DeepSeek's Quiet Takeover
+- China answered the AI ban by blacklisting 56 US companies — Beijing's Commerce Ministry put 10 American firms — rare-earth miners MP Materials and USA Rare Earth, drone makers Teal Drones and Jaia Robotics — under full dual-use export controls, while the Finance Ministry barred 46 mostly-defense contractors from government procurement. Total hit: 56 companies, in direct response to the Pentagon's latest entity-list update. [Nikkei Asia]
+- ByteDance sidelines its IPO as its valuation closes on $1 trillion — The TikTok owner's gray-market valuation is reportedly nearing $1 trillion — which would make it China's first company to cross that line — yet it's in no rush to list. With secondary-market value already past $600B and Chinese investor sentiment turning bullish, patience is the play. [Nikkei Asia]
+The Year Governments Got Serious
+- Anthropic says the "jailbreak" behind its export ban was just a code-review prompt — In its filing contesting the US order, Anthropic reveals the triggering "jailbreak" was essentially asking the model to read a codebase and fix any software flaws — a capability it says is "widely available from other models, including OpenAI's GPT-5.5." The company adds it has "not even received a disclosure" of any harmful result. [Anthropic]
+- Macron calls the US AI export controls "strictly nationalist" — France's president made a forceful plea for Washington not to keep cutting-edge AI to itself, urging democracies to cooperate on regulation instead. Recognizing that frontier models can be dangerous is "a good thing," he allowed — but walling them off is the wrong answer. [SecurityWeek]
+The Lab Gladiator Era
+- Nadella warns "a few models that eat everything" won't survive politically — The Microsoft CEO — whose company holds a major OpenAI stake — told the WSJ that "if all the value is accrued by only a few models, the political economy will simply not tolerate it," adding there's "no societal permission for an AI future that hollows out entire industries." A pointed warning from inside the concentration. [WSJ]
+- Sakana's new "Fugu" hides a swarm of agents behind one API — and claims frontier parity — Sakana AI launched Fugu and Fugu Ultra, a multi-agent system that behaves like a single model: send one request and it decides whether to answer directly or quietly coordinate expert agents. Sakana says Fugu Ultra stands "shoulder-to-shoulder" with Fable 5 and Mythos on the toughest engineering, science, and reasoning benchmarks. [Sakana AI]
+AI Supply Chain Under Siege
+- Microsoft pins last week's Mastra npm attack on North Korea — The 140-plus poisoned packages in the @mastra AI-agent framework weren't ordinary crypto thieves: Microsoft attributes them to Sapphire Sleet (BlueNoroff), a North Korean state group. The info-stealer hunts 166 wallet extensions across Windows, Linux, and macOS — treat any build that pulled them as compromised. [BleepingComputer]
+- 7,000 Langflow servers are under active exploitation — CVE-2026-5027 (CVSS 8.8) lets attackers smuggle path-traversal filenames through Langflow's unsanitized file-upload endpoint to drop files on disk; VulnCheck has confirmed in-the-wild hits. Roughly 7,000 instances sit exposed, most in North America — and VentureBeat notes the same shipped-faster-than-reviewed pattern runs through other popular agent frameworks. [VentureBeat]
+The Off Switch Cuts Both Ways
+When Washington blocked foreign access to Anthropic's Fable 5 and Mythos on June 12, the pitch was containment: keep the most dangerous models out of adversaries' hands. Ten days in, the containment is leaking from both ends.
+Anthropic's own filing this week gutted the premise. The "jailbreak" that triggered the order, the company says, was a request to read a codebase and fix its flaws — a capability it notes is "widely available from other models, including OpenAI's GPT-5.5" — and no one has reported a single harmful result. The Economist's cover, meanwhile, recasts the order as an export-control architecture for AI modeled on nuclear technology, while France's Emmanuel Macron called it "strictly nationalist" and urged Washington not to hoard the frontier.
+Then Beijing answered in the only language export controls speak: 56 US firms hit with their own controls and procurement bans. The week's lesson is that a kill switch is not a moat. Pull one lab's models and demand reroutes; treat AI like a weapon and rivals treat your companies the same way. The ban meant to project American leverage is busy mapping its limits.
+Key Takeaways
+- Export controls are now a two-way weapon. Washington can pull a lab's models; Beijing can blacklist 56 US firms the same week. Decoupling cuts in both directions — and the cost lands on American rare-earth and defense suppliers, too.
+- The ban's foundation is wobbling in public. Anthropic says the trigger was a routine coding prompt that rivals' models can run, allies are calling the controls "nationalist," and no harm has been reported — even as the precedent hardens.
+- Concentration is the new fault line. When Microsoft's own CEO warns that "a few models eating everything" won't survive politically, the fight has shifted from who builds the best model to who's allowed to win with it.
+- The AI supply chain is the soft target. Nation-state crews (North Korea's Sapphire Sleet) and mass exploits (Langflow's CVE-2026-5027) are hitting the agent frameworks developers now build on — faster than security review can keep up.
+Worth Reading
+- Claude now writes more than 80% of Anthropic's own code — Up from the low single digits before Claude Code shipped in early 2025. Anthropic calls it a deliberately conservative count. [Anthropic]
+- Apple's Core AI puts 3B–70B models on-device — The Core ML successor, unveiled at WWDC 26, runs LLMs up to 70B parameters across iPhone, iPad, Mac, and Vision Pro with no server round-trip. [InfoQ]
+- The Economist: "America's AI Power Grab" — The cover argues Washington is building an export-control architecture for frontier AI modeled on nuclear technology — and setting a precedent allied governments will have to live with. [The Economist]
+- AI is already eroding doctors' skills — After six months leaning on an AI polyp-detection tool, 19 veteran endoscopists' unaided detection rate fell from 28.4% to 22.4% — the first trial to show AI degrading a clinically meaningful skill. [Nature]
+- Ted Chiang: calling AI "conscious" lets its makers off the hook — The novelist's dissent against the industry's new rush to fund AI-welfare research. [The Atlantic]
+Wait, What?
+- Chatbots keep inventing the same fictional lighthouse keeper — Cornell's Sil Hamilton and David Mimno analyzed 20,000 AI-generated stories and found the same 11 words — names like Elias and Mara, jobs like lighthouse keeper and clockmaker — in more than 88% of them, across ChatGPT, Gemini, and Claude alike. The models are all dreaming the same dream. [404 Media]
+- Google wants to put data centers in space — because Earth's grid is full — Orbital compute runs roughly 4x the cost of a ground setup, so why bother? Because power, not silicon, is the binding constraint: grid-connection queues in Northern Virginia now stretch seven years. In orbit, the sun never sets. [CNBC]
+Worth Watching
+The videos AI practitioners are passing around right now — curated on AI TV.
+| Ed Zitron explains OpenAI’s leaked financials The Tech Report | |
+| CRASH IMMINENT: Ed Zitron Says AI Valuations Are Complete FRAUDS Breaking Points | |
+| Is the AI Boom About to COLLAPSE? MS NOW |
+This week's poll
+Washington blocked one lab; Beijing blacklisted 56 firms in reply. Where does the AI export war go from here?
+Last week, 197 of you voted:
+If an AI could run your country measurably better than the humans currently do — less corruption, less waste, fewer wars — would you let it?
+Washington blocked one lab; Beijing blacklisted 56 firms in reply. Where does the AI export war go from here?
+— Alexis

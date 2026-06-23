@@ -1,102 +1,176 @@
-# AI Content Factory
+# AI-Digest
 
-Automated AI news pipeline: fetches RSS feeds, clusters similar posts, scores by relevance, and generates 25–30 ready-to-use news items for channels, newsletters, and social media.
+Ежедневный автоматический дайджест ИИ-новостей: сбор → кластеризация → генерация → отправка.
 
-**Target audience:** B2B — manufacturing sector professionals. Russian language output.
+---
 
-## Architecture
+## Скрипты
 
-```
-RSS feeds (200+)
-    ↓
-fetch.py          — fetch & deduplicate posts → storage/posts_YYYY-MM-DD.json
-    ↓
-clusterize.py     — embed → HDBSCAN cluster → score → top clusters
-    ↓
-gen_digest.py     — generate 25-30 news items (1500-2500 chars each)
-    ↓
-output/*.md       — ready-to-publish digest
-```
-
-## Scripts
-
-| File | Purpose |
-|------|---------|
-| `fetch.py` | Fetch RSS feeds, deduplicate, save to SQLite + JSON |
-| `clusterize.py` | Cluster posts by semantic similarity, score by relevance |
-| `gen_digest.py` | Generate final news items via LLM |
-| `composer.py` | Compose newsletters for ListMonk |
-| `content_bank.py` | Content storage and selection |
-| `channel_profiles.yaml` | Per-channel topic profiles |
-| `sources.yaml` | RSS feed sources (100+ feeds) |
-
-## Quick Start
+### fetch.py
+Собирает посты из RSS-лент. Сохраняет в `storage/posts_YYYY-MM-DD.json`.
 
 ```bash
-# 1. Install dependencies
-uv venv .venv
-source .venv/bin/activate
-uv pip install -r requirements.txt
-
-# 2. Configure environment
-cp .env.example .env
-# Edit .env with your API keys
-
-# 3. Fetch today's news
-python3 fetch.py --date 2026-06-22
-
-# 4. Cluster and score
-python3 clusterize.py --date 2026-06-22 --top-n 15
-
-# 5. Generate digest (25-30 items)
-python3 gen_digest.py --date 2026-06-22 --count 28
-
-# Output: output/digest_28_YYYY-MM-DD.md
+.venv/bin/python3 fetch.py
+.venv/bin/python3 fetch.py --config sources.yaml
 ```
 
-## Cron Jobs
+**Конфиг:** `sources.yaml` (101 RSS-источник). Формат JSON на выходе:
+```json
+{"fetched_at": "...", "sources_total": N, "posts": [...]}
+```
+
+---
+
+### clusterize.py ⭐ Основной пайплайн
+Кластеризует посты → LLM-фильтрация → генерация текстов → сохранение → отправка.
 
 ```bash
-# Fetch RSS — daily at 04:00 MSK
-0 4 * * * cd /home/apps_maker/ai-digest && .venv/bin/python fetch.py
-
-# Cluster news — daily at 05:00 MSK
-0 5 * * * cd /home/apps_maker/ai-digest && bash run-cluster.sh
-
-# Generate digest — daily at 06:00 MSK
-0 6 * * * cd /home/apps_maker/ai-digest && .venv/bin/python gen_digest.py
+bash run-cluster.sh                        # через cron
+.venv/bin/python3 clusterize.py --date 2026-06-23 --dry-run
+.venv/bin/python3 clusterize.py --days 3    # окно 3 дня
 ```
 
-## Scoring Formula
+**Пайплайн:**
+```
+storage/posts_*.json
+  → embeddings (all-MiniLM-L6-v2, CPU, batch=8)
+  → UMAP (384d → 20d)
+  → HDBSCAN
+  → score = log1p(size) × velocity × diversity × spread
+  → топ-N:
+       1. LLM coherence check
+       2. LLM anti-topics filter
+       3. LLM текст 1500–2500 знаков (русский, B2B)
+       4. og:image / og:video
+  → digest_YYYY-MM-DD.md → /srv/obsidian-base/BRIEFINGS/AI-Digest/
+  → Telegram sendDocument
+```
+
+**Выход:** ТОЛЬКО в `/srv/obsidian-base/BRIEFINGS/AI-Digest/digest_YYYY-MM-DD.md`.
+Директории `clusters/` и `output/` НЕ используются (мёртвый код и другие скрипты).
+
+---
+
+### digest.py
+Читает `storage/posts_*.json`, формирует читаемый `.md` по шаблону. Использует `--ai-filter` для LLM-фильтра.
+
+```bash
+.venv/bin/python3 digest.py --date 2026-06-23 --ai-filter
+```
+
+---
+
+### translate_digest.py
+Переводит дайджест через OpenRouter API (модель `openai/gpt-4o-mini`).
+
+```bash
+OPENROUTER_API_KEY=... .venv/bin/python3 translate_digest.py digest_2026-06-23.md
+```
+
+---
+
+### publish.py
+Финальный шаг: сохраняет черновики в Obsidian, удаляет отправленные.
+
+---
+
+### analyze.py
+Выжимка постов — краткий обзор для быстрого чтения.
+
+---
+
+### archive.py
+Единый архив всех постов в SQLite.
+
+---
+
+### composer.py
+Генератор постов для Telegram-каналов. Использует `channel_profiles.yaml`.
+
+```bash
+.venv/bin/python3 composer.py
+```
+
+---
+
+### story_image_pipeline.py
+Оценка и подбор иллюстраций. Vision-задачи через MiniMax-M3.
+
+---
+
+## Environment variables
+
+В `~/.hermes/.env`:
+
+```bash
+MINIMAX_API_KEY=...        # MiniMax-M2: тексты дайджеста
+TELEGRAM_BOT_TOKEN=...    # Telegram bot
+TELEGRAM_CHAT_ID=...      # (default: 7079923530)
+OPENROUTER_API_KEY=...    # перевод дайджестов
+HF_TOKEN=...               # huggingface (ускоряет загрузку модели)
+```
+
+## Модели
+
+| Задача | Модель | Скрипт |
+|---|---|---|
+| Тексты дайджеста | MiniMax-M2 | clusterize.py |
+| Vision (картинки) | MiniMax-M3 | story_image_pipeline.py |
+| Перевод | openai/gpt-4o-mini | translate_digest.py |
+
+---
+
+## Anti-topics
+
+Фильтруются через LLM после кластеризации. Хардкожены в `clusterize.py` константа `ANTI_TOPICS`:
+
+- Политические и геополитические ИИ-новости
+- Академическая теория без практического применения
+- Узкоспециализированные медицинские ИИ-исследования
+- Сделки и IPO ИИ-компаний
+- Аэрокосмические и оборонные ИИ-проекты
+- GPU-бенчмарки без привязки к бизнесу
+
+---
+
+## Cron
 
 ```
-score = log(1 + cluster_size) × velocity × diversity × spread
+05:00  fetch.py          → storage/posts_YYYY-MM-DD.json
+05:05  run-cluster.sh   → digest_YYYY-MM-DD.md + Telegram
+06:15  composer.py      → посты для каналов
 ```
 
-- **cluster_size** — number of posts in cluster
-- **velocity** — posts per hour in the last 6h
-- **diversity** — unique sources in cluster (≥2 required)
-- **spread** — URL variety across sources
+---
 
-## Output Format
+## Директории
 
-Each news item:
-- 1500–2500 characters (Russian)
-- Title with source
-- Context + why it matters
-- Two links: source + local DB reference
-- No IT jargon, no ads, facts only
+```
+storage/           posts_YYYY-MM-DD.json (fetched_at, sources_total, posts)
+output/            *.md от digest.py и translate_digest.py
+clusters/          не используется clusterize.py
+```
 
-## Storage
+---
 
-- Posts stored in `storage/posts_YYYY-MM-DD.json`
-- Clusters stored in `clusters/clusters_YYYY-MM-DD.json`
-- Output in `output/digest_*.md`
-- Daily cleanup: only today's files are kept (no long-term storage)
+## Зависимости
 
-## Requirements
+```
+sentence-transformers
+torch
+numpy
+umap-learn
+hdbscan
+python-dateutil
+pyyaml
+feedparser
+requests
+beautifulsoup4
+```
 
-- Python 3.11+
-- uv (package manager)
-- SQLite3
-- MiniMax API key (or any OpenAI-compatible API)
+---
+
+## Timeout
+
+Embedding 1350 постов на CPU ≈ 90 с. UMAP ≈ 30 с. LLM (28 тем) ≈ 5–10 мин.
+Рекомендуемый cron timeout: **600 с**.

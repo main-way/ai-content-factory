@@ -1,0 +1,11 @@
+Computer Science > Artificial Intelligence
+Title:Expected Free Energy-based Planning as Variational Inference
+View PDF HTML (experimental)Abstract:Planning under uncertainty requires agents to balance goal achievement with information gathering. Active inference addresses this through the Expected Free Energy (EFE), a cost function that unifies instrumental and epistemic objectives. However, existing EFE-based methods typically employ specialized optimization procedures that are difficult to extend or analyze. In this paper, we show that EFE-based planning can be formulated as Variational Free Energy minimization on a generative model augmented with epistemic priors. Our main result demonstrates that minimizing a Variational Free Energy functional with appropriately chosen priors yields a decomposition into expected plan costs (the EFE) plus a complexity term. This formulation reinforces theoretical consistency with the Free Energy Principle by casting planning as the same inferential process that governs perception and learning. We validate our approach on three environments of increasing complexity: a deterministic T-maze, a stochastic Reactivity Maze, and a partially observable MiniGrid DoorKey-8x8 environment. The experiments demonstrate that the epistemic priors induce information-seeking behavior, that the variational formulation yields policy-based inference outperforming plan-based methods under stochastic transitions, and that temporal factorization enables scalability to environments where existing tabular active inference methods cannot operate.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

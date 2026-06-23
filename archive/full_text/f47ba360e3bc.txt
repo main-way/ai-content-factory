@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:XmoPipe: A Pipeline for Large-Scale In-the-Wild Human Motion Dataset Construction
+View PDF HTML (experimental)Abstract:Large-scale human motion datasets are essential for training robust motion models for analysis, synthesis, and understanding. While marker-based motion capture provides precise data, it is costly and limited in scale and diversity. Recent advances in monocular motion capture and video-language understanding open the way to extract plausible motion from unconstrained online videos. We present a scalable pipeline for constructing in-the-wild human motion datasets. From a few keywords, the system retrieves videos, extracts 3D body and facial motion, and generates high-level textual descriptions. The pipeline is flexible, enabling targeted collection of various motions, multi-person interactions, or expressive behaviors. We demonstrate its quality by training motion reconstruction and motion generation models, showing performance comparable to models trained on traditional motion capture datasets and strong cross-dataset generalization.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

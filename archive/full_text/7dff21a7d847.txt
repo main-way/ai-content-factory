@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:LLM-Based Multi-Reference Evaluation for Efficient and Robust Assessment of Phrase Break Annotations
+View PDF HTML (experimental)Abstract:Reliable evaluation of phrase break annotations is crucial, as subtle variations in prosodic boundaries directly affect the clarity and naturalness of speech. However, existing approaches exhibit major limitations: single-reference evaluation assumes a unique gold phrasing for an utterance despite multiple valid phrasings, while human judgment, though flexible, is labor-intensive and unscalable. To address these, we propose LLM-based Multi-Reference Evaluation (LMRE) for phrase break annotations that models the one-to-many nature of prosodic phrasing and generates multiple valid phrasings from minimal demonstrations. On a Korean testbed of 1,356 annotations covering five strategies, LMRE shows stronger alignment with human judgment than single-reference evaluation in both acceptance behavior and score correlation. Our findings demonstrate that LMRE effectively achieves both scalability and multi-reference support, highlighting the potential of LLMs for evaluation in the speech domain.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

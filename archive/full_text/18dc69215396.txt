@@ -1,0 +1,8 @@
+Cursor announces its own AI model, a new Git platform, and a mobile app
+Cursor has shared new details about its first fully self-trained AI model and announced two new products. The startup's collaboration with SpaceX on training the model was already known. Anysphere, the company behind Cursor, was recently acquired by SpaceX.
+What's new is the timeline. Co-founder Michael said at the company's event that training is underway and the model should ship within the next few weeks. It's being trained from scratch - no open-source base like earlier Composer models. The model is on par with Opus and GPT in size, and uses ten to twenty times more compute than previous Cursor models. It's also meant to work beyond coding.
+The second announcement is Origin, a Git platform for both humans and AI agents. Co-founder Tomas, who joined Cursor through the Graphite acquisition, said Origin runs on a new Git architecture built on top of cloud providers. In load tests, the team simulated thousands of agents reading from and writing to a single repository at the same time. Origin resolves merge conflicts, fixes failed CI tests, and handles comments. It's already running internally and with select partners. Broad availability is planned for fall.
+Third, Cursor is launching Cursor Mobile as an iOS beta. The app lets users manage agents remotely, unblock stuck tasks, and review or comment on agent-generated screenshots. A remote control feature also gives access to agents running locally.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

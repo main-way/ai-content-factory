@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Bridging Self-Supervised Learning and Speech Enhancement: A Wav2Vec2-Conditioned Framework
+View PDF HTML (experimental)Abstract:Diffusion models show potential for speech enhancement but lack linguistic guidance. We condition a diffusion-based model on wav2vec 2.0 features from noisy input, injected at the U-Net bottleneck via Feature-wise Linear Modulation (FiLM). Phonetic representations from wav2vec 2.0 features of degraded speech, anchor the reverse diffusion process. While a frozen wav2vec 2.0 encoder extracts features, a learned FiLM generator produces scale and shift parameters modulating the bottleneck with minimal overhead. Motivated by the optimal Bayesian causal estimator under a linear-Gaussian state-space model, FiLM coefficients are aggregated via exponential smoothing for temporal compression. Evaluation on VoiceBank-DEMAND and LibriMix shows competitive performance against the unconditioned baseline in PESQ, STOI, SI-SDR and DNSMOS. We consistently record an improvement of 0.4 on PESQ score, suggesting self-supervised representations effectively condition diffusion-based speech enhancement.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

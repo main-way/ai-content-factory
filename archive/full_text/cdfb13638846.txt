@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Beyond Templates: Revisiting Zero-Shot Remote Sensing through Meta-Prompting
+View PDFAbstract:Vision-language models (VLMs) have sparked growing interest in zero-shot Earth Observation (EO) downstream tasks, with further gains enabled by remote-sensing-adapted models. We examine this setting across 17 VLM variants and 12 remote sensing (RS) datasets under Meta-Prompting for Visual Recognition (MPVR), and show that zero-shot performance remains highly sensitive to textual design choices, from the meta-prompts used to guide the LLM in generating class descriptions to the descriptions themselves. We explore why semantically rich LLM-generated class descriptions do not translate into consistent gains over simple domain-adapted CLIP-style descriptions. While LLM descriptions are more semantically expressive, they can also introduce noise in the text embedding space, reducing robustness in downstream tasks. We support this observation through a text log-likelihood analysis in the whitened CLIP feature space, comparing LLM-generated and template-based descriptions. Building on this finding, we study query embedding calibration and show that lightweight calibration of the query space consistently yields strong improvements in zero-shot classification and retrieval. Overall, our results provide practical insight into the trade-off between semantic richness and robustness, and identify embedding calibration as a simple and effective tool for improving zero-shot remote sensing performance.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

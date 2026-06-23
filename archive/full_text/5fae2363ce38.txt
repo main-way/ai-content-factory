@@ -1,0 +1,7 @@
+Google makes Interactions API the default interface for Gemini models and agents
+Google Deepmind has released the Interactions API as the default interface for Gemini models and agents. The API, in beta since December 2025, is now generally available and replaces the old generateContent interface in Google AI Studio and all documentation. The old API still works, but new agent features will only ship through the Interactions API going forward. "Interactions sets the stage for the new era of Agents," Google's developer relations lead Logan Kilpatrick writes. Google has published a migration guide for the switch.
+Recent additions include Managed Agents with their own Linux sandbox, background execution for long-running tasks, tool chaining with Google Search and Maps, and media generation for images, music, and speech.
+Google also simplified the schema since the beta. The old role structure with labels like "user" and "model" is now replaced by typed steps, where every action from user input to function calls is its own defined step. Developers can choose between Flex and Priority mode. Flex cuts costs by 50 percent, while Priority optimizes for speed.
+AI News Without the Hype – Curated by Humans
+Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
+Subscribe now

@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:CDER-SME: A Cross-Device Event-RGB Micro-Expression Dataset under Multi-Level Stress Induction
+View PDF HTML (experimental)Abstract:Micro-expression recognition (MER) in realistic scenarios demands high temporal sensitivity and ecological validity, yet existing benchmarks are largely constrained to laboratory-controlled settings and rigid hardware-coupled sensing. We introduce CDER-SME, a cross-device Event-RGB dataset collected under a multi-level stress induction framework (cognitive and social) to elicit spontaneous emotional leakage. To enable reproducible acquisition with independent, decoupled sensors, we provide a hardware-agnostic alignment pipeline for temporal synchronization and landmark-guided spatial registration. CDER-SME adopts a three-tier structure with 92 subjects and 1,963 expert-annotated samples (Action Units and emotions), including 790 Event-RGB pairs and 210 high-fidelity aligned pairs. We further report a reproducible multimodal baseline, where cross-modal fusion improves performance over single-modality counterparts, supporting the complementarity of event dynamics and RGB cues. By removing the need for coaxial calibration, CDER-SME offers a practical benchmark for cross-device alignment and deployable Event-RGB MER in real-world affective intelligence.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

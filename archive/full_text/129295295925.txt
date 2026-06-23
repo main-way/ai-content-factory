@@ -1,0 +1,5 @@
+import { streamText } from 'ai';
+const result = streamText({ model: 'sakana/fugu-ultra', prompt: 'Review this pull request and flag correctness bugs.',});
+AI Gateway: Track top AI models by usage
+The AI Gateway model leaderboard tracks the most popular models over time, ranking them by the total volume of tokens processed across all Gateway traffic.
+View the leaderboard

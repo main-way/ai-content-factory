@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Jury Duty: Calibration and Orientation Failures in MLLM-as-a-Judge Under Cultural Ambiguity
+View PDF HTML (experimental)Abstract:MLLM-as-a-Judge is conventionally validated by agreement with human annotations, but this metric is undefined when the human pool is culturally heterogeneous. We introduce VOIR DIRE, a multimodal benchmark of 626 culturally paired image--prompt artifacts spanning U.S. and mainland Chinese contexts across food, fashion, and architecture, with annotator pools that are within-pool reliable (a = 0.86/0.74) but cross-pool divergent on evaluation (Q1 r = -0.12). Across six MLLMs, the bias decomposes into two failures: a positivity-floor calibration failure (compressed scale use) and an orientation failure (default to one cultural norm). On this corpus, where contested items are sampled to split the two pools, the floor mechanically validates the more-permissive Chinese reading; persona prompting partially recovers calibration, but the orientation residual survives, evidence the tilt is not reducible to scale compression. Reference-pool in-context demonstrations deepen the orientation residual and inflate the high end rather than restoring use of the low end. Model origin adds a small additive tilt (~0.10 MAE) that is approximately invariant under demonstration. We recommend reporting alignment against each reference pool separately and treating cross-pool divergence as a judge property.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

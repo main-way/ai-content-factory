@@ -1,0 +1,14 @@
+Statistics > Machine Learning
+Title:Signed Evidence Flow: Conflict-Aware and Stability-Calibrated Data Analysis
+View PDF HTML (experimental)Abstract:Modern data analysis usually gives a prediction without showing whether the evidence behind it is clear, conflicting, or stable. Two cases can have the same fitted confidence even when one has mostly agreeing evidence and the other has strong support and strong opposition. We propose Signed Evidence Flow (SEF), which combines a fitted prediction rule with signed feature attributions to measure support, opposition, conflict, and perturbation stability. We prove that confidence determines conflict exactly when it also determines total evidence mass, derive the remaining conditional variance, and state when conflict can improve loss prediction beyond confidence and other audit variables. We also connect conflict to geometric decision fragility. Across healthcare, Covertype, black-box, finance, and ten external data sets, conflict sometimes separates risk among predictions that already appear confident. Cross-fitted tests show added error-ranking information beyond confidence and attribution entropy on several data sets, including two large finance tasks. The direction is not universal: in some tasks, lowconflict cases are riskier. We therefore introduce ScopeGate, a held-out permutation diagnostic
+that checks the direction before SEF is used for review triage. SEF is consequently an audit tool
+rather than a universal risk score: it describes evidence structure, while an independent calibration sample determines whether that structure is useful in the target population.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

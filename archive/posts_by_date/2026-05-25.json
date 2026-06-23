@@ -21,7 +21,7 @@
         "Cursor",
         "large language models"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "37be5f050c29",
@@ -35,7 +35,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "86df175a446d",
@@ -65,7 +65,7 @@
       "summary": "Over the weekend: Musk, Zuckerberg, and Sacks killed Trump's draft AI safety executive order in three Wednesday-night phone calls. Anthropic closed a $30B+ round the same Saturday — while Microsoft quietly cancelled its internal Claude Code pilot after token billing ate the entire annual AI budget, redirecting developers to Copilot. CISA logged 15,000 attacks on a same-week Drupal SQL flaw. The first cross-registry supply chain attack — TrapDoor — hit npm, PyPI, and Crates.io at once, using .cursorrules and CLAUDE.md config files as the carrier. And the White House personally overrode the…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

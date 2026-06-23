@@ -23,7 +23,7 @@
         "Model context protocol (MCP)",
         "Remote Code Execution"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e1d05b7e37ad",
@@ -37,7 +37,7 @@
       "summary": "At what point do the financial markets price in the singularity?",
       "author": "Jack Clark",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "434526b1fd71",
@@ -51,7 +51,7 @@
       "summary": "GRASP is a new gradient-based planner for learned dynamics (a “world model”) that makes long-horizon planning practical by (1) lifting the trajectory into virtual states so optimization is parallel across time, (2) adding stochasticity directly to the state iterates for exploration, and (3) reshaping gradients so actions get clean signals while we avoid brittle “state-input” gradients through high-dimensional vision models. Large, learned world models are becoming increasingly capable. They can predict long sequences of future observations in high-dimensional visual spaces and generalize…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

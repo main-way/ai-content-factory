@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:UNSEEN: Uncertainty-aware Navigation via Sparse Estimation in Unknown Environments
+View PDF HTML (experimental)Abstract:Visual navigation in unknown environments remains a core challenge in mobile robotics, especially for resource-constrained platforms. Most existing approaches rely on loosely coupled modular pipelines and strong assumptions on perception quality or environmental structure, often resorting to multi-modal sensor suites that increase system complexity and deployment cost. Vision-only navigation offers a lightweight alternative, but its performance degrades severely under motion blur, low texture, and illumination changes, largely because they neglect the tight coupling between commanded motion and perception. While perception-aware methods partially address this issue, they typically optimize individual modules and fail to propagate uncertainty consistently across the navigation stack. In this paper, we present UNSEEN, a unified uncertainty- and perception-aware navigation framework that explicitly couples localization, mapping, and planning using only a front-mounted camera. UNSEEN estimates sparse maps and robot poses with associated uncertainties at 6Hz, and leverages them to plan trajectories that jointly optimize task progress and estimation accuracy in receding-horizon. Simulations and extensive real-world experiments in unknown environments demonstrate the robustness of the proposed approach, with UNSEEN-SLAM reducing absolute translational error by 9.8% and UNSEEN-Plan improving estimation accuracy by up to 45% compared to state-of-the-art methods, while achieving a 100% task success rate.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

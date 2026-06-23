@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Factor-Aware Mixture-of-Experts with Pretrained Encoder for Combinatorial Generalization
+View PDF HTML (experimental)Abstract:The integration of pretrained encoders with diffusion policies has become a dominant paradigm for visual robotic manipulation. However, it still struggles to generalize across complex environments with varying factors such as lighting and surface textures. To address this, we propose FAME, a framework that integrates a factor-aware mixture-of-experts (MoE) with a pretrained encoder to enhance generalization to environmental variations. FAME follows a three-stage training process: (1) policy warmup, where a diffusion policy is trained on standard-environment data with a frozen encoder; (2) factor-specific adapter training, where lightweight adapters inserted between the frozen encoder and the temporarily frozen policy are trained on customized datasets, each targeting a distinct environmental variation; and (3) joint fine-tuning, where a central router and the warmed policy are trained on mixed data to handle multiple factors jointly. FAME is ``factor-aware'' because the central router softly weights frozen factor-specific adapters as a dense MoE, enabling combinatorial generalization across multiple factors. Evaluations on the Meta-World benchmark show that FAME outperforms diffusion policy baselines by 34%. We further validate FAME in a real-world pick-and-place task using a compact model trained on newly collected data, where FAME achieves a 35% improvement in generalization under real-world variations.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

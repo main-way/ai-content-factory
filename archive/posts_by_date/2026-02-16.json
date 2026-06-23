@@ -23,7 +23,7 @@
         "LLM jailbreaking",
         "Prompt injection attacks"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cff0d3bb66b5",
@@ -37,7 +37,7 @@
       "summary": "Will 2026 be looked back on as the pivotal year for making decisions about the singularity?",
       "author": "Jack Clark",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1493b0201237",
@@ -51,7 +51,7 @@
       "summary": "A crazy packed edition of Last Week in AI! Plus some small updates.",
       "author": "Last Week in AI",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

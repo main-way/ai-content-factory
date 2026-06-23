@@ -1,0 +1,12 @@
+Computer Science > Computation and Language
+Title:MindAlign: Decoding Inner Speech from fMRI Signals via Multimodal Embedding Alignment under Limited Data
+View PDF HTML (experimental)Abstract:Decoding inner speech from non-invasive brain signals remains a fundamental challenge due to the absence of overt linguistic output, limited training data, and large inter-subject variability. Existing brain-to-text approaches often rely on task-specific decoder fine-tuning, which restricts scalability and complicates adaptation to new participants. We propose MindAlign, a decoupled two-stage brain-to-language framework that enables open-ended text generation from fMRI signals without modifying the underlying language model. The first stage learns a subject-specific neural-semantic alignment that maps fMRI activity into a shared multimodal semantic space, extracting a latent semantic sketch of the internally generated sentence. The second stage integrates this sketch with visual context to prompt a frozen multimodal language model for free-form generation. Experiments on fMRI data collected during silent image description demonstrate that the proposed approach consistently outperforms fMRI-only and random baselines. We further show that the learned semantic-to-language projection can generalize across subjects, enabling effective decoding when paired with subject-specific neural alignment. These results indicate that neural signals modulate semantic content beyond image-driven priors, supporting a scalable and modular direction for brain-to-text decoding.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

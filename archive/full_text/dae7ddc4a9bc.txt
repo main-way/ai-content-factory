@@ -1,0 +1,12 @@
+Computer Science > Artificial Intelligence
+Title:Constituency Optimisation Through Hamiltonian Representation Of Mandates (COTHROM): Algorithmic Redistricting of Irish Election Boundaries
+View PDF HTML (experimental)Abstract:Electoral redistricting in Ireland's Proportional Representation Single Transferable Vote (PR-STV) system faces the challenge of selecting an optimally representative set of electoral boundaries from an enormous set of possible configurations, and where ``representative'' is a delicate balance of constitutional objectives that are often in tension with one another. We present the first computational framework for Irish electoral redistricting that systematically optimises across multiple constitutional requirements while making trade-offs explicit and quantifiable. The electoral redistricting problem is parsed using statistical physics, where constitutional objectives are considered as terms in a Potts Hamiltonian. Markov Chain Monte Carlo (MCMC) methods and simulated annealing are employed to minimise this objective function, systematically exploring this configuration space, with coupling constants as proxies for objective weightings. Multi Criterion Decision Analysis (MCDA) and Pareto Optimality is then utilised to remedy the ambiguity in choosing a certain objective weighting combination over others. With respect to proportional representation and compactness objectives evaluated in County Cork, COTHROM consistently improves on the existing legal constituency boundaries for a range of objective weightings.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

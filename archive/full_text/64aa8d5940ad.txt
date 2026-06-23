@@ -1,0 +1,13 @@
+Computer Science > Graphics
+Title:Line Drawings using LightBenders: Authoring and Illuminating
+View PDF HTML (experimental)Abstract:This study presents the hardware and software architecture of a transformative system for illuminating line drawings and letterforms. These mid-air illuminations are indoors and might be animated. The hardware contribution is a drone equipped with servo-actuated rod joints and a dense, addressable LED strip that enables arbitrary orientation, a LightBender. The software contributions are threefold. First, the system implements algorithms and heuristics to estimate the minimum number of LightBenders required to render a line drawing or letterform, stagger swarm formations to mitigate LightBender downwash, generate Swarm Flight and Lighting (SFL) files, and execute these files using a swarm of LightBenders to illuminate line drawings and letterforms. Second, a Blender add-on enables users to register LightBenders, author graphics and animations represented by swarms of LightBenders, and deploy the swarm for illumination through one-click functions. Third, users may import SVG files into either the Blender add-on or a standalone LB-Author tool to illuminate line drawings directly from vector graphics.
+We present results from an IRB-approved human subject study (n=21) to evaluate the impact of LightBender misalignment on the perceived illuminations. Obtained results demonstrate that the system's 10.1 mm maximum misalignment is perceptually acceptable across tested illuminations, with a median quality rating of 8 on a 0-10 scale.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

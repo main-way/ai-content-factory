@@ -1,0 +1,223 @@
+Introduction
+For years, I’ve built date tables in a tabular model with DAX code, when there was no other source for such a table.
+I created a template code and reused it over and over again. It works very well in a multitude of situations.
+I distributed it to my clients, and they are all happy with it.
+But about two weeks ago, I had a discussion with a colleague that opened my eyes to a way to do it, which I didn’t think about until now.
+So, let’s look at the variants to build a date table and compare them.
+But irrespective of how to do it, it’s important to know the requirements for date tables in semantic models.
+What happens when there is a DWH?
+First, when I have a data store and a source for the semantic model, whether a relational database, a Fabric Lake, or any other centralised data store, I will build it there and consume it in the Semantic model.
+The options available there for building such a table are very extensive and flexible, and neither DAX nor Power Query is more efficient.
+Therefore, there is no question about how to do it in such a case.
+DAX tables
+Generating a date table in DAX is relatively easy and straightforward.
+DAX offers a great number of functions to add columns and features to a date table.
+You always start with the CALENDAR() call to set the start and end date.
+You can either use fixed values, like MIN()/MAX() calls, based on available data to get start- and end-date from a data table inside the data model, or some (Power Query) parameters.
+For example, something like this:
+DimDate =
+CALENDAR (
+DATE ( YEAR (
+MIN ( 'Online Sales Order'[Date] )
+), 1, 1 ),
+DATE ( YEAR (
+MAX ( 'Online Sales Order'[Date] )
+), 12, 31 )
+)
+As Microsoft requires having full years in the date table, I start with the first of January and end with the last of December (31.12.).
+Next, you can add further columns to add the years, quarters, months and days to the table.
+You can do it within the definition of the table by using ADDCOLUMNS():
+DimDate =
+ADDCOLUMNS (
+CALENDAR (
+DATE ( YEAR ( MIN ( 'Online Sales Order'[Date] ) ), 1, 1 ),
+DATE ( YEAR ( MAX ( 'Online Sales Order'[Date] ) ), 12, 31 )
+),
+"Date_ID", FORMAT ( [Date], "YYYYMMDD" ),
+"Year", YEAR ( [Date] ),
+"Monthnumber", FORMAT ( [Date], "MM" ),
+"YearMonth_ID", CONVERT ( FORMAT ( [Date], "YYYYMM" ), INTEGER ),
+"YearMonth", FORMAT ( [Date], "YYYY/MM" ),
+"YearMonthShort", FORMAT ( [Date], "YYYY/mmm" ),
+"MonthNameShort", FORMAT ( [Date], "mmm" ),
+"MonthNameLong", FORMAT ( [Date], "mmmm" ),
+"MonthDate", EOMONTH ( [Date], 0 ),
+// User Format String mmm yyyy (Short Month) or mmmm yyyy (Long Month),
+"DayOfWeekNumber", WEEKDAY ( [Date], 2 ),
+"DayOfWeek", FORMAT ( [Date], "dddd" ),
+"DayOfWeekShort", FORMAT ( [Date], "ddd" ),
+"IsWorkday", IF ( WEEKDAY ( [Date] ) IN { 1, 7 }, 0, 1 ),
+"SemesterNumber", IF ( INT ( FORMAT ( [Date], "MM" ) ) <= 6, 1, 2 ),
+"Semester", IF ( INT ( FORMAT ( [Date], "MM" ) ) <= 6, "S1", "S2" ),
+"YearSemesterNumber",
+IF (
+INT ( FORMAT ( [Date], "MM" ) ) <= 6,
+YEAR ( [Date] ) * 10 + 1,
+YEAR ( [Date] ) * 10 + 2
+),
+"YearSemester",
+IF (
+INT ( FORMAT ( [Date], "MM" ) ) <= 6,
+FORMAT ( [Date], "YYYY" ) & "/S1",
+FORMAT ( [Date], "YYYY" ) & "/S2"
+),
+"QuarterNumber", INT ( FORMAT ( [Date], "q" ) ),
+"Quarter", "Q" & FORMAT ( [Date], "Q" ),
+"YearQuarterNumber",
+YEAR ( [Date] ) * 10 + FORMAT ( [Date], "Q" ),
+"YearQuarter",
+FORMAT ( [Date], "YYYY" ) & "/Q" & FORMAT ( [Date], "Q" ),
+"DayOfMonth", FORMAT ( [Date], "DD" ),
+"DayOfYear", DATEDIFF ( DATE ( YEAR ( [Date] ), 1, 1 ), [Date], DAY ) + 1,
+"DayOfYear_woWeekend", NETWORKDAYS ( DATE ( YEAR ( [Date] ), 1, 1 ), [Date], 1 ),
+"RestDaysInYear",
+DATEDIFF (
+DATE ( YEAR ( [Date] ), 1, 1 ),
+DATE ( YEAR ( [Date] ), 12, 31 ),
+DAY
+)
+- DATEDIFF ( DATE ( YEAR ( [Date] ), 1, 1 ), [Date], DAY ) + 1,
+"RestDaysInYear_woWeekend",
+NETWORKDAYS (
+DATE ( YEAR ( [Date] ), 1, 1 ),
+DATE ( YEAR ( [Date] ), 12, 31 ),
+1
+)
+- NETWORKDAYS ( DATE ( YEAR ( [Date] ), 1, 1 ), [Date], 1 ),
+"WeekNumber", WEEKNUM ( [Date], 21 )
+)
+The interesting part is that it is possible to pass the name or a locale setting to the FORMAT() function, for example, to create month names in different languages:
+DimDate =
+ADDCOLUMNS(
+CALENDAR(DATE(YEAR(MIN('Online Sales Order'[Date])), 1, 1)
+,DATE(YEAR(MAX('Online Sales Order'[Date])), 12, 31)
+),
+"Date_ID", FORMAT ( [Date], "YYYYMMDD" ),
+"Year", YEAR ( [Date] ),
+"Monthnumber", FORMAT ( [Date], "MM" ),
+"YearMonth_ID", CONVERT(FORMAT ( [Date], "YYYYMM" ), INTEGER),
+"YearMonth", FORMAT ( [Date], "YYYY/MM" ),
+"MonthNameShort", FORMAT ( [Date], "mmm" ),
+"MonthNameShort_DE", FORMAT ( [Date], "mmm", "de-de" ),
+"MonthNameLong", FORMAT ( [Date], "mmmm" ),
+"MonthNameLong_DE", FORMAT ( [Date], "mmmm", "de-de" ),
+"DayOfWeekNumber", WEEKDAY ( [Date], 2 ),
+"DayOfWeek", FORMAT ( [Date], "dddd" ),
+"DayOfWeek_DE", FORMAT ( [Date], "dddd", "de-de" ),
+"DayOfWeekShort", FORMAT ( [Date], "ddd" ),
+"DayOfWeekShort_DE", FORMAT ( [Date], "ddd", "de-de" )
+)
+This results in a table like this:
+Note the third parameter “de-de” of the FORMAT() call and the corresponding columns in the table—one in English and one in German.
+But with the advent of user-context-aware calculated columns, this can also be implemented differently.
+Read here for more information about this new feature.
+In case you need to calculate columns with a more complex logic, you can do it with calculated columns using Context transition to access the entire table.
+If you don’t know context transition, read this piece with an explanation of this concept:
+One example of this is calculating the week number for Fiscal Years when they don’t align with calendar years.
+Doing this with a mathematical formula is a nightmare, or my math skills are not sophisticated enough.
+Power Query and Data Flows
+Now we come to the last variant: Using Power Query or Data Flows.
+To begin with, I don’t distinguish between Power Query and Data Flows in v1 or v2, as they all operate on the same principles and use the same language.
+I start building the date table in Power Query by creating three parameters:
+- StartYear: The first year in the date table
+- YearsToLoad: How many years should be covered by the date table
+- FirstMonthOfFiscalYear: Which is the first Month of the Fiscal Year.
+If the Fiscal Year aligns with the Calendar year, this will be 1; otherwise, it will be the number of the first month of the Fiscal year.
+All further code will rely on these parameters.
+The start is always with the same command: List.Dates()
+The parameters of this function are:
+- The Starting date
+- The number of days to create the list
+- The interval, which in this context is days
+This leads to a line like this, while using the parameters mentioned above:
+List.Dates(#date(StartYear,1,1),366 * YearsToLoad,#duration(1,0,0,0))
+And here comes the first obstacle:
+Usually, we need a date table which spans multiple years. But every fourth year is a leap year.
+So, how can we do this, as Microsoft requires a date table that spans entire years?
+The solution is to get the last date of the last year (31. December) and filter the rows to keep only those before or equal to this date.
+And this is the reason why I multiply 366 days by the parameter YearsToLoad.
+Here is the full M-Code for this scenario:
+let
+Source = List.Dates(#date(StartYear,1,1),366 * YearsToLoad,#duration(1,0,0,0)),
+#"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+#"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Date"}}),
+#"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Date", type date}}),
+#"Added Last Valid Date" = Table.AddColumn(#"Changed Type", "Last Valid Date", each #date(Date.Year(List.Max(#"Changed Type"[Date])) - 1, 12, 31), type date),
+#"Keep only valid dates" = Table.SelectRows(#"Added Last Valid Date", each [Date] <= [Last Valid Date])
+in
+#"Keep only valid dates"
+Next, I can start adding all columns needed to build a complete date table.
+First, I add a Date_ID, with a numerical representation of the date:
+Date.Year([Date]) * 10000 ) + (Date.Month([Date]) * 100) + Date.Day([Date])
+This column must be set to an integer data type. Therefore, the entire line of M-Code is this:
+Table.AddColumn(#"Keep only valid dates", "Date_ID", each ( Date.Year([Date]) * 10000 ) + (Date.Month([Date]) * 100) + Date.Day([Date]), Int64.Type)
+Note the expression Int64.Type before the last closing bracket. This sets the data type in the same command, eliminating the need for an additional step.
+Next, I can use the available possibilities in the Power Query Editor to add additional columns that I commonly add to my date tables:
+As you can see, we can add a large number of columns without writing code.
+But at some point, we must write our own code to add additional columns—for example, columns to store the year and the corresponding period.
+Here are some of these columns:
+- Year/Month Name
+- Year/Quarter
+- Year/Week
+Then, for the columns for the start and end date for any period, like a week or a month.
+I use these columns for custom time intelligence code in DAX. I wrote some other pieces here on this topic, such as weekly calculations.
+And at some point, the usual M-Code is insufficient to obtain the required information.
+For example, when I need to get a week-aligned year column (YearForWeek).
+For these scenarios, I started writing custom M-functions that allow me to access a date range for each row, which is otherwise impossible in M.
+In this case, I added this function:
+(DateInput as date) as number =>
+let
+ClosestThursday = Date.AddDays(DateInput, -1 * Date.DayOfWeek(DateInput, Day.Monday) + 3),
+Year = Date.Year(ClosestThursday)
+in
+Year
+If you’re not familiar with custom M-functions, I strongly recommend looking at this great feature.
+I will add some links in the References section below.
+After the entire development of the date table, I got these custom functions:
+- GetISOYear
+Get the weekly aligned year - GetISOWeek
+Calculate the correct week number based on the ISO Standard - CalculateMonthDiff
+The difference in months between two dates - CalculateQuarterDiff
+The difference in quarters between two dates - GetFiscalWeekNumber
+Calculate the week-number starting with the week of the day on which the Fiscal Year starts. - GetCurrentFiscalYear
+This gets the current Fiscal Year based on the current date. - GetCurrentFiscalStartYear
+This calculates the year in which the current Fiscal Year starts.
+It took me some time (2–3 days of work), but I managed to integrate all columns into the date table, which I consider useful in most scenarios.
+But the basic concepts in the M-language added additional work and complexity, which is not needed, for example, in SQL.
+But instead of copying all the M-Code here, I will give you access to the Power BI file containing the entire solution with the date table.
+What’s next?
+Well, now you can take the entire M-Code, copy it into a Data Flow, and share it across your organisation.
+To allow access to your Data Flow, granting Viewer permissions to consumers in the Workspace is sufficient.
+This way, you have a single centralised version of the date table that everyone can use.
+This is the major point which makes this approach very useful.
+It is the same as when you have a centralised data platform, where you build a date table. But since not everybody has this, using a Data Flow is a good middle ground.
+In my work with Data Flows, I found that troubleshooting a failed import can be cumbersome. I have found that error messages can be minimal and may miss important details.
+Which one to use?
+What do I recommend using?
+First, when you have a centralised data store, whether on-premises or cloud-based or if it’s a relational database or another data store, use this to build your date table.
+As I already mentioned, there is no question about this.
+In a Self-Service BI scenario, or when the company isn’t that large, the decision isn’t that straightforward.
+First, it depends on the available skills.
+After building the date table in Power Query, I found that it’s much easier to build a date table in DAX than in Power Query.
+The capabilities of DAX make it easier to build a date table than with M-Code in Power Query.
+I can define the table in a single DAX statement and add complex logic in additional calculated columns.
+But each DAX date table is local to each Power BI semantic model. Therefore, you end up with multiple date tables that can diverge from one another.
+But as soon as you have multiple teams building Power BI solutions, it can be beneficial to create a single central date table in a single Workspace and share it with all teams.
+When someone needs a new feature in the date table, it will be added to the central table, and everyone can benefit from it.
+Of course, this is valid for any variant of centralised date tables.
+In such cases, the data model developer can always decide which columns to import, avoiding the import of unnecessary columns into the data model.
+Conclusion
+Now you know the different ways to build a date table.
+You decide among the available possibilities.
+But it will be difficult to switch from a local DAX table to any centralised tables.
+You should consider as early as possible which way you will go to avoid the additional work of switching between them.
+Take your time and talk with all team members or potential model creators to choose the correct way.
+It makes no sense to decide to build a centralised date table when no one uses it.
+So, make sure everyone is on board with using the central date table.
+References
+Here, the Microsoft documentation about custom functions in M:
+A page on Microsoft Learn about custom functions:
+A good explanation by Wicked Smart Data:
+If you prefer a video to learn, this one explains custom functions from the ground up:
+This video asks the question of when custom functions are useful:
+This shows you how to solve a challenge, including a very practical approach on how to develop a custom function easily:

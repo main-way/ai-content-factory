@@ -14,7 +14,7 @@
       "summary": "Plus five new chapters of my Agentic Engineering Patterns guide",
       "author": "Simon Willison",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7d4268752b84",
@@ -28,7 +28,7 @@
       "summary": "We’re introducing a framework to measure progress toward AGI, and launching a Kaggle hackathon to build the relevant evaluations.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a56f1dd9fece",
@@ -44,7 +44,7 @@
       "tags": [
         "Google DeepMind"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cc2a6e93b13f",
@@ -63,7 +63,7 @@
         "Google Research",
         "Google DeepMind"
       ],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

@@ -16,7 +16,7 @@
       "tags": [
         "Governance"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a864e973c2d0",
@@ -37,7 +37,7 @@
         "codeact",
         "hyperlight"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "66bd8767c347",
@@ -51,7 +51,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

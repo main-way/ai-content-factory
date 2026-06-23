@@ -1,0 +1,12 @@
+Computer Science > Machine Learning
+Title:DevoTG: Temporal Graph Neural Networks for Modeling C. elegans Developmental Connectomics
+View PDF HTML (experimental)Abstract:Understanding how a nervous system wires itself from birth to adulthood is a fundamental challenge in developmental neuroscience. We present DevoTG, a temporal graph framework that applies Temporal Graph Neural Networks (TGNs) to two complementary representations of C. elegans neural development: a Continuous-Time Dynamic Graph (CTDG) of cell division events derived from cell lineage data, and a Discrete-Time Dynamic Graph (DTDG) of the developing synaptic connectome spanning eight reconstructed electron-microscopy datasets. On the lineage prediction task, our TGN achieves a mean test AUC of 0.839 +/- 0.007 (5 seeds; validation AUC 0.937 +/- 0.001), outperforming a static GNN with the identical architecture by 26 AUC points (0.577 +/- 0.080), demonstrating that temporal memory is the decisive factor. Applied to the connectome DTDG, DevoTG identifies three connection stability classes (stable, developmental, and variable) across 225 neurons and 858 to 2,496 connections over development (L1 birth to adult), providing a temporal-graph-theoretic complement to the individual-variability classification of Witvliet et al. Analysis of hub command interneurons AVA, AVB, and AVE reveals their persistent centrality and how their integration roles are progressively reinforced across larval stages. Accompanying interactive visualizations (3D animated networks, centrality heatmaps, and a spatiotemporal lineage graph) make developmental dynamics accessible for biological hypothesis generation. DevoTG is open-source and designed for extension to other developing nervous systems. Code is publicly available at this https URL.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

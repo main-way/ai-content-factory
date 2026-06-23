@@ -1,0 +1,39 @@
+How’s that for a click‑bait title. Who in their right mind would defend the monstrosity that is the 8086 segmented memory architecture?
+By the time I got into 8086 assembly, PCs were mostly 80286‑based, but everything still ran under DOS. A “normal” machine only had the canonical 640KB of conventional memory and every assembly book had a dreaded chapter explaining segmentation. I still have the battle scars. Near pointers, far pointers, and the infamous “wherever‑you‑are” pointers.
+So when I found myself making similar architectural decisions for Hearthfire, my project to design a hypothetical 1980s‑era home computer with the benefit of hindsight and without the burden of actually manufacturing silicon, I finally understood why Intel made the choices they did. Segmentation could have been a solid foundation for the future except for one small detail that ruined everything.
+And that detail, awkwardly, was us.
+Software developers.
+We broke it.
+What Is 8086 Segmented Memory?
+The 8086 could address 1MB of memory which was a huge amount when 64KB was considered luxurious. To do that, it needed 20‑bit addresses.
+But instead of giving programmers 20‑bit registers, Intel kept the familiar 16‑bit registers and the missing four bits came from a second set of 16‑bit registers called segment registers. Each memory access combined one of these segment register and a 16‑bit offset.
+Every segment started 16 bytes after the previous one. Segments overlapped heavily. The same physical address could be expressed in many different combinations of segment and offset. To read a byte, you loaded a segment (the starting point) and an offset (how far from that point you wanted to go). Internally, the CPU shifted the segment left by four bits and added the offset.
+Two 16‑bit values to produce a 20‑bit address.
+No wonder everyone hated it.
+The Last Shall Be First
+It’s fashionable to mock segmentation, but in its original context, it was rather clever.
+It’s tempting to see the 8086 as the “first” chip in the x86 lineage, especially since every successor still carries its real‑mode DNA. But the story starts earlier.
+The 8080 was the workhorse of the mid‑1970s. It ran CP/M, the dominant OS of the era, and its 16‑bit address bus gave it a tidy 64KB world. (The Z80 was its slightly more famous cousin.)
+As software grew, that 64KB ceiling became a problem. Customers wanted more memory, but they also wanted their existing assembly code to keep running. Assembly was still a primary language written by humans and you can’t just recompile assembly for a new CPU. Moving to a new architecture really would mean rewriting everything.
+In this light, Intel’s pitch was simple.
+“We’ve divided memory into 64KB segments. Load your 8080 code into one of those segments, point all the segment registers there and it’ll run exactly as before. No rewrites. No drama.”
+And from a certain angle, the 8086 looks like a forward‑thinking design. A segment and offset together form 32 bits, enough to address 4GB. The chip only had 20 address pins, but the next one could have more. Extend the overlap between segments and it’ll all fall into place.
+In theory, the 8086 could have scaled gracefully until the day we needed 64‑bit addressing.
+Except for one thing…
+The First Shall Be Last
+The name “segment” reveals Intel’s intent. We weren’t supposed to treat memory as a continuous 1MB space. We were supposed to treat it as lots of 64KB blocks, each identified by an opaque selector.
+Your program asks the OS for memory and it hands you a segment value. You load that into a segment register and use the offset to index within it. Need more than 64KB? Allocate two blocks.
+But developers didn’t want two blocks. They wanted a flat address space.
+Once people realised that segments were always 16 bytes apart, the normalised pointer emerged. The segment register became the upper 16 bits of a 20‑bit address; the offset supplied the 4 lower bits. With a little ceremony, you could treat memory as almost continuous.
+By the time the 80286 arrived, this practice was entrenched. Changing the overlap from 16 bytes to 256 bytes would have broken everything. So Intel added a new mode for the 286’s fancy features and 24‑bit addressing, while old code stayed in real mode.
+It took the 80386 and its virtual‑8086 mode before mainstream software could finally escape the 1MB limit.
+If we had collectively agreed to treat segments as actual segments, the 8086 architecture might have lasted decades.
+What Should They Have Done?
+Here’s where I admit there was no trivial fix.
+What we needed, in hindsight, was to treat segments as true selectors — opaque handles with no arithmetic meaning. If you can’t assume the next segment is 16 bytes ahead, you’re forced to use segmentation as intended.
+But that would have required per‑segment metadata, storage for that metadata and hardware to manage it. All in an era when 64KB was still considered a lot.
+And even if Intel had implemented such a system, it would only take one clever developer discovering an undocumented shortcut to turn that behaviour into a requirement for the next chip.
+So Hearthfire won’t use 8086‑style segmentation. But it remains a valuable object lesson.
+Credits
+📸 “We Picked A Poppy” by “A Guy Named Nyal”. (Creative Commons)
+📸 “I Broke The Build” by Dirk Haun. (Creative Commons)

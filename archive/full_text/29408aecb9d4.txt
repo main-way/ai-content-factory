@@ -1,0 +1,12 @@
+Computer Science > Artificial Intelligence
+Title:DrugBench: Evaluating AI Control Protocols for Medication Harm Mitigation
+View PDF HTML (experimental)Abstract:Large Language Models have the potential to expand and improve the access to clinical information by enabling new ways of interacting with medical knowledge in natural language. However, their deployment in medical question-answering settings is safety-critical, since misaligned outputs can lead to severe patient harm. AI control is an emerging approach that introduces external safeguards to mitigate unsafe behaviours in misaligned systems and has been shown to be effective in domains such as code generation. However, its applicability and effectiveness in medical settings have not been systematically studied. In this work, we present a pipeline for evaluating AI control protocols to mitigate medication-related harm. To this end, we introduce DrugBench, an AI control evaluation benchmark which combines 3,671 multi-turn medical conversations from HealthBench with drug information from official FDA labels, covering four categories of medication-related harm: drug interactions, contraindications, dosing constraints, and patient action restrictions. Furthermore, inspired by the medical domain, we argue that safety should account for the severity of unsafe outputs, not just their probability. Under this revised definition, we show that existing control protocols can be subverted and propose severity-based monitoring to address this limitation.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

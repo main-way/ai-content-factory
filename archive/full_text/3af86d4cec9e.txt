@@ -1,0 +1,11 @@
+Quantitative Biology > Neurons and Cognition
+Title:The Principle of Isomorphism: A Theory of Population Activity in Grid Cells and Beyond
+View PDF HTML (experimental)Abstract:Neural population activity organizes into low-dimensional manifolds embedded within high-dimensional state spaces, yet the principles governing the topology and geometry of these manifolds remain elusive. Here, we propose the Principle of Isomorphism (PIso), which posits that the topology of a neural manifold is constrained by the mathematical structure of the computational task it supports. We apply this framework to the mammalian grid cell system through two distinct theoretical lenses: an intrinsic neural metric, which requires a locally flat Riemannian structure, and path integration, which requires a compact connected Abelian Lie group structure. We show that these two routes are both sufficient conditions that converge on the same toroidal latent topology, and that they naturally unify within Euclidean space. Using a minimal feedforward network that constrains population activity to a torus with tunable geometry, we find that hexagonal grid fields emerge only in an intermediate geometric regime, becoming diffuse or square-like otherwise. Our work clarifies the separation between three notions: latent topology, extrinsic embedding geometry, and decoded physical geometry, and identifies the topology of the population code as the more invariant consequence of the task structure, while leaving the precise mechanism that selects hexagonal single-cell firing patterns as an open problem.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

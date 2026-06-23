@@ -16,7 +16,7 @@
       "tags": [
         "review"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5839fc3246ea",
@@ -30,7 +30,7 @@
       "summary": "This is part 2 of what to do when facing a limited amount of labeled data for supervised learning tasks. This time we will get some amount of human labeling work involved, but within a budget limit, and therefore we need to be smart when selecting which samples to label.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

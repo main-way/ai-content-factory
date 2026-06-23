@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:DSSCNet: A Transfer Learning Framework for Cross-Corpus Dysarthric Speech Severity Classification
+View PDF HTML (experimental)Abstract:Dysarthric speech severity classification is challenging due to speaker variability, class imbalance, and limited datasets. This study introduces DSSCNet, a deep learning model that employs transfer learning and multi-corpus learning to enhance speaker-independent classification. By pre-training on one dysarthric speech corpus and fine-tuning on another, DSSCNet achieves improved feature extraction and cross-corpus generalization. Experimental results demonstrate that DSSCNet outperforms state-of-the-art models for speaker-independent severity classification, achieving 75.80\% accuracy on TORGO and 68.25\% on UA-Speech, significantly reducing misclassification errors. The findings confirm that leveraging knowledge transfer between datasets improves model robustness, making DSSCNet well-suited for automated dysarthria assessment. This research contributes to the development of more effective assistive speech technologies for individuals with speech impairments.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

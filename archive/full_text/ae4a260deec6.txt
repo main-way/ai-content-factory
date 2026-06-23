@@ -1,0 +1,5 @@
+Researchers from Rochester Institute of Technology published a technical paper titled “MIPSBLEED: Uncovering Microarchitectural Timing Leaks in Pervasive Embedded Processors.”
+Excerpt from abstract
+“This paper exposes how Simultaneous Multithreading (SMT), a feature increasingly used to boost performance in these environments, creates powerful cross-core timing channels on MIPS-based platforms. We introduce MIPSBLEED, a systematic analysis and exploitation framework that uncovers leakage in three shared microarchitectural components: the L1 data cache, L1 instruction cache, and the execution engine.”
+Find the technical paper here. June 2026.
+Najeeb, Ahmed, and Billy Bob Brumley. “MIPSBLEED: Uncovering Microarchitectural Timing Leaks in Pervasive Embedded Processors.” arXiv, June 2026. https://doi.org/10.48550/arXiv.2606.16372.

@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Geometry Calibration in Tomography with a Differentiable Ray-Based Model
+View PDFAbstract:Geometric misalignments between the nominal and true acquisition parameters in tomography degrade reconstructions. We propose a framework that jointly reconstructs the volume and calibrates the acquisition geometry for arbitrary source--detector configurations. The core of our framework is an x-ray transform operator whose gradients with respect to the acquisition geometry can be efficiently computed with a ray-tracing method of structure and computational complexity similar to those of the forward operator. We represent the volume in a B-spline basis to provide a continuously differentiable model. This results in a better-behaved optimization landscape compared to voxel-based representations. We validate our framework with CT, micro-CT, nano-CT, and positron emission tomography data under a variety of geometric misalignments.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

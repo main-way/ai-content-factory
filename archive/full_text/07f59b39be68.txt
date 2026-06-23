@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:PaaF: Raising the perceived quality of INR-Based Image Compression
+View PDF HTML (experimental)Abstract:Implicit Neural Representations (INRs) have recently emerged as a promising paradigm for image compression, offering a fundamentally different approach from traditional and learned codecs. Nevertheless, INR-based methods for image compression suffer from long encoding times and a consistent performance gap in classic quality metrics such as PSNR. In this work, we explore the potential of purely INR-based compression methods and we propose PaaF (Picture as a Function), a novel INR-based image codec that introduces improved architectural design, adaptive quantization, and an efficient entropy coding scheme. These components are designed to enhance rate-distortion performance while preserving the simplicity and parallelizability of INR-based decoding. Experimental results demonstrate consistent improvements over existing INR-based methods in both quantitative metrics and perceptual quality. These findings highlight the potential of INR-based approaches and contribute to narrowing the gap between functional representations and more established compression paradigms.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

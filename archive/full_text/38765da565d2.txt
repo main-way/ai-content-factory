@@ -1,0 +1,117 @@
+An open-source platform for all your creative work.
+- S3-Compatible & Local Storage: Securely store and serve your creative assets using a local filesystem or any S3-compatible cloud storage (AWS S3, Cloudflare R2, MinIO, etc.).
+- Frame-by-Frame Annotations & Comments: Give precise feedback using frame-specific drawing tools and timestamped comments directly on video and image assets.
+- Secure Sharing & Collections: Create secure public share links and curated media collections to collaborate with clients and stakeholders.
+- Granular Access Control: Manage workspace permissions using team-level and project-level role-based access controls.
+- Distributed Transcoding via Temporal: Offload resource-heavy video transcoding to a background worker pool orchestrated by Temporal.
+- Custom Asset Metadata: Define and customize dynamic metadata fields tailored to your production pipeline.
+- Collaborative AI Chat: Converse with a context-aware AI agent directly within your project workspace.
+- Custom Skills & Tools: Extend the agent's capabilities by registering custom scripts, tools, and automation skills.
+- Isolated Sandbox Execution: Run agent-submitted scripts securely within a sandboxed environment.
+- AI-Powered Metadata Autofill: Automatically generate tags, descriptions, and custom metadata for new assets using Google Gemini.
+- Semantic Search: Locate assets instantly based on visual or conceptual search queries using vector embeddings.
+Below is a quickstart guide for running Shumai with local storage. For advanced configuration options (including S3-compatible storage and Temporal workflow orchestration), see our Documentation.
+Docker Compose is the fastest way to get Shumai running. You do not need to clone the repository or install packages manually. Ensure you have Docker and Docker Compose installed, then follow these steps:
+- Create and navigate to a new directory for your configuration and data volumes:
+mkdir shumai && cd shumai
+- Download the
+docker-compose.yaml
+file:curl -o docker-compose.yaml https://raw.githubusercontent.com/shumaiOne/shumai/main/docker-compose/local/docker-compose.yaml
+- Configure Environment Variables (Remote Deployments only): If deploying Shumai to a remote server (e.g., AWS EC2, VPS), edit docker-compose.yaml and add AWS_ENDPOINT_URL_S3 under the environment section, setting it to your server's public IP address or domain name (e.g., http://12.34.56.78).
+- Start the services in detached mode:
+docker compose up -d
+- Open your browser and access Shumai at
+http://localhost:3000
+(orhttp://<your-server-ip>:3000
+for remote deployments).
+Shumai is published as @shumai-one/shumai
+on NPM. This option allows you to run Shumai globally or locally.
+Shumai requires PostgreSQL with the pgvector
+extension. Start a pre-configured database container using Docker:
+docker run --name shumai_postgres \
+-e POSTGRES_USER=shumai \
+-e POSTGRES_PASSWORD=shumai_password \
+-e POSTGRES_DB=shumai_db \
+-p 5432:5432 \
+-d pgvector/pgvector:pg18
+Create a dedicated directory to store your environment configuration and media files (which are saved in a ./data
+directory by default):
+mkdir shumai && cd shumai
+Make sure the following system dependencies are installed on your host machine before installing Shumai:
+| Package | Description | Ubuntu/Debian | Fedora | Arch | macOS |
+|---|---|---|---|---|---|
+| ffmpeg | Media transcoding and metadata extraction | sudo apt install -y ffmpeg |
+sudo dnf install -y ffmpeg |
+sudo pacman -S --noconfirm ffmpeg |
+brew install ffmpeg |
+| bubblewrap | Sandboxing environment for secure AI agent execution | sudo apt install -y bubblewrap |
+sudo dnf install -y bubblewrap |
+sudo pacman -S --noconfirm bubblewrap |
+NOT REQUIRED |
+| socat | Bidirectional socket relay for sandbox network bridging | sudo apt install -y socat |
+sudo dnf install -y socat |
+sudo pacman -S --noconfirm socat |
+brew install socat |
+| ripgrep | Fast search tool for workspace security policies | sudo apt install -y ripgrep |
+sudo dnf install -y ripgrep |
+sudo pacman -S --noconfirm ripgrep |
+brew install ripgrep |
+Note
+Ubuntu 24.04+ Note: These releases restrict unprivileged user namespaces by default. To allow bubblewrap
+and the sandbox isolation layer to function, disable this restriction:
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+Alternatively, configure an AppArmor profile that grants user namespace creation (userns
+) privileges to the relevant binaries.
+Install Shumai globally using your preferred package manager:
+# NPM
+npm install -g @shumai-one/shumai
+# PNPM
+pnpm add -g @shumai-one/shumai
+# Bun
+bun add -g @shumai-one/shumai
+Create a .env
+file in your workspace folder (shumai/
+) and add the following configuration:
+DATABASE_URL=postgresql://shumai:shumai_password@localhost:5432/shumai_db?schema=public
+BETTER_AUTH_SECRET=ySxs7DxzHDZBbeeHNPEwBuspYwipBqz5Gk5XdBjNhWw=
+STORAGE_BACKEND=local
+SHUMAI_SERVER_PORT=3000
+AWS_ENDPOINT_URL_S3=http://localhost
+Note
+If deploying on a remote server, update AWS_ENDPOINT_URL_S3
+from http://localhost
+to your server's public IP address or domain name.
+Important
+For Bun Users: Since the published package binaries contain a #!/usr/bin/env node
+shebang, running the global command directly (e.g., shumai
+) will execute under Node.js. If you installed with Bun and want to run under the Bun runtime, you must prefix all commands with bun run --bun
+(e.g., bun run --bun shumai
+, bun run --bun shumai -d
+, bun run --bun shumai stop
+).
+Start the application from your workspace folder:
+shumai
+Alternatively, you can run and manage Shumai in daemon mode:
+- Start in daemon mode:
+shumai -d
+- Stop Shumai:
+shumai stop
+- Restart Shumai:
+shumai restart
+- Show/tail logs:
+shumai logs
+On startup, Shumai will automatically run database migrations and start the web server at http://localhost:3000
+.
+To set up Shumai locally for development:
+- Clone the repository and install dependencies:
+git clone https://github.com/shumaiOne/shumai.git cd shumai bun install
+- Start the
+pgvector
+database container (as described in Option 2, Step 1). - Create a
+.env
+file at the root of the workspace using the configuration from Option 2, Step 5. - Apply the database schema migrations:
+bun run db:migrate
+- Start the local development server:
+bun run dev
+Shumai provides a Command Line Interface (CLI) tool to manage projects, folders, and assets, upload files/folders, and create new versions directly from your terminal.
+For more details on installation and usage, see the CLI Readme.

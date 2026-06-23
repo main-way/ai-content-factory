@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:Quality and Agreement in Multilabel Emotion Annotation: A Case Study and Evaluation Framework
+View PDFAbstract:Emotion annotation is inherently subjective, yet most NLP pipelines still assume "gold" labels, typically produced by majority voting, and treat annotator variation as noise. In this paper, we present a multilabel emotion annotation case study and use it to examine how annotator behavior and aggregation choices affect both agreement estimates and downstream emotion classifiers. Rather than collapsing disagreement into a single label, we represent targets as soft vote-share labels (including an intensity-weighted variant) and evaluate models using both thresholded metrics (macro-/micro-F1) and probabilistic alignment (Bernoulli cross-entropy SoftBCE), alongside data-derived disagreement diagnostics. Across annotation regimes, we show that disagreement is structured and leaves measurable traces in model behavior: hard labels may maximize F1 metrics, while soft supervision yields predictions that better reflect empirical annotator variance and uncertainty. Our results provide practical guidance for designing, aggregating, and evaluating multilabel emotion datasets when multiple interpretations are plausible.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

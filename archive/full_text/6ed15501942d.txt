@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Time Series Classification through Diffeomorphic Time Warping (DiffTW)
+View PDF HTML (experimental)Abstract:Time series classification involves learning a mapping from a continuous, temporally ordered sequence of real-valued observations to a discrete response variable, like class labels. This task is fundamental in domains, including health monitoring, where the temporal structure of data is critical for accurate prediction. Dynamic Time Warping (DTW) is a standard technique for measuring similarity between sequences varying in time or speed. However, DTW is restricted to discrete point matching. To move beyond pairwise alignment, we propose a theoretical framework that learns mappings between real-valued functions. These mappings approximate the flow associated with the characteristic curves of a linear transport equation with a space-dependent velocity field, providing a diffeomorphic transformation between two time series. Using the method of characteristics, we transform this partial differential equation into ordinary differential equations (ODEs) modeling system dynamics. The objective function used to learn these ODEs derives from the fundamental theorem of calculus. To enable flexible, expressive representations of the velocity field, we utilize reproducing kernel Hilbert spaces and optimal control methods. Our method, Diffeomorphic Time Warping (DiffTW), provides a theoretically grounded dissimilarity measure. Using a 1-nearest neighbor classifier, DiffTW outperforms DTW on 60 of 86 datasets.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

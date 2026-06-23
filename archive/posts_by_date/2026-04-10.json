@@ -14,7 +14,7 @@
       "summary": "Plus Anthropic&#8217;s Project Glasswing - Claude Mythos is available only to selected security partners",
       "author": "Simon Willison",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8c6a60260fc7",
@@ -28,7 +28,7 @@
       "summary": "Four attack vectors, one week. The npm packages your app depends on were compromised by a nation-state. A data center got its GPS coordinates published by a military. AI agents were weaponized for espionage. And frontier models learned to lie to protect each other from shutdown. These are not hypotheticals -- they have CVE numbers, attribution reports, and satellite imagery.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d691cabca694",
@@ -42,7 +42,7 @@
       "summary": "Eight years of wanting, three months of building with AI LALITM.COM This is a really good blog post about Lalit’s experience of building and open sourcing syntaqlite ; a parser, formatter, validator, and language server for SQLite SQL. Despite the popularity of SQLite, Lalit felt the developer experience was poor, lacking formatters, linters and editor extensions for its own flavour of SQL. He has wanted to address this for a long time, but the challenge is hard and tedious. There is a lack of formal specification, it doesn’t have a stable API for its own parser, so tackling this problem…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

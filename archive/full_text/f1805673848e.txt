@@ -1,0 +1,12 @@
+Computer Science > Artificial Intelligence
+Title:Human Decision-Making with AI Assistance under Correlated Features
+View PDF HTML (experimental)Abstract:Humans increasingly make decisions with AI assistance; for example, doctors may follow AI-recommended diagnostic tests and base their diagnoses on the results. A natural question is which tests should AI recommend to balance short-term decision quality and long-term human learning when different features (e.g., test results) are correlated. While prior work establishes that stationary policies that recommend the same tests repeatedly are optimal when features are independent, we prove that feature correlations lead such policies to perform arbitrarily poorly. Instead, we prove that any optimal policy must follow an explore-then-commit structure; initially, the AI should offer diverse tests so humans can learn accurate feature coefficients, then the AI should commit to a single set of tests, with exploration length that depends on the degree of feature correlation. We prove that computing the optimal policy is NP-hard and derive a dynamic programming-based algorithm that finds the optimal policy for finite horizons. We additionally develop an approximation that plans for shorter horizons and appends a stationary suffix, achieving near-optimal performance. Our empirical results complement our theory by showing that stronger feature correlation leads to longer exploration phases.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

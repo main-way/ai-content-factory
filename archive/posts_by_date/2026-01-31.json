@@ -17,7 +17,7 @@
         "Blog",
         "Artificial intelligence (AI)"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "67e28d9a4509",
@@ -31,7 +31,7 @@
       "summary": "Plus Datasette 1.0a24",
       "author": "Simon Willison",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Domain Adaptation Under Wireless Network Constraints: When Does It Become Green?
+View PDF HTML (experimental)Abstract:The deployment of data-driven models in 6G wireless networks is increasingly challenged by frequent distribution shifts that degrade performance over time. Unsupervised Domain Adaptation (UDA) offers an alternative approach by adapting the trained model to a shifted domain without requiring labels. However, UDA pipelines are often more complex than single-task training due to additional modules and optimization procedures, raising a practical question: do the benefits of adaptation come at a higher energy cost, and how does this trade-off compare to retraining when labeling effort is also considered? In this work, we investigate the energy consumption of UDA and compare it to single task. We further propose a way to determine the minimum number of target domains for which UDA becomes more energy-efficient than retraining, taking into account the labeling cost. Our results aim to clarify when UDA should be preferred over classical train-from-scratch approaches from an energy and labeling-aware perspective.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,6 +1,6 @@
 {
   "date": "2026-06-19",
-  "count": 496,
+  "count": 497,
   "posts": [
     {
       "id": "99deabee4396",
@@ -195,7 +195,8 @@
       "published": "2026-06-19T21:22:45+00:00",
       "summary": "",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "61b55efa648c",
@@ -509,7 +510,7 @@
         "электроэнергетика",
         "энергосбыт"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fdd0e253a7dd",
@@ -1450,7 +1451,8 @@
       "published": "2026-06-19T16:28:19+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "1838dcede2fb",
@@ -1489,7 +1491,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b6b6d29f47b3",
@@ -1503,7 +1505,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "efbdc2de673d",
@@ -1963,7 +1965,8 @@
       "published": "2026-06-19T15:13:11+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "e8e0dc1f0e54",
@@ -2408,7 +2411,8 @@
       "published": "2026-06-19T13:51:49+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "7a508986bc65",
@@ -3129,7 +3133,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b10bc4276eef",
@@ -3157,7 +3161,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a04701188e6f",
@@ -3326,7 +3330,8 @@
       "published": "2026-06-19T11:06:04+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "ecbf572f9340",
@@ -3794,7 +3799,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5282ab865e3f",
@@ -3832,7 +3837,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ac6657467cd9",
@@ -3883,6 +3888,19 @@
         "Crystal Ball"
       ],
       "has_full_text": true
+    },
+    {
+      "id": "0d0805189c45",
+      "title": "Plotnine",
+      "url": "https://plotnine.org/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-19T09:08:00+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
     },
     {
       "id": "49268def3d87",
@@ -5354,7 +5372,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a2a64e4933a5",
@@ -5371,7 +5389,7 @@
         "cs.AI",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6a3d8af85db4",
@@ -5388,7 +5406,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "72dfcbe42d72",
@@ -5404,7 +5422,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8fc49e264687",
@@ -5421,7 +5439,7 @@
         "cs.AI",
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4c1b795511d0",
@@ -5438,7 +5456,7 @@
         "cs.AI",
         "cs.SE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8b82a5fd7838",
@@ -5455,7 +5473,7 @@
         "cs.AI",
         "cs.SI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f3664d96b70d",
@@ -5471,7 +5489,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "147af00d5de3",
@@ -5488,7 +5506,7 @@
         "cs.AI",
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "41409982d0c2",
@@ -5504,7 +5522,7 @@
       "tags": [
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "127f25d10277",
@@ -5521,7 +5539,7 @@
         "cs.AI",
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c1d6d8ca1379",
@@ -5538,7 +5556,7 @@
         "cs.AI",
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bb2dafde31c4",
@@ -5552,7 +5570,7 @@
       "summary": "Сервис кикшеринга Юрент запустил социальное направление «Юрент Рядом». По программе доступ к электросамокатам могут получить медицинские учреждения, благотворительные организации, волонтёры и городские службы. Программа уже действует более чем в 80 городах России, её участники совершили свыше 15 тыс. поездок. Основная цель — помочь представителям организаций быстрее перемещаться по городу в условиях плотного трафика.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "90dd3572907f",
@@ -5569,7 +5587,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "62f8029a394c",
@@ -5586,7 +5604,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8227aedc7222",
@@ -5603,7 +5621,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "855d31edeebc",
@@ -5621,7 +5639,7 @@
         "cs.AI",
         "cs.PL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "95124f73321e",
@@ -5638,7 +5656,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a35ede15d9c3",
@@ -5655,7 +5673,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1a0888b3a921",
@@ -5671,7 +5689,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bb9aca9eb5a7",
@@ -5688,7 +5706,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "12d661cd6598",
@@ -5705,7 +5723,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fdab499ba042",
@@ -5722,7 +5740,7 @@
         "cs.CL",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "49e8b27e4e47",
@@ -5739,7 +5757,7 @@
         "cs.CL",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "24fbf4182dff",
@@ -5756,7 +5774,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2dc1ac8f6596",
@@ -5772,7 +5790,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "276d22ae0060",
@@ -5788,7 +5806,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6ec326c71f57",
@@ -5804,7 +5822,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1df6498ef031",
@@ -5821,7 +5839,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0063b5e5b8ef",
@@ -5838,7 +5856,7 @@
         "cs.CL",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6bbcde9dc40a",
@@ -5855,7 +5873,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "414e2781fa0c",
@@ -5871,7 +5889,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "245ba32d86cf",
@@ -5889,7 +5907,7 @@
         "cs.AI",
         "cs.HC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "34c5c4b02512",
@@ -5907,7 +5925,7 @@
         "cs.CY",
         "cs.SI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a60f6a064e19",
@@ -5923,7 +5941,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8e2a59e2a13f",
@@ -5939,7 +5957,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1c4884f589bd",
@@ -5955,7 +5973,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "53f88868e7df",
@@ -5971,7 +5989,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2a0d1c1d27e8",
@@ -5987,7 +6005,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d1c25c23c185",
@@ -6004,7 +6022,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dfe24fa2a523",
@@ -6021,7 +6039,7 @@
         "cs.CL",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "644113caf86b",
@@ -6039,7 +6057,7 @@
         "cs.AI",
         "cs.HC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0108efcf22c1",
@@ -6055,7 +6073,7 @@
       "tags": [
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0c704c2fff0c",
@@ -6073,7 +6091,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3033b0f8f289",
@@ -6089,7 +6107,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a108c156f6cd",
@@ -6105,7 +6123,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "94bb00a598c6",
@@ -6122,7 +6140,7 @@
         "cs.CV",
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "66a1825faa32",
@@ -6140,7 +6158,7 @@
         "cs.AI",
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7697f26cb5b5",
@@ -6156,7 +6174,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "06c244d72107",
@@ -6172,7 +6190,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bc8a5f51248a",
@@ -6190,7 +6208,7 @@
         "cs.GR",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e82e1abe16df",
@@ -6206,7 +6224,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "76e57c4b5a8e",
@@ -6223,7 +6241,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "47e1763a808d",
@@ -6239,7 +6257,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1de105502018",
@@ -6255,7 +6273,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "71600950ea02",
@@ -6272,7 +6290,7 @@
         "cs.CV",
         "cs.CL"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ccbc44cf335a",
@@ -6288,7 +6306,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "90ac26deb3e2",
@@ -6305,7 +6323,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "851a838f0db9",
@@ -6321,7 +6339,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "188a58d4e66c",
@@ -6337,7 +6355,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8334449e6764",
@@ -6353,7 +6371,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b525a7cfdd61",
@@ -6370,7 +6388,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cb00b3c786e7",
@@ -6386,7 +6404,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8f846c6cafd0",
@@ -6403,7 +6421,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "04e6adacb3f5",
@@ -6419,7 +6437,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "37a2f958745a",
@@ -6435,7 +6453,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "822c13f115b2",
@@ -6451,7 +6469,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "488ba6b2f0d7",
@@ -6467,7 +6485,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d556392fa656",
@@ -6484,7 +6502,7 @@
         "cs.CV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8049187c98b0",
@@ -6501,7 +6519,7 @@
         "cs.CV",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b89b32019539",
@@ -6517,7 +6535,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "206b86ef9cba",
@@ -6533,7 +6551,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "32ca4474e8b5",
@@ -6549,7 +6567,7 @@
       "tags": [
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "25b0120b39ee",
@@ -6566,7 +6584,7 @@
         "cs.LO",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fbdca9ad503a",
@@ -6586,7 +6604,7 @@
         "cs.LG",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "680c949dc047",
@@ -6604,7 +6622,7 @@
         "cs.AI",
         "cs.MM"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c49dfdeeb8af",
@@ -6622,7 +6640,7 @@
         "cs.CL",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fd91340bb8d4",
@@ -6639,7 +6657,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9c94bf7c6c55",
@@ -6656,7 +6674,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7955743244c8",
@@ -6673,7 +6691,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "da5c9525ae6d",
@@ -6693,7 +6711,7 @@
         "stat.CO",
         "stat.ME"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1f5eecf53da1",
@@ -6711,7 +6729,7 @@
         "cs.LG",
         "math.OC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "eb4ff734669b",
@@ -6728,7 +6746,7 @@
         "stat.ML",
         "stat.ME"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fd2f57f2bb10",
@@ -6745,7 +6763,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bf5082ae20b1",
@@ -6764,7 +6782,7 @@
         "hep-ph",
         "physics.data-an"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0fd230623670",
@@ -6783,7 +6801,7 @@
         "stat.AP",
         "stat.CO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ea32f75a68b7",
@@ -6801,7 +6819,7 @@
         "stat.CO",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9277ce7d4914",
@@ -6818,7 +6836,7 @@
         "stat.ME",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4cbe9ef9717c",
@@ -6836,7 +6854,7 @@
         "stat.AP",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1abbb5fe6b24",
@@ -6853,7 +6871,7 @@
         "stat.ME",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0422446a0d29",
@@ -6871,7 +6889,7 @@
         "math.OC",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f088ad8bd68a",
@@ -6888,7 +6906,7 @@
         "cs.LG",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "01bc4f3ac3ca",
@@ -6908,7 +6926,7 @@
         "math.PR",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "229f177ed398",
@@ -6926,7 +6944,7 @@
         "stat.ML",
         "stat.TH"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f5f40f1affe6",
@@ -6945,7 +6963,7 @@
         "stat.ML",
         "stat.TH"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "90c1f2178e6c",
@@ -6963,7 +6981,7 @@
         "cs.CL",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7c70e94db75e",
@@ -6981,7 +6999,7 @@
         "cs.LG",
         "math.OC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a345ed4b2866",
@@ -7001,7 +7019,7 @@
         "math.ST",
         "stat.TH"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0cb181479d9d",
@@ -7018,7 +7036,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "667febabe902",
@@ -7035,7 +7053,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "243fa4f51aab",
@@ -7052,7 +7070,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1fc362fdf24e",
@@ -7069,7 +7087,7 @@
         "stat.ML",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e604139f8fbf",
@@ -7089,7 +7107,7 @@
         "stat.AP",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "998a7cbd6021",
@@ -7108,7 +7126,7 @@
         "math.OC",
         "stat.ML"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "debf14b620c5",
@@ -7124,7 +7142,7 @@
       "tags": [
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bc887fb5ce61",
@@ -7141,7 +7159,7 @@
         "cs.CG",
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6cb96750c4ec",
@@ -7158,7 +7176,7 @@
         "nlin.AO",
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c92a75950bc2",
@@ -7175,7 +7193,7 @@
         "q-bio.NC",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b34a3a33034c",
@@ -7191,7 +7209,7 @@
       "tags": [
         "q-bio.NC"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "134ed93d6798",
@@ -7207,7 +7225,7 @@
       "tags": [
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9645cf6a9cd1",
@@ -7224,7 +7242,7 @@
         "cs.NE",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "49f75d18ea53",
@@ -7242,7 +7260,7 @@
         "cs.DB",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9efc105475b9",
@@ -7261,7 +7279,7 @@
         "cs.NE",
         "math.NA"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5e7d15079660",
@@ -7279,7 +7297,7 @@
         "cs.AI",
         "cs.NE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fe6c1eed3f5b",
@@ -7297,7 +7315,7 @@
         "cs.CV",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "70ba7b42c709",
@@ -7314,7 +7332,7 @@
         "eess.IV",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b3fc0efca969",
@@ -7332,7 +7350,7 @@
         "cs.CV",
         "physics.med-ph"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "75055b00d52c",
@@ -7349,7 +7367,7 @@
         "eess.IV",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "47c7852ade19",
@@ -7366,7 +7384,7 @@
         "cs.CV",
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f16d395c9d1e",
@@ -7383,7 +7401,7 @@
         "eess.IV",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "77616feff6d6",
@@ -7400,7 +7418,7 @@
         "eess.IV",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5f947b222ebb",
@@ -7416,7 +7434,7 @@
       "tags": [
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "309b087188d8",
@@ -7433,7 +7451,7 @@
         "eess.IV",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9bb326a81793",
@@ -7449,7 +7467,7 @@
       "tags": [
         "eess.IV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7296ce0c13c0",
@@ -7466,7 +7484,7 @@
         "cs.RO",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3d7789a0c160",
@@ -7482,7 +7500,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e9ee40424738",
@@ -7499,7 +7517,7 @@
         "cs.RO",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "151417ea5dc2",
@@ -7515,7 +7533,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2d74e4ad3df3",
@@ -7532,7 +7550,7 @@
         "cs.RO",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d9f982135c3c",
@@ -7550,7 +7568,7 @@
         "cs.SY",
         "eess.SY"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "598fcdd8a116",
@@ -7568,7 +7586,7 @@
         "cs.SY",
         "eess.SY"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9550f8a11b47",
@@ -7584,7 +7602,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "42a9e6fd525c",
@@ -7600,7 +7618,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7b614aac4e90",
@@ -7618,7 +7636,7 @@
         "cs.SY",
         "eess.SY"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fad226ae598c",
@@ -7634,7 +7652,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "dfc8ea2fce3c",
@@ -7652,7 +7670,7 @@
         "cs.SY",
         "eess.SY"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "350796546709",
@@ -7668,7 +7686,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "00a5e88a8226",
@@ -7688,7 +7706,7 @@
         "cs.LO",
         "cs.MA"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1ff98f3ecb5c",
@@ -7705,7 +7723,7 @@
         "cs.RO",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d98ff5877504",
@@ -7722,7 +7740,7 @@
         "cs.RO",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "293a712d4a0f",
@@ -7739,7 +7757,7 @@
         "cs.RO",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e99b7dba038e",
@@ -7755,7 +7773,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8f833aac7066",
@@ -7771,7 +7789,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2f92748a4ec4",
@@ -7787,7 +7805,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e086281d6de1",
@@ -7806,7 +7824,7 @@
         "cs.SY",
         "eess.SY"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "418189211849",
@@ -7825,7 +7843,7 @@
         "cs.SY",
         "eess.SY"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4deca0fe1550",
@@ -7842,7 +7860,7 @@
         "cs.RO",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f85e75dde97f",
@@ -7859,7 +7877,7 @@
         "cs.RO",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1547db96319d",
@@ -7876,7 +7894,7 @@
         "cs.RO",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d6b7fbf3e60e",
@@ -7893,7 +7911,7 @@
         "cs.RO",
         "cs.AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7646b55810ef",
@@ -7909,7 +7927,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a575ba7731fb",
@@ -7925,7 +7943,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "def82d0ea813",
@@ -7941,7 +7959,7 @@
       "tags": [
         "cs.RO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7ded518e6818",
@@ -7958,7 +7976,7 @@
         "cs.RO",
         "cs.CV"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8ac63ee2ff27",
@@ -7974,7 +7992,7 @@
       "tags": [
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3f9c84fc2b2e",
@@ -7992,7 +8010,7 @@
         "cs.AI",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fe76fea13e1f",
@@ -8012,7 +8030,7 @@
         "cs.SD",
         "eess.SP"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d30517f0ca3e",
@@ -8031,7 +8049,7 @@
         "cs.SD",
         "eess.SP"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "23db34e706eb",
@@ -8048,7 +8066,7 @@
         "eess.AS",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "14b2ce2f4769",
@@ -8064,7 +8082,7 @@
       "tags": [
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a73e3033de6f",
@@ -8083,7 +8101,7 @@
         "cs.LG",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "03ec65075012",
@@ -8099,7 +8117,7 @@
       "tags": [
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "af5f5c1e790a",
@@ -8115,7 +8133,7 @@
       "tags": [
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b5a34a5ee391",
@@ -8132,7 +8150,7 @@
         "eess.AS",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e9bc74251b0b",
@@ -8151,7 +8169,7 @@
         "cs.LG",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6da48329348f",
@@ -8167,7 +8185,7 @@
       "tags": [
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b2fe3b789902",
@@ -8183,7 +8201,7 @@
       "tags": [
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e0bc3f832f2b",
@@ -8201,7 +8219,7 @@
         "cs.AI",
         "cs.LG"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cc87e8efe806",
@@ -8217,7 +8235,7 @@
       "tags": [
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3a18b22b54ce",
@@ -8235,7 +8253,7 @@
         "eess.AS",
         "eess.SP"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "86235d61409b",
@@ -8252,7 +8270,7 @@
         "cs.SD",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "26b265e26d26",
@@ -8270,7 +8288,7 @@
         "cs.SD",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7730c883a7d2",
@@ -8287,7 +8305,7 @@
         "cs.SD",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "26c8a8361a10",
@@ -8305,7 +8323,7 @@
         "cs.CL",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "86e912d8902a",
@@ -8323,7 +8341,7 @@
         "cs.CL",
         "cs.SD"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a6ce8b668272",
@@ -8341,7 +8359,7 @@
         "cs.LG",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c16c476e5432",
@@ -8359,7 +8377,7 @@
         "cs.AI",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "47e12b61a577",
@@ -8377,7 +8395,7 @@
         "cs.SD",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e626e9f37755",
@@ -8394,7 +8412,7 @@
         "cs.CL",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a9a79517afe2",
@@ -8411,7 +8429,7 @@
         "cs.SD",
         "eess.AS"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "efda1c3c5cce",
@@ -8425,7 +8443,7 @@
       "summary": "At Summer Game Fest, the mechanics of the cozy horror game become more clear -- both in murder and in love.",
       "author": "David Lumb",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "aa7fe5b3ca23",
@@ -8439,7 +8457,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8e03c3647dc7",
@@ -8453,7 +8471,7 @@
       "summary": "Jagmeet Singh / TechCrunch : Appfigures: daily downloads of major VPN apps in India rose 49% on June 16 after India announced its Telegram ban; Proton and Turbo recorded largest increases &nbsp; &mdash;&nbsp; As India cut off access to messaging app Telegram for a week over concerns about exam-related fraud, users turned to virtual private networks &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "95ccb3c82605",
@@ -8466,7 +8484,8 @@
       "published": "2026-06-19T02:10:16+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "d64613dce1ac",
@@ -8480,7 +8499,7 @@
       "summary": "Here are the answers for The New York Times Mini Crossword for June 19.",
       "author": "Gael Cooper",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "01ba63632c39",
@@ -8494,7 +8513,7 @@
       "summary": "Financial Times : Sources: SpaceX plans to raise $20B in a bond sale as soon as next week; the funds would be used to pay back a $20B bridge loan taken out after the xAI merger &nbsp; &mdash;&nbsp; AI and rocket group is tapping debt markets after raising $86bn in stock market debut&nbsp; &mdash;&nbsp; SpaceX is planning to raise $20bn &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a5c3bf2e9024",
@@ -8508,7 +8527,7 @@
       "summary": "Financial Times : Doc: SpaceX says the EU's plan to reserve satellite spectrum for European operators risks disrupting connectivity, including for emergency services in Ukraine &nbsp; &mdash;&nbsp; Elon Musk's group hits out at proposal by bloc to reserve part of spectrum band for European operators",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b9c0b15dfb35",
@@ -8522,7 +8541,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a0d9bbf61ced",
@@ -8536,7 +8555,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "43dd03f73350",
@@ -8557,7 +8576,7 @@
         "Telegram ban",
         "India ban"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f7db370cf36f",
@@ -8581,7 +8600,7 @@
         "DeductiveAI",
         "AI SRE"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e49175cba4cf",
@@ -8595,7 +8614,7 @@
       "summary": "Nate Raymond / Reuters : A US circuit court overturned an injunction against Ohio, allowing the state to implement a law forcing platforms to seek parental consent if a user is under-16 &nbsp; &mdash;&nbsp; A U.S. appeals court on Thursday cleared the way for Ohio to implement a law that requires social media companies &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a33a0899ed18",
@@ -8621,7 +8640,7 @@
         "Swift",
         "Wallops"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2cc91acf18ff",
@@ -8635,7 +8654,7 @@
       "summary": "Financial Times : A profile of Meta President Dina Powell McCormick, who has become one of Silicon Valley's top power brokers as she helps oversee Meta's AI infrastructure push &nbsp; &mdash;&nbsp; Former Goldman Sachs executive explores financing once alien to Silicon Valley for $600bn infrastructure push.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b23e3879d3df",
@@ -8657,7 +8676,7 @@
         "обратимые вычисления",
         "транзисторы"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f8f8e2e3c913",
@@ -8675,7 +8694,7 @@
         "llm",
         "ии-агент"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6c15cd212624",
@@ -8703,7 +8722,7 @@
       "summary": "Still using Microsoft Office 2019 for MacOS and iOS? Your files may soon become read-only.",
       "author": "Jeff Carlson",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ae7974b01df8",
@@ -8717,7 +8736,7 @@
       "summary": "This meal kit service turned me into a confident cook.",
       "author": "Corin Cesaric-Epple",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2a07c87adeef",
@@ -8745,7 +8764,7 @@
       "summary": "If you're searching for an espresso machine for your dad this Father's Day, here are the best options, tested and reviewed by CNET editors.",
       "author": "David Watsky",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7a197f3c5465",
@@ -8759,7 +8778,7 @@
       "summary": "This is 100 Years From Now. Once a week we skip a century and try to picture what life actually looks like when the stuff we're building now has had time to settle in. This week: the war that won't have a country in it.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "46225cabc8a9",
@@ -8773,7 +8792,7 @@
       "summary": "GLM-5.2 is the new leading open weights model ARTIFICIALANALYSIS.AI Artificial Analysis provides a highly comprehensive analysis of AI models, with a particular focus on agentic capabilities. For coding models, their stated goal is to measure how well agents complete realistic coding work, and how performance varies across outcome, reliability, token usage, cost, and execution time. The benchmarking itself is a composite benchmark score based on existing benchmarks, including DeepSWE (Focussed on long-horizon software engineering), Terminal-Bench v2 (Agentic terminal usage), SWE-Atlas-QnA…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

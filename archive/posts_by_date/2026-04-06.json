@@ -19,7 +19,7 @@
         "Developer Tools",
         "Infrastructure"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e5c861df0a41",
@@ -40,7 +40,7 @@
         "Claude LLM",
         "large language models"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5b8133d2264a",
@@ -54,7 +54,7 @@
       "summary": "How much could AI revolutionize the economy?",
       "author": "Jack Clark",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

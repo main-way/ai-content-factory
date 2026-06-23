@@ -1,0 +1,11 @@
+Computer Science > Neural and Evolutionary Computing
+Title:On the Use of Survival Selection Methods for Evolutionary Diversity Optimisation
+View PDF HTML (experimental)Abstract:Generating a diverse set of high quality solutions for an optimisation problem has been studied extensively in recent years by the evolutionary computation community. A paradigm that has received increasing attention is evolutionary diversity optimisation (EDO), where the goal is to maximise the diversity of a solution set subject to quality constraints. Since the contribution of each solution to the diversity of the population depends on other solutions and can change dramatically if several solutions in the population are modified simultaneously, most EDO approaches generate a single new solution per generation and discard the solution with the least contribution to diversity, ensuring a steady increase in population diversity over successive generations until convergence. In this study, we aim to answer two questions: (1) Is generating multiple solutions in each generation beneficial for EDO? (2) How can this be achieved efficiently, given that conventional survival selection methods do not work well in EDO due to the dependency of a solution's contribution to diversity on other solutions?
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

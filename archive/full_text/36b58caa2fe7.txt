@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:Coupled Routing and Configuration Optimization for Multi-Viewpoint Robotic Inspection
+View PDF HTML (experimental)Abstract:We present a unified framework that turns a set of 6-DoF inspection viewpoints into a time-optimal, collision-free route for a 9-DoF robotic system. Unlike modular pipelines that fix a single inverse-kinematics (IK) configuration per viewpoint, build an all-pairs travel-time map, and then route, our method jointly optimizes the visiting order and the per-viewpoint configuration in a single global search. The three-dimensional self-motion manifold of each viewpoint is parameterized in closed form so that the pose constraint holds by construction, the rest-to-rest travel time is approximated by a closed-form admissible double-integrator surrogate, and the tour is encoded by random keys. A derivative-free optimizer (CMA-ES) minimizes a cheap penalized objective over order and configuration, after which direct-collocation trajectory optimization is applied only to the edges of the selected route to certify dynamic feasibility and torque limits, and to return exact timings. This reduces the trajectory solves from quadratic to linear in the number of viewpoints and removes the decoupling that prevents modular pipelines from being globally time-optimal. Simulations and real-robot experiments on a KUKA LBR iiwa with a 2-DoF linear stage validate feasibility, smooth execution, and reduced end-to-end inspection time relative to modular and naive distance-based baselines.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

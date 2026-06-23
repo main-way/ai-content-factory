@@ -1,0 +1,12 @@
+Condensed Matter > Disordered Systems and Neural Networks
+Title:A statistical physics framework for optimal learning
+View PDF HTML (experimental)Abstract:Learning is a complex dynamical process shaped by a range of interconnected decisions. Careful design of hyperparameter schedules for artificial neural networks or efficient allocation of cognitive resources by biological learners can dramatically affect performance. Yet, theoretical understanding of optimal learning strategies remains sparse, especially due to the intricate interplay between evolving metaparameters and nonlinear learning dynamics. The search for optimal protocols is further hindered by the high dimensionality of the learning space, often resulting in predominantly heuristic, difficult to interpret, and computationally demanding solutions. Here, we combine statistical physics with control theory in a unified theoretical framework to identify optimal learning protocols in prototypical neural network models. In the high-dimensional limit, we derive closed-form ordinary differential equations that track online stochastic gradient descent through low-dimensional order parameters. We formulate the design of learning protocols as an optimal control problem directly on the dynamics of the order parameters with the goal of minimizing the generalization error. This formulation encompasses a variety of learning scenarios, optimization constraints, and control budgets. We apply it to representative cases, including optimal curricula, adaptive dropout regularization and noise schedules in denoising autoencoders. We find nontrivial yet interpretable strategies highlighting how optimal protocols mediate learning trade-offs. Our results establish a principled foundation for understanding and designing optimal protocols and suggest a path toward a theory of meta-learning grounded in statistical physics.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

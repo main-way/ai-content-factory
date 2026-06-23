@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:CAAD: Contrastive Audio-Aware Distillation for Efficient Speech Language Models
+View PDF HTML (experimental)Abstract:Speech Language Models achieve reasoning capabilities, but are often hindered by massive parameter counts and a tendency to prioritize linguistic priors over acoustic features. While contrastive decoding enhances grounding by contrasting audio-aware and text-only logits, it increases inference latency. We propose Contrastive Audio-Aware Distillation (CAAD), a framework that internalizes the teacher's contrastive reasoning into the student model's weights. To overcome the high computational training overhead in the dual-path token-by-token contrastive distillation process, we introduce a synchronized teacher-forcing strategy. Anchored by unified Pseudo-Ground Truths, this mechanism enables simultaneous full-sequence generation of the teacher's contrastive distributions, allowing student to distill the audio-aware signal efficiently. Overall, CAAD yields a ~8% relative gain over standard knowledge distillation on Dynamic-SUPERB and successfully reduces linguistic bias in MCR-BENCH.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

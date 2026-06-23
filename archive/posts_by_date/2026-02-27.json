@@ -14,7 +14,7 @@
       "summary": "Plus vibe coding my dream macOS presentation app, Gemini 3.1 Pro and lots more",
       "author": "Simon Willison",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4316a04f2ed5",
@@ -28,7 +28,7 @@
       "summary": "Ladybird adopts Rust, with help from AI LADYBIRD.ORG Ladybird is a new web browser, that is currently under active development. The team behind this goal have been considering alternatives to C++ for a while, but having considered Rust and Swift in the past, they decided to stick with C++. However, Rust has gradually become a more compelling option. So what to do with their current JavaScript engine (25,000 lines of code), written in C++? Erm, that’s easy. Get Claude Code / Codex to port it. Armed with a suite of 52,898 tests, this human-directed migration took just one week. This is a…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

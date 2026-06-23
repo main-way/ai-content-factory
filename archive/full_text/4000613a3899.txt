@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Subsampling for supervised learning in reproducing kernel Hilbert spaces
+View PDFAbstract:In the era of big data, subsampling became a common practice in statistical learning. By selecting a subgroup of individuals based on which the learner is trained, subsampling aims at reducing the computational cost and time of the estimation step, and ideally leads to a decrease of its energy consumption and carbon footprint. This work focuses on a nonparametric setting, in which the hypotheses set lies in a reproducing kernel Hilbert space, and the estimator is a minimizer of an empirical risk reweighted à la Horvitz-Thompson. By studying the asymptotic properties of this estimator, we reveal an optimal subsampling scheme (regarding the trace of the covariance operator) and show that it can be used via plug-in. A numerical study on synthetic and real-world datasets shows the practicability and the benefit of the proposed approach.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

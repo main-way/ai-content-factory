@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:NGPS: Structure-Preserving Self-Supervised Denoising via Neighbor-Guided Patch Sampling
+View PDF HTML (experimental)Abstract:Neighboring-slice self-supervised denoising is attractive for volumetric medical imaging, yet inter-slice misalignment breaks anatomical correspondence and often yields ghosting and blurred margins when adjacent slices are used naively as targets. We propose Neighbor-Guided Patch Sampling (NGPS), a lightweight framework that constructs neighboring supervision under local inter-slice misalignment without explicit registration. To avoid learning from misleading targets, prior methods commonly mask discrepant regions, but this stabilizes training at the cost of leaving a non-trivial portion of neighboring evidence unexploited, particularly around high-frequency anatomical boundaries. NGPS addresses this by decoupling structure matching from signal retrieval: for each masked location, it searches a local neighborhood for structurally similar candidate patches using a simple guide image (e.g., fast bilateral filtering), while retrieving the supervision signal directly from the raw noisy neighbor at the matched coordinates. By matching on a noise-attenuated guide while retrieving raw values from neighboring slices, NGPS constructs local pseudo targets without a learned registration module. Across the evaluated CT and synthetic-Rician MRI settings, NGPS improves fidelity and structure-sensitive metrics. Code is available at this https URL .
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

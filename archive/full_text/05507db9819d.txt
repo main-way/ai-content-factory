@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:HaineiFRDM: Structure-Preserving Diffusion for Film Restoration under Fast Motion and Diverse Defects
+View PDF HTML (experimental)Abstract:Existing film-restoration methods frequently fail under fast motion, producing limb disappearance and structural distortion due to inaccurate motion modeling. Moreover, high-resolution restoration under spatially-persistent and mixed defects remains insufficiently studied. We propose HaineiFRDM, a Film Restoration Diffusion Model that leverages the content modeling capability of diffusion models for content-aware restoration, removing defects while preserving scene this http URL enable scalable high-resolution restoration, we adopt a patch-wise strategy with position-aware global fusion modules to maintain cross-patch coherence. We further introduce a frequency-based module to enhance texture consistency and a patch-consistent inference framework to alleviate blocking artifacts introduced by patch-based this http URL also construct a film restoration dataset comprising categorized defect templates, professionally restored films, and realistic synthetic this http URL experiments demonstrate our superior restoration quality with strong structural consistency. Our design also reduces memory requirements, enabling high-resolution restoration on a single 24GB-VRAM this http URL and the dataset will be released at this https URL.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

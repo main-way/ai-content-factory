@@ -22,7 +22,7 @@
         "vision language action models (VLA)",
         "vision language models (VLM)"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "28d70ab687e2",
@@ -40,7 +40,7 @@
         "Strategy",
         "Technology And R&D"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "eb990cbc98cf",
@@ -57,7 +57,7 @@
         "Fund Raising",
         "Videos"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "90033c0599c7",
@@ -71,7 +71,7 @@
       "summary": "OpenAI to test ads in ChatGPT as it burns through billions, Sequoia to invest in Anthropic, Zhipu AI breaks US chip reliance, The Drama at Thinking Machines Is Riveting Silicon Valley",
       "author": "Last Week in AI",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1fff0832aef0",
@@ -85,7 +85,7 @@
       "summary": "The recurring dream of replacing developers CAIMITO.NET … or why “We’ve Tried to Replace Developers Every Decade Since 1969” This is an excellent piece by Stephan Schwab, highlighting that replacing developers with some other technology (at the moment that is of course AI) is far from being a new concept. This recurring theme dates back to the birth of modern computers, with COBOL (or Common Business-Oriented Language to give its full name) being targeted at business people. This re-emerged in 80s with CASE tools, the 90s with Visual Basic and Delphi and in the 2000s with a plethora of…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

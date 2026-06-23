@@ -1,0 +1,11 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Mass Conservation as an Inductive Bias for Self-Organized Criticality in NCA Reservoirs
+View PDF HTML (experimental)Abstract:Self-organized criticality (SOC), a dynamical regime associated with maximal information processing, offers a promising foundation for reservoir computing. Recent work has shown that neural cellular automata (NCA) can be evolved toward critical avalanche dynamics and employed as effective reservoirs for memory and classification tasks. Here, we investigate whether mass conservation -- a local redistribution rule that preserves total lattice mass -- serves as an inductive bias toward SOC in evolved NCA reservoirs. We compare mass-conserving and standard NCA across multiple independent runs and evaluate both on three downstream benchmarks: 5-bit sequential memory, MNIST digit classification, and CartPole-v1 temporal control. Mass-conserving NCA consistently exhibit stronger criticality, with more runs achieving perfect power-law fits across avalanche distributions, while also being 1.27$\times$ faster during evolution. Importantly, conservation does not impair downstream utility: both variants achieve comparable performance across all three tasks. Furthermore, the reservoir with perfect criticality achieves the highest temporal control score, suggesting a positive link between SOC quality and sequential computation. Our results demonstrate that mass conservation is a simple, effective mechanism for promoting robust criticality in evolved NCA reservoirs without sacrificing downstream performance.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

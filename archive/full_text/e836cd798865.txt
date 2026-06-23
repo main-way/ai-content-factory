@@ -1,0 +1,12 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Beyond ROC-AUC: Operating-Point Performance Reporting for Biometric Verification
+View PDF HTML (experimental)Abstract:A biometric verifier is often deployed with a strict false match budget, so only a narrow, low false match rate (FMR) slice of the score range is used. A reporting standard for this setting already exists. ISO/IEC 19795-1 asks for error rates at stated operating points, for the detection error tradeoff (DET) curve as the view of the trade-off between FMR and the false non-match rate (FNMR), and for an interval of uncertainty on every value. In practice, a single area under the receiver operating characteristic curve (ROC-AUC), the equal error rate (EER), or a verification accuracy is still reported as the resolution, which is a threshold-independent summary that the standard does not endorse. The full ROC-AUC averages the true match rate (TMR) with equal weight over the whole FMR range from 0 to 1, so almost all of its weight is placed where the system is never operated; low-FMR behavior can then be hidden, and the order of two systems can even be reversed. The guideline is revisited in this paper and tested against seven pretrained matchers across four modalities, face, voice, iris, and fingerprint, each reported with bootstrap confidence intervals and paired bootstrap tests. A system that looks stronger on full ROC-AUC is shown to be significantly worse at FMR = 10^-3. For face, a higher full AUC was obtained by FaceNet, whereas a higher TMR at FMR = 10^-3 was obtained by ArcFace, and both gaps were significant with non-overlapping intervals. Hence, the DET curve and the FNMR at a fixed FMR are re-iterated in this paper as the primary report, with ROC-AUC and EER retained as supplementary context.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

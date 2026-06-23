@@ -1,0 +1,112 @@
+British Columbia, Time Zones, and Postgres
+On March 8, 2026, British Columbia moved their clocks to a year-round Pacific Daylight Savings Time. In March, they did the spring forward one hour with their clocks to UTC-7, but they won't fall back to UTC-8 in November. Going forward, the UTC offset for America/Vancouver timezone is permanently UTC-7.
+Let's use this as an opportunity to talk about date and time zone storage. In the most basic examples, the default is to store the UTC value, then calculate local time relative to UTC. However, people using calendar systems think in terms of local time (i.e. wall clock time), and never consider UTC. After modifying time zone data, these time calculations from UTC for a region will differ from the user's input value.
+If you stored timestamps in a UTC-based column for British Columbia-based appointment in 2026 and beyond, your November through March appointments may be off by an hour!
+See timestamptz
+columns don't store the local time. They store the UTC time, and the timezone is only used to convert to and from UTC when inserting and querying. If you stored a future appointment as a timestamptz
+in the America/Vancouver timezone, it was converted to UTC using the rules at the time of storage. When you query that appointment later, it converts back to local time using the current rules. If the rules changed from storage to query, the local time you get back is not what the user originally intended.
+If you've not updated your tzdata
+package, then Postgres doesn't know about the change, and it will continue to convert using the old rules. How often are the tzdata packages in Ubuntu updated? Surprisingly, every few months.
+If your columns are stored in timestamptz
+column types and work with customers in British Columbia, use the following SQL query to determine if the tzdata
+package has been updated:
+SELECT
+to_char(
+'2026-12-01 10:00:00'::timestamp AT TIME ZONE 'America/Vancouver',
+'HH24:MI:SS OF'
+) AS november_2026_vancouver_offset;
+If the value is 17:00:00 +00
+, then tzdata
+has been updated. This is not as good as it sounds because it will require digging through logs to know if future appointments were created before or after the the timezone adjustment.
+If the value is 18:00:00 +00
+, then good news! Your tzdata
+has not been updated, and you do not have data split over the updates.
+Earlier this year, a user booked a 10 AM appointment for November 10, 2026 in Vancouver. You store it as a timestamptz
+:
+INSERT INTO appointments (patient_id, starts_at)
+VALUES (42, '2026-11-10T10:00:00-08:00');
+-- stored as: 2026-11-10 18:00:00+00 (UTC)
+In April 2026, the tzdata
+update is released to push the new timezone rules.
+On November 10, 2026, the patient shows up at 10 AM local time as they documented in their calendar. But when you query the appointment, it says their appointment is at 11 AM local time:
+SELECT starts_at AT TIME ZONE 'America/Vancouver' AS local_time
+FROM appointments
+WHERE patient_id = 42;
+-- returns: 2026-11-10 11:00:00
+Notice it is calculated as an hour later than originally entered.
+As its name implies, a dual-column pattern stores data in two columns (actually three):
+- local timestamp
+- local timezone
+- UTC timestamp
+The UTC timestamp column should be a calculated column. Use the timestamp and timezone to calculate UTC. That calculated UTC value would also be stored and queried to enable background jobs to send notifications and simplify constraint checking, like appointment collisions.
+The dual-column pattern is necessary when the local intent is authoritative: people or deliveries at a time and place, legal deadlines, calendar events, etc.
+Don't go overboard though. When the event is in the past, or the exact UTC moment is authoritative (log entries, financial transactions, sensor readings), use plain timestamptz
+. The dual-column pattern adds cost and complexity only worth paying when future local intent must be preserved.
+The detailed schema would look like this:
+CREATE TABLE appointments (
+id bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+local_time timestamp NOT NULL, -- wall clock value
+timezone_name text NOT NULL, -- IANA name: 'America/Vancouver'
+starts_at_utc timestamptz NOT NULL -- Calculated via trigger
+...
+);
+local_time
+and timezone_name
+together answer the "what did the user intend?" by storing the wall-calendar / wall-clock values / wall-clock location. These values should only change at the user's request. They will be used to calculate the starts_at_utc
+.
+starts_at_utc
+can be the column you index, query, and use for constraints. It answers "what UTC moment does this appointment correspond to right now?" Having a calculated, stored UTC value should simplify using the UTC value as you currently do.
+There are a few ways to calculate starts_at_utc
+, using an application or the database. While the calculated UTC column would be a great example of a generated column, Postgres doesn't allow timestamp with time zone column types for generated columns because timestamptz
+is not classified as immutable since timezone rules change. So, use a trigger to compute starts_at
+on insert and update:
+CREATE OR REPLACE FUNCTION recompute_appointment_utc()
+RETURNS TRIGGER AS $$
+BEGIN
+NEW.starts_at_utc := NEW.local_time AT TIME ZONE NEW.timezone_name;
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER ts_recompute_starts_at_utc
+BEFORE INSERT OR UPDATE ON appointments
+FOR EACH ROW
+EXECUTE FUNCTION recompute_appointment_utc();
+If tzdata
+updates change the rules for a timezone, the derived starts_at_utc
+values in your database become stale and need to be recomputed. You can do this with a simple UPDATE
+statement that re-applies the conversion logic:
+UPDATE appointments
+SET starts_at_utc = local_time AT TIME ZONE timezone_name
+WHERE timezone_name = 'America/Vancouver'
+AND starts_at_utc > now();
+In 2024, RFC 9557 was released as a new timestamp formatting that looks like 1996-12-19T16:39:57-08:00[America/Los_Angeles]
+. A short discussion was had on the pgsql-general forum in November 2025. Usage has not moved forward, as the standard is still quite new, and folks are waiting to see how it gets adopted.
+However, the RFC 9557 explicitly stated it was not meant to solve:
+future time given as a local time in some specified time zone, where changes to the definition of that time zone (such as a political decision to enact or rescind daylight saving time) affect the instant in time represented by the timestamp;
+So, stick with dual column pattern for IRL times sufficiently in the future.
+If you have already updated tzdata
+package for the new time zones, and your column values are assigned unknown UTC shifts, and your database records future times for entities in British Columbia, you've got a data project on your hands. Ideally, you would:
+- Find or estimate when the
+tzdata
+package was updated - Find all of the potentially incorrect records
+- Identify potentially impacted rows using
+updated_at
+timestamps after thetzdata
+update - Make a plan for notifying users of the time-shift adjustment, with potential plan to opt out or opt in
+- Test time-shift migration against potentially impacted rows on a non-production dataset
+- Run a backup, then run the time-shift migration on production
+- Add a UI element for calendar items impacted by the changes
+- When the now defunct November time change approaches, notify users again of potential timezone issues
+Having a population of 5.8M people, British Columbia changing timezone preferences will affect some datasets broadly, and others not at all. Don't get caught by time zone changes; it is surprising how often the tzdata
+package is updated.
+Related Articles
+- British Columbia, Time Zones, and Postgres
+6 min read
+- Postgres Serials Should be BIGINT (and How to Migrate)
+11 min read
+- Postgres 18 New Default for Data Checksums and How to Deal with Upgrades
+4 min read
+- PostGIS Performance: Simplification
+3 min read
+- How to Read Postgres EXPLAIN: A Guide to Scan Types
+9 min read

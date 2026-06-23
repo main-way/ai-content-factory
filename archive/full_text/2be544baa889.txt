@@ -1,0 +1,17 @@
+Computer Science > Multiagent Systems
+Title:HEAS: Hierarchical Evolutionary Agent-Based Simulation Framework for Multi-Objective Policy Search
+View PDF HTML (experimental)Abstract:HEAS is a Python framework that connects agent-based simulation, evolutionary search, and scenario-based evaluation in a single reproducible pipeline. It is designed for researchers who study systems where local interactions produce system-level outcomes-ecosystems, organizations, markets, or regulatory environments-and who need to search over candidate strategies and compare them across uncertain scenarios. HEAS combines three modules: a hierarchy runtime for composing simulations from reusable process layers, an evolutionary tuner for single- or multi-objective search backed by DEAP, and a game module for evaluating strategies across scenario ensembles. Its central design principle is the "metric contract": the same outcome function is shared by optimization, evaluation, and validation, so that different parts of an analysis cannot silently rank strategies by different quantities.
+Submission history
+From: Ruiyu Zhang [view email][v1] Thu, 21 Aug 2025 13:35:46 UTC (128 KB)
+[v2] Sat, 14 Feb 2026 05:29:45 UTC (126 KB)
+[v3] Thu, 2 Apr 2026 14:01:07 UTC (190 KB)
+[v4] Sat, 20 Jun 2026 10:14:05 UTC (1,464 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

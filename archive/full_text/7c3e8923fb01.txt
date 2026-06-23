@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Adversarial observations in probabilistic State-Space Models for robust Reinforcement Learning
+View PDF HTML (experimental)Abstract:Decision-making under partial or adversarial observability requires accurate inference of the environment's latent state and its associated uncertainty. This work analyses adversarial attacks on linear probabilistic state-space models, commonly integrated within reinforcement learning architectures, where the attacker alters observations under likelihood constraints that ensure the perturbations remains consistent. We analyze how such adversarial yet realistic observation shifts influence the latent state and influence policy decisions. This perspective provides a principled pathway toward building more robust reinforcement learning systems, with direct relevance to safety-critical domains such as robotics, where reliable operation under sensor noise, partial failures, and adversarial conditions is essential.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

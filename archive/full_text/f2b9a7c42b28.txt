@@ -1,0 +1,17 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Do Modern Video-LLMs Need to Listen? A Benchmark Audit and Scalable Remedy
+View PDF HTML (experimental)Abstract:Speech and audio encoders developed over years of community effort are routinely excluded from video understanding pipelines, not because they fail, but because benchmarks never required listening. We audit 10 video benchmarks and find items largely solvable from visual cues alone: a single-frame probe answers about 76% of AVQA without audio, suggesting poor measurement of audio-visual reasoning. Building on LLaVA-OneVision, we attach a speech/audio encoder and compare five compressor architectures under 25-fold token reduction (25 Hz to 1 Hz). Across 10 benchmarks, with and without filtering, audio yields clear gains on tasks requiring speech comprehension or cross-modal grounding, while vision-centric suites remain largely unaffected. Our results show that speech encoders play a larger role in video understanding than current benchmarks suggest. We will open-source our work at this https URL.
+Submission history
+From: Geewook Kim [view email][v1] Mon, 22 Sep 2025 15:28:54 UTC (417 KB)
+[v2] Sat, 7 Mar 2026 04:37:41 UTC (639 KB)
+[v3] Tue, 24 Mar 2026 15:58:29 UTC (639 KB)
+[v4] Mon, 22 Jun 2026 00:40:59 UTC (650 KB)
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

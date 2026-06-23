@@ -1,6 +1,6 @@
 {
   "date": "2026-06-21",
-  "count": 202,
+  "count": 205,
   "posts": [
     {
       "id": "ae6878b0c191",
@@ -13,7 +13,8 @@
       "published": "2026-06-21T23:55:54+00:00",
       "summary": "John Jumper, the Google DeepMind Vice President who co-won the 2024 Nobel Prize in Chemistry, is leaving the company to join rival Anthropic, he said on X on Friday. Jumper’s move follows that of another high-profile Google researcher, Noam Shazeer, who earlier this week announced he had joined ...",
       "author": "Nick Wingfield",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "743d3a995b1c",
@@ -26,7 +27,8 @@
       "published": "2026-06-21T23:44:17+00:00",
       "summary": "The initial public offering for Lime, an electric scooter and bike rental company that was once a stalwart of the late 2010s startup scene, is getting financial support from an old friend: Uber. The ride-hailing giant is expected to invest a “meaningful” amount in the deal and be named as an anchor investor on the cover of an updated IPO prospectus that Lime plans to file Monday, a person familiar with the matter said. Lime is expected to start talks with IPO investors on a road show this week to raise about $200 million at a roughly $1.8 billion valuation, the person said.",
       "author": "Cory Weinberg",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "46ff7e0ca3d5",
@@ -39,7 +41,8 @@
       "published": "2026-06-21T23:34:07+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "663d872622a3",
@@ -54,7 +57,8 @@
       "author": "",
       "tags": [
         "Company"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "963a38bbce8b",
@@ -67,7 +71,8 @@
       "published": "2026-06-21T22:55:23+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "4d4a35fc14d0",
@@ -89,7 +94,8 @@
         "информационный поиск",
         "faiss",
         "эмбеддинги"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a344c10fcae3",
@@ -102,7 +108,8 @@
       "published": "2026-06-21T22:01:03+00:00",
       "summary": "If you’ve wanted to visit the South of France, this might be the week. The annual Cannes Lion ad festival, a time for ad folks from all quarters to gather, gets underway tomorrow. The impact of AI on advertising and media is sure to be front and center. OpenAI’s chief revenue officer, Denise Dresser, is scheduled to appear onstage twice, according to the official program, including on a panel with Google’s chief marketing officer, Lorraine Twohill.&nbsp; People from Google and Meta Platforms, the two digital ad giants, will be ubiquitous, as they always are at Cannes. For Dresser and other…",
       "author": "Martin Peers",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "48b87e414a7f",
@@ -115,7 +122,8 @@
       "published": "2026-06-21T21:54:34+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "9bd7a67eddd4",
@@ -128,7 +136,8 @@
       "published": "2026-06-21T21:40:53+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "b44a20f9e751",
@@ -141,7 +150,8 @@
       "published": "2026-06-21T21:34:11+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "71b2d5ba40c5",
@@ -157,7 +167,8 @@
       "tags": [
         "transformers",
         "llm"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "ea5a45c3af5b",
@@ -170,7 +181,8 @@
       "published": "2026-06-21T21:29:43+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "3972d0f81e54",
@@ -183,7 +195,8 @@
       "published": "2026-06-21T21:23:13+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "b7408d2f0aca",
@@ -202,7 +215,8 @@
         "chain-of-thought",
         "ии-агенты",
         "overthinking"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "e7bab2232f0d",
@@ -215,7 +229,8 @@
       "published": "2026-06-21T21:10:32+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "ea3ff1dad191",
@@ -228,7 +243,8 @@
       "published": "2026-06-21T21:05:55+00:00",
       "summary": "Marilen Martin / Bloomberg : As Europe falls behind the US and China in consumer AI, its engineering companies and AI startups are turning to industrial AI applications to boost efficiency &nbsp; &mdash;&nbsp; Pressure to become more efficient has Europe racing to bring artificial intelligence to the shop floor.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "57a790565b60",
@@ -241,7 +257,8 @@
       "published": "2026-06-21T21:05:37+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "a39868291eaf",
@@ -254,7 +271,8 @@
       "published": "2026-06-21T20:56:01+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "8a198266138d",
@@ -269,7 +287,8 @@
       "author": "staff@engadget.com (Cheyenne MacDonald)",
       "tags": [
         "News"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "1ade56c1410f",
@@ -293,7 +312,8 @@
         "центральная СУ",
         "ПЛК",
         "блок управления БУПЧ"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b8ca92a243fd",
@@ -306,7 +326,8 @@
       "published": "2026-06-21T20:17:48+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "2700fb7e3ad3",
@@ -321,7 +342,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "3cafe04889a3",
@@ -345,7 +367,8 @@
         "омономия",
         "корпус текстов",
         "NLP"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "d82df6ffdc4f",
@@ -358,7 +381,8 @@
       "published": "2026-06-21T20:01:00+00:00",
       "summary": "Here are hints and the answer for today's Wordle for June 22, No. 1,829.",
       "author": "Gael Cooper",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "2cf513a1d9c7",
@@ -371,7 +395,8 @@
       "published": "2026-06-21T20:01:00+00:00",
       "summary": "Here are hints and answers for the NYT Strands puzzle for June 22 No. 841.",
       "author": "Gael Cooper",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "5d8ec158991c",
@@ -384,7 +409,8 @@
       "published": "2026-06-21T20:00:42+00:00",
       "summary": "Here are some hints and the answers for the NYT Connections puzzle for June 22, No. 1,107.",
       "author": "Gael Cooper",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "82ca8e8dbc3a",
@@ -402,7 +428,8 @@
         "Next Featured",
         "Future of Finance",
         "Lifestyle"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "5b105e7e5ce0",
@@ -423,7 +450,8 @@
         "открытые данные",
         "критическое мышление",
         "osint обучение с нуля"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "70bd21df2499",
@@ -438,7 +466,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "ee791b5a905d",
@@ -458,7 +487,8 @@
         "отключение",
         "контент и копирайтинг",
         "ии-ассистент"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b41cd67a2f44",
@@ -473,7 +503,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a7853f600a0b",
@@ -489,7 +520,8 @@
       "tags": [
         "Codex",
         "OpenAI"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "d9b6482f3c99",
@@ -511,7 +543,8 @@
         "open source",
         "property-based testing",
         "строковый поиск"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "051cfea7b8b8",
@@ -532,7 +565,8 @@
         "лос-анджелес",
         "искусство",
         "творчество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b465fb41bdc9",
@@ -547,7 +581,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "5b081f2bff0e",
@@ -560,7 +595,8 @@
       "published": "2026-06-21T19:00:00+00:00",
       "summary": "We tested popular FDA-cleared LED face masks to find the best ones for your home needs.",
       "author": "Nasha Addarich Martínez",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "55019335857d",
@@ -581,7 +617,8 @@
         "имя файла",
         "microsoft",
         "удаление"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a9fb71cf4cab",
@@ -594,7 +631,8 @@
       "published": "2026-06-21T18:55:01+00:00",
       "summary": "Caroline Petrow-Cohen / Los Angeles Times : SF-based Humble Robotics, which is developing an electric, self-driving cabless freight truck with 200 miles range and 55 mph max speed, raised $24M &nbsp; &mdash;&nbsp; - 7 min Click here to listen to this article&nbsp; &mdash; San Francisco startup Humble Robotics has raised $24 million to build an electric &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "9ab140b948c2",
@@ -607,7 +645,8 @@
       "published": "2026-06-21T18:51:47+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "8f27240f91b8",
@@ -629,7 +668,8 @@
         "приоритизация бэклога",
         "product management",
         "фреймворки"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "9851353b311b",
@@ -644,7 +684,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "d8bcfa171605",
@@ -667,7 +708,8 @@
         "рефакторинг",
         "чистая комната",
         "chardet"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "5522d44a8046",
@@ -685,7 +727,8 @@
         "Media & Entertainment",
         "claude guillemot",
         "ubisoft"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "43e60b647189",
@@ -705,7 +748,8 @@
         "лучшее время для публикации",
         "хабр",
         "habr"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "e4956d62583c",
@@ -720,7 +764,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "bafe852aee11",
@@ -735,7 +780,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "3590bf20af82",
@@ -748,7 +794,8 @@
       "published": "2026-06-21T18:00:54+00:00",
       "summary": "Morgan Stanley, one of the most active banks in financing data center developers, is now pitching some of those same clients on tapping a market better known for funding leveraged buyouts. It’s a sign that in the race to raise money for AI infrastructure, developers and their advisors are turning over every stone. Over the last few months, Morgan Stanley has suggested to clients that the next time they need to raise money for data center projects, they consider the leveraged loan market rather than the bond market, according to a person familiar with the matter who asked for anonymity to…",
       "author": "Dakin Campbell",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "8f182f1881e2",
@@ -766,7 +813,8 @@
         "ии",
         "сокращения",
         "перспективы профессии"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "0bb636e0a10d",
@@ -779,7 +827,8 @@
       "published": "2026-06-21T17:55:01+00:00",
       "summary": "Kieran Smith / Financial Times : Sources: Virgin Media O2 and VodafoneThree have deployed tech to disable phones stolen from their stores, after phone makers resisted broader antitheft measures &nbsp; &mdash;&nbsp; Virgin Media O2 and VodafoneThree's move comes after Apple and Samsung resisted calls to adopt broader measures",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "0e307e259bc8",
@@ -799,7 +848,8 @@
         "coal power",
         "syndication",
         "trump administration"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a334accbf454",
@@ -814,7 +864,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Армия и спецслужбы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "30cd96a6c92c",
@@ -832,7 +883,8 @@
         "selenium",
         "cypress",
         "webdriverio"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "33c931989a47",
@@ -854,7 +906,8 @@
         "Knowledge Management",
         "Productivity",
         "продуктивная работа"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "1f49b61e2ba9",
@@ -874,7 +927,8 @@
         "future",
         "waker",
         "executor"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b32882166c2b",
@@ -887,7 +941,8 @@
       "published": "2026-06-21T17:00:28+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "f29c0a99f61e",
@@ -908,7 +963,8 @@
         "vulnerability management",
         "управление уязвимостями",
         "cybersecurity"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "e9bd5e21bd50",
@@ -928,7 +984,8 @@
         "Programming",
         "Python",
         "Tool Calling"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "f0738ac02e63",
@@ -943,7 +1000,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "fd1f050f3c63",
@@ -966,7 +1024,8 @@
         "CPU-рендеринг",
         "эмуляция x64",
         "AVX2"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b404ac68682e",
@@ -982,7 +1041,8 @@
       "tags": [
         "FairScan 2.0",
         "FairScan"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "89c02ac77bd6",
@@ -997,7 +1057,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b9cee8b5a940",
@@ -1010,7 +1071,8 @@
       "published": "2026-06-21T16:41:21+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "c826482e3c9d",
@@ -1027,7 +1089,8 @@
         "Crypto",
         "Media & Entertainment",
         "Polymarket"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "6c07e6a81760",
@@ -1051,7 +1114,8 @@
         "йога",
         "MBSR",
         "Headspace"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a6d26c671535",
@@ -1075,7 +1139,8 @@
         "реактивность",
         "view.tree",
         "новые фреймворки"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "476a60471b3a",
@@ -1090,7 +1155,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "880eff13d8fd",
@@ -1105,7 +1171,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "048bd53fd4ba",
@@ -1123,7 +1190,8 @@
         "Next Featured",
         "TikTok",
         "Data and security"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "7d71e6815ade",
@@ -1136,7 +1204,8 @@
       "published": "2026-06-21T16:08:23+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "a6050a9f4921",
@@ -1158,7 +1227,8 @@
         "robotaxi",
         "techcrunch mobility",
         "avride"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "394bc44b9b33",
@@ -1173,7 +1243,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "102dfd053ded",
@@ -1188,7 +1259,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "8e9a0bddf473",
@@ -1203,7 +1275,8 @@
       "author": "staff@engadget.com (Cheyenne MacDonald)",
       "tags": [
         "Space"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "9b8427e24cdc",
@@ -1216,7 +1289,8 @@
       "published": "2026-06-21T15:55:00+00:00",
       "summary": "Sophie Shulman / CTech : Sources: Anduril has begun exploring the possibility of establishing operations in Israel and is in talks to recruit a local manager &nbsp; &mdash;&nbsp; Palmer Luckey's $61 billion startup considers local operations, partnerships, and investments in Israeli startups.&nbsp; &mdash;&nbsp; Anduril, the world's largest &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "43ad363a2797",
@@ -1229,7 +1303,8 @@
       "published": "2026-06-21T15:36:33+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "1e5ebc4da822",
@@ -1244,7 +1319,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a96480a97656",
@@ -1263,7 +1339,8 @@
         "Anthropic",
         "Donald Trump",
         "Equity podcast"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "6b9552159e93",
@@ -1279,7 +1356,8 @@
       "tags": [
         "ospersonium",
         "психология"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "6911b66f62ab",
@@ -1298,7 +1376,8 @@
         "новости",
         "новости игр",
         "новости игровой индустрии"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "6b3870bdf0ce",
@@ -1317,7 +1396,8 @@
         "развитие персонала",
         "трудоустройство",
         "управление персоналом"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a0285db05316",
@@ -1332,7 +1412,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "6c58bf4acd9c",
@@ -1353,7 +1434,8 @@
         "llm",
         "кафка",
         "промпт"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b0e724544ba8",
@@ -1376,7 +1458,8 @@
         "product management",
         "product design",
         "collaboration"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "8e0697884a67",
@@ -1389,7 +1472,8 @@
       "published": "2026-06-21T15:00:51+00:00",
       "summary": "SpaceX’s strong first week of trading made one thing clear: Racing through its IPO at warp speed cost it nothing. The company went from initial confidential filing to listing in just 74 days, much faster than other tech IPOs in recent years, including those of CoreWeave, Figma and Airbnb, an analysis of securities filings shows. Initial public offering lawyers and consultants say the speed reflects a more hands-off approach adopted by the Securities and Exchange Commission, which has to review and approve IPO filings before they are made public, in the Trump administration. Heavy demand for…",
       "author": "Cory Weinberg",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "598fa372fb61",
@@ -1409,7 +1493,8 @@
         "Parsing",
         "Pdf",
         "Rag"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "7d04ab1c13d9",
@@ -1422,7 +1507,8 @@
       "published": "2026-06-21T14:55:00+00:00",
       "summary": "Mark Gurman / Bloomberg : Sources: John Ternus gets ready to put his firm imprint on Apple's industrial design team, which has lost a true seat at Apple's exec table over the past decade &nbsp; &mdash;&nbsp; Also: The 2027 iPhone and AirPods plans.&nbsp; &mdash;&nbsp; The No. 1 priority for new Apple CEO John Ternus should be revamping &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "3985dd440e68",
@@ -1439,7 +1525,8 @@
         "Apple",
         "Deep tech",
         "Next Featured"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "4d5bfb2feda5",
@@ -1454,7 +1541,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b893e7b70421",
@@ -1475,7 +1563,8 @@
         "Apple Intelligence",
         "iOS 27",
         "wwdc"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "31deac6a1166",
@@ -1495,7 +1584,8 @@
         "утечка данных",
         "мессенджеры",
         "пет-проект"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "54370183d49a",
@@ -1513,7 +1603,8 @@
         "wordpress plugins",
         "wordpress security",
         "инфраструктура"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "bf9292777d45",
@@ -1528,7 +1619,21 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "70caf9a44893",
+      "title": "8086 Segmented Memory was a good idea",
+      "url": "https://owl.billpg.com/8086-segmented-memory-was-a-good-idea-almost/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T14:07:11+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
     },
     {
       "id": "a5ee6b872e78",
@@ -1545,7 +1650,8 @@
         "Data and security",
         "Microsoft",
         "Next Featured"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "1a340c35987c",
@@ -1560,7 +1666,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "90c150fa8116",
@@ -1575,7 +1682,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "0d8b4cc7e849",
@@ -1599,7 +1707,8 @@
         "iGaming",
         "случайность",
         "криптография"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "86a8b2c2b92c",
@@ -1618,7 +1727,8 @@
         "сланец",
         "США",
         "Россия"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "62206cc97326",
@@ -1634,7 +1744,8 @@
       "tags": [
         "Qt Creator 20",
         "Qt Creator"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "5831740f8367",
@@ -1649,7 +1760,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "208dc310fcf7",
@@ -1665,7 +1777,8 @@
       "tags": [
         "браузеры",
         "системное администрирование"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "f9b9e954949a",
@@ -1680,7 +1793,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "d1eebef95748",
@@ -1695,7 +1809,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "008bdacba7ed",
@@ -1708,7 +1823,8 @@
       "published": "2026-06-21T13:01:00+00:00",
       "summary": "From cooling supplies to backup power, these nine steps can help you stay safe and comfortable when the grid goes down this summer.",
       "author": "Sean Jackson",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "0f3fbb1bb256",
@@ -1721,7 +1837,8 @@
       "published": "2026-06-21T13:00:40+00:00",
       "summary": "While we've already seen multiple phone launches so far, Samsung, Apple and Google are gearing up for some exciting announcements (including an all-new wide-screen Galaxy Fold) this year.",
       "author": "Prakhar Khanna",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "f809997fe2be",
@@ -1741,7 +1858,8 @@
         "Power Bi",
         "Power Bi Tutorials",
         "Power Query"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "2b08d4fe1044",
@@ -1756,7 +1874,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b68dcc58cd26",
@@ -1769,7 +1888,8 @@
       "published": "2026-06-21T12:55:08+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "8b8c3ddbcc04",
@@ -1782,7 +1902,8 @@
       "published": "2026-06-21T12:49:48+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "ead6b93e0511",
@@ -1795,7 +1916,8 @@
       "published": "2026-06-21T12:44:13+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "50e1a595751a",
@@ -1810,7 +1932,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "22a603d5688a",
@@ -1827,7 +1950,8 @@
         "Amazon",
         "Artificial Intelligence",
         "Data and security"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "18245e31ad7f",
@@ -1840,7 +1964,8 @@
       "published": "2026-06-21T12:31:20+00:00",
       "summary": "Расследование WSJ.",
       "author": "Полина Лааксо",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "10607856072f",
@@ -1855,7 +1980,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Армия и спецслужбы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "c57caaf393a4",
@@ -1870,7 +1996,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "1f2088e66f95",
@@ -1885,7 +2012,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "cee6fce3767e",
@@ -1903,7 +2031,8 @@
         "Artificial Intelligence",
         "AI in education",
         "Learning"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "5691bc6696af",
@@ -1918,7 +2047,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "90fc3ab2b507",
@@ -1931,7 +2061,8 @@
       "published": "2026-06-21T12:00:44+00:00",
       "summary": "The Force of Nature steam-powered rocket bike took to the track for a record-breaking attempt. I got to see it happen.",
       "author": "Andrew Lanxon",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "ab773233bf63",
@@ -1952,7 +2083,8 @@
         "дети",
         "несовершеннолетние",
         "запрет"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "d3cf6be03775",
@@ -1967,7 +2099,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "7b587adf8635",
@@ -1980,7 +2113,8 @@
       "published": "2026-06-21T11:45:46+00:00",
       "summary": "With helpful DIY instructions and some pointy tools, I fixed a broken smartwatch on my own. And if I can do it, so can you.",
       "author": "Katie Collins",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "bc0eb6596f27",
@@ -1993,7 +2127,8 @@
       "published": "2026-06-21T11:38:01+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "a0f56b9b7112",
@@ -2014,7 +2149,8 @@
         "роботы",
         "человекоподобные роботы",
         "гуманоидные роботы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "770accdb7f77",
@@ -2036,7 +2172,8 @@
         "keyboards",
         "Accessories and Peripherals",
         "Product Review"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "2e25c33a037d",
@@ -2049,7 +2186,8 @@
       "published": "2026-06-21T11:00:31+00:00",
       "summary": "Bloomberg : SoftBank says it is struggling to find startups in Latin America ready for major investments and has completed only two new deals over the past two years &nbsp; &mdash;&nbsp; SoftBank Group Corp. is struggling to find startups in Latin America ready for major investments, underscoring how sharply the tech boom &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "ce1fef1f6963",
@@ -2062,7 +2200,8 @@
       "published": "2026-06-21T11:00:00+00:00",
       "summary": "Antivirus software used to hunt for known malware, but now it’s predicting suspicious behavior before an attack fully lands.",
       "author": "Marshall Gunnell",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "94b1bbc0ac3b",
@@ -2086,7 +2225,8 @@
         "computing",
         "Computers",
         "Buying Guide"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "f7a0139ea9bc",
@@ -2110,7 +2250,8 @@
         "tips",
         "how-to",
         "Hello World"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "9bf54716dac3",
@@ -2131,7 +2272,8 @@
         "cooking",
         "Shopping",
         "Smart Kitchen"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "dbde0c3d7f6e",
@@ -2151,7 +2293,8 @@
         "reviews",
         "streaming television",
         "Widow's Bay"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "3c721809d385",
@@ -2173,7 +2316,8 @@
         "Batteries",
         "memory",
         "Upcycle"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a07593bb3e67",
@@ -2190,7 +2334,8 @@
         "Cars",
         "Next Featured",
         "Government and policy"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "20d27f31d827",
@@ -2207,7 +2352,8 @@
         "claude mythos",
         "claude fable 5",
         "anthropic"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "2a21834eea2e",
@@ -2222,7 +2368,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Власть"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "6fa312de8456",
@@ -2246,7 +2393,8 @@
         "veo 3",
         "kling 3.0",
         "suno"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a6a9d523fdbb",
@@ -2261,7 +2409,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "0984714a1a5d",
@@ -2278,7 +2427,8 @@
         "Data and security",
         "Next Featured",
         "Government and policy"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "2808911e5fa2",
@@ -2293,7 +2443,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "874a79fbd098",
@@ -2317,7 +2468,8 @@
         "firebase в россии",
         "supabase в россии",
         "supabase firebase hosting"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "5059b94593ce",
@@ -2335,7 +2487,8 @@
         "Artificial Intelligence",
         "Government and policy",
         "Data and security"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "3d59c5147dfb",
@@ -2350,7 +2503,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Армия и спецслужбы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "f2cff1614b1e",
@@ -2365,7 +2519,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "dbdc51beea25",
@@ -2384,7 +2539,8 @@
         "Short News",
         "OpenAI",
         "Sam Altman"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "570fdf471b82",
@@ -2403,7 +2559,8 @@
         "guardrails",
         "infosecurity",
         "infosec"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b18aadae87df",
@@ -2416,7 +2573,8 @@
       "published": "2026-06-21T09:06:44+00:00",
       "summary": "Собираем новости, события и мнения о рынках, банках и реакциях компаний.",
       "author": "Евгения Евсеева",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "be59b2946b82",
@@ -2431,7 +2589,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b189b3aa27ec",
@@ -2451,7 +2610,8 @@
         "информационная безопасность",
         "защита персональных данных",
         "операционные системы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b37019165e27",
@@ -2474,7 +2634,8 @@
         "Windows",
         "security",
         "Key Components"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "fc49a28c7abb",
@@ -2487,7 +2648,8 @@
       "published": "2026-06-21T08:28:26+00:00",
       "summary": "",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "c21fe39ca8a7",
@@ -2505,7 +2667,8 @@
         "Artificial Intelligence",
         "Agent",
         "AWS"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "33340517cb66",
@@ -2520,7 +2683,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Власть"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "ddbb96b980d9",
@@ -2533,7 +2697,8 @@
       "published": "2026-06-21T08:21:22+00:00",
       "summary": "Comments",
       "author": "barqawiz",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "5b099158773c",
@@ -2548,7 +2713,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "7529a1256131",
@@ -2567,7 +2733,8 @@
         "генеративный контент",
         "ии траффик",
         "ии боты"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "e5e2b4632a45",
@@ -2591,7 +2758,8 @@
         "читалка",
         "игры",
         "timeweb_статьи_выходного_дня"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "e433105cd6c0",
@@ -2604,7 +2772,8 @@
       "published": "2026-06-21T08:04:54+00:00",
       "summary": "Comments",
       "author": "sph",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "f5d36845a83b",
@@ -2621,7 +2790,8 @@
         "разработка под android",
         "разработка под ios",
         "разработка мобильных приложений"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "c265e23d76a0",
@@ -2645,7 +2815,8 @@
         "информационная безопасность",
         "кибербезопасность",
         "кибератака"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b01f4eb73571",
@@ -2665,7 +2836,8 @@
         "космос",
         "ии",
         "дата-центры"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "720b4362e412",
@@ -2681,7 +2853,8 @@
       "tags": [
         "Flameshot 14",
         "Flameshot"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "62520d12abef",
@@ -2696,7 +2869,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "ba61435f9d2e",
@@ -2711,7 +2885,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Армия и спецслужбы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "618794b330b4",
@@ -2726,7 +2901,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "346e4aaaa12f",
@@ -2741,7 +2917,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "989deeed0359",
@@ -2762,7 +2939,8 @@
         "wildcat lake",
         "ubuntu 24.04 lts",
         "windows 11"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "e36ac03a81ef",
@@ -2778,7 +2956,8 @@
       "tags": [
         "systemd 261",
         "systemd"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "7e4d43dc4990",
@@ -2793,7 +2972,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Армия и спецслужбы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "73391e33c30a",
@@ -2808,7 +2988,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Армия и спецслужбы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "cb907788febc",
@@ -2830,7 +3011,8 @@
         "кодеки",
         "работа с видео",
         "потребление памяти"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "007c82e8e791",
@@ -2845,7 +3027,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "9b4a435de876",
@@ -2869,7 +3052,21 @@
         "будущее здесь",
         "технологии",
         "энергия"
-      ]
+      ],
+      "has_full_text": true
+    },
+    {
+      "id": "5593c148df87",
+      "title": "Improvements to Std:Format in C++26",
+      "url": "https://mariusbancila.ro/blog/2026/06/19/improvements-to-stdformat-in-c26/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T06:26:48+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
     },
     {
       "id": "a9e75c753b2f",
@@ -2882,7 +3079,8 @@
       "published": "2026-06-21T06:24:52+00:00",
       "summary": "Article URL: https://movq.de/blog/postings/2026-06-20/0/POSTING-en.html Comments URL: https://news.ycombinator.com/item?id=48616173 Points: 5 # Comments: 0",
       "author": "jandeboevrie",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "e1b382b75439",
@@ -2906,7 +3104,8 @@
         "электронные письма",
         "баги",
         "искусственный интеллект"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "49cc83e46843",
@@ -2921,7 +3120,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "ff75b2e5be1f",
@@ -2936,7 +3136,8 @@
       "author": "runaway_llm",
       "tags": [
         "Claude Code"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "d1ebe231828a",
@@ -2949,7 +3150,8 @@
       "published": "2026-06-21T06:00:01+00:00",
       "summary": "Wall Street Journal : Investigation: Polymarket is paying creators to make deceptive videos about winning bets, targeting users in the US, where its primary crypto platform is banned &nbsp; &mdash;&nbsp; The prediction market has flooded social media with deceptive videos by paid creators, according to a Wall Street Journal investigation",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "6f5fc3705053",
@@ -2964,7 +3166,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "08b6418582ce",
@@ -2977,7 +3180,8 @@
       "published": "2026-06-21T05:45:21+00:00",
       "summary": "Comments",
       "author": "surprisetalk",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "a4ce8e0e3507",
@@ -2992,7 +3196,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "4c5c3551a8cc",
@@ -3007,7 +3212,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b448d3275054",
@@ -3027,7 +3233,8 @@
         "open source",
         "бэкпорт",
         "DevOps"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "766e6cf4004b",
@@ -3040,7 +3247,8 @@
       "published": "2026-06-21T05:15:33+00:00",
       "summary": "Comments",
       "author": "asdefghyk",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "d70d73a08b35",
@@ -3053,7 +3261,8 @@
       "published": "2026-06-21T05:15:01+00:00",
       "summary": "Financial Times : Inside Palantir's fight to save its &pound;330M, seven-year contract with NHS England, as public and political pressure grows to end the deal via a 2027 break clause &nbsp; &mdash;&nbsp; Critics question how the tech giant won a showpiece contract.&nbsp; It complains about the politicisation of procurement.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "419b6c1c17ce",
@@ -3066,7 +3275,8 @@
       "published": "2026-06-21T05:15:01+00:00",
       "summary": "Mariana Catacci / CNN : Brazil takes its National Civil Defense warning platform offline after suspected hackers send an unauthorized alert to mobile phones in several states &nbsp; &mdash;&nbsp; An unauthorized alert bearing a mysterious message that was sent to cell phones in several states across Brazil on Saturday morning &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "e188c95dc3b0",
@@ -3081,7 +3291,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "79c3cdc0654a",
@@ -3096,7 +3307,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "ebfd44adcc05",
@@ -3109,7 +3321,8 @@
       "published": "2026-06-21T04:46:37+00:00",
       "summary": "Here are the answers for The New York Times Mini Crossword for June 21.",
       "author": "Gael Cooper",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "1816c01cce15",
@@ -3124,7 +3337,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "791ff12cdfe1",
@@ -3139,7 +3353,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Армия и спецслужбы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "65411946b238",
@@ -3152,7 +3367,8 @@
       "published": "2026-06-21T04:28:39+00:00",
       "summary": "Comments",
       "author": "sarangk90",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "a89ee1d410ff",
@@ -3167,7 +3383,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "f208560178c9",
@@ -3180,7 +3397,8 @@
       "published": "2026-06-21T04:02:08+00:00",
       "summary": "Comments",
       "author": "colinprince",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "1ffc6a6f024b",
@@ -3193,7 +3411,8 @@
       "published": "2026-06-21T04:01:47+00:00",
       "summary": "I chatted with John Griffin, Jeff Pinkner and Jack Bender about the penultimate season.",
       "author": "Meara Isenberg",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "6c88f1a4080f",
@@ -3206,7 +3425,8 @@
       "published": "2026-06-21T03:54:22+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "242c9b137df4",
@@ -3223,7 +3443,8 @@
         "история компании",
         "история бренда",
         "история успеха"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "8ce1dd544264",
@@ -3291,6 +3512,19 @@
       "author": "",
       "tags": [],
       "has_full_text": false
+    },
+    {
+      "id": "940826b703b4",
+      "title": "Polymarket has flooded social media with deceptive videos by paid creators",
+      "url": "https://www.wsj.com/business/media/polymarket-social-media-bets-prediction-market-441cdeb5?st=HhTZY2",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-21T01:12:21+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
     },
     {
       "id": "052a30c7a5b3",

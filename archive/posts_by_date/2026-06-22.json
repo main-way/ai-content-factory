@@ -1,6 +1,6 @@
 {
   "date": "2026-06-22",
-  "count": 344,
+  "count": 351,
   "posts": [
     {
       "id": "aedb3baf65b0",
@@ -17,7 +17,8 @@
         "промпт-инжиниринг",
         "промпт",
         "генерация изображений"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "778ddf19d4bf",
@@ -30,7 +31,8 @@
       "published": "2026-06-22T23:40:01+00:00",
       "summary": "Bloomberg : Sources: Qualcomm is in advanced talks to acquire Modular in a transaction valuing the AI chip startup at ~$4B, up from a $1.6B valuation in September 2025 &nbsp; &mdash;&nbsp; Qualcomm Inc. is in advanced talks to acquire Modular Inc. in a transaction valuing the artificial intelligence chip startup at about $4 billion &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "9a78d8672dc2",
@@ -48,7 +50,8 @@
         "News",
         "Nvidia",
         "Tech"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b7315f2bd476",
@@ -66,7 +69,8 @@
         "Autopilot",
         "FSD",
         "Tesla"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "6c42b5cd3c5f",
@@ -83,7 +87,8 @@
         "нейросеть",
         "дизайн интерьера",
         "ии дизайн"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "ccf9a88c6981",
@@ -96,7 +101,8 @@
       "published": "2026-06-22T22:50:01+00:00",
       "summary": "Brody Ford / Bloomberg : Filing: Oracle's global workforce fell by 21,000 employees in the past 12 months to 141,000 as of May 31; the company says AI adoption has led to reductions &nbsp; &mdash;&nbsp; Oracle Corp. reduced its workforce by 21,000 employees in the past 12 months, a wider scale than previously known &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "31a9f69039ff",
@@ -114,7 +120,8 @@
         "Dara Khosrowshahi",
         "In Brief",
         "Uber"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "425460de6b08",
@@ -130,7 +137,8 @@
       "tags": [
         "AI",
         "Meta"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "895a664657b0",
@@ -152,7 +160,8 @@
         "Milky Way",
         "cosmos",
         "Origin Story"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "0a396c8191e7",
@@ -165,7 +174,8 @@
       "published": "2026-06-22T22:05:29+00:00",
       "summary": "President Trump signed two long-awaited executive orders on Monday focused on quantum technology, a focus area for the administration that has often taken a back seat to AI. The first order, whose draft has been circulating for months, encourages different agencies to invest in research, ...",
       "author": "Leo Schwartz",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "4d855c54ac55",
@@ -181,7 +191,8 @@
       "tags": [
         "ospersonium",
         "психология"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "723276ed5fa5",
@@ -203,7 +214,8 @@
         "honeypot",
         "формы",
         "e2e"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "5fbd5a5fa36c",
@@ -227,7 +239,8 @@
         "robots",
         "UAW",
         "united auto workers"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "c58b9116a0be",
@@ -245,7 +258,8 @@
         "с++ программирование",
         "ненормальное программирование",
         "игры и консоли"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "5569c6f420f3",
@@ -260,7 +274,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Армия и спецслужбы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "e52e23296d23",
@@ -273,7 +288,8 @@
       "published": "2026-06-22T21:30:02+00:00",
       "summary": "Amrith Ramkumar / Wall Street Journal : President Trump signs two executive orders aimed at speeding the development of advanced quantum computers and mitigating the security threats they present &nbsp; &mdash;&nbsp; Administration set an ambitious new 2028 target for a system that can conduct scientific research",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "4d44a290c6ad",
@@ -294,7 +310,8 @@
         "OIG",
         "space",
         "spacex"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "62d6c6676e5e",
@@ -313,7 +330,8 @@
         "Microsoft",
         "Next Featured",
         "Data and security"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "d765721a4d20",
@@ -326,7 +344,8 @@
       "published": "2026-06-22T21:21:08+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "7c8e837a7855",
@@ -339,7 +358,8 @@
       "published": "2026-06-22T21:21:01+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "fe3c64ee664e",
@@ -361,7 +381,8 @@
         "dangling reference",
         "управление памятью",
         "RAII"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "ab4e93502b7d",
@@ -374,7 +395,8 @@
       "published": "2026-06-22T21:09:11+00:00",
       "summary": "Meta Platforms is pausing its employee monitoring tool after a major internal security lapse&nbsp;last week left sensitive employee data collected through the tool broadly accessible to staff across the company. The news was earlier reported by Business Insider. According to an incident report ...",
       "author": "Jyoti Mann",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "c8e3f008a167",
@@ -396,7 +418,8 @@
         "Labor",
         "Social Media",
         "Backtrack"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "99dc0e638546",
@@ -411,7 +434,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "538f38acbb6c",
@@ -424,7 +448,8 @@
       "published": "2026-06-22T21:05:05+00:00",
       "summary": "Wired : Meta says it is pausing its employee input tracking program after internal security issues exposed potentially sensitive data meant to train AI models &nbsp; &mdash;&nbsp; Employees had previously raised concerns about the initiative, which involves collecting workers' keystroke data to train AI models.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "bac1876025f2",
@@ -446,7 +471,8 @@
         "massage gun",
         "occular",
         "retina"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "73bd9e8ed4d7",
@@ -458,8 +484,9 @@
       "priority": "high",
       "published": "2026-06-22T21:00:51+00:00",
       "summary": "Comments",
-      "author": "",
-      "tags": []
+      "author": "asontha",
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "2e84782a7a35",
@@ -472,7 +499,8 @@
       "published": "2026-06-22T21:00:00+00:00",
       "summary": "We tested Samsung phones spanning from $300 to $2,000. Here are our top recommendations.",
       "author": "Abrar Al-Heeti",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "10a4771ad48c",
@@ -485,7 +513,8 @@
       "published": "2026-06-22T20:59:44+00:00",
       "summary": "The production studio is receiving $75 million to produce AI tools for its filmmakers -- and for the search giant's AI ecosystem.",
       "author": "Tyler Graham",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "cda718e14124",
@@ -498,7 +527,8 @@
       "published": "2026-06-22T20:55:17+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "59ca175d8772",
@@ -513,7 +543,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "34747f988e46",
@@ -529,7 +560,8 @@
       "tags": [
         "max",
         "розыгрыш"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "f811b25fbf9d",
@@ -546,7 +578,8 @@
         "AI",
         "agentic ai",
         "boris cherny"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "31644259147b",
@@ -563,7 +596,8 @@
         "Amazon",
         "Artificial Intelligence",
         "Next Featured"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "c82fa286faeb",
@@ -585,7 +619,8 @@
         "устройства",
         "гаджеты",
         "операционные системы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "7d68d4cbed37",
@@ -604,7 +639,8 @@
         "In Brief",
         "Microsoft",
         "natural gas"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "ecffa4f2dc0c",
@@ -619,7 +655,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "583e29ed05ae",
@@ -637,7 +674,8 @@
         "tavro",
         "гипериус",
         "банкротство"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b371e572d377",
@@ -659,7 +697,8 @@
         "cybersecurity",
         "artificial intelligence",
         "Unto the Breach"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a53f01073279",
@@ -676,7 +715,8 @@
         "GLM-5.2",
         "Claude Fable 5",
         "alphaxiv"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "4f17819ac8a2",
@@ -694,7 +734,8 @@
         "Next Featured",
         "Government and policy",
         "Data and security"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "310b10da67ed",
@@ -711,7 +752,8 @@
         "кофе",
         "кофейная гуща",
         "топливо"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "6003cd1d4383",
@@ -728,7 +770,8 @@
         "Technology",
         "Business",
         "Infrastructure"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "a72202393e82",
@@ -746,7 +789,8 @@
         "Smartphones",
         "Tablets",
         "Apple"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "495d7b24cfc7",
@@ -759,7 +803,8 @@
       "published": "2026-06-22T20:15:01+00:00",
       "summary": "Allyson Versprille / Bloomberg : Air Space Intelligence won an $875M, 12-year FAA contract to develop AI tools that map flight trajectories and identify areas of congestion to reduce delays &nbsp; &mdash;&nbsp; Air Space Intelligence Inc. won a US government contract to develop artificial intelligence technologies for managing flight traffic &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "a9ba7814c8ed",
@@ -778,7 +823,8 @@
         "Startups",
         "TC",
         "groq"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "1da07ceab865",
@@ -791,7 +837,8 @@
       "published": "2026-06-22T20:13:00+00:00",
       "summary": "OpenAI and Google have rolled out World Cup fan experiences to help you make the most of the tournament.",
       "author": "Macy Meyer",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "7fad0a2908d5",
@@ -808,7 +855,8 @@
         "Policy",
         "polymarket",
         "prediction market"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "e14ed19e3b39",
@@ -827,7 +875,8 @@
         "data centers",
         "liquid cooling",
         "nvidia"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "902f81fc27c9",
@@ -844,7 +893,8 @@
         "Deep tech",
         "Robots",
         "Next Featured"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "c7206909ece7",
@@ -857,7 +907,8 @@
       "published": "2026-06-22T20:01:11+00:00",
       "summary": "Here are hints and the answer for today's Wordle for June 23, No. 1,830.",
       "author": "Gael Cooper",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "7577df00f3da",
@@ -870,7 +921,8 @@
       "published": "2026-06-22T20:01:10+00:00",
       "summary": "Here are hints and answers for the NYT Strands puzzle for June 23, No. 842.",
       "author": "Gael Cooper",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "ef781913815e",
@@ -883,7 +935,8 @@
       "published": "2026-06-22T20:01:00+00:00",
       "summary": "Here are hints and the answers for the NYT Connections: Sports Edition puzzle for June 23, No. 638.",
       "author": "Gael Cooper",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "b50c75089655",
@@ -896,7 +949,8 @@
       "published": "2026-06-22T20:00:48+00:00",
       "summary": "Here are some hints and the answers for the NYT Connections puzzle for June 23, No. 1,108.",
       "author": "Gael Cooper",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "07c54cecb789",
@@ -912,7 +966,8 @@
       "tags": [
         "AI",
         "Tech"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "88ff034372d8",
@@ -927,7 +982,8 @@
       "author": "runaway_llm",
       "tags": [
         "Five Eyes"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "a86de82dfdab",
@@ -947,7 +1003,8 @@
         "ангелы силы",
         "SKIF Entertainment",
         "петька и василий иванович"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "97dc203140ae",
@@ -960,7 +1017,8 @@
       "published": "2026-06-22T19:55:35+00:00",
       "summary": "Teams are moving AI agents from prototype to workflow fast. One agent gets connected to a document store. Another starts calling internal tools. A third begins touching customer data.&#160; Soon, agents are operating across systems before governance teams have a clear record of what they can access, who owns them, or what they’ve done. AI... The post Shadow agents: find and govern unsanctioned AI agents appeared first on DataRobot .",
       "author": "DataRobot",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "4d03999c5839",
@@ -976,7 +1034,8 @@
       "tags": [
         "Artificial Intelligence",
         "Ecosystems"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "9d411f11738b",
@@ -991,7 +1050,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Демократия"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "fd63972409ac",
@@ -1004,7 +1064,8 @@
       "published": "2026-06-22T19:45:01+00:00",
       "summary": "Carl Franzen / VentureBeat : Sakana AI launches Fugu, a multi-agent orchestration system accessible through a single model API, claiming Fugu Ultra matches Fable and Mythos on benchmarks &nbsp; &mdash;&nbsp; Last night, the increasingly enterprise-focused AI startup Sakana launched Fugu, a multi-agent orchestration system &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "29235b9aecc2",
@@ -1019,7 +1080,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "9131594ecc31",
@@ -1039,7 +1101,8 @@
         "косметическая химия",
         "химия",
         "наука и исследования"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "886d690df60e",
@@ -1052,7 +1115,8 @@
       "published": "2026-06-22T19:33:00+00:00",
       "summary": "The feature, which is already available on Amazon Fire TV and Google TV, lets you scroll through Reels and Stories in a larger format.",
       "author": "Abrar Al-Heeti",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "7c003a855aae",
@@ -1069,7 +1133,8 @@
         "Government and policy",
         "Next Featured",
         "Tesla"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "c317215fb42d",
@@ -1089,7 +1154,8 @@
         "библиотеки",
         "компиляторы",
         "совместимость"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "0b9c53d16435",
@@ -1108,7 +1174,8 @@
         "tata",
         "Tata Electronics",
         "Tesla"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "40591857a5a4",
@@ -1121,7 +1188,8 @@
       "published": "2026-06-22T19:22:37+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "7e15460cb957",
@@ -1134,7 +1202,8 @@
       "published": "2026-06-22T19:21:00+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "40ea44f3f886",
@@ -1147,7 +1216,8 @@
       "published": "2026-06-22T19:19:55+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "88dfd76bbdb1",
@@ -1162,7 +1232,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Армия и спецслужбы"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "0bbae9c5d741",
@@ -1181,7 +1252,8 @@
         "AMD",
         "Ryzen",
         "tsme"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "2542512594ca",
@@ -1194,7 +1266,8 @@
       "published": "2026-06-22T19:13:46+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "0932f32d644f",
@@ -1210,7 +1283,8 @@
       "tags": [
         "News Briefs",
         "Firms and Funds"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "f5a4ca9c1774",
@@ -1234,7 +1308,8 @@
         "инженерные практики",
         "map-framework",
         "arxiv"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "35c9325c4376",
@@ -1253,7 +1328,8 @@
         "Politics and regulation",
         "Public Markets",
         "unicorn"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "c603ac2e9f1a",
@@ -1268,7 +1344,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "1a31120402af",
@@ -1281,7 +1358,8 @@
       "published": "2026-06-22T19:06:48+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "280538c76030",
@@ -1294,7 +1372,8 @@
       "published": "2026-06-22T19:05:00+00:00",
       "summary": "Prime Day is here, and for the next four days, we'll bring you the best deals live as we find them.",
       "author": "James Bricknell",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "03df3d260c93",
@@ -1313,7 +1392,8 @@
         "PC gaming",
         "steam machine",
         "Valve"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "b075fdd3e206",
@@ -1338,7 +1418,8 @@
         "iphone jailbreak",
         "jailbreak",
         "Spyware"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "2eba6f3aeae1",
@@ -1359,7 +1440,8 @@
         "filmmaking",
         "In Brief",
         "movies"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "abb9021a742e",
@@ -1388,7 +1470,8 @@
         "Princeton Plasma Physics Laboratory",
         "process control",
         "semiconductor manufacturing"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "59b385ddbae4",
@@ -1405,7 +1488,8 @@
         "Corporates and innovation",
         "Next Featured",
         "Ecosystems"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "c315537e4d09",
@@ -1418,7 +1502,8 @@
       "published": "2026-06-22T18:37:00+00:00",
       "summary": "The Steam Deck dominates gaming on the go, and the Steam Machine looks to conquer the living room.",
       "author": "Oscar Gonzalez",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "aa71dc40e8cc",
@@ -1433,7 +1518,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "abe8044af527",
@@ -1453,7 +1539,8 @@
         "слайсеры",
         "OrcaSlicer",
         "orca slicer"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "2609c8ac46d0",
@@ -1468,7 +1555,8 @@
       "author": "staff@engadget.com (Karissa Bell)",
       "tags": [
         "Wearables"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "08e9172f6797",
@@ -1485,7 +1573,8 @@
         "Artificial Intelligence",
         "Google",
         "Next Featured"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "5fae2363ce38",
@@ -1505,7 +1594,8 @@
         "Gemini",
         "Google",
         "Google Deepmind"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "dba28e05f810",
@@ -1528,7 +1618,8 @@
         "health",
         "coffee",
         "Buying Guide"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "ed8e822434d2",
@@ -1543,7 +1634,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "da4313bf96e2",
@@ -1564,7 +1656,8 @@
         "Claude",
         "cybersecurity",
         "identity check"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "6924d56247c2",
@@ -1598,7 +1691,8 @@
         "SiMRA",
         "simultaneous multiple-row activation",
         "The University of Tokyo"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "f898f1dab941",
@@ -1621,7 +1715,8 @@
         "краудсорсинг",
         "путешествия",
         "data engineering"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "347e9a63e1c8",
@@ -1634,7 +1729,8 @@
       "published": "2026-06-22T18:01:40+00:00",
       "summary": "Your library card is all you need.",
       "author": "Aaron Pruner",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "5f5e4ac3615b",
@@ -1647,7 +1743,8 @@
       "published": "2026-06-22T18:00:40+00:00",
       "summary": "Echo Wang / Reuters : Sources: Vimeo owner Bending Spoons seeks to raise ~$1.62B in a US IPO, selling 58M shares at $26 to $28 apiece, at a valuation of $19B at the top of the range &nbsp; &mdash;&nbsp; Bending Spoons, an Italian technology company that acquires and revamps software businesses, is seeking to raise as much as $1.62 billion &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "e5321e5c15e4",
@@ -1665,7 +1762,8 @@
         "App",
         "artificial intelligence",
         "The Algorithm"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "dd8e83eebd74",
@@ -1681,7 +1779,8 @@
       "tags": [
         "ии",
         "безопасная разработка приложений"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "81cf4cf0be41",
@@ -1711,7 +1810,8 @@
         "SUNY",
         "The Ohio State University",
         "ultrawide-bandgap semiconductors"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "227af3772c44",
@@ -1729,7 +1829,8 @@
         "Sales & Marketing",
         "Venture",
         "unicorn"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "2854b398bd05",
@@ -1745,7 +1846,8 @@
       "tags": [
         "Amazon Bedrock AgentCore",
         "Customer Solutions"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "710fb62aa369",
@@ -1760,7 +1862,8 @@
       "author": "staff@engadget.com (Jackson Chen)",
       "tags": [
         "Big Tech"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "90cac9048b12",
@@ -1773,7 +1876,8 @@
       "published": "2026-06-22T17:50:33+00:00",
       "summary": "Two former members of Elon Musk’s Department of Government Efficiency have raised $225 million for their debut venture fund, Banner VC, according to a person close to the fund and filings with the Securities and Exchange Commission. Banner separately raised nearly $75 million to co-lead a recent round in the orbital infrastructure startup Impulse Space, according to the person and an SEC filing. Founded by the two former DOGE staffers, Brooks Morgan and Adam Ramada, Banner VC began raising its first fund in late 2025, according to the filing. The Austin, Texas&ndash;based Banner is part of a…",
       "author": "Leo Schwartz",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "7b1210763691",
@@ -1788,7 +1892,8 @@
       "author": "staff@engadget.com (Kris Holt)",
       "tags": [
         "Gaming"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "5b36bbbec5d4",
@@ -1803,7 +1908,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "1fbc6a99f5dd",
@@ -1816,7 +1922,8 @@
       "published": "2026-06-22T17:46:48+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "f3006d87ebe1",
@@ -1833,7 +1940,8 @@
         "gpt-5.5-cyber",
         "daybreak",
         "openai"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "3435da6b5b4c",
@@ -1848,7 +1956,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Армия и спецслужбы"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "79e5a805d675",
@@ -1861,7 +1970,8 @@
       "published": "2026-06-22T17:36:06+00:00",
       "summary": "AI raised the floor. Time to raise the ceiling.",
       "author": "Paul Bakaus",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "c56995e356d9",
@@ -1878,7 +1988,8 @@
         ".NET",
         "Agent Framework",
         "Python"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "6ca7b5ca9db7",
@@ -1895,7 +2006,8 @@
         ".NET",
         "Agent Framework",
         "Python"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "76eba5702334",
@@ -1912,7 +2024,8 @@
         "Amazon",
         "Next Featured",
         "Data and security"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "e07013677a6c",
@@ -1925,7 +2038,8 @@
       "published": "2026-06-22T17:32:12+00:00",
       "summary": "С 1 сентября 2026 года бумажная логистика начнёт официально уходить в прошлое: перевозочные документы для коммерческих автомобильных грузоперевозок станут электронными. Новые правила затронут не только перевозчиков, но и грузоотправителей, грузополучателей, экспедиторов и заказчиков доставки. Выяснили у экспертов, кому придётся подключаться к ЭПД, какие процессы стоит перестроить заранее и как не встретить дедлайн в режиме «у нас всё сломалось».",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "3bc52c088383",
@@ -1945,7 +2059,8 @@
         "Amazon",
         "Exclusive",
         "India"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "03c0e25a0b53",
@@ -1960,7 +2075,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "a6680060a7f6",
@@ -1973,7 +2089,8 @@
       "published": "2026-06-22T17:25:03+00:00",
       "summary": "Sean Hollister / The Verge : Valve Steam Machine review: much smaller than PS5, surprisingly smooth, and navigable with any modern gamepad but very expensive and needs manual configuration &nbsp; &mdash;&nbsp; My first day with the Steam Machine was a mess.&nbsp; Instead of enjoying a worry-free game console, I spent hours troubleshooting what felt like a finicky PC.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "678e81484ab7",
@@ -1990,7 +2107,8 @@
         "опросы",
         "nps-опросы",
         "nps"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "d88ec12ef671",
@@ -2003,7 +2121,8 @@
       "published": "2026-06-22T17:20:02+00:00",
       "summary": "Jay Peters / The Verge : Valve says Steam Machine, its new living room-friendly PC, will start at $1,049 for the 512GB base model, and go on sale starting June 29 &nbsp; &mdash;&nbsp; You can register your interest starting today, and the first emails letting people buy one will go out on June 29th.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "2db85e0cafc4",
@@ -2022,7 +2141,8 @@
         "Short News",
         "Anthropic",
         "Micron"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "894f1d7f2fb7",
@@ -2035,7 +2155,8 @@
       "published": "2026-06-22T17:16:18+00:00",
       "summary": "Lily Hay Newman / Wired : OpenAI unveils an updated GPT-5.5-Cyber model, launches the Patch the Planet initiative in partnership with Trail of Bits to fix open source bugs, and more &nbsp; &mdash;&nbsp; Amid concerns about AI models' cybersecurity capabilities, OpenAI revealed an improved version of GPT-5.5-Cyber and its &ldquo;Patch the Planet&rdquo; &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "6fd23b316045",
@@ -2059,7 +2180,8 @@
         "исследования",
         "голосование",
         "рейтинги"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "237bb4a1c075",
@@ -2072,7 +2194,8 @@
       "published": "2026-06-22T17:15:00+00:00",
       "summary": "Цены на краткосрочную аренду жилья на курортах Краснодарского края выросли за год на 6%, сообщают аналитики сервиса онлайн-бронирования «Суточно.ру». Средняя стоимость аренды в регионе составила 5 900 рублей за сутки. Самыми дорогие города для отдыха в 2026 году — Геленджик, Дагомыс, Кабардинка и Сочи.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "c73b1fcdc982",
@@ -2087,7 +2210,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "761408470fbc",
@@ -2102,7 +2226,8 @@
       "author": "denis-19",
       "tags": [
         "летний тест-драйв"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "83238d8891bd",
@@ -2126,7 +2251,8 @@
         "Tesla",
         "tesla autopilot",
         "tesla model 3"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "f410da262bf0",
@@ -2139,7 +2265,8 @@
       "published": "2026-06-22T17:09:51+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "de0234b52751",
@@ -2152,7 +2279,8 @@
       "published": "2026-06-22T17:04:00+00:00",
       "summary": "Гигантские сперматозоиды дрозофил не спутались благодаря плотной упаковке",
       "author": "Андрей Фокин            <and24h@mail.ru>",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "db93453dd82d",
@@ -2172,7 +2300,8 @@
         "Amazon Prime Day",
         "Deals",
         "kitchen"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "a10cc5fa2ebc",
@@ -2193,7 +2322,8 @@
         "Shopping",
         "Amazon",
         "Early Bird"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "2d455c504bfa",
@@ -2206,7 +2336,8 @@
       "published": "2026-06-22T17:00:54+00:00",
       "summary": "An in-depth review of ChatLLM by Abacus AI, covering supported AI models, AI agents, coding tools, integrations, pricing, usage limits, and how it compares to ChatGPT.",
       "author": "KDnuggets",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "33bf1a3e1996",
@@ -2234,7 +2365,8 @@
         "vulnerabilities",
         "artificial intelligence",
         "Patched Up"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "1ba8bd306583",
@@ -2247,7 +2379,8 @@
       "published": "2026-06-22T17:00:00+00:00",
       "summary": "Govee teamed up with HBO to show how its TV backlights and smart home lights react to fire-breathing dragons on screen.",
       "author": "Tyler Lacoma",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "682782b195f7",
@@ -2260,7 +2393,8 @@
       "published": "2026-06-22T16:57:00+00:00",
       "summary": "Weekly perks and big giveaways are available now to all postpaid Verizon subscribers.",
       "author": "Jeff Carlson",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "19ec1ed2ebe7",
@@ -2277,7 +2411,8 @@
         "Artificial Intelligence",
         "Deep tech",
         "Next Featured"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "f7ef68bb6a12",
@@ -2295,7 +2430,8 @@
         "TC",
         "reflection ai",
         "SpaceX"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "fbf763b08515",
@@ -2310,7 +2446,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "fdafe5ccd6ce",
@@ -2323,7 +2460,8 @@
       "published": "2026-06-22T16:45:52+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "f5c6fdb0c1e5",
@@ -2338,7 +2476,8 @@
       "author": "denis-19",
       "tags": [
         "Eternal"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "dc31f04065e1",
@@ -2353,7 +2492,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "b7d2d61e8b23",
@@ -2378,7 +2518,8 @@
         "design",
         "Meta",
         "Plastic Beach"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "5b436a9205db",
@@ -2402,7 +2543,8 @@
         "микросервисы",
         "gitlab ci",
         "мониторинг"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "b000dc61394a",
@@ -2417,7 +2559,8 @@
       "author": "staff@engadget.com (Lawrence Bonk)",
       "tags": [
         "TV & Movies"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "40b381ed8c77",
@@ -2436,7 +2579,8 @@
         "Short News",
         "Data",
         "Microsoft"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "8059a7d94a4f",
@@ -2451,7 +2595,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "ffd939d59f3a",
@@ -2469,7 +2614,8 @@
         "Amazon Nova",
         "Amazon OpenSearch Service",
         "Customer Solutions"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "339213568367",
@@ -2485,7 +2631,8 @@
       "tags": [
         "spacex",
         "ipo"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "57678cd4d822",
@@ -2498,7 +2645,8 @@
       "published": "2026-06-22T16:30:01+00:00",
       "summary": "Bloomberg : Alphabet shares close down 5% on Monday following the departure of Google DeepMind VP John Jumper, the company's second top AI executive to leave in a week &nbsp; &mdash;&nbsp; Alphabet Inc. shares tumbled on Monday following the departure of another high-profile artificial intelligence leader to a rival.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "02601bfa8fe4",
@@ -2511,7 +2659,8 @@
       "published": "2026-06-22T16:30:00+00:00",
       "summary": "Авито Услуги начали тестировать новый алгоритм поиска исполнителей в сфере ремонта и строительства «Соседи рекомендуют». Инструмент помогает пользователям находить мастеров, уже получивших высокие оценки от жителей ближайших домов. По данным платформы, треть россиян, обращавшихся за услугами исполнителей, считают рекомендации знакомых и соседей главным фактором при выборе специалиста.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "2f2c12af4bec",
@@ -2530,7 +2679,8 @@
         "Categorical Data",
         "Deep Dives",
         "Outlier Detection"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "bc13b5a10356",
@@ -2549,7 +2699,8 @@
         "AWS Lambda",
         "Intermediate (200)",
         "Technical How-to"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "02479af7f7c4",
@@ -2562,7 +2713,8 @@
       "published": "2026-06-22T16:22:15+00:00",
       "summary": "Специальный агент",
       "author": "Нестандартная модель             <info@nplus1.ru >",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "1028af78164a",
@@ -2577,7 +2729,8 @@
       "author": "Ведомости",
       "tags": [
         "Бизнес / ТЭК"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "13216c6b9612",
@@ -2599,7 +2752,8 @@
         "реклама для онлайн сервиса",
         "директ для saas",
         "как закупать трафик b2b"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "8b306b6988fb",
@@ -2621,7 +2775,8 @@
         "supabase",
         "serverless",
         "vanilla.js"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "0caf8c6db6f9",
@@ -2636,7 +2791,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "1e92c9ccf640",
@@ -2651,7 +2807,8 @@
       "author": "carl.franzen@venturebeat.com (Carl Franzen)",
       "tags": [
         "Orchestration"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "89ef36f17c01",
@@ -2667,7 +2824,8 @@
       "tags": [
         "News Briefs",
         "PE Deals"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "b0f4b6352020",
@@ -2683,7 +2841,8 @@
       "tags": [
         "deltadesign",
         "flatpak"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "7cc543f76005",
@@ -2696,7 +2855,8 @@
       "published": "2026-06-22T16:07:21+00:00",
       "summary": "Open source AI startup Reflection will pay SpaceX $150 million per month for access to compute from its Colossus 2 data center, a person with direct knowledge of the deal said on Monday. The deal begins on July 1 and runs through 2029 but can be canceled by either company with 90 days’ notice, ...",
       "author": "Theo Wayt",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "419efbe5b855",
@@ -2711,7 +2871,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные новости"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "3d8d8f8badad",
@@ -2724,7 +2885,8 @@
       "published": "2026-06-22T15:57:47+00:00",
       "summary": "A24 выпустила в том числе «Закулисье реальности» и «Марти Великолепный».",
       "author": "Таня Боброва",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "ec87b664ecce",
@@ -2739,7 +2901,8 @@
       "author": "Ведомости",
       "tags": [
         "Инвестиции / Эмитенты"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "949e5f792149",
@@ -2754,7 +2917,8 @@
       "author": "Ведомости",
       "tags": [
         "Инвестиции / Эмитенты"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "e3c6655a20c5",
@@ -2767,7 +2931,8 @@
       "published": "2026-06-22T15:48:55+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "ba32c3dbef70",
@@ -2780,7 +2945,8 @@
       "published": "2026-06-22T15:45:01+00:00",
       "summary": "Kerry Flynn / Axios : Sources: marketing tech startup AppsFlyer raised a $1B Series E at a $2.7B post-money valuation; Moloco, Google, Meta, and Unity acquire minority stakes &nbsp; &mdash;&nbsp; AppsFlyer has raised more than $1 billion in Series E funding at a $2.7 billion post-money valuation, Axios has learned from sources familiar with the financing.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "821be969040c",
@@ -2793,7 +2959,8 @@
       "published": "2026-06-22T15:45:00+00:00",
       "summary": "За последние три года в России зарегистрировалось около 475 тыс. предпринимателей младше 25 лет, сообщает Точка Банк. Это почти 14% от всех новых бизнесов в стране. В среднем молодые россияне открывают около 13 тыс. бизнесов ежемесячно. Более трети молодых предпринимателей выбирают цифровые и креативные отрасли — онлайн-торговлю, разработку программного обеспечения и рекламу.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "ceb139e6adf7",
@@ -2812,7 +2979,8 @@
         "собеседование",
         "собеседование в it",
         "flutter-разработка"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "010338c1dbed",
@@ -2831,7 +2999,8 @@
         "искусственный интеллект",
         "законодательство",
         "суверенный ИИ"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "43cb50536f31",
@@ -2854,7 +3023,8 @@
         "prefix caching",
         "квантование",
         "спекулятивный декодинг"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "a09c852b079d",
@@ -2869,7 +3039,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "656c56e35978",
@@ -2882,7 +3053,8 @@
       "published": "2026-06-22T15:37:49+00:00",
       "summary": "I’ve been visiting large AI data center projects in rural and industrial communities in the Midwest, Southeast and West, and I have found that two things can be true at the same time: AI data centers have drawbacks but are better for communities than their residents think, and those communities can win a lot more financial concessions and benefits from the tech firms than they realize. Some people are coming to this understanding much faster than others.",
       "author": "Ann Davis Vaughan",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "05da327b3a75",
@@ -2895,7 +3067,8 @@
       "published": "2026-06-22T15:37:48+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "c6a984cb359a",
@@ -2916,7 +3089,8 @@
         "исследование",
         "искусственный интеллект",
         "нейросети"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "1860e3067735",
@@ -2929,7 +3103,8 @@
       "published": "2026-06-22T15:30:01+00:00",
       "summary": "Samantha Subin / CNBC : SpaceX announces an offering of senior unsecured notes and discloses it has ~$100.8B in cash; SPCX closes down 16.43% in its third consecutive losing session &nbsp; &mdash;&nbsp; SpaceX on Monday announced a senior unsecured notes offering and disclosed about $100.8 billion in cash.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "624d87e2f010",
@@ -2944,7 +3119,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "2883ec5438f4",
@@ -2957,7 +3133,8 @@
       "published": "2026-06-22T15:26:41+00:00",
       "summary": "Meta Platforms is backing Indian fintech startup Cred with a $900 million investment and tapping its founder to lead WhatsApp. Bloomberg first reported the news, including that Cred’s founder and CEO Kunal Shah will take over running WhatsApp from Will Cathcart. According to the report, Meta’s ...",
       "author": "Jyoti Mann",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "95e560c70d6a",
@@ -2972,7 +3149,8 @@
       "author": "Ведомости",
       "tags": [
         "Инвестиции / Эмитенты"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "2483341643e5",
@@ -2993,7 +3171,8 @@
         "инженерия",
         "нейросети",
         "расчеты"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "223b3aed78ad",
@@ -3008,7 +3187,8 @@
       "author": "Ведомости",
       "tags": [
         "Технологии / Интернет и digital"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "b42350b35e1e",
@@ -3023,7 +3203,8 @@
       "author": "Jonathan M. Gitlin",
       "tags": [
         "Cars"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "3bab8a4cfd3e",
@@ -3044,7 +3225,8 @@
         "проверка типов",
         "javascript",
         "производительность сборки"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "f65d3c9bcc1e",
@@ -3066,7 +3248,8 @@
         "Meta",
         "WhatsApp",
         "Will Cathcart"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "ee8d5c36b154",
@@ -3081,7 +3264,8 @@
       "author": "Ведомости",
       "tags": [
         "Финансы / Банки"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "b84d1a29b713",
@@ -3104,7 +3288,8 @@
         "space force",
         "true anomaly",
         "victus haze"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "85873c26d68c",
@@ -3120,7 +3305,8 @@
       "tags": [
         "cybersecurity",
         "cyberattack"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "32b7dd2664e9",
@@ -3139,7 +3325,8 @@
         "Short News",
         "Getty Images",
         "OpenAI"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "ab89790cec39",
@@ -3154,7 +3341,8 @@
       "author": "Ведомости",
       "tags": [
         "Общество"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "617a58ccf952",
@@ -3169,7 +3357,8 @@
       "author": "Ведомости",
       "tags": [
         "Политика / Международные отношения"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "62ddb7c10b87",
@@ -3184,7 +3373,8 @@
       "author": "staff@engadget.com (Jackson Chen)",
       "tags": [
         "EVs and Transportation"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "cc68c732b056",
@@ -3205,7 +3395,8 @@
         "роскомнадзор",
         "13.11 коап",
         "политика обработки Пдн"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "4c142e4989c1",
@@ -3223,7 +3414,8 @@
         "Corvette ZR1X",
         "pikes peak",
         "Pikes Peak International Hill Climb"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "89b2c42cf75b",
@@ -3238,7 +3430,8 @@
       "author": "Ведомости",
       "tags": [
         "Технологии / Интернет и digital"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "8dd1768af4e1",
@@ -3260,7 +3453,8 @@
         "взаимоблокировки",
         "Win32 API",
         "Pthreads"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "c192cf33f844",
@@ -3279,7 +3473,8 @@
         "Short News",
         "AI in movies",
         "Google Deepmind"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "514afce902e3",
@@ -3303,7 +3498,8 @@
         "гражданские права",
         "нарушения прав",
         "нарушения авторских прав"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "f89ac90e59d1",
@@ -3316,7 +3512,8 @@
       "published": "2026-06-22T15:00:00+00:00",
       "summary": "Модификация образа жизни усилила эффект от фармакотерапии ожирения у подростков",
       "author": "Слава Гоменюк            <slava-gomenyuk@yandex.ru>",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "cf0d4cb57223",
@@ -3336,7 +3533,8 @@
         "coding agents",
         "LLM Agents",
         "Programming"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "ff328fba8bbd",
@@ -3351,7 +3549,21 @@
       "author": "",
       "tags": [
         "Orchestration"
-      ]
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "8a545167b9a2",
+      "title": "Редакция Spark.ru: Как одновременно быть гомеопатом и изобретателем компьютера в 1829 году?",
+      "url": "https://spark.ru/post/336018",
+      "source": "Spark.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-22T14:58:41+00:00",
+      "summary": "",
+      "author": "",
+      "tags": []
     },
     {
       "id": "0492446b0cd6",
@@ -3367,7 +3579,8 @@
       "tags": [
         "маркировка рекламы",
         "орд"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "0548427732a5",
@@ -3380,7 +3593,8 @@
       "published": "2026-06-22T14:51:48+00:00",
       "summary": "В сервисе Cloudflare, через инфраструктуру которого проходят миллионы сайтов и онлайн-сервисов по всему миру, произошел сбой 22 июня. По данным Downdetector, число сообщений о проблемах превысило 600, а основной причиной обращений пользователи называли ошибки подключения к серверам. Жалобы также начали поступать и на работу X, Reddit, Zoom, Canva и других сервисов. Это уже как минимум третий крупный инцидент в работе платформы за последние месяцы.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "ec7e18d47de8",
@@ -3402,7 +3616,8 @@
         "господдержка",
         "нейросети",
         "закон об ии"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "904836d4d2f6",
@@ -3423,7 +3638,8 @@
         "война",
         "связь",
         "спутниковая связь"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "d2fa55244dc8",
@@ -3440,7 +3656,8 @@
         "визуализация данных",
         "imgui",
         "датчики"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "89067080069f",
@@ -3462,7 +3679,8 @@
         "Edge AI",
         "reasoning",
         "STM32"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "ec94018477f4",
@@ -3486,7 +3704,8 @@
         "импортозамещение оборудования",
         "аэродиск",
         "vk"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "5af7968391cb",
@@ -3502,7 +3721,8 @@
       "tags": [
         "News Briefs",
         "PE Deals"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "b48ab936c3e3",
@@ -3521,7 +3741,8 @@
         "Short News",
         "Cybersecurity",
         "NSA"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "5eca532a46c7",
@@ -3536,7 +3757,8 @@
       "author": "staff@engadget.com (Igor Bonifacic)",
       "tags": [
         "Gaming"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "f85d3c239118",
@@ -3551,7 +3773,8 @@
       "author": "Eli Collins",
       "tags": [
         "Google DeepMind"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "2f0481a23505",
@@ -3566,7 +3789,8 @@
       "author": "staff@engadget.com (Mariella Moon)",
       "tags": [
         "Apps"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "027f3dd3232e",
@@ -3588,7 +3812,21 @@
         "php-fpm",
         "preload",
         "кэширование"
-      ]
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "209652055528",
+      "title": "bitkogan: Капитуляция на российском рынке",
+      "url": "https://spark.ru/post/336016",
+      "source": "Spark.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-22T14:25:13+00:00",
+      "summary": "",
+      "author": "",
+      "tags": []
     },
     {
       "id": "283081a66ebf",
@@ -3603,7 +3841,8 @@
       "author": "bendee983@gmail.com (Ben Dickson)",
       "tags": [
         "Orchestration"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "8ae8c333eb4a",
@@ -3625,7 +3864,8 @@
         "защита цод",
         "защита персональных данных",
         "защита ит-инфраструктуры"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "77da6ee21d22",
@@ -3644,7 +3884,8 @@
         "Social",
         "Instagram",
         "streaming services"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "d91a8157ad09",
@@ -3664,7 +3905,8 @@
         "Электронное государство",
         "эдо",
         "электронный документооборот"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "96a037d8cbe6",
@@ -3684,7 +3926,8 @@
         "optical communications",
         "space",
         "telescopes"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "cc794114c83c",
@@ -3697,7 +3940,8 @@
       "published": "2026-06-22T14:06:00+00:00",
       "summary": "Подслащенные напитки в детстве повысили риск гипертонии во взрослом возрасте",
       "author": "Слава Гоменюк            <slava-gomenyuk@yandex.ru>",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "756123b17e99",
@@ -3710,7 +3954,8 @@
       "published": "2026-06-22T14:02:59+00:00",
       "summary": "In a space war, America must fight on the side of order",
       "author": "Christian Keil",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "96156e2c8c9a",
@@ -3723,7 +3968,8 @@
       "published": "2026-06-22T14:01:19+00:00",
       "summary": "Some businesses that use Anthropic and OpenAI models to develop AI apps for coding, design, legal work and other white-collar tasks are getting worried that those two AI model suppliers might eat their lunch . Design app Figma seems attuned to that kind of threat, especially from Anthropic’s recently launched Claude Design app, as we reported. But Canva , a Figma rival privately valued at $42 billion, doesn’t feel the same way. “We see it as a complementary product for us,” said Anwar Haneef , Canva’s head of ecosystem, referring to Claude Design.&nbsp; “It’s great to get that initial first…",
       "author": "Stephanie Palazzolo",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "e1ecf3b05473",
@@ -3742,7 +3988,8 @@
         "Recent News",
         "Sidebar - Featured",
         "Reels"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "08d51c89fc6f",
@@ -3755,7 +4002,8 @@
       "published": "2026-06-22T14:00:04+00:00",
       "summary": "Agentic AI is not failing because the technology is bad. It is failing because of five specific misconceptions that teams carry into their first deployments and each one is correctable.",
       "author": "Shittu Olumide",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "b22d2d1be4cf",
@@ -3774,7 +4022,8 @@
         "Startups",
         "Venture",
         "TechCrunch Founder Summit 2026"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "a517560a7142",
@@ -3791,7 +4040,8 @@
         "AI in practice",
         "Artificial Intelligence",
         "AI and coding"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "6403de463dad",
@@ -3804,7 +4054,8 @@
       "published": "2026-06-22T13:53:02+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "cb5a3ffa5c9a",
@@ -3827,7 +4078,8 @@
         "южная корея",
         "оперативная память",
         "озу"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "1e4a9b44d30c",
@@ -3851,7 +4103,8 @@
         "локальные модели",
         "ml",
         "модели машинного обучения"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "4a01f2d27a3f",
@@ -3871,7 +4124,8 @@
         "LLMs",
         "Mythos",
         "syndication"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "478432a7e178",
@@ -3884,7 +4138,8 @@
       "published": "2026-06-22T13:45:00+00:00",
       "summary": "WB Банк запустил свой первый кредитный продукт для физических лиц. Как сообщили в компании, потребительский кредит можно оформить на сумму до 500 тыс. рублей сроком до 60 месяцев. Подача заявки и одобрение займа проходят полностью онлайн.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "b51485870039",
@@ -3897,7 +4152,8 @@
       "published": "2026-06-22T13:45:00+00:00",
       "summary": "Disabling my antivirus for a week taught me that the most important security tool you have isn't software.",
       "author": "Marshall Gunnell",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "afa9db43a106",
@@ -3910,7 +4166,8 @@
       "published": "2026-06-22T13:43:38+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "f51df01d602b",
@@ -3923,7 +4180,8 @@
       "published": "2026-06-22T13:43:01+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "13a3ad9aeebf",
@@ -3942,7 +4200,8 @@
         "EVs",
         "Layoffs",
         "Lucid Motors"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "62e4118bf13e",
@@ -3959,7 +4218,8 @@
         "Venture",
         "early stage funding",
         "SeedCamp"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "3080985cf56a",
@@ -3979,7 +4239,8 @@
         "data breach",
         "extortion",
         "Klue"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "b7178e484651",
@@ -3994,7 +4255,8 @@
       "author": "Rafael Canton",
       "tags": [
         "Opinion"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "039edcf5ac33",
@@ -4010,7 +4272,8 @@
       "tags": [
         "News Briefs",
         "People"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "22842b355d68",
@@ -4030,7 +4293,8 @@
         "Parsing",
         "Pydantic",
         "Rag"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "a57589e53965",
@@ -4046,7 +4310,8 @@
       "tags": [
         "Codex",
         "OpenAI"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "d3ee689571cc",
@@ -4059,7 +4324,8 @@
       "published": "2026-06-22T13:18:56+00:00",
       "summary": "",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "4bde62a598c2",
@@ -4072,7 +4338,8 @@
       "published": "2026-06-22T13:12:37+00:00",
       "summary": "3 июля в яхт-клубе Sky River на Клязьминском водохранилище пройдёт регата для представителей бизнеса и рекламного рынка. Её не в первый раз организует Digital Club — сообщество специалистов в сфере маркетинга, рекламы и диджитал-коммуникаций.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "6cb0c2bf15d1",
@@ -4085,7 +4352,8 @@
       "published": "2026-06-22T13:12:04+00:00",
       "summary": "Хотя до августа 2023-го в законодательстве не было ограничений на перепродажу таких машин.",
       "author": "Артур Томилко",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "0832d93eb71d",
@@ -4098,7 +4366,8 @@
       "published": "2026-06-22T13:01:17+00:00",
       "summary": "a16z leads Prosper AI's Series A",
       "author": "Jay Rughani",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "71579f365502",
@@ -4122,7 +4391,8 @@
         "High-Performance Computing",
         "Quantum Computing",
         "Science"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "f6e5cb522d7d",
@@ -4135,7 +4405,8 @@
       "published": "2026-06-22T13:00:39+00:00",
       "summary": "Few companies have gone public with books as unusual as OpenAI’s. At first glance, the company portrayed by the AI startup’s financial statements, reviewed by The Information, resembles a lean, low-debt software business. Its balance sheet, as at March 31, had zero debt and less than $750 million of lease liabilities. Its cash-flow statement, moreover, showed OpenAI &mdash;one of the most hardware-centric tech businesses&mdash;spending just $46 million on capital expenditures in the quarter, less than even Salesforce, which sells business software.",
       "author": "Cory Weinberg",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "76f7edffd489",
@@ -4153,7 +4424,8 @@
         "Supercomputing",
         "NVIDIA DGX",
         "Science"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "2ace5aa8e79c",
@@ -4176,7 +4448,8 @@
         "NVIDIA Vera",
         "Public Sector",
         "Science"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "e98fab613985",
@@ -4205,7 +4478,8 @@
         "Omniverse",
         "Open Source",
         "Science"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "5593704f03db",
@@ -4229,7 +4503,8 @@
         "Energy",
         "Inception",
         "Omniverse"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "379152d57b7f",
@@ -4249,7 +4524,8 @@
         "Artificial intelligence (AI)",
         "Demystifying AI",
         "large language models"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "db2bc0b31775",
@@ -4265,7 +4541,8 @@
       "tags": [
         "аппарат правительства РФ",
         "искусственный интеллект"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "708d20f5ec39",
@@ -4278,7 +4555,8 @@
       "published": "2026-06-22T12:52:43+00:00",
       "summary": "The only thing cooler than an eclipse or a sunset is when both happen at once.",
       "author": "Joe Hindy",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "79c991bdcbf4",
@@ -4291,7 +4569,8 @@
       "published": "2026-06-22T12:45:00+00:00",
       "summary": "Экспорт легковых автомобилей из Китая в Россию в мае достиг $1,3 млрд, увеличившись на 25,8% по сравнению с апрелем, сообщает «Интерфакс». Это максимальный показатель с октября 2025 года. Поставки китайских грузовиков тоже растут: за первые пять месяцев 2026-го они выросли на 61,1% и достигли $345,3 млн.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "8ff4d1e8934f",
@@ -4308,7 +4587,8 @@
         "Минцифры",
         "деанонимизация",
         "Россия"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "b2797c12be23",
@@ -4327,7 +4607,8 @@
         "платежные сервисы",
         "платежный сервис",
         "платежные технологии"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "aab89049ece4",
@@ -4349,7 +4630,8 @@
         "анб",
         "Искусственный интеллект",
         "США"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "eb7550d9f9b5",
@@ -4370,7 +4652,8 @@
         "playstation 5",
         "sec",
         "портирование"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "d223ba5f196e",
@@ -4387,7 +4670,8 @@
         "Hide my Email",
         "Apple",
         "поддомен"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "6d23001eab73",
@@ -4405,7 +4689,8 @@
         "почта россии",
         "мессенджеры",
         "работа"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "18eaff73db98",
@@ -4418,7 +4703,8 @@
       "published": "2026-06-22T12:31:45+00:00",
       "summary": "How religious are beliefs in the singularity?",
       "author": "Jack Clark",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "0559c0a0b3df",
@@ -4434,7 +4720,8 @@
       "tags": [
         "News Briefs",
         "PE Deals"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "bf5ca1c5d457",
@@ -4450,7 +4737,8 @@
       "tags": [
         "News Briefs",
         "People"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "00c1bb2c7ff2",
@@ -4470,7 +4758,8 @@
         "стройка",
         "рекомендации",
         "рекомендательные системы"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "97681e576473",
@@ -4486,7 +4775,8 @@
       "tags": [
         "News Briefs",
         "PE Deals"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "73248d25549d",
@@ -4499,7 +4789,8 @@
       "published": "2026-06-22T12:23:46+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "d386a24f2b7d",
@@ -4519,7 +4810,21 @@
         "Регулирование",
         "кадры",
         "Мурманская область"
-      ]
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "a6b899eb9d91",
+      "title": "Spark_news: Зюганов решил изъять деньги жителей и бизнеса из банков",
+      "url": "https://spark.ru/post/335973",
+      "source": "Spark.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-22T12:11:04+00:00",
+      "summary": "",
+      "author": "",
+      "tags": []
     },
     {
       "id": "7e4268ecef5a",
@@ -4534,7 +4839,8 @@
       "author": "Thomas Macaulay",
       "tags": [
         "The Download"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "83f92f022b32",
@@ -4553,7 +4859,8 @@
         "взлом",
         "база данных",
         "утечка данных"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "b01c40687e91",
@@ -4566,7 +4873,8 @@
       "published": "2026-06-22T12:05:00+00:00",
       "summary": "Низкий уровень тестостерона у мужчин связали с высоким риском смерти от рака",
       "author": "Слава Гоменюк            <slava-gomenyuk@yandex.ru>",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "bbdce8b3b8fc",
@@ -4579,7 +4887,8 @@
       "published": "2026-06-22T12:00:18+00:00",
       "summary": "In this article, we will walk through three essential NLTK tricks to elevate your text preprocessing: preserving phrase integrity with the MWETokenizer, context-aware lemmatization with POS mapping, and statistical collocation extraction using association measures.",
       "author": "Matthew Mayo",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "8eaf18cdef07",
@@ -4598,7 +4907,8 @@
         "Deep Dives",
         "Machine Learning",
         "Neural Networks"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "c4a807583401",
@@ -4611,7 +4921,8 @@
       "published": "2026-06-22T12:00:00+00:00",
       "summary": "You’ll get a low-impact, efficient cardio workout with these top rowing machine picks.",
       "author": "Giselle Castro-Sloboda",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "0dd46b013c8c",
@@ -4624,7 +4935,8 @@
       "published": "2026-06-22T11:56:22+00:00",
       "summary": "Подача заявки и её одобрение — в мобильном приложении.",
       "author": "Таня Боброва",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "5054f565feaf",
@@ -4646,7 +4958,8 @@
         "App Store",
         "Apple",
         "бразилия"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "f4b37cd57100",
@@ -4659,7 +4972,8 @@
       "published": "2026-06-22T11:54:00+00:00",
       "summary": "Банк России отказал Сбербанку, Альфа-Банку и Т-Банку в создании собственной платёжной системы, сообщил РБК. Регулятор не поддержал ни одну из предложенных банками моделей и дал понять, что второй Национальной системы платёжных карт (НСПК) на российском рынке не появится. Вместо этого ЦБ РФ предложил компаниям принять участие в акционировании НСПК.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "3a4a7a3f11d5",
@@ -4674,7 +4988,8 @@
       "author": "staff@engadget.com (Sarah Fielding)",
       "tags": [
         "AI"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "3ea0cd785d2b",
@@ -4687,7 +5002,8 @@
       "published": "2026-06-22T11:49:39+00:00",
       "summary": "Главной темой «AdIndex Сити» станет влияние новых технологий на рекламную индустрию. На конференции, которая пройдёт в пространстве LOFT#8 в Москве, обсудят, как искусственный интеллект меняет рекламный бизнес и маркетинговые команды, что происходит с поведением аудитории и какие данные помогают участникам рынка принимать решения.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "45d23b17dc41",
@@ -4700,7 +5016,8 @@
       "published": "2026-06-22T11:46:00+00:00",
       "summary": "If you're only using your KitchenAid mixer to make baked goods, then you're not getting the most out of this versatile kitchen device.",
       "author": "Anna Gragert",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "8dfbdcf3e79f",
@@ -4715,7 +5032,21 @@
       "author": "staff@engadget.com (Daniel Cooper)",
       "tags": [
         "EVs and Transportation"
-      ]
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "3e5c9aa35309",
+      "title": "MarketingNews: Объем российского рекламного рынка в январе-марте 2026 года превысил 220 млрд рублей",
+      "url": "https://spark.ru/post/335963",
+      "source": "Spark.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-22T11:31:46+00:00",
+      "summary": "",
+      "author": "",
+      "tags": []
     },
     {
       "id": "d29b423c22a2",
@@ -4732,7 +5063,8 @@
         "Artificial Intelligence",
         "Image",
         "LLMs"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "5bcf185589e4",
@@ -4751,7 +5083,21 @@
         "Новости",
         "программное обеспечение",
         "сертификация"
-      ]
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "7bff4af57afc",
+      "title": "bitkogan: ИИ: запретить нельзя пользоваться!",
+      "url": "https://spark.ru/post/335956",
+      "source": "Spark.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-22T11:17:18+00:00",
+      "summary": "",
+      "author": "",
+      "tags": []
     },
     {
       "id": "0ba0d1052dfc",
@@ -4764,7 +5110,8 @@
       "published": "2026-06-22T11:02:31+00:00",
       "summary": "Алгоритмы показывают тех, к кому уже обращались пользователи, которые, согласно указанным в профилях адресам, живут рядом.",
       "author": "Таня Боброва",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "c2e3ca4e00ab",
@@ -4780,7 +5127,8 @@
       "tags": [
         "Artificial intelligence",
         "SaaS"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "4f3f89e943ca",
@@ -4803,7 +5151,8 @@
         "Startups",
         "Venture",
         "unicorn"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "103d1d7d5746",
@@ -4818,7 +5167,8 @@
       "author": "Obey Martin Manayiti",
       "tags": [
         "Featured"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "d9132501a8f5",
@@ -4834,7 +5184,21 @@
       "tags": [
         "AI",
         "Tech"
-      ]
+      ],
+      "has_full_text": false
+    },
+    {
+      "id": "1b764338c0ba",
+      "title": "Spark_news: Каждый пятый мужчина подрабатывает ради отношений",
+      "url": "https://spark.ru/post/335947",
+      "source": "Spark.ru",
+      "category": "ru_startups",
+      "language": "ru",
+      "priority": "medium",
+      "published": "2026-06-22T10:57:41+00:00",
+      "summary": "",
+      "author": "",
+      "tags": []
     },
     {
       "id": "cd0ba9ef82d3",
@@ -4847,7 +5211,8 @@
       "published": "2026-06-22T10:45:00+00:00",
       "summary": "С 5 по 7 июня на территории московского завода «Кристалл» прошёл первый городской фестиваль Signal Factory. За три дня на площадке выступили более 100 артистов со всего мира, в том числе Найк Борзов, Хаски, DJ Assault и Francesco Farfa. Организаторы сообщили, что сейчас ведётся работа над основным фестивалем Signal 2026 в Никола-Ленивце.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "e805a070c1f8",
@@ -4860,7 +5225,8 @@
       "published": "2026-06-22T10:44:24+00:00",
       "summary": "Но предложил им поучаствовать в акционировании НСПК.",
       "author": "Артур Томилко",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "ba238fa668a7",
@@ -4880,7 +5246,8 @@
         "борьба с киберпреступниками",
         "второй антифрод-пакет",
         "международные звонки"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "21db44187d49",
@@ -4893,7 +5260,8 @@
       "published": "2026-06-22T10:07:42+00:00",
       "summary": "Getting that high-end graphics card might not help if you're \"CPU-bound.\" Here's what that means and how to work around it.",
       "author": "Mark Knapp",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "3c4cebfc82c7",
@@ -4908,7 +5276,8 @@
       "author": "Ben Thompson",
       "tags": [
         "Daily Update"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "d1f76847811f",
@@ -4931,7 +5300,8 @@
         "household",
         "interviews",
         "Home"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "f601b26b225b",
@@ -4946,7 +5316,8 @@
       "author": "",
       "tags": [
         "Security"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "5d9de7a5a94a",
@@ -4961,7 +5332,8 @@
       "author": "",
       "tags": [
         "Security"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "f0e8433b2429",
@@ -4981,7 +5353,8 @@
         "politics",
         "News",
         "Revolving Door"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "06ebf8c7fceb",
@@ -4994,7 +5367,8 @@
       "published": "2026-06-22T09:42:00+00:00",
       "summary": "Богатая магнием минеральная вода улучшила качество стула",
       "author": "Олег Лищук            <OLEG.LISCHUK@gmail.com>",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "e42bbc2acea6",
@@ -5013,7 +5387,8 @@
         "Short News",
         "OpenAI",
         "Samsung"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "a100309a154b",
@@ -5026,7 +5401,8 @@
       "published": "2026-06-22T09:34:00+00:00",
       "summary": "Правительство рассмотрит обновлённую версию законопроекта о регулировании искусственного интеллекта 22 июня, сообщает «Коммерсант». Документ существенно переработали — акцент сместился с регулирования на поддержку российских разработчиков. Законопроект могут внести в Госдуму уже до конца недели.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "516ebb03653b",
@@ -5047,7 +5423,8 @@
         "GPU",
         "Инфраструктура",
         "Новости"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "bb053c7468c4",
@@ -5068,7 +5445,8 @@
         "unions",
         "construction",
         "Electric Feel"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "23d401c189d5",
@@ -5096,7 +5474,8 @@
         "Sports",
         "soccer",
         "Foul Play"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "eeaece873b0b",
@@ -5109,7 +5488,8 @@
       "published": "2026-06-22T09:23:30+00:00",
       "summary": "Совокупное состояние основателей компании братьев Ву превысило $1 млрд.",
       "author": "Данила Бычков",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "aed6f46f56a7",
@@ -5122,7 +5502,8 @@
       "published": "2026-06-22T09:07:52+00:00",
       "summary": "Из документа также убрали возможность запрета и ограничения «трансграничных технологий ИИ».",
       "author": "Артур Томилко",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "ba7c3c2c8964",
@@ -5143,7 +5524,8 @@
         "госуслуги онлайн",
         "кэп",
         "электронная подпись"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "7690d822b63c",
@@ -5158,7 +5540,8 @@
       "author": "Nina Lindholm",
       "tags": [
         "Opinion"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "35cba1492a09",
@@ -5171,7 +5554,8 @@
       "published": "2026-06-22T08:46:00+00:00",
       "summary": "Генная терапия кардиомиопатии при атаксии Фридрейха прошла пилотные испытания",
       "author": "Олег Лищук            <OLEG.LISCHUK@gmail.com>",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "decfd507714d",
@@ -5188,7 +5572,8 @@
         "AI in practice",
         "Artificial Intelligence",
         "Sakana"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "55be43d9618f",
@@ -5201,7 +5586,8 @@
       "published": "2026-06-22T08:10:00+00:00",
       "summary": "Покупатели Wildberries теперь смогут не только приобрести бытовую технику и электронику, но и заказать её установку, настройку и обслуживание прямо на маркетплейсе. Компания запустила новый раздел услуг в тестовом режиме. На первом этапе сервис доступен пользователям из Москвы, сообщает пресс-служба RWB.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "13cf18f0cf02",
@@ -5214,7 +5600,8 @@
       "published": "2026-06-22T08:08:00+00:00",
       "summary": "Капуцин из городского леса пожонглировал кокосом",
       "author": "Катерина Петрова            <info@nplus1.ru >",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "8bade4d9f097",
@@ -5234,7 +5621,8 @@
         "платформенная экономика",
         "поручения правительства",
         "цифровые платформы"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "9462ce645943",
@@ -5256,7 +5644,8 @@
         "статистика",
         "цифровая аналитическая платформа",
         "Цифровая аналитическая платформа предоставления статистических данных"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "15e05676a55e",
@@ -5273,7 +5662,8 @@
         "Culture",
         "App",
         "Features and Investigations"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "8f7161c16e11",
@@ -5286,7 +5676,8 @@
       "published": "2026-06-22T08:00:00+00:00",
       "summary": "At Vercel, feature flags are how we ship. From new features to model updates in v0, and even infrastructure changes like a production database migration where a flag was the cutover. The v0 team alone runs hundreds at any given moment. Merging code sends a build to production, but the feature flags control whether users can see what changed. Flags let you ship on your own schedule, release to segments when you're ready, and roll back by immediately by toggling a flag, without touching source files or redeploying. Vercel Flags is platform-native: server-side by default, zero impact on page…",
       "author": "Dominik Ferber",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "de726eb475a0",
@@ -5299,7 +5690,8 @@
       "published": "2026-06-22T07:54:53+00:00",
       "summary": "Samsung удерживала первое место с 2000 года.",
       "author": "Данила Бычков",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "481b284cb90f",
@@ -5312,7 +5704,8 @@
       "published": "2026-06-22T07:51:00+00:00",
       "summary": "The Legend of Zelda и Yoshi&#x2019;s повысили стоицизм и уменьшили чувство одиночества",
       "author": "Олег Лищук            <OLEG.LISCHUK@gmail.com>",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "2e76fc3a2006",
@@ -5342,7 +5735,8 @@
         "MRAM",
         "SRAM",
         "Synopsys"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "7581bc928496",
@@ -5355,7 +5749,8 @@
       "published": "2026-06-22T07:10:31+00:00",
       "summary": "В июне 2026 года с отзывом SSL-сертификатов уже столкнулись некоторые российские сайты.",
       "author": "Артур Томилко",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "40ad2ad942df",
@@ -5396,7 +5791,8 @@
         "multi-beam mask writers",
         "OPC",
         "Synopsys"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "54e2bd1b1010",
@@ -5414,7 +5810,8 @@
         "Seed funding",
         "Startups",
         "Venture"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "452651048c60",
@@ -5429,7 +5826,8 @@
       "author": "",
       "tags": [
         "Orchestration"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "691905f30bc7",
@@ -5442,7 +5840,8 @@
       "published": "2026-06-22T05:38:40+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "61d2343404e9",
@@ -5465,7 +5864,8 @@
         "Ribbit Capital",
         "Sequoia Capital",
         "StrictlyVC"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "159538ac3e97",
@@ -5478,7 +5878,8 @@
       "published": "2026-06-22T05:31:00+00:00",
       "summary": "Собираем новости, события и мнения о рынках, банках и реакциях компаний.",
       "author": "Артур Томилко",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "02ca09e10163",
@@ -5496,7 +5897,8 @@
         "AI Factory",
         "Energy",
         "NVIDIA Rubin"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "02cf519dd02d",
@@ -5524,7 +5926,8 @@
         "STMicroelectronics",
         "throughput",
         "wafer fabrication"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "ae4a260deec6",
@@ -5554,7 +5957,8 @@
         "side channel attacks",
         "SMT",
         "timing attacks"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "989efeeb91c2",
@@ -5583,7 +5987,8 @@
         "University of California Riverside",
         "Verilog",
         "VerilogEval"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "1b094ff7d8bf",
@@ -5596,7 +6001,8 @@
       "published": "2026-06-22T02:15:01+00:00",
       "summary": "Nikkei Asia : Japan's top five chip equipment makers posted their first-ever fall in combined China sales, down 10% in the year ended March 31, as China boosts local players &nbsp; &mdash;&nbsp; TOKYO &mdash; Japan's top five manufacturers of chipmaking equipment posted a 10% decline in combined sales to China for the year ended March 31 &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "1039cabbb76c",
@@ -5609,7 +6015,8 @@
       "published": "2026-06-22T02:08:18+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "71aaa44795de",
@@ -5622,7 +6029,8 @@
       "published": "2026-06-22T01:32:08+00:00",
       "summary": "Here are hints and the answers for the NYT Connections: Sports Edition puzzle for June 22, No. 637.",
       "author": "Gael Cooper",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "e87293091aab",
@@ -5644,7 +6052,8 @@
         "LSP",
         "code intelligence",
         "MCP"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "f5413a91dff8",
@@ -5657,7 +6066,8 @@
       "published": "2026-06-22T01:24:24+00:00",
       "summary": "Here are the answers for The New York Times Mini Crossword for June 22.",
       "author": "Gael Cooper",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "7d870a66912a",
@@ -5670,7 +6080,8 @@
       "published": "2026-06-22T01:15:01+00:00",
       "summary": "Jiahui Huang / Wall Street Journal : Sources: Shanghai-based Coowa, which develops embodied AI robots, plans to file a Hong Kong IPO; Coowa was valued at $3B after raising $600M in its latest round &nbsp; &mdash;&nbsp; Shanghai-based Coowa plans to file the IPO application within the next two to three months&nbsp; &mdash;&nbsp; Chinese robotics company Coowa &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "655a2e651a85",
@@ -5692,7 +6103,8 @@
         "вентспилс-8",
         "вентспилс-8. космическая разведка",
         "камчатка"
-      ]
+      ],
+      "has_full_text": true
     },
     {
       "id": "5eb71fe9792a",
@@ -5705,7 +6117,8 @@
       "published": "2026-06-22T00:45:00+00:00",
       "summary": "Cristian Dina / The Next Web : San Diego-based Aether AI, which is building &ldquo;causal world models&rdquo; to teach robots cause and effect instead of pattern-matching, raised a $20M seed led by MPCi &nbsp; &mdash;&nbsp; Aether AI, founded by UC San Diego causality researcher Biwei Huang, has raised a $20mn seed round to build &ldquo;causal world models&rdquo; for robots.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "0741c7699333",
@@ -5718,7 +6131,8 @@
       "published": "2026-06-22T00:34:33+00:00",
       "summary": "Comments",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "0dd3430a0d46",
@@ -5731,7 +6145,8 @@
       "published": "2026-06-22T00:10:01+00:00",
       "summary": "Nikkei Asia : Toto, Japan's largest toilet maker, plans to invest $495M by 2030 to expand its semiconductor materials unit, targeting R&amp;D for next-gen 1nm chip production &nbsp; &mdash;&nbsp; TOKYO/KITAKYUSHU, Japan &mdash; Bathroom fixtures maker Toto plans to invest 80 billion yen ($495 million) in the next five years &hellip;",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": true
     },
     {
       "id": "0a10586b7cab",
@@ -5744,7 +6159,8 @@
       "published": "2026-06-22T00:00:44+00:00",
       "summary": "Lime, the electric scooter and bike rental company, is set to receive financial backing from its long-time partner and investor, Uber. In an updated IPO prospectus filing expected Monday, Uber will be named as an anchor investor for the deal, The Information reported . Lime is targeting a $1.8 ...",
       "author": "Nick Wingfield",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "5edb7201b0cb",
@@ -5759,7 +6175,8 @@
       "author": "",
       "tags": [
         "AI Adoption"
-      ]
+      ],
+      "has_full_text": false
     },
     {
       "id": "653b9580d758",
@@ -5772,7 +6189,8 @@
       "published": "2026-06-22T00:00:00+00:00",
       "summary": "Ten days after Washington pulled Anthropic's top models from foreign hands, the bill came due. This week Beijing blacklisted 56 American firms, Anthropic's own filing admitted the trigger was a routine coding request rival models can run, and Microsoft's CEO warned that letting \"a few models eat everything\" won't survive politically. The export war just stopped being one-directional — here's the week that made it mutual.",
       "author": "",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "c35e5e82637b",
@@ -5785,7 +6203,8 @@
       "published": "2026-06-22T00:00:00+00:00",
       "summary": "You can now generate signed URLs for Vercel Blob directly from the Vercel CLI. A signed URL is a scoped URL with a set expiration time that lets you perform a single operation on a specific object. Each URL is scoped to one operation ( get , head , put , or delete ), one pathname, and a custom expiry of up to 7 days. Update the Vercel CLI to version 5.14.5 to get started. Generate a presigned URL in one command Use the new vercel blob presign command to sign a URL for a single operation, for example to provide short-lived access to a private file or to allow your users to upload images of a…",
       "author": "Agustin Falco",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "52f32225b12b",
@@ -5798,7 +6217,8 @@
       "published": "2026-06-22T00:00:00+00:00",
       "summary": "Hobby users can now connect up to 25 projects per repository, up from 10. This makes it easier for users to onboard monorepos and use cases where one codebase maps to many deployable apps. Learn more about repository connection limits . Read more",
       "author": "Anthony Shew",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "e6ed3a560e9a",
@@ -5811,7 +6231,8 @@
       "published": "2026-06-22T00:00:00+00:00",
       "summary": "Vercel Functions can now serve WebSocket connections, enabling bidirectional communication between clients and server-side code on Vercel. Use WebSockets for realtime features such as interactive AI streaming, chat, and collaborative apps. WebSocket connections run Fluid compute and follow the same limits and pricing as other Function invocations. With Active CPU pricing , billing only applies to the time your Function spends processing messages, not idle connection time. You can serve WebSocket connections using standard Node.js libraries, with no additional configuration: Higher-level…",
       "author": "Casey Gowrie",
-      "tags": []
+      "tags": [],
+      "has_full_text": false
     },
     {
       "id": "129295295925",
@@ -5824,6 +6245,20 @@
       "published": "2026-06-22T00:00:00+00:00",
       "summary": "Sakana Fugu Ultra from Sakana AI is now available on AI Gateway . Fugu Ultra is built on a pool of publicly accessible frontier models, rather than running as a single model. It coordinates several models, routing work to 1-3 agents depending on the problem and combining their results into a single answer. Based on reasoning and scientific benchmarks, Fugu Ultra has capabilities similar to those of Claude Mythos Preview and Fable 5. To use Fugu Ultra, set model to sakana/fugu-ultra in AI SDK : AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring…",
       "author": "Jerilyn Zheng",
+      "tags": [],
+      "has_full_text": false
+    },
+    {
+      "id": "4af30edd2b4f",
+      "title": "We got local models to triage the OpenClaw repo for FREE!*",
+      "url": "https://huggingface.co/blog/local-models-pr-triage",
+      "source": "Hugging Face Blog",
+      "category": "ai_research",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-22T00:00:00+00:00",
+      "summary": "",
+      "author": "",
       "tags": []
     }
   ]

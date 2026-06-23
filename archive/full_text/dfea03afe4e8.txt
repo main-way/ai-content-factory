@@ -1,0 +1,14 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:Deep Unrolled Networks in Representation Space Applied to MRI Reconstruction
+View PDF HTML (experimental)Abstract:Deep unrolled networks (DUNs) integrate physical forward models with learned regularization in cascaded network architectures, achieving exceptional performance in inverse problems while maintaining interpretability. While most DUNs operate in the object domain (e.g., image space), recent variants explored representation spaces for improved information flow. However, these methods rely on heuristic methods for data consistency (DC), sacrificing fidelity with measurements.
+In this work, we introduce DUNE (Deep Unrolled Networks in rEpresentation space), a framework that maintains exact adherence to physical measurements while operating in learned representation spaces. By deriving the DC gradient via the chain rule and implementing it through the Vector-Jacobian Product (VJP), we enable exact backpropagation of measurement residuals into the representation space. This formulation supports diverse architectural backbones, including pre-trained encoders to guide the iterative process.
+We assess DUNE against state-of-the-art baselines on accelerated MRI reconstruction tasks, demonstrating that exact VJP-based gradients yield superior reconstruction quality and structural fidelity across both single-channel portable low-field and multi-channel clinical high-field MRI acquisitions. The code will be available upon publication at this https URL.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,13 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:NeoJaundice-AI: Smartphone-Based Neonatal Jaundice Detection Using Dual-Input Deep Learning and Synthetic Augmentation
+View PDF HTML (experimental)Abstract:Neonatal jaundice (hyperbilirubinemia) is one of the most common conditions affecting newborns worldwide, with India alone recording roughly 15 million cases per year. Early detection is critical, yet standard diagnosis requires blood tests that are often impractical in rural clinics where laboratory facilities are limited. This paper presents NeoJaundice-AI, a smartphone-based screening system that uses photographs of a baby's skin and sclera (eye white) to estimate jaundice severity and predict serum bilirubin levels in under three seconds without requiring internet connectivity.
+The proposed system is built on a dual-branch EfficientNet-B0 architecture that independently processes skin and sclera images. Deep features are fused with handcrafted YCbCr color statistics to jointly perform four-class severity classification and continuous bilirubin regression. A key contribution is a synthetic jaundice generation method that simulates bilirubin-induced yellowing through controlled YCbCr channel modifications on normal neonatal skin images. This approach addresses data scarcity, particularly for severe jaundice cases and darker Indian skin tones (Fitzpatrick Types IV to VI). In addition, a skin-tone normalization module improves prediction consistency across diverse neonatal complexions.
+Experimental results demonstrate an overall classification accuracy of 91.8 percent, a clinical sensitivity of 93.5 percent, and a bilirubin mean absolute error of 1.4 mg/dL. After INT8 quantization and ONNX conversion, the model size is reduced to 8.3 MB while maintaining inference times below three seconds on standard Android devices. To the best of our knowledge, this is the first India-focused neonatal jaundice AI system that combines multimodal image fusion, skin-tone adaptation, synthetic data augmentation, and fully offline mobile deployment within a single framework.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

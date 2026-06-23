@@ -18,7 +18,7 @@
         "Artificial Intelligence",
         "Deep Learning"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d7aa8377516c",
@@ -37,7 +37,7 @@
         "strategy",
         "finance"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ffaf0c1d1c11",
@@ -57,7 +57,7 @@
         "Сбер",
         "Яндекс"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bca77a2c26ab",
@@ -74,7 +74,7 @@
         "Текучка",
         "Bloomberg"
       ],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

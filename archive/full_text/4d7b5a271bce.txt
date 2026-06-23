@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:R2HandoverSim: A Simulation Framework and Benchmark for Robot-to-Human Object Handovers
+View PDF HTML (experimental)Abstract:We present R2HandoverSim, a simulation benchmark for robot-to-human (R2H) object handovers. Although R2H handover methods have advanced rapidly, the lack of standardized evaluation protocols impedes objective comparison. Our benchmark enables reproducible evaluation by systematically comparing four baselines on their predicted shared grasp poses. We conduct a user study with 30 participants, analyze baseline performance, and show that simulation results correlate with real-world evaluation outcomes. Crucially, five complementary metrics (planning feasibility, reachability, grasp stability, grasp affordance, and safety) better reflect user-perceived handover quality than overall success rate alone. Website and code: this https URL.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

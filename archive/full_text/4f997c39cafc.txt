@@ -1,0 +1,11 @@
+Computer Science > Artificial Intelligence
+Title:Learning Splitting Heuristics for Parallel String Solvers
+View PDF HTML (experimental)Abstract:String constraint solvers are crucial for reasoning about string-manipulating programs. However, many practical string constraints are undecidable, and real-world applications often present complex constraints that challenge current solvers. The rise of multi-core architectures offers an opportunity for parallel solving. A key parallel solving method is \emph{cube-and-conquer}, in which the quality of splitting heuristics is critical to effectively dividing the search space. Unfortunately, manually designing the heuristics is labor-intensive, and handcrafted heuristics are often sub-optimal. This paper introduces a data-driven approach to automatically generating splitting heuristics. We frame the problem of selecting a splitting atom as a learning task, using features from input formulas and dynamic data from solver execution. We implement this approach in two popular string solvers, Z3seq and Z3str4, demonstrating that the learned heuristics outperform manually designed ones in the number of solved formulas and the average solving time.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,1715 @@
+Dear Mark and Meta Leadership,
+We demand that you not collect employee “computer-use” data for the purposes of training AI Models.
+Read the letter by clicking here
+Recently, leadership announced in a limited audience group (MSL Infra FYI) that a program called "MCI" (Model Capability Initiative) would be rolling out. For context this program collects computer inputs such as mouse movements, click locations and keystrokes, as well as screen content.
+When employees asked what privacy reviews were conducted, including any "people data reviews" (which are required for processing employee data), no completed privacy reviews were provided. The outlined privacy mitigations were vague, and leadership’s confidence in them appeared limited - evidenced by the selective opt-out afforded to executives.
+We are speaking up - because it’s expected of us and, more importantly, because it is the right thing to do.
+The importance of our work means we must commit to holding ourselves to a high standard. This is why I expect everyone at Meta - leaders, managers, individual contributors - to follow our code of conduct, advocate for others to do the same, and feel empowered to speak up if you need help or have questions.
+Mark Zuckerberg (Founder, Chairman and Chief Executive Officer) in reference to Meta’s Code of Conduct
+We are calling for a clear commitment that employees (FTEs, CWs and Interns), must not have their "computer use data" - also referred to as human-computer interaction data - collected for the purposes of training AI models. This includes, but is not limited to:
+- Keystrokes
+- Mouse movements and usage patterns
+- Screen interactions
+- Device interaction habits
+- Navigation and behavioral patterns
+- Screen content
+Collecting and repurposing this kind of data raises serious concerns around privacy, consent, and trust in the workplace.
+These fears are not unwarranted given that in the past user passwords being stored in plain text, led to
+four breaches of the General Data Protection Regulation (GDPR) and a hefty €91m (£75m) fine by the Irish
+Data Protection Commission (DPC) in 2024. (Facebook parent company fined €91m over password
+storage
+, BBC, 27 Sept. 2024)
+Even more recently, in March 2026, an AI agent gave an employee the wrong instructions which were then
+followed and resulted in sensitive user data being exposed. (Meta AI agent’s instruction causes
+large sensitive data leak to employees
+,
+The Guardian, 20 Mar. 2026)
+Due to the nature of how this data collection works, it is inevitable that sensitive data such as SSNs, protected health information, and other personally identifiable or confidential information will be collected and stored.
+Collecting this data introduces both security and regulatory risks for Meta, including the potential for breaches and unauthorized disclosure. Employee data is protected under the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA), which grant employees specific rights. These include the right to know what personal data is being collected and how it is used, the right to request deletion or correction of that data, and the right to limit its use.
+In the most recent earnings call, Mark Zuckerberg stated:
+People will be more important in the future, not less. Meta believes in empowering individuals.
+According to Meta’s Code of Content, Meta is dedicated to empowering and protecting people by "Building AI Responsibly". Meta’s mission is to help ensure that AI at Meta benefits people and society by ensuring that Meta’s machine learning (ML) and AI systems are designed and used responsibly and meet legal and regulatory obligations.
+We collectively believe that empowering individuals and communities through building responsible AI includes respecting their boundaries and privacy. Any approach to AI that relies on intrusive, coercive, non-consensual data collection contradicts that principle.
+It should not be the norm that companies of any size are permitted to exploit their employees by nonconsensually extracting their data for the purposes of AI training. AI meant to serve and empower people cannot do so while disregarding or disrespecting the consent of the people it claims to serve.
+- Kornelija Dojchinoska DQA
+- Jae Hyeok Yang Software Engineer
+- Mariel Alper Data scientist
+- Konstantinos Karanasos Software Engineer
+- Yifan You Software engineer
+- Abhi Chakraborty Software Engineer
+- Gregory Finley Software Engineer
+- Michael Bailey Economist
+- Lei Huang Software engineer
+- Sachin Siby Software Engineer
+- Bruce He Software Engineer
+- Aditya Bhansali Software Engineer
+- Cesar Espinoza Berard Software Engineer
+- Ryan Looney Content Design
+- Laura Sizemore Software Engineer
+- Tanmay Bangalore Software Engineer
+- Felicity Liao Software Engineer
+- Matthew Merrill Software Engineer
+- Nick DeFae Data Science Manager
+- Chris Lee swe
+- Ryan McElroy Software Engineering Manager
+- Yufei Han SWE
+- Peter Lai POM
+- Moez Moezgholami Production Engineer
+- Ankit Vats Software Engineer
+- Brandon Enriquez Data Center Production Operations Engineer
+- Attila Maczak Software Engineer
+- Tracy Wu Software Engineer
+- Peiyu Rang Software engineer
+- Neeka Ebrahimi Software Engineer
+- Fan Zhang Software Engineer
+- Ted Huang Software engineer
+- Manvith Narahari Software Engineer
+- devika software engineer
+- Faye Chen Business Engineer
+- Anastasia Pevtsova Senior Software Engineer
+- Cianna Bedford-Petersen UX Researcher
+- Tanishq Production Engineer
+- Karen Gomez UXR
+- Candice Yang Software Engineer
+- Courtney Yount AI Product Manager
+- Alex Shung Software engineer
+- Chloe Li Software engineer
+- Andy Stockton Research Scientist
+- Andy Lai Software Engineer
+- James Hughes Senior Program Manager
+- May Cui Software Engineer
+- Anthony Tran Software Engineer
+- Vincent Lee Software Engineer
+- Ray Zeng Software Engineer
+- Adam Schnitzer Software Engineer
+- Poyin Chou Software Engineer
+- Andrew Dai Technical Program Manager
+- Luke Green Data Scientist
+- Valerie Carisma Service Delivery Lead
+- Daniel Fay SWE
+- Steven Program Manager
+- Micah Williamson SWE
+- Gregory Carlin Software Engineer
+- Abdelrahman Fahim Research Scientist
+- Daniel Ruiz Perez Research Scientist
+- Chen Yang Software Engineer
+- Logan Stafman Research Scientist
+- Brian McNamee Graphics Engineer
+- Em Maloney Quant UXR
+- Karthik Sivaram Data Scientist
+- Di Zhang Software Engineer
+- Emily Newman Program manager
+- Thiago Filipe de Medeiros Front End Engineer
+- Dre Person DLA II
+- Matthew Beaver Software Engineer
+- David Yi Research Engineer
+- Matt Drill Software Engineer
+- Steven Tran Software Engineer
+- Xingze He MLE
+- Ayda Nayeb Nazar Data Engineer
+- Kedar Pujara Software Engineer
+- Tengqi Ye Software Engineer
+- Miranda Steele Software Engineer
+- Erin Ferreirae Software Engineer
+- Katie Williams CW — ProdOps Triage
+- xiaoyi liu software engineer
+- Chi Zhang Software Developer
+- Stacy Pancratz UX researcher
+- Wenwen Zhou Software Engineer
+- Ryan Carroll Data Engineer
+- David Komljenovic Software Engineer
+- Ethan Goldman-Kirst Software Engineer
+- Anjly Khurana Program Manager
+- Damian Henry Software Engineer
+- Yitian Zhang Software Engineer
+- Iven Yang Software Engineer
+- Zac Haluza Software Engineer
+- Caleb Stokols Software Engineer
+- Jawwad Ahmad Software Engineer
+- Max Shcherbakov Production Engineer
+- Jai Aditya Production Engineer
+- Anthony O'Connor Mechanical Engineer
+- Arushi Sharma Hardware Analytics
+- Michael Thot Documentation Engineer
+- Kevan Loo Hardware Engineer
+- Ian Huff Data Scientist
+- Yujie Li Software Engineer
+- pj pittle Software engineer
+- Shelly White Content Designer
+- Zhangyuan wang Software Engineer
+- Kate Dickey Program Manager
+- Saugata Neogy Data Scientist
+- Lioenll Software Engineer
+- Parsons Choi Software Engineer
+- Chong Zhang Product Designer
+- Jason Chu Software Engineer
+- Vaishnavi Dalvi Software Engineer
+- Yaneury Fermin Senior Software Engineer
+- Tyrone DeSilva Machine Learning Engineer
+- Mandeep Deol Software Engineer
+- Jason Weston Senior Director
+- Jimena Neyra Barriga Strategic Partner Manager
+- Giovanni Toso Risk Management
+- Bradford Bonanno Software Engineer
+- Bihan Lei Software Engineer, Machine Learning
+- Paulina MLE
+- Pavel Kirichenko Software Engineer
+- Tengbo Zou Software Engineer
+- Zara Majeed User Researcher
+- Fernando Raganhan Barbosa Software Engineer
+- Jiani Xie Engineering Manager
+- Rena Sha Product Manager
+- Arthur Bye CST-VC
+- Bobby Spero Content Marketer
+- Fagun Patel Software Engineer
+- Marcio Carmona Sofware Engineer
+- Chris Cho Documentation Engineer
+- Katherine Lazar Software Engineer
+- Max Kaplan Software Engineer
+- Emerson Ford Production Engineer
+- Antonio Gai LPM
+- Alyssa Dierking Software Engineer
+- Jun C Data analyst
+- S Kurian Data Engineer
+- Aleksei Alekseev Software Engineer
+- Allison Adams EHS Lead
+- Justin Software Engineer
+- Daire Ni Chathain Production engineer
+- David Chen Software Engineer
+- Caroline Chen Data Scientist
+- Tiancheng Cai Software Engineer
+- Evan Odabashian Software Engineer
+- Tianyi Yang Software Engineer
+- Lucy Qiu Software Engineer
+- Thomas Yurek Software Engineer
+- Aimee Broadbent SWE
+- Connie Jiang Technical program manager
+- Scott Rothbarth Software Engineer
+- Zhicheng Zhu Software Engineer
+- Matt Winchester SWE
+- Andrew Callahan Software Engineer
+- Rachel Halpern Content Design
+- Carter Person Software Engineer
+- Tom Bernard SiteOps Production Operations Engineer
+- Jalen Jiang Data Engineer
+- Finis Whitt Data Scientist
+- Marcus Del Prete Software Engineer
+- Sachin Pansuris Software Engineer
+- YK Huang Productions Engineer
+- Ethan Torone Software Engineer
+- Neel Jha Software Engineer
+- Bilal Shouly Growth Marketing Manager
+- Thomas McGuire Software Engineer
+- Daniel Schapira Software Engineer
+- Ruslan Jumurov SWE
+- Ning Ke Software Engineer
+- Alex McKinlay DE
+- Anthony D'Andrea Software Engineer
+- Christopher Arriola Software Engineer
+- Brian Lane Software Engineer
+- Galen Vo Knapp Software Engineer
+- Tiansheng Zhang Software Engineer
+- Ze Xi Chen Product Growth Analyst
+- Sakshi Katyal People Data Review Program Manager
+- Aman Panda Software Engineer
+- KAI WEI data engineer
+- Benjamin Lam Software Engineer
+- Jerome Campbell Software Engineer
+- Xue Chen Software engineer
+- Phil Shih Software Engineer
+- Zheng Yan Software Engineer (IC6)
+- Maksym Melnyk Software Engineer
+- Bianca Espejo Data Engineer
+- Katie Cheng UX Researcher
+- Armaan Maharaj DLA II
+- Kat Zdan Conversation Design
+- Peter Shaffery Network Quantitative Engineer
+- Luis Plascencia Data Center Production Operations Engineer
+- Aishwarya Ananda Data Engineer
+- Ezri White Software Engineer
+- Yang Cynthia Chen Ic
+- Stella Mühlhaus Product Designer
+- Jayadev Nair Software Development Engineer in Test
+- Olivia Zhang Software Engineer
+- Alex Bashuk Software Engineer
+- Neeraj Software engineer
+- Kaiying Guo Software Engineer
+- Rami Sbahi Software Engineer
+- Anja Kilibarda Data Scientist
+- ZZ Zhou Software Engineer
+- Conner Nilsen Software Engineer
+- Ruben Naeff Data Scientist
+- Ziqing Ying Software Engineer
+- Alex Sun Software Engineer
+- Joanne Lin Product Designer
+- Stacey torkelson Production coordinator
+- Elaine Wong Software Engineer
+- Rawal Khirodkar Research Scientist
+- Berker Senol Software Engineer
+- Divyanshu Verma PM
+- Ed Voas Software engineer
+- Peter Ciampa Data Scientist
+- Louisa Maza Electrical Engineer
+- Julie Bone Content design
+- Debanik Lahiri Software Engineer
+- Katy Chang Software Engineer
+- Lisa Aufox Product Designer
+- Matt Hazinski Production Engineer
+- Ken Sheedlo Front End Engineer
+- Johnny Simmons Production Engineer
+- Bing Hua Software Engineer
+- Terry Ma Software Engineer
+- Jonathan Chu Software Engineer
+- Joanna Hsu Software Engineer
+- chen yang software eng
+- Helder Lima Da Rocha Software Engineer
+- Philip Nee Software Engineer
+- Willis Wang Software Engineer
+- Evan Wexler Software Engineer
+- Michael Data center productions
+- Siyu Yang Software Engineer, Machine Learning
+- Nicole Baram Software Engineer
+- Zhaobo Liu Software Engineer
+- Haitao Yang Tech Lead, AI
+- Ramsey Rimkeit Data Labeling Analyst
+- Elizabeth Gutierrez Product Manager
+- Sheela Hanagal Software Engineer
+- Mark RanCammon Software Engineer
+- Robert Garland Software Engineer
+- Zhengqi Fu Software Engineer
+- Stephanie Chang Software Engineer
+- Nathalie Gayraud Research Scientist
+- Kathy Zhang software engineer
+- Matt Insley Product Design Prototyper
+- Max Software Engineer
+- Zefei Xuan Software Engineer
+- Rohit Software Engineer
+- Elizabeth Schiller Product Operations Manager
+- Steven Chen Software Engineer
+- Benjamin Shyong MTM
+- Susmitha Kalidindi Production Engineer
+- Jordan Hill Software Engineer
+- Allen Ma Software Engineer
+- Katherine Ramirez Data Center ProdOps Manager
+- Ryan Bradford Software Engineer
+- MuraliKrishna Dulla software engineer
+- Aanika Dutra Security
+- Brandon Fong Software Engineer
+- Christina Van Deventer Data Engineer
+- Deniss Murmanis Software Engineer
+- Zixian Jia Product Designer
+- Aar Data engineer
+- Dallas Jacobsen Software Engineer
+- Lauren Alejo Content Designer
+- Tiratat Patana-anake Software Engineer
+- Will Touchstone Software Engineer
+- MUSTAFA MOHSIN MOTIWALA Software Engineer
+- David Todd Software Engineer
+- Jonathan Pekin Production Operations Engineer
+- Yiding Wen Software Engineer
+- Yefei Wang Engineering Manager
+- Kaiyuan Wang Production Engineer
+- Rohit Godbole Software Engineer
+- Chen Chen Product Designer
+- Ayberk Kanberoglu Software Engineer
+- Todd Harris Software Engineer
+- Christopher Cooper Software Engineer
+- Nate Jensvold Software Engineer
+- Vincent Huang Software Engineer
+- Chao Li ML engineer
+- Mashiat Shakkhar Software Engineer
+- HECTOR RIVERA Software Engineer
+- Benji Nguyen Data Engineer
+- Christina Larson UX Researcher
+- Ethel Lee Software Engineer
+- Olga Andreeva Software Engineer
+- Aayush Agarwal Senior Program Manager
+- Grigory Sizov Research Engineer
+- Lesley Ying Product designer
+- Anusha Choudhury Data Scientist
+- Will Hopper CW / AV Design
+- Ou Ye Software Engineer
+- Ernald Nicolas Software Engineer
+- Rich Zarick Product Designer
+- Subash Luitel Software Engineer
+- Prathmesh Pathwar Software Engineer
+- Bhabani Pattanayak Software Engineer
+- Dave Ossim Partner Engineer
+- Jimmy Zeng SWE
+- Xiuyun Wu Research Scientist
+- Felipe Conte Cortez Martins Software Engineer
+- Adam Sawyer Localization Program Manager
+- Muga Kim Software Engineer
+- Alex Gonzalez Sanchez SWE
+- Emma Fu Software Engineer, Machine Learning
+- Ryan Proulx Software Engineer
+- Omar Guajardo Software Engineer
+- Lilly SWE
+- Zhixun he Software engineer
+- Tao Hu Engineer
+- Aparna Palle Software Engineer
+- Brian Data Labelling
+- Chen Guo AI Research Scientist
+- Yueyi Chen software engineer
+- Artem Amirbekov Machine learning engineer
+- Micah Perry Software Engineer
+- Itay Evron Research scientist
+- Devin Luu Risk Analyst
+- Alex Chiu Software Engineer
+- Prasanna Sane ASIC Engineer, Design Verification
+- Sean Potter Production Operations Engineer
+- Boyang Yu SWE-ML
+- Hannah Georgiades Data Analyst
+- Alex Dailida EM
+- Hardik Lukhi Project manager
+- Chenchen Zhu Research Scientist
+- David L Software Engineer
+- Margaret Cavenagh Production Engineer
+- Kseniia Software Engineer
+- Kamal Tanwar Data Scientist
+- Yu Zhao Software Engineer
+- Alison Tsai Software engineer
+- Alex Hunt Software Engineer
+- Chun Kiet Leong Software engineer
+- Sara Berkebile TPM
+- Nishil Shah Software Engineer
+- Matthew Francis Software engineer
+- Krishna Medarametla Product Manager
+- Nirmit Jallawar ASIC Engineer
+- Kuoyuan Yang SWE
+- Stanley Zhang Software Engineer
+- Vitor Pedrosa Data Engineer
+- Nazanin Bakhshi Software Engineer
+- Billy Litner Data Scientist
+- Firat Ozgenel Software Engineer
+- Areeb Islam Software Engineer
+- Junlan Lu Software Engineer
+- Meenakshi Tripathy Product Manager
+- Alex Dong Machine Learning Engineer
+- Zheng Xu SWE
+- Heidi Liou Customer Success Manager
+- Jesse Furukawa Production Engineer
+- Chinmay Honrao Product Manager
+- Dano Morrison Research Engineer
+- Daniel Duncan Software Engineer
+- Mei Yi Niu Software Engineer
+- Thanh Software Engineer
+- Phuong PHam Systems Program Manager
+- Ruzgar Ayan Software Engineer
+- Joseph Savold Software Engineer
+- Wiseley Wu Data Scientist
+- Chris Wiens Software Engineer
+- Collin Pearce Software Engineer
+- Riana Patel DAA Lead
+- Grace Zhang Software engineer
+- Ilya Reshetnyak Software engineer
+- Tim Van Baak Software Engineer
+- Emilio Gonzales Olguin Data Center Production Operations Engineer
+- Yanbin Lu Staff MLE
+- Tom Heatwole Software Engineer
+- Anne Content Designer
+- Wei Liu Software Engineer
+- Scott Rosenfeld Product Growth Analyst
+- Mark Designer
+- William Ma Software Engineer
+- Leo Liao Software engineer
+- Tyler Hostler-Mathis Software Engineer
+- Kenji Fukuda Production Engineer
+- Orson Wan Software Engineer
+- Rakesh Ramesh Software Engineer
+- Jarred Bonaparte Software Engineer
+- Jillian R Piccione Assistant General Counsel
+- Shao Yie Soh Software Engineer
+- Farhan Software Engineer
+- Alexander Zhang Software Engineer
+- Reza Barazesh Software Engineer
+- Helen Dai Data Scientist
+- Denise Leto Content Designer
+- Armin Namavari Research Scientist
+- Ruining Ding Production Engineer
+- Zhuoying Software Eng
+- Georgia Davis Product Designer
+- Kelly Franks ProdOps
+- Gabe Ochoa Software Engineer
+- Aditya Bhat Software Engineer
+- Jiawei Yang Software Engineer
+- Vivien Francis Software Engineer
+- Shankar Iyer Research Scientist
+- Shadow Moyer Controls Engineer
+- Sajjad zamani Software engineer
+- Dolly P Data Engineer
+- Sepehr Sarmadi Data Scientist
+- Bertram IC
+- Kobe Software Engineer
+- Alessandro Ferrari Product Manager
+- Tianyi Cui Research Scientist
+- Aisling O'Connor Integrity Operations Manager
+- Paul Liu Software engineer
+- Jordan Ruetz Software Engineer
+- Xin Peng Software-engineer
+- Darshan Markandaiah Software Engineer
+- Elizabeth Ferrell Associate General Counsel
+- Ender C Data Engineer
+- Munir Bandukwala Software Engineering Manager
+- Neha A Product Manager
+- Elle Le Data Scientist
+- Adem Rosic Security Engineer
+- David Mayes Product Manager
+- Nila Selvaraj SWE
+- Luis Honsel Data Scientist
+- Hongjin Zhu Software engineer
+- Julia Asin Data Scientist
+- Shiva Best Content Designer
+- Nidhi S Data Engineer
+- Marisa Casay Software Engineer
+- Andrew furtado Internal audit
+- Evan Klein Software engineer
+- Jade Fountain Computer Vision Engineer
+- Andres Valdes Software Engineer
+- Ankur Aggarwal Software Engineer
+- AJ Brush Software Engineer
+- Marisa Software Engineer
+- Shantanu Patil Software Engineer
+- kungkin law Software Engineer
+- Meg OConnell Data Engineer
+- David Liao Production Engineer
+- Emmett Miller Contingent Worker
+- Ben Waese-Perlman Software engineer
+- Ann Yu Product Manager
+- Eric Middleton Applied Scientist
+- Matthew Hall MLE
+- Grady Jenkins SWE
+- Greeshma Sasikumar Hardware Systems Engineer
+- Nan Wang Data Scientist
+- Daniel Hill Software Engineer
+- Andrew Harper Software Engineer
+- Thiago Silva Software Engineering Manager
+- Jon Guan Sw engineer
+- Jackson Hern Project Coordinator
+- Carter Thurman Contingent Worker
+- Nicholas Hungria Software Engineer
+- Nicolas Ramirez Product designer
+- Dongyeon Kim Software Engineer
+- Tiffany Tang PE
+- Jan Risse Software Engineer
+- Junghoo Kim Software Engineer
+- Vincent Gao Software Engineer
+- Tom Cheng Software Engineer
+- Justine Baudart Support Operations Specialist
+- Scott Zhang Software Engineer
+- Nathan Tokala Software Engineer
+- Raj PE
+- Noah Gunther Technical Artist
+- Dev Mannemela Graphics Software engineer
+- Andrew Krieger Lubrication Maintenance Engineer
+- Mike Chao Software engineer
+- Nitya Verma UXR
+- Tatevik Stepanyan Software Engineer
+- Huseyin Taskesen Software Engineer
+- Eysler Paz Software Engineer
+- Chuhan Yang Software Engineer
+- Yasmin Siahpoosh Software engineer
+- Matthew Gingell Staff Software Engineer
+- Norah Smith Software Engineer
+- Nithya Sampathkumar Software Engineer
+- Jordan Foster Software Engineer
+- Ethan Xuan Software Engineer
+- Sophie Kay People Research Scientist
+- Julia Du Software Engineer
+- Arun Dunna Software Engineer
+- Sean Greenley ASIC Engineer, Design
+- Liang Guo Senior Staff Engineer
+- Richard Mao Software Engineer
+- Tenbit Daniel Program Manager
+- Margeaux Comerford UX Researcher
+- Andrew Ryder Software Engineer
+- Wonhyuk Choi Software Engineer
+- Hilla Wahnishe Product design
+- mahdi Behroozi khah ml engineer
+- Rosstin Murphy Software Engineer
+- Emmanuel Ramirez Software Engineer
+- Dave Bort Embedded SW Engineer
+- Nick Brown Production Engineer
+- Xiaohan Wei Research Scientist
+- Neal Kornreich Software Engineer
+- Travis Taghavi SWE
+- Justin Boseant Production Engineer
+- Joel Sharin Software Engineer
+- Matthew Brien data center production operations engineer
+- Neal Stein Prototyping Engineer
+- Sahithya Senthilkumar SWE
+- Baili Bigham Content Designer
+- Peter Reveles Software Engineer
+- Pragash Sivasundaram Software Engineer
+- Samuel Carrijo Software Engineer
+- Aashna Jena Software Engineer
+- Hanshang SWE
+- Eddy Chavez Software Engineer
+- Luis Flosi Data Scientist
+- Sergey SWE
+- Lexi Scharmer UXR
+- Steven Wang Steven Wang
+- Roberto Romo Data Engineer
+- Susan Lin Linguistic Engineer
+- Yu-Keng Shih Software Engineer
+- Daria Yurova ML Engineer
+- Faizan Ahmed Software Engineer
+- Walker Smith Data Engineer
+- Cicie Wang Technical Program Manager
+- Alex Sandukovskiy SWE
+- Gabriel Nunes Software Engineer
+- Megan Ma Content Designer
+- Jason Cheung Product Marketing Manager
+- Hao Luo Software Engineer
+- Mengchen Zhang Software Engineer
+- Jad Sibai Program Manager
+- Karen Li Product Designer
+- Naseem Hamed Software Engineer
+- Wahid Chowdhury Software Engineer
+- Grace Mao Software Engineer
+- Logan McCallum Product Design Engineer
+- Prasad Ramakant Hadkar Software Engineer
+- Ashley Ruba Hardware UX Researcher
+- Silvia Gong SWE
+- Marisha Parker Software Engineer
+- Dhawal Sheth Sr Software Engineer
+- Jana Delamarter Product Designer
+- Daniel Greene Software Engineer
+- Keagan Scams Project Manager
+- Meg Dymek-Jaremko Software Engineer
+- Andy Mai Electrical Engineer
+- Shreya Darak Software Developer
+- Sophia Murrlin Software Engineer
+- Luna Huneke Contingent Worker
+- Tomislav Novak Software Engineer
+- Frankie Eder Staff Machine Learning Engineer
+- Thiago Goulart Software Engineer
+- Adel El-Atawy Software Engineer
+- Oscar von Hauske Product Designer
+- Logan Girard Software Engineer
+- Yang Shu Software Engineer
+- Mariya Kirichek UXR
+- Haya Al Nmeir TPM
+- Chen Qian Software Engineer
+- Lin Dai Product Designer
+- Miriam Golz Linguistic Engineer
+- Kevin Li Software Engineer
+- Nathan T Software Engineer
+- Jordan Bachechi-Clark Data Scientist
+- Amr Mahmoud Software Engineer
+- Keith Kaisershot Programmer
+- Peter Ta QA Lead
+- Hiren Patel Software Engineer
+- Bo Chen data scientist
+- shang ju software engineer
+- Alec Fletcher Data Scientist
+- Alan Fang Software Engineer
+- Dor Hananel Research design Prototyper
+- Jason Yanowitz Production Engineer
+- Tianhao Gu Software Engineer
+- Aleksandr Nazarov Software Engineer
+- Adderlyn Lora recruiter
+- Holly Oegema Software Engineer
+- Harsh A Data Engineer
+- Sarah Tran Software Engineer
+- Tanay Software Engineer
+- Alyssa Marshall People Research Scientist
+- Marc Lewis SWE
+- Zachary Vogel Embedded System Engineer
+- Yifei Chen Software Engineer
+- Hani Software Engineer
+- Sergiy Goncharov Software Engineer
+- Foris Kuang Software Enginerr
+- Guillermo Santamaría García Machine Learning Engineer
+- Vamshi Software Engineer
+- Candice Kang Software Engineer
+- Rafael Munoz Software Engineer
+- Yuliya Kuznetsova software engineer
+- Amit Sela Software engineer
+- Sadhvi Mehta Software Engineer
+- Walter Luh Software Engineer
+- Benjamin Jones Software Engineer
+- Tushar Poddar Software engineer
+- Chunjing Wang Engineering Manager
+- Yuanyuan Zhang Engineering Manager
+- Samie Azad Enterprise Prod Eng
+- Srijit Dutt Software Engineer
+- Harsh Mittal Software Engineer
+- James Gill Software Engineer
+- Michael Devine AI Builder
+- Ardian Pantina Production Engineer
+- Zeinab Sadeghipour Software Engineer
+- Kyle Smith Design
+- Jasmine Sung Software Engineer
+- Ruizhe Yuan Production Engineer
+- Marek Li-Ventur Software Engineer
+- Victor Zverovich Software Overengineer
+- Milos Stojanovic Software Engineer
+- Moyan Chen Data Scientist
+- Keyang Zhou Software Engineer
+- Maclyn Brandwein Software Engineer
+- Michael Stella Software Engineer
+- Luis Regino Hernández Noriega Software Engineer
+- Aaron Chambers Firmware Engineer
+- George Z Software Engineer
+- Ayushmaan Ganotra Software Engineer
+- Colin Software Engineer
+- Kevin Chae Software Engineer
+- Kevin Murphy Software Engineer
+- Savinay Nagendra Research Scientist
+- jen hagg production engineer
+- Zoe Qiu Info Solution Engineer
+- Nadia Osipova Software Engineer
+- Keivaun Waugh Software Engineer
+- Jerome Mcnee Prodops Engineer
+- Boris Burkov SWE
+- Tony Cao Research Engineer
+- Gilbert Yang People Research Scientist
+- Paul Solis UX Researcher
+- Tom Wilson Software Engineer
+- Govinda Tamburino Information Solutions Engineer
+- Romain Prévost Software Engineer
+- Chester Dong Software Engineer
+- Nosson h SWE
+- Jun Zhou Software Engineer
+- Ashish Baghudana Software Engineer
+- Andrea Trave Software Engineer
+- Jacob Chimerine Software Engineer
+- Raymond Li Software Engineer
+- Julia Wang MLE
+- Trung Le Data Engineer
+- Adam Chaffee Data Scientist
+- Yiheng Guo SWE
+- P Monetization
+- Ann Yue Software Engineer
+- Ryan Guan Software Engineer
+- Matthew Bambach Product Designer
+- Carlos Saravia Software Engineer
+- Ela Warnecke Research Scientist
+- Raunak Srivastava Software Engineer
+- Rohan Rao Production Engineer
+- Mahima Bathla Asic Engineer
+- Shengjie Bi Research Scientist
+- George Ibuna Data Quality Analyst
+- Meluleki Dube Software Engineer
+- Mikal Underhill Strategic Program Manager
+- Alison rohrs Product marketing manager
+- Sumant Manne Software Engineer
+- Marissa Costa Security Engineer
+- Michael Paskett Machine Learning Engineer
+- Jamal Davis Embedded Software Engineer
+- Chengze Li Software Engineer
+- David Lin Data Scientist
+- Josh Arrington Production Engineer
+- Ashlee Phillips Staff Content Designer
+- Mariah Maninang Software Engineer
+- Wynn Kaza Silicon Engineer
+- Sarah Safranski PD
+- Patrick Walsh Software Engineer
+- kaolin fire software engineer
+- Kay Niu AI Product Designer
+- Morel Fotsing Software Engineer
+- Daniel Li Software Engineer
+- Ruoping Xu Software Engineer
+- Joao Monteiro Software Engineer
+- Aahan Aggarwal Software Engineer
+- Rajvi Shah Research Scientist
+- David Zhang ML Engineer
+- Marius Popescu Software Engineer
+- Jiayang Sun Production Engineer
+- Ethan Jo ML Engineer
+- Keyuan Huang Optical Materials and Process Engineer
+- Shannon Lin Web Development Manager
+- Boying Gong Software Engineer
+- Anastasiia Suliagina Software Engineer
+- Hugo Soulat RS
+- Simon Wen Data Scientist
+- Sophie Burke Recruiter
+- Nina Nutsubidze Threat Investigator
+- David Chu Data Scientist
+- Alvaro Fernandez Conejero Production Engineer
+- Victoria Ebbets Data Labeling Analyst (CW)
+- Kristy Okada Product Designer
+- Nickolans Griffith Software Engineer
+- Cheyenne Rivera Partner Enablement Coordinator
+- John Walker Software Engineer
+- Paula Amaechi Marketing Science Partner
+- Wendy Tobagus Software Engineer
+- Nathan Maue Software Engineer
+- Lingwei Meng Software engineer
+- Nikita Lutsenki Software Engineer
+- Jonathan Shuai Software Engineer
+- Anthony Zheng Software Engineer
+- Kyra Hernandez Premier Partner Protection Specialist
+- Sarvesh Joshi Software Engineer
+- Taylor Lyon Content Designer
+- Alejandro Xoconostle Network Engineer
+- Deepak Kar Software Engineer
+- Yuchen Lu Research scientist
+- Hansong Zhang Software Engineer
+- Elena Linguistic Engineer
+- Veli Ugur Guney Software Engineer
+- Leo Martins Software Engineer
+- Laura Gonzalez Software Engineer
+- Zoe Lu Software Engineer
+- Anders van Winkle Data scientist
+- Ryan Chan Software Engineer
+- Nick Wessing Software Engineer
+- Justin Liu Software Engineer
+- marmik patel swe
+- Jiehan Zheng Software Engineer
+- Matej Krajnak Data Engineer
+- Xiaoyu Xiang Research Scientist
+- Juju Miao Data Scientist
+- Vince Oppedisano Software engineer
+- Davis Rollman Software Engineer
+- Akshay Bhandary Software Engineer
+- Marianne Giesemann Product Designer
+- Dafna Shultz PE
+- Thomas Alex Product Manager
+- qin liu Data scientist
+- Dmytro Rybachenko SWE
+- Mustafa Sadriwala Software Engineer
+- Sui Luo Software Engineer
+- Karthika Raja Data Engineer
+- Xavier B Software Engineer
+- Aly Hegazy Software engineer
+- Yazhe Zhu SWE
+- Zhaoyuan Sun Software Engineer
+- Zoe Corcoran Product Marketing
+- Keane Dixon Wong Spec Swee
+- Christopher Laguna Software Engineer
+- laasya Swe
+- Tyler Krome Audio Systems Engineer
+- Jon Sullivan Electrical Engineer
+- Lingxiao Wang Research Scientist
+- Allison Tee Software Engineer
+- Ruiming Xie Software Engineer
+- Ruihan Shan Software Engineer
+- Bryan OShaughnessy Mechanical Subject Matter Expert
+- Nathaniel Taylor Software Engineer
+- Harsha Manjunath Design Engineer
+- Hyunjin Baek Research Assistant
+- HK Software Engineer
+- William Yu Software Engineer
+- Lord Osei-Ofori Program Manager
+- Miffy Chen Software Engineer
+- Pran Thomas Production Engineer
+- Matthew Edwards Software Engineer
+- Aijung Li Product Manager
+- Nick Fryar Partner Engineer
+- Sruti Ramadugu Product Manager
+- Pradhapan Rajendran Software Engineer
+- Matt SWE
+- Collin Parker Program Manager
+- Jiawen Zeng Software Engineer
+- Vishakha Banka Software Engineer
+- Joshua Selbo Software Engineer
+- Soohee Lee Software engineer
+- Darrien Glasser Software Engineer
+- Sara Bejarano Software Engineer
+- Kenty Wang Software Engineer
+- Skylar Wilcox Software Engineer
+- Ashish Singh Software Engineer
+- Meet Engineer
+- Edward Production Engineer
+- Niko Cruz Software Engineer
+- Akram Kassay Computer Vision Engineer
+- Jess Landquist Product Designer
+- A D Sr. Software Engineer
+- yuhshin software engineer
+- Ram Subramonian PMM
+- Kasra Ghodsi Software Engineer
+- John Lukasiewicz Software Engineer
+- Nik Tsytsarkin Offensive Security Engineer
+- Adam Software Engineer
+- Kelly Chen Data Scientist
+- Zheng Wang Software Engineer
+- John Henning Software Engineer
+- Brendan Smith Compliance manager
+- Harry Vancao Machine Learning Engineer
+- Christina Tikhanovich Software Engineer
+- Jaden Wei Software Engineer
+- Jonny Bond Product Marketing Manager
+- Bijan Pourhamzeh Data Engineer
+- Youming Liu Software Engineer
+- Qiuyuan Zhang Software Development Engineer
+- Celine L Production Engineer
+- Josh Boggs Product Manager
+- Shruti Narayan Software Engineer
+- Riham Selim Software engineer
+- Sreechakra Goparaju Software Engineer
+- Andy Chafy Production Engineer
+- Rachel Kim Software Engineer
+- Sergei Software Engineer
+- Cheng CHen Data Engineer
+- Melody Zhao Software Engineer
+- Ivan Zaitsev Software Engineer
+- Qianyi Wu Software Engineer
+- Connor Bedford-Petersen Program Manager
+- Radu Lacraru Software Engineer
+- Scott Bohr Enterprise Support Tech
+- Pierre Pavageau Software Engineer
+- Zachary Gibson Art Director
+- Stephanie Cao Software Engineer
+- Sirjan Kafle Research Scientist
+- Michael Glushakov Software Engineer
+- Misha Slavin Security Engineer
+- Gene Michael Anuat Enterprise Support Technician
+- Jonas Gehring Software Engineer
+- Richard Warren Research Scientist
+- Lieve Teugels CMP Process Engineer
+- Maddie DeVoe Software Engineer
+- Shruti Devaraj User Experience Researcher
+- Ashley Barth Data Scientist
+- Vincent L. SWE
+- Safak Ozdek Production Engineer
+- Sol Zitter Software Engineer
+- Damian Warzecha Software Engineer
+- Bidit Sharma Production Engineer
+- Thilina Buddhika Research Scientist
+- Grayson Kornberg Software Engineer
+- Yuguan Xing Software Engineer
+- Michel Lind Production Engineer
+- Michelle Fitzsimmons Content Strategist
+- Adrian Mandee ISE
+- Wendy Yu Wendy Yu
+- Ruba Sbeih Software Engineer
+- Gabriela Zmyślona SWE
+- Jing Yu Software Engineer
+- William Xu Software Engineer
+- Bryan Hendrickson SWE
+- Panagiotis Efstratiou Production Engineer
+- Shashank Singh Machine Learning Software Engineer
+- Gaston Garrido Software Engineer
+- Faiz Abidi PE
+- Ola Bannan SWE
+- Sreevidya Data enginner
+- Tiberiu Tesileanu Software Engineer
+- Jose Campos Software Engineer
+- Vikramjit Singh Software Engineer
+- Daniel Thiyagu SWE
+- Aditya Mamidi Software Engineer
+- Mustafa Lokhandwala Data Science
+- Anna Khasanova Data Scientist
+- Susant Sabat DE
+- David Tran Software Engineer
+- Shamanth Kumar D N Software Engineer
+- Michael Borke Partner Engineer
+- Emmett N Software Engineer
+- Jacques Chester Software Engineer
+- Angela Ng Software Engineer
+- Nisha Patel Program Manager
+- Jen Johnston Program Manager
+- Anthony Foiani Production Engineer
+- CHUNYI SHEN production engineer
+- Izzy Christman DLA
+- Tiffany Lin Data Scientist
+- Ray Zhu Production engineer
+- Bowen Zhang Data Engineer
+- Andrew SWE
+- Ming Kibel Water Program Manager
+- Tyler Burch Software Engineer
+- Brody Smith Production Engineer
+- Alex Dai Computer Vision Engineer
+- Shashank Bharathi Applied Scientist
+- Emi Royama Software Engineer
+- Troy Lawrence Software Engineer
+- Dhruv Amin Software Engineer
+- William Loughney Software Engineer
+- Ji Ding Software Engineer
+- Kim O'Shaughnessy Content Designer
+- Matthew Hu Software Engineer
+- Sophie Zhang Software Engineer
+- Wenlu Zheng Software Engineer
+- Harshita Maddi Software Engineer
+- Rodion Zheludkov Software Engineer
+- Kevin Eder Software Engineer
+- Brady Kilpatrick Software Engineer
+- Yue Xu Software Engineer
+- Ashish Ganta Machine Learning Engineer
+- Ignacio Rodrigo Software Engineer
+- maddy li software engineer
+- Nicky Nomm UX Researcher
+- Mitchell Youngerman Documentation Engineer
+- Dheeraj Valleru Network Design Program Manager
+- Eddy Wang Software Engineer
+- remi ray Content Strategist
+- Aisha H Software Engineer
+- Alex Vandenberg Senior engineering manager
+- Guto Azevedo Software Engineer
+- Nahee Kwak Software Engineer
+- Fabian Software Engineer
+- Chris Frantz Software engineer
+- John Corbett Software Engineer
+- Nishanth Salinamakki Software Engineer
+- Maria Maione UX Researcher
+- Justin Derwee-Church Software Engineer
+- Mahi Luthra Research Scientist
+- Caleb Kiprono Software Engineer
+- Ken Wu Data Science Manager
+- Garrett Nickerson Software Engineer
+- Yun Xia Data Engineer
+- Eric Beteille Content Designer
+- Joseph Lu Data Scientist
+- Celine Chen Project Manager
+- Kelly Cheng Software Engineer
+- Rehana Saifee Program manager
+- Frederick Zhu Software Engineer
+- Marco Almeida Production Engineer
+- Hossein Tajik Research Scientist
+- Erik Lindemann Production Operations Engineer
+- Carlos Rueda Data Engineer
+- Hannah Waddilove Product Manager
+- Heather Sundar Project Manager
+- Cody Mills Software Engineer
+- Ruggero Balteri SWE MLE IC6
+- David Wilikofsky Software Engineer
+- Chelsea DS
+- Jack Mandelkorn Software Engineer
+- Vishal Gali software engineer
+- Ryan Emmett Technical Program Manager
+- Gregory Eales Machine Learning Engineer
+- Zac Burton Machine Learning Engineer
+- Ty Stinson Software Engineer
+- Ariel Joy Conant Content Designer
+- Hanfu Zhang Software Engineer
+- Akhil Ganti Software Engineer
+- Annah Dominis Director of Product Marketing
+- Austin Phillips Associate General Counsel
+- Divya data engineer
+- Andrew Johnson Product Design Prototyper
+- Simon Hu Data Scientist
+- Scott Yuab Hardware Engineer
+- Jennifer Chung Program Manager
+- Jacky Lu SWE
+- Inci Cetindil Research Scientist
+- Joseph Hinkle Software Engineer
+- Diana N Product Designer
+- Vladimir Rumiantcev Software Engineer
+- Anthony Nguyen Software Engineer
+- Sameet Mohanty Production Engineer
+- Grace Danico Creative Director
+- Simon Fan Software Engineer
+- Jason W Software engineer
+- Kostas Papadopouos Software Engineer
+- Celia Bueb Learning Business Partner
+- Abhinav Jauhri Research Scientist
+- Sheila Baker Product Designer
+- Yuening Xiao Data Engineer
+- Michel Zelazny Software Engineer
+- Shanet Hinds Program Manager
+- Lucas Dahlin Associate General Counsel
+- Isabel Meskers Integrity Associate
+- Lester Tay Software Engineer
+- Sadman Fahmid Software Engineer
+- Hanqi Ni Software Engineer
+- Carlos Xavier Hernández Research Scientist
+- Emily Earl Software Engineer
+- Jacob Steinebronn Software Engineer
+- Saravanan Setty Software Engineer
+- Yichen Shen Software Engineer
+- Haochen Chen Research Scientist
+- Masha Basmanova Engineer
+- Guan-Hao Su Software Engineer
+- Mounika Kandula Data engineer
+- Draven Prieto Software Engineer
+- Sherry Feixue Huang Software Engineer
+- David Li Software Engineer
+- Junde Huang Software Enginerer
+- Max Gu SWE
+- Tanish Ambulkar Software Engineer
+- Olga Khenkin SWE
+- Carlisia McCord Data Labelling Analyst - CW
+- John Wojciechowski Information Solutions Engineer
+- Courtnee Williams Program Manager
+- Rudy Pikulik Software Engineer
+- Ivor Huang Software Engineer
+- Bruce Chhay manager
+- Sarai Dominguez Content Design
+- Valentina Chacon Software Engineer
+- Praveen Sakthivel Software Engineer
+- Diqi Zeng Software Engineer
+- Eliza Nie Software Engineer
+- Tao Chen Software Engineer
+- Olga Grynenko Software Engineer
+- Yong Jeun Software Engineer
+- Kevin Wu Data Engineer
+- Esteban Solis TPM
+- Eric Software Engineer
+- Dylan Software Engineer
+- Chouran Camara MLE
+- Paul Software Engineer
+- Marie Bremner Software Engineer
+- Suleep Kumar Bhogi Software Engineer Meachine Learning
+- Zoey Ling Software Engineer
+- Bita Golshani Product Manager
+- Nick Silvestri Software Engineer
+- Hyun Choi Software Engineer
+- Jason Temple Sr PE Mngr
+- Hoang Le Software Engineer
+- Liam Kern Growth marketing manager
+- Konstantin Topaloglou-Mundy Software Engineer
+- Karen Lee Security Engineer
+- Michael Zoltak User Experience Researcher
+- Rajesh Shenoy Software Engineer
+- Stephen H Perl Data Engineer
+- Robert Lei SWE
+- Vladimir Eremeev Software Engineer
+- Akshay Gopinath Bhardwaj Software Engineer
+- Sebastian Barroso Software Engineer
+- Anthony Chung Software Engineer
+- Aditi Anshu SWE
+- Justin Pumford Software Engineer
+- Kaixuan Zhou Software Engineer
+- Aasish Pappu Research Scientist
+- Shane Chan Program Manager
+- Alex Beatty CQE
+- Marshall Cheng Software Engineer
+- Dehua Cheng Research Scientist
+- Basil Wong Software Engineer, Machine Learning
+- Hugo Deleon-Rodriguez Data Center Production Operations Engineer
+- Austin Salz Production operations engineer
+- Jessica Y Software Engineer
+- Boris Smus Software Engineer
+- Soumava Bera Software Engineer
+- Margaret Gonzales-Lapp Program Manager
+- Nelson Swasono Data Engineer
+- Bowie Chen Production Engineer
+- Shouvik Paul Software Engineer
+- Shannon Chapman Product Operations Manager
+- Yang Gao Software Engineer
+- Hazel Hulet Technical Program Manager
+- Paraic Cannon SME
+- Phillip Software Engineer
+- Rushi Desai Software Engineer
+- tammy stark linguistic engineer
+- Sten U SWE
+- Jason B NIS Network Engineer
+- Tyler Vann-Campbell Production Engineer
+- Vandana Ayyalasomayajula Software Engineer
+- Matt Hathaway CW TEC
+- Cameron MacDonald Production Engineer
+- Tiffany Zhou Software Enginner
+- Ly Nguyen Safety Policy Manager
+- Akansha Gupta Product Designer
+- Thomas Chen Software Engineer
+- Radu Hambasan Software Engineering Manager
+- Mingjun Zhang SWE
+- Jennifer Loechler Contingent Worker; Quality Performance Expert
+- Archer Software Engineer
+- Michael Moussa Software Engineer
+- Oleksandr Yermolenko Software Engineer
+- Adina Williams Research Scientist, Research Science and Engineering Manager
+- Ali Parsaei Software Engineer
+- Mikhail Tuzikov Engineering Manager
+- Nikita Maheshwari Software Engineer
+- Haoming Wu Software Engineer
+- Manish Kumar Software Engineer, Machine Learning
+- Pamela Tanzillo Program manager
+- Roman Nofenko Software Engineer
+- Chun Wang SWE
+- Caroline Sukovich Design
+- Jacob sheynin Data scientist
+- Nina Ahmed Software Engineer
+- Catharine Youngs Linguistic Engineer
+- Swapnil Gupta Machine Learning Engineer
+- Ryan Dong SWE
+- Alex Junior Business Engineer
+- Smitha Milli Research Scientist
+- William Medwid Data Engineer
+- Anindya Guha Software Engineer
+- Vicky Zheng Research scientist
+- Kang Zheng software engineer
+- Daniel Rodríguez Troitiño Software Engineer
+- Moritz B. Research Software Engineer
+- William Gosse Software Engineer
+- Nevzat Sevim SWE
+- Joseph Thomas ML Engineer
+- Eden Senay Data Engineer
+- Vishwa Karia Software Engineer
+- Tyler Carson Lingistic Engineer
+- Solomon Berry Software Engineer
+- Christina Loo Product Designer
+- Ayush Jain Software engineer
+- Bernie Beckerman Software Engineer
+- Ning Tang Software Engineer
+- Dayue Bai Software Engineer
+- Julie Romanosky UX Researcher
+- Erjia Guan Software Engineer
+- Mostafa Osman Software Engineer
+- Eley Ng Research Scientist
+- zijian an research scientist
+- Yuri Doubov Software Engineer
+- Antonio Villasenor Enterprise Support Tech
+- Jun Ru Anderson Software Engineer
+- Sri Raghavendran Software Engineer
+- Siddhant Jadhav Business Engineer
+- Dan Hill Research Scientist
+- Pooja Sethi Research Engineer
+- Kevin Li Software Engineer
+- Tam Nguyen Software Engineer
+- Jui Tamhane BPM
+- Joshua Caleb Dehoyos ProdOps Engineer
+- Muhammad Technical Program Manager
+- Ryan Epp Staff ML Engineer
+- Connor Morgan Helpdesk
+- Daston Arman Data Science
+- Anton Gladkov Software Engineer
+- Dale Yu Software Engineer
+- Guy Duer Data Scientist
+- David Rothera Production Engineer
+- Emmanuel Shiferaw Production Engineer
+- Charlie Lu Product Manager
+- Saad Software Engineer
+- Willy Sutrisno Data Center Capacity Engineer
+- Rob Hogan SWE
+- nico jimenez software engineer
+- Yuhang Yang Research Scientist
+- Jung Ki Kang Data Engineer
+- Andrii Tserkus SWE
+- Matthew Kennedy Software Engineer
+- Harry Hung Data Analyst
+- sv Data Engineer
+- Khue Nguyen Software Engineer
+- Cathleen Yang Senior Software Engineer
+- christine Hwang DS
+- Cecilia LV Strategic Partner Manager
+- Jaymz Julian Enterprise Systems Engineer
+- Raghav Gupta Software Engineer
+- Itay Radotzki Principal Software Engineer
+- Bennett Bierman Software Engineer
+- Kaylyn Phan Software Engineer
+- Natalia Tishaninova Software Engineer
+- Achintya Kumar Software Engineer
+- Dmytro Stechenko Software Engineer
+- Evan Powe ProdOps Engineer
+- Ahmed Elabbasy Software Engineer
+- Rui Research Scientist
+- Shaurya Sinha Software Engineer
+- Diana Noveanu Software Engineer
+- Cynthia Ma Software Engineer
+- Raghav Sai Production Engineer
+- Ronald Data Engineer
+- Louie Rowan Software Engineer
+- Daniel Cheng Code Monkey
+- Rahul N Software Engineer
+- Dmitry Halavin Firmware in Test Engineer
+- Alex Chu PD
+- Kenny Barone Software Engineer
+- Grant Espe Production Engineer
+- Akshath K Silicon Engineer
+- Hongfei Zhou Software Engineer
+- Gaurav Modi Software Engineer
+- Dave Kukfa Security Engineer
+- Taylor Bercot Kemp Software Engineer
+- Abhishek Kumawat Machine Learning Engineer
+- Tom V Software Engineer
+- Claire Kim Regulatory Readiness Program Manager
+- Chen Yang Software Engineer
+- Benjamin Clark Software Engineer
+- Yi Cao Data Scientist
+- Cary Luu Product Manager
+- Matthew Olson Software Engineer
+- Aidan Toole Product Designer
+- Douglas Kim Production Engineer
+- Andrew Preece Engineering Manager
+- Arda Icmez Ware Engineer, Soft
+- Daniel Li Data Scientist
+- Jiexin Huang Software Engineer
+- Kevin Koh Software Engineer
+- Ricardo Gonzalez Software Engineer
+- Jude Wang Software Engineer
+- Frelicia Tucker software engineer
+- Jun Kim Data Engineer
+- Cori Savaiano Product manager
+- Dan Ginovker SWE
+- Swarna Security Engineer
+- Rates Cristian Research Scientist
+- Cameron Brown-Cross UX Researcher
+- Yuhe Shao Software Engineer
+- Ruiqi Wang Software Engineer
+- Ryanc Software Engineer
+- Alex G Software Engineer
+- Gilda Charles Product Manager
+- Rebecca Daum Industrial Designer
+- Anson Pontynen SWE
+- Amber Won Software Engineer
+- Alex Mercier CSM
+- Dorian Research Engineer
+- Jack Gore Software Engineer
+- Andrew Q Tran Product Designer
+- Yuxiao Tan Software Engineer
+- Luke Allen Research Audio Test Lead
+- Haaken Baldwin Senior Production Engineer
+- Aleksei Guliaev Software Engineer
+- Neil Agarwal Research Scientist
+- Erin McCarthy SWE
+- Yangzi He Software Engineer
+- quan kuang ASIC Engineer, Design Verification
+- Zhen Yi Pan Software Engineer
+- Linh Dinh Research Scientist
+- Boyan Atanasov Software Engineer
+- Deryck Greene Project Manager
+- Max Curran UX Researcher
+- Frank Mei Research Scientist
+- Patrick Grady Research Scientist
+- Bo Li Engineer
+- William Teder Software Engineer
+- Varun Nair Data Scientist
+- Blake Smith Solutions Architect
+- Xuliang Qin Software Engineer
+- Serafeim Mellos Production Engineer
+- Vicki Fu Software Engineer
+- Vincent Searcy Project Manager
+- Heather Self Project Coordinator
+- Marisa Ahmed Content Designer
+- Maria Jimbo Product Designer
+- Greg Rehm Senior Software Engineer
+- Oleg Obleukhov Production Engineer
+- Nafas Duntis System test Engineer
+- Charles David Software Engineer
+- Lachlan Mulcahy Production Engineering Manager
+- Tyson Zhou Software Engineer
+- Steven Cai Software Engineer
+- daryl lahti software engineer
+- Ariel C CW LE
+- Anna Lenkiewicz Data Engineed
+- John Fang Software Engineer
+- Jeff Milberger Security Engineer
+- james gomis DS
+- Jack Li Software Engineer
+- Ingrid Wang Software Engineer
+- Tuuli Morrill Linguistic Engineer
+- Saketh Muvva Software Engineer
+- Alex Leung Software Engineer
+- Manuel Calva Software Engineer
+- Daly Joseph Data engineer
+- Guibin Zhang Software Engineer
+- Abhishek Banthia Software Engineer
+- Jenny Liu UX Research
+- Gene Hsu Software Engineer
+- Pulkit Sharva Senior Software Engineer
+- Chen, Ke Software Engineer
+- Raunak Srivastava Software Engineer
+- Edward Liu Software Engineer
+- Daniel Hou Software Engineer
+- Zhixiang Gu Software Engineer
+- Prashant Kumar Software Engineer
+- Javidan Guliyev Software Engineer
+- Jefferson Teng Software Engineer
+- Deepthi Arumalla Data Scientist
+- Grant Yolasan SWE
+- Sam De Roeck Software Engineer
+- Xinzhu Bei Research Scientist
+- Jonah Software engineer
+- Tasloach Wol Software Engineer
+- Thane Gallo Contingent Worker
+- Fernando Hernandez Software Engineer
+- Darkhan Baimyrza Production Engineer
+- Julieta Shama Strategic Partner Manage
+- Esteban Wu Software Engineer
+- Xiaoyu Li Software Engineer
+- Daniel Fisher Software Engineer
+- Alex Rowe Software Engineer
+- Adam Worthington Software Engineer
+- Aayush Aggarwal Software Engineer
+- Becka Silvert Linguist Engineer
+- Cason Chance Software Engineer
+- Mari Batilando Software Engineer
+- Pi Aranda TPM
+- Poornima Shankar Embedded Software Engineer
+- Luca PE
+- Tori Nakaoka Program Manager
+- Ivy Chung Product Manager
+- Wendy Liu Software Engineer
+- Gaurav Sanghavi Software Engineer
+- Haiyng Qiao Tech Logistics
+- Drew Wright User Researcher
+- Angel Yang Software Engineer
+- Benjamin Lerner Machine Learning Engineer
+- Karthik Manickam Software Engineer
+- Dylan Feldman Software Engineer
+- Yuanhao Wang Software Engineer
+- Mazen Oweiss Software Engineer
+- Aayush Gupta Software Engineer
+- Shana Matthews Documentation engineer
+- Pascale El Kallassi Foundation Labs Engineer
+- Naomi Chen Product Design Prototyper
+- Edward Huang Solutions Architect
+- Zhichong Fang Software Engineer
+- Yanqi Liu Data Engineer
+- Logan Wells UX Researcher
+- Andris Bjornson Product Manager
+- Cole Pergerson QA Logistics Specialist
+- Boyuan Li Software Engineer
+- Sneha Iyer Product Manager
+- Daniel Cohen Electrical Design Validation Engineer
+- Jessica Wong SWE
+- Tanya SWE
+- Justin Huang Software Engineer
+- Scott Tankard DLA3
+- Jian Li Staff Software Engineer
+- Jin Koay Software Engineer
+- Stanley Yao Software Engineer Manager
+- Jesse Gaulin SWE
+- Telli Davoodi Quantitative User Experience Researcher
+- Amber Raza Software Engineer
+- Darryle D Haigler Technician
+- Christopher Turney Software Engineer
+- Max Sigrist Software Engineer
+- Jorge Rojas Ortega Program Manager
+- Eric Versig Data Center Production Operations Engineer
+- Shoeb Omar Software Engineer
+- Christian Software engineer
+- Nam Thach Engineer
+- Will Sourcing Manager
+- Jaemo Koo Software Engineer
+- Robert Thrasher Datacenter Production Operations Engineer
+- Jun Shen Thermal & Mechanical Engineer
+- Jeongvin Yeom Product Manager
+- Cyrus Xi Software Engineer
+- Carrie Zhang Software engineer
+- Kristin Green Software Engineer
+- Zakaria Haque Software Engineer
+- Yiming Ma SDE
+- Alex Parmentier Software Engineer
+- Corey Wu Software Engineer
+- Jeremy Kim Product Designer
+- Brenda Bliadze Operations Assosciate
+- Jake Hargadon Content Designer
+- Ram Siripuram Machine Learning Engineer
+- Aditi J Software Engineer
+- Kaida Wang Software Engineer
+- Barry Pompea Product Design Prototyper
+- Aman Software Engineer
+- Camila Olguín Software Engineer
+- Jessica Wong Software Engineer
+- Sung-Yen Liu Software engineer
+- Emily Wilson Software Engineer
+- Darkhan Imangaliyev Software engineer
+- Andy Street Software Engineer
+- Justin Soberano Software Engineer
+- Stephen Subra Datacenter Production Operations Engineer
+- Joanna Bridgwater Software Engineer
+- David Cardenas ProdOps Engineer
+- Linh Le Software Engineer
+- Denisa Politic Software Engineer
+- Claire Geist PDO Project Manager
+- Aileen Gui Data Scientist
+- Michael Chunko Production Engineer
+- You-Han Chen Software Engineer
+- Cyrus Software Engineer
+- Aboli Kumthekar SWE
+- Dave Smith Production Engineer
+- Shirley Zeng Software Engineer
+- Aaron McClaskey Content Designer
+- Russell Howes Research Engineer
+- Ethan Weber AI Research Scientist
+- Kai-Cheng Lu software engineer
+- Hanh Le Software Engineer
+- Jun Li Software Engineer
+- Aaron Yue Software Engineer
+- Andrew Yiu Software Engineer
+- Grace Wu Software Engineer
+- Leo Chashnikov Software Engineer
+- Marshall Oelkers Data Scientist
+- Daniel Jin Software Engineer
+- Jessie Wang Product designer
+- Julie Bone Content design
+- Qinmei CHen software engineer
+- Marco Tizzoni Production Engineer
+- Joachim Reiersen Software Engineer
+- Keith Okuna Software Engineer
+- Samuel Chesser Software Engineer
+- Brett Lavalla Software Engineer
+- Rafael Cohn-Gruenwald Data Engineer
+- Jeremy Kahn Linguistic Engineer
+- Qi Li SWE
+- Jian Chen Software Engineer
+- rita z software engineer
+- David Scherban Software engineer
+- Abdulaziz Siddiqi Software engineer
+- Lewis Bell Machine Learning Engineer
+- Somesh Kumar Software Engineer
+- Luca Melis Research Scientist
+- S M Content Designer
+- Vera Yan Machine learning engineer
+- Grace Sun Software Engineer
+- Shelly Willard Software Engineer
+- Eric Guo Production Engineer
+- Chang-Chun Cheng Silicon Engineer
+- Ben Wang software engineer
+- Sami Fawal Project Manager
+- Prash Jain Software Engineer
+- Rahul Ameta Application Engineer
+- Shanshan Zhang research scientist
+- Jeff Zhu Software Engineer
+- Ben Data Labeling Analyst
+- Anas Ben Mustafa Software Engineer
+- Mufadal Jiwaji Client Solutions Manager
+- Aleksandr Sergeev TLM
+- Liyu Zhang Software Engineer
+- Jessica Stewart Product Manager
+- Yanjun Zhou Software Engineer
+- Edward Li Software Engineer
+- Jay Stakelon Director, Product Design
+- Maria Barra Tpm
+- Michael Liu software engineer
+- Jack Ning Software Engineer
+- Alex Beshchuk Software Engineer
+- Kevin Hui Software Engineer
+- Abdo Mohamed ML Engineer
+- Nikhil Thomas Software Engineer
+- Mykola Nechyporuk Software engineer
+- Alice shen Linguistic engineer
+- Zev Cooper Software Engineer
+- Yue Wang Software Engineer
+- Angelina Calderon Business development
+- Jakob Johnson Software Engineer
+- Vishruthi Ramaswamy Software Engineer
+- Lily wen Software Engineer
+- David Shackelford Software Engineer
+- Zachary Cousens Data scientist
+- Jon Guerrera Software Engineer
+- Wei SWE
+- Gregory Edwards Content Designer
+- Abhishek Bhattacharya Product Design Lead
+- Jason Park Machine Learning Engineer
+- Javier Rodriguez Mota Software Engineer
+- Rita Huang Software Engineer
+- Olivia Cantwell Linguistic Engineer
+- Cade Campigli Clinical Research Coordinator
+- Isaac Beyda Enterprise Engineering
+- Dana Thomas Software Engineer
+- Conant Raj Kumar Software Engineer
+- Qian Li Data Engineer
+- Jason Tung Software Engineer
+- Omid Abdar Linguistic Engineer
+- Jianfa Chen Research Scientist
+- Zuobing Xu Software engineer
+- Jennifer Xiao Software Engineer
+- Tong Liu software engineer
+- Matt H. Software Engineer
+- Jeffrey Yu Software Engineer
+- Tarun Gotimukala Software Engineer
+- Alek S Offensive Security Engineer
+- Zack Argyle Software Engineering Manager
+- John Cheng Software Engineer
+- Anish Sundaram Production Engineer
+- He Wen Research Engineer
+- Vivian Fowler Marketing Manager
+- Tyrell Keith Cfe
+- Lena Montgomery Content Designer
+- H. C. Software Engineer
+- Tanya thangthanakul DS
+- Ravi Ramireddy Data Engineer
+- Andrew Yu Software Engineer
+- Dongbang Yuan Research Scientist
+- Terry Zink Technical Program Manager
+- Xuhui Feng Software Engineer
+- Iris Rodriguez Product Design
+- George Neo Partner Manager
+- Saijel Verma Software Engineer
+- Tian W. Software Engineer
+- Sajal Nagwanshi UX researcher
+- Nicho Del Moral Software Engineer
+- Arjun Annapureddy Contigent Worker - SWE
+- Derek Hoffman Marketing
+- Shiven Kumar Software Engineer
+- Brian Vu Product Operations Manager
+- Caoyu Wang Software Engineer
+- Adam Data Center Production Operations Engineer
+- Egecan Cogulu Data Scientist
+- Rishabh Arora Software Engineer
+- Richard Thesiger Policy Manager
+- Brian S Content Designer
+- Brian Tsau Software Engineer
+- Stu Zhao Production Engineer
+- Yohan Hezkiya Production Engineer
+- Jeffry Fernandez Data Center Production Operations Engineer
+- Miroslav Murgas Software Engineer
+- Sherry Tsao Data Scientist
+- Thiago ML Research Scientist
+- Eva Ma Software Engineer
+- Sinclair Yeh Software Engineer
+- Rebecca Spreitzer Production Operations Engineers
+- Kellie Software Engineer
+- Srini Thirunarayanan Software Engineer
+- Emily Software Engineer
+- kristen Veronica seipp Software Engineer
+- Josh Metzler Software Engineer
+- Xiaodong Ma Software Engineer
+- Jayanth Kalyanasundaram Production Engineer
+- Hannah Yang Software Engineer
+- Kaveh Hosseini Software Engineer
+- Susan Lee Art Director
+- Sunandan Barman Production engineer
+- Ananya Marathe Learning Ecosystem Architect
+- Miranda Liu Software Engineer
+- Stevo Ledbetter Product Manager
+- Bruce Cam systems integration engineer
+- Shuxin Chen Software Engineer
+- Daniel Mueller Software Engineer
+- Sijia Zhang Software Engineer
+- Aaditya Venkateswaran "AI Builder"
+- Noah Yamamoto Software Engineer
+- Mandy Yao Software Engineer
+- Siddharth Dixit Business Engineer
+- Kevin Newton Software Engineer
+- Dan VanWinkle Software Engineer
+- MyTien Pham Production Designer
+- Marriel Fontanilla Helpdesk
+- Mitesh Agrawal Software Engineer
+- Isner Mimy Enterprise Support Tech
+- Shin-Kai Chen Software Engineer
+- Megan Wang Research Scientist
+- Kaushal Software Engineer
+- Bahram Pourtaherian Software Engineer
+- Peter Cottle Software Engineer
+- Kevin Costello Software Engineer
+- Christina You Software Engineer
+- Shijia(Andy) Li Software Engineer
+- Yan Tan Data Scientist
+- Ozge Sarigul Linguist (CW) -California
+- Mohamed Attia Radwan Software Engineer
+- Shae Mermis Producer
+- Ashley Product
+- Elomar Souza Partner Engineer
+- Dima Stepanov Software Engineer
+- Andrew Jay Kenn SWE
+- Anubhav Agarwal Software Engineer
+- Sarah Papazoglakis Trust Product Strategist
+- William Truong Software Engineer
+- weston odendhal Data Engineer
+- Xi Zhang Software Engineer
+- Ruizhe Cai SSoftware Engineer
+- Stephan Loh Software Engineer
+- Haniel Paulos DS
+- Mack Ward Software Engineer
+- Vincent Huang Software Engineer
+- Adwoa B Content design
+- Abhee Jani Production Engineer
+- Marian Shymon SWE
+- Zack Zhu software engineer
+- Shaopeng Wang Data Engineer
+- Aaryaman Sagar Software Engineer
+- Ian Johnson Program Manager
+- Maggie Barbagallo Software Engineer
+- Megan Williams SAI
+- Brian Chang Software Engineer
+- Andrew Conte Software Engineer
+- Yi Feng Yang Software Engineer
+- YUHENG GUO Production Engineer
+- Wanqi Guo Software engineer
+- Steffan Voges Software Engineer
+- Lucy Moys Content Strategist
+- Nolan Handali Software engineer
+- Max Yuan Engineer
+- Siyu Tan Software Engineer
+- anilesh shrivastava Software Engineer
+- Fabio Miranda Costa Software Engineer
+- Mike Krainin Software engineer
+- Cesar Cardoso Software Engineer
+- Stacy Cheng Software Engineer
+- Dmitry Denisenkov Software Engineer
+- Jonathan Watson Software Engineer
+- Steven Schafer Product Designer
+- Christina Lu Software Engineer
+- Matt Shand Content Designer
+- Wei Zhang Software Engineer
+- Jess Liu Product Designer
+- Maria Ioveva Product Design Director
+- Aaron Labertew Production Operations Engineer
+- Jon Tang Software Engineer
+- Ravi S Software Engineer
+- Omar Manjarrez Software Engineer
+- Karina Dearwood Producer
+- Zoe Lamason PM
+- Emily M Producer
+- Lance T Software Engineer
+- Reno Thiart Software Engineer
+- Artemiy Kolesnikov Software Engineer
+- Sam Phillips Software Engineer
+- Jose Morales Hernandez Data Scientist
+- Eric Zhou Software Engineer
+- Nicholas Fusaro DS4
+- Conor Bourque Water Program Manager
+- Elizabeth Romanazzi DLA
+- Anaik von der Weid Comms Director
+- Cal Peng Data Engineer
+- Tom Zhang Software Engineer
+- Lawrence Zhang Software Engineer
+- Khurram Khan Network Engineer
+- Sarah Kahle UXR
+- Dan Ginovker SWE
+- George Hu IC
+- Shayna Kothari Software Engineer
+- Meghna Diwan Data Scientist
+- Brett Major UX Researcher
+- Michael Jalkio Data Engineer
+- Shai S software engineer
+- Dunpei Gan Software Engineer
+- David Wang Swe
+- Stacey Dao Software Engineer
+- Jonah Yamato Software Engineer
+- Xinlin Zhao Data Scientist
+- Mike Escamilla Enterprise Support Tech
+- Mohammad Ali Khan Software Engineer
+- Ali Zandi AI Builder
+- Julia Robinson Admin Specialist Lead
+- Qixiang Yu Software Engineer
+- Jel Kewcharoen Software engineer
+- Izel Moctezuma Technical Artist
+- Aashna Makkar Software Engineer
+- Ashley Wang Software Engineer
+- Brienne Wong Content Designer
+- Ruth Abraham Technical Logistic Specialist
+- Sadhika Dhanasekar Software Engineer
+- Connie Gu Product Design Engineer
+- Fangzhong Li Software Engineer
+- Katarzyna Sliwinska UX Researcher
+- Aidan Mulvaney Silicon Engineer
+- Jordan Rome SWE
+- Ziyi Song Software Engineer
+- Karlo Elamparo Data Scientist
+- Chris Zhang Data Scientist
+- Roland Carter Data Scientist
+- Nitin Balachandran Research engineer
+- Dennis Zhang Software Engineer
+- Paul Morabito Technical Program Manager
+- Jessica Mendoza Event Lead
+- Ying Zhao Software Engineer
+- Wynne Yao Software Engineer
+- Katharina Reuschel Software Engineer
+- George Ezeh Production Operations Engineer
+- Beltus chu lead technician
+- Dustin Zhang Software Engineer
+- Dana Lee Ux researcher
+- Lisa Hartman CD
+- Brian Gorman Software Engineer
+- Brandi Trapp DLA
+- Will Bigelow Software Engineer
+- Helena Fabregas Product Manager
+- Zhipeng Zhang Production Engineer
+- Jeeven Dhanoa Software Engineer
+- SJ Lee Software Developer
+- Vrinda zaveri Art director
+- Ryan Krol Software Engineer
+- Brandon Carpenter Software Engineer
+- Ivan Morett Software Engineer
+- Brian Fitzpatrick Software Engineer
+- Rushabh Shah Data Engineer
+- Michael Colombo Software Engineer
+- Laura Cueva Content Designer
+- Junping Luo Software Engineer
+- Daniel Masny Software Engineer
+- Jason Liu Software engineer
+- Lady Red Beacham Software Engineering Manager
+- Nathaniel M. Hopkin Associate General Counsel
+- Sunny Shen Research Scientist
+- Alex Beals Software Engineer
+- Leonard Hio Software Engineer
+- Andrey Goder Software Engineer
+- Spencer Price Software Engineer
+- Samuel Yang Software Engineer

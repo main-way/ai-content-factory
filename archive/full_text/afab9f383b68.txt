@@ -1,0 +1,129 @@
+Many people use them through cloud-hosted models, as it’s just convenient, and very capable models can be used.
+But when it comes to cost control, or if you don’t want to send your code to the cloud for privacy concerns, or you are experimenting and want to better understand how the agent stack actually works, you might want to try a local setup.
+This is what this post is about. Here, we’ll set up a local coding agent with three pieces:
+- Ollama, for serving the model;
+- Gemma 4, as the local LLM;
+- OpenCode, as the agent interface.
+By the end, we’ll have OpenCode connected to a local LLM.
+1. Install Ollama
+We start by installing Ollama, which will serve the Gemma 4 model locally.
+If you haven’t used it before, Ollama is a runtime for downloading, running, and serving local language models from your own machine. Once it is set up, Ollama exposes a local API endpoint. This way, other tools (e.g., OpenCode) can talk to the model directly.
+On Windows machines, you can do that from the official installer:
+https://ollama.com/download
+Alternatively, you can also install it from PowerShell by using winget
+:
+winget install Ollama.Ollama
+After installation, you should be able to see the Ollama from the Windows Start menu. You can launch it like any other app. Once it is running, you should see the Ollama icon in the system tray, and this means the local Ollama service is running in the background.
+In addition, you can open a new PowerShell window and check if the Ollama CLI is available:
+ollama --version
+If you are on a Linux machine, you can install Ollama with:
+"curl ‒fsSL https://ollama.com/install.sh | sh"
+After installation, check if Ollama is available:
+ollama --version
+Once Ollama is installed, it runs a local server on your machine. Later, OpenCode will talk to this local Ollama server instead of calling a cloud model provider.
+2. Download Gemma 4
+Next, we prepare a local LLM. For this post, we’ll use Gemma 4.
+Gemma 4 is a new open model released by Google on April 2, 2026. This model is designed for reasoning, coding, multimodal understanding, and agentic workflows.
+It comes in multiple sizes, including smaller edge-oriented variants and larger workstation-oriented variants. Since this post is about running the model locally on a laptop, we’ll set up the edge-friendly variants, i.e., the E2B (gemma4:e2b
+) and E4B (gemma4:e4b
+) variants.
+In Ollama’s naming, the
+E
+stands for “effective” parameters.
+For this walkthrough, I use the E4B model as it gives more capability. In PowerShell:
+ollama pull gemma4:e4b
+On Linux, use the same command:
+ollama pull gemma4:e4b
+You can check the downloaded model:
+ollama list
+On my machine, Ollama reports the following:
+gemma4:e4b 9.6 GB
+For reference, my laptop has an Intel i7-13800H CPU, 32 GB RAM, and an NVIDIA RTX 2000 Ada Laptop GPU with about 8 GB VRAM. You can choose
+gemma4:e2b
+instead if E4B feels too slow.
+A few technical notes here. The version of gemma4:e4b
+that we downloaded earlier is a 4-bit quantized model, with GGUF
+as the local model format used by Ollama runtimes. On my machine, Ollama reports gemma4:e4b
+supports with a 128K context length.
+Before moving to the next step, we can do a quick test:
+ollama run gemma4:e4b "what's the capital of France?"
+If you get “Paris” back, then congratulations, Gemma 4 is now available on your local machine through Ollama.
+Note that the first call can be slow because Ollama has to load the model. Once the model is warm, the next prompts should respond faster.
+3. Install OpenCode
+Next, we need an agent interface. We’ll use OpenCode for that.
+If you have used tools like Claude Code or Codex, OpenCode belongs to the same broad category. You can think of it as an agent runtime that can operate within a local repo, inspect files, run commands, and perform various tasks.
+An important difference that matters for us is that OpenCode is open-source and agnostic about LLM providers. You can connect it to cloud models (e.g., Claude/GPT/Gemini models), or you can connect it to a local model served by Ollama.
+That is exactly what we’ll do here.
+If you are on a Windows machine, you’d need to first install Node.js. You can do so via:
+winget install OpenJS.NodeJS.LTS
+On Linux, you can do:
+sudo apt update
+sudo apt install -y nodejs npm
+After installation, you should open a new PowerShell window and verify if both node and npm are available:
+node --version
+npm --version
+Now we can install OpenCode:
+npm install -g opencode-ai
+Then verify the installation:
+opencode --version
+At this point, OpenCode is installed. You can simply launch the interactive OpenCode TUI (terminal UI) from any project folder by running:
+opencode
+4. Connect OpenCode to Gemma 4
+By default, OpenCode doesn’t know which model we want to use. Therefore, we need to point it to the Gemma 4 model, served by Ollama.
+Let’s first create an Ollama model tag with the full context window (128K) enabled. This is important because we want to make sure the agent can work properly without being truncated in context.
+We can do that with a small Ollama Modelfile
+. Specifically, we can create a file called gemma4-e4b-128k.Modelfile
+in the folder/repo we want to work with:
+FROM gemma4:e4b
+PARAMETER num_ctx 131072
+Then, in the command line, we create a new Ollama tag by:
+ollama create gemma4:e4b-128k -f gemma4-e4b-128k.Modelfile
+Something to point out: this would not trigger a new model downloading! It just creates an Ollama profile that uses the same Gemma 4 E4B model, but explicitly sets the runtime context window to 128K.
+Ok, we can proceed to connect OpenCode to the Gemma 4 model. For that, we need to create an opencode.json
+file in the project folder:
+{
+"$schema": "https://opencode.ai/config.json",
+"provider": {
+"ollama": {
+"npm": "@ai-sdk/openai-compatible",
+"name": "Ollama (local)",
+"options": {
+"baseURL": "http://localhost:11434/v1"
+},
+"models": {
+"gemma4:e4b-128k": {
+"name": "Gemma 4 E4B 128K"
+}
+}
+}
+},
+"model": "ollama/gemma4:e4b-128k"
+}
+Two important pieces here:
+First, OpenCode talks to Ollama through Ollama’s local OpenAI-compatible endpoint:
+http://localhost:11434/v1
+Second, note that we set the model name by following OpenCode’s provider/model format:
+ollama/gemma4:e4b-128k
+You use our newly created model tag above.
+Now, if you launch OpenCode from the same project folder via:
+opencode
+You should see gemma4:e4b-128k
+listed.
+Now we are all set up!
+5. What Can You Do With This Setup?
+With OpenCode TUI launched, you can test your setup by asking the agent to do a few tasks. For example, you can ask the agent to write a README file, explain specific functions, create testing scripts, etc.
+In fact, beyond coding, you can also ask the agent to do many workspace tasks, such as file manipulations, content extractions, and so on.
+OpenCode also gives you room to grow the setup. You can also connect tools to the agent, install agent skills with SKILL.md, and define specialized agents with AGENTS.md.
+What’s more, you can run tasks from the command line with:
+opencode run "Summarize this repository."
+For more programmatic use, OpenCode can also run as a server, so the TUI is not the only interface.
+And here is the most important thing: all your data stays fully local.
+You can find relevant OpenCode docs here:
+CLI: https://opencode.ai/docs/cli/
+Skills: https://opencode.ai/docs/skills/
+MCP: https://opencode.ai/docs/mcp-servers/
+Server mode: https://opencode.ai/docs/server/
+Reference
+[1] Gemma documentation: https://ai.google.dev/gemma/docs
+[2] Ollama documentation: https://docs.ollama.com/
+[3] OpenCode documentation: https://opencode.ai/docs/

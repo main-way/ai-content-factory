@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:A DDSP Framework for Adaptive Room Equalization
+View PDF HTML (experimental)Abstract:Adaptive room equalization remains challenging under time-varying acoustic conditions and complex excitation signals, such as music. In these scenarios, classical filtered-x least mean squares (Fx-LMS) methods falter due to their rigid formulation. We present a modular differentiable digital signal processing (DDSP) framework for closed-loop adaptive room equalization that recovers Fx-LMS as a special case through automatic differentiation. The framework supports interchangeable EQ structures, response estimation methods, loss functions, and optimizers. Experiments with time-varying measured room impulse responses show that frequency-domain objectives provide more stable adaptation than time-domain objectives in the considered scenarios. Relative to the non-equalized response, system distance is reduced by 70% and mel-spectral distance by 13% (worst-case scenario). We further examine how online room response estimation accuracy and frame length affect the trade-off between responsiveness and convergence stability. Overall, the framework provides a unified open-source basis for exploring synergies between classical adaptive filtering and DDSP-based optimization.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

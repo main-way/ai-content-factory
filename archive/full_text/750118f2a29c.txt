@@ -1,0 +1,11 @@
+Quantitative Biology > Neurons and Cognition
+Title:Mostly-monocular responses and other visual functions in a multiscale network model of Macaque V1
+View PDF HTML (experimental)Abstract:Visual signals from the two eyes merge gradually as they pass through the primary visual cortex (V1). Here we use a computational model of Macaque V1 to study the first stage of this integration \ktext{along the magnocellular pathway}, in layer 4C$\alpha$, aiming to infer neuroanatomical origins of binocular response. \ktext{It is known that neurons in layer 4C$\alpha$ are predominantly monocular, \ytext{though} some do exhibit varying degrees of binocularity. We find (1) the emergence of narrow binocular strips along borders of ocular dominance columns (ODC), a finding that aligns with experiments; (2) most consistent with data is when $10-30\%$ of interactions near ODC boundaries are cross-columnar; and (3) feedback from layer 6 is largely monocular.} These results were obtained through systematic hypothesis testing using a multiscale model that is orders of magnitude faster than its biologically-detailed predecessors. We propose that multiscale modeling can be an effective tool for bridging anatomy and function.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,99 +1,99 @@
 {
-  "total_posts": 7902,
+  "total_posts": 8544,
   "unique_sources": 88,
   "by_category": {
-    "startups_vc": 2806,
-    "ru_corp_it": 788,
-    "ai_research": 3252,
-    "ru_startups": 920,
-    "ru_ai": 114,
+    "ru_corp_it": 846,
+    "ru_startups": 1038,
+    "startups_vc": 2947,
+    "ai_research": 3570,
+    "ru_ai": 121,
     "aggregators": 22
   },
   "top_sources": [
     [
       "Хабр Статьи",
-      530
+      574
     ],
     [
       "Hacker News",
-      490
+      521
     ],
     [
       "Habr (news)",
-      420
-    ],
-    [
-      "CNET",
-      298
+      457
     ],
     [
       "arXiv cs.AI",
-      295
+      323
     ],
     [
       "Wired",
-      283
+      308
+    ],
+    [
+      "CNET",
+      308
     ],
     [
       "arXiv cs.RO (Robotics)",
-      270
+      300
     ],
     [
       "arXiv stat.ML",
-      266
+      295
     ],
     [
       "arXiv cs.CL (NLP)",
-      261
+      290
     ],
     [
       "arXiv cs.CV (Vision)",
-      259
+      288
     ],
     [
       "Techmeme",
-      257
+      278
     ],
     [
       "arXiv cs.LG",
-      248
+      276
     ],
     [
       "TechCrunch",
-      244
-    ],
-    [
-      "Engadget",
-      223
+      246
     ],
     [
       "arXiv eess.AS (Audio Speech)",
-      206
+      236
+    ],
+    [
+      "Engadget",
+      231
     ],
     [
       "The Next Web",
-      184
+      201
     ],
     [
       "Rusbase (rb.ru)",
-      164
+      173
     ],
     [
       "The Information",
-      162
+      167
     ],
     [
-      "Ars Technica",
-      147
+      "Ведомости (technology)",
+      165
     ],
     [
       "arXiv eess.IV (Image Video)",
-      123
+      152
     ]
   ],
   "by_language": {
-    "en": 6080,
-    "ru": 1822
+    "ru": 2005,
+    "en": 6539
   },
   "posts_by_date": {
     "2018-07-13": 1,
@@ -401,14 +401,14 @@
     "2026-06-15": 518,
     "2026-06-16": 638,
     "2026-06-17": 573,
-    "2026-06-18": 640,
-    "2026-06-19": 496,
-    "2026-06-20": 179,
-    "2026-06-21": 202,
-    "2026-06-22": 344,
-    "2026-06-23": 13
+    "2026-06-18": 641,
+    "2026-06-19": 497,
+    "2026-06-20": 182,
+    "2026-06-21": 205,
+    "2026-06-22": 351,
+    "2026-06-23": 640
   },
   "first_post_date": "2018-07-13",
   "last_post_date": "2026-06-23",
-  "updated_at": "2026-06-23T03:01:23.027200+00:00"
+  "updated_at": "2026-06-23T14:46:22.355656+00:00"
 }

@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Flow Annealing Posterior Sampling for Function-Space Regression and Inverse Problems
+View PDF HTML (experimental)Abstract:Principled regression for stochastic processes is a long-standing challenge with deep connections to scientific inverse problems. We introduce Flow Annealing Posterior Sampling (FAPS), to our knowledge the first function-space posterior sampling framework that unifies stochastic-process regression and PDE inverse problems. Built on pretrained function-space flow-matching priors, FAPS enables likelihood-guided posterior inference from sparse and noisy observations, supports variable query discretizations, and avoids explicit prior-density evaluation. Its Langevin correction uses a low-rank covariance preconditioner to exploit dominant function-space correlations across discretizations. Across Gaussian and non-Gaussian stochastic-process regression benchmarks and diverse PDE inverse problems, FAPS produces coherent posterior samples with accurate uncertainty quantification, significantly outperforming existing functional regression baselines and achieving competitive or better PDE noisy inverse performance than diffusion-based posterior samplers while reducing test-time sampling cost.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

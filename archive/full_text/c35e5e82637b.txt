@@ -1,0 +1,6 @@
+Link to headingGenerate a presigned URL in one command
+vercel blob presign media/photo.jpg --access private
+vercel blob presign uploads/image.jpg --access private --operation put --allowed-content-type image/* --maximum-size-in-bytes 10485760
+Link to headingIssue a standalone signed token
+vercel blob signed-token --pathname media/photo.jpg --operation get vercel blob signed-token --operation put --allowed-content-type image/* --maximum-size-in-bytes 10485760
+vercel blob presign uploads/image.jpg --access private --operation put --delegation-token <delegationToken> --client-signing-token <clientSigningToken>

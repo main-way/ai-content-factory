@@ -23,7 +23,7 @@
         "equity and inclusion for all startups",
         "strategy"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "eb8040157c80",
@@ -37,7 +37,7 @@
       "summary": "Training Diffusion Models with Reinforcement Learning We deployed 100 reinforcement learning (RL)-controlled cars into rush-hour highway traffic to smooth congestion and reduce fuel consumption for everyone. Our goal is to tackle \"stop-and-go\" waves , those frustrating slowdowns and speedups that usually have no clear cause but lead to congestion and significant energy waste. To train efficient flow-smoothing controllers, we built fast, data-driven simulations that RL agents interact with, learning to maximize energy efficiency while maintaining throughput and operating safely around human…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

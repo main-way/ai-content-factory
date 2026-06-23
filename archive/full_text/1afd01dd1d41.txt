@@ -1,0 +1,12 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Evolving Many Worlds: Towards Open-Ended Discovery in Petri Dish NCA via Population-Based Training
+View PDF HTML (experimental)Abstract:The generation of sustained, open-ended complexity from local interactions remains a fundamental challenge in artificial life. Differentiable multi-agent systems, such as Petri Dish Neural Cellular Automata (PD-NCA), exhibit rich self-organization driven purely by spatial competition; however, they are highly sensitive to hyperparameters and frequently collapse into uninteresting patterns and dynamics, such as frozen equilibria or structureless noise. In this paper, we introduce PBT-NCA, a meta-evolutionary algorithm that evolves a population of PD-NCAs subject to a composite objective that rewards both historical behavioral novelty and contemporary visual diversity. Driven by this continuous evolutionary pressure, PBT-NCA spontaneously generates a plethora of emergent lifelike phenomena over extended horizons-a hallmark of true open-endedness. Strikingly, the substrate autonomously discovers diverse morphological survival and self-organization strategies. We observe highly regular, coordinated periodic waves; spore-like scattering where homogeneous groups eject cell-like clusters to colonize distant territories; and fluid, shape-shifting macro-structures that migrate across the substrate, maintaining stable outer boundaries that enclose highly active interiors. By actively penalizing monocultures and dead states, PBT-NCA sustains a state of effective complexity that is neither globally ordered nor globally random, operating persistently at the "edge of chaos".
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

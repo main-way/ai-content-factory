@@ -1,0 +1,12 @@
+Computer Science > Artificial Intelligence
+Title:Path-dependent program induction under resource constraints explains human sequence learning
+View PDF HTML (experimental)Abstract:How do people build abstract, reusable knowledge from sequential experience under bounded cognitive resources? To answer this question, we integrate rate-distortion theory with recent advances in program induction to describe how prior knowledge shapes which future structures are cheap to encode and easy to discover. We formalize this in a hierarchical Adaptor Grammar (HAG) with distinct local (within-task) and global (across-task) libraries, governed jointly by constraints on memory and computation. In simulations, HAG achieves better rate-distortion trade-offs and stronger generalization than fixed grammars or shallow chunking methods. In an online melodic sequence-learning experiment, participants' recall errors reflected systematic simplifications and reaction times increased at inferred program boundaries. Trial-by-trial fits further showed that hierarchical libraries best explained individual differences in both recall and out-of-sample continuation choices, outperforming all alternative models. These findings cast structured learning as bounded program induction in which the order of experience shapes future abstractions a learner builds.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

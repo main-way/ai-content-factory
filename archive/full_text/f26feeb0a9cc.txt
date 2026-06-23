@@ -1,0 +1,22 @@
+The Paris startup, founded by two former Datadog hands, wants to end the per-byte pricing model just as AI workloads make telemetry explode.
+Tsuga, a Paris startup building observability software for the age of AI agents, has raised a $35m Series A, a round that arrives barely six months after it came out of stealth and pitched itself against the very category its founders once helped build.
+The round is led by Singular, with General Catalyst returning, both of which had backed Tsuga’s $10m seed in December 2025. They are joined by new investors DST Global and Quantumlight, with Picus and Databricks also taking part.
+That brings the company’s total raised to about $45m in roughly half a year, a pace that says as much about investor appetite for AI infrastructure as it does about Tsuga itself.
+The pitch starts with a complaint the founders know intimately. Gabriel-James Safar and Sebastien Deprez sold their previous company, Madumbo, to Datadog in 2019, then spent years inside the observability industry before leaving to argue that its business model had aged badly.
+Legacy platforms ingest a customer’s telemetry, store it in the vendor’s cloud, and charge more as the customer’s infrastructure grows.
+Every agent loop and autonomous deployment in an AI system generates data at volumes those platforms were never designed to price, and the bill compounds accordingly.
+Tsuga’s answer is to invert the arrangement. Rather than pulling telemetry into its own cloud, it deploys inside the customer’s environment, so the data never leaves the customer’s perimeter and there is no per-byte ingestion tax.
+Forward-deployed engineers work alongside client teams to tune the setup and cut the volume of data processed and retained.
+Automated root-cause analysis runs on complete, unsampled data, and a bundled MCP server and command-line tool let engineering teams build their own agents on top, inside their own security boundary.
+Keeping data resident is also a regulatory argument, and an increasingly European one. The same logic that has pushed governments toward homegrown alternatives to American software applies to telemetry, which can carry sensitive traces of how a company’s systems and AI models actually behave.
+For customers in regulated industries, the promise that observability never sends that data to a third-party cloud is the product, not a feature of it.
+The competitive backdrop is busy. Observability has become one of the more active corners of enterprise software, with venture money flowing into AI-native monitoring as buyers look for tools that can keep up with agentic systems. Tsuga is wagering that architecture, not features bolted onto an older design, is what separates the next generation from the last.
+The Databricks investment doubles as a partnership. Tsuga is a Databricks partner, and the integration lets customers route observability data straight into Databricks for further analysis, an alliance that fits a broader pattern of Databricks pushing into security and operational data.
+The shared bet is that the data layer and the observability layer belong together, inside the customer’s own environment.
+By its own account, Tsuga has moved quickly since launching in December 2025: several million dollars in contracted annual recurring revenue, an average contract value in the six figures, and customers including Le Monde, Camunda, Buk, and Black Forest Labs.
+Le Monde, the company says, used the platform to monitor its infrastructure through the French municipal elections, while Camunda and Buk run it across multi-cloud setups with strict data-residency requirements.
+Those are company-stated figures, not audited results, and the named customers skew toward the European and AI-native buyers the residency pitch is built for.
+The new money, chief executive Safar said, will go toward expanding the team, building out the Skills library and agent-building toolchain, and scaling the forward-deployed engineering model.
+Whether that model holds up as Tsuga grows is the open question: hands-on, embedded engineering is expensive to scale, and the bet now is that customers will pay for it.
+Get the TNW newsletter
+Get the most important tech news in your inbox each week.

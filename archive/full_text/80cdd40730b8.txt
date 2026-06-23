@@ -1,0 +1,12 @@
+Computer Science > Computation and Language
+Title:Post-Training Recipe, More Than Model Family, Shapes Multi-Agent LLM Conversational Behavior
+View PDF HTML (experimental)Abstract:Multi-LLM systems use multiple language models to deliberate, judge each other's outputs, or coordinate as agents. Their value depends on the models producing measurably different conversational behaviors when given the same input. Prior offline studies recommend drawing one model per family for behavioral diversity, because LLMs prefer outputs from their own family when rating one another in isolation. Whether the same family label predicts behavior in interactive multi-LLM systems, the setting that real deployed systems use, has not been tested. We study this with a 940,000-chain 11-checkpoint corpus and a 1.6M-chain same-base Llama factorial. On our validated headline metric, hedging, a reasoning-distilled Llama checkpoint shifts by 18% depending on which same-base partner it replies to, more than any cross-family hedging gap in the controlled subset. Qwen, closed-API, and runtime checks suggest the pattern is not isolated, while repair and challenge analyses remain exploratory because their surface-cue detectors are weaker. Overall, the results identify post-training recipe as a first-class axis for multi-LLM panel composition and show that model family alone is an incomplete proxy for conversational diversity.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

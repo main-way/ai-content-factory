@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:Topic-to-Timestamp Alignment by Constrained Evidence Selection
+View PDF HTML (experimental)Abstract:Meeting archives are difficult to search when users remember what was discussed but not when. We study topic-to-timestamp alignment: given a natural-language topic and a timestamped meeting transcript, the goal is to return the time at which the topic is discussed. A standard RAG setup can retrieve relevant transcript excerpts, but still asks the language model to generate a timestamp, which can produce unsupported or invalid timecodes. We therefore recast timestamp prediction as constrained temporal candidate selection: the system retrieves timestamped transcript chunks, and the model selects the candidate that best grounds the topic instead of generating a timecode. On 420 topic-timestamp queries from 200 municipal meeting transcripts, this increases Recall@5 from 31.9% to 50.0%, reduces MAE from 837.0 seconds to 761.0 seconds with Mistral-7B-Instruct, and increases the number of parseable outputs from 373 to 419 of 420 queries. The results suggest that temporal grounding in long transcripts depends strongly on retrieval quality and output design, not only on the choice of the language model.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

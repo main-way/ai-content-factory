@@ -19,7 +19,7 @@
         "finance",
         "entrepreneurship"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ff3dd6c1215a",
@@ -33,7 +33,7 @@
       "summary": "Plus profiling Hacker News users based on their comments and more",
       "author": "Simon Willison",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

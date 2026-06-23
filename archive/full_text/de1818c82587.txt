@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Domain-incremental audio classification using domain-specific experts and prototype classifier
+View PDF HTML (experimental)Abstract:This technical report presents submission systems for Task 7(domain-incremental audio classification) of the DCASE 2026 Challenge. The main obstacle is that, the system is unable to access to past or future domain's data at once. We approached domain-incremental learning (DIL) as a frozen-feature replay problem. At each incremental stage, one or two compact experts are trained and then kept fixed; at the final stage, the penultimate features from all frozen experts are concatenated and used to train a lightweight per-class prototype classifier solely on cached features. This design prevents catastrophic forgetting by preserving each expert models at inference. To retain earlier-domain knowledge without storing raw audio, some experts were trained with DeepInversion-based generative replay. A cross-stage regression imputer was trained to fill the expert feature slots that did not yet exist at an ealier stage. We submit four fully DIL-compliant systems: three systems based on diverse frozen five-expert backbones and their cross-stack ensemble achieving 78.15% micro / 77.03% macro on the development set, outperforming every individual backbone on both evaluations.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

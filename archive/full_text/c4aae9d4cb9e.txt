@@ -1,0 +1,11 @@
+Computer Science > Robotics
+Title:How Should a Robot Configure Its Laser Scanner for Inspection?
+View PDF HTML (experimental)Abstract:Robotic inspection relies on accurate sensing to acquire high-fidelity geometric measurements for defect detection and metrology. While prior work has focused on robot motion and viewpoint planning, how to configure sensing parameters remains largely underexplored, despite their decisive impact on measurement quality. We propose SenseHD, a robotic sensing system that formulates scanner configuration as an instruction-conditioned sensing decision. Instead of predicting precise parameter values, SenseHD treats sensing parameters as discrete sensing actions and selects stable sensing regimes through hyperdimensional associative memory. Experiments on a real robotic inspection platform demonstrate that SenseHD robustly selects appropriate sensing configurations and significantly improves inspection reliability, while remaining lightweight and efficient compared to baseline methods.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

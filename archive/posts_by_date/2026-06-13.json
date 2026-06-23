@@ -19,7 +19,7 @@
         "PHP",
         "javascript"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a1a9919ade2b",
@@ -49,7 +49,7 @@
       "tags": [
         "llm"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ac39ee93ddc5",
@@ -69,7 +69,7 @@
         "USB debugging",
         "Streaming Assistant"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2718fd78fffb",
@@ -87,7 +87,7 @@
         "Next Featured",
         "Anthropic"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e1f4bf4c0900",
@@ -101,7 +101,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c2832833caeb",
@@ -119,7 +119,7 @@
         "Next Featured",
         "Business"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3d865fb6cb13",
@@ -133,7 +133,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9f1cb3b407a9",
@@ -153,7 +153,7 @@
         "управление",
         "софт"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ed2ee28de4d8",
@@ -178,7 +178,7 @@
         "controlnet",
         "privacy"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "81b933e562ad",
@@ -192,7 +192,7 @@
       "summary": "Reed Albergotti / Semafor : Source: the White House imposed export controls on Mythos partly over suspicions a China-linked group had accessed it &nbsp; &mdash;&nbsp; THE SCOOP&nbsp; &mdash;&nbsp; The White House imposed export controls on Anthropic's powerful Mythos AI model partly over suspicions that a China-linked group had accessed it, a person familiar with the matter said.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1d5ab036c592",
@@ -206,7 +206,7 @@
       "summary": "Robert Armstrong / Financial Times : How the AI boom is revolutionizing US stock markets, as hyperscalers cut buybacks and boost capex, including Alphabet's planned ~$85B in equity offerings for AI &nbsp; &mdash;&nbsp; Big Tech no longer prints money; it needs it.&nbsp; What will that mean when confidence dips?&nbsp; Artificial intelligence will change &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "43d8b2c1a3f9",
@@ -225,7 +225,7 @@
         "Self-driving",
         "Tesla"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bd096de6ec6e",
@@ -239,7 +239,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "258e5ef30730",
@@ -262,7 +262,7 @@
         "Security",
         "Tech"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0d68aaafbdc7",
@@ -276,7 +276,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8bcacfe2077e",
@@ -296,7 +296,7 @@
         "оценка времени",
         "прокрастинация"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fcd89aab5d71",
@@ -316,7 +316,7 @@
         "эксперименты",
         "обитаемость"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2149290c64f5",
@@ -333,7 +333,7 @@
         "AI",
         "kpmg"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8b443d6e6441",
@@ -347,7 +347,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f027803fb085",
@@ -361,7 +361,7 @@
       "summary": "Leo Schwartz / The Information : Source: the White House is unlikely to extend export restrictions to other AI companies &nbsp; &mdash;&nbsp; The White House is unlikely to extend export restrictions on Anthropic's advanced models to other AI companies, an official close to the U.S. government said Saturday.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f5da05b3e3fd",
@@ -381,7 +381,7 @@
         "мотоцикл",
         "лонгрид"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "94ad53243a1b",
@@ -409,7 +409,7 @@
       "summary": "Here are hints and answers for the NYT Strands puzzle for June 14, No. 833.",
       "author": "Gael Cooper",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a6ae0eaaad8e",
@@ -423,7 +423,7 @@
       "summary": "Here are some hints and the answers for the NYT Connections puzzle for June 14, No. 1,099.",
       "author": "Gael Cooper",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "be0d894efa31",
@@ -448,7 +448,7 @@
         "capture",
         "reverse engineering"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7456030966d9",
@@ -462,7 +462,7 @@
       "summary": "Here are hints and the answer for today's Wordle for June 14, No. 1,821.",
       "author": "Gael Cooper",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c1b4959d1542",
@@ -476,7 +476,7 @@
       "summary": "Nathan Rennolds / Associated Press : European political figures say Anthropic disabling access to Fable 5 and Mythos 5 is a &ldquo;wake-up call&rdquo; about the risks of depending on the US for AI tech &nbsp; &mdash;&nbsp; Anthropic said it believed the US government had become aware of a potential means of jailbreaking Fable 5.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "894c51df33f4",
@@ -504,7 +504,7 @@
       "summary": "Allan Smith / NBC News : Report: opponents blocked or delayed at least 75 US data center projects in Q1 2026 worth ~$130B; data center opposition groups doubled to 833 across 49 states &nbsp; &mdash;&nbsp; The authors found that data center opponents blocked or delayed at least 75 projects nationwide from January through March.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "34cf4653254f",
@@ -522,7 +522,7 @@
         "Claude Mythos",
         "Anthropic Claude"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0308281aa0fc",
@@ -545,7 +545,7 @@
         "david sacks",
         "Scott Bessent"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "17e635a4d680",
@@ -559,7 +559,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "12eae63a62c9",
@@ -596,7 +596,7 @@
         "DPI",
         "self-hosted"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "07d9cc1bfad3",
@@ -616,7 +616,7 @@
         "free",
         "realloc"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6bfb729a6297",
@@ -630,7 +630,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "577b370598c2",
@@ -646,7 +646,7 @@
       "tags": [
         "Wearables"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d1f2d1b52f09",
@@ -667,7 +667,7 @@
         "генерация",
         "процедурная генерация"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9197643b214f",
@@ -681,7 +681,7 @@
       "summary": "David Sacks / @davidsacks : David Sacks says Dario Amodei refused to &ldquo;fix the jailbreak or de-deploy the model&rdquo; after &ldquo;a highly credible trusted partner&rdquo; reported a Fable jailbreak &nbsp; &mdash;&nbsp; I've had a number of conversations with folks inside and outside government about the current situation with Anthropic, and here is what I believe to be true: &mdash; As we know, Anthropic publicly released its Mythos class models earlier this week under the commercial name Fable.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "783e8d827407",
@@ -706,7 +706,7 @@
         "Говард Маркс",
         "Виктор Хагани"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e0312c2d3ff4",
@@ -720,7 +720,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "03a60f383fcb",
@@ -734,7 +734,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4bade9367416",
@@ -758,7 +758,7 @@
         "kubernetes operator",
         "kubernetes cluster"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "089d6c606539",
@@ -774,7 +774,7 @@
       "tags": [
         "дифференциальная геометрия"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bb0c88e4800c",
@@ -793,7 +793,7 @@
         "юридические вопросы",
         "искусственный интеллект"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "77cc79f7af53",
@@ -809,7 +809,7 @@
       "tags": [
         "Culture"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7aa9b6708466",
@@ -828,7 +828,7 @@
         "Microsoft",
         "Next Featured"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "650b446f0259",
@@ -846,7 +846,7 @@
         "Artificial Intelligence",
         "Computer Vision"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "87e71b50df7b",
@@ -867,7 +867,7 @@
         "Llm Applications",
         "Rag"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f582d40c501d",
@@ -895,7 +895,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "748265de56e1",
@@ -913,7 +913,7 @@
         "Government & Policy",
         "OpenAI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "10a63f62aadb",
@@ -932,7 +932,7 @@
         "метилобактерии",
         "формальдегид"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "df53fa032eb2",
@@ -946,7 +946,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "656434d58969",
@@ -960,7 +960,7 @@
       "summary": "The Information : Sources: Amazon CEO Andy Jassy is among tech leaders who raised concerns with Trump officials about Mythos 5, setting in motion new export restrictions &nbsp; &mdash;&nbsp; Amazon CEO Andy Jassy was among the tech leaders who raised concerns to senior Trump administration officials this week about security risks &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "86a2714e5790",
@@ -976,7 +976,7 @@
       "tags": [
         "Gaming"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f2cdd4cdc72d",
@@ -990,7 +990,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "33c901cfa4a2",
@@ -1007,7 +1007,7 @@
         "Claude Fable 5",
         "Claude Mythos 5"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f13b51934424",
@@ -1035,7 +1035,7 @@
       "summary": "Tons of recent releases, from blockbusters to independent films, are all streaming free this month.",
       "author": "Liz Kocan",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9b1d592513d0",
@@ -1055,7 +1055,7 @@
         "sleep aid",
         "speaker review"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "eb9de231d734",
@@ -1069,7 +1069,7 @@
       "summary": "These apps will make it easier to squeeze in a workout during your busy schedule.",
       "author": "Nasha Addarich Martínez",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "70968308d51d",
@@ -1086,7 +1086,7 @@
         "Accessories",
         "Science"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e08f349f7848",
@@ -1111,7 +1111,7 @@
         "self-hosted",
         "personal knowledge management"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "678b95258591",
@@ -1133,7 +1133,7 @@
         "вайбкодинг",
         "юмор"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c49e63679902",
@@ -1147,7 +1147,7 @@
       "summary": "New York Times : US barring foreign nationals, including Anthropic staffers in the US, from using Fable 5 and Mythos 5 marks a new phase in the US trying to control Anthropic &nbsp; &mdash;&nbsp; The company said on Friday night that the federal government had ordered limits on its Mythos and Fable 5 A.I. systems, citing national security concerns.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8b36ee9d5815",
@@ -1197,7 +1197,7 @@
         "open source",
         "сканер"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "603bd7186641",
@@ -1218,7 +1218,7 @@
         "Pdf",
         "Rag"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a193bb1c56dd",
@@ -1236,7 +1236,7 @@
         "pcb",
         "diy"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d6c4dfe325bf",
@@ -1257,7 +1257,7 @@
         "машинное обучение",
         "data science"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "88196749f683",
@@ -1271,7 +1271,7 @@
       "summary": "Собираем новости, события и мнения о рынках, банках и реакциях компаний.",
       "author": "Таня Боброва",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cd04ac749d7f",
@@ -1294,7 +1294,7 @@
         "безопасный ии",
         "этика"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "54d0a7134431",
@@ -1312,7 +1312,7 @@
         "Gaming",
         "Next Featured"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c5ff2a049b40",
@@ -1342,7 +1342,7 @@
       "tags": [
         "Smartphones"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "441ca1a7d4e2",
@@ -1356,7 +1356,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "da6243d44940",
@@ -1372,7 +1372,7 @@
       "tags": [
         "кассеты"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "55e84a6f47f9",
@@ -1386,7 +1386,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "54bd0212b096",
@@ -1409,7 +1409,7 @@
         "китайские нейросети",
         "оптимизация"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "394eb098b3ef",
@@ -1423,7 +1423,7 @@
       "summary": "Jessica Loudis / Bloomberg : A review of The Yahoo Boys, a deeply reported book on four online scammers in Lagos, Nigeria, exploring how and why they scam and the local impact of the trade &nbsp; &mdash;&nbsp; Nigeria's &ldquo;Yahoo Boys&rdquo; have industrialized romance scamming, reflecting and distorting modern hustle culture in the face of collapsing economic prospects.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d33bf9badfdb",
@@ -1445,7 +1445,7 @@
         "сделки",
         "транзакции"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9cc7608624a9",
@@ -1484,7 +1484,7 @@
         "pseudo-elements",
         "webdev"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "70c4776634fb",
@@ -1500,7 +1500,7 @@
       "tags": [
         "Science"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e1dccea6ed1a",
@@ -1516,7 +1516,7 @@
       "tags": [
         "Accessories"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4967af0640f9",
@@ -1534,7 +1534,7 @@
         "GLM",
         "z.ai"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b5c8955d9042",
@@ -1556,7 +1556,7 @@
         "Anthropic",
         "автоматизация разработки"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c600bc917c85",
@@ -1573,7 +1573,7 @@
         "минцифры",
         "TLS-сертификат"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e6c9da9739b7",
@@ -1587,7 +1587,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "31416d9b79ca",
@@ -1606,7 +1606,7 @@
         "Short News",
         "Microsoft"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "71a5c5b2514f",
@@ -1631,7 +1631,7 @@
         "коллекционирование",
         "древесина"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a29d3dc7582d",
@@ -1645,7 +1645,7 @@
       "summary": "Time is running out to claim your payout from Google's nationwide Android settlement.",
       "author": "Tyler Lacoma",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9b106dc66a19",
@@ -1661,7 +1661,7 @@
       "tags": [
         "AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c9949187f1df",
@@ -1682,7 +1682,7 @@
         "Probability",
         "Statistics"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c30d14e63709",
@@ -1696,7 +1696,7 @@
       "summary": "При отзыве иностранного сертификата «в худшем случае» сайты и сервисы «могут быть недоступны непродолжительное время» — пока владельцы получают новые, сообщили в Минцифры.",
       "author": "Таня Боброва",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bc7fc883d0fe",
@@ -1716,7 +1716,7 @@
         "Policy",
         "Politics"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4eb6cf594ebc",
@@ -1737,7 +1737,7 @@
         "транспортный поток",
         "пробки"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f4930fbb50c8",
@@ -1751,7 +1751,7 @@
       "summary": "Plus all the details on Monstropolis and the new Muppets-themed roller coaster.",
       "author": "Corinne Reichert",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4450ed83676c",
@@ -1765,7 +1765,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0c3ac17f63eb",
@@ -1781,7 +1781,7 @@
       "tags": [
         "AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "06cd572958a0",
@@ -1806,7 +1806,7 @@
         "новинки it",
         "нейросети"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e7e4e218f10e",
@@ -1826,7 +1826,7 @@
         "Gemini",
         "Google"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4329a5d6d8fc",
@@ -1864,7 +1864,7 @@
         "диагностика CIO",
         "карьера CIO"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2806dd70f17e",
@@ -1889,7 +1889,7 @@
         "кузовная электроника",
         "диммер"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e21c28b8f904",
@@ -1907,7 +1907,7 @@
         "Artificial Intelligence",
         "Research"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a77d4e06d8fa",
@@ -1925,7 +1925,7 @@
         "Microsoft",
         "Next Featured"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3e13d8993b34",
@@ -1939,7 +1939,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c96ab3d76b82",
@@ -1953,7 +1953,7 @@
       "summary": "The 20th anniversary edition iPhone might feature an all-new design. It's shaping up to be a landmark moment overseen by Apple's next CEO, John Ternus.",
       "author": "Prakhar Khanna",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d2ba0669e3fe",
@@ -1973,7 +1973,7 @@
         "Tech",
         "WWDC 2026"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5e808f6636a3",
@@ -1989,7 +1989,7 @@
       "tags": [
         "Reviews"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "37c04ef685e9",
@@ -2003,7 +2003,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1232733cb0cb",
@@ -2026,7 +2026,7 @@
         "Dyson",
         "Dust Dynasty"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4353496e6929",
@@ -2043,7 +2043,7 @@
         "Next Featured",
         "Security"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6adfb722521c",
@@ -2064,7 +2064,7 @@
         "mushrooms",
         "syndication"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0dd1d1e89105",
@@ -2078,7 +2078,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cd0d3a6a1b01",
@@ -2092,7 +2092,7 @@
       "summary": "Want to switch AI chatbots while keeping all your old information? Here's how to do it.",
       "author": "Blake Stimac",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "0b95c8c9ef85",
@@ -2106,7 +2106,7 @@
       "summary": "Commentary: If the future of interaction is via voice, it risks excluding many of the same people that companies need to buy into AI.",
       "author": "Jeff Carlson",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7fddee35a3a1",
@@ -2120,7 +2120,7 @@
       "summary": "Naoki Hamaguchi talks about remake philosophy, DLC, combat, making the Highwind work and what FF7 Revelation incorporated from battle royale games.",
       "author": "David Lumb",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f58f0546c161",
@@ -2134,7 +2134,7 @@
       "summary": "I got my hands on Ooni's new spinning stone attachment, and it changed the way I make pizza at home.",
       "author": "Pamela Vachon",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "770ccfe0beda",
@@ -2155,7 +2155,7 @@
         "OpenAI",
         "Tech"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e9fb59add261",
@@ -2178,7 +2178,7 @@
         "World Cup 2026",
         "Dot Physics"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6b8772b5ec86",
@@ -2197,7 +2197,7 @@
         "cybersecurity",
         "FBI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "465659d12e64",
@@ -2213,7 +2213,7 @@
       "tags": [
         "Gaming"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "582f8ce79ba5",
@@ -2227,7 +2227,7 @@
       "summary": "We've tested the most advanced gear ourselves. See what you need for your next excursion.",
       "author": "Tyler Lacoma",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1feed2aa29a6",
@@ -2244,7 +2244,7 @@
         "санкции",
         "ssl-сертификаты"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "655c02c64fad",
@@ -2265,7 +2265,7 @@
         "безопасность",
         "which"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "656726569520",
@@ -2279,7 +2279,7 @@
       "summary": "Amrith Ramkumar / Wall Street Journal : Luta Security CEO says US government restrictions on Mythos follow a jailbreak report by Amazon researchers and calls the restrictions a &ldquo;complete overreaction&rdquo; &nbsp; &mdash;&nbsp; The Trump administration is banning foreign governments, companies and individuals from using Anthropic's &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "016081c23e68",
@@ -2311,7 +2311,7 @@
         "Google",
         "Security Roundup"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "152aebc6304c",
@@ -2338,7 +2338,7 @@
         "smart home",
         "Product Review"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "80b00f5d2de2",
@@ -2358,7 +2358,7 @@
         "Anthropic",
         "Math"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2659ff1c5f86",
@@ -2381,7 +2381,7 @@
         "кибербезопасность",
         "иб"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c56d8eaa3f20",
@@ -2395,7 +2395,7 @@
       "summary": "Netflix has all the magic and whimsy you're looking for.",
       "author": "Aaron Pruner",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "24b25b8ebcb8",
@@ -2409,7 +2409,7 @@
       "summary": "The next major iOS software will be available on devices as old as the iPhone 11 this fall.",
       "author": "Zachary McAuliffe",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d598ae73806a",
@@ -2433,7 +2433,7 @@
         "SUVs",
         "Q&A"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b0f2c4416558",
@@ -2447,7 +2447,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9543c785d866",
@@ -2465,7 +2465,7 @@
         "Artificial Intelligence",
         "Meta"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2d7b3ba81a9d",
@@ -2479,7 +2479,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ab3929d7804d",
@@ -2502,7 +2502,7 @@
         "courts",
         "Hallucinations"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2dd5a02c8970",
@@ -2521,7 +2521,7 @@
         "Business",
         "Ecosystems"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cef945c44152",
@@ -2544,7 +2544,7 @@
         "суд",
         "накопители"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "77a6de37e8d9",
@@ -2565,7 +2565,7 @@
         "Kimi Code",
         "Kimi K2"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ad7cab09b62d",
@@ -2579,7 +2579,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2c0957db8fd2",
@@ -2597,7 +2597,7 @@
         "Next Featured",
         "Media"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5bc342f31f32",
@@ -2614,7 +2614,7 @@
         "Finance",
         "Investors and funding"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "49d8ffca9954",
@@ -2646,7 +2646,7 @@
         "Artificial Intelligence",
         "Anthropic"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d9c58ceea907",
@@ -2663,7 +2663,7 @@
         "Claude Fable 5",
         "anthropic"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "6701c158785d",
@@ -2679,7 +2679,7 @@
       "tags": [
         "AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4856f4ab11ce",
@@ -2703,7 +2703,7 @@
         "взлом",
         "облачные сервисы"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "98ea34ed0f7c",
@@ -2727,7 +2727,7 @@
         "облачные серверы",
         "организации"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ae888bbf5bf0",
@@ -2741,7 +2741,7 @@
       "summary": "Michael Peel / Financial Times : After years of false dawns, Big Tech, startups, and governments are betting on commercially useful quantum computers by 2030, as skeptics worry about hype &nbsp; &mdash;&nbsp; Companies are betting on big implications for pharmaceuticals, financial services and crypto.&nbsp; But sceptics worry about hype.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "58b7eafc0bf9",
@@ -2764,7 +2764,7 @@
         "Spain",
         "Energy Up"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ada37f7a14e3",
@@ -2787,7 +2787,7 @@
         "баг-баунти",
         "раскрытие данных"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "229b66274e48",
@@ -2801,7 +2801,7 @@
       "summary": "Christopher Mims / Wall Street Journal : An interview with Corning CEO Wendell Weeks on risk-sharing provisions that protect the company in multibillion-dollar fiber deals with Nvidia, Meta, and Amazon &nbsp; &mdash;&nbsp; CEO Wendell Weeks remembers the dot-com crash and other hardships, and those lessons help him hedge even the most optimistic data-center bets",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2a93231f3211",
@@ -2815,7 +2815,7 @@
       "summary": "Daniel Tudor / Financial Times : South Korea's &ldquo;semiconductor belt&rdquo; town Dongtan has become one of the fastest-rising affluent areas, driven by windfall bonuses for Samsung and SK Hynix workers &nbsp; &mdash;&nbsp; Windfall bonus for workers drives up property prices and department store purchases",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4296ed4cf682",
@@ -2833,7 +2833,7 @@
         "AGI",
         "ASI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "918321a80775",
@@ -2849,7 +2849,7 @@
       "tags": [
         "AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "09924b25ccc2",
@@ -2870,7 +2870,7 @@
         "noble mobile",
         "ubi"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7c2cec78cd8b",
@@ -2886,7 +2886,7 @@
       "tags": [
         "Microsoft Edge"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "cf015dba00e3",
@@ -2903,7 +2903,7 @@
         "HWMonitor 1.64",
         "HWMonitor"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c592597bc948",
@@ -2923,7 +2923,7 @@
         "fable 5",
         "Mythos 5"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b2918d7687a2",
@@ -2951,7 +2951,7 @@
       "summary": "Lawrence Abrams / BleepingComputer : A Ukrainian extradited from Ireland to the US pleads guilty to conspiracy to commit wire fraud for his role in Conti ransomware attacks between 2021 and 2022 &nbsp; &mdash;&nbsp; A Ukrainian national extradited from Ireland to the United States last year has pleaded guilty to conspiracy charges tied to the Conti ransomware operation.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "debd8a7ac5d0",
@@ -2967,7 +2967,7 @@
       "tags": [
         "AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e7f26c0044c3",
@@ -2990,7 +2990,7 @@
         "Anthropic",
         "Jailbreak"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a3803579bb4b",
@@ -3004,7 +3004,7 @@
       "summary": "Ananya Palyekar / Reuters : Anthropic says it believes the US government's export control order for Mythos 5 and Fable 5 is a &ldquo;misunderstanding&rdquo; and that it is working to restore access &nbsp; &mdash;&nbsp; Anthropic said on Friday it has been ordered by the U.S. government to suspend access for all foreign nationals &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "855342a46b7c",
@@ -3018,7 +3018,7 @@
       "summary": "Here are the answers for The New York Times Mini Crossword for June 13.",
       "author": "Gael Cooper",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7f2824ffd7b0",
@@ -3032,7 +3032,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d76e5a3c433b",
@@ -3051,7 +3051,7 @@
         "claude",
         "claude mythos"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2df8804594fc",
@@ -3065,7 +3065,7 @@
       "summary": "Sean Michael Kerner / VentureBeat : Moonshot AI releases Kimi K2.7-Code, claiming 30% lower reasoning token usage compared to K2.6, available under a modified MIT license &nbsp; &mdash;&nbsp; Moonshot AI released Kimi K2.7-Code this week, an open-source update to its K2 coding model family, claiming leaner reasoning and double-digit performance gains.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4292de2e8e18",
@@ -3079,7 +3079,7 @@
       "summary": "Vicky Ge Huang / Wall Street Journal : Crypto-data provider Blockworks says it has acquired its rival Messari; source: Blockworks paid more than $10M for Messari, which was valued at $300M in 2022 &nbsp; &mdash;&nbsp; Buyer pays more than $10 million for company valued at around $300 million in 2022&nbsp; &mdash;&nbsp; The crypto-data provider Blockworks &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "23daf0e94ad2",
@@ -3104,7 +3104,7 @@
         "Android",
         "adaptive bitrate"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "805d6ac1625a",
@@ -3118,7 +3118,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5caf59a41944",
@@ -3146,7 +3146,7 @@
       "summary": "Anthropic : Anthropic says it is disabling Fable 5 and Mythos 5 for all customers after the US government issued an export control order, citing national security concerns &nbsp; &mdash;&nbsp; The US government, citing national security authorities, has issued an export control directive to suspend all access to Fable 5 &hellip;",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e8bdc063325c",
@@ -3160,7 +3160,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "bb3a1e6313d9",
@@ -3174,7 +3174,7 @@
       "summary": "Rest in power: I chatted with the showrunner and star about this heartbreaking moment and the final season.",
       "author": "Kourtnee Jackson",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3413174ad102",
@@ -3195,7 +3195,7 @@
         "джон маккарти",
         "clojure"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "df34e6426a59",
@@ -3223,7 +3223,7 @@
       "summary": "I have a lot to say about Anthropic's new Mythos-class model",
       "author": "Simon Willison",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "69c2cbd08939",
@@ -3237,7 +3237,7 @@
       "summary": "Workflow SDK 's native Nitro v3 integration is now in beta. Steps run inside the same bundled runtime as the rest of your app, instead of a separate bundle. Nitro's useStorage() and other server-side APIs work directly inside \"use step\" functions. The Nitro dev server also serves the workflow web UI at /_workflow . Open it in your browser to inspect, monitor, and debug workflow runs. Workflow routes are now bundled by Nitro as part of the app build. Dependencies are traced, and unused code is tree-shaken, so the output includes only what runs, with faster builds and smaller bundles. Get…",
       "author": "Rihan Arfan",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

@@ -1,0 +1,12 @@
+Statistics > Machine Learning
+Title:Variance-Tilted Diffusion Models for Diverse Sampling
+View PDF HTML (experimental)Abstract:Diffusion models are typically sampled independently, even when the downstream objective is to obtain a diverse set of candidates. We introduce a variance-weighted batch distribution that favours collections of samples with large empirical spread after a prescribed linear feature map. The target is specified explicitly, and the sampler is derived as the corresponding Doob $h$-transform of independent diffusion dynamics. The resulting correction has a compact form: an interaction term that repels posterior denoised means, together with a curvature term that moves particles to the region of higher feature variance. This yields an interacting-particle sampler with a transparent probabilistic target rather than a heuristic repulsive drift.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

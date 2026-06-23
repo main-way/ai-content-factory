@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:Shear-Free Viewport Magnification for 360-Degree via Spherical Mobius Boosts
+View PDF HTML (experimental)Abstract:Viewport-adaptive 360-degree imaging seeks to allocate a fixed sampling budget to the region a viewer is likely to observe. Existing view-biased projections increase viewport resolution through non-conformal warps, which can introduce anisotropic stretching and shear. We formulate spherical Mobius boosts as exact conformal maps for fixed-budget viewport magnification. The continuous spherical warp has quasiconformal dilatation K = 1, reallocating samples toward a target direction while preserving local angles. On a SUN360 saliency audit with 72 panoramas and 216 paired viewport targets, C1 Mobius boosting improves viewport PSNR over optimized offset cubemap on all paired cases, with case-level median gain +3.26 dB, image-level median gain +3.23 dB, and panorama-level bootstrap 95% CI [+3.15, +3.33] dB. Pareto analysis shows that this is not a free global-quality improvement: C1 trades full-sphere WS-PSNR for shear-free viewport fidelity. Prediction-error and filtering studies identify the operating envelope: strong boosts are useful for accurately targeted viewports, while large target uncertainty calls for weaker boosts or fallback. These results position Mobius boosting as a geometric primitive for prediction-conditioned foveated 360-degree resampling rather than a universal encode-once layout.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

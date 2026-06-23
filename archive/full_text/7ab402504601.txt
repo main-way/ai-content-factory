@@ -1,0 +1,13 @@
+Computer Science > Neural and Evolutionary Computing
+Title:Robust Auto-associative Memory via Convolutional Restricted Hopfield Networks
+View PDF HTML (experimental)Abstract:Associative memory models play a fundamental role in pattern retrieval, but their performance often degrades under adversarial perturbations and severe input corruptions. Existing approaches, including Modern Hopfield Networks (MHNs), and Predictive Coding Networks (PCNs), exhibit limitations in balancing storage capacity, computational efficiency, and robustness. In this paper, we propose a Convolutional Restricted Hopfield Networks (CRHNs), which integrates convolutional feature extraction with attractor-based memory retrieval in a structured latent space. The proposed model leverages subspace representations and fixed-point dynamics, trained via a gradient-free Subspace Rotation Algorithm (SRA), to enhance both robustness and memory capacity.
+Extensive experiments on Self-Taught Learning (STL) dataset demonstrate that CRHNs consistently achieve significantly lower reconstruction error compared to MHNs and PCNs across a wide range of adversarial attacks and input degradations. In many cases, CRHNs reduce reconstruction error by an order of magnitude and maintains stable retrieval performance under increasing perturbation strength. Statistical analysis further confirms that these improvements are significant ($p < 0.01$). These results highlight the effectiveness of attractor-based memory mechanisms and suggest that CRHNs provide a promising framework for building robust and scalable associative memory systems.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

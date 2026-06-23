@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:Storyline Trees: Hierarchical Representations for Long-Form Narratives
+View PDF HTML (experimental)Abstract:Long-form narratives are challenging for long-context models because their structure is implicit: events, characters, and plotlines interact across hundreds of pages without the explicit cues that guide navigation in structured documents. We address this by constructing storyline trees, hierarchical representations that organize narratives from global themes and major plotlines to fine-grained events. We first segment chapters into contiguous narrative segments, or scenes, and use them as the basic units for tree construction. We then infer storyline trees through complementary top-down and bottom-up procedures that derive, refine, cluster, and summarize storylines at multiple levels of abstraction. We showcase the utility of this representation for question answering: storyline trees enable adaptive retrieval, allowing models to iteratively inspect high-level narrative structure and retrieve scene-level evidence on demand. Experiments on three long-context narrative QA benchmarks show that adaptive retrieval outperforms strong baselines, including post-trained long-context models and agentic chunk-based methods. Ablations confirm that scenes are more effective basic units than chapters or generic segmentation, and that gains persist under matched retrieval budgets
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

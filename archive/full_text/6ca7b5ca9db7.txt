@@ -1,0 +1,27 @@
+What does it take to build your own “claw” – a capable, CLI-style agent that can plan, use tools, remember things, and safely act on your behalf? Coding agents and assistants like these can feel like magic, but underneath they are an agent harness: a loop around a language model wired up with tools, planning, memory, approvals, and observability.
+In this series we build one from scratch using Microsoft Agent Framework and its batteries-included harness, demonstrating both .NET and Python, side by side.
+A claw is just a harness
+Strip away the UI and a coding agent is a model plus a harness that gives it:
+- tools it can call,
+- a plan it can follow and adapt,
+- memory that survives across turns and sessions,
+- approvals so risky actions need a human’s OK,
+- observability so you can see what it did,
+- and a way to deploy it as a real service.
+Agent Framework ships these as composable building blocks, so you don’t have to hand-roll every piece. This series shows each one of these building blocks in action and how to use Agent Framework’s harness that already assembles all these together.
+Why now? You need a capable model
+The harness multiplies what a model can do, but the model is still the engine. Every turn of the loop depends on the model reliably following your instructions and the harness’s own instructions – choosing the right tool, sticking to a multi-step plan, knowing when to ask for approval, and reasoning over what it reads back.
+That’s why claws feel new: until recently, models couldn’t juggle this many layered instructions or call tools dependably enough for the loop to hold together. Recent advances – stronger instruction-following, reliable tool/function calling, longer context windows, and better multi-step reasoning – are exactly what make this kind of agent practical today.
+💡 Use a current, high-capability model. You can run a harness on an older or smaller model, but expect it to follow your instructions and the harness’s instructions less fully, and to need more hand-holding.
+Our running example: a personal finance assistant
+In our series, we build one assistant across the whole series: a personal finance / investing helper. It looks up stock prices, reads your portfolio, drafts reports, and runs analyses. Some of its tools are sensitive (placing a trade, sending a report) and need approval; some tasks need planning. That makes it a great vehicle for showing off every part of the harness on something that feels real.
+⚠️ It’s an illustrative sample, not financial advice – and the market data in the samples is mock data.
+The series
+| Part | What we add |
+|---|---|
+| 1 – Meet your agent harness and claw | A minimal harness, a custom get_stock_price tool, web search, and planning (todos + plan/execute modes). |
+| 2 – Working with your data, safely (coming soon) | File access (read a portfolio CSV, write reports), approvals for risky actions, and durable memory (file + Foundry). |
+| 3 – Scaling its capabilities (coming soon) | Skills (including Foundry-managed skills), background agents for concurrent work, shell access, and CodeAct. |
+| 4 – Production-ready (coming soon) | Observability (OpenTelemetry), governance (Purview), deployment to Foundry Hosted Agents, and evaluation. |
+Everything is grounded in runnable samples that live in the repository, so you can follow along and run each step yourself.
+Ready? Start with Post 1 – Meet your agent harness and claw →

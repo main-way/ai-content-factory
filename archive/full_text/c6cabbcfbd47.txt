@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:Learning from Audio-Dependency Errors: Data Curation Strategies Based on Model Confusion Patterns in Audio Question Answering
+View PDF HTML (experimental)Abstract:We frame the system as diagnostic data curation for a large audio-language model: before fine-tuning, we probe Qwen3-Omni-30B-A3B-Instruct under normal, empty-audio, and shuffled-audio conditions to identify how the model's answers change when audio evidence is removed or mismatched. These model confusion patterns are used to bucket training samples into text-prior, shuffle-leak, strong audio-dependent, and hard or misleading cases. Our strongest train-only system fine-tunes only on strong-audio items, where the normal audio-question pair is correct but both counterfactual variants fail, plus a small number of empty-audio negatives and a text-only response normalizer for parse-failed generations. On the official development set, the best train-only system reaches 67.27% accuracy after response normalization, compared with 65.90% for our local Qwen3-Omni baseline. Final submissions additionally include models trained using train+development splits and a three-model ensemble.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

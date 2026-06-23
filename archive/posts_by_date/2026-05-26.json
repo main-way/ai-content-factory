@@ -34,7 +34,7 @@
         "Artificial intelligence",
         "sponsored"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5fa6d197b415",
@@ -48,7 +48,7 @@
       "summary": "Why AI's Biggest Enterprise Opportunity Is Also Its Most Boring",
       "author": "James da Costa",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1e2aa2621f26",
@@ -65,7 +65,7 @@
         "Наука",
         "evergreen"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ab036e9a693c",
@@ -79,7 +79,7 @@
       "summary": "What AI-driven miracles will happen this year?",
       "author": "Jack Clark",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7400dc01b3a1",
@@ -97,7 +97,7 @@
         "App",
         "Subscriber-Only Stories"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e8227e1ef5eb",
@@ -111,7 +111,7 @@
       "summary": "Google unveils AI model Gemini 3.5 and AI agent Gemini Spark, Omni turns images, audio, and text into video, Musk loses OpenAI court battle",
       "author": "Last Week in AI",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a772ee776d38",
@@ -125,7 +125,7 @@
       "summary": "Vercel Sandboxes now automatically save and restore filesystem state between sessions. Persistence is on by default, meaning no snapshots to manage or state to track manually. Each sandbox has a durable, customizable name that acts as a unique reference in your project. You can create, retrieve, or resume a sandbox by name. Vercel spins sessions up and down automatically, without interrupting your workflow. Create a persistent sandbox When you call Sandbox.create() , persistence is enabled by default: Each automatic snapshot consumes snapshot storage , which is billed separately from compute.…",
       "author": "Harpreet Arora",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8f270d9731c1",
@@ -139,7 +139,7 @@
       "summary": "Vercel Domains now supports price sorting and availability filtering. Price sorting shows lower cost domains first, so you can quickly find a domain that fits your budget. Availability filtering moves unavailable domains to the bottom of the search results, so you can focus on domains that you can actually purchase. Try it at vercel.com/domains . Read more",
       "author": "Elliot Dauber",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "376e96997d09",
@@ -153,7 +153,7 @@
       "summary": "Firecrawl is now available on the Vercel Marketplace , allowing Vercel teams to power AI agents and applications with structured web data without managing crawling infrastructure. This integration helps developers scrape websites into LLM-ready formats, search and retrieve full page content, and interact with dynamic pages for retrieval and agent workflows. Key capabilities include: Scrape pages into markdown, HTML, structured data, or screenshots Search the web and retrieve full page content in a single call Interact with dynamic websites using AI prompts or code Get started with Firecrawl…",
       "author": "Hedi Zandi",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a2b3b1fe0438",
@@ -167,7 +167,7 @@
       "summary": "This week we are gradually rolling out an update to Vercel Microfrontends routing for aliases and branch-assigned domains. Aliases inherit Microfrontends routing Aliasing a Microfrontends URL with vc alias now preserves the full microfrontends routing config from the source deployment. Previously, the new alias only inherited the deploymentId . Update to the latest Vercel CLI to pick up the change. Branch domains route across all projects A project domain assigned to a git branch now routes to that branch in every project in the Microfrontend that shares the branch name. Previously, the…",
       "author": "Tim White",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

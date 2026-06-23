@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:D2HDMap: Non-visible Driveline Map Prior for Online Vectorized HD Map Prediction
+View PDF HTML (experimental)Abstract:Accurate, up-to-date representations of road structures are critical for the safe operation of autonomous vehicles. Existing systems rely either on costly, maintenance-heavy high-definition (HD) maps which compromise safety when outdated, or purely sensor-based online mapping which struggles with long-range reliability and occlusion. Systems incorporating map prior information into online mapping seek to overcome drawbacks of both approaches by combining them in some way. We propose 'Driveline To HD Map' (D2HDMap), an online mapping system that injects a lightweight, non-visible driveline prior to guide the estimation of visible road structures such as lane dividers, road boundaries and crosswalks. This prior incurs less effort to create and update compared to full HD map priors used in other approaches. We also show that training with such a prior can improve generalization at inference time when no prior is available. Ablation studies conducted on the nuScenes and Argoverse 2 dataset demonstrate that models trained using a driveline prior largely retain performance even when priors are not available. On a geographically disjoint split, D2HDMap achieves 44.8 mAP, surpassing recent state-of-the-art. Additionally, noise-aware training substantially increases robustness to realistic localization error.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,12 @@
+Computer Science > Software Engineering
+Title:Formally Verified Code Synthesis for Structured Data Translation in a Medical Internet of Things
+View PDF HTML (experimental)Abstract:In this work we present a LLM powered, evolutionary code synthesis system for structured data translation in a Medical Internet of Things settings. A key challenge in this domain is ensuring that the synthesized code is trustworthy and reliable. To this end, we integrate a formal verification step into our code synthesis pipeline to ensure that any generated code is guaranteed to satisfy predefined requirements. In particular, we present a case study of integrating a novel device (a pulse oximeter) into the existing network of devices. Our system generates a formally verified translation between the device's JSON schema and the Fast Healthcare Interoperability Resources (FHIR) format used by the wider system. This formal verification stage ensures structured data translated by the generated code will always be in the target output schema. We provide a set of experimental results which demonstrate that our system is able to consistently generate correct translation at low cost.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

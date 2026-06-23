@@ -1,0 +1,11 @@
+Computer Science > Multimedia
+Title:UI-LIC: A Unified Framework for Evaluating Learned Image Compression Models
+View PDF HTML (experimental)Abstract:The evaluation and comparison of Learned Image Compression (LIC) systems is complicated by heterogeneous software stacks, varying training conditions, and divergent evaluation methodologies. To address these challenges, we introduce UI-LIC, an open-source software framework for evaluating LIC models. We integrate six high-performance LIC models, and provide a centralized controller for performing training, inference, and analysis with shared configuration parameters. Our GUI program offers a streamlined interface to evaluate these models alongside traditional video intra-frame encoders, equalizing the compressed bitrates and calculating quality metrics such as PSNR, SSIM, VMAF, and LPIPS. Finally, we provide an interactive image analyzer with configurable quality heatmap overlays. Our framework lowers barriers to further LIC research, unlocking comparative metrics and subjective analysis with a single setup command. The open-source software is released under the MIT license and is available at this http URL.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

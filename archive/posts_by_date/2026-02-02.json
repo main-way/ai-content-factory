@@ -20,7 +20,7 @@
         "large language models",
         "Sakana AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "12f40143f5b2",
@@ -37,7 +37,7 @@
         "Google DeepMind",
         "AI"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5f225fba38fd",
@@ -51,7 +51,7 @@
       "summary": "Plus, a story about agents corrupting other agents",
       "author": "Jack Clark",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

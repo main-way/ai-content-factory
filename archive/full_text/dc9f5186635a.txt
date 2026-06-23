@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Image and Video Processing
+Title:FlowCodec: One-Step Flow Prior for Generative Image Compression
+View PDF HTML (experimental)Abstract:Diffusion-based image compression methods, leveraging powerful generative priors, have demonstrated remarkable perceptual quality at ultra-low bitrates. However, adapting modern generative models to image compression often relies on carefully engineered conditioning or auxiliary branches, together with substantial retraining, and these costs grow as the models scale. This motivates an open question: Can stronger generative priors be integrated into compression through a simpler, more extensible design? To answer this, we propose FlowCodec, a streamlined framework that plugs pretrained large-scale text-to-image priors (e.g., Qwen-image-2512 and FLUX.1-dev) into ultra-low-bitrate codecs. FlowCodec decomposes the pipeline into two decoupled stages: (1) Latent Compression, which maps clean latents to bitrate-constrained noisy latents; and (2) Latent Transport, which leverages the pretrained prior to refine the noisy latents toward the clean ones in a single step. Notably, FlowCodec requires neither additional conditioning signals nor auxiliary networks. Furthermore, with lightweight adaptation, it can flexibly support multiple bitrates while keeping the number of trainable parameters below 0.54% of the generative backbone. Experiments show that FlowCodec preserves high visual quality at bitrates below 0.05 bits per pixel. The Qwen-image variant significantly outperforms existing methods in terms of LPIPS and DISTS, while both variants deliver higher PSNR and clearly faster encoding than existing one-step diffusion-based methods, with the FLUX variant also maintaining competitive decoding speed.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

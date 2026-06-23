@@ -1,0 +1,654 @@
+What are these technologies actually?
+How are they built?
+I learned that large language models (LLMs) are advanced artificial intelligence systems built on heavily trained neural networks.
+I also wanted to learn about these technologies.
+As neural networks form the foundation of these latest technologies, I wanted to start by understanding what a neural network actually is.
+But when I came across terms like hidden layers, activation functions, image data, and text data, it felt overwhelming to me.
+It became difficult to continue learning about neural networks.
+I understood that we use deep learning and neural networks mainly when dealing with complex data such as images and text.
+However, I felt that using such complex data could make it difficult to understand the basics of neural networks.
+I wondered how I could make it simpler. So, instead of starting with complex data, I decided to use simple data to first get a detailed understanding of what’s actually happening inside a neural network.
+So, the main aim of this article is to understand what neural networks actually are and how they learn from data by using a simple dataset.
+In this article, we will build a simple neural network from scratch and understand how it works.
+We will see what happens inside a neuron, how different layers work together, why adding more linear neurons is still not enough, and how activation functions help neural networks model complex patterns in the data.
+When a Straight Line Is Not Enough
+You might have come across similar diagrams like this showing the basic structure of neural networks.
+Let’s understand this layer by layer.
+But before we can understand how it works, we need some data. Let’s consider this simple dataset showing the exam scores of students and the hours they studied.
+Data:
+Now, let’s plot this data.
+Code:
+import matplotlib.pyplot as plt
+hours_studied = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+exam_scores = [55, 70, 80, 85, 87, 88, 87, 85, 80]
+plt.scatter(hours_studied, exam_scores, color='darkcyan', s=80)
+plt.xlabel("Hours Studied")
+plt.ylabel("Exam Score")
+plt.title("Hours Studied vs Exam Score")
+plt.show()
+Plot:
+Now, we need to predict the exam score based on the hours studied. Let’s apply simple linear regression to this data.
+We can observe from the above plot that simple linear regression is not enough to model this data well because the relationship in the dataset appears to be non-linear.
+In other words, we can say that a single straight line is not able to capture the underlying pattern in the data.
+What can we do now?
+Why Simplicity Matters
+Let’s build a neural network to solve this problem.
+At this point, you might ask, why build a neural network at all? Can’t we solve this problem using decision trees or random forests?
+You are absolutely right.
+In fact, tree-based algorithms are often preferred for problems involving non-linear tabular data like this one.
+But our goal here is to understand how a neural network is built and how it works.
+Why use a huge image or text dataset to learn these concepts, why not start with a simple dataset?
+Think of it this way, if you wanted to learn how to drive, would you choose a basic car or a highly powerful adventure car?
+Most of us would choose a basic car.
+If we started with a powerful car, we might become overwhelmed by its power and unable to control it.
+We might end up thinking driving is too difficult, causing us to give up before learning the fundamentals.
+In the same way, if we start with an image dataset containing hundreds of inputs, we might get overwhelmed and find it difficult to understand the fundamentals of neural networks.
+So, here we are using this simple dataset not because neural networks are meant only to solve problems like this, but to build an understanding for how they work.
+Later, we can build on our learnings to understand more complex neural networks that learn highly complex patterns from data.
+Time for Neural Networks
+Let’s once again look at the scatter plot of our dataset.
+We already know that a single line is not enough to capture the patterns in this data.
+So, we need a more flexible function that can model these patterns. One way to model such patterns is by using neural networks.
+First let’s look at one neuron. What does it do, actually?
+You will be surprised to know that a neuron does something we already know.
+It takes the input from the data, multiplies it by a weight and adds bias.
+we can write it in equation form as:
+\[
+z = wx + b
+\]
+We have seen this before, right?
+This is nothing but the equation of a straight line and if we compare it to simple linear regression, we can think of (w) as the slope and (b) as the intercept.
+Here, we’ve considered only one input feature, where a neuron computes:
+\[z = wx + b
+\]
+However, in real-world problems, we often have multiple input features. In that case, the neuron computes:
+\[z = w_1x_1 + w_2x_2 + \cdots + w_nx_n + b
+\]
+In matrix form, we can write the same equation as:
+\[z = \mathbf{w}^{T}\mathbf{x} + b
+\]
+where
+\[\mathbf{w} =
+\begin{bmatrix}
+w_1 \
+w_2 \
+\cdots \
+w_n
+\end{bmatrix}
+\]
+is the vector of weights,
+\[\mathbf{x} =
+\begin{bmatrix}
+x_1 \
+x_2 \
+\cdots \
+x_n
+\end{bmatrix}
+\]
+is the vector of input features, and
+\[b
+\]
+is the bias term.
+Here, \[z\] represents the linear output produced by the neuron.
+Ultimately, we can say that a neuron computes a linear function of its inputs.
+Now that we have an idea of what a single neuron actually does, let’s once again have a look at this basic diagram.
+Input Layer
+First let’s focus on the input layer.
+It is simple. The input layer does nothing but just holds the data and passes it onto the next layer.
+Here, for our dataset, we have one feature which is hours studied, so we have one neuron in the input layer.
+The number of neurons in the input layer is based on the number of features we have in our dataset.
+Hidden Layer
+Now that we have an idea of the input layer, let’s move on to the most important layer in a neural network, the hidden layer.
+Here, we are building a neural network, and there can be any number of hidden layers in it.
+We can choose how many hidden layers to include in our neural network based on the problem we are solving.
+Here, for simplicity, I just want to include one hidden layer in our neural network.
+Now, the next question is: how many neurons should we have in our hidden layer?
+This is also something we can choose, just like the number of hidden layers.
+Here, I am considering 2 neurons, so we can say that our neural network uses a hidden layer with 2 neurons.
+At this point our neural network looks like this,
+Here comes the interesting part. We already discussed that a single neuron computes a linear function of its inputs.
+One thing to focus on here is that we randomly initialize the weights and bias for each neuron.
+We can understand this more clearly by taking an example.
+Let’s say that for hidden neuron 1, we randomly initialized w1 = 1 and b1 = -5 and for hidden neuron 2, we randomly initialized w2 = -1 and b2 = 7.
+Only one slope because here we only have one feature (hours studied).
+Now let’s pass the data onto hidden layer from the input layer.
+Let’s see how our neural network looks like at this point.
+Breaking Down the Hidden Layer
+Now let’s focus on Hidden Neuron 1.
+As we pass the data from the input layer to Hidden Neuron 1, it calculates:
+\[
+z_1 = w_1x + b_1
+\]
+We randomly initialized the weight and bias of Hidden Neuron 1 as:
+\[
+w_1 = 1
+\]
+and
+\[
+b_1 = -5
+\]
+Substituting these values into the neuron equation, we get:
+\[
+z_1 = (1)x + (-5)
+\]
+which is
+\[
+z_1 = x – 5
+\]
+This equation represents the linear function produced by Hidden Neuron 1.
+Now let’s see what happens when the first data point enters the neuron.
+For the first student:
+\[
+x = 1
+\]
+Substituting this value into the equation:
+\[
+z_1 = 1 – 5
+\]
+Therefore,
+\[
+z_1 = -4
+\]
+So, when the input value is \(x = 1\), Hidden Neuron 1 produces an output of:
+\[
+z_1 = -4
+\]
+Similarly, for the remaining input values, Hidden Neuron 1 produces the following outputs:
+\[
+x = 2 \quad \Rightarrow \quad z_1 = -3
+\]
+\[
+x = 3 \quad \Rightarrow \quad z_1 = -2
+\]
+\[
+x = 4 \quad \Rightarrow \quad z_1 = -1
+\]
+\[
+x = 5 \quad \Rightarrow \quad z_1 = 0
+\]
+\[
+x = 6 \quad \Rightarrow \quad z_1 = 1
+\]
+\[
+x = 7 \quad \Rightarrow \quad z_1 = 2
+\]
+\[
+x = 8 \quad \Rightarrow \quad z_1 = 3
+\]
+\[
+x = 9 \quad \Rightarrow \quad z_1 = 4
+\]
+So far, we have passed the data to Hidden Neuron 1, and it has calculated the above values.
+Now, let’s plot the outputs produced by Hidden Neuron 1.
+We can see that Hidden Neuron 1 produced a line. We will try to understand what it is, but before that, let’s also have a look at Hidden Neuron 2.
+Same as Hidden Neuron 1, we now pass the same input data to Hidden Neuron 2.
+As the data passes from the input layer to Hidden Neuron 2, it calculates:
+\[
+z_2 = w_2x + b_2
+\]
+We randomly initialized the weight and bias of Hidden Neuron 2 as:
+\[
+w_2 = -1
+\]
+and
+\[
+b_2 = 7
+\]
+Substituting these values into the neuron equation, we get:
+\[
+z_2 = (-1)x + 7
+\]
+which is
+\[
+z_2 = -x + 7
+\]
+This equation represents the linear function produced by Hidden Neuron 2.
+Now let’s see what happens when the first data point enters the neuron.
+For the first student:
+\[
+x = 1
+\]
+Substituting this value into the equation:
+\[
+z_2 = -1 + 7
+\]
+Therefore,
+\[
+z_2 = 6
+\]
+So, when the input value is \(x = 1\), Hidden Neuron 2 produces an output of:
+\[
+z_2 = 6
+\]
+Similarly, for the remaining input values, Hidden Neuron 2 produces the following outputs:
+\[
+x = 2 \quad \Rightarrow \quad z_2 = 5
+\]
+\[
+x = 3 \quad \Rightarrow \quad z_2 = 4
+\]
+\[
+x = 4 \quad \Rightarrow \quad z_2 = 3
+\]
+\[
+x = 5 \quad \Rightarrow \quad z_2 = 2
+\]
+\[
+x = 6 \quad \Rightarrow \quad z_2 = 1
+\]
+\[
+x = 7 \quad \Rightarrow \quad z_2 = 0
+\]
+\[
+x = 8 \quad \Rightarrow \quad z_2 = -1
+\]
+\[
+x = 9 \quad \Rightarrow \quad z_2 = -2
+\]
+Now, let’s plot the outputs produced by Hidden Neuron 2.
+We can observe from the above plot that Hidden Neuron 2 also produced a line.
+Let’s look at the plot with both the lines at a time.
+Here, one thing we need to understand is that the hidden neurons are not trying to fit the exam scores.
+What we have done is simply calculate a linear combination of the input using random weight and bias values.
+We gave the same input to both hidden neurons, but we obtained different linear transformations because we used different random weights and bias values.
+Now, what can we do with these two lines produced by the hidden neurons in the hidden layer?
+If we observe the line produced by Hidden Neuron 1, we can see that as the study hours increase, the output of Hidden Neuron 1 increases.
+Now, looking at the line produced by Hidden Neuron 2, we can see that as the study hours increase, the output of Hidden Neuron 2 decreases.
+Our aim is to model the curved pattern in the data, and we now have two different linear transformations of the same input.
+When we look at the scatter plot of our data, we can observe that up to 6 hours, the exam score increases as the study hours increase, and after that, it decreases.
+This may lead us to ask, can we scale and combine these two lines to model the curved pattern in our data?
+What do we mean by combining the lines here?
+We are not joining them geometrically. Instead, we pass the outputs produced by the hidden layer to the final output layer, where another linear transformation is performed.
+Let’s understand this by taking an example.
+Output layer
+Now we are in the final layer of our neural network, which is the output layer.
+Here, we are trying to predict the exam score, which is a single number, so we have one neuron in the output layer.
+Now it’s time for initializing the random parameter values for our output layer.
+Let’s say w3 = 2, w4 = 3 and b3 = 10.
+We have two weights because here the output layer receives two inputs, one from hidden neuron 1 and other from hidden neuron 2.
+Before proceeding further, let’s have a look at how our neural network looks at this point.
+The output neuron receives two inputs:
+\[
+z_1
+\]
+from Hidden Neuron 1 and
+\[
+z_2
+\]
+from Hidden Neuron 2.
+We randomly initialized the weights and bias of the output neuron as:
+\[
+w_3 = 2
+\]
+\[
+w_4 = 3
+\]
+and
+\[
+b_3 = 10
+\]
+The output neuron calculates:
+\[
+\hat{y} = w_3z_1 + w_4z_2 + b_3
+\]
+Substituting the values:
+\[
+\hat{y} = 2z_1 + 3z_2 + 10
+\]
+This equation represents the linear function produced by the output neuron.
+Now let’s see what happens when the first data point passes through the complete network.
+For the first student:
+\[
+x = 1
+\]
+From Hidden Neuron 1:
+\[
+z_1 = 1(1) – 5
+\]
+\[
+z_1 = -4
+\]
+From Hidden Neuron 2:
+\[
+z_2 = -1(1) + 7
+\]
+\[
+z_2 = 6
+\]
+Now these values are passed to the output neuron:
+\[
+\hat{y} = 2(-4) + 3(6) + 10
+\]
+\[
+\hat{y} = -8 + 18 + 10
+\]
+Therefore,
+\[
+\hat{y} = 20
+\]
+So, when the input value is \(x = 1\), the neural network produces a prediction of:
+\[
+\hat{y} = 20
+\]
+Similarly, for the remaining input values, the output neuron produces the following predictions:
+\[
+x = 2 \quad \Rightarrow \quad \hat{y} = 19
+\]
+\[
+x = 3 \quad \Rightarrow \quad \hat{y} = 18
+\]
+\[
+x = 4 \quad \Rightarrow \quad \hat{y} = 17
+\]
+\[
+x = 5 \quad \Rightarrow \quad \hat{y} = 16
+\]
+\[
+x = 6 \quad \Rightarrow \quad \hat{y} = 15
+\]
+\[
+x = 7 \quad \Rightarrow \quad \hat{y} = 14
+\]
+\[
+x = 8 \quad \Rightarrow \quad \hat{y} = 13
+\]
+\[
+x = 9 \quad \Rightarrow \quad \hat{y} = 12
+\]
+At this point, we have completed one forward pass through the neural network.
+Now let’s plot the output values from the output layer.
+Things are getting interesting
+Let’s try to understand what actually happened here.
+First, we obtained the two lines produced by the two hidden neurons.
+Then we thought, let’s scale these two lines and combine them so that we can model the curved pattern in the data.
+So, we scaled the line produced by Hidden Neuron 1 by 2, scaled the line produced by Hidden Neuron 2 by 3, and then added them together.
+However, adding straight lines does not create a curve. The result is simply another straight line, which we can see from the above plot.
+Let’s follow the equations below so that we can understand this completely.
+At First, we have two lines produced by the hidden neurons:
+\[
+z_1 = x – 5
+\]
+\[
+z_2 = -x + 7
+\]
+The output neuron combines these lines using its weights:
+\[
+\hat{y} = 2z_1 + 3z_2 + 10
+\]
+Substituting \(z_1\) and \(z_2\):
+\[
+\hat{y} = 2(x – 5) + 3(-x + 7) + 10
+\]
+Expanding the terms:
+\[
+\hat{y} = 2x – 10 – 3x + 21 + 10
+\]
+Combining like terms:
+\[
+\hat{y} = -x + 21
+\]
+We can see that the final output is still of the form:
+\[
+\hat{y} = mx + c
+\]
+which is the equation of a straight line.
+Therefore, even though we combined the outputs of multiple hidden neurons, the final result is still a line.
+What can we do now?
+This brings us to the most important concept in deep learning and neural networks: Activation Functions.
+Activation Functions
+Here, our data follows a non-linear pattern, but a straight line can only model linear relationships.
+No matter how many linear neurons we combine, the output is still a linear function.
+Then how do these neural networks learn complex patterns such as curves, shapes, images, and text?
+The solution is surprisingly simple.
+What have we done so far? We passed the outputs of the two hidden neurons directly to the output layer.
+But instead of passing them directly to the output layer, the hidden neurons’ outputs are first transformed using a special function called an activation function.
+But what does an activation function do?
+It introduces non-linearity into the network, allowing it to learn complex patterns.
+We have many activation functions but here let’s consider one of the most commonly used activation function ReLU (Rectified Linear Unit).
+But what does ReLU do?
+The idea behind ReLU is surprisingly simple.
+Given an input value \(z\),
+\[
+\text{ReLU}(z) =
+\begin{cases}
+0, & z < 0 \\
+z, & z \geq 0
+\end{cases}
+\]
+In simple words we can say it like,
+If the input is negative, ReLU outputs \(0\).
+If the input is positive, ReLU leaves it unchanged.
+Let's look at a few examples:
+\[
+\text{ReLU}(-5) = 0
+\]
+\[
+\text{ReLU}(-2) = 0
+\]
+\[
+\text{ReLU}(3) = 3
+\]
+\[
+\text{ReLU}(7) = 7
+\]
+Notice what happened.
+All negative values were converted to zero, while positive values passed through unchanged.
+Before activation, a neuron simply produces a linear output:
+\[
+z = wx + b
+\]
+With ReLU, the neuron now produces:
+\[
+a = \text{ReLU}(z)
+\]
+or equivalently,
+\[
+a = \text{ReLU}(wx+b)
+\]
+where:
+\[
+z
+\]
+is the linear output of the neuron,
+\[
+a
+\]
+is the activated output,
+\[
+w
+\]
+is the weight,
+\[
+x
+\]
+is the input, and
+\[
+b
+\]
+is the bias.
+This simple transformation changes everything.
+Instead of passing a purely linear output to the next layer, the neuron now applies a non-linear transformation.
+As a result, combining multiple neurons no longer gives another straight line.
+This is what allows neural networks to learn complex non-linear patterns.
+Back to Hidden Layer
+Now we need to back to hidden layer and transform the outputs of 2 hidden neurons using ReLU activation function.
+At this moment, our neural network looks like:
+We know that our hidden neurons produced:
+\[
+z_1 = x – 5
+\]
+\[
+z_2 = -x + 7
+\]
+After applying ReLU:
+\[
+a_1 = \text{ReLU}(z_1)
+\]
+\[
+a_2 = \text{ReLU}(z_2)
+\]
+Let’s see what happens for different values of \(x\).
+\[
+\begin{array}{c|c|c|c|c}
+x &
+z_1=x-5 &
+a_1=\text{ReLU}(z_1) &
+z_2=-x+7 &
+a_2=\text{ReLU}(z_2)
+\\
+\hline
+1 & -4 & 0 & 6 & 6 \\
+2 & -3 & 0 & 5 & 5 \\
+3 & -2 & 0 & 4 & 4 \\
+4 & -1 & 0 & 3 & 3 \\
+5 & 0 & 0 & 2 & 2 \\
+6 & 1 & 1 & 1 & 1 \\
+7 & 2 & 2 & 0 & 0 \\
+8 & 3 & 3 & -1 & 0 \\
+9 & 4 & 4 & -2 & 0 \\
+10 & 5 & 5 & -3 & 0
+\end{array}
+\]
+We can observe what ReLU is doing:
+Hidden Neuron 1 remains inactive (outputs \(0\)) until \(x\) reaches \(5\).
+After \(x=5\), Hidden Neuron 1 starts producing positive outputs.
+Hidden Neuron 2 is active for smaller values of \(x\).
+Once \(x\) becomes greater than \(7\), Hidden Neuron 2 becomes inactive and outputs \(0\).
+In other words, ReLU allows different neurons to become active in different regions of the input space.
+This is the first step towards enabling neural networks to learn complex non-linear patterns.
+Now let’s visualize the output provided by two hidden neurons after applying the activation function.
+We can clearly see how the outputs produced by the two hidden neurons changed after applying ReLU.
+Before ReLU, both hidden neurons produced simple straight lines, and their outputs were passed directly to the output layer.
+Now, they are no longer straight lines that extend infinitely in both directions. We call them piecewise linear functions.
+After applying ReLU, all negative outputs are converted to zero, while positive outputs remain unchanged.
+As a result, the behavior of the hidden neurons changes significantly.
+Let’s look at two examples.
+For
+\[
+x = 3
+\]
+Hidden Neuron 1 produced
+\[
+z_1 = 3 – 5 = -2
+\]
+Hidden Neuron 2 produced
+\[
+z_2 = -3 + 7 = 4
+\]
+Applying ReLU:
+\[
+a_1 = \text{ReLU}(-2) = 0
+\]
+\[
+a_2 = \text{ReLU}(4) = 4
+\]
+Notice what happened.
+Hidden Neuron 1 becomes inactive because its output is converted to zero, while Hidden Neuron 2 remains active.
+Now consider another input:
+\[
+x = 8
+\]
+Hidden Neuron 1 produced
+\[
+z_1 = 8 – 5 = 3
+\]
+Hidden Neuron 2 produced
+\[
+z_2 = -8 + 7 = -1
+\]
+Applying ReLU:
+\[
+a_1 = \text{ReLU}(3) = 3
+\]
+\[
+a_2 = \text{ReLU}(-1) = 0
+\]
+This time, Hidden Neuron 1 remains active, while Hidden Neuron 2 becomes inactive.
+This is exactly what we observed in the plots above.
+For smaller values of \(x\), Hidden Neuron 2 is active while Hidden Neuron 1 is inactive.
+For larger values of \(x\), Hidden Neuron 1 is active while Hidden Neuron 2 is inactive.
+In other words, different hidden neurons become active in different regions of the input space.
+Instead of every hidden neuron contributing everywhere, some hidden neurons contribute only when their outputs are useful.
+This simple change introduces non-linearity into the network, which is the key reason neural networks can learn complex patterns that cannot be represented by a single straight line.
+Now let’s pass these activated outputs to the output neuron and see how the final prediction changes.
+Back to Output Layer
+We know that the output neuron computes:
+\[
+\hat{y}
+=
+2a_1
++
+3a_2
++
+10
+\]
+where
+\[
+a_1 = \text{ReLU}(x-5)
+\]
+and
+\[
+a_2 = \text{ReLU}(-x+7).
+\]
+The table below shows the complete calculations performed by the network for different values of \(x\).
+\[
+\begin{array}{c|c|c|c|c|c}
+x &
+a_1=\text{ReLU}(x-5) &
+a_2=\text{ReLU}(-x+7) &
+2a_1 &
+3a_2 &
+\hat{y}=2a_1+3a_2+10
+\\
+\hline
+1 & 0 & 6 & 0 & 18 & 28 \\
+2 & 0 & 5 & 0 & 15 & 25 \\
+3 & 0 & 4 & 0 & 12 & 22 \\
+4 & 0 & 3 & 0 & 9 & 19 \\
+5 & 0 & 2 & 0 & 6 & 16 \\
+6 & 1 & 1 & 2 & 3 & 15 \\
+7 & 2 & 0 & 4 & 0 & 14 \\
+8 & 3 & 0 & 6 & 0 & 16 \\
+9 & 4 & 0 & 8 & 0 & 18
+\end{array}
+\]
+Finally, we have computed the final prediction of our network.
+Let’s look at the plot of final prediction.
+Earlier, we tried scaling and combining straight lines (produced by two hidden neurons in the hidden layer), but we have seen that the final output was still a straight line.
+Now the situation is different.
+After applying ReLU, the hidden neurons produced piecewise linear functions.
+When the output neuron scaled and combined these functions, the network is no longer restricted to a single straight line.
+This allows the network to represent non-linear patterns that cannot be represented by a single straight line.
+This is the function produced by our neural network after applying ReLU.
+\[
+\hat y
+=
+2\,\text{ReLU}(x-5)
++
+3\,\text{ReLU}(-x+7)
++
+10
+\]
+You might think that this function is also not a good fit. And yes, you are right.
+This is not the final function learned by our neural network, nor are these the final output values predicted by our neural network.
+In the next step, we compare the predicted exam scores with the actual exam scores and then calculate the Mean Squared Error (MSE).
+Based on this error, the learning happens.
+Here, we get introduced to one of the most important concepts in deep learning and neural networks: Backpropagation.
+This concept works together with Gradient Descent to update the weights and biases of the network.
+Till now, what we have done is Forward Propagation.
+In the next blog, we will focus on how a neural network learns using Backpropagation and Gradient Descent.
+Summary
+In this article, we learnt that a neuron computes a linear function.
+We then built a simple neural network and discovered that combining multiple linear neurons still resulted in a linear function.
+Finally, we introduced activation functions and saw how they enable neural networks to model non-linear patterns.
+I hope this blog post gave you something to start with regarding neural networks and deep learning.
+What I want to say is that if we have a clear understanding of the fundamentals, we can easily follow advanced topics instead of getting confused.
+If you found this helpful, feel free to share it with people who may need it.
+In case you have any doubts or thoughts, you can comment on LinkedIn.
+Further reading
+As we are going to discuss Backpropagation next, and since it is closely related to Gradient Descent, I have published a detailed blog on Gradient Descent and Stochastic Gradient Descent.
+If you are interested, you can read it here.
+Thank you for reading this far.
+This time, I feel like ending this with a quote.
+See you in the next blog, where we will explore how neural networks actually learn using Backpropagation and Gradient Descent.
+Thank you.

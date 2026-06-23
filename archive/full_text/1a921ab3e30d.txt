@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:MSU-Bench: Towards Speaker-Centric Understanding in Conversational Multi-Speaker Scenarios
+View PDF HTML (experimental)Abstract:Spoken Language Understanding (SLU) is moving from task-specific pipelines toward large audio language models (LALMs) that generate natural-language responses. However, existing speech benchmarks mainly focus on single-speaker settings or isolated subtasks, leaving speaker-centric understanding in realistic multi-speaker conversations insufficiently evaluated. We introduce MSU-Bench, a diagnostic benchmark for multi-speaker conversational understanding, covering 16 speaker-centric tasks and 2,300 QA instances in a two-tier framework from speaker grounding to dialogue reasoning. We build a Gemini-assisted annotation and QA generation pipeline with human-in-the-loop verification, achieving high QA validity and strong agreement between human answers and verified labels. We further analyze speaker-referencing schemes and diagnostic error types to reveal bottlenecks in speaker grounding and reasoning. Experiments reveal clear gaps across model families, with closed-source systems leading overall but all models still facing challenges in complex speaker grounding and multi-speaker reasoning. The benchmark annotations, metadata, and evaluation scripts will be available at the GitHub repository: this https URL.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,12 @@
+Computer Science > Artificial Intelligence
+Title:Skill Coverage: A Test Adequacy Metric for Agent Skills
+View PDF HTML (experimental)Abstract:Agent skills encode reusable procedural knowledge that guides large language model agents across tasks and execution contexts. Existing evaluations primarily assess skills through task level outcomes, yet task success alone does not reveal which parts of a skill have been exercised or which remain untested. We introduce skill coverage, a test adequacy metric that treats the skill artifact as the object under test. Our approach extracts observable skill behavior constraints from skill documents and measures whether an agent trajectory provides sufficient evidence to exercise and evaluate each constraint. Skill coverage uses a binary cover or not cover judgment, which reports whether a documented behavior has been exercised with sufficient observable evidence, without assigning an additional outcome label to the behavior. Applying skill coverage to SkillsBench reveals that existing benchmark executions cover only 39.90 to 43.98% of skill behavior constraints, suggesting that current benchmark tasks leave large portions of documented skill guidance untested. These findings show that successful task completion does not imply adequate testing of the skill artifact, highlighting skill coverage as a measure of how thoroughly agent skills are tested.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

@@ -1,0 +1,14 @@
+Statistics > Machine Learning
+Title:Data Evolution by Wittgenstein's Rule Following
+View PDF HTML (experimental)Abstract:This paper introduces Wittgenstein's Rule Following (WRF) data evolution, a framework in philomatics for evolving or generating a new dataset from a sequence of previously observed datasets. The method is inspired by Ludwig Wittgenstein's rule-following considerations and his notion of family resemblance in Philosophical Investigations. Unlike standard synthetic data generation, where the goal is usually to sample from or augment a fixed distribution, WRF aims to continue the implicit rule expressed by a historical sequence of datasets while preserving resemblance to the previous datasets.
+WRF represents each dataset by structural descriptors rather than pointwise correspondences. These descriptors summarize geometric, distributional, clustering, and, in the supervised case, label-based properties of the data. The method predicts a rule-following target by extrapolating descriptor trajectories and a family-resemblance target by averaging historical descriptors. Candidate datasets are then generated from the observed history through balanced or bounded mixture recombination, scored according to these targets, and optionally refined through differentiable optimization in descriptor space.
+The proposed framework allows both sample size and feature dimension to vary over time and does not assume that the next dataset is a direct transformation of the last one. Simulations on synthetic and image datasets show that WRF can generate meaningful continuations of evolving datasets in both unsupervised and supervised settings.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

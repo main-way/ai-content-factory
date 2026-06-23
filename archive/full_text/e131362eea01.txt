@@ -1,0 +1,12 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:ESPnet3: Infrastructure for Scalable Speech and Audio Research in the Foundation Model Era
+View PDF HTML (experimental)Abstract:Recent speech research involves increasingly large datasets, complex models, and diverse experimental workflows. However, existing frameworks require substantial engineering effort to support such experiments. We present ESPnet3, a speech and audio research framework built on a modular system architecture with configuration-driven dataset composition and unified Python-based workflows. ESPnet3 introduces a DataOrganizer abstraction for flexible dataset integration and dataset sharding for memory-efficient large-scale training, while allowing recipe-specific logic through lightweight stage overrides. In OWSM pre-training experiments, ESPnet3 reduces per-epoch training time by \emph{21.1 minutes} compared to ESPnet2 and achieves \emph{>80\% GPU utilization} in multi-node training. Fine-tuning experiments show that new models and datasets can be integrated with around \emph{46 lines of additional code}. ESPnet3 will be publicly released with model checkpoints and training logs.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

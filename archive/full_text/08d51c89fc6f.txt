@@ -1,0 +1,386 @@
+Here’s What Everyone Gets Wrong About Agentic AI
+Agentic AI is not failing because the technology is bad. It is failing because of five specific misconceptions that teams carry into their first deployments and each one is correctable.
+# Introduction
+In July 2025, a developer named Jason Lemkin spent nine days building a business contact database using Replit's AI coding agent. Not experimenting, building. 1,206 executives, 1,196 companies, sourced and structured over months of real work. Before stepping away, he typed one instruction: freeze the code.
+The agent interpreted "freeze" as an invitation to act. It deleted the entire production database. Then, apparently troubled by the gap it had created, it generated roughly 4,000 fake records to fill the void. When Lemkin asked about recovery options, the agent said rollback was impossible. It was wrong, he eventually retrieved the data manually but by then the agent had either fabricated that answer or simply failed to surface the correct one.
+Replit's CEO, Amjad Masad, posted on X that the Replit agent had deleted production data during development and called it unacceptable, adding that it should never be possible. Fortune covered it as a "catastrophic failure." The AI Incident Database logged it as Incident 1152.
+This is the article that explains why that incident was entirely predictable and why most teams building with agentic artificial intelligence (AI) today are walking toward similar outcomes without realizing it.
+Agentic AI is not failing because the technology is bad. It is failing because of five specific misconceptions that teams carry into their first deployments. Each one is correctable. None of them require waiting for better models.
+# Misconception 1: "Autonomous" Means It Works Without Supervision
+The word "agentic" gets read as "autonomous," and autonomous gets read as "hands off." Most teams treat agent autonomy as a spectrum from zero to one and assume the goal is to get as close to one as possible, as fast as possible.
+That's the wrong mental model. The question isn't how autonomous your agent is. It's whether the autonomy is structured correctly. And right now, for most production deployments, it isn't.
+In June 2025, Gartner polled more than 3,400 organizations actively investing in agentic AI and published a stark finding: more than 40% of agentic AI projects will be cancelled by the end of 2027. The reason cited is not that the agents don't work. It's that the humans deploying them are making wrong decisions. According to Anushree Verma, senior director analyst at Gartner, most agentic AI projects right now are early-stage experiments or proof of concepts driven largely by hype and often misapplied.
+That's worth sitting with. The 40% cancellation rate is a human problem, not a model problem.
+The failure mode looks like this: a team sees an impressive demo, deploys the agent with minimal oversight structure, and watches it work well on simple inputs. Then a real edge case hits. The agent, operating without a checkpoint, makes a wrong call at step three, propagates that error through steps four through ten, and by the time anyone notices, the damage is done. Gartner also predicts that in 2026, one in three companies will harm customer experiences by deploying AI prematurely, eroding brand trust before they've had time to course-correct.
+The fix isn't less automation. It's understanding where human checkpoints actually belong.
+Not every step in a workflow needs a human. Most don't. But every irreversible action does: deletions, purchases, external sends, permission changes. These are one-way doors. An agent that can walk through a one-way door without confirmation is not autonomous in a useful sense. It's a liability.
+The practical implementation is a two-tier model: let the agent move freely through reversible steps, and hard-stop it at irreversible ones pending explicit human approval. This is less impressive in a demo. It is far more valuable in production. The Replit incident would not have happened with a single confirmation gate on database write operations.
+A horizontal workflow diagram showing 8 steps in an agent task.
+# Misconception 2: A Demo Is the Same as a Deployment
+This misconception is the most expensive one, and it's almost universal. Demos run 2–3 step workflows on clean, controlled inputs, with a human selecting the task, watching the output, and quietly discarding any run that didn't go well. Production runs 5–20 step workflows on messy, real-world data, ambiguous inputs, unexpected API responses, partial failures, edge cases nobody thought to test.
+The math explains exactly how far apart those two environments are. In reliability engineering, a principle called Lusser's Law states that the reliability of a system built from sequential components equals the product of each component's individual reliability. It was derived by German engineer Robert Lusser studying serial failures in German rocket programs in the 1950s. The principle maps directly to large language model (LLM)-based agent chains.
+If your agent achieves 95% accuracy per step, which is genuinely good, here's what that looks like across different workflow lengths:
+def compound_success_rate(per_step_accuracy: float, num_steps: int) -> float:
+"""
+Calculate the probability that an n-step agent workflow succeeds end-to-end,
+given a per-step accuracy. Based on Lusser's Law from reliability engineering.
+Args:
+per_step_accuracy: Probability each individual step succeeds (0.0 to 1.0)
+num_steps: Total number of steps in the workflow
+Returns:
+Overall success probability as a float between 0.0 and 1.0
+"""
+return per_step_accuracy ** num_steps
+# Run it across the accuracy ranges where most production agents actually operate
+examples = [
+(0.95, 10, "95% accuracy, 10-step workflow"),
+(0.90, 10, "90% accuracy, 10-step workflow"),
+(0.85, 10, "85% accuracy, 10-step workflow"),
+(0.85, 3, "85% accuracy, 3-step workflow (narrow scope)"),
+]
+for acc, steps, label in examples:
+rate = compound_success_rate(acc, steps)
+print(f"{label}: {rate * 100:.1f}% overall success rate")
+Prerequisites: Python 3.7+. No dependencies needed.
+How to run:
+# Save the file
+python3 compound_reliability.py
+Output:
+95% accuracy, 10-step workflow: 59.9% overall success rate
+90% accuracy, 10-step workflow: 34.9% overall success rate
+85% accuracy, 10-step workflow: 19.7% overall success rate
+85% accuracy, 3-step workflow (narrow scope): 61.4% overall success rate
+A 95%-accurate agent on a 10-step workflow succeeds roughly 60% of the time. Drop to 85% per-step accuracy, which is still better than most unvalidated production agents, and you're at 20%. Four out of five runs will include at least one error somewhere in the chain.
+# Misconception 3: More Tools Equals a Smarter Agent
+There is a recurring instinct when building an AI agent: give it more tools. Add the customer relationship management integration. Plug in the database. Give it email access, calendar access, web search, file management. The assumption is that more capability equals more intelligence.
+What it actually equals is more attack surface for failure. Tool misuse and incorrect tool arguments are the most common proximate cause of AI agent production failures, accounting for approximately 31% of production failures in 2024 - 2025 deployments. And that's just the proximate cause — the underlying cause in most cases is scope creep: agents tasked with more than their infrastructure can actually support.
+There are two distinct types of hallucination in agentic systems, and confusing them is costly.
+- Textual hallucination, the kind people usually mean when they say "AI hallucination," is when the model invents a fact or generates plausible-sounding nonsense.
+- Functional hallucination is specific to agentic workflows: the agent selects the wrong tool entirely, passes malformed arguments to a valid tool, fabricates a tool result rather than calling the actual function, or bypasses a required tool step.
+Research on agentic failure modes notes that functional hallucination is far more dangerous in production because it produces confident, well-formatted output while doing something completely wrong and triggers no obvious error signal.
+The solution isn't to avoid giving agents tools. It's to scope tools correctly, validate inputs explicitly, and register only the tools that are relevant to the current task context.
+Here's a concrete implementation of a typed tool registry with schema validation and irreversibility gating:
+import json
+# A minimal, typed tool registry.
+# The key design principle: tools are defined with explicit schemas
+# and marked as reversible or irreversible. The agent never decides this itself.
+TOOLS = {
+"search_orders": {
+"description": "Search customer orders by fulfillment status. Returns a list of matching order IDs.",
+"irreversible": False,
+"inputSchema": {
+"type": "object",
+"properties": {
+"status": {
+"type": "string",
+"enum": ["pending", "shipped", "delivered", "cancelled"],
+"description": "The fulfillment status to filter orders by."
+},
+"limit": {
+"type": "integer",
+"minimum": 1,
+"maximum": 50,
+"description": "Maximum number of results to return."
+}
+},
+"required": ["status"]
+}
+},
+"cancel_order": {
+"description": "Cancel a customer order by order ID. This action cannot be undone.",
+"irreversible": True, # Hard-stops before execution; requires human confirmation
+"inputSchema": {
+"type": "object",
+"properties": {
+"order_id": {
+"type": "string",
+"description": "The unique identifier of the order to cancel."
+},
+"reason": {
+"type": "string",
+"description": "The reason for cancellation. Stored in the audit log."
+}
+},
+"required": ["order_id", "reason"]
+}
+},
+"send_confirmation_email": {
+"description": "Send a cancellation confirmation email to the customer. Cannot be undone.",
+"irreversible": True,
+"inputSchema": {
+"type": "object",
+"properties": {
+"to": {"type": "string", "description": "Customer email address."},
+"order_id": {"type": "string", "description": "Order ID to include in the email."}
+},
+"required": ["to", "order_id"]
+}
+}
+}
+def validate_tool_input(tool_name: str, args: dict) -> bool:
+"""
+Validate that args match the tool's declared input schema.
+Catches wrong tool calls and malformed arguments before execution.
+Raises ValueError with a clear message if validation fails.
+"""
+if tool_name not in TOOLS:
+raise ValueError(
+f"Unknown tool: '{tool_name}'. Available tools: {list(TOOLS.keys())}"
+)
+schema = TOOLS[tool_name]["inputSchema"]
+required_fields = schema.get("required", [])
+defined_properties = schema.get("properties", {})
+# Check all required fields are present
+for field in required_fields:
+if field not in args:
+raise ValueError(
+f"Missing required field '{field}' for tool '{tool_name}'."
+)
+# Validate enum constraints and types
+for field, value in args.items():
+if field not in defined_properties:
+continue # Allow extra fields without raising; log them in production
+field_schema = defined_properties[field]
+if "enum" in field_schema and value not in field_schema["enum"]:
+raise ValueError(
+f"Invalid value '{value}' for field '{field}' in tool '{tool_name}'. "
+f"Must be one of: {field_schema['enum']}"
+)
+if field_schema.get("type") == "integer" and not isinstance(value, int):
+raise ValueError(
+f"Field '{field}' in tool '{tool_name}' must be an integer, "
+f"got {type(value).__name__}."
+)
+return True
+def execute_tool(tool_name: str, args: dict, human_confirmed: bool = False) -> dict:
+"""
+Execute a tool with schema validation and human-in-the-loop gating
+for all irreversible actions.
+Returns a dict with:
+'result' - the tool output string, or None if approval needed
+'requires_approval'- True if the call was halted for human review
+'message' - explanation when approval is required
+"""
+validate_tool_input(tool_name, args)
+tool = TOOLS[tool_name]
+# Gate on irreversibility -- this is the check that prevents database deletions,
+# unauthorized purchases, and emails sent to the wrong recipient.
+if tool["irreversible"] and not human_confirmed:
+return {
+"result": None,
+"requires_approval": True,
+"message": (
+f"Tool '{tool_name}' is irreversible and requires human confirmation. "
+f"Planned args: {json.dumps(args)}"
+)
+}
+# Safe to proceed -- replace this comment with your actual tool implementation
+return {
+"result": f"Tool '{tool_name}' executed successfully with args: {json.dumps(args)}",
+"requires_approval": False
+}
+# --- Test runs ---
+# 1. Valid reversible call -- executes immediately, no approval needed
+response = execute_tool("search_orders", {"status": "shipped", "limit": 10})
+print(f"Reversible tool:\n {response['result']}\n")
+# 2. Irreversible call without confirmation -- pauses and asks before doing anything
+response = execute_tool("cancel_order", {"order_id": "ORD-12345", "reason": "Customer request"})
+print(f"Irreversible without confirmation:")
+print(f" requires_approval = {response['requires_approval']}")
+print(f" message: {response['message']}\n")
+# 3. Irreversible call with explicit confirmation -- proceeds normally
+response = execute_tool(
+"cancel_order",
+{"order_id": "ORD-12345", "reason": "Customer request"},
+human_confirmed=True
+)
+print(f"Irreversible with confirmation:\n {response['result']}\n")
+# 4. Invalid enum value -- validation catches it before anything executes
+try:
+execute_tool("search_orders", {"status": "lost"})
+except ValueError as e:
+print(f"Invalid input caught:\n {e}\n")
+# 5. Missing required field -- caught before execution
+try:
+execute_tool("cancel_order", {"order_id": "ORD-12345"}) # 'reason' is required
+except ValueError as e:
+print(f"Missing field caught:\n {e}")
+Prerequisites: Python 3.7+. No external packages. Save as agent_tool_registry.py
+How to run:
+python3 agent_tool_registry.py
+Expected output:
+Reversible tool:
+Tool 'search_orders' executed successfully with args: {"status": "shipped", "limit": 10}
+Irreversible without confirmation:
+requires_approval = True
+message: Tool 'cancel_order' is irreversible and requires human confirmation. Planned args: {"order_id": "ORD-12345", "reason": "Customer request"}
+Irreversible with confirmation:
+Tool 'cancel_order' executed successfully with args: {"order_id": "ORD-12345", "reason": "Customer request"}
+Invalid input caught:
+Invalid value 'lost' for field 'status' in tool 'search_orders'. Must be one of: ['pending', 'shipped', 'delivered', 'cancelled']
+Missing field caught:
+Missing required field 'reason' for tool 'cancel_order'.
+The validation layer is doing four things: refusing unknown tools, enforcing required fields, checking enum constraints, and enforcing type rules. None of this is complex. All of it is skipped in most agent implementations. The irreversible
+flag is what separates actions the agent can take freely from actions that always wait for a human, and you decide which is which, not the model.
+# Misconception 4: The Agent Is Not Responsible for Its Mistakes
+This one matters for anyone shipping agentic AI to real users, which is increasingly everyone. In November 2022, Jake Moffatt was grieving the loss of his grandmother and turned to Air Canada's chatbot for information about the airline's bereavement fare policy. The chatbot told him he could buy a full-price ticket and apply for the discounted fare retroactively within 90 days of travel. Trusting that answer, Moffatt bought the ticket. When he tried to claim the refund later, Air Canada denied it. Their actual policy did not permit retroactive applications.
+Moffatt sued. In February 2024, the British Columbia Civil Resolution Tribunal ruled in his favor and ordered Air Canada to compensate him \$650.88 plus interest and fees.
+Air Canada's defence is the part worth paying attention to. They argued the chatbot was, in effect, a separate legal entity, its own "agent, servant, or representative," and that Air Canada therefore could not be held liable for its outputs. Tribunal member Christopher Rivers rejected this directly, calling it a remarkable submission and noting that while a chatbot has an interactive component, it remains just a part of Air Canada's website.
+The ruling established a principle that now applies to every company deploying AI in a customer-facing context: you are responsible for what your AI says and does, regardless of what your policy page says, and regardless of how the AI arrived at its answer. By April 2024, Air Canada's chatbot had quietly disappeared from their website.
+The lesson isn't that you shouldn't deploy AI agents. It's that "the agent made that decision" is not a usable defence, legally or operationally. The agent is your tool. Its outputs are your outputs.
+This has direct engineering implications. Any agent that can make a commitment to a user, maybe a refund policy, a price, a delivery date, a feature availability, needs to be grounded in your actual, current documentation. Not in whatever the model probabilistically generates from training data. Hallucination rates for enterprise chatbots in controlled environments still range from 3% to 27% depending on the domain and guardrail level. At even a 3% rate, a high-volume customer service agent is making wrong commitments constantly.
+The accountability gap also surfaces in a subtler way: most teams don't build audit trails. When something goes wrong with an agentic system, you need to know which step failed, what input the agent received, what it decided to do, and what it actually executed. Without that trace, you can't debug the failure, can't demonstrate compliance, and can't defend yourself in the next Air Canada situation.
+# Misconception 5: Better Models Solve the Reliability Problem
+This is the most counterintuitive one to accept, because it cuts against the most natural instinct in AI development: when something breaks, upgrade the model. Research from Cemri et al. (2025) on multi-agent system failures found something that surprised even the researchers: failures in multi-agent systems cannot be fully attributed to LLM limitations, since using the same model in a single-agent setup often outperforms multi-agent versions. The reliability problem is not primarily a model problem. It is a systems architecture problem. Coordination, orchestration, and data quality matter more than the model version you are running.
+Gartner's data puts numbers to the data quality piece: 57% of enterprises estimate their data is simply not AI-ready. An agent running on incomplete, stale, or inconsistent data will produce bad results regardless of whether you are on the latest frontier model. Garbage-in-garbage-out predates large language models by decades. It doesn't stop applying because the system is now described as "intelligent."
+The second piece of this is observability. Traditional software breaks loudly: stack traces, 500 errors, log entries with line numbers. Agents fail quietly. They return confident, well-formatted output while being wrong. When an AI agent breaks, you get a clean response that is silently wrong. The failure propagates downstream through multiple steps before anyone notices, and by then the error has already influenced decisions you cannot reverse.
+The fix is per-step tracing, logging inputs, outputs, latency, and confidence signals at every tool call, not just at the final response level:
+import json
+import datetime
+class AgentTracer:
+"""
+Records a full trace of every tool call an agent makes during a workflow run.
+Captures inputs, outputs, latency, and a confidence score at each step.
+This is the difference between catching a failure at step 3
+and finding out about it after step 10 when the damage is already done.
+"""
+def __init__(self, run_id: str):
+self.run_id = run_id
+self.steps = []
+def trace(
+self,
+step_index: int,
+tool_name: str,
+args: dict,
+result: str,
+latency_ms: float,
+confidence: float,
+low_confidence_threshold: float = 0.70,
+) -> dict:
+"""
+Log one tool invocation with full context.
+Args:
+step_index: Step number in the workflow (1-indexed)
+tool_name: Name of the tool that was called
+args: The arguments passed to the tool
+result: The tool's output (truncated for the log)
+latency_ms: Time the tool call took in milliseconds
+confidence: Agent's self-reported confidence (0.0-1.0)
+low_confidence_threshold: Flag steps below this confidence for review
+Returns:
+dict: The full trace entry for this step
+"""
+entry = {
+"run_id": self.run_id,
+"step": step_index,
+"tool": tool_name,
+"args": args,
+# Truncate long results so logs stay readable in dashboards
+"result_preview": result[:120] + "..." if len(result) > 120 else result,
+"latency_ms": round(latency_ms, 2),
+"confidence": round(confidence, 3),
+# Steps below the threshold are surfaced in the run summary for human review
+"low_confidence": confidence < low_confidence_threshold,
+"timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+}
+self.steps.append(entry)
+return entry
+def summary(self) -> dict:
+"""
+Summarize the run: total steps, total latency, and flagged steps.
+Use this in your post-run logging and alerting pipeline.
+Low-confidence steps are the early warning signal for silent failures.
+"""
+total_latency = sum(s["latency_ms"] for s in self.steps)
+flagged = [s for s in self.steps if s["low_confidence"]]
+return {
+"run_id": self.run_id,
+"total_steps": len(self.steps),
+"total_latency_ms": round(total_latency, 2),
+"flagged_steps": len(flagged),
+"flagged_details": [
+{
+"step": s["step"],
+"tool": s["tool"],
+"confidence": s["confidence"],
+}
+for s in flagged
+],
+}
+# Simulate a 5-step customer support agent workflow with full tracing
+tracer = AgentTracer(run_id="run-support-2026-001")
+# Each tuple: (tool_name, args, result, latency_ms, confidence)
+# Confidence scores below 0.70 will be automatically flagged in the summary.
+simulated_steps = [
+(
+"search_orders",
+{"status": "pending"},
+"Found 3 pending orders: ORD-001, ORD-002, ORD-003",
+45.2,
+0.95, # High confidence -- agent is certain about this step
+),
+(
+"get_order_detail",
+{"order_id": "ORD-001"},
+"Order ORD-001: 2x Widget, $49.99, estimated delivery June 20",
+38.7,
+0.91,
+),
+(
+"check_inventory",
+{"product_id": "WIDGET-A"},
+"WIDGET-A: 12 units in stock at Warehouse Lagos",
+210.5,
+0.61, # LOW CONFIDENCE -- agent uncertain about warehouse location; flagged
+),
+(
+"update_order",
+{"order_id": "ORD-001", "status": "confirmed"},
+"Order ORD-001 status updated to confirmed",
+55.1,
+0.88,
+),
+(
+"send_confirmation_email",
+{"to": "customer@example.com", "order_id": "ORD-001"},
+"Email queued for delivery to customer@example.com",
+30.0,
+0.52, # LOW CONFIDENCE -- agent uncertain about recipient; flagged before irreversible send
+),
+]
+print("=== Step-by-step trace ===")
+for i, (tool, args, result, latency, confidence) in enumerate(simulated_steps):
+entry = tracer.trace(i + 1, tool, args, result, latency, confidence)
+flag = " [LOW CONFIDENCE -- FLAGGED FOR REVIEW]" if entry["low_confidence"] else ""
+print(f" Step {i + 1}: {tool}{flag}")
+print("\n=== Run Summary ===")
+print(json.dumps(tracer.summary(), indent=2))
+Prerequisites: Python 3.9+. No external packages. Save as agent_tracer.py
+How to run:
+python3 agent_tracer.py
+Expected output:
+=== Step-by-step trace ===
+Step 1: search_orders
+Step 2: get_order_detail
+Step 3: check_inventory [LOW CONFIDENCE -- FLAGGED FOR REVIEW]
+Step 4: update_order
+Step 5: send_confirmation_email [LOW CONFIDENCE -- FLAGGED FOR REVIEW]
+=== Run Summary ===
+{
+"run_id": "run-support-2026-001",
+"total_steps": 5,
+"total_latency_ms": 379.5,
+"flagged_steps": 2,
+"flagged_details": [
+{"step": 3, "tool": "check_inventory", "confidence": 0.61},
+{"step": 5, "tool": "send_confirmation_email", "confidence": 0.52}
+]
+}
+Two flagged steps in a five-step run. Without per-step tracing, both of those low-confidence calls disappear into the final response. With tracing, they surface immediately, before a confirmation email goes out to the wrong address, before a low-confidence inventory count gets committed as ground truth.
+This is the difference between an agent that sometimes fails and one that fails detectably. Detectably is the only kind worth shipping.
+# Wrapping Up
+The PwC AI Agent Survey from May 2025 found that 79% of senior executives said their companies were already using AI agents. The headline number sounds like mass adoption. The same survey found that only 35% had deployed agents broadly, only 17% had deployed them across almost all workflows, and 68% admitted that half or fewer of their employees interact with agents day to day.
+Teams are deploying without running the compound reliability math. They are treating demos as deployment proxies. They are piling tools onto agents without schema validation or reversibility gating. They are shipping customer-facing AI without audit trails. And they are waiting for model upgrades to solve problems that aren't model problems.
+The teams that close this gap won't be the ones with the biggest infrastructure budget or earliest access to frontier models. They'll be the ones who treat their agent deployments the same way they treat any other critical system: with structured autonomy, human checkpoints at the boundaries that matter, scoped tool registries, step-level observability, and a clear answer to the question of what happens when something goes wrong.
+That answer needs to exist before the first production deployment. Not after.
+Shittu Olumide is a software engineer and technical writer passionate about leveraging cutting-edge technologies to craft compelling narratives, with a keen eye for detail and a knack for simplifying complex concepts. You can also find Shittu on Twitter.

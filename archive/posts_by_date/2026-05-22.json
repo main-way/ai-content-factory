@@ -17,7 +17,7 @@
         "AI",
         "Googlers"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c814bef41a39",
@@ -33,7 +33,7 @@
       "tags": [
         "Agentic AI Applications"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b6e123e9507d",
@@ -51,7 +51,7 @@
         "Agent Skills",
         "Python"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "607ed963287a",
@@ -65,7 +65,7 @@
       "summary": "Plus Gemini 3.5 Flash and more from Google I/O",
       "author": "Simon Willison",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f2261073b77c",
@@ -95,7 +95,7 @@
       "summary": "Streaming vision-language models (VLMs) continuously generate responses given an instruction prompt and an online stream of input frames. This is a core mechanism for real-time visual assistants. Existing VLM frameworks predominantly assess models in offline settings. In contrast, the performance of a streaming VLM depends on additional metrics beyond pure video understanding, including proactiveness, which reflects the timeliness of the model’s responses, and consistency, which captures the robustness of its responses over time. To address this limitation, we propose VSAS-Bench, a new…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2b712628b265",
@@ -109,7 +109,7 @@
       "summary": "The Web Dev State of AI 2026 STATEOFAI.DEV This is the second edition of the “Web Dev State of AI” survey, and teh results are packed with interesting insights. As the introduction states: “AI-assisted coding’s transition from an early-adopter experiment to a standard practice is now well underway.” Here are some of the interesting findings from the 7,258 developers surveyed: We are producing much more code with AI, respondents reported that ~54% of their code is now AI generated (up from 28% last year) We are using AI much more often, the percentage of respondents stating they use AI…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "740545d72e85",

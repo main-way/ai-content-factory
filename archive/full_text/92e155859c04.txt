@@ -1,0 +1,11 @@
+Electrical Engineering and Systems Science > Audio and Speech Processing
+Title:An Acoustic Landmark Database of the English Lexicon via Articulatory Synthesis
+View PDF HTML (experimental)Abstract:Acoustic landmark theory treats speech as organized around the acoustic consequences of articulatory gestures that shape the vocal tract and airflow. Progress is limited by the scarcity of large, unambiguously annotated landmark datasets. We invert the problem by generating speech from landmark patterns. Using the Pink Trombone physical vocal-tract synthesizer, we produce an English lexicon for two adult configurations (male, female). With direct control of gestures, we place landmark labels algorithmically at the exact times of their physical events (e.g., oral closures/releases). The corpus contains $>$200,000 synthesized words, rendered for both configurations with time-aligned annotations; intelligibility is measured with STOI. We leverage it for statistics across the lexicon from an articulatory-event view, reporting landmark frequencies and dominant cue patterns, and enabling quantitative studies plus training/benchmarking of automatic landmark detectors.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

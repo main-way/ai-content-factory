@@ -1,0 +1,120 @@
+It extends Article 6 (question parsing) on the case where the question is not precise enough: ask one focused clarification, learn the default from the answer, stay silent next time.
+The question-parsing brick turns the user’s text into a typed ParsedQuestion. This companion picks up the failure mode that brick names in one bullet and develops it as its own pattern. The question is missing a piece of information the system needs (which document? which page? which clause type?). The cheap fix is to ask. The right fix is to ask, then learn the default so the next case is silent. Two Pydantic schemas and one short loop close the gap.
+The question-parsing brick sketches the pipeline: the user types free text, question parsing produces a typed ParsedQuestion, the dispatcher routes on the typed fields, retrieval scopes the corpus. The bullet inside that sketch that this companion expands: when ParsedQuestion has a missing or low-confidence field, the system can either (a) silently infer a default, (b) refuse and ask the user, (c) do both with a learned policy. The third option is the production pattern. This companion ships the contract and a worked broker example.
+The question parsing brick covers the happy path. The user types “what is the deductible on Acme Premier?”, the question parser identifies the entity (Acme Premier), the intent (deductible lookup), the schema field to fill (deductible_amount), and the dispatcher routes. Most production traffic does not fit the happy path.
+The common failures, on a single uploaded contract, by frequency on real broker traffic:
+- Ambiguous field type: “what is the limit?”. Most contracts have several: coverage limit per occurrence, aggregate limit, sub-limit per peril, claim deductible. The system has to guess which one.
+- Missing page scope: “what does it say?” on a 200-page document. Where in the document, the summary? the exclusions? the schedule? The system can answer if it knows where to look.
+- Ambiguous date scope: “what is the deductible on the home contents cover?” on a contract with an old schedule and a renewal endorsement. Which schedule applies?
+- Ambiguous intent: “the warranty section”. Read it to cite a clause, summarise it, or extract the conditions? Each path uses different bricks downstream.
+- Implicit entity: “the policyholder” on a contract that lists a corporate insured, a beneficiary, and an additional named insured. Which role does the user mean?
+Every one of these is a question about ONE document the user already pinned. The corpus-level version of the same failure (which document? which policy in a portfolio?) lives one layer up and is touched at the end of section 6.
+The typed ParsedQuestion has the fields. What is missing is the loop that fills them when the user did not.
+Two structured objects do the work. The first is a ClarificationRequest
+the system emits when a field on ParsedQuestion
+is below the confidence threshold. The second is a ClarificationDefault
+the system stores after each request, so the next equivalent question is answered without asking.
+from datetime import datetime
+from pydantic import BaseModel, Field
+class ClarificationRequest(BaseModel):
+"""Emitted when a ParsedQuestion field is below confidence threshold."""
+target_field: str # field on ParsedQuestion to fill
+question_to_user: str # plain-English question to show
+candidate_values: list[str] # values the system can propose
+proposed_default: str | None = None # the value the system would pick
+proposed_default_reason: str | None = None # one-sentence why
+audit: dict = Field(default_factory=dict) # request_id, model, prompt_version
+class ClarificationDefault(BaseModel):
+"""The learned answer, refreshed across requests."""
+target_field: str # which ParsedQuestion field
+doctype: str # broker_contract, invoice, ...
+sub_conditions: dict = Field(default_factory=dict) # stratifying keys
+candidate_votes: dict[str, float] # value -> weighted vote count
+confidence: float # 0..1, drives ask/apply decision
+sample_size: int
+last_refreshed: datetime
+The first object is the request to the user. The second is what the system learns from many requests, so it stops asking the easy ones.
+The clarification loop fires once per request, not once per conversation turn. Each request below is a separate event over time: the user uploads a contract, asks one question, the system either asks for clarification or applies a learned default, the answer ships. The next request can be days later. This is not a multi-turn conversation (V2 Bonus B04 covers that pattern separately).
+The user is a junior claim adjuster at the broker. She uploads a new contract and types “qui est l’assureur?” (who is the insurer?). The system handles the request:
+Case 1 (first time the system sees this user / this contract type). ParsedQuestion’s target_field
+parses as insurer_name
+. The system has no learned default for where to look. It opens a ClarificationRequest:
+I will look on page 1, since that is where the insurer is usually named on a broker contract. Is that the right starting point?
+The user clicks Yes. The system reads page 1, finds the insurer, answers. A ClarificationDefault is written: for target_field = insurer_name
+on doctype = broker_contract
+, the default source_page = 1
+gets a +1 vote.
+Case 2 (a week later, a different contract). Same question shape: “who is the insurer?”. The system reads its learned defaults. source_page = 1
+is the recommended default with confidence 0.78 from 12 prior cases. The system applies the default silently and answers. No clarification fired.
+Case 12 (a contract where page 1 is a coversheet, not the body). Page 1 has no insurer name. The system reads source_page = 1
+from learned defaults, fails, detects the failure (the schema field comes back null), falls back to asking:
+Page 1 did not name an insurer on this contract. Should I try the table of contents to find where it is named, or do you want to point me to a page?
+The user says try TOC. The system reads the TOC, finds the insurer-information section, retrieves, answers. The learned default is now stratified: source_page = 1
+for broker contracts with page_1_kind = body
+, source_page = TOC
+for broker contracts with page_1_kind = coversheet
+. The classifier for page_1_kind
+is a small learned column.
+The learned default is a small table, one row per (target_field, doctype, optional sub-conditions). Each row tracks the candidate values the system has tried, the user’s votes (explicit Yes / No, or implicit when the user accepts the answer without correction), and a confidence band.
+The update rules:
+- Explicit user agreement: the user clicks Yes on a proposed default. The default’s vote count increments. Confidence rises.
+- Implicit acceptance: the system applies a default silently, the answer is correct (downstream eval signal from the per-failure-mode evaluation layer), no correction in the conversation. Counted as a soft +1.
+- Explicit disagreement: the user says No or corrects. The default’s vote count for the proposed value drops, the candidate the user named gains.
+- Failure detection: the default’s candidate value returns null from the schema. Counted as a stratification signal, not a vote drop, because the value might be right for some contracts and wrong for others.
+The confidence determines whether the system asks or just applies. Below 0.6, always ask. Above 0.85, always apply silently. Between, ask occasionally to refresh the signal.
+from typing import Literal
+from datetime import datetime
+Signal = Literal["explicit_yes", "explicit_no", "implicit_ok", "failure"]
+def update(default: ClarificationDefault, value: str, signal: Signal) -> ClarificationDefault:
+"""One vote on a ClarificationDefault row, returns a new row."""
+votes = dict(default.candidate_votes)
+if signal == "explicit_yes": votes[value] = votes.get(value, 0) + 1.0
+elif signal == "explicit_no": votes[value] = votes.get(value, 0) - 1.0
+elif signal == "implicit_ok": votes[value] = votes.get(value, 0) + 0.5
+# "failure": no vote change, only a stratification candidate
+n_new = default.sample_size + 1
+top = max(votes.values()) if votes else 0.0
+confidence_new = max(0.0, top) / n_new
+return default.model_copy(update={
+"candidate_votes": votes,
+"confidence": confidence_new,
+"sample_size": n_new,
+"last_refreshed": datetime.now(),
+})
+def gate(default: ClarificationDefault) -> Literal["apply", "ask_occasionally", "ask"]:
+"""Per-row gate: confidence < 0.6 always asks; > 0.85 applies; in between, refresh."""
+if default.confidence > 0.85: return "apply"
+if default.confidence < 0.60: return "ask"
+return "ask_occasionally"
+The discipline that matters: every clarification asked and every default applied lands on the audit surface. The clarification fires as a row on the storage layer’s query_log
+(alongside the user’s question, the model version, the dispatch decision). The default-application records both the default value used and the ClarificationDefault
+table row id at the timestamp of the request, so the audit answer to “how did the system arrive at the answer that page 1 was the right place to look?” is one SQL join away. The per-failure-mode evaluation reads the same rows to compute per-doctype default-application correctness.
+This companion’s pattern is not a chatbot multi-turn dialogue. It is one focused clarification, asked once, then the system either answers or learns. The conversation does not carry the clarification across turns; the learned default carries it across requests.
+The boundary:
+- The question parsing brick: produces ParsedQuestion. This companion handles the case where ParsedQuestion has low-confidence fields.
+- The corpus ontology layer: the learned defaults live next to the ontology tables. New row type:
+clarification_defaults_df
+, alongsideconcept_keywords_df
+and friends. The ontology is the canonical home: expert-curated entries are pre-seeded; learned entries grow alongside them and get reviewed. - The storage layer: the clarification rows and the default-application rows are joined to
+query_log
+byquestion_id
+. No new audit infrastructure needed. - The per-failure-mode evaluation: the eval set includes clarification-fire-rate and default-application-correctness per field, per doctype.
+Three deferred concerns:
+- Multi-field clarifications. The example here asks about one missing field. Real cases often have two (entity AND scope, intent AND field). The schema scales but the UX of asking three questions in a row is bad; the right approach is to bundle and present a small form. Out of scope for the v1 of this article.
+- Adversarial users. A user who answers Yes to everything trains bad defaults. Defaults need a per-user reputation signal or a periodic team review. Volume 4 (agentic RAG with audit) carries the analogue for agentic memory writes; the same shape fits here.
+- Cross-tenant default sharing. If broker A and broker B both ship on the platform, are their learned defaults shared? The tenant-isolation pattern says no by default. A future extension could allow opt-in sharing of doctype-level defaults that do not depend on tenant-specific data.
+The question parsing brick produces ParsedQuestion. This companion ships the loop that fills its missing fields: one Pydantic ClarificationRequest
+to ask the user, one Pydantic ClarificationDefault
+to learn from the answer, one short loop that decides per-field whether to ask or apply silently. The cost is two schemas and one table column. The benefit is that the system stops asking the easy questions and only asks the ambiguous ones.
+The clarification loop also interacts with retrieval: a confident default value narrows the retrieval scope before the search runs, often reducing it from a corpus-wide search to a single-page lookup. The combined system is what makes the “who is the insurer?” question land in one step on a contract the system has seen many times.
+Aligned with this article’s position. Anthropic’s agent design patterns post covers the ask before guess pattern as one of the canonical agentic primitives. The OpenAI Assistants API documentation covers the structured-clarification pattern under the function-calling heading.
+Different angle: Most 2026 chatbot frameworks default to silent inference when a field is missing, on the argument that asking degrades user experience. The position this companion takes: silent inference is fine only when a learned default has the confidence to justify it. Without the learned-default table, silent inference is just guessing. Earlier in the series:
+- Document Intelligence: series intro. What the series builds, brick by brick, and in what order.
+- Baseline Enterprise RAG, from PDF to highlighted answer. The four-brick pipeline end to end: PDF in, highlighted answer out.
+- Embeddings Aren’t Magic: The Predictable Failure Modes of RAG Retrieval. Where embedding similarity wins (synonyms, typos, paraphrase), where it predictably breaks (unknown terms, negation, term-vs-answer relevance), and how to use it anyway.
+- Rerankers Aren’t Magic Either: When the Cross-Encoder Layer Is Worth the Cost. What a cross-encoder adds over bi-encoder embeddings, measured, and when it is worth the latency.
+- RAG is not machine learning, and the ML toolkit solves the wrong problem. Why chunk-size sweeps and finetuning optimize the wrong thing; route by question type instead.
+- From regex to vision models: which RAG technique fits which problem. Two axes, document complexity and question control, that pick the technique for each case.
+- 10 common RAG mistakes we keep seeing in production. Ten production mistakes, organized brick by brick, with the fix for each.
+- Beyond extract_text: the two layers of a PDF that drive RAG quality. The first half of the parsing brick: the document’s nature, signals, and summary.
+- Stop returning flat text from a PDF: the relational shape RAG needs. The second half of the parsing brick: the relational tables every downstream brick reads.

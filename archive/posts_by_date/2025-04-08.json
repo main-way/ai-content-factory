@@ -21,7 +21,7 @@
         "entrepreneurship",
         "leadership"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ec0755071f28",
@@ -35,7 +35,7 @@
       "summary": "PLAID is a multimodal generative model that simultaneously generates protein 1D sequence and 3D structure, by learning the latent space of protein folding models. The awarding of the 2024 Nobel Prize to AlphaFold2 marks an important moment of recognition for the of AI role in biology. What comes next after protein folding? In PLAID , we develop a method that learns to sample from the latent space of protein folding models to generate new proteins. It can accept compositional function and organism prompts , and can be trained on sequence databases , which are 2-4 orders of magnitude larger…",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

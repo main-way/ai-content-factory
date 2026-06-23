@@ -14,7 +14,7 @@
       "summary": "Are Repository-Level Context Files Helpful for Coding Agents? ARXIV.ORG It is very common for developers to create AGENTS.md files, that provide guidance and instructions for AI agents working on their codebase. These files are supported by most popular agentic frameworks, and have become something of an (informal) standard , with around 60k AGENTS.md files found on GitHub. Furthermore, writing agent guidance is a bit of a chore, so developers will often ask the agent to generate this file for them, based on common conventions and guidance around what make a good AGENTS.md file. But do these…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

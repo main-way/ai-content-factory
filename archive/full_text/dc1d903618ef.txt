@@ -1,0 +1,11 @@
+Computer Science > Machine Learning
+Title:Physics-Guided Fully Convolutional Spatiotemporal Learning Toward Digital-Twin-Enabled Microstructure Evolution Prediction
+View PDF HTML (experimental)Abstract:Understanding and predicting microstructure evolution is central to materials design, yet purely data-driven spatiotemporal learning models often suffer from limited physical consistency and degraded long-term prediction accuracy. In this work, we introduce a physics-guided fully convolutional spatiotemporal learning framework for microstructure evolution prediction. Unlike prior self-supervised approaches, the proposed method explicitly incorporates governing physical equations into the training objective, thereby encouraging the learned dynamics to remain consistent with known thermodynamic and kinetic laws. This physics-guided formulation improves predictive accuracy, long-horizon stability, and robustness across spatial resolutions and temporal prediction settings. Extensive experiments for spinodal decomposition demonstrate that incorporating physics-guided residual regularization leads to more faithful reproduction of microstructural morphology, statistics, and evolution trends compared with purely data-driven baselines. The proposed framework preserves the scalability and computational efficiency of fully convolutional architectures while bridging the gap between high-fidelity physics-based simulations and data-driven surrogate modeling, offering a reliable and efficient surrogate-modeling step toward digital-twin-enabled microstructure evolution prediction.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

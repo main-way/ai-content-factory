@@ -22,7 +22,7 @@
         "pickup lines",
         "golden gate claude"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a6c378f48525",
@@ -36,7 +36,7 @@
       "summary": "",
       "author": "Janelle Shane",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c10527d0fffd",
@@ -63,7 +63,7 @@
         "Maps",
         "Health"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "94b2ee34348d",
@@ -77,7 +77,7 @@
       "summary": "OpenAI ships GPT-5.4 mini and nano, faster and more capable but up to 4x pricier, DLSS 5 looks like a real-time generative AI filter for video games | The Verge, and more!",
       "author": "Last Week in AI",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

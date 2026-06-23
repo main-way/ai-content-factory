@@ -49,7 +49,7 @@
         "Наука",
         "evergreen"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5f705da3009f",
@@ -75,7 +75,7 @@
         "Startup Battlefield",
         "TechCrunch Disrupt 2026"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "459e411b31d6",
@@ -122,7 +122,7 @@
       "summary": "Главным событием третьего дня ПМЭФ–2026 стало выступление Владимира Путина на пленарной сессии. Президент рассказал о состоянии экономики, будущем цифровых платформ и поддержке бизнеса. Параллельно маркетплейсы подписали новый Меморандум о добросовестных практиках, крупнейшие компании рынка объявили о своих новых проектах, а ИИ впервые стал полноценным участником дискуссии.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2d1a88f27838",
@@ -136,7 +136,7 @@
       "summary": "Нейросети не заменят большинство специальностей на рынке труда, но станут инструментом для повышения эффективности работы, сообщает РБК со ссылкой на генерального директора HeadHunter Дмитрия Сергиенкова. Только от 5% до 10% профессий будут полностью заменены ИИ в течение пяти лет. В последней группе специальностей количество вакансий уже упало на 40–45%.",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "c2a5de2dea82",
@@ -180,7 +180,7 @@
         "slow tech",
         "together tech"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5d9192a17aff",
@@ -196,7 +196,7 @@
       "tags": [
         "This Week in Stratechery"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "2d5cdf892257",
@@ -215,7 +215,7 @@
         "AI",
         "Supabase"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f06f50662477",
@@ -236,7 +236,7 @@
         "Python",
         "Software Architecture"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "1072b8df1b88",
@@ -259,7 +259,7 @@
         "Golang",
         "Статьи"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "3a033657dd70",
@@ -283,7 +283,7 @@
         "Venture",
         "unicorn"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "19cc886808af",
@@ -297,7 +297,7 @@
       "summary": "Comments",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "f6a7e3ff7bff",
@@ -317,7 +317,7 @@
         "Q-Learning",
         "Sarsa"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "752c96ffbdef",
@@ -345,7 +345,7 @@
         "Fitbit",
         "Google Research"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "ae5c376474f0",
@@ -367,7 +367,7 @@
         "Кибербезопасность",
         "Новости"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "a1a96bafa469",
@@ -383,7 +383,7 @@
       "tags": [
         "Новости"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "401d848c9f15",
@@ -397,7 +397,7 @@
       "summary": "Remote work to my job?; AI SMB Power Users; Lil&#8217; Biotech",
       "author": "Moses Sternstein",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "26f5b6d4c702",
@@ -411,7 +411,7 @@
       "summary": "Discover three post-hoc methods for closing the gap between confidence and accuracy.",
       "author": "Nate Rosidi",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "fa10587d0189",
@@ -441,7 +441,7 @@
         "slow tech",
         "together tech"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "038d028769c9",
@@ -462,7 +462,7 @@
         "Prompt Design",
         "Prompt Engineering"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "224dd616cdbb",
@@ -478,7 +478,7 @@
       "tags": [
         "The Download"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "9a988bc9943e",
@@ -492,7 +492,7 @@
       "summary": "In this article, we will explore three essential spaCy tricks that every developer should have in their toolkit to maximize processing speed and customize entity recognition.",
       "author": "Matthew Mayo",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "10f7e93c9442",
@@ -513,7 +513,7 @@
         "Sentiment Classification",
         "Small Language Model"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e94bb5e1fa05",
@@ -527,7 +527,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "8c8d87f39789",
@@ -549,7 +549,7 @@
         "startups",
         "venture"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "204d56b0085e",
@@ -580,7 +580,7 @@
         "unicorn",
         "venture"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "7cc344a1b79c",
@@ -597,7 +597,7 @@
         "Artificial Intelligence",
         "LLMs"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "5ecdba611c11",
@@ -615,7 +615,7 @@
         "App",
         "Summary"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "94d4f7da1b03",
@@ -634,7 +634,7 @@
         "artificial intelligence",
         "Summary"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "b25142ac6998",
@@ -653,7 +653,7 @@
         "Разработка",
         "Статьи"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "e18d71a63b91",
@@ -667,7 +667,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "850dc900514d",
@@ -681,7 +681,7 @@
       "summary": "",
       "author": "",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "4932cf32b055",
@@ -698,7 +698,7 @@
         "AI Infrastructure",
         "Corporate"
       ],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "d2e2b63f84b9",
@@ -726,7 +726,7 @@
       "summary": "Vercel Sandbox now supports drives in private beta. Drives are persistent, attachable storage with a lifecycle independent from any sandbox. Create a drive once, then mount it at a configurable path when starting a sandbox. When the sandbox stops, the drive remains available to attach to a later sandbox. Install the beta SDK ( @vercel/sandbox@beta ) or beta CLI ( sandbox@beta ), then create and mount a drive: Sandbox Drives are useful for: Keeping agent workspaces across disposable sandboxes Retaining cloned repositories, dependencies, and build outputs Managing data independently from the…",
       "author": "Tom Lienard",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "039fadd91b2c",
@@ -740,7 +740,7 @@
       "summary": "Introducing MAI-Code-1-Flash MICROSOFT.AI A few years ago Microsoft had a near-perfect partnership with OpenAI, they cloud provider via Azure, and gained privileged access to OpenAI models for products like Copilot. This gave Microsoft a differentiated AI engine before most of its competitors, that should have given Azure, GitHub, Office, Bing and Copilot a big competitive advantage. However, the AI features across the MS products were weak, and as the compute needs of OpenAI outgrew Microsoft, their access to the technology was watered down to a right-of-first-refusal in 2025, and has now…",
       "author": "Colin Eberhardt",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     },
     {
       "id": "17d7c950f622",
@@ -754,7 +754,7 @@
       "summary": "The skills.sh API is now available. Authenticate with your project's Vercel OIDC token and start querying more than 600,000 skills from across the open-source ecosystem. Search for skills, pull detailed info on any one, check its security audit, and more. Vercel issues a short-lived token scoped to your team and project, rotated automatically, so there's no long-lived secret to leak or rotate. On each request, skills.sh verifies the token and applies a rate limit of 600 requests per minute per team and project. Read the skills.sh API documentation to get started. Read more",
       "author": "Andrew Qu",
       "tags": [],
-      "has_full_text": true
+      "has_full_text": false
     }
   ]
 }

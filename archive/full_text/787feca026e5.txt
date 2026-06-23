@@ -1,0 +1,11 @@
+Computer Science > Computer Vision and Pattern Recognition
+Title:REKEY: Metadata-Grounded Visual-Key Regeneration for Contamination-Resilient VQA Evaluation
+View PDF HTML (experimental)Abstract:Static visual question answering (VQA) benchmarks age quickly: Once the items leak into training corpora, scores can reflect memorization rather than genuine visual ability, thus obscuring real progress. Rebuilding high-quality benchmarks such as V*Bench requires substantial human annotation, yet each static release can quickly become another leaked artifact. We propose ReKey, a live benchmark protocol that randomly regenerates the answer-bearing local detail, or visual key, in real images at evaluation time. Using human-validated edit slots, ReKey samples fresh instances with new answers, construction-grounded labels, and controlled visual-search difficulty. On V*Bench, the ReKey regenerated benchmark reveals a sharp score jump across eight frontier vision-language models (VLMs): The original items score 9.5--18.8 percentage points higher than the regenerated variants. By making the visual key renewable, ReKey keeps evaluation fresh as models and training data evolve.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

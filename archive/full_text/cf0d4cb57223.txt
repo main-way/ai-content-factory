@@ -1,0 +1,55 @@
+One area, however, that has received a lot of attention is browsing using web browsers with coding agents such as Claude Code and OpenAI’s Codex.
+The agents have become incredibly proficient at navigating the web, which is super useful for a lot of different tasks.
+Web browsing can, of course, be useful in many different situations, such as fetching information on the Internet or filling in forms for you. However, it’s worth noting that some of the use cases can break the terms of service, so you should definitely be aware of this. The main usage area I’ll cover today is definitely fully legal, and it covers navigating applications you’re developing yourself with the coding agents to test and verify implementations.
+Previously, I’ve talked a lot about creating verifiable tasks whenever you ask coding agents to perform actions for you. Giving coding agents access to your browser to test implementations is a crucial part of this verifiability.
+Why coding agents should use your browser
+First of all, I’d like to cover why you should care about running browsers with your coding agents. Browsers are an important interface humans use to interact with the world. Through your browser, you can perform a lot of different actions, such as reading up on information, filling in applications, and so on.
+Given that this is such an important interface for humans to interact with the world, a lot of attention and research has been targeted towards effectively navigating browsers. There are numerous companies out there that specialize in browser navigation, and also all the frontier labs offer such an integration into their products, such as OpenAI’s Codex and Anthropic’s Claude Code.
+Imagine if you’re telling a coding agent to implement a design following an HTML design file. The coding agent is, of course, good at front-end code and can start implementing it right away; however, if the coding agent can’t navigate the browser, it’s impossible for the coding agent to verify its own work.
+This vastly increases the chance that a coding agent will make errors and not implement the exact design that you wanted to implement.
+Luckily, there is a very simple fix to this problem. Give your coding agent access to the browser. Allow it to take screenshots of the design it has implemented itself and compare it to the screenshots of the design you wanted it to implement. The coding agent can then continue iterating until the implemented code looks exactly like the design file.
+This saves you, as the programmer, a lot of time since you don’t have to repeatedly verify and instruct the coding agent on mistakes that it’s made when doing the design implementation. This again allows you to perform a lot of other different tasks and be more productive as an engineer.
+How it works
+Before moving on to how to navigate browsers with Claude Code, I also want to have a simple section covering how it works.
+In theory, it’s quite simple to navigate the browser. The coding agent navigates by opening up the browser, of course, where it has access to a few actions:
+- Take screenshot
+- Click (coordinate-based)
+- Enter text
+These are the three main actions the coding agent performs, which are basically all the actions you need to interact with a browser:
+- The coding agent needs to take screenshots because that’s how it finds out what is on each page and figures out where to click.
+- The coding agent also needs to be able to click different places on the website, for example, click buttons or click input fields.
+This is coordinate-based.
+So if the coding agent wants to click in a specific location, it outputs the following text:
+click(x=0.754, y=0.328)
+It basically uses the click function and gives the coordinates where it wants to click. The coordinates are typically normalized to be in a set range, such as between 0 and 1.
+Then, once the agent has clicked a specific location, it can input text to do everything it wants to do on the browser. The coding agent can, of course, also perform different kinds of clicks, such as right-click to get more options on the page.
+This loop then iterates. The coding agent takes a screenshot, chooses which action to perform, checks if it has achieved its goal or not, and repeats. It takes a screenshot again, picks an action, checks if it achieved a goal, and continues. The agent simply continues like this until it has achieved its goal in the browser.
+How to navigate browsers with Claude Code
+Next, I want to cover exactly how to navigate browsers using Claude Code, and the principles I’ll cover here basically apply to any coding agent. I’m not going to cover techniques that cannot easily be generalized to basically any other coding agent.
+Firstly, if you’re using Claude Code, it has a built-in Chrome integration which you can simply enable by writing the command below while you’re in the Claude Code window.
+/chrome
+Codex also has a corresponding command.
+This very simply gives Claude access to open Chrome on your computer and use it to verify tasks.
+I think the Chrome implementation in Claude works alright, but it’s not optimal.
+I have a better experience using the Playwright MCP, which you can simply install in Claude Code by telling Claude Code to install it:
+Install the Playwright MCP to interact with the browser
+After Claude has installed it, you need to restart Claude Code, and you’ll have access to the Playwright MCP. In my experience, Claude is more effective at completing tasks if it uses the Playwright MCP instead of interacting with the /chrome implementation that’s already present in baseline Claude Code.
+Of course, if you have any other coding agent, you can do exactly the same: tell it to install the Playwright MCP. The agent will install the MCP, and you will restart the agent, and it will have access to Playwright.
+How do I make my agent test my implementation
+Now that you’ve implemented the Playwright MCP and given your agent access to interact with the browser, you can use it to test your implementations.
+Whenever your agent has implemented something (for example, implemented a new design from a design file), simply tell the agent to verify its work end-to-end by going through it in Chrome with the Playwright MCP and verifying its own work.
+It’s also useful to tell the agent not to stop and come back to you before it’s verified its work end-to-end. Verifying the work end-to-end, in this case, means literally interacting with the browser and seeing if something works.
+I typically also use the /goal feature, which is available in both Codex and Claude Code, which is basically a way that the agent continues working towards a task until it’s achieved. I will then typically write something like:
+/goal continue working on the task, implementing <feature> until you've
+fully implemented it and tested and verified it end to end by interacting
+with the browser using the playwright MCP, taking screenshots, and
+verifying your work, only come back to me once you've both implemented
+and fully tested the implementation successfully.
+This will make the agent continue working towards the goal and verifying it, and only come back to you once it’s verified its work. This has saved me an incredible amount of time and is especially useful if you only want the agent to implement designs.
+Conclusion
+In this article, I covered how to apply Claude Code to verify work in your browser. I first discussed why coding agents can and should interact with your browser. Then I took you through how browser navigation actually works with coding agents, which is actually a pretty simple concept. Lastly, I went specifically into how you can navigate browsers using Claude Code or other coding agents.
+I believe browser navigation will still remain important because a lot of the ways humans interact with the world are through a browser. However, it is worth noting that coding agents are still far more effective at using APIs and MCPs, so if you can interact with a service through those means instead, you should basically always do that.
+Also, check out How to Effectively Run Many Claude Code Agents in Parallel.
+👉 My free eBook and Webinar:
+👉 Find me on socials:
+💌 Substack

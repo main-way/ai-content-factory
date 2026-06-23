@@ -1,0 +1,11 @@
+Computer Science > Machine Learning
+Title:ELADO: Elliptic PDE Assessment Datasets for Operator Learning
+View PDF HTML (experimental)Abstract:We introduce ELADO (Elliptic PDE Assessment Datasets for Operator Learning), a systematic benchmark suite constructed to show and quantify failure modes of neural operator architectures when learning solution operators of elliptic PDEs. While the benchmarks of existing datasets focus on average case performance, the ELADO datasets are constructed to highlight challenges that arise naturally in elliptic PDE problems. In particular, we construct several datasets built around Poisson's equation and the Helmholtz equation, each with non-constant coefficients. We define a controllable data-generating process to create datasets, that are designed to isolate a distinct source of difficulty. Specifically, these are (1) heavy-tailed solution distributions arising from light-tailed coefficient field distributions, (2) spectral distribution shift of the input data, (3) heavy-tailed distributions in the frequency domain of solutions, arising from light-tailed coefficient field distributions, (4) input sensitivity of learned operators, quantified by an empirical local Lipschitz analysis, and (5) the effect of input signal complexity on prediction accuracy under controlled amplitude normalization. We evaluate several neural operator architectures across all datasets and show that heavy-tailed targets, spectral shift, and input sensitivity each cause substantial degradation of the prediction accuracy that standard datasets and metrics (e.g., the mean relative $L^2$ error) may obscure.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

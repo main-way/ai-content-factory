@@ -1,0 +1,11 @@
+Computer Science > Computation and Language
+Title:Demographic Metadata as Construct-Irrelevant Noise in DistilBERT-Based Automated Essay Scoring
+View PDFAbstract:Automated Essay Scoring (AES) systems are increasingly used to support teachers in managing grading workloads and to provide a supplementary rater in large-scale assessments. While human grading is frequently influenced by students' demographic characteristics, the efficacy of different strategies for integrating demographic metadata with textual input used to train AES models remains underexplored. This study investigates the impact of a specific multimodal fusion strategy - naive metadata concatenation - on the predictive accuracy, training convergence, and score parity of a DistilBERT-based AES model. A comparative analysis was conducted using the ASAP 2.0 dataset to evaluate a baseline model against an experimental model trained with input that concatenates tokenised text and demographic metadata using a naive multimodal fusion strategy. Evaluated via 10-fold cross-validation, the findings reveal that the early fusion of demographic metadata and the input significantly degrades the model's overall predictive accuracy. The baseline model achieved a Quadratic Weighted Kappa (QWK) of 0.727, which dropped to 0.656 upon integrating metadata. Furthermore, the experimental model exhibited higher validation loss (1.29) compared to the baseline model (1.25). The experimental model also displayed exacerbated scoring bias, reducing score parity instances from 15 to 12 out of 19 tests.
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

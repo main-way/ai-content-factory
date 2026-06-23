@@ -1,0 +1,12 @@
+Nonlinear Sciences > Chaotic Dynamics
+Title:Dissecting emerging slow rhythms in delay-coupled neural oscillators
+View PDF HTML (experimental)Abstract:Synaptic transmission delays are ubiquitous in neural circuits and can alter the dynamical repertoire of coupled oscillators quantitatively and qualitatively. Here, we demonstrate that delayed coupling in inhibitory networks introduces an effective slow-fast structure in the phase-difference dynamics, generating low-frequency components that are not due to intrinsic cellular properties, and we show that this behavior is not specific to a particular model structure. The origin of this generic phenomenon is analyzed by numerical continuation and bifurcation analysis, which provides a systematic approach to find such delay-induced slow modulating rhythms. We employ phase reduction based on phase response curves to derive a phase-difference model with delay for mutually inhibitory coupled oscillators, where the individual units are given by the FitzHugh-Nagumo model, the Morris-Lecar model, or a next-generation neural mass model derived from quadratic integrate-and-fire neurons. We use phase planes to study multistability and limit cycles, which correspond to slow modulation of fast oscillations in the full model. Treating the synaptic delay as a bifurcation parameter, we apply numerical continuation to construct delay-dependent bifurcation diagrams. The analysis reveals Hopf, heteroclinic, and saddle-node-of-periodics bifurcations that cause and organize slow rhythmic behavior. Our analysis provides a systematic approach to the search for limit cycles in phase-reduction models corresponding to delay-induced slow rhythms in the original model.
+Current browse context:
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.

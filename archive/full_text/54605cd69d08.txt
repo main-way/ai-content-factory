@@ -1,0 +1,16 @@
+Quantitative Biology > Neurons and Cognition
+Title:A sub-Riemannian model of neural states in the primary motor cortex
+View PDF HTML (experimental)Abstract:We develop a neurogeometric model for the arm area of motor cortex, which encodes complex motor primitives, ranging from simple movement features like movement direction, to short hand trajectories, termed fragments, and ultimately to more complex patterns known as neural states (Georgopoulos, Hatsopoulos, Kadmon-Harpaz et al). Based on the sub-riemannian framework introduced in 2023, we model the space of fragments as a set of short curves defined by kinematic parameters. We then introduce a geometric kernel that serves as a model for cortical connectivity and use it in a differential equation to describe cortical activity. By applying a grouping algorithm to this cortical activity model, we successfully recover the neural states observed in Kadmon-Harpaz et al, which were based on measured cortical activity. This confirms that the choice of kinematic variables and the distance metric used here are sufficient to explain the phenomena of neural state formation. The modularity of our model reflects the brain's hierarchical structure, where initial groupings in the kinematic space $\mathcal{M}$ lead to more abstract representations. This approach mimics how the brain processes stimuli at different scales, extracting both local and global properties.
+Submission history
+From: Caterina Mazzetti [view email][v1] Sun, 22 Dec 2024 22:01:54 UTC (10,397 KB)
+[v2] Sat, 20 Sep 2025 19:05:26 UTC (6,857 KB)
+[v3] Wed, 11 Feb 2026 21:45:53 UTC (6,853 KB)
+[v4] Fri, 19 Jun 2026 08:40:04 UTC (6,852 KB)
+Bibliographic and Citation Tools
+Code, Data and Media Associated with this Article
+Demos
+Recommenders and Search Tools
+arXivLabs: experimental projects with community collaborators
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.
