@@ -1,4 +1,0 @@
-import { streamText } from 'ai';
-const result = streamText({ model: 'minimax/minimax-m3', prompt: 'Reproduce the bug in this GitHub issue and submit a fix.',});
-import { streamText } from 'ai';
-const result = streamText({ model: 'minimax/minimax-m3', messages: [ { role: 'user', content: [ { type: 'text', text: 'This is a screenshot of a failing test. Identify the root cause and write the patch.', }, { type: 'image', image: 'https://example.com/failing-test.png', }, ], }, ],});

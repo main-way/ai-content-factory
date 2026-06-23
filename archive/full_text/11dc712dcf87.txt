@@ -1,8 +1,0 @@
-AI costs are getting harder to forecast. As teams lean more on coding agents and other token-heavy workflows, a key can burn cost faster than anyone notices:
-Autonomous workflows that can loop or fan out without supervision
-Demos and prototypes that could catch unexpected traffic if shared or shipped
-Developers exploring or experimenting without a sense of per-model cost
-Set a spend cap on any key, and AI Gateway rejects further requests on that key once the limit is exceeded, until the budget resets or you raise it. The cap applies to all AI Gateway providers and models running through the key, making it easier to consolidate and govern AI costs.
-Pair a key with an optional refresh period (daily, weekly, monthly, or none) to scope the limit to a window. Each period resets at the start of its window in UTC.
-Keys created programmatically will also appear in your team AI Gateway API Keys view, so you can see all keys in one place.
-Read the API keys documentation for more information about setting and using budgets for API keys.

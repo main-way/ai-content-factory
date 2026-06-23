@@ -1,2 +1,0 @@
-import { streamText } from 'ai';
-const result = streamText({ model: 'anthropic/claude-opus-4.8', prompt: 'Find and fix the root cause of these intermittent test failures.', providerOptions: { anthropic: { thinking: { type: 'adaptive' }, effort: 'high', }, },});

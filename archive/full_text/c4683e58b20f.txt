@@ -1,5 +1,0 @@
-Get started with Lore
-Overview
-Lore’s architecture
-Lore is a centralized, content-addressed version control system that represents repository state as Merkle trees and an immutable revision chain, optimized for binary-first storage, deduplication, and sparse/on-demand data hydration at scale.Lore’s repositories
-Explore the full collection of Lore repositories on the Epic Games GitHub.

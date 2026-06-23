@@ -1,5 +1,0 @@
-One of the many nice language features in Python are keyword arguments. They make some types of APIs concise and readable. Like so:
-Unfortunately C does not have keyword arguments and, by extension, neither does C++. Adding them as a language feature would take 15-20 years of effort, most of which would consist of trying to convince people via email that such a feature is important and should be added.
-There have been attempts to implement this via macros and template magic (link), but they have not seen widespread usage probably because they are using macros and template magic. However it turns out that with modern language features you can fake keyword arguments fairly convincingly. Like so:
-The add_argument method takes a single argument which is a struct. The extra curly braces inside the parentheses boil down to "whatever the underlying argument is, construct it in place with these parameters". The dotted names are designated initializers, so those fields get the specified value whereas other fields get their default values.
-And there you go, keyword arguments in C++. You just have to squint a bit and pretend not to see the extra curly braces.

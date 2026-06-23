@@ -1,4 +1,0 @@
-import { streamText } from 'ai';
-const result = streamText({ model: 'alibaba/qwen3.7-plus', prompt: `Click through the checkout flow and flag any UI bugs you find.`,});
-import { streamText } from 'ai';
-const result = streamText({ model: 'alibaba/qwen3.7-plus', prompt: `Click through the checkout flow and flag any UI bugs you find.`,});

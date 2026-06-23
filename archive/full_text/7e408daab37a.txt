@@ -1,8 +1,0 @@
-Claude Fable 5: Anthropic admits "wrong tradeoff" after invisibly throttling rival AI researchers
-Anthropic reverses course on a policy that would have silently degraded performance for AI researchers, but another point of contention persists.
-Anthropic had planned to invisibly degrade Claude Fable 5's performance for users trying to train competing AI models. After sharp backlash from the research community, the company is now backing down. "We made the wrong tradeoff and we apologize for not getting the balance right," Anthropic told WIRED. Going forward, any protective measures will be visible to users.
-Dean Ball, a former White House AI advisor, called the covert approach "shockingly hostile." Will Brown from open-source startup Prime Intellect put the core criticism bluntly: "It felt like Anthropic was saying to the public, 'We don't trust anybody else to do AI research. We are the only ones who have to do AI research.'"
-That's not the only controversy around Fable 5, though. Claude Fable 5 requires data retention to run its new safety classifiers—prompts and outputs are stored for up to 30 days, and up to two years if policy violations are flagged. That's a dealbreaker for some. Microsoft is restricting the model internally because of it, according to The Verge: while all other Claude models run under zero-data-retention rules, Fable 5 doesn't even show up in the internal model picker for Microsoft's GitHub Copilot version.
-AI News Without the Hype – Curated by Humans
-Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
-Subscribe now

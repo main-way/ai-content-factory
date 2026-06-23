@@ -1,2 +1,0 @@
-World territories have been redrawn so that a region is determined by the closest capital city. This is calculated using a spherical Voronoi diagram, which takes into account the curvature of the Earth when computing distances.
-See also United States of Voronoi.

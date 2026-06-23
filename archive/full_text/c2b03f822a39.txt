@@ -1,8 +1,0 @@
-vercel curl --trace https://your-app.vercel.app/api/products
-Generate a Session Trace from the CLI
-vercel traces get f47ac10b-58cc-4372-a567-0e02b2c3d479
-Fetch the tracing data by request ID from the CLI
-vercel curl --trace https://your-app.vercel.app/api/products
-Generate a Session Trace from the CLI
-vercel traces get f47ac10b-58cc-4372-a567-0e02b2c3d479
-Fetch the tracing data by request ID from the CLI

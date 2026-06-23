@@ -1,6 +1,6 @@
 {
   "date": "2026-06-18",
-  "count": 638,
+  "count": 640,
   "posts": [
     {
       "id": "2c6ae5983bd9",
@@ -1038,6 +1038,19 @@
         "anthropic claude"
       ],
       "has_full_text": true
+    },
+    {
+      "id": "c763e4cf93bf",
+      "title": "Show HN: Pagecast – Publish Markdown/HTML Reports to Cloudflare Pages",
+      "url": "https://github.com/Amal-David/pagecast",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-18T19:42:54+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
     },
     {
       "id": "f78101eea8ea",
@@ -2304,6 +2317,19 @@
         "GlobalSign"
       ],
       "has_full_text": true
+    },
+    {
+      "id": "a2860ad0a3e4",
+      "title": "Is it time for a new Embedded Linux build system?",
+      "url": "https://yoebuild.org/blog/time-for-a-new-build-system/",
+      "source": "Hacker News",
+      "category": "startups_vc",
+      "language": "en",
+      "priority": "high",
+      "published": "2026-06-18T16:57:05+00:00",
+      "summary": "Comments",
+      "author": "",
+      "tags": []
     },
     {
       "id": "ebf7f9eb4429",

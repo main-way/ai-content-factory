@@ -1,4 +1,0 @@
-import { generateImage, experimental_generateVideo as generateVideo } from 'ai';
-const { images } = await generateImage({ model: 'xai/grok-imagine-image', prompt: 'A white rabbit sprinting down a NYC sidewalk at midday.', aspectRatio: '16:9',});
-const image = images[0];const imageDataUrl = `data:${image.mediaType};base64,${Buffer.from(image.uint8Array).toString('base64')}`;
-const { videos } = await generateVideo({ model: 'xai/grok-imagine-video-1.5-preview', prompt: { image: imageDataUrl, text: 'The rabbit darts past taxis as pigeons scatter.', }, aspectRatio: '16:9', providerOptions: { xai: { resolution: '720p' }, },});

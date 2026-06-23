@@ -1,6 +1,0 @@
-Grok can now draw on Vercel knowledge as you work. Real-time activity, including file edits and terminal commands, dynamically injects the relevant knowledge into context, so answers stay aligned with current platform APIs and recommended patterns.
-Install it in either of two ways:
-Add vercel to your prompt and Grok will recommend installing it in chat
-Open the Grok Build marketplace with /marketplace, then search for and install Vercel
-Grok recommends the Vercel plugin when a prompt mentions Vercel, then uses it to answer.
-Learn more about the Vercel plugin in the documentation.

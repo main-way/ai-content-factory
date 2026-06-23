@@ -1,8 +1,0 @@
-agent.ts
-import { HarnessAgent } from '@ai-sdk/harness/agent';import { claudeCode } from '@ai-sdk/harness-claude-code';import { createVercelSandbox } from '@ai-sdk/sandbox-vercel';
-const agent = new HarnessAgent({ harness: claudeCode, sandbox: createVercelSandbox({ runtime: 'node24', ports: [4000], }), tools: { /* pass custom tools */ }, skills: [ /* pass custom skills */ ],});
-const session = await agent.createSession();
-try { const result = await agent.stream({ session, prompt: 'Check the test failures and fix the production code.', });
-for await (const part of result.fullStream) { if (part.type === 'text-delta') { process.stdout.write(part.text); } }} finally { await session.destroy();}
-Create a harness-backed agent using Claude Code
-Harness packages are experimental. Expect breaking changes between releases as this early API gets further refined.

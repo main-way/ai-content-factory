@@ -1,4 +1,0 @@
-import { streamText } from 'ai';
-const result = streamText({ model: 'moonshotai/kimi-k2.7-code', prompt: 'Refactor this service to remove the N+1 queries.',});
-import { streamText } from 'ai';
-const result = streamText({ model: 'moonshotai/kimi-k2.7-code', messages: [ { role: 'user', content: [ { type: 'text', text: 'Describe the image in detail.' }, { type: 'image', image: 'https://exampleimage.com', }, ], }, ],});

@@ -1,7 +1,0 @@
-Website "In the Weights" shows whether AI models know who you are
-The site In the Weights reveals which people are "stored" in the weights of large language models. Those "weights" are billions of numerical values where AI models encode their knowledge. If you show up in them, the model considered you relevant enough during training to recall without tools like web search.
-The site queries several models to figure out who a specific person is, combines the results, and assigns a strength score. My colleague Maximilian Schreiner and I currently have strength scores of 175 and 262, for example. According to the leaderboard, the maximum strength score is 996, reserved for names like Mozart, Shakespeare, or Taylor Swift.
-The site was built by Joey Flynn and Thomas Dimson, both former OpenAI employees. According to the creators, smaller models make it harder to show up in results. So anyone who appears in Meta's Llama, which has a billion parameters, counts as highly relevant. The creators also flag the obvious limits of LLMs, like that models can hallucinate biographical details, typos drag down scores, and common names often produce worse results.
-AI News Without the Hype – Curated by Humans
-Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
-Subscribe now

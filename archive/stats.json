@@ -1,38 +1,38 @@
 {
-  "total_posts": 7549,
+  "total_posts": 7902,
   "unique_sources": 88,
   "by_category": {
-    "startups_vc": 2641,
-    "ru_corp_it": 747,
-    "ai_research": 3197,
-    "ru_startups": 837,
-    "ru_ai": 105,
+    "startups_vc": 2806,
+    "ru_corp_it": 788,
+    "ai_research": 3252,
+    "ru_startups": 920,
+    "ru_ai": 114,
     "aggregators": 22
   },
   "top_sources": [
     [
       "Хабр Статьи",
-      500
+      530
     ],
     [
       "Hacker News",
-      461
+      490
     ],
     [
       "Habr (news)",
-      390
+      420
+    ],
+    [
+      "CNET",
+      298
     ],
     [
       "arXiv cs.AI",
       295
     ],
     [
-      "CNET",
-      279
-    ],
-    [
       "Wired",
-      271
+      283
     ],
     [
       "arXiv cs.RO (Robotics)",
@@ -51,20 +51,20 @@
       259
     ],
     [
+      "Techmeme",
+      257
+    ],
+    [
       "arXiv cs.LG",
       248
     ],
     [
-      "Techmeme",
-      242
-    ],
-    [
       "TechCrunch",
-      224
+      244
     ],
     [
       "Engadget",
-      212
+      223
     ],
     [
       "arXiv eess.AS (Audio Speech)",
@@ -72,19 +72,19 @@
     ],
     [
       "The Next Web",
-      174
-    ],
-    [
-      "The Information",
-      153
+      184
     ],
     [
       "Rusbase (rb.ru)",
-      151
+      164
+    ],
+    [
+      "The Information",
+      162
     ],
     [
       "Ars Technica",
-      135
+      147
     ],
     [
       "arXiv eess.IV (Image Video)",
@@ -92,8 +92,8 @@
     ]
   ],
   "by_language": {
-    "en": 5860,
-    "ru": 1689
+    "en": 6080,
+    "ru": 1822
   },
   "posts_by_date": {
     "2018-07-13": 1,
@@ -401,13 +401,14 @@
     "2026-06-15": 518,
     "2026-06-16": 638,
     "2026-06-17": 573,
-    "2026-06-18": 638,
-    "2026-06-19": 494,
-    "2026-06-20": 176,
+    "2026-06-18": 640,
+    "2026-06-19": 496,
+    "2026-06-20": 179,
     "2026-06-21": 202,
-    "2026-06-22": 11
+    "2026-06-22": 344,
+    "2026-06-23": 13
   },
   "first_post_date": "2018-07-13",
-  "last_post_date": "2026-06-22",
-  "updated_at": "2026-06-22T03:01:37.001874+00:00"
+  "last_post_date": "2026-06-23",
+  "updated_at": "2026-06-23T03:01:23.027200+00:00"
 }

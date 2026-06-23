@@ -1,6 +1,0 @@
-Link to headingHow to configure
-import { streamText } from 'ai';
-const result = streamText({ model: 'deepseek/deepseek-v4-pro', prompt, providerOptions: { gateway: { only: ['deepseek'], }, },});
-Removes all routing options except for the DeepSeek provider
-{ "error": { "type": "no_providers_available", "message": "Your team has restricted access to this provider. Contact the owner of the account for more details. Providers considered: deepseek" }}
-Error when accessing provider that is not in the allowlist

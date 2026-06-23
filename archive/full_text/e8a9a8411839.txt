@@ -1,5 +1,0 @@
-Elastic build machines now monitor your build's memory usage and automatically adjust to prevent out-of-memory (OOM) failures:
-If your build is fast but memory-intensive, we will no longer downgrade you to a smaller machine
-If your build is close to running out of memory, we will automatically upgrade to a higher tier
-If your build fails due to an out-of-memory error, the next deployment will automatically run on a higher tier
-Thresholds are set conservatively to balance deployment reliability and cost. Vercel only considers your build's memory usage, not the memory used by Vercel's own build infrastructure.

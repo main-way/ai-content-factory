@@ -1,7 +1,0 @@
-Google Research's Gemini-SQL2 tops text-to-SQL benchmarks by a wide margin
-Google Research unveiled Gemini-SQL2, a new text-to-SQL system built on Gemini 3.1 Pro. It translates natural language into executable SQL database queries. On the BIRD benchmark, which measures how accurately these translations work, Gemini-SQL2 hits an execution accuracy of 80.04 percent, putting it in first place, according to Google. OpenAI's GPT-5.5-xhigh scores about 72.8 percent, and Anthropic's Claude Opus 4.6 lands around 70.9 percent. Models from Databricks, AWS, Tencent, and Alibaba all trail well behind.
-Google Research points out that turning natural language into correct SQL is especially hard because data is often layered and queries need to account for complex business logic. The generated SQL queries both look correct and execute successfully, the company says.
-Better SQL understanding could improve natural language features across Google's data services more broadly, according to Google. The research team hasn't said anything about a public release of the model, and there's no paper yet either.
-AI News Without the Hype – Curated by Humans
-Subscribe to THE DECODER for ad-free reading, a weekly AI newsletter, our exclusive "AI Radar" frontier report six times a year, full archive access, and access to our comment section.
-Subscribe now

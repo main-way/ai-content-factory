@@ -212,12 +212,14 @@ def main():
                     help="пропустить проверку на англицизмы (НЕ рекомендуется)")
     args = ap.parse_args()
 
-    # 1. Находим v2-файл
+    # 1. Находим файл (сначала новое имя digest_, потом старое analysis_v2_)
     if args.input:
         src_md = Path(args.input)
     else:
         today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-        src_md = OUTPUT_DIR / f"analysis_v2_{today}.md"
+        src_md = OUTPUT_DIR / f"digest_{today}.md"
+        if not src_md.exists():
+            src_md = OUTPUT_DIR / f"analysis_v2_{today}.md"
 
     if not src_md.exists():
         print(f"❌ Нет файла {src_md}", file=sys.stderr)
@@ -243,7 +245,12 @@ def main():
     # 3. Парсим
     md_text = src_md.read_text(encoding="utf-8")
     parsed = parse_v2_digest(md_text)
-    date_str = src_md.stem.replace("analysis_v2_", "")
+    # Извлекаем дату из имени файла (digest_YYYY-MM-DD или analysis_v2_YYYY-MM-DD)
+    stem = src_md.stem
+    if stem.startswith("digest_"):
+        date_str = stem.replace("digest_", "")
+    else:
+        date_str = stem.replace("analysis_v2_", "")
 
     print(f"📄 Загружен: {src_md}", file=sys.stderr)
     print(f"   Title: {parsed['title']}", file=sys.stderr)

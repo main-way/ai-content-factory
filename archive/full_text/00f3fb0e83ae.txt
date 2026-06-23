@@ -1,2 +1,0 @@
-import { streamText } from 'ai';
-const result = streamText({ model: 'anthropic/claude-fable-5', prompt: 'Investigate why p99 latency regressed and propose a fix.', providerOptions: { anthropic: { thinking: { type: 'adaptive' }, effort: 'high', }, },});

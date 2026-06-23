@@ -1,6 +1,0 @@
-A security researcher said she was able to access several internal FIFA platforms due to a simple security flaw, which allowed her to watch and have full control of the TV stream of every World Cup game.
-The researcher, who goes by BobDaHacker, said she simply registered as a player agent on FIFA’s official agent registration platform. Then, thanks to having that account and a flaw in FIFA’s back-end API, which didn’t check if a user actually had the proper authorization, she was able to access several internal FIFA platforms.
-This included the system that allows broadcasters to control what gets displayed on people’s TVs across the world, and what gets displayed on commentators’ screens as they narrate the match, per the researcher.
-“A single attacker could hijack every camera simultaneously. An attacker could have rickrolled the entire FIFA World Cup,” BobDaHacker wrote in a blog post published on Tuesday.
-BobDaHacker reported the flaw on Tuesday night Japan time, and FIFA fixed the issue a few hours later, without ever acknowledging the researcher’s report.
-FIFA did not immediately respond to TechCrunch’s request for comment.

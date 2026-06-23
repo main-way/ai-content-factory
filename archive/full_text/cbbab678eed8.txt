@@ -1,5 +1,0 @@
-Vercel Drop lets you deploy a file or folder by dragging it into your browser. You don't need Git, the Vercel CLI, or any local setup.
-Drop a project onto vercel.com/drop, pick a team and project name, and select Deploy. Vercel will create a new project, upload your files, and publish them straight to production with a live URL you can share. All in a matter of seconds.
-Vercel Drop handles more than static files:
-- Framework projects: Vercel detects your framework (e.g., Next.js) and builds it. Exports from tools like Bolt.new deploy this way. Claude Design and Google Stitch. If your folder has no index.html at the top, you choose which page loads at your site's root.
-Each drop creates a new project. To get automatic deployments on every push, connect a Git repository to the project afterwards.

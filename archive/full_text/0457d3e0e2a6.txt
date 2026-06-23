@@ -1,7 +1,0 @@
-import { Chat } from "chat";import { createVeltAdapter } from "@veltdev/chat-sdk-adapter";
-const bot = new Chat({ userName: "mybot", adapters: { velt: createVeltAdapter(), },});
-bot.onNewMention(async (thread, message) => { await thread.post(`You said: ${message.text}`);});
-Configure the adapter to respond to @-mentions in Velt documents
-The Complete Guide to Chat SDK
-Learn how Chat SDK works end-to-end: from core concepts to building your first bot to deploying it across Slack, Teams, and more.
-Read the guide
