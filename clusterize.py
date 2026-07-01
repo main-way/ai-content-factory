@@ -81,21 +81,9 @@ MAX_DIGEST_CHARS   = 2500     # верхняя граница
 
 # ─── Anti-topics (из channel_profiles.yaml) ──────────────────────────────────
 ANTI_TOPICS = [
-    "Политические и геополитические ИИ-новости (санкции, регулирование, войны)",
-    "Академическая теория и исследования без практического применения",
-    "Узкоспециализированные темы (медицинские ИИ-исследования, научные бенчмарки)",
-    "Сделки и финансовые новости ИИ-компаний на бирже (IPO, фандрейзинг, оценки)",
-    "Аэрокосмические и оборонные ИИ-проекты",
-    "Hardware и GPU-бенчмарки без привязки к бизнесу",
-    "Посты-дайджесты: посты, которые сами являются сборниками из нескольких новостей (например, заголовки вида «5 новостей за неделю», «итоги месяца», «дайджест X от Y», «what's new this week», подборки и топы)",
-    "Финтех и криптовалюта без ИИ-фокуса: стейблкоины, IPO, блокчейн-стартапы, криптобиржи, финтех-альянсы",
-    "Игры и развлечения без ИИ-фокуса: видеоигры, стриминг, кино, сериалы, медиа-платформы, новости медиа-компаний",
-    "IPO и размещения акций технологических компаний без ИИ-фокуса: Lime, Vimeo, Disney, Paramount, спонсорство спортивных событий",
-    "Энергетика и инфраструктура без ИИ-фокуса: термоядерный синтез, электросети, энергетические стартапы",
-    "Бытовые технологии без ИИ-фокуса: роботы-пылесосы, умная бытовая техника, потребительская электроника",
-    "HR и корпоративные новости без ИИ-фокуса: найм, управление персоналом, офисные инструменты",
-    "Погода и климат без ИИ-фокуса",
-    "Общие технологические новости без ИИ-фокуса: если новость о технологической компании или продукте и в ней НЕ упоминаются модели ИИ, обучение моделей, ИИ-фреймворки, ИИ-деплой, LLM, генеративный ИИ — это антитема",
+    "Политические и геополитические новости: санкции, войны, выборы, президент, премьер-министр, парламент, международные конфликты, дипломатические визиты",
+    "Академическая теория и фундаментальные исследования без практического применения и без связи с реальным бизнесом",
+    "Посты-дайджесты: посты, которые сами являются сборниками из нескольких новостей (дайджесты, топы, подборки, еженедельные обзоры)",
 ]
 
 # ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -281,6 +269,110 @@ def avg_interpoint_dist(embeddings: np.ndarray, indices: list[int], centroid_idx
     return float(np.linalg.norm(e - c, axis=1).mean())
 
 
+# ─── Hype / Popularity scoring ─────────────────────────────────────────────────
+
+_HYPE_KEYWORDS_RE = re.compile(
+    r"(?i)"
+    r"(new\s+(AI|model|tool|feature|plugin|extension|app|product)|"
+    r"\bNEW\b|"
+    r"launch(ing|es|ed)?\s|"
+    r"releas(e|es|ed|ing)\s|"
+    r"launching\s+today|"
+    r"just\s+(launched|released|unveiled|announced|introduced)|"
+    r"first\s+(AI|model|tool)|"
+    r"breakthrough|game.?changer|"
+    r"goes\s+viral|viral\s+hit|"
+    r"trending|"
+    r"100x\s+|10x\s+|"
+    r"open-source\s+AI|open-source\s+model|"
+    r"free\s+AI|free\s+model|"
+    r"real.?time\s+AI|"
+    r"multimodal\s+AI|"
+    r"agentic\s+AI|"
+    r"best\s+AI\b)",
+    re.IGNORECASE
+)
+
+_AI_LABS_RE = re.compile(
+    r"(?i)"
+    r"\bOpenAI\b|\bAnthropic\b|\bGoogle\s+DeepMind\b|\bMeta\s+AI\b|"
+    r"\bxAI\b|\bMistral\b|\bPerplexity\b|\bCohere\b|\bAI21\b|"
+    r"\bDeepMind\b|\bGoogle\s+AI\b|\bMeta\s+(AI|LLaMA)\b|"
+    r"\bStability\s+AI\b|\bEleutherAI\b|\bHugging\s+Face\b|"
+    r"\bCharacter\.AI\b|\bInflection\b|\bAdept\b|\bRunway\b|"
+    r"\bMidjourney\b|\bStability\b|\bIdeogram\b|\bFlux\b|"
+    r"\bCursor\b|\bCopilot\b|\bClaude\b|\bChatGPT\b|\bGemini\b|\bGrok\b|"
+    r"\bStable\s+Diffusion\b|\bSora\b|\bDALL-E\b|\bWhisper\b|\bBERT\b|\bGPT\b",
+    re.IGNORECASE
+)
+
+_HYPE_WOW_RE = re.compile(
+    r"(?i)"
+    r"(million|mln)\s*(user|download|request|API|developer|"
+    r"people|customer|client|star\s+GitHub)|"
+    r"(billion|bln)\s*(user|people)|"
+    r"10x\s+faster|100x\s+faster|"
+    r"breakthrough|state.?of.?the.?art|SOTA|"
+    r"beats?\s+(GPT|Claude|Gemini|human|expert|benchmark)|"
+    r"outperforms?\s+|surpasses?\s+|exceeds?\s+",
+    re.IGNORECASE
+)
+
+
+def compute_hype_multiplier(posts_l: list[dict]) -> float:
+    """
+    Compute a hype/popularity multiplier [1.0, 2.0] for a cluster based on
+    keywords and signals in the posts. Boosts clusters with:
+    - Fresh news (published within last 24h)
+    - Launch/release keywords
+    - Famous AI labs / model names
+    - 'Wow' signals (millions of users, beating benchmarks, etc.)
+    """
+    now = datetime.now(timezone.utc)
+    max_hype = 1.0
+
+    for p in posts_l:
+        h = 1.0
+        title = p.get("title", "")
+
+        # 1. Recency bonus (freshness)
+        pub = p.get("published", "")
+        if pub:
+            try:
+                from dateutil import parser as dp
+                dt = dp.parse(pub)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                age_hours = (now - dt).total_seconds() / 3600
+                if age_hours < 0:
+                    age_hours = 0
+                if age_hours <= 6:
+                    h *= 1.4
+                elif age_hours <= 12:
+                    h *= 1.25
+                elif age_hours <= 24:
+                    h *= 1.1
+            except Exception:
+                pass
+
+        # 2. Launch / new product keywords
+        if _HYPE_KEYWORDS_RE.search(title):
+            h *= 1.3
+
+        # 3. Famous AI labs and models
+        if _AI_LABS_RE.search(title):
+            h *= 1.2
+
+        # 4. Wow / wow-factor signals
+        if _HYPE_WOW_RE.search(title):
+            h *= 1.15
+
+        if h > max_hype:
+            max_hype = h
+
+    return min(max_hype, 2.0)
+
+
 def score_clusters(cluster_data: dict, embeddings: np.ndarray) -> list[dict]:
     """Score and sort clusters. Returns list of dicts with full cluster info."""
     scored = []
@@ -326,7 +418,9 @@ def score_clusters(cluster_data: dict, embeddings: np.ndarray) -> list[dict]:
             continue
 
         size_score = math.log1p(size)
-        score = size_score * (0.5 + 0.5 * velocity) * (0.3 + 0.7 * diversity) * (0.4 + 0.6 * spread)
+        base_score = size_score * (0.5 + 0.5 * velocity) * (0.3 + 0.7 * diversity) * (0.4 + 0.6 * spread)
+        hype = compute_hype_multiplier(posts_l)
+        score = round(base_score * hype, 3)
 
         # Top post (most central)
         top_post = posts_l[np.linalg.norm(
@@ -340,6 +434,7 @@ def score_clusters(cluster_data: dict, embeddings: np.ndarray) -> list[dict]:
             "velocity":    round(velocity, 2),
             "diversity":   round(diversity, 2),
             "spread":      round(spread, 3),
+            "hype":        round(hype, 2),
             "top_title":   top_post.get("title", "")[:120],
             "top_url":     top_post.get("url", ""),
             "top_source":  top_post.get("source", ""),
@@ -828,7 +923,7 @@ def main():
     scored = score_clusters(cluster_data, embeddings)
     log(f"🏆 Clusters ranked: {len(scored)}")
     for i, cl in enumerate(scored[:5], 1):
-        log(f"  #{i}: size={cl['size']:3d} score={cl['score']:.2f} → {cl['top_title'][:70]}")
+        log(f"  #{i}: size={cl['size']:3d} hype={cl['hype']:.2f} score={cl['score']:.2f} → {cl['top_title'][:70]}")
 
     if args.dry_run:
         log("✅ Dry run — exiting before LLM")
