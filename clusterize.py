@@ -87,6 +87,7 @@ ANTI_TOPICS = [
     "Сделки и финансовые новости ИИ-компаний на бирже (IPO, фандрейзинг, оценки)",
     "Аэрокосмические и оборонные ИИ-проекты",
     "Hardware и GPU-бенчмарки без привязки к бизнесу",
+    "Посты-дайджесты: посты, которые сами являются сборниками из нескольких новостей (например, заголовки вида «5 новостей за неделю», «итоги месяца», «дайджест X от Y», «what's new this week», подборки и топы)",
 ]
 
 # ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -155,6 +156,22 @@ def load_posts(date_str: str = None, days: int = 1) -> list[dict]:
 
 def lang_ok(p: dict) -> bool:
     return p.get("language", "en") in ("en", "ru", "")
+
+
+# Posts whose title looks like a compilation/digest-of-digests
+_COMPILED_TITLE_RE = re.compile(
+    r"(?i)"
+    r"(digest|дайджест|обзор\s*недели|еженедельн|итоги\s*(недели|месяца|года)|"
+    r"top\s*\d+|5\s*новост|10\s*новост|what'?s?\s*new|weekly|monthly|"
+    r"выпуск\s*\d+|issue\s*\d+|volume\s*\d+|newsletter|"
+    r"подборк[аи]|сборник|этот\s*выпуск|this\s*issue)",
+    re.IGNORECASE
+)
+
+def is_not_compilation(p: dict) -> bool:
+    """True if the post is NOT a compilation/digest-of-digests."""
+    title = p.get("title", "")
+    return not bool(_COMPILED_TITLE_RE.search(title))
 
 
 # ─── Embeddings ───────────────────────────────────────────────────────────────
@@ -750,6 +767,9 @@ def main():
 
     posts = [p for p in posts if lang_ok(p)]
     log(f"🌐 After language filter: {len(posts)} posts")
+
+    posts = [p for p in posts if is_not_compilation(p)]
+    log(f"🚫 After compilation filter: {len(posts)} posts")
 
     # 1b. CPU guard: limit posts before expensive embedding
     if len(posts) > embed_limit:
