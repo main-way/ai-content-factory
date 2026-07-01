@@ -174,6 +174,33 @@ def is_not_compilation(p: dict) -> bool:
     return not bool(_COMPILED_TITLE_RE.search(title))
 
 
+# Political / geopolitical keywords → these posts must be filtered out
+_POLITICAL_KEYWORDS_RE = re.compile(
+    r"(?i)"
+    r"(санкци|войн[ау]|военн|боев|конфликт|регулирован|госполитика|"
+    r"президент\s*(Росси|Украин|Беларус|Кита轨|Lukashenko|Biden|Trump|Putin|"
+    r"Zelensky|Xijinping|Modi|Erdogan|Netanyahu)|"
+    r"министра\s*(обороны|иностранн|внутренн)|"
+    r"\bМинск\b|\bКремл|G7|G20|НАТО|ОДКБ|"
+    r"выбор(ы|ах|ов|ам)|голосовани|референдум|парламент|"
+    r"дипломат|визит\s*(президент|премье|lider)|"
+    r"двусторонн\s*(встреч|переговор)|"
+    r"\bBelarus\b.*\bIndonesia\b|Ukraine.*Russia|Russia.*Ukraine|"
+    r"геополит|международн\s*(конфликт|кризис|политик)|"
+    r"войска|ракет|дрон|"
+    r"(атак|обстрел|взрыв|гибель|потери)\s*(мирн|граждан)|"
+    r"Евросоюз.*санкц|\bЕС\b.*ограничен)",
+    re.IGNORECASE
+)
+
+def is_not_political(p: dict) -> bool:
+    """True if the post is NOT about politics/geopolitics."""
+    title = p.get("title", "")
+    summary = p.get("summary", "")[:300]
+    text = title + " " + summary
+    return not bool(_POLITICAL_KEYWORDS_RE.search(text))
+
+
 # ─── Embeddings ───────────────────────────────────────────────────────────────
 
 def prepare_text(post: dict) -> str:
@@ -770,6 +797,9 @@ def main():
 
     posts = [p for p in posts if is_not_compilation(p)]
     log(f"🚫 After compilation filter: {len(posts)} posts")
+
+    posts = [p for p in posts if is_not_political(p)]
+    log(f"🚫 After political filter: {len(posts)} posts")
 
     # 1b. CPU guard: limit posts before expensive embedding
     if len(posts) > embed_limit:
