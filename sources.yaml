@@ -1,40 +1,17 @@
 meta:
-  total_sources: 271
-  enabled: 101
-  disabled: 170
-  last_check: '2026-06-09'
-  check_duration_sec: 56.4
-  zufar_original: 45
-  hermes_added: 226
-  note: Expanded from 76 to 271 sources, targeting 200+ working sources
-  url_replacements:
-  - old: https://openai.com/blog/rss
-    new: https://openai.com/news/rss.xml
-  - old: https://deepmind.google/blog/rss/
-    new: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/rss/
-  - old: https://techcrunch.com/category/artificial-intelligence/feed/
-    new: https://techcrunch.com/category/artificial-intelligence/?feed=rss2
-  - old: https://techcrunch.com/startups/feed/
-    new: https://techcrunch.com/category/startups/?feed=rss2
-  - old: https://venturebeat.com/ai/feed/
-    new: https://venturebeat.com/category/ai/feed/
-  - old: https://a16z.com/feed/
-    new: https://a16z.substack.com/feed
-  - old: https://simonwillison.net/atom.xml
-    new: https://simonw.substack.com/feed
-  blocked_by_cloudflare_ru:
-  - https://neurohive.io/feed/
-  - https://proglib.io/rss
-  - https://nplus1.ru/rss/news
-  - https://ain.ua/ru/rss/
-  - https://www.cossa.ru/rss/news/
-  - https://hi-tech.mail.ru/rss/
-  - https://spark.ru/rss
-  no_official_rss:
-  - Anthropic News → https://hnrss.org/newest?q=anthropic
-  - DeepLearning.AI The Batch → нет замены
-  - Both Sides of the Table (Mark Suster) → https://bothsidesofthetable.com (парсить
-    вручную)
+  total_sources: 262
+  enabled: 48
+  disabled: 214
+  last_check: '2026-07-01'
+  note: 'Final: 48 sources, arXiv deduped, AI-news+ProductHunt added'
+  changes:
+  - Removed 13 duplicate entries (same URL)
+  - Disabled 8/13 arXiv feeds (kept cs.AI, cs.LG, cs.CL, cs.CV)
+  - Added Product Hunt (AI tools/products)
+  - Added 4x HN filter feeds (anthropic, OpenAI, AI agents, Perplexity)
+  - 'Disabled non-AI broad media: Ars Technica, CNET, Engadget, Wired, The Verge,
+    BBC Tech, The Information, etc.'
+  - 'Disabled niche/aggregator AI: AI Defense/Finance/Health/Energy etc.'
 sources:
 - name: Google AI Blog
   url: https://blog.google/technology/ai/rss/
@@ -48,9 +25,10 @@ sources:
   category: ai_research
   language: en
   priority: high
-  enabled: true
-  check_status: PENDING
-  note: '[UPDATED 2026-06] переехал на Google Blog aggregator'
+  enabled: false
+  check_status: DISABLED_DUPLICATE
+  note: '[UPDATED 2026-06] переехал на Google Blog aggregator [DISABLED 2026-07: duplicate
+    of another entry for same source]'
 - name: OpenAI Blog
   url: https://openai.com/news/rss.xml
   category: ai_research
@@ -72,15 +50,15 @@ sources:
   category: ai_research
   language: en
   priority: high
-  enabled: true
-  check_status: ALIVE
+  enabled: false
+  check_status: DISABLED_DUPLICATE
 - name: arXiv cs.LG
   url: https://arxiv.org/rss/cs.LG
   category: ai_research
   language: en
   priority: high
-  enabled: true
-  check_status: ALIVE
+  enabled: false
+  check_status: DISABLED_DUPLICATE
 - name: BAIR Blog (Berkeley)
   url: https://bair.berkeley.edu/blog/feed.xml
   category: ai_research
@@ -118,7 +96,7 @@ sources:
   language: en
   priority: low
   enabled: false
-  check_status: DEAD
+  check_status: DISABLED_NICHE
   note: '[DEAD 2026-06] HTTP 404, вероятно сео-блог'
 - name: VentureBeat AI
   url: https://venturebeat.com/category/ai/feed/
@@ -133,8 +111,9 @@ sources:
   category: ai_research
   language: en
   priority: high
-  enabled: true
-  check_status: ALIVE
+  enabled: false
+  check_status: DISABLED_DUPLICATE
+  note: ' [DISABLED 2026-07: duplicate of another entry for same source]'
 - name: Google Research
   url: https://ai.google/research/pubs/rss
   category: ai_research
@@ -164,8 +143,8 @@ sources:
   category: ai_research
   language: en
   priority: high
-  enabled: true
-  check_status: PENDING
+  enabled: false
+  check_status: DISABLED_DUPLICATE
   note: '[ADDED 2026-06] специализированный AI-фид'
 - name: BDTechTalks
   url: https://bdtechtalks.com/feed/
@@ -376,8 +355,8 @@ sources:
   category: startups_vc
   language: en
   priority: high
-  enabled: true
-  check_status: PENDING
+  enabled: false
+  check_status: DISABLED_DEAD
   note: '[UPDATED 2026-06] формат URL сменился'
 - name: VentureBeat Startups
   url: https://feeds.feedburner.com/venturebeat/SZYF
@@ -430,8 +409,9 @@ sources:
   category: startups_vc
   language: en
   priority: medium
-  enabled: true
-  check_status: ALIVE
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: StrictlyVC
   url: https://strictlyvc.com/feed/
   category: startups_vc
@@ -445,15 +425,17 @@ sources:
   category: startups_vc
   language: en
   priority: medium
-  enabled: true
-  check_status: ALIVE
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: The Information
   url: https://www.theinformation.com/feed
   category: startups_vc
   language: en
   priority: high
-  enabled: true
-  check_status: PENDING
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: Crunchbase News
   url: https://news.crunchbase.com/feed/
   category: startups_vc
@@ -608,16 +590,18 @@ sources:
   category: ru_corp_it
   language: ru
   priority: medium
-  enabled: true
-  check_status: ALIVE
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: Ведомости (technology)
   url: https://www.vedomosti.ru/rss/news.xml
   category: ru_startups
   language: ru
   priority: medium
-  enabled: true
-  check_status: ALIVE
-  note: '[ADDED 2026-06] деловая пресса, tech section'
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: '[ADDED 2026-06] деловая пресса, tech section [DISABLED 2026-07: not AI-specific
+    enough]'
 - name: Hi-Tech Mail.ru
   url: https://hi-tech.mail.ru/rss/
   category: ru_corp_it
@@ -633,37 +617,28 @@ sources:
   priority: low
   enabled: true
   check_status: ALIVE
-- name: Hugging Face Blog
-  url: https://huggingface.co/blog/feed.xml
-  category: ai_research
-  language: en
-  priority: high
-  enabled: true
 - name: MarkTechPost
   url: https://www.marktechpost.com/feed/
   category: ai_research
   language: en
   priority: high
-  enabled: true
-  check_status: ALIVE
-- name: NVIDIA AI Blog
-  url: https://blogs.nvidia.com/feed/
-  category: ai_research
-  language: en
-  priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_DEAD
 - name: Microsoft Research Blog
   url: https://www.microsoft.com/en-us/research/feed/
   category: ai_research
   language: en
   priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_DUPLICATE
 - name: Google AI Blog
   url: https://blog.google/innovation-and-ai/technology/ai/rss/
   category: ai_research
   language: en
   priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_DUPLICATE
+  note: ' [DISABLED 2026-07: duplicate of another entry for same source]'
 - name: DeepMind Blog
   url: https://deepmind.google/blog/rss.xml
   category: ai_research
@@ -675,20 +650,9 @@ sources:
   category: ai_research
   language: en
   priority: high
-  enabled: true
-- name: BAIR Blog (Berkeley)
-  url: https://bair.berkeley.edu/blog/feed.xml
-  category: ai_research
-  language: en
-  priority: high
-  enabled: true
-- name: The Gradient
-  url: https://thegradient.pub/rss/
-  category: ai_research
-  language: en
-  priority: medium
-  enabled: true
-  check_status: ALIVE
+  enabled: false
+  check_status: DISABLED_DUPLICATE
+  note: ' [DISABLED 2026-07: duplicate of another entry for same source]'
 - name: Last Week in AI
   url: https://lastweekin.ai/feed
   category: ai_research
@@ -701,7 +665,7 @@ sources:
   language: en
   priority: medium
   enabled: false
-  check_status: DEAD
+  check_status: DISABLED_NICHE
 - name: Synced Review
   url: https://syncedreview.com/feed/
   category: ai_research
@@ -758,7 +722,9 @@ sources:
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_ARXIV_EXCESS
+  note: ' [DISABLED 2026-07: keeping only cs.AI, cs.LG, cs.CL, cs.CV]'
 - name: TechCrunch
   url: https://feeds.feedburner.com/TechCrunch/
   category: startups_vc
@@ -771,37 +737,25 @@ sources:
   category: startups_vc
   language: en
   priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: The Verge (AI)
   url: https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
   category: startups_vc
   language: en
   priority: high
-  enabled: true
-- name: Techmeme
-  url: https://www.techmeme.com/feed.xml
-  category: startups_vc
-  language: en
-  priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: The Next Web
   url: https://thenextweb.com/feed/
   category: startups_vc
   language: en
   priority: medium
-  enabled: true
-- name: VentureBeat AI
-  url: https://venturebeat.com/category/ai/feed/
-  category: startups_vc
-  language: en
-  priority: high
-  enabled: true
-- name: Stratechery
-  url: https://stratechery.com/feed/
-  category: startups_vc
-  language: en
-  priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: StrictlyVC
   url: https://www.strictlyvc.com/feed/
   category: startups_vc
@@ -809,19 +763,6 @@ sources:
   priority: medium
   enabled: false
   check_status: STALE
-- name: Y Combinator News
-  url: https://www.ycombinator.com/news/rss
-  category: startups_vc
-  language: en
-  priority: high
-  enabled: false
-  check_status: DEAD
-- name: Sequoia Capital
-  url: https://www.sequoiacap.com/feed/
-  category: startups_vc
-  language: en
-  priority: high
-  enabled: true
 - name: a16z News
   url: https://a16z.com/feed/
   category: startups_vc
@@ -850,12 +791,6 @@ sources:
   priority: medium
   enabled: false
   check_status: DEAD
-- name: VC.ru
-  url: https://vc.ru/rss
-  category: ru_startups
-  language: ru
-  priority: high
-  enabled: true
 - name: Habr (news)
   url: https://habr.com/ru/rss/news/
   category: ru_startups
@@ -868,18 +803,14 @@ sources:
   language: ru
   priority: high
   enabled: true
-- name: Spark.ru
-  url: https://spark.ru/rss
-  category: ru_startups
-  language: ru
-  priority: medium
-  enabled: true
 - name: Roem.ru
   url: https://roem.ru/rss/
   category: ru_startups
   language: ru
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_DUPLICATE
+  note: ' [DISABLED 2026-07: duplicate of another entry for same source]'
 - name: Rusbase
   url: https://rb.ru/feed/
   category: ru_startups
@@ -920,7 +851,8 @@ sources:
   category: ai_research
   language: en
   priority: low
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: Towards Data Science
   url: https://towardsdatascience.com/feed
   category: ai_research
@@ -938,7 +870,8 @@ sources:
   category: ai_research
   language: en
   priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: Data Science Central
   url: https://www.datasciencecentral.com/feed
   category: ai_research
@@ -960,12 +893,6 @@ sources:
   priority: high
   enabled: false
   check_status: DEAD
-- name: Import AI Newsletter
-  url: https://importai.substack.com/feed
-  category: ai_research
-  language: en
-  priority: high
-  enabled: true
 - name: The Decoder
   url: https://the-decoder.com/rss/
   category: ai_research
@@ -1000,12 +927,6 @@ sources:
   priority: high
   enabled: false
   check_status: DEAD
-- name: The Information
-  url: https://www.theinformation.com/feed
-  category: startups_vc
-  language: en
-  priority: high
-  enabled: true
 - name: Semantic Kernel Blog
   url: https://devblogs.microsoft.com/semantic-kernel/feed/
   category: ai_research
@@ -1031,20 +952,8 @@ sources:
   category: ai_research
   language: en
   priority: high
-  enabled: true
-- name: Anthropic News
-  url: https://www.anthropic.com/news/rss
-  category: ai_research
-  language: en
-  priority: high
   enabled: false
-  check_status: DEAD
-- name: Semiconductor Engineering
-  url: https://semiengineering.com/feed/
-  category: ai_research
-  language: en
-  priority: medium
-  enabled: true
+  check_status: DISABLED_DEAD
 - name: The Chip Letter
   url: https://chipletter.substack.com/feed
   category: ai_research
@@ -1167,7 +1076,8 @@ sources:
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: Paperspace Blog
   url: https://blog.paperspace.com/rss/
   category: ai_research
@@ -1180,25 +1090,29 @@ sources:
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: 'Becoming Human: AI Magazine'
   url: https://becominghuman.ai/feed
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_DEAD
 - name: Finxter AI Blog
   url: https://blog.finxter.com/ai/feed/
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: Augmented Coding Weekly
   url: https://augmentedcoding.dev/feed.xml
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: Microsoft ML Blog (archive)
   url: https://learn.microsoft.com/en-us/archive/blogs/machinelearning/feed.xml
   category: ai_research
@@ -1218,31 +1132,40 @@ sources:
   category: startups_vc
   language: en
   priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_DUPLICATE
 - name: TechCrunch AI
   url: https://techcrunch.com/category/artificial-intelligence/feed/
   category: startups_vc
   language: en
   priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_DUPLICATE
+  note: ' [DISABLED 2026-07: duplicate of another entry for same source]'
 - name: TechCrunch Startups
   url: https://techcrunch.com/category/startups/feed/
   category: startups_vc
   language: en
   priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_DUPLICATE
+  note: ' [DISABLED 2026-07: duplicate of another entry for same source]'
 - name: The Verge (Technology)
   url: https://www.theverge.com/rss/technology/index.xml
   category: startups_vc
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: Ars Technica
   url: https://feeds.arstechnica.com/arstechnica/index
   category: startups_vc
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: Meta AI Blog
   url: https://ai.meta.com/blog/
   category: ai_research
@@ -1303,19 +1226,24 @@ sources:
   category: startups_vc
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: CNET
   url: https://www.cnet.com/rss/news/
   category: startups_vc
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_BROAD
+  note: ' [DISABLED 2026-07: not AI-specific enough]'
 - name: VentureBeat
   url: https://venturebeat.com/feed/
   category: startups_vc
   language: en
   priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_DUPLICATE
 - name: CB Insights Research
   url: https://www.cbinsights.com/research/
   category: startups_vc
@@ -1439,37 +1367,49 @@ sources:
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_ARXIV_EXCESS
+  note: ' [DISABLED 2026-07: keeping only cs.AI, cs.LG, cs.CL, cs.CV]'
 - name: arXiv cs.RO (Robotics)
   url: https://rss.arxiv.org/rss/cs.RO
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_ARXIV_EXCESS
+  note: ' [DISABLED 2026-07: keeping only cs.AI, cs.LG, cs.CL, cs.CV]'
 - name: arXiv cs.NE (Neural Evo)
   url: https://rss.arxiv.org/rss/cs.NE
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_ARXIV_EXCESS
+  note: ' [DISABLED 2026-07: keeping only cs.AI, cs.LG, cs.CL, cs.CV]'
 - name: arXiv cs.MM (Multimodal)
   url: https://rss.arxiv.org/rss/cs.MM
   category: ai_research
   language: en
   priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_ARXIV_EXCESS
+  note: ' [DISABLED 2026-07: keeping only cs.AI, cs.LG, cs.CL, cs.CV]'
 - name: arXiv eess.IV (Image Video)
   url: https://rss.arxiv.org/rss/eess.IV
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_ARXIV_EXCESS
+  note: ' [DISABLED 2026-07: keeping only cs.AI, cs.LG, cs.CL, cs.CV]'
 - name: arXiv eess.AS (Audio Speech)
   url: https://rss.arxiv.org/rss/eess.AS
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_ARXIV_EXCESS
+  note: ' [DISABLED 2026-07: keeping only cs.AI, cs.LG, cs.CL, cs.CV]'
 - name: VentureBeat Transformers
   url: https://venturebeat.com/category/transform/feed/
   category: ai_research
@@ -1738,7 +1678,8 @@ sources:
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: Alternative AI
   url: https://alternatives.ai/feed/
   category: ai_research
@@ -1772,13 +1713,15 @@ sources:
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: AI Business Daily
   url: https://aibusinessdaily.com/feed/
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_DEAD
 - name: Generative AI News
   url: https://generativeai.net/feed/
   category: ai_research
@@ -1819,7 +1762,8 @@ sources:
   category: ai_research
   language: en
   priority: high
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: AI Policy News
   url: https://aipolicynews.com/feed/
   category: ai_research
@@ -1860,7 +1804,8 @@ sources:
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: AI Military Tech
   url: https://aimilitarytech.com/feed/
   category: ai_research
@@ -1887,7 +1832,8 @@ sources:
   category: ai_research
   language: en
   priority: medium
-  enabled: true
+  enabled: false
+  check_status: DISABLED_NICHE
 - name: AI Retail News
   url: https://airetailnews.com/feed/
   category: ai_research
@@ -1923,3 +1869,44 @@ sources:
   priority: medium
   enabled: false
   check_status: DEAD
+- name: Product Hunt
+  url: https://www.producthunt.com/feed
+  category: ai_tools
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+  note: '[ADDED 2026-07] AI products, launches, tools — primary source for new AI
+    tools'
+- name: 'Hacker News: anthropic'
+  url: https://hnrss.org/newest?q=anthropic
+  category: ai_news
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+  note: '[ADDED 2026-07] HN filtered to anthropic — AI labs news'
+- name: 'Hacker News: OpenAI'
+  url: https://hnrss.org/newest?q=OpenAI
+  category: ai_news
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+  note: '[ADDED 2026-07] HN filtered to OpenAI — AI labs news'
+- name: 'Hacker News: AI agents'
+  url: https://hnrss.org/newest?q=AI+agent
+  category: ai_news
+  language: en
+  priority: high
+  enabled: true
+  check_status: ALIVE
+  note: '[ADDED 2026-07] HN filtered to AI agents — hot topic'
+- name: 'Hacker News: Perplexity'
+  url: https://hnrss.org/newest?q=Perplexity
+  category: ai_news
+  language: en
+  priority: medium
+  enabled: true
+  check_status: ALIVE
+  note: '[ADDED 2026-07] HN filtered to Perplexity AI'
