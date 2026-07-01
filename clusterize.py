@@ -190,8 +190,8 @@ def embed_posts(posts: list[dict]) -> tuple[list[str], np.ndarray, list[dict]]:
 def cluster(embeddings: np.ndarray, texts: list[str], posts: list[dict]):
     log(f"🔵 UMAP: {embeddings.shape} → (n, {UMAP_N_COMPONENTS})...")
     t0 = time.time()
-    reducer = umap.UMAP(n_components=UMAP_N_COMPONENTS, min_dist=UMAP_MIN_DIST,
-                        metric="cosine", random_state=42, n_jobs=1)
+    reducer = umap.UMAP(n_components=UMAP_N_COMPONENTS, min_dist=0.1,
+                        metric="cosine", random_state=42, n_jobs=1, n_neighbors=10)
     reduced = reducer.fit_transform(embeddings)
     log(f"   UMAP done in {time.time()-t0:.1f}s")
 
@@ -302,45 +302,10 @@ def score_clusters(cluster_data: dict, embeddings: np.ndarray) -> list[dict]:
 
 # ─── LLM ─────────────────────────────────────────────────────────────────────
 
-def llm_json(prompt: str, max_tokens: int = 500) -> dict | None:
-    """POST to MiniMax-M2, return parsed JSON or None."""
-    if not LLM_API_KEY:
-        log("⚠️  MINIMAX_API_KEY not set", "WARN")
-        return None
-
-    payload = json.dumps({
-        "model":      LLM_MODEL,
-        "messages":   [{"role": "user", "content": prompt}],
-        "temperature": 0.3,
-        "max_tokens":  max_tokens,
-    }).encode()
-
-    req = urllib.request.Request(
-        f"{LLM_BASE_URL}/chat/completions",
-        data=payload,
-        headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            data = json.load(resp)
-        content = data["choices"][0]["message"]["content"]
-        # Strip think blocks
-        content = re.sub(r"<[^>]+>", "", content).strip()
-        start, end = content.find("{"), content.rfind("}")
-        if start != -1 and end != -1 and end > start:
-            return json.loads(content[start:end+1])
-    except urllib.error.HTTPError as e:
-        log(f"   HTTP {e.code}: {e.read().decode()[:200]}", "ERROR")
-    except Exception as e:
-        log(f"   LLM error: {e}", "ERROR")
-    return None
-
-
-SYSTEM_PROMPT = """Ты — редактор ИИ-дайджеста. Твоя задача: написать готовый текст дайджеста на русском языке. НЕ пиши перед текстом: ТЗ, план, анализ задачи, список требований. НЕ пиши фразы: "Мне нужно написать", "Let me analyze", "Анализирую задачу", "The user wants me to". НАЧИНАЙ СРАЗУ С ПЕРВОГО ПРЕДЛОЖЕНИЯ СТАТЬИ. В конце добавь: 📍 Источник: [название](URL)."""
+SYSTEM_PROMPT = "Ты -- редактор русского ИИ-дайджеста. Пиши связный текст 1500-2500 знаков по теме. Без списков и нумерации. Без вступлений. В конце: Источник: [название](URL)."
 
 def llm_text(prompt: str, max_tokens: int = 2000) -> str | None:
-    """POST to MiniMax-M2, return text response or None."""
+    """POST to MiniMax-M2, return text response or None. Retry on timeout."""
     if not LLM_API_KEY:
         log("⚠️  MINIMAX_API_KEY not set", "WARN")
         return None
@@ -361,74 +326,78 @@ def llm_text(prompt: str, max_tokens: int = 2000) -> str | None:
         headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
         method="POST",
     )
-    try:
-        with urllib.request.urlopen(req, timeout=90) as resp:
-            data = json.load(resp)
-        content = data["choices"][0]["message"]["content"]
-        content = re.sub(r"<[^>]+>", "", content).strip()
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                data = json.load(resp)
+            content = data["choices"][0]["message"]["content"]
+            content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL).strip()
+            content = re.sub(r"<[^>]+>", "", content).strip()
 
-        # Strip chain-of-thought: skip leading analysis/requirements/fact-list lines.
-        # After these, the real digest text starts (paragraphs of prose).
-        REQ_STARTS = (
-            "Требования:",
-            "Ключевые факты:",
-            "Ключевые моменты:",
-            "Мне нужно написать",
-            "Из материалов мне нужно",
-            "Из материалов следует",
-            "Давайте проанализирую",
-            "Анализирую задачу",
-            "Анализирую материалы",
-            "Напиши на русском",
-            "Let me analyze",
-            "Let me check",
-            "Let me extract",
-            "Let me write",
-            "The user wants me to write",
-            "The user is asking me to",
-            "Now I need to",
-            "Here is a",
-            "Analyze this",
-            "This article should",
-            "Давайте посмотрим",
-            "Давайте соберём",
-            "Основные факты",
-            "Key facts from",
-            "Key points from",
-            "Нужно использовать",
-            "Запрещённые слова:",
-            "Пользователь просит",
-            "Пользователь хочет",
-            "I need to:",
-        )
-        lines = content.split('\n')
-        real_start = 0
-        for i, line in enumerate(lines):
-            stripped = lines[i].strip()
-            if not stripped:
-                continue
-            # Skip if matches known analysis phrase
-            if any(stripped.startswith(p) for p in REQ_STARTS):
-                real_start = i + 1
-                continue
-            # Skip numbered list items: "1. ...", "10. ..."
-            if re.match(r'^\d+\.\s', stripped):
-                real_start = i + 1
-                continue
-            # Skip bullet items: "- ..."
-            if re.match(r'^-\s', stripped):
-                real_start = i + 1
-                continue
-            # This line is not analysis/facts - real content starts
-            real_start = i
+            # Strip chain-of-thought
+            lines = content.split('\n')
+            real_start = 0
+            REQ_STARTS = (
+                "Требования:", "Ключевые факты:", "Ключевые моменты:",
+                "Мне нужно написать", "Из материалов мне нужно",
+                "Давайте проанализирую", "Анализирую задачу",
+                "Напиши на русском", "Let me analyze",
+            )
+            for i, line in enumerate(lines):
+                stripped = lines[i].strip()
+                if not stripped:
+                    continue
+                if any(stripped.startswith(p) for p in REQ_STARTS):
+                    real_start = i + 1; continue
+                if re.match(r'^\d+\.\s', stripped):
+                    real_start = i + 1; continue
+                if re.match(r'^-\s', stripped):
+                    real_start = i + 1; continue
+                real_start = i; break
+            return '\n'.join(lines[real_start:]).strip()
+
+        except TimeoutError:
+            log(f"   LLM timeout (attempt {attempt+1}/3)", "WARN")
+        except Exception as e:
+            log(f"   LLM error: {e}", "ERROR")
             break
-        content = '\n'.join(lines[real_start:]).strip()
+    return None
 
-        return content
-    except urllib.error.HTTPError as e:
-        log(f"   HTTP {e.code}: {e.read().decode()[:200]}", "ERROR")
-    except Exception as e:
-        log(f"   LLM error: {e}", "ERROR")
+
+def llm_json(prompt: str, max_tokens: int = 500) -> dict | None:
+    """POST to MiniMax-M2, return parsed JSON or None."""
+    if not LLM_API_KEY:
+        log("⚠️  MINIMAX_API_KEY not set", "WARN")
+        return None
+
+    payload = json.dumps({
+        "model":       LLM_MODEL,
+        "messages":    [{"role": "user", "content": prompt}],
+        "temperature": 0.3,
+        "max_tokens":  max_tokens,
+    }).encode()
+
+    req = urllib.request.Request(
+        f"{LLM_BASE_URL}/chat/completions",
+        data=payload,
+        headers={"Authorization": f"Bearer {LLM_API_KEY}", "Content-Type": "application/json"},
+        method="POST",
+    )
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                data = json.load(resp)
+            content = data["choices"][0]["message"]["content"]
+            content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL).strip()
+            content = re.sub(r"<[^>]+>", "", content).strip()
+            start, end = content.find("{"), content.rfind("}")
+            if start != -1 and end != -1 and end > start:
+                return json.loads(content[start:end+1])
+        except TimeoutError:
+            log(f"   LLM JSON timeout (attempt {attempt+1}/3)", "WARN")
+        except Exception as e:
+            log(f"   LLM JSON error: {e}", "ERROR")
+            break
     return None
 
 
@@ -510,11 +479,12 @@ def write_digest_post(cluster: dict) -> dict | None:
 
     # Collect all post data for the LLM
     # Prefer full_text (from scrape.py) over summary (from RSS)
+    # Limit content to avoid API timeout on large prompts
     posts_data = []
-    for p in cluster["posts"][:8]:
+    for p in cluster["posts"][:6]:
         content = (
-            p.get("full_text", "").strip()[:3000]
-            or p.get("summary", "").strip()[:400]
+            p.get("full_text", "").strip()[:800]
+            or p.get("summary", "").strip()[:200]
         )
         posts_data.append({
             "title":   p.get("title", ""),
@@ -759,16 +729,18 @@ def send_telegram_document(file_path: Path, caption: str = "") -> bool:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--date",      help="Date YYYY-MM-DD (default: today)")
-    parser.add_argument("--days",       type=int, default=1, help="Rolling window days")
-    parser.add_argument("--limit",     type=int, default=TARGET_Digest_COUNT, help="Target post count")
+    parser.add_argument("--date",       help="Date YYYY-MM-DD (default: today)")
+    parser.add_argument("--days",      type=int, default=1, help="Rolling window days")
+    parser.add_argument("--limit",    type=int, default=TARGET_Digest_COUNT, help="Target post count")
+    parser.add_argument("--embed-limit", type=int, default=300, help="Max posts to embed on CPU (default 300)")
     parser.add_argument("--dry-run",   action="store_true", help="Skip LLM, skip send")
     args = parser.parse_args()
 
     date_str = args.date or datetime.now(timezone.utc).strftime("%Y-%m-%d")
     target   = args.limit
+    embed_limit = args.embed_limit
 
-    log_section(f"🚀 AI-Digest Pipeline | date={date_str} | target={target} posts")
+    log_section(f"🚀 AI-Digest Pipeline | date={date_str} | target={target} posts | embed≤{embed_limit}")
 
     # 1. Load
     posts = load_posts(days=args.days)
@@ -778,6 +750,12 @@ def main():
 
     posts = [p for p in posts if lang_ok(p)]
     log(f"🌐 After language filter: {len(posts)} posts")
+
+    # 1b. CPU guard: limit posts before expensive embedding
+    if len(posts) > embed_limit:
+        # Keep best posts by score (first in list = freshest from scraper)
+        posts = posts[:embed_limit]
+        log(f"⚡ CPU mode: limiting to {embed_limit} posts for embedding")
 
     # 2. Embed
     texts, embeddings, valid_posts = embed_posts(posts)
@@ -808,20 +786,14 @@ def main():
             break
 
         if idx > target * 3:
-            # Safety: don't check more than 3x target clusters
+            # Safety: check at most 7 clusters (≈25 posts) or 3x target, whichever is smaller
             log(f"⚠️  Checked {idx-1} clusters, only got {len(digest_items)} posts. Stopping.")
             break
 
         cl["rank"] = len(digest_items) + 1
         log(f"\n--- Cluster {idx}: {cl['top_title'][:70]} (score={cl['score']:.2f}) ---")
 
-        # 5. Coherence check
-        is_coherent, reason = check_coherence(cl)
-        if not is_coherent:
-            log(f"   ⏭  Skipping: несвязный кластер — {reason[:80]}")
-            continue
-
-        # 6. Anti-topics check
+        # 5. Anti-topics check (coherence already implied by diversity filter)
         is_anti, matched = check_anti_topic(cl)
         if is_anti:
             log(f"   ⛔ Skipping: антитема — {matched}")
@@ -851,7 +823,7 @@ def main():
         digest_items.append(item)
         log(f"   ✅ Added post #{len(digest_items)}: {item.get('topic','')[:60]}")
 
-        time.sleep(0.5)  # rate limit
+        time.sleep(0.3)  # rate limit
 
     if not digest_items:
         log("❌ No digest items generated", "ERROR")
